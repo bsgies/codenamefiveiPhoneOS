@@ -141,7 +141,7 @@
                                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter your phone number or Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hsb-qv-w1X">
                                                         <rect key="frame" x="0.0" y="41" width="354" height="36.5"/>
                                                         <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits"/>
+                                                        <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
                                                     </textField>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Error message" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ObP-Av-FEN">
                                                         <rect key="frame" x="0.0" y="82.5" width="354" height="36.5"/>
@@ -689,6 +689,308 @@
             </objects>
             <point key="canvasLocation" x="815.94202898550736" y="97.767857142857139"/>
         </scene>
+        <!--Profile-->
+        <scene sceneID="JKa-Qz-fXb">
+            <objects>
+                <tableViewController storyboardIdentifier="Profile" title="Profile" useStoryboardIdentifierAsRestorationIdentifier="YES" id="fWW-fu-4Pv" customClass="ProfileTVC" customModule="CodeNameFive" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="RmX-kY-HRr">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" name="TableViewBackGround"/>
+                        <sections>
+                            <tableViewSection id="XFP-XP-W6i">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="profileCell" rowHeight="109" id="y8V-0H-4BX" customClass="MainTableViewCell" customModule="CodeNameFive" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="109"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="y8V-0H-4BX" id="bVQ-5p-gcc">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="109"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Ellipse" translatesAutoresizingMaskIntoConstraints="NO" id="8L9-EU-dHn">
+                                                    <rect key="frame" x="305" y="21" width="94" height="67"/>
+                                                </imageView>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="CwG-ZI-5bc">
+                                                    <rect key="frame" x="10" y="10" width="284" height="89"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bilal Khan" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2GE-ds-09q">
+                                                            <rect key="frame" x="0.0" y="0.0" width="284" height="29.5"/>
+                                                            <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="sgies__@Hotmail.co.uk" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B85-GD-aEy">
+                                                            <rect key="frame" x="0.0" y="29.5" width="284" height="30"/>
+                                                            <fontDescription key="fontDescription" name="Roboto-Thin" family="Roboto" pointSize="16"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00923004919191" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2gJ-mf-gKC">
+                                                            <rect key="frame" x="0.0" y="59.5" width="284" height="29.5"/>
+                                                            <fontDescription key="fontDescription" name="Roboto-Thin" family="Roboto" pointSize="16"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </stackView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="8L9-EU-dHn" firstAttribute="top" secondItem="bVQ-5p-gcc" secondAttribute="topMargin" constant="10" id="8JO-nL-mRC"/>
+                                                <constraint firstAttribute="bottom" secondItem="CwG-ZI-5bc" secondAttribute="bottom" constant="10" id="8u9-4Q-rH3"/>
+                                                <constraint firstItem="8L9-EU-dHn" firstAttribute="leading" secondItem="bVQ-5p-gcc" secondAttribute="leading" constant="305" id="GFd-pa-56b"/>
+                                                <constraint firstItem="CwG-ZI-5bc" firstAttribute="leading" secondItem="bVQ-5p-gcc" secondAttribute="leading" constant="10" id="N9T-In-n7F"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="8L9-EU-dHn" secondAttribute="bottom" constant="10" id="gKZ-Be-AZn"/>
+                                                <constraint firstItem="CwG-ZI-5bc" firstAttribute="top" secondItem="bVQ-5p-gcc" secondAttribute="top" constant="10" id="jjp-2x-JiE"/>
+                                                <constraint firstItem="CwG-ZI-5bc" firstAttribute="centerY" secondItem="bVQ-5p-gcc" secondAttribute="centerY" id="nSJ-AK-xxI"/>
+                                                <constraint firstAttribute="trailing" secondItem="CwG-ZI-5bc" secondAttribute="trailing" constant="120" id="qsp-ck-p8G"/>
+                                                <constraint firstItem="8L9-EU-dHn" firstAttribute="trailing" secondItem="bVQ-5p-gcc" secondAttribute="trailingMargin" constant="5" id="wVA-Wc-fN3"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" name="tableCellColor"/>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection id="XtE-l3-bNF">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="PaymentInfoCell" rowHeight="90" id="opj-zR-g5g" customClass="MainTableViewCell" customModule="CodeNameFive" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="193" width="414" height="90"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="opj-zR-g5g" id="Bc2-xC-CkL">
+                                            <rect key="frame" x="0.0" y="0.0" width="383" height="90"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" baselineRelativeArrangement="YES" translatesAutoresizingMaskIntoConstraints="NO" id="non-3V-T1v">
+                                                    <rect key="frame" x="10" y="10" width="373" height="70"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vehicle information" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ovc-5C-Xqb">
+                                                            <rect key="frame" x="0.0" y="0.0" width="373" height="44.5"/>
+                                                            <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="View vehicle details" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y7P-aa-NZA">
+                                                            <rect key="frame" x="0.0" y="25.5" width="373" height="44.5"/>
+                                                            <fontDescription key="fontDescription" name="Roboto-Thin" family="Roboto" pointSize="16"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </stackView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="non-3V-T1v" firstAttribute="leading" secondItem="Bc2-xC-CkL" secondAttribute="leading" constant="10" id="4oh-lc-h2W"/>
+                                                <constraint firstAttribute="bottom" secondItem="non-3V-T1v" secondAttribute="bottom" constant="10" id="Mhm-iC-717"/>
+                                                <constraint firstItem="non-3V-T1v" firstAttribute="top" secondItem="Bc2-xC-CkL" secondAttribute="top" constant="10" id="Ouk-H2-Ygd"/>
+                                                <constraint firstAttribute="trailing" secondItem="non-3V-T1v" secondAttribute="trailing" id="UpN-rS-BTm"/>
+                                                <constraint firstItem="non-3V-T1v" firstAttribute="centerY" secondItem="Bc2-xC-CkL" secondAttribute="centerY" id="wnf-MC-ax7"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" name="tableCellColor"/>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection id="iTe-2C-dvS">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="vehicalInfoCell" rowHeight="90" id="1wX-wi-WWe" customClass="MainTableViewCell" customModule="CodeNameFive" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="339" width="414" height="90"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="1wX-wi-WWe" id="V7H-HT-Z3t">
+                                            <rect key="frame" x="0.0" y="0.0" width="383" height="90"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" baselineRelativeArrangement="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vkJ-Jr-axH">
+                                                    <rect key="frame" x="10" y="10" width="373" height="70"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Payment information" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V2v-wZ-pVO">
+                                                            <rect key="frame" x="0.0" y="0.0" width="373" height="44.5"/>
+                                                            <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Reviews Bank details" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gtn-Uu-dZD">
+                                                            <rect key="frame" x="0.0" y="25.5" width="373" height="44.5"/>
+                                                            <fontDescription key="fontDescription" name="Roboto-Thin" family="Roboto" pointSize="16"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </stackView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="vkJ-Jr-axH" firstAttribute="centerY" secondItem="V7H-HT-Z3t" secondAttribute="centerY" id="GyL-Tb-PEY"/>
+                                                <constraint firstAttribute="trailing" secondItem="vkJ-Jr-axH" secondAttribute="trailing" id="P8N-m0-ONX"/>
+                                                <constraint firstItem="vkJ-Jr-axH" firstAttribute="leading" secondItem="V7H-HT-Z3t" secondAttribute="leading" constant="10" id="Uph-wi-Xn4"/>
+                                                <constraint firstItem="vkJ-Jr-axH" firstAttribute="top" secondItem="V7H-HT-Z3t" secondAttribute="top" constant="10" id="Y6A-Ab-yno"/>
+                                                <constraint firstAttribute="bottom" secondItem="vkJ-Jr-axH" secondAttribute="bottom" constant="10" id="gTF-Q9-ihN"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" name="tableCellColor"/>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="fWW-fu-4Pv" id="6gB-XX-iQW"/>
+                            <outlet property="delegate" destination="fWW-fu-4Pv" id="32N-nA-1U5"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Profile" largeTitleDisplayMode="always" id="qaX-P5-kS0"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jKI-HZ-k44" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4433" y="98"/>
+        </scene>
+        <!--Edit Profile-->
+        <scene sceneID="brZ-r6-t78">
+            <objects>
+                <tableViewController storyboardIdentifier="EditProfileVC" title="Edit Profile" useStoryboardIdentifierAsRestorationIdentifier="YES" id="hS9-kL-k2X" customClass="EditProfileTVC" customModule="CodeNameFive" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="iZ9-lL-7g6">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" name="TableViewBackGround"/>
+                        <sections>
+                            <tableViewSection id="Yig-bZ-NZb">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PhoneNumberCell" rowHeight="100" id="3Ze-aM-omf" customClass="MainTableViewCell" customModule="CodeNameFive" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="100"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="3Ze-aM-omf" id="yEp-bw-9uy">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="zx6-iu-02Q">
+                                                    <rect key="frame" x="10" y="10" width="404" height="80"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Phone Number" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tqg-94-Xxd">
+                                                            <rect key="frame" x="0.0" y="0.0" width="404" height="40"/>
+                                                            <fontDescription key="fontDescription" name="Roboto-Thin" family="Roboto" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+447580004803" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xcZ-dO-L5v">
+                                                            <rect key="frame" x="0.0" y="40" width="404" height="40"/>
+                                                            <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="16"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </stackView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="zx6-iu-02Q" secondAttribute="trailing" id="C2h-ph-cbY"/>
+                                                <constraint firstItem="zx6-iu-02Q" firstAttribute="top" secondItem="yEp-bw-9uy" secondAttribute="top" constant="10" id="XjN-mS-scu"/>
+                                                <constraint firstItem="zx6-iu-02Q" firstAttribute="leading" secondItem="yEp-bw-9uy" secondAttribute="leading" constant="10" id="Zk0-eT-fBZ"/>
+                                                <constraint firstAttribute="bottom" secondItem="zx6-iu-02Q" secondAttribute="bottom" constant="10" id="bqm-dk-nkV"/>
+                                                <constraint firstItem="zx6-iu-02Q" firstAttribute="centerY" secondItem="yEp-bw-9uy" secondAttribute="centerY" id="vWH-jO-wdu"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" name="tableCellColor"/>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection id="eUb-vV-IGS">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="EmailCell" rowHeight="80" id="Ms5-41-dUN" customClass="MainTableViewCell" customModule="CodeNameFive" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="184" width="414" height="80"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Ms5-41-dUN" id="rvi-0k-XgW">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="80"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" baselineRelativeArrangement="YES" translatesAutoresizingMaskIntoConstraints="NO" id="z0y-vD-mq7">
+                                                    <rect key="frame" x="10" y="10" width="404" height="60"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gky-dA-w0t">
+                                                            <rect key="frame" x="0.0" y="0.0" width="404" height="40"/>
+                                                            <fontDescription key="fontDescription" name="Roboto-Thin" family="Roboto" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="johnsmith@hotmail.com" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ot5-pi-HMy">
+                                                            <rect key="frame" x="0.0" y="20" width="404" height="40"/>
+                                                            <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </stackView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="z0y-vD-mq7" secondAttribute="bottom" constant="10" id="3JB-Oj-slb"/>
+                                                <constraint firstItem="z0y-vD-mq7" firstAttribute="centerY" secondItem="rvi-0k-XgW" secondAttribute="centerY" id="En0-vQ-qaf"/>
+                                                <constraint firstItem="z0y-vD-mq7" firstAttribute="leading" secondItem="rvi-0k-XgW" secondAttribute="leading" constant="10" id="V83-Ze-0vc"/>
+                                                <constraint firstItem="z0y-vD-mq7" firstAttribute="top" secondItem="rvi-0k-XgW" secondAttribute="top" constant="10" id="YuF-ZH-FDe"/>
+                                                <constraint firstAttribute="trailing" secondItem="z0y-vD-mq7" secondAttribute="trailing" id="zFI-BV-pmV"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" name="tableCellColor"/>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection headerTitle="Next To Kin" id="I8L-h6-e9K">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="ECNCell" rowHeight="60" id="7k4-D4-hQm" customClass="MainTableViewCell" customModule="CodeNameFive" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="320" width="414" height="60"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="7k4-D4-hQm" id="X1W-na-zoe">
+                                            <rect key="frame" x="0.0" y="0.0" width="383" height="60"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Emergency contact name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JaQ-72-px0">
+                                                    <rect key="frame" x="10" y="10" width="373" height="40"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="JaQ-72-px0" firstAttribute="top" secondItem="X1W-na-zoe" secondAttribute="top" constant="10" id="3xm-cH-tlD"/>
+                                                <constraint firstAttribute="bottom" secondItem="JaQ-72-px0" secondAttribute="bottom" constant="10" id="5TX-LN-KbQ"/>
+                                                <constraint firstAttribute="trailing" secondItem="JaQ-72-px0" secondAttribute="trailing" id="BWR-U4-ode"/>
+                                                <constraint firstItem="JaQ-72-px0" firstAttribute="centerY" secondItem="X1W-na-zoe" secondAttribute="centerY" id="U16-Re-Vzh"/>
+                                                <constraint firstItem="JaQ-72-px0" firstAttribute="leading" secondItem="X1W-na-zoe" secondAttribute="leading" constant="10" id="yBf-Ym-k2t"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" name="tableCellColor"/>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="ECPNCell" rowHeight="60" id="CzX-9c-h4r" customClass="MainTableViewCell" customModule="CodeNameFive" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="380" width="414" height="60"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="CzX-9c-h4r" id="6uw-D9-iYw">
+                                            <rect key="frame" x="0.0" y="0.0" width="383" height="60"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Emergency contact phone number" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hg6-WB-1t1">
+                                                    <rect key="frame" x="10" y="10" width="373" height="40"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="Hg6-WB-1t1" firstAttribute="top" secondItem="6uw-D9-iYw" secondAttribute="top" constant="10" id="Bet-VR-2ms"/>
+                                                <constraint firstAttribute="bottom" secondItem="Hg6-WB-1t1" secondAttribute="bottom" constant="10" id="JTx-pS-au7"/>
+                                                <constraint firstItem="Hg6-WB-1t1" firstAttribute="centerY" secondItem="6uw-D9-iYw" secondAttribute="centerY" id="Mvj-RU-jNA"/>
+                                                <constraint firstItem="Hg6-WB-1t1" firstAttribute="leading" secondItem="6uw-D9-iYw" secondAttribute="leading" constant="10" id="pen-qk-pbv"/>
+                                                <constraint firstAttribute="trailing" secondItem="Hg6-WB-1t1" secondAttribute="trailing" id="tDI-lt-UEH"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" name="tableCellColor"/>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="hS9-kL-k2X" id="R9Q-dm-M3L"/>
+                            <outlet property="delegate" destination="hS9-kL-k2X" id="wcU-qz-fVe"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Edit Profile" largeTitleDisplayMode="always" id="xKc-d3-poQ"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="E1B-mB-Dqt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5257.971014492754" y="97.767857142857139"/>
+        </scene>
     </scenes>
     <color key="tintColor" red="0.070588235289999995" green="0.82352941180000006" blue="0.70196078429999997" alpha="1" colorSpace="calibratedRGB"/>
     <resources>
@@ -709,7 +1011,7 @@
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="TableViewBackGround">
-            <color red="0.92199999094009399" green="0.94499999284744263" blue="0.97600001096725464" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.92156862745098034" green="0.94509803921568625" blue="0.97647058823529409" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="tableCellColor">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

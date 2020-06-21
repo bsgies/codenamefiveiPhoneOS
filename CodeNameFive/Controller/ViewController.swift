@@ -31,10 +31,8 @@ class ViewController: UIViewController, UIViewControllerTransitioningDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         CardViewAnimation()
-//        let tap = UITapGestureRecognizer(target: self, action: #selector(taped))
-//        pathnerImage.addGestureRecognizer(tap)
-        let swipe = UISwipeGestureRecognizer(target: self, action: #selector(taped))
-        pathnerImage.addGestureRecognizer(swipe)
+        let tap = UITapGestureRecognizer(target: self, action: #selector(taped))
+        pathnerImage.addGestureRecognizer(tap)
         NotificationCenter.default.addObserver(self, selector: #selector(KeyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(KeyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
         

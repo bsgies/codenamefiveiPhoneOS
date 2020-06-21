@@ -84,11 +84,6 @@ class MainMenuTableViewController: UITableViewController {
             }
              
          }
-        override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-            tableView.reloadData()
-        }
-        
-
           override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
                return UIView()
            }
@@ -104,11 +99,24 @@ class MainMenuTableViewController: UITableViewController {
             
         }
         
-      
-        @objc func switchChanged(_ sender : UISwitch!){
+        override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+            let currentSection = indexPath.section
+            if currentSection == 0 {
+                if indexPath.row == 0 {
+                  let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                  let vc = storyBoard.instantiateViewController(withIdentifier: "Profile") as! ProfileTVC
 
-              print("table row switch Changed \(sender.tag)")
-              print("The switch is \(sender.isOn ? "ON" : "OFF")")
+                  let transition = CATransition()
+                  transition.duration = 0.5
+                    transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
+                    transition.type = CATransitionType.moveIn
+                    transition.subtype = CATransitionSubtype.fromTop
+                  navigationController?.view.layer.add(transition, forKey: nil)
+                  navigationController?.pushViewController(vc, animated: false)
+                }
+            }
         }
 
 }
+
+

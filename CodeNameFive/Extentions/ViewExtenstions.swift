@@ -20,4 +20,11 @@ extension UIView {
             self.alpha = 0.0
         }, completion: completion)
     }
+    
+    func ViewShadow(){
+        self.layer.shadowColor = UIColor.gray.cgColor
+        self.layer.shadowOpacity = 0.5
+        self.layer.shadowRadius = 2.0
+        self.layer.shadowOffset = CGSize(width: 1.0, height: 1.0)
+    }
 }
