@@ -98,6 +98,8 @@ class MainMenuTableViewController: UITableViewController {
              
             let chevronImageView = UIImageView(image: UIImage(named: "chevron-right"))
             cell.accessoryView = chevronImageView
+            if traitCollection.userInterfaceStyle == .light {
+            
             let cornerRadius: CGFloat = 0.0
             cell.backgroundColor = UIColor.clear
             let layer: CAShapeLayer = CAShapeLayer()
@@ -140,6 +142,10 @@ class MainMenuTableViewController: UITableViewController {
             backgroundView.layer.insertSublayer(layer, at: 0)
             backgroundView.backgroundColor = UIColor.clear
             cell.backgroundView = backgroundView
+            }
+            else{
+                
+            }
         }
         
         
