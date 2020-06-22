@@ -26,7 +26,9 @@ class MainMenuTableViewController: UITableViewController {
     //        personImage.layer.cornerRadius = personImage.frame.size.width / 2
     //        personImage.layer.shadowColor = UIColor(ciColor: .black).cgColor
     //        personImage.layer.shadowRadius = 1
-            
+            if traitCollection.userInterfaceStyle == .dark {
+                navigationController?.navigationBar.barTintColor = UIColor(hex: "#1D1D1E")
+            }
             
         }
 
