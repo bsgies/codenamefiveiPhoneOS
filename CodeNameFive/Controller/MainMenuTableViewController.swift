@@ -172,15 +172,13 @@ class MainMenuTableViewController: UITableViewController {
                 
             } else {
                 
-                let blurEffect = UIBlurEffect(style: .systemChromeMaterialDark)
-                let blurEffectView = UIVisualEffectView(effect: blurEffect)
-                
                 let headerView: UITableViewHeaderFooterView = view as! UITableViewHeaderFooterView
                 headerView.textLabel!.textColor = UIColor.darkGray
                 headerView.textLabel!.font = UIFont(name: "Roboto-Regular", size: 15)
-                //headerView.tintColor = .groupTableViewBackground
-                headerView.backgroundView = blurEffectView
-                //headerView.backgroundColor = UIColor(hex: "#F5F7F6")
+                
+                
+                headerView.backgroundView = UIView()
+                headerView.backgroundColor = .clear
                 
                 // For Header Text Color
                 let header = view as! UITableViewHeaderFooterView
