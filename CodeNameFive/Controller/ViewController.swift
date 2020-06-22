@@ -30,6 +30,8 @@ class ViewController: UIViewController, UIViewControllerTransitioningDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        errorMessageCodeLabel.isHidden = true
+        errorMessageLoginLabel.isHidden = true
         CardViewAnimation()
         let tap = UITapGestureRecognizer(target: self, action: #selector(taped))
         pathnerImage.addGestureRecognizer(tap)
@@ -107,6 +109,7 @@ class ViewController: UIViewController, UIViewControllerTransitioningDelegate {
         }
             
         else{
+            errorMessageLoginLabel.isHidden = false
             errorMessageLoginLabel.text = "Email or Password not in correct Format"
             loginContniue.shake()
         }

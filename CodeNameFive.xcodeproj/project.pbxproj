@@ -59,7 +59,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		4F2E5632249B4FA800D28462 /* CodeNameFive.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CodeNameFive.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4F2E5632249B4FA800D28462 /* CNF.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CNF.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F2E5635249B4FA800D28462 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4F2E5637249B4FA800D28462 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		4F2E5639249B4FA800D28462 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -137,7 +137,7 @@
 		4F2E5633249B4FA800D28462 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				4F2E5632249B4FA800D28462 /* CodeNameFive.app */,
+				4F2E5632249B4FA800D28462 /* CNF.app */,
 				4F2E564B249B4FAB00D28462 /* CodeNameFiveTests.xctest */,
 				4F2E5656249B4FAB00D28462 /* CodeNameFiveUITests.xctest */,
 			);
@@ -257,7 +257,7 @@
 			);
 			name = CodeNameFive;
 			productName = CodeNameFive;
-			productReference = 4F2E5632249B4FA800D28462 /* CodeNameFive.app */;
+			productReference = 4F2E5632249B4FA800D28462 /* CNF.app */;
 			productType = "com.apple.product-type.application";
 		};
 		4F2E564A249B4FAA00D28462 /* CodeNameFiveTests */ = {
@@ -578,9 +578,9 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = itridtechnologies.CodeNameFive;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = CNF;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -596,9 +596,9 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = itridtechnologies.CodeNameFive;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = CNF;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
