@@ -13,7 +13,7 @@ class MainMenuTableViewController: UITableViewController {
    public static let sharedInstance = MainMenuTableViewController()
     
     @IBOutlet weak var autoAcceptswitch: UISwitch!
-    
+    let tets = 0
     
     @IBAction func autoAccept(_ sender: Any) {
         //autoAcceptswitch.isOn = true
