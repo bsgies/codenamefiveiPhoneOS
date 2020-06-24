@@ -29,6 +29,11 @@
 		4F2E567F249B59D100D28462 /* Roboto-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4F2E5673249B59D000D28462 /* Roboto-BoldItalic.ttf */; };
 		4F2E5680249B59D100D28462 /* Roboto-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4F2E5674249B59D000D28462 /* Roboto-Thin.ttf */; };
 		4F2E5683249B684400D28462 /* ButtonRounded.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2E5682249B684400D28462 /* ButtonRounded.swift */; };
+		4F43BC1824A3D971006CF40F /* VehicleinformationTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F43BC1724A3D971006CF40F /* VehicleinformationTVC.swift */; };
+		4F43BC1A24A3DC39006CF40F /* PaymentInformationTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F43BC1924A3DC39006CF40F /* PaymentInformationTVC.swift */; };
+		4F43BC1C24A3DF4A006CF40F /* mapSettingTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F43BC1B24A3DF4A006CF40F /* mapSettingTVC.swift */; };
+		4F43BC2024A3ED22006CF40F /* TripHistoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F43BC1F24A3ED22006CF40F /* TripHistoryVC.swift */; };
+		4F43BC2224A3EE40006CF40F /* WeeklyTripsDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F43BC2124A3EE40006CF40F /* WeeklyTripsDataViewController.swift */; };
 		4F617DEE249F6D820022DB8B /* ButtonAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F617DED249F6D820022DB8B /* ButtonAnimation.swift */; };
 		4F61D991249BEFC300B9FE89 /* MainMenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F61D990249BEFC300B9FE89 /* MainMenuTableViewController.swift */; };
 		4F64AD9D249E40710047E9D5 /* ViewExtenstions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F64AD9C249E40710047E9D5 /* ViewExtenstions.swift */; };
@@ -87,6 +92,11 @@
 		4F2E5673249B59D000D28462 /* Roboto-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-BoldItalic.ttf"; sourceTree = "<group>"; };
 		4F2E5674249B59D000D28462 /* Roboto-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Thin.ttf"; sourceTree = "<group>"; };
 		4F2E5682249B684400D28462 /* ButtonRounded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonRounded.swift; sourceTree = "<group>"; };
+		4F43BC1724A3D971006CF40F /* VehicleinformationTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleinformationTVC.swift; sourceTree = "<group>"; };
+		4F43BC1924A3DC39006CF40F /* PaymentInformationTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentInformationTVC.swift; sourceTree = "<group>"; };
+		4F43BC1B24A3DF4A006CF40F /* mapSettingTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mapSettingTVC.swift; sourceTree = "<group>"; };
+		4F43BC1F24A3ED22006CF40F /* TripHistoryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripHistoryVC.swift; sourceTree = "<group>"; };
+		4F43BC2124A3EE40006CF40F /* WeeklyTripsDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyTripsDataViewController.swift; sourceTree = "<group>"; };
 		4F617DED249F6D820022DB8B /* ButtonAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonAnimation.swift; sourceTree = "<group>"; };
 		4F61D990249BEFC300B9FE89 /* MainMenuTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuTableViewController.swift; sourceTree = "<group>"; };
 		4F64AD9C249E40710047E9D5 /* ViewExtenstions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtenstions.swift; sourceTree = "<group>"; };
@@ -219,6 +229,11 @@
 				4FBBA4B5249CE014007F72E7 /* DashboardVC.swift */,
 				4FB11F10249FEC3A00EC629B /* ProfileTVC.swift */,
 				4FE4A3FF249FF93300CFFC3B /* EditProfileTVC.swift */,
+				4F43BC1724A3D971006CF40F /* VehicleinformationTVC.swift */,
+				4F43BC1924A3DC39006CF40F /* PaymentInformationTVC.swift */,
+				4F43BC1B24A3DF4A006CF40F /* mapSettingTVC.swift */,
+				4F43BC1F24A3ED22006CF40F /* TripHistoryVC.swift */,
+				4F43BC2124A3EE40006CF40F /* WeeklyTripsDataViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -391,13 +406,18 @@
 				4FBBA4B4249CD90B007F72E7 /* Color.swift in Sources */,
 				4F64AD9F249E40B80047E9D5 /* hit.swift in Sources */,
 				4FB11F14249FEDB000EC629B /* Constant.swift in Sources */,
+				4F43BC1A24A3DC39006CF40F /* PaymentInformationTVC.swift in Sources */,
 				4FB11F11249FEC3A00EC629B /* ProfileTVC.swift in Sources */,
+				4F43BC2024A3ED22006CF40F /* TripHistoryVC.swift in Sources */,
+				4F43BC1824A3D971006CF40F /* VehicleinformationTVC.swift in Sources */,
 				4F2E5638249B4FA800D28462 /* SceneDelegate.swift in Sources */,
 				4F617DEE249F6D820022DB8B /* ButtonAnimation.swift in Sources */,
+				4F43BC2224A3EE40006CF40F /* WeeklyTripsDataViewController.swift in Sources */,
 				4FE4A400249FF93300CFFC3B /* EditProfileTVC.swift in Sources */,
 				4F2E5640249B4FA800D28462 /* CodeNameFive.xcdatamodeld in Sources */,
 				4F64ADA4249E5AAF0047E9D5 /* Validation.swift in Sources */,
 				4F64AD9D249E40710047E9D5 /* ViewExtenstions.swift in Sources */,
+				4F43BC1C24A3DF4A006CF40F /* mapSettingTVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
