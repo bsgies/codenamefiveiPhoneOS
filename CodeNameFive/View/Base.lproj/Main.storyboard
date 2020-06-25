@@ -244,7 +244,7 @@
             </objects>
             <point key="canvasLocation" x="1726.0869565217392" y="97.767857142857139"/>
         </scene>
-        <!--App Menu-->
+        <!--App menu-->
         <scene sceneID="Q1F-Vh-F88">
             <objects>
                 <tableViewController storyboardIdentifier="AppMenu" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Uya-EH-beS" customClass="MainMenuTableViewController" customModule="CNF" customModuleProvider="target" sceneMemberID="viewController">
@@ -387,7 +387,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Upcoimg Promotions" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9SM-z8-sl6">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Upcoimg promotions" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9SM-z8-sl6">
                                                     <rect key="frame" x="44" y="12" width="343" height="20"/>
                                                     <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -465,7 +465,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Help Center" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0JV-hz-fuW">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Help center" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0JV-hz-fuW">
                                                     <rect key="frame" x="44" y="12" width="343" height="20"/>
                                                     <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -504,7 +504,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Auto Accept" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9T2-mO-lBM">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Auto accept" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9T2-mO-lBM">
                                                     <rect key="frame" x="44" y="12" width="343" height="20"/>
                                                     <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -556,7 +556,7 @@
                                                         <constraint firstAttribute="height" constant="16" id="YeO-qb-vmi"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Map Setting" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5jM-i4-4z1">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Map setting" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5jM-i4-4z1">
                                                     <rect key="frame" x="43" y="10" width="351" height="18"/>
                                                     <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -606,14 +606,14 @@
                             <outlet property="delegate" destination="Uya-EH-beS" id="I0l-xe-bEx"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="App Menu" largeTitleDisplayMode="always" id="HGj-fQ-rRn"/>
+                    <navigationItem key="navigationItem" title="App menu" largeTitleDisplayMode="always" id="HGj-fQ-rRn"/>
                     <connections>
                         <outlet property="autoAcceptswitch" destination="Joc-ft-lW5" id="QFc-3n-dgT"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nCn-Dp-p0e" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3495.652173913044" y="97.767857142857139"/>
+            <point key="canvasLocation" x="4405.7971014492759" y="97.767857142857139"/>
         </scene>
         <!--DashboardVC-->
         <scene sceneID="lnl-vm-XcH">
@@ -847,7 +847,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jKI-HZ-k44" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4433" y="98"/>
+            <point key="canvasLocation" x="5342.0289855072469" y="97.767857142857139"/>
         </scene>
         <!--Edit Profile-->
         <scene sceneID="brZ-r6-t78">
@@ -994,11 +994,11 @@
                             <outlet property="delegate" destination="hS9-kL-k2X" id="wcU-qz-fVe"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Edit Profile" largeTitleDisplayMode="always" id="xKc-d3-poQ"/>
+                    <navigationItem key="navigationItem" title="Edit profile" largeTitleDisplayMode="always" id="xKc-d3-poQ"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="E1B-mB-Dqt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5257.971014492754" y="97.767857142857139"/>
+            <point key="canvasLocation" x="6243" y="84"/>
         </scene>
         <!--Edit Profile-->
         <scene sceneID="IQk-UW-MCd">
@@ -1149,7 +1149,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zeG-vv-hXW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5257.971014492754" y="97.767857142857139"/>
+            <point key="canvasLocation" x="7078.2608695652179" y="97.767857142857139"/>
         </scene>
         <!--Vehical Information-->
         <scene sceneID="hn4-m1-Y0Q">
@@ -1224,7 +1224,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6DS-b9-Wi7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6133" y="98"/>
+            <point key="canvasLocation" x="7952.1739130434789" y="97.767857142857139"/>
         </scene>
         <!--Payment Information-->
         <scene sceneID="uJN-zP-yXy">
@@ -1299,7 +1299,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ntu-2p-ZbM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6974" y="98"/>
+            <point key="canvasLocation" x="8794.2028985507259" y="97.767857142857139"/>
         </scene>
         <!--Map setting-->
         <scene sceneID="oLF-PI-b4v">
@@ -1513,7 +1513,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9kB-YP-VM9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7812" y="98"/>
+            <point key="canvasLocation" x="9631.8840579710159" y="97.767857142857139"/>
         </scene>
         <!--Trip History-->
         <scene sceneID="yrF-w3-2ZP">
@@ -1571,7 +1571,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KZd-mb-QTM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="8700" y="98"/>
+            <point key="canvasLocation" x="10518.840579710146" y="97.767857142857139"/>
         </scene>
         <!--Trip Weekly Data-->
         <scene sceneID="lwh-Ib-WA0">
@@ -1708,7 +1708,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0S3-dF-bir" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="9473.9130434782619" y="97.767857142857139"/>
+            <point key="canvasLocation" x="11294.202898550726" y="97.767857142857139"/>
         </scene>
         <!--Trip Day Data-->
         <scene sceneID="xUz-u4-CkA">
@@ -1736,7 +1736,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="21:21 - 21:40 - Tip" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UyN-GI-hRY">
-                                                    <rect key="frame" x="20" y="39" width="99.5" height="15"/>
+                                                    <rect key="frame" x="20" y="39" width="95" height="15"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="15" id="nOG-nA-Py2"/>
                                                     </constraints>
@@ -1745,7 +1745,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Golden Chicken" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="acN-E4-UwQ">
-                                                    <rect key="frame" x="20" y="11" width="122" height="21"/>
+                                                    <rect key="frame" x="20" y="11" width="118" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="95" id="qdi-M0-TIe"/>
                                                     </constraints>
@@ -1847,7 +1847,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ALq-UV-ZCM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="10313.04347826087" y="83.705357142857139"/>
+            <point key="canvasLocation" x="12133.333333333334" y="83.705357142857139"/>
         </scene>
     </scenes>
     <color key="tintColor" red="0.070588235289999995" green="0.82352941180000006" blue="0.70196078429999997" alpha="1" colorSpace="calibratedRGB"/>
