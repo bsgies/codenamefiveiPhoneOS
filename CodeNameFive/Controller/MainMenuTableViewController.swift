@@ -90,7 +90,7 @@ class MainMenuTableViewController: UITableViewController {
             if traitCollection.userInterfaceStyle == .light {
                 let headerView: UITableViewHeaderFooterView = view as! UITableViewHeaderFooterView
                 headerView.textLabel!.textColor = UIColor.darkGray
-                headerView.textLabel!.font = UIFont(name: "Roboto-Regular", size: 15)
+                headerView.textLabel!.font = UIFont(name: "Roboto-Regular", size: 14)
 //
 //                // For Header Text Color
 //                let header = view as! UITableViewHeaderFooterView
@@ -103,7 +103,7 @@ class MainMenuTableViewController: UITableViewController {
                 
                 let headerView: UITableViewHeaderFooterView = view as! UITableViewHeaderFooterView
                 headerView.textLabel!.textColor = UIColor.darkGray
-                headerView.textLabel!.font = UIFont(name: "Roboto-Regular", size: 15)
+                headerView.textLabel!.font = UIFont(name: "Footnote", size: 15)
                 
                 
                 headerView.backgroundView = UIView()

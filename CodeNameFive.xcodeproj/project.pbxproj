@@ -45,6 +45,10 @@
 		4FB978E824A4A8E90093C10F /* TripWeeklyData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FB978E724A4A8E90093C10F /* TripWeeklyData.swift */; };
 		4FB978EA24A4BF6A0093C10F /* TripDayDataCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FB978E924A4BF6A0093C10F /* TripDayDataCell.swift */; };
 		4FB978EC24A4BF910093C10F /* TripDayDataVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FB978EB24A4BF910093C10F /* TripDayDataVC.swift */; };
+		4FB978EE24A4D83F0093C10F /* OrderDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FB978ED24A4D83F0093C10F /* OrderDetailCell.swift */; };
+		4FB978F124A4D8A70093C10F /* OrderDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FB978F024A4D8A70093C10F /* OrderDetailVC.swift */; };
+		4FB978F324A4D9030093C10F /* OderDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FB978F224A4D9030093C10F /* OderDetailModel.swift */; };
+		4FB978F724A4DB3A0093C10F /* EarningsTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FB978F624A4DB3A0093C10F /* EarningsTVC.swift */; };
 		4FBBA4B4249CD90B007F72E7 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FBBA4B3249CD90B007F72E7 /* Color.swift */; };
 		4FBBA4B6249CE014007F72E7 /* DashboardVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FBBA4B5249CE014007F72E7 /* DashboardVC.swift */; };
 		4FE4A400249FF93300CFFC3B /* EditProfileTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FE4A3FF249FF93300CFFC3B /* EditProfileTVC.swift */; };
@@ -112,6 +116,10 @@
 		4FB978E724A4A8E90093C10F /* TripWeeklyData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripWeeklyData.swift; sourceTree = "<group>"; };
 		4FB978E924A4BF6A0093C10F /* TripDayDataCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripDayDataCell.swift; sourceTree = "<group>"; };
 		4FB978EB24A4BF910093C10F /* TripDayDataVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripDayDataVC.swift; sourceTree = "<group>"; };
+		4FB978ED24A4D83F0093C10F /* OrderDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderDetailCell.swift; sourceTree = "<group>"; };
+		4FB978F024A4D8A70093C10F /* OrderDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderDetailVC.swift; sourceTree = "<group>"; };
+		4FB978F224A4D9030093C10F /* OderDetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OderDetailModel.swift; sourceTree = "<group>"; };
+		4FB978F624A4DB3A0093C10F /* EarningsTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarningsTVC.swift; sourceTree = "<group>"; };
 		4FBBA4B3249CD90B007F72E7 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		4FBBA4B5249CE014007F72E7 /* DashboardVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardVC.swift; sourceTree = "<group>"; };
 		4FE4A3FF249FF93300CFFC3B /* EditProfileTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileTVC.swift; sourceTree = "<group>"; };
@@ -165,6 +173,7 @@
 		4F2E5634249B4FA800D28462 /* CodeNameFive */ = {
 			isa = PBXGroup;
 			children = (
+				4FB978EF24A4D8600093C10F /* Model */,
 				4FB11F12249FED9F00EC629B /* Utilities */,
 				4F61D994249BF04400B9FE89 /* View */,
 				4F2E5684249B71F100D28462 /* Controller */,
@@ -244,6 +253,8 @@
 				4F43BC1F24A3ED22006CF40F /* TripHistoryVC.swift */,
 				4F43BC2124A3EE40006CF40F /* WeeklyTripsDataViewController.swift */,
 				4FB978EB24A4BF910093C10F /* TripDayDataVC.swift */,
+				4FB978F024A4D8A70093C10F /* OrderDetailVC.swift */,
+				4FB978F624A4DB3A0093C10F /* EarningsTVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -271,8 +282,17 @@
 				4FB978E424A4A8990093C10F /* TripHistoryCell.swift */,
 				4FB978E724A4A8E90093C10F /* TripWeeklyData.swift */,
 				4FB978E924A4BF6A0093C10F /* TripDayDataCell.swift */,
+				4FB978ED24A4D83F0093C10F /* OrderDetailCell.swift */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		4FB978EF24A4D8600093C10F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				4FB978F224A4D9030093C10F /* OderDetailModel.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -418,6 +438,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4FB978EE24A4D83F0093C10F /* OrderDetailCell.swift in Sources */,
 				4F2E5683249B684400D28462 /* ButtonRounded.swift in Sources */,
 				4FB978E824A4A8E90093C10F /* TripWeeklyData.swift in Sources */,
 				4F61D991249BEFC300B9FE89 /* MainMenuTableViewController.swift in Sources */,
@@ -433,15 +454,18 @@
 				4FB11F11249FEC3A00EC629B /* ProfileTVC.swift in Sources */,
 				4F43BC2024A3ED22006CF40F /* TripHistoryVC.swift in Sources */,
 				4F43BC1824A3D971006CF40F /* VehicleinformationTVC.swift in Sources */,
+				4FB978F724A4DB3A0093C10F /* EarningsTVC.swift in Sources */,
 				4F2E5638249B4FA800D28462 /* SceneDelegate.swift in Sources */,
 				4F617DEE249F6D820022DB8B /* ButtonAnimation.swift in Sources */,
 				4F43BC2224A3EE40006CF40F /* WeeklyTripsDataViewController.swift in Sources */,
 				4FE4A400249FF93300CFFC3B /* EditProfileTVC.swift in Sources */,
 				4F2E5640249B4FA800D28462 /* CodeNameFive.xcdatamodeld in Sources */,
 				4F64ADA4249E5AAF0047E9D5 /* Validation.swift in Sources */,
+				4FB978F124A4D8A70093C10F /* OrderDetailVC.swift in Sources */,
 				4F64AD9D249E40710047E9D5 /* ViewExtenstions.swift in Sources */,
 				4FB978EC24A4BF910093C10F /* TripDayDataVC.swift in Sources */,
 				4F43BC1C24A3DF4A006CF40F /* mapSettingTVC.swift in Sources */,
+				4FB978F324A4D9030093C10F /* OderDetailModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
