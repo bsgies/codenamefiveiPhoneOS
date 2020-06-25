@@ -10,21 +10,101 @@ import UIKit
 
 class TripHistoryVC: UIViewController {
 
+    var days = ["8 Jun - 14 Jun","1 Jun - 7 Jun","25 May - 31 May","18 May - 27 May"]
+    var eraning = ["$100","$90","$10","$12"]
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        setCrossButton()
+        
     }
     
+    
+    func setCrossButton(){
+         let button = UIButton(type: .custom)
+         button.setImage(UIImage(named: "x.png"), for: .normal)
+         button.addTarget(self, action: #selector(closeView), for: .touchUpInside)
+         button.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
+         let barButton = UIBarButtonItem(customView: button)
+         navigationItem.leftBarButtonItem = barButton
+     }
+     
+     @objc func closeView(){
+         let transition = CATransition()
+         transition.duration = 0.5
+         transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
+         transition.type = CATransitionType.reveal
+         transition.subtype = CATransitionSubtype.fromBottom
+         navigationController?.view.layer.add(transition, forKey: nil)
+         _ = navigationController?.popViewController(animated: false)
+     }
+    
 
-    /*
-    // MARK: - Navigation
+}
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+extension TripHistoryVC : UITableViewDelegate,UITableViewDataSource{
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 30
     }
-    */
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+         return days.count
+       }
+       
+       func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+         let cell = tableView.dequeueReusableCell(withIdentifier: "tripHistory", for: indexPath)
+         cell.textLabel?.text = days[indexPath.row]
+         cell.detailTextLabel?.text = eraning[indexPath.row]
+         cell.textLabel!.font = UIFont(name: "Roboto-Regular", size: 14)
+         cell.detailTextLabel?.font = UIFont(name: "Roboto-Regular", size: 14)
+         return cell
+       }
+    
+     func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        
+        if traitCollection.userInterfaceStyle == .light {
+            let headerView: UITableViewHeaderFooterView = view as! UITableViewHeaderFooterView
+            headerView.textLabel!.textColor = UIColor.darkGray
+            headerView.textLabel!.font = UIFont(name: "Roboto-Regular", size: 15)
+            //
+            //                // For Header Text Color
+            //                let header = view as! UITableViewHeaderFooterView
+            //                header.textLabel?.textColor = .black
+            
+            headerView.backgroundView = UIView()
+            headerView.backgroundColor = .clear
+            
+        } else {
+            
+            let headerView: UITableViewHeaderFooterView = view as! UITableViewHeaderFooterView
+            headerView.textLabel!.textColor = UIColor.darkGray
+            headerView.textLabel!.font = UIFont(name: "Roboto-Regular", size: 15)
+            
+            
+            headerView.backgroundView = UIView()
+            headerView.backgroundColor = .clear
+            
+            // For Header Text Color
+            let header = view as! UITableViewHeaderFooterView
+            header.textLabel?.textColor = .white
+            
+        }
+        
+    }
+     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        return UIView()
+    }
 
+
+     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        cell.accessoryView = UIImageView(image: UIImage(named: "chevron-right"))
+       }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+       
+        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                         let vc = storyBoard.instantiateViewController(withIdentifier: "WeeklyTripsDataViewController") as! WeeklyTripsDataViewController
+        navigationController?.navigationBar.topItem?.title = days[indexPath.row]
+        navigationController?.pushViewController(vc, animated: false)
+        
+    }
 }

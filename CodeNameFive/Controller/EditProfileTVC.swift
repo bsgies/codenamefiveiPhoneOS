@@ -18,15 +18,6 @@ class EditProfileTVC: UITableViewController {
 }
 
  extension EditProfileTVC{
-     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-              if indexPath.section == 0 {
-                  return 90
-              }
-              else{
-                  return 80
-                 
-         }
-          }
           override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
               if section == 0{
                   return 40
@@ -37,37 +28,23 @@ class EditProfileTVC: UITableViewController {
           }
           override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
              
-             if traitCollection.userInterfaceStyle == .light {
-                 let blurEffect = UIBlurEffect(style: .systemChromeMaterialLight)
-                 let blurEffectView = UIVisualEffectView(effect: blurEffect)
-                 
-                 let headerView: UITableViewHeaderFooterView = view as! UITableViewHeaderFooterView
-                 headerView.textLabel!.textColor = UIColor.darkGray
-                 headerView.textLabel!.font = UIFont(name: "Roboto-Bold", size: 15)
-                 //headerView.tintColor = .groupTableViewBackground
-                 headerView.backgroundView = blurEffectView
-                 //headerView.backgroundColor = UIColor(hex: "#F5F7F6")
-                 
-                 // For Header Text Color
-                 let header = view as! UITableViewHeaderFooterView
-                 header.textLabel?.textColor = .black
-             } else {
-                 
-                 let blurEffect = UIBlurEffect(style: .systemChromeMaterialDark)
-                 let blurEffectView = UIVisualEffectView(effect: blurEffect)
-                 
-                 let headerView: UITableViewHeaderFooterView = view as! UITableViewHeaderFooterView
-                 headerView.textLabel!.textColor = UIColor.darkGray
-                 headerView.textLabel!.font = UIFont(name: "Roboto-Bold", size: 15)
-                 //headerView.tintColor = .groupTableViewBackground
-                 headerView.backgroundView = blurEffectView
-                 //headerView.backgroundColor = UIColor(hex: "#F5F7F6")
-                 
-                 // For Header Text Color
-                 let header = view as! UITableViewHeaderFooterView
-                 header.textLabel?.textColor = .white
-                 
-             }
+            if traitCollection.userInterfaceStyle == .light {
+                            let headerView: UITableViewHeaderFooterView = view as! UITableViewHeaderFooterView
+                            headerView.textLabel!.textColor = UIColor.darkGray
+                            headerView.textLabel!.font = UIFont(name: "Roboto-Regular", size: 15)
+                            headerView.backgroundView = UIView()
+                            headerView.backgroundColor = .clear
+                        } else {
+                            
+                            let headerView: UITableViewHeaderFooterView = view as! UITableViewHeaderFooterView
+                            headerView.textLabel!.textColor = UIColor.darkGray
+                            headerView.textLabel!.font = UIFont(name: "Roboto-Regular", size: 15)
+                            headerView.backgroundView = UIView()
+                            headerView.backgroundColor = .clear
+                            let header = view as! UITableViewHeaderFooterView
+                            header.textLabel?.textColor = .white
+                        }
+                         
               
           }
            override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
@@ -122,15 +99,19 @@ class EditProfileTVC: UITableViewController {
            }
     
     func setBackButton(){
-             navigationController?.navigationBar.backItem?.titleView?.tintColor = UIColor(hex: "#12D2B3")
-            let yourBackImage = UIImage(named: "back")
-            let backButton = UIBarButtonItem()
-            backButton.title = ""
-            self.navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
-            navigationController?.navigationBar.backIndicatorImage = yourBackImage
-            navigationController?.navigationBar.backIndicatorTransitionMaskImage = yourBackImage
-            
+        let button: UIButton = UIButton (type: UIButton.ButtonType.custom)
+                     button.setImage(UIImage(named: "back"), for: UIControl.State.normal)
+                     button.addTarget(self, action: #selector(backButtonPressed(btn:)), for: UIControl.Event.touchUpInside)
+                       button.frame = CGRect(x: 0 , y: 0, width: 30, height: 30)
+
+                       let barButton = UIBarButtonItem(customView: button)
+
+                       self.navigationItem.leftBarButtonItem = barButton
         }
+    @objc func backButtonPressed(btn : UIButton) {
+
+        self.navigationController?.popViewController(animated: true)
+    }
 
  }
 
