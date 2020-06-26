@@ -27,9 +27,15 @@ class ViewController: UIViewController, UIViewControllerTransitioningDelegate {
     @IBOutlet weak var securityCodeContinueButton: UIButton!
     
     
+    override var preferredStatusBarStyle : UIStatusBarStyle {
+        return .lightContent
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        navigationController?.setStatusBar(backgroundColor: UIColor(#colorLiteral(red: 0, green: 0.8465872407, blue: 0.7545004487, alpha: 1)))
+
         errorMessageCodeLabel.isHidden = true
         errorMessageLoginLabel.isHidden = true
         CardViewAnimation()
@@ -187,4 +193,28 @@ extension ViewController{
             }
         })
     }
+}
+
+
+extension UIApplication {
+    class var statusBarBackgroundColor: UIColor? {
+        get {
+            return (shared.value(forKey: "statusBar") as? UIView)?.backgroundColor
+        } set {
+            (shared.value(forKey: "statusBar") as? UIView)?.backgroundColor = newValue
+        }
+    }
+}
+
+extension UIColor {
+
+    convenience init(hex: Int) {
+        let components = (
+            R: CGFloat((hex >> 16) & 0xff) / 255,
+            G: CGFloat((hex >> 08) & 0xff) / 255,
+            B: CGFloat((hex >> 00) & 0xff) / 255
+        )
+        self.init(red: components.R, green: components.G, blue: components.B, alpha: 1)
+    }
+
 }
