@@ -20,12 +20,16 @@ class EditProfileTVC: UITableViewController {
  extension EditProfileTVC{
           override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
               if section == 0{
-                  return 40
+                  return 0
               }
               else{
               return 30
               }
           }
+    
+    override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 20
+    }
           override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
              
             if traitCollection.userInterfaceStyle == .light {
