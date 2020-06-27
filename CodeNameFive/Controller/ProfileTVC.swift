@@ -60,7 +60,7 @@ extension ProfileTVC{
         if traitCollection.userInterfaceStyle == .light {
             let headerView: UITableViewHeaderFooterView = view as! UITableViewHeaderFooterView
             headerView.textLabel!.textColor = UIColor.darkGray
-            headerView.textLabel!.font = UIFont(name: "Roboto-Regular", size: 15)
+            headerView.textLabel!.font = UIFont(name: "Poppins-Regular", size: 14)
             //
             //                // For Header Text Color
             //                let header = view as! UITableViewHeaderFooterView
@@ -73,7 +73,7 @@ extension ProfileTVC{
             
             let headerView: UITableViewHeaderFooterView = view as! UITableViewHeaderFooterView
             headerView.textLabel!.textColor = UIColor.darkGray
-            headerView.textLabel!.font = UIFont(name: "Roboto-Regular", size: 15)
+            headerView.textLabel!.font = UIFont(name: "Poppins-Regular", size: 14)
             
             
             headerView.backgroundView = UIView()

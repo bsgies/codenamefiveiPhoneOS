@@ -16,8 +16,12 @@ class DashboardVC: UIViewController,CLLocationManagerDelegate,MKMapViewDelegate 
     
     private var locationManager: CLLocationManager!
     private var currentLocation: CLLocation?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+//        setNeedsStatusBarAppearanceUpdate()
+//        let statusBarColor = UIColor(ciColor: .clear)
+//        navigationController?.setStatusBar(backgroundColor: statusBarColor)
         menuButton.layer.cornerRadius = menuButton.frame.size.width / 2
         menuButton.layer.shadowColor = UIColor(ciColor: .gray).cgColor
         menuButton.layer.shadowRadius = 1

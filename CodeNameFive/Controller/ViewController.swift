@@ -27,18 +27,17 @@ class ViewController: UIViewController, UIViewControllerTransitioningDelegate {
     @IBOutlet weak var securityCodeContinueButton: UIButton!
     
     
-    override var preferredStatusBarStyle : UIStatusBarStyle {
-        return .lightContent
-    }
+//    override var preferredStatusBarStyle : UIStatusBarStyle {
+//        return .lightContent
+//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationController?.setStatusBar(backgroundColor: UIColor(#colorLiteral(red: 0, green: 0.8465872407, blue: 0.7545004487, alpha: 1)))
-
+       // navigationController?.setStatusBar(backgroundColor: UIColor(#colorLiteral(red: 0, green: 0.8465872407, blue: 0.7545004487, alpha: 1)))
+       
         errorMessageCodeLabel.isHidden = true
         errorMessageLoginLabel.isHidden = true
-        CardViewAnimation()
         let tap = UITapGestureRecognizer(target: self, action: #selector(taped))
         pathnerImage.addGestureRecognizer(tap)
         NotificationCenter.default.addObserver(self, selector: #selector(KeyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
@@ -89,12 +88,7 @@ class ViewController: UIViewController, UIViewControllerTransitioningDelegate {
         navigationController?.pushViewController(newViewController, animated: true)
     }
     @IBAction func codeNotReceived(_ sender: Any) {
-        UIView.animate(withDuration: 0.4, delay: 0.1, options: UIView.AnimationOptions.curveEaseOut, animations: {
-            self.cardView.fadeIn()
-            self.securityCenterAlign.constant -= self.view.bounds.width
-            self.view.layoutIfNeeded()
-        }, completion: nil)
-        
+   ///
     }
     
     func emailorPhonenumberValidation(phoneNumberorEmail : String){
@@ -103,24 +97,37 @@ class ViewController: UIViewController, UIViewControllerTransitioningDelegate {
             buttonanimation()
             flipAnimation()
             securityCodeTexField.placeholder = "Password"
-            securityCodeorPasswordLabel.text = "Enter Your Password"
+            securityCodeorPasswordLabel.text = "Enter your password"
             securityCodeTexField.keyboardType = UIKeyboardType.default //keyboard type
         }
             
         else if phoneNumberorEmail.isValidPhone(phone: phoneNumberorEmail){
             flipAnimation()
-            securityCodeTexField.placeholder = "security code"
-            securityCodeorPasswordLabel.text = "Enter Your security code"
+            securityCodeTexField.placeholder = "Security code"
+            securityCodeorPasswordLabel.text = "Enter your security code"
             securityCodeTexField.keyboardType = UIKeyboardType.numberPad
         }
             
         else{
             errorMessageLoginLabel.isHidden = false
-            errorMessageLoginLabel.text = "Email or Password not in correct Format"
-            loginContniue.shake()
+            errorMessageLoginLabel.text = "Email or password not in correct Format"
+//            loginContniue.shake()
         }
     }
     
+    @IBAction func CodeNotReceived(_ sender: Any) {
+        let codeNotReceivedAlert = UIAlertController(title: "Not received it?", message: "Resend security code (it can take up to a minute to arrive)", preferredStyle: UIAlertController.Style.alert)
+           codeNotReceivedAlert.view.tintColor = UIColor(#colorLiteral(red: 0, green: 0.8465872407, blue: 0.7545004487, alpha: 1))
+           codeNotReceivedAlert.addAction(UIAlertAction(title: "Resend", style: .default, handler: { (action: UIAlertAction!) in
+                
+           }))
+
+           codeNotReceivedAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action: UIAlertAction!) in
+                
+           }))
+
+           present(codeNotReceivedAlert, animated: true, completion: nil)
+    }
     
 }
 
