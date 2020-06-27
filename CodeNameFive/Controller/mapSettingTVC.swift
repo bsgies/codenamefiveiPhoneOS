@@ -18,6 +18,13 @@ class mapSettingTVC: UITableViewController {
 }
 
 extension mapSettingTVC{
+    
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        cell.selectionStyle = .none
+        if indexPath.section == 0 {
+        cell.accessoryView = UIImageView(image: UIImage(named: "chevron-right"))
+        }
+    }
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if section == 0{
             return 40
@@ -31,14 +38,14 @@ extension mapSettingTVC{
         if traitCollection.userInterfaceStyle == .light {
             let headerView: UITableViewHeaderFooterView = view as! UITableViewHeaderFooterView
             headerView.textLabel!.textColor = UIColor.darkGray
-            headerView.textLabel!.font = UIFont(name: "Roboto-Regular", size: 15)
+            headerView.textLabel!.font = UIFont(name: "Poppins-Regular", size: 15)
             headerView.backgroundView = UIView()
             headerView.backgroundColor = .clear
         } else {
             
             let headerView: UITableViewHeaderFooterView = view as! UITableViewHeaderFooterView
             headerView.textLabel!.textColor = UIColor.darkGray
-            headerView.textLabel!.font = UIFont(name: "Roboto-Regular", size: 15)
+            headerView.textLabel!.font = UIFont(name: "Poppins-Regular", size: 15)
             headerView.backgroundView = UIView()
             headerView.backgroundColor = .clear
             let header = view as! UITableViewHeaderFooterView

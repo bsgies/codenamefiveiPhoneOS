@@ -52,14 +52,14 @@ extension PaymentInformationTVC{
         if traitCollection.userInterfaceStyle == .light {
             let headerView: UITableViewHeaderFooterView = view as! UITableViewHeaderFooterView
             headerView.textLabel!.textColor = UIColor.darkGray
-            headerView.textLabel!.font = UIFont(name: "Roboto-Regular", size: 15)
+            headerView.textLabel!.font = UIFont(name: "Poppins-Regular", size: 15)
             headerView.backgroundView = UIView()
             headerView.backgroundColor = .clear
         } else {
             
             let headerView: UITableViewHeaderFooterView = view as! UITableViewHeaderFooterView
             headerView.textLabel!.textColor = UIColor.darkGray
-            headerView.textLabel!.font = UIFont(name: "Roboto-Regular", size: 15)
+            headerView.textLabel!.font = UIFont(name: "Poppins-Regular", size: 15)
             headerView.backgroundView = UIView()
             headerView.backgroundColor = .clear
             let header = view as! UITableViewHeaderFooterView

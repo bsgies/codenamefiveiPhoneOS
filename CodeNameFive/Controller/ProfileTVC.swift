@@ -43,6 +43,13 @@ class ProfileTVC: UITableViewController {
 }
 
 extension ProfileTVC{
+    
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        cell.selectionStyle = .none
+        if indexPath.section != 0{
+        cell.accessoryView = UIImageView(image: UIImage(named: "chevron-right"))
+        }
+    }
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.section == 0 {
             return 110

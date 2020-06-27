@@ -54,8 +54,8 @@ extension TripHistoryVC : UITableViewDelegate,UITableViewDataSource{
          let cell = tableView.dequeueReusableCell(withIdentifier: "tripHistory", for: indexPath)
          cell.textLabel?.text = days[indexPath.row]
          cell.detailTextLabel?.text = eraning[indexPath.row]
-         cell.textLabel!.font = UIFont(name: "Roboto-Regular", size: 14)
-         cell.detailTextLabel?.font = UIFont(name: "Roboto-Regular", size: 14)
+         cell.textLabel!.font = UIFont(name: "Poppins-Regular", size: 14)
+         cell.detailTextLabel?.font = UIFont(name: "Poppins-Regular", size: 14)
          return cell
        }
     
@@ -64,7 +64,7 @@ extension TripHistoryVC : UITableViewDelegate,UITableViewDataSource{
         if traitCollection.userInterfaceStyle == .light {
             let headerView: UITableViewHeaderFooterView = view as! UITableViewHeaderFooterView
             headerView.textLabel!.textColor = UIColor.darkGray
-            headerView.textLabel!.font = UIFont(name: "Roboto-Regular", size: 15)
+            headerView.textLabel!.font = UIFont(name: "Poppins-Regular", size: 15)
             //
             //                // For Header Text Color
             //                let header = view as! UITableViewHeaderFooterView
@@ -77,7 +77,7 @@ extension TripHistoryVC : UITableViewDelegate,UITableViewDataSource{
             
             let headerView: UITableViewHeaderFooterView = view as! UITableViewHeaderFooterView
             headerView.textLabel!.textColor = UIColor.darkGray
-            headerView.textLabel!.font = UIFont(name: "Roboto-Regular", size: 15)
+            headerView.textLabel!.font = UIFont(name: "Poppins-Regular", size: 15)
             
             
             headerView.backgroundView = UIView()
@@ -96,6 +96,7 @@ extension TripHistoryVC : UITableViewDelegate,UITableViewDataSource{
 
 
      func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        cell.selectionStyle = .none
         cell.accessoryView = UIImageView(image: UIImage(named: "chevron-right"))
        }
     

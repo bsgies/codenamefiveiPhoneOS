@@ -66,7 +66,7 @@ extension TripDayDataVC : UITableViewDelegate,UITableViewDataSource{
            if traitCollection.userInterfaceStyle == .light {
                let headerView: UITableViewHeaderFooterView = view as! UITableViewHeaderFooterView
                headerView.textLabel!.textColor = UIColor.darkGray
-               headerView.textLabel!.font = UIFont(name: "Roboto-Regular", size: 15)
+               headerView.textLabel!.font = UIFont(name: "Poppins-Regular", size: 15)
                headerView.backgroundView = UIView()
                headerView.backgroundColor = .clear
                
@@ -74,7 +74,7 @@ extension TripDayDataVC : UITableViewDelegate,UITableViewDataSource{
                
                let headerView: UITableViewHeaderFooterView = view as! UITableViewHeaderFooterView
                headerView.textLabel!.textColor = UIColor.darkGray
-               headerView.textLabel!.font = UIFont(name: "Roboto-Regular", size: 15)
+               headerView.textLabel!.font = UIFont(name: "Poppins-Regular", size: 15)
                
                
                headerView.backgroundView = UIView()
@@ -93,6 +93,7 @@ extension TripDayDataVC : UITableViewDelegate,UITableViewDataSource{
 
 
         func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+            cell.selectionStyle = .none
            cell.accessoryView = UIImageView(image: UIImage(named: "chevron-right"))
           }
 }

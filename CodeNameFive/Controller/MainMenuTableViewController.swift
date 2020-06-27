@@ -185,7 +185,7 @@ extension MainMenuTableViewController{
     }
     
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        
+        cell.selectionStyle = .none
         if indexPath.section == 6{
             if indexPath.row != 1{
                 

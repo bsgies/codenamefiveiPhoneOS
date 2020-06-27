@@ -62,7 +62,7 @@ extension WeeklyTripsDataViewController : UITableViewDataSource,UITableViewDeleg
         if traitCollection.userInterfaceStyle == .light {
             let headerView: UITableViewHeaderFooterView = view as! UITableViewHeaderFooterView
             headerView.textLabel!.textColor = UIColor.darkGray
-            headerView.textLabel!.font = UIFont(name: "Roboto-Regular", size: 15)
+            headerView.textLabel!.font = UIFont(name: "Poppins-Regular", size: 15)
             //
             //                // For Header Text Color
             //                let header = view as! UITableViewHeaderFooterView
@@ -75,7 +75,7 @@ extension WeeklyTripsDataViewController : UITableViewDataSource,UITableViewDeleg
             
             let headerView: UITableViewHeaderFooterView = view as! UITableViewHeaderFooterView
             headerView.textLabel!.textColor = UIColor.darkGray
-            headerView.textLabel!.font = UIFont(name: "Roboto-Regular", size: 15)
+            headerView.textLabel!.font = UIFont(name: "Poppins-Regular", size: 15)
             
             
             headerView.backgroundView = UIView()
@@ -94,6 +94,7 @@ extension WeeklyTripsDataViewController : UITableViewDataSource,UITableViewDeleg
 
 
      func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        cell.selectionStyle = .none
         cell.accessoryView = UIImageView(image: UIImage(named: "chevron-right"))
        }
     
