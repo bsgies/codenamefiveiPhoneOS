@@ -80,7 +80,6 @@ extension TripDayDataVC : UITableViewDelegate,UITableViewDataSource{
                headerView.backgroundView = UIView()
                headerView.backgroundColor = .clear
                
-               // For Header Text Color
                let header = view as! UITableViewHeaderFooterView
                header.textLabel?.textColor = .white
                

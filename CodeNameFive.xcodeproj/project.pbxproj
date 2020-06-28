@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4F14A5F224A8AD250095CA9B /* EditPhoneTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F14A5F124A8AD250095CA9B /* EditPhoneTVC.swift */; };
+		4F14A5F424A8AF130095CA9B /* EmmergencycontactTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F14A5F324A8AF130095CA9B /* EmmergencycontactTVC.swift */; };
 		4F2E5636249B4FA800D28462 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2E5635249B4FA800D28462 /* AppDelegate.swift */; };
 		4F2E5638249B4FA800D28462 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2E5637249B4FA800D28462 /* SceneDelegate.swift */; };
 		4F2E563A249B4FA800D28462 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2E5639249B4FA800D28462 /* ViewController.swift */; };
@@ -93,6 +95,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4F14A5F124A8AD250095CA9B /* EditPhoneTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPhoneTVC.swift; sourceTree = "<group>"; };
+		4F14A5F324A8AF130095CA9B /* EmmergencycontactTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmmergencycontactTVC.swift; sourceTree = "<group>"; };
 		4F2E5632249B4FA800D28462 /* CNF.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CNF.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F2E5635249B4FA800D28462 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4F2E5637249B4FA800D28462 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -300,6 +304,8 @@
 				4FB978F024A4D8A70093C10F /* OrderDetailVC.swift */,
 				4FB978F624A4DB3A0093C10F /* EarningsTVC.swift */,
 				4F5AE8BB24A7D49A00567D05 /* EditEmailTVC.swift */,
+				4F14A5F124A8AD250095CA9B /* EditPhoneTVC.swift */,
+				4F14A5F324A8AF130095CA9B /* EmmergencycontactTVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -532,6 +538,7 @@
 				4F2E5683249B684400D28462 /* ButtonRounded.swift in Sources */,
 				4FB978E824A4A8E90093C10F /* TripWeeklyData.swift in Sources */,
 				4F61D991249BEFC300B9FE89 /* MainMenuTableViewController.swift in Sources */,
+				4F14A5F224A8AD250095CA9B /* EditPhoneTVC.swift in Sources */,
 				4F2E563A249B4FA800D28462 /* ViewController.swift in Sources */,
 				4FB978EA24A4BF6A0093C10F /* TripDayDataCell.swift in Sources */,
 				4FBBA4B6249CE014007F72E7 /* DashboardVC.swift in Sources */,
@@ -553,6 +560,7 @@
 				4F2E5640249B4FA800D28462 /* CodeNameFive.xcdatamodeld in Sources */,
 				4F5AE8B824A77D0B00567D05 /* AppFont.swift in Sources */,
 				4F64ADA4249E5AAF0047E9D5 /* Validation.swift in Sources */,
+				4F14A5F424A8AF130095CA9B /* EmmergencycontactTVC.swift in Sources */,
 				4FB978F124A4D8A70093C10F /* OrderDetailVC.swift in Sources */,
 				4F64AD9D249E40710047E9D5 /* ViewExtenstions.swift in Sources */,
 				4FB978EC24A4BF910093C10F /* TripDayDataVC.swift in Sources */,

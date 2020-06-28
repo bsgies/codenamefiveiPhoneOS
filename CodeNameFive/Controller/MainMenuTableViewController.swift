@@ -92,7 +92,7 @@ extension MainMenuTableViewController{
            headerView.layer.borderWidth = 0.6
                   headerView.layer.borderColor = UIColor(#colorLiteral(red: 0.8980392157, green: 0.8980392157, blue: 0.8980392157, alpha: 1)).cgColor
             headerView.textLabel!.textColor = UIColor.darkGray
-            headerView.textLabel!.font = UIFont(name: "Poppins-Regular", size: 14)
+            headerView.textLabel!.font = UIFont(name: "Poppins-Regular", size: 15)
             
             headerView.backgroundView = UIView()
             headerView.backgroundColor = .clear

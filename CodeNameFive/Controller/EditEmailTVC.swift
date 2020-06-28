@@ -15,6 +15,7 @@ class EditEmailTVC: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(Cancel(btn:)))
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(Save(btn:)))
         self.navigationController?.navigationBar.tintColor = UIColor(#colorLiteral(red: 0, green: 0.8465872407, blue: 0.7545004487, alpha: 1))
@@ -40,27 +41,36 @@ class EditEmailTVC: UITableViewController {
              }
     
        
-       override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-           return 20
-       }
+//       override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+//           return 20
+//       }
           override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
              
+            let headerView: UITableViewHeaderFooterView = view as! UITableViewHeaderFooterView
             if traitCollection.userInterfaceStyle == .light {
-                            let headerView: UITableViewHeaderFooterView = view as! UITableViewHeaderFooterView
-                            headerView.textLabel!.textColor = UIColor.darkGray
-                            headerView.textLabel!.font = UIFont(name: "Poppins-Regular", size: 15)
-                            headerView.backgroundView = UIView()
-                            headerView.backgroundColor = .clear
-                        } else {
-                            
-                            let headerView: UITableViewHeaderFooterView = view as! UITableViewHeaderFooterView
-                            headerView.textLabel!.textColor = UIColor.darkGray
-                            headerView.textLabel!.font = UIFont(name: "Poppins-Regular", size: 15)
-                            headerView.backgroundView = UIView()
-                            headerView.backgroundColor = .clear
-                            let header = view as! UITableViewHeaderFooterView
-                            header.textLabel?.textColor = .white
-                        }
+               headerView.layer.borderWidth = 0.6
+                      headerView.layer.borderColor = UIColor(#colorLiteral(red: 0.8980392157, green: 0.8980392157, blue: 0.8980392157, alpha: 1)).cgColor
+                headerView.textLabel!.textColor = UIColor.darkGray
+                headerView.textLabel!.font = UIFont(name: "Poppins-Regular", size: 15)
+                
+                headerView.backgroundView = UIView()
+                headerView.backgroundColor = .clear
+                
+            } else {
+                
+                headerView.layer.borderWidth = 0.6
+                headerView.layer.borderColor = UIColor(hex: "1D1D1E")?.cgColor
+                headerView.textLabel!.textColor = UIColor.darkGray
+                headerView.textLabel!.font = UIFont(name: "Poppins-Regular", size: 15)
+                
+                
+                headerView.backgroundView = UIView()
+                headerView.backgroundColor = .clear
+                
+                let header = view as! UITableViewHeaderFooterView
+                header.textLabel?.textColor = .white
+                
+            }
                          
               
           }

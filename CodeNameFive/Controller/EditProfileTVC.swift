@@ -78,8 +78,19 @@ class EditProfileTVC: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let currentSection = indexPath.section
+        if currentSection == 0 {
+                   let editPhone : EditPhoneTVC = self.storyboard?.instantiateViewController(withIdentifier: "EditPhoneTVC") as! EditPhoneTVC
+                   self.presentOnRoot(viewController: editPhone)
+                   
+               }
+        
         if currentSection == 1 {
             let editemail : EditEmailTVC = self.storyboard?.instantiateViewController(withIdentifier: "Editemail") as! EditEmailTVC
+            self.presentOnRoot(viewController: editemail)
+            
+        }
+        else {
+            let editemail : EmmergencycontactTVC = self.storyboard?.instantiateViewController(withIdentifier: "EmmergencycontactTVC") as! EmmergencycontactTVC
             self.presentOnRoot(viewController: editemail)
             
         }
