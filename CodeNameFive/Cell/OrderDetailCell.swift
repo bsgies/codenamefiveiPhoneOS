@@ -10,6 +10,9 @@ import UIKit
 
 class OrderDetailCell: UITableViewCell {
 
+    @IBOutlet weak var travelDistance: UILabel!
+    @IBOutlet weak var timeandTip: UILabel!
+    @IBOutlet weak var ResturantName: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
