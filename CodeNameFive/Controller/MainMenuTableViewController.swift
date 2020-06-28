@@ -87,21 +87,20 @@ extension MainMenuTableViewController{
     
     override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         
+        let headerView: UITableViewHeaderFooterView = view as! UITableViewHeaderFooterView
         if traitCollection.userInterfaceStyle == .light {
-            let headerView: UITableViewHeaderFooterView = view as! UITableViewHeaderFooterView
+           headerView.layer.borderWidth = 0.6
+                  headerView.layer.borderColor = UIColor(#colorLiteral(red: 0.8980392157, green: 0.8980392157, blue: 0.8980392157, alpha: 1)).cgColor
             headerView.textLabel!.textColor = UIColor.darkGray
             headerView.textLabel!.font = UIFont(name: "Poppins-Regular", size: 14)
-            //
-            //                // For Header Text Color
-            //                let header = view as! UITableViewHeaderFooterView
-            //                header.textLabel?.textColor = .black
             
             headerView.backgroundView = UIView()
             headerView.backgroundColor = .clear
             
         } else {
             
-            let headerView: UITableViewHeaderFooterView = view as! UITableViewHeaderFooterView
+            headerView.layer.borderWidth = 0.6
+            headerView.layer.borderColor = UIColor(hex: "1D1D1E")?.cgColor
             headerView.textLabel!.textColor = UIColor.darkGray
             headerView.textLabel!.font = UIFont(name: "Poppins-Regular", size: 15)
             
@@ -121,9 +120,9 @@ extension MainMenuTableViewController{
     }
     
     
-    override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return 10
-    }
+//    override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+//        return 10
+//    }
     
     func setBackButton(){
         navigationController?.navigationBar.backItem?.titleView?.tintColor = UIColor(hex: "#12D2B3")
