@@ -1054,7 +1054,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6DS-b9-Wi7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="9013.04347826087" y="97.767857142857139"/>
+            <point key="canvasLocation" x="8145" y="98"/>
         </scene>
         <!--Payment Information-->
         <scene sceneID="uJN-zP-yXy">
@@ -1129,13 +1129,13 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ntu-2p-ZbM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="9742.0289855072479" y="97.767857142857139"/>
+            <point key="canvasLocation" x="8968" y="98"/>
         </scene>
         <!--Map setting-->
         <scene sceneID="oLF-PI-b4v">
             <objects>
                 <tableViewController storyboardIdentifier="mapSettingTVC" title="Map setting" useStoryboardIdentifierAsRestorationIdentifier="YES" id="fUr-UV-4Ka" customClass="mapSettingTVC" customModule="CNF" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="bKZ-im-rv6">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="bKZ-im-rv6">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" name="TableViewBackGround"/>
@@ -1340,7 +1340,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9kB-YP-VM9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="10398.550724637682" y="83.705357142857139"/>
+            <point key="canvasLocation" x="9826" y="98"/>
         </scene>
         <!--Trip History-->
         <scene sceneID="yrF-w3-2ZP">
@@ -1398,7 +1398,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KZd-mb-QTM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="11273.913043478262" y="83.705357142857139"/>
+            <point key="canvasLocation" x="10652" y="98"/>
         </scene>
         <!--Trip Weekly Data-->
         <scene sceneID="lwh-Ib-WA0">
@@ -1535,7 +1535,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0S3-dF-bir" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="12246.376811594204" y="83.705357142857139"/>
+            <point key="canvasLocation" x="11514" y="98"/>
         </scene>
         <!--Trip Day Data-->
         <scene sceneID="xUz-u4-CkA">
@@ -1674,12 +1674,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ALq-UV-ZCM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="13242.028985507248" y="83.705357142857139"/>
+            <point key="canvasLocation" x="12301" y="98"/>
         </scene>
         <!--Order detail-->
         <scene sceneID="APO-ul-X6v">
             <objects>
-                <viewController title="Order detail" id="IqL-Zt-FB7" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="OrderDetailVC" title="Order detail" useStoryboardIdentifierAsRestorationIdentifier="YES" id="IqL-Zt-FB7" customClass="OrderDetailVC" customModule="CNF" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="sGf-ML-V1J">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1738,55 +1738,6 @@
                                             <outlet property="timeLbl" destination="ZRb-Ar-n9l" id="Opp-5x-ppL"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="detail" textLabel="bGF-Ld-GIj" detailTextLabel="w2S-cx-M5e" rowHeight="65" style="IBUITableViewCellStyleValue1" id="19Q-bg-3gg" customClass="TripDayDataCell" customModule="CNF" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="93" width="414" height="65"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="19Q-bg-3gg" id="i7v-yx-hvS">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="65"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="bGF-Ld-GIj">
-                                                    <rect key="frame" x="20" y="23" width="33.5" height="20.5"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="w2S-cx-M5e">
-                                                    <rect key="frame" x="350" y="23" width="44" height="20.5"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="total" textLabel="Jwd-e2-v7n" detailTextLabel="To8-wf-Jf0" rowHeight="65" style="IBUITableViewCellStyleValue1" id="h8X-EP-cKC" customClass="TripDayDataCell" customModule="CNF" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="158" width="414" height="65"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="h8X-EP-cKC" id="KUY-ip-Ekd">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="65"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Jwd-e2-v7n">
-                                                    <rect key="frame" x="20" y="23" width="33.5" height="20.5"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="To8-wf-Jf0">
-                                                    <rect key="frame" x="350" y="23" width="44" height="20.5"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                        </tableViewCellContentView>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </tableViewCell>
                                 </prototypes>
                                 <connections>
                                     <outlet property="dataSource" destination="IqL-Zt-FB7" id="3ru-i8-fZ8"/>
@@ -1806,7 +1757,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9Mn-hf-ut9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="14268.115942028986" y="83.705357142857139"/>
+            <point key="canvasLocation" x="13093" y="98"/>
         </scene>
         <!--Payment Information-->
         <scene sceneID="1tT-Dk-VTc">
@@ -1878,7 +1829,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="o3C-t7-7hZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="15310.144927536234" y="71.651785714285708"/>
+            <point key="canvasLocation" x="14149" y="98"/>
         </scene>
         <!--Vehical Information-->
         <scene sceneID="CLT-PD-mBD">

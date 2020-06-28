@@ -11,14 +11,15 @@ import UIKit
 class WeeklyTripsDataViewController: UIViewController {
 
     @IBOutlet weak var weeklyDataEarningView: UIView!
-    let date = ["14","13","12","11","10","9","8","7"]
+    let date = ["14 Jun","13 Jun ","12 Jun ","11 Jun","10 Jun","9 Jun","8 Jun","7 Jun"]
     let trips = ["10 trips","132 trips","2 trips","2 trips","1 trips","10 trips","119 trips","7 trips"]
     let earn = ["$100","$100","$100","$100","$100","$100","$100","$100"]
+    var navigationBartitle : String?
     @IBOutlet weak var totalEranThisWeek: UILabel!
     @IBOutlet weak var totalNumberOfTrips: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
-       
+        navigationController?.navigationBar.topItem?.title =   navigationBartitle
         setBackButton()
         weeklyDataEarningView.layer.shadowColor = UIColor.gray.cgColor
         weeklyDataEarningView.layer.shadowOpacity = 0.5
@@ -99,7 +100,7 @@ extension WeeklyTripsDataViewController : UITableViewDataSource,UITableViewDeleg
        
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
                          let vc = storyBoard.instantiateViewController(withIdentifier: "TripDayDataVC") as! TripDayDataVC
-        navigationController?.navigationBar.topItem?.title =  date[indexPath.row]
+        vc.navigationBarTitle =  date[indexPath.row]
         navigationController?.pushViewController(vc, animated: false)
         
     }

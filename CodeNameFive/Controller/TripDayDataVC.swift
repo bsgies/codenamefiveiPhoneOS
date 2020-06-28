@@ -14,14 +14,14 @@ class TripDayDataVC: UIViewController {
     let resturantName = ["Golden Chicken","Hardess","Monal","Second Cup","Gloria Jeans","Khrachi Prhata Roll","What a Prhata","Cafe lanto"]
     let time = ["10:21 - 21:12-Tip","10:21 - 21:12-Tip","10:21 - 21:12-Tip","10:21 - 21:12-Tip","10:21 - 21:12-Tip","10:21 - 21:12-Tip","10:21 - 21:12-Tip","10:21 - 21:12-Tip" ]
     let earn = ["$100","$100","$100","$100","$100","$100","$100","$100"]
-    
+    var navigationBarTitle : String?
     @IBOutlet weak var dayDataEarnView: UIView!
     @IBOutlet weak var totalTrips: UILabel!
     @IBOutlet weak var totalEarning: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
-
-            setBackButton()
+             navigationController?.navigationBar.topItem?.title = navigationBarTitle
+             setBackButton()
              dayDataEarnView.layer.shadowColor = UIColor.gray.cgColor
              dayDataEarnView.layer.shadowOpacity = 0.5
              dayDataEarnView.layer.shadowOffset = .zero
@@ -95,4 +95,13 @@ extension TripDayDataVC : UITableViewDelegate,UITableViewDataSource{
             cell.selectionStyle = .none
            cell.accessoryView = UIImageView(image: UIImage(named: "chevron-right"))
           }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+       
+        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                         let vc = storyBoard.instantiateViewController(withIdentifier: "TripDayDataVC") as! TripDayDataVC
+        navigationController?.navigationBar.topItem?.title =  resturantName[indexPath.row]
+        navigationController?.pushViewController(vc, animated: false)
+        
+    }
 }
