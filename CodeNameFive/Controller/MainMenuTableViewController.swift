@@ -173,6 +173,20 @@ extension MainMenuTableViewController{
                 navigationController?.pushViewController(vc, animated: false)
             }
         }
+        if currentSection == 2 {
+                if indexPath.row == 0 {
+                    let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                    let vc = storyBoard.instantiateViewController(withIdentifier: "EarningsTVC") as! EarningsTVC
+                    
+                    let transition = CATransition()
+                    transition.duration = 0.5
+                    transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
+                    transition.type = CATransitionType.moveIn
+                    transition.subtype = CATransitionSubtype.fromTop
+                    navigationController?.view.layer.add(transition, forKey: nil)
+                    navigationController?.pushViewController(vc, animated: false)
+                }
+            }
         if currentSection == 6 {
             if indexPath.row == 1 {
                 let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
