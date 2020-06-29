@@ -21,6 +21,7 @@ class MainMenuTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.tableFooterView = UIView()
+        
         setBackButton()
         //        personImage.layer.cornerRadius = personImage.frame.size.width / 2
         //        personImage.layer.shadowColor = UIColor(ciColor: .black).cgColor
