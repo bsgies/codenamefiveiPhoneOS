@@ -9,7 +9,7 @@
 import UIKit
 
 class OrderDetailVC: UIViewController {
-
+    
     
     let detail = ["Trip fee","Surge fee","Tip","Adjustment"]
     let earntDetail = ["$3.00","$4.00","$0.55","$0.33"]
@@ -18,7 +18,15 @@ class OrderDetailVC: UIViewController {
         super.viewDidLoad()
         navigationController?.navigationBar.topItem?.title = "#14792"
         setBackButton()
-
+        
+        let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(MainMenuTableViewController.BackviewController(gesture:)))
+        swipeRight.direction = UISwipeGestureRecognizer.Direction.right
+        self.view.addGestureRecognizer(swipeRight)
+        
+    }
+    
+    @objc func BackviewController(gesture: UIGestureRecognizer) {
+        self.navigationController?.popViewController(animated: true)
     }
     func setBackButton(){
         let button: UIButton = UIButton (type: UIButton.ButtonType.custom)
@@ -54,19 +62,19 @@ extension OrderDetailVC : UITableViewDelegate,UITableViewDataSource{
         else{
             return 1
         }
-       }
-       
-       func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         if indexPath.section == 0{
-           let cell = tableView.dequeueReusableCell(withIdentifier: "orderdetail", for: indexPath) as! OrderDetailCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "orderdetail", for: indexPath) as! OrderDetailCell
             cell.ResturantName.text = orderedResturantName
             cell.travelDistance.text = "2.2 mi"
             cell.timeandTip.text = "21:21 - 21:40 - 50m"
             return cell
         }
         else if indexPath.section == 1{
-          
+            
             let cell = tableView.dequeueReusableCell(withIdentifier: "earn", for: indexPath)
             cell.textLabel?.text = detail[indexPath.row]
             cell.detailTextLabel?.text = earntDetail[indexPath.row]
@@ -80,58 +88,58 @@ extension OrderDetailVC : UITableViewDelegate,UITableViewDataSource{
             return cell
         }
     }
-       
-       func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
-           
-           if traitCollection.userInterfaceStyle == .light {
-               let headerView: UITableViewHeaderFooterView = view as! UITableViewHeaderFooterView
-           
-               headerView.textLabel!.textColor = UIColor.darkGray
-               headerView.textLabel!.font = UIFont(name: "Poppins-Regular", size: 15)
-               headerView.backgroundView = UIView()
-               headerView.backgroundColor = .clear
-               
-           } else {
-               
-               let headerView: UITableViewHeaderFooterView = view as! UITableViewHeaderFooterView
-               headerView.layer.borderWidth = 0.6
-               headerView.layer.borderColor = UIColor(hex: "1D1D1E")?.cgColor
-               headerView.textLabel!.textColor = UIColor.darkGray
-               headerView.textLabel!.font = UIFont(name: "Poppins-Regular", size: 15)
-               
-               
-               headerView.backgroundView = UIView()
-               headerView.backgroundColor = .clear
-               
-               let header = view as! UITableViewHeaderFooterView
-               header.textLabel?.textColor = .white
-               
-           }
-           
-       }
-        func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-           return UIView()
-       }
-
-
-        func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-            if indexPath.section == 2{
-                if indexPath.row == 0{
+    
+    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        
+        if traitCollection.userInterfaceStyle == .light {
+            let headerView: UITableViewHeaderFooterView = view as! UITableViewHeaderFooterView
+            
+            headerView.textLabel!.textColor = UIColor.darkGray
+            headerView.textLabel!.font = UIFont(name: "Poppins-Regular", size: 15)
+            headerView.backgroundView = UIView()
+            headerView.backgroundColor = .clear
+            
+        } else {
+            
+            let headerView: UITableViewHeaderFooterView = view as! UITableViewHeaderFooterView
+            headerView.layer.borderWidth = 0.6
+            headerView.layer.borderColor = UIColor(hex: "1D1D1E")?.cgColor
+            headerView.textLabel!.textColor = UIColor.darkGray
+            headerView.textLabel!.font = UIFont(name: "Poppins-Regular", size: 15)
+            
+            
+            headerView.backgroundView = UIView()
+            headerView.backgroundColor = .clear
+            
+            let header = view as! UITableViewHeaderFooterView
+            header.textLabel?.textColor = .white
+            
+        }
+        
+    }
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        return UIView()
+    }
+    
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if indexPath.section == 2{
+            if indexPath.row == 0{
                 cell.backgroundColor = .clear
-                }
             }
-            cell.selectionStyle = .none
-      
-          }
+        }
+        cell.selectionStyle = .none
+        
+    }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-                if section == 2{
-                    return 0
-                }
-                else{
-                    return 20
-                }
-            }
+        if section == 2{
+            return 0
+        }
+        else{
+            return 20
+        }
+    }
 }
 //    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 //

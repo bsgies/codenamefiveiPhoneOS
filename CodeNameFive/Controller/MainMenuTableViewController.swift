@@ -23,13 +23,17 @@ class MainMenuTableViewController: UITableViewController {
         self.tableView.tableFooterView = UIView()
         
         setBackButton()
-        //        personImage.layer.cornerRadius = personImage.frame.size.width / 2
-        //        personImage.layer.shadowColor = UIColor(ciColor: .black).cgColor
-        //        personImage.layer.shadowRadius = 1
         if traitCollection.userInterfaceStyle == .dark {
             navigationController?.navigationBar.barTintColor = UIColor(hex: "#1D1D1E")
         }
+        let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(BackviewController))
+        swipeRight.direction = UISwipeGestureRecognizer.Direction.right
+        self.view.addGestureRecognizer(swipeRight)
         
+    }
+    
+    @objc func BackviewController(gesture: UIGestureRecognizer) {
+        self.navigationController?.popViewController(animated: true)
     }
     
 }
@@ -86,35 +90,35 @@ extension MainMenuTableViewController{
     //
     //        }
     
-
-    override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
-  
     
+    override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        
+        
         
         let headerView: UITableViewHeaderFooterView = view as! UITableViewHeaderFooterView
         if traitCollection.userInterfaceStyle == .light {
             
-
-            headerView.textLabel!.textColor = UIColor(hex: "#333333")
+            
+            headerView.textLabel!.textColor = UIColor(hex: 21312312)
             headerView.textLabel!.font = UIFont(name: "Poppins-Regular", size: 15)
             
             headerView.backgroundView = UIView()
             headerView.backgroundColor = .clear
             
         } else {
-
+            
             headerView.textLabel!.textColor = UIColor.darkGray
             headerView.textLabel!.font = UIFont(name: "Poppins-Regular", size: 15)
-
-
+            
+            
             headerView.backgroundView = UIView()
             headerView.backgroundColor = .clear
-
+            
             let header = view as! UITableViewHeaderFooterView
             header.textLabel?.textColor = .white
             
-           
-
+            
+            
         }
         
     }
@@ -122,7 +126,7 @@ extension MainMenuTableViewController{
     override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         return UIView()
     }
-
+    
     
     override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return 10
@@ -182,6 +186,19 @@ extension MainMenuTableViewController{
                 let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
                 let vc = storyBoard.instantiateViewController(withIdentifier: "EarningsTVC") as! EarningsTVC
                 
+                let transition = CATransition()
+                transition.duration = 0.5
+                transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
+                transition.type = CATransitionType.moveIn
+                transition.subtype = CATransitionSubtype.fromTop
+                navigationController?.view.layer.add(transition, forKey: nil)
+                navigationController?.pushViewController(vc, animated: false)
+            }
+        }
+        if currentSection == 4 {
+            if indexPath.row == 0 {
+                let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                let vc = storyBoard.instantiateViewController(withIdentifier: "InboxVC") as! InboxVC
                 let transition = CATransition()
                 transition.duration = 0.5
                 transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)

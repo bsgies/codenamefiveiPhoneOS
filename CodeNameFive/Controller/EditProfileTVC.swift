@@ -13,8 +13,15 @@ class EditProfileTVC: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setBackButton()
+        let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(MainMenuTableViewController.BackviewController(gesture:)))
+               swipeRight.direction = UISwipeGestureRecognizer.Direction.right
+               self.view.addGestureRecognizer(swipeRight)
 
     }
+    
+    @objc func BackviewController(gesture: UIGestureRecognizer) {
+          self.navigationController?.popViewController(animated: true)
+      }
 }
 
  extension EditProfileTVC{
@@ -27,10 +34,10 @@ class EditProfileTVC: UITableViewController {
     
            override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
                  if section == 0{
-                     return 40
+                     return 35
                  }
                  else{
-                     return 30
+                     return 25
                  }
              }
     

@@ -13,6 +13,17 @@ class mapSettingTVC: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setBackButton()
+        tableView.allowsSelection = true
+        tableView.allowsMultipleSelection = false
+        let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(MainMenuTableViewController.BackviewController(gesture:)))
+        swipeRight.direction = UISwipeGestureRecognizer.Direction.right
+        self.view.addGestureRecognizer(swipeRight)
+        
+        
+    }
+    
+    @objc func BackviewController(gesture: UIGestureRecognizer) {
+        self.navigationController?.popViewController(animated: true)
     }
     
 }
@@ -23,13 +34,6 @@ extension mapSettingTVC{
         return 10
     }
     
-    
-    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        cell.selectionStyle = .none
-        if indexPath.section == 0 {
-        cell.accessoryView = UIImageView(image: UIImage(named: "chevron-right"))
-        }
-    }
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if section == 0{
             return 40
@@ -50,7 +54,7 @@ extension mapSettingTVC{
             
         } else {
             
-
+            
             headerView.textLabel!.textColor = UIColor.darkGray
             headerView.textLabel!.font = UIFont(name: "Poppins-Regular", size: 15)
             
@@ -69,6 +73,10 @@ extension mapSettingTVC{
         return UIView()
     }
     
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        cell.selectionStyle = .none
+    }
+    
     func setBackButton(){
         let button: UIButton = UIButton (type: UIButton.ButtonType.custom)
         button.setImage(UIImage(named: "back"), for: UIControl.State.normal)
@@ -82,6 +90,14 @@ extension mapSettingTVC{
     @objc func backButtonPressed(btn : UIButton) {
         
         self.navigationController?.popViewController(animated: true)
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.cellForRow(at: indexPath as IndexPath)?.accessoryType = .checkmark
+    }
+    
+    override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        tableView.cellForRow(at: indexPath as IndexPath)?.accessoryType = .none
     }
     
 }

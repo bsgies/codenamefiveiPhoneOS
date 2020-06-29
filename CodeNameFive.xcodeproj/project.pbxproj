@@ -76,6 +76,8 @@
 		4FB978F724A4DB3A0093C10F /* EarningsTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FB978F624A4DB3A0093C10F /* EarningsTVC.swift */; };
 		4FBBA4B4249CD90B007F72E7 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FBBA4B3249CD90B007F72E7 /* Color.swift */; };
 		4FBBA4B6249CE014007F72E7 /* DashboardVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FBBA4B5249CE014007F72E7 /* DashboardVC.swift */; };
+		4FD32D8324AA72060086766C /* InboxVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FD32D8224AA72060086766C /* InboxVC.swift */; };
+		4FD32D8524AA73C00086766C /* InboxCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FD32D8424AA73C00086766C /* InboxCell.swift */; };
 		4FE4A400249FF93300CFFC3B /* EditProfileTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FE4A3FF249FF93300CFFC3B /* EditProfileTVC.swift */; };
 /* End PBXBuildFile section */
 
@@ -172,6 +174,8 @@
 		4FB978F624A4DB3A0093C10F /* EarningsTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarningsTVC.swift; sourceTree = "<group>"; };
 		4FBBA4B3249CD90B007F72E7 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		4FBBA4B5249CE014007F72E7 /* DashboardVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardVC.swift; sourceTree = "<group>"; };
+		4FD32D8224AA72060086766C /* InboxVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InboxVC.swift; sourceTree = "<group>"; };
+		4FD32D8424AA73C00086766C /* InboxCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InboxCell.swift; sourceTree = "<group>"; };
 		4FE4A3FF249FF93300CFFC3B /* EditProfileTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileTVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -311,6 +315,7 @@
 				4F14A5F124A8AD250095CA9B /* EditPhoneTVC.swift */,
 				4F14A5F324A8AF130095CA9B /* EmmergencycontactTVC.swift */,
 				4F14A5F524A8DAC80095CA9B /* PreviousPaymentVC.swift */,
+				4FD32D8224AA72060086766C /* InboxVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -366,6 +371,7 @@
 				4FB978E924A4BF6A0093C10F /* TripDayDataCell.swift */,
 				4FB978ED24A4D83F0093C10F /* OrderDetailCell.swift */,
 				4F14A5F724A8DBF50095CA9B /* PreviouspaymentsCell.swift */,
+				4FD32D8424AA73C00086766C /* InboxCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -555,6 +561,7 @@
 				4FB978E524A4A8990093C10F /* TripHistoryCell.swift in Sources */,
 				4F14A5F824A8DBF50095CA9B /* PreviouspaymentsCell.swift in Sources */,
 				4FB11F14249FEDB000EC629B /* Constant.swift in Sources */,
+				4FD32D8324AA72060086766C /* InboxVC.swift in Sources */,
 				4F43BC1A24A3DC39006CF40F /* PaymentInformationTVC.swift in Sources */,
 				4FB11F11249FEC3A00EC629B /* ProfileTVC.swift in Sources */,
 				4F5AE8BC24A7D49A00567D05 /* EditEmailTVC.swift in Sources */,
@@ -569,6 +576,7 @@
 				4F5AE8B824A77D0B00567D05 /* AppFont.swift in Sources */,
 				4F64ADA4249E5AAF0047E9D5 /* Validation.swift in Sources */,
 				4F14A5F424A8AF130095CA9B /* EmmergencycontactTVC.swift in Sources */,
+				4FD32D8524AA73C00086766C /* InboxCell.swift in Sources */,
 				4FB978F124A4D8A70093C10F /* OrderDetailVC.swift in Sources */,
 				4F64AD9D249E40710047E9D5 /* ViewExtenstions.swift in Sources */,
 				4FB978EC24A4BF910093C10F /* TripDayDataVC.swift in Sources */,

@@ -9,7 +9,7 @@
 import UIKit
 
 class WeeklyTripsDataViewController: UIViewController {
-
+    
     @IBOutlet weak var weeklyDataEarningView: UIView!
     let date = ["14 Jun","13 Jun ","12 Jun ","11 Jun","10 Jun","9 Jun","8 Jun","7 Jun"]
     let trips = ["10 trips","132 trips","2 trips","2 trips","1 trips","10 trips","119 trips","7 trips"]
@@ -27,22 +27,30 @@ class WeeklyTripsDataViewController: UIViewController {
         weeklyDataEarningView.layer.shadowRadius = 4
         weeklyDataEarningView.layer.masksToBounds = false
         weeklyDataEarningView.fadeIn()
+        let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(MainMenuTableViewController.BackviewController(gesture:)))
+        swipeRight.direction = UISwipeGestureRecognizer.Direction.right
+        self.view.addGestureRecognizer(swipeRight)
+        
     }
-   func setBackButton(){
-       let button: UIButton = UIButton (type: UIButton.ButtonType.custom)
-       button.setImage(UIImage(named: "back"), for: UIControl.State.normal)
-       button.addTarget(self, action: #selector(backButtonPressed(btn:)), for: UIControl.Event.touchUpInside)
-       button.frame = CGRect(x: 0 , y: 0, width: 30, height: 30)
-       
-       let barButton = UIBarButtonItem(customView: button)
-       
-       self.navigationItem.leftBarButtonItem = barButton
-   }
-   @objc func backButtonPressed(btn : UIButton) {
-       
-       self.navigationController?.popViewController(animated: true)
-   }
-
+    
+    @objc func BackviewController(gesture: UIGestureRecognizer) {
+        self.navigationController?.popViewController(animated: true)
+    }
+    func setBackButton(){
+        let button: UIButton = UIButton (type: UIButton.ButtonType.custom)
+        button.setImage(UIImage(named: "back"), for: UIControl.State.normal)
+        button.addTarget(self, action: #selector(backButtonPressed(btn:)), for: UIControl.Event.touchUpInside)
+        button.frame = CGRect(x: 0 , y: 0, width: 30, height: 30)
+        
+        let barButton = UIBarButtonItem(customView: button)
+        
+        self.navigationItem.leftBarButtonItem = barButton
+    }
+    @objc func backButtonPressed(btn : UIButton) {
+        
+        self.navigationController?.popViewController(animated: true)
+    }
+    
 }
 extension WeeklyTripsDataViewController : UITableViewDataSource,UITableViewDelegate{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -62,7 +70,7 @@ extension WeeklyTripsDataViewController : UITableViewDataSource,UITableViewDeleg
         
         let headerView: UITableViewHeaderFooterView = view as! UITableViewHeaderFooterView
         if traitCollection.userInterfaceStyle == .light {
-           
+            
             headerView.textLabel!.textColor = UIColor.darkGray
             headerView.textLabel!.font = UIFont(name: "Poppins-Regular", size: 15)
             
@@ -83,20 +91,20 @@ extension WeeklyTripsDataViewController : UITableViewDataSource,UITableViewDeleg
             
         }
     }
-     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         return UIView()
     }
-
-
-     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+    
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         cell.selectionStyle = .none
         cell.accessoryView = UIImageView(image: UIImage(named: "chevron-right"))
-       }
+    }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-       
+        
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-                         let vc = storyBoard.instantiateViewController(withIdentifier: "TripDayDataVC") as! TripDayDataVC
+        let vc = storyBoard.instantiateViewController(withIdentifier: "TripDayDataVC") as! TripDayDataVC
         vc.navigationBarTitle =  date[indexPath.row]
         navigationController?.pushViewController(vc, animated: false)
         

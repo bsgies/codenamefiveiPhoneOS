@@ -12,10 +12,18 @@ class VehicleinformationTVC: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setBackButton()
+        let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(MainMenuTableViewController.BackviewController(gesture:)))
+        swipeRight.direction = UISwipeGestureRecognizer.Direction.right
+        self.view.addGestureRecognizer(swipeRight)
         
     }
+    
+    @objc func BackviewController(gesture: UIGestureRecognizer) {
+        self.navigationController?.popViewController(animated: true)
+    }
 }
+
+
 
 extension VehicleinformationTVC{
     
@@ -32,10 +40,10 @@ extension VehicleinformationTVC{
         return UIView()
     }
     
-//    override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-//        return 20
-//    }
-//    
+        override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+            return 10
+        }
+    
     func setBackButton(){
         let button: UIButton = UIButton (type: UIButton.ButtonType.custom)
         button.setImage(UIImage(named: "back"), for: UIControl.State.normal)
@@ -58,7 +66,7 @@ extension VehicleinformationTVC{
         
         let headerView: UITableViewHeaderFooterView = view as! UITableViewHeaderFooterView
         if traitCollection.userInterfaceStyle == .light {
-        
+            
             headerView.textLabel!.textColor = UIColor.darkGray
             headerView.textLabel!.font = UIFont(name: "Poppins-Regular", size: 15)
             
