@@ -94,11 +94,11 @@ extension MainMenuTableViewController{
         if traitCollection.userInterfaceStyle == .light {
             
 
-            headerView.textLabel!.textColor = UIColor.darkGray
+            headerView.textLabel!.textColor = UIColor(hex: "#333333")
             headerView.textLabel!.font = UIFont(name: "Poppins-Regular", size: 15)
             
             headerView.backgroundView = UIView()
-            headerView.backgroundColor = .yellow
+            headerView.backgroundColor = .clear
             
         } else {
 

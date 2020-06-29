@@ -97,8 +97,7 @@ extension EarningsTVC{
             cell.textLabel?.text = "Previous payments"
             cell.detailTextLabel?.text = ""
         }
-    
-       }
+    }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
        
