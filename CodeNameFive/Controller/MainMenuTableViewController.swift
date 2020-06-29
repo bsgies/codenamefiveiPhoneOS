@@ -37,7 +37,7 @@ extension MainMenuTableViewController{
     // MARK: - Table view Delegate
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if section == 0{
-            return 0
+            return CGFloat.leastNormalMagnitude
         }
         else{
             return 40
@@ -85,44 +85,47 @@ extension MainMenuTableViewController{
     //
     //        }
     
+
     override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+  
+    
         
         let headerView: UITableViewHeaderFooterView = view as! UITableViewHeaderFooterView
         if traitCollection.userInterfaceStyle == .light {
-           headerView.layer.borderWidth = 0.6
-                  headerView.layer.borderColor = UIColor(#colorLiteral(red: 0.8980392157, green: 0.8980392157, blue: 0.8980392157, alpha: 1)).cgColor
+            
+
             headerView.textLabel!.textColor = UIColor.darkGray
             headerView.textLabel!.font = UIFont(name: "Poppins-Regular", size: 15)
             
             headerView.backgroundView = UIView()
-            headerView.backgroundColor = .clear
+            headerView.backgroundColor = .yellow
             
         } else {
-            
-            headerView.layer.borderWidth = 0.6
-            headerView.layer.borderColor = UIColor(hex: "1D1D1E")?.cgColor
+
             headerView.textLabel!.textColor = UIColor.darkGray
             headerView.textLabel!.font = UIFont(name: "Poppins-Regular", size: 15)
-            
-            
+
+
             headerView.backgroundView = UIView()
             headerView.backgroundColor = .clear
-            
-            // For Header Text Color
+
             let header = view as! UITableViewHeaderFooterView
             header.textLabel?.textColor = .white
             
+           
+
         }
         
     }
+    
     override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         return UIView()
     }
+
     
-    
-//    override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-//        return 10
-//    }
+    override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 10
+    }
     
     func setBackButton(){
         navigationController?.navigationBar.backItem?.titleView?.tintColor = UIColor(hex: "#12D2B3")
@@ -174,19 +177,19 @@ extension MainMenuTableViewController{
             }
         }
         if currentSection == 2 {
-                if indexPath.row == 0 {
-                    let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-                    let vc = storyBoard.instantiateViewController(withIdentifier: "EarningsTVC") as! EarningsTVC
-                    
-                    let transition = CATransition()
-                    transition.duration = 0.5
-                    transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
-                    transition.type = CATransitionType.moveIn
-                    transition.subtype = CATransitionSubtype.fromTop
-                    navigationController?.view.layer.add(transition, forKey: nil)
-                    navigationController?.pushViewController(vc, animated: false)
-                }
+            if indexPath.row == 0 {
+                let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                let vc = storyBoard.instantiateViewController(withIdentifier: "EarningsTVC") as! EarningsTVC
+                
+                let transition = CATransition()
+                transition.duration = 0.5
+                transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
+                transition.type = CATransitionType.moveIn
+                transition.subtype = CATransitionSubtype.fromTop
+                navigationController?.view.layer.add(transition, forKey: nil)
+                navigationController?.pushViewController(vc, animated: false)
             }
+        }
         if currentSection == 6 {
             if indexPath.row == 1 {
                 let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
@@ -198,26 +201,24 @@ extension MainMenuTableViewController{
     }
     
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        //cell.contentView.addBottomBorder(with: .lightGray, andWidth: 0.5)
         cell.selectionStyle = .none
         if indexPath.section == 6{
             if indexPath.row != 1{
                 
             }
             else{
+                
                 cell.accessoryView = UIImageView(image: UIImage(named: "chevron-right"))
+                //cell.accessoryView?.addBottomBorder(with: .lightGray, andWidth: 0.3)
             }
         }
         else{
             cell.accessoryView = UIImageView(image: UIImage(named: "chevron-right"))
         }
         
-        
-        
-        
     }
-    
-    
-    
 }
+
 
 

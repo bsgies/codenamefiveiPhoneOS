@@ -39,7 +39,9 @@ class OrderDetailVC: UIViewController {
 
 extension OrderDetailVC : UITableViewDelegate,UITableViewDataSource{
     
-    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 10
+    }
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 3
@@ -83,8 +85,7 @@ extension OrderDetailVC : UITableViewDelegate,UITableViewDataSource{
            
            if traitCollection.userInterfaceStyle == .light {
                let headerView: UITableViewHeaderFooterView = view as! UITableViewHeaderFooterView
-               headerView.layer.borderWidth = 0.6
-               headerView.layer.borderColor = UIColor(#colorLiteral(red: 0.8980392157, green: 0.8980392157, blue: 0.8980392157, alpha: 1)).cgColor
+           
                headerView.textLabel!.textColor = UIColor.darkGray
                headerView.textLabel!.font = UIFont(name: "Poppins-Regular", size: 15)
                headerView.backgroundView = UIView()
