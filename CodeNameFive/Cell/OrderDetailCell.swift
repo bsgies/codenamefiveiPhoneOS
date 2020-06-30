@@ -10,6 +10,10 @@ import UIKit
 
 class OrderDetailCell: UITableViewCell {
 
+    @IBOutlet weak var totalEarnLbl: UILabel!
+    @IBOutlet weak var Total: UILabel!
+    @IBOutlet weak var earnLbl: UILabel!
+    @IBOutlet weak var detail: UILabel!
     @IBOutlet weak var travelDistance: UILabel!
     @IBOutlet weak var timeandTip: UILabel!
     @IBOutlet weak var ResturantName: UILabel!

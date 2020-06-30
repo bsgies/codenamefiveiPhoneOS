@@ -158,7 +158,7 @@ extension MainMenuTableViewController{
                 let vc = storyBoard.instantiateViewController(withIdentifier: "Profile") as! ProfileTVC
                 
                 let transition = CATransition()
-                transition.duration = 0.5
+                transition.duration = 0.2
                 transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
                 transition.type = CATransitionType.moveIn
                 transition.subtype = CATransitionSubtype.fromTop
@@ -183,7 +183,8 @@ extension MainMenuTableViewController{
         if currentSection == 2 {
             if indexPath.row == 0 {
                 let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-                let vc = storyBoard.instantiateViewController(withIdentifier: "EarningsTVC") as! EarningsTVC
+                let vc = storyBoard.instantiateViewController(withIdentifier: "EarningsVC") as! EarningsVC
+                
                 
                 let transition = CATransition()
                 transition.duration = 0.2

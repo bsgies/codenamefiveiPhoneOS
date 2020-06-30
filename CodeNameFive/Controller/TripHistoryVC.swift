@@ -11,7 +11,7 @@ import UIKit
 class TripHistoryVC: UIViewController {
 
     var days = ["8 Jun - 14 Jun","1 Jun - 7 Jun","25 May - 31 May","18 May - 27 May"]
-    var eraning = ["$100","$90","$10","$12"]
+    var earning = ["$100","$90","$10","$12"]
     override func viewDidLoad() {
         super.viewDidLoad()
         setCrossButton()
@@ -48,18 +48,16 @@ extension TripHistoryVC : UITableViewDelegate,UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 30
+        return 35
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
          return days.count
        }
        
        func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-         let cell = tableView.dequeueReusableCell(withIdentifier: "tripHistory", for: indexPath)
-         cell.textLabel?.text = days[indexPath.row]
-         cell.detailTextLabel?.text = eraning[indexPath.row]
-         cell.textLabel!.font = UIFont(name: "Poppins-Regular", size: 14)
-         cell.detailTextLabel?.font = UIFont(name: "Poppins-Regular", size: 14)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "tripHistory", for: indexPath) as! TripHistoryCell
+        cell.dateCell.text = days[indexPath.row]
+        cell.earnLbl.text = earning[indexPath.row]
          return cell
        }
     

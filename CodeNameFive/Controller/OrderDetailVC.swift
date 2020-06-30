@@ -71,17 +71,16 @@ extension OrderDetailVC : UITableViewDelegate,UITableViewDataSource{
             return cell
         }
         else if indexPath.section == 1{
-            
-            let cell = tableView.dequeueReusableCell(withIdentifier: "earn", for: indexPath)
-            cell.textLabel?.text = detail[indexPath.row]
-            cell.detailTextLabel?.text = earntDetail[indexPath.row]
+            let cell = tableView.dequeueReusableCell(withIdentifier: "detail", for: indexPath) as! OrderDetailCell
+            cell.detail.text = detail[indexPath.row]
+            cell.earnLbl.text = earntDetail[indexPath.row]
             return cell
             
         }
         else{
-            let cell = tableView.dequeueReusableCell(withIdentifier: "total", for: indexPath)
-            cell.textLabel?.text = "Total"
-            cell.detailTextLabel?.text = "$7.88"
+            let cell = tableView.dequeueReusableCell(withIdentifier: "total", for: indexPath) as! OrderDetailCell
+            cell.Total.text = "Total"
+            cell.totalEarnLbl.text = "$7.88"
             return cell
         }
     }

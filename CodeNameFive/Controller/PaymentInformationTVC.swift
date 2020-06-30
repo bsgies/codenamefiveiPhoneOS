@@ -56,7 +56,7 @@ extension PaymentInformationTVC{
         let headerView: UITableViewHeaderFooterView = view as! UITableViewHeaderFooterView
         if traitCollection.userInterfaceStyle == .light {
             headerView.textLabel!.textColor = UIColor(#colorLiteral(red: 0.4705882353, green: 0.4705882353, blue: 0.4705882353, alpha: 1))
-            headerView.textLabel!.font = UIFont(name: "Poppins-Regular", size: 15)
+            headerView.textLabel!.font = UIFont(name: "Poppins-Regular", size: 12)
             
             headerView.backgroundView = UIView()
             headerView.backgroundColor = .clear
@@ -64,7 +64,7 @@ extension PaymentInformationTVC{
         } else {
             
             headerView.textLabel!.textColor = UIColor.darkGray
-            headerView.textLabel!.font = UIFont(name: "Poppins-Regular", size: 15)
+            headerView.textLabel!.font = UIFont(name: "Poppins-Regular", size: 12)
             
             
             headerView.backgroundView = UIView()
@@ -100,5 +100,10 @@ extension PaymentInformationTVC{
         cell.separatorInset = UIEdgeInsets.zero
         cell.layoutMargins = UIEdgeInsets.zero
         cell.selectionStyle = .none
+
+        
+        
+        
     }
+    
 }

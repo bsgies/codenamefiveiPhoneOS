@@ -37,6 +37,8 @@
 		4F393B2024AB48CD009D08AB /* InvoiceDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F393B1F24AB48CD009D08AB /* InvoiceDetailVC.swift */; };
 		4F393B2224AB4EA3009D08AB /* HelpCenterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F393B2124AB4EA3009D08AB /* HelpCenterVC.swift */; };
 		4F393B2424AB4F88009D08AB /* PromotionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F393B2324AB4F88009D08AB /* PromotionVC.swift */; };
+		4F393B2624AB717C009D08AB /* PaymentInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F393B2524AB717C009D08AB /* PaymentInfoCell.swift */; };
+		4F393B2824AB7C07009D08AB /* EarningsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F393B2724AB7C06009D08AB /* EarningsVC.swift */; };
 		4F43BC1824A3D971006CF40F /* VehicleinformationTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F43BC1724A3D971006CF40F /* VehicleinformationTVC.swift */; };
 		4F43BC1A24A3DC39006CF40F /* PaymentInformationTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F43BC1924A3DC39006CF40F /* PaymentInformationTVC.swift */; };
 		4F43BC1C24A3DF4A006CF40F /* mapSettingTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F43BC1B24A3DF4A006CF40F /* mapSettingTVC.swift */; };
@@ -139,6 +141,8 @@
 		4F393B1F24AB48CD009D08AB /* InvoiceDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoiceDetailVC.swift; sourceTree = "<group>"; };
 		4F393B2124AB4EA3009D08AB /* HelpCenterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpCenterVC.swift; sourceTree = "<group>"; };
 		4F393B2324AB4F88009D08AB /* PromotionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromotionVC.swift; sourceTree = "<group>"; };
+		4F393B2524AB717C009D08AB /* PaymentInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentInfoCell.swift; sourceTree = "<group>"; };
+		4F393B2724AB7C06009D08AB /* EarningsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarningsVC.swift; sourceTree = "<group>"; };
 		4F43BC1724A3D971006CF40F /* VehicleinformationTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleinformationTVC.swift; sourceTree = "<group>"; };
 		4F43BC1924A3DC39006CF40F /* PaymentInformationTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentInformationTVC.swift; sourceTree = "<group>"; };
 		4F43BC1B24A3DF4A006CF40F /* mapSettingTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mapSettingTVC.swift; sourceTree = "<group>"; };
@@ -327,6 +331,7 @@
 				4F393B1F24AB48CD009D08AB /* InvoiceDetailVC.swift */,
 				4F393B2124AB4EA3009D08AB /* HelpCenterVC.swift */,
 				4F393B2324AB4F88009D08AB /* PromotionVC.swift */,
+				4F393B2724AB7C06009D08AB /* EarningsVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -384,6 +389,7 @@
 				4F14A5F724A8DBF50095CA9B /* PreviouspaymentsCell.swift */,
 				4FD32D8424AA73C00086766C /* InboxCell.swift */,
 				4F393B1D24AB47F6009D08AB /* InvoiceDetailCell.swift */,
+				4F393B2524AB717C009D08AB /* PaymentInfoCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -577,6 +583,7 @@
 				4FB11F14249FEDB000EC629B /* Constant.swift in Sources */,
 				4FD32D8324AA72060086766C /* InboxVC.swift in Sources */,
 				4F43BC1A24A3DC39006CF40F /* PaymentInformationTVC.swift in Sources */,
+				4F393B2624AB717C009D08AB /* PaymentInfoCell.swift in Sources */,
 				4FB11F11249FEC3A00EC629B /* ProfileTVC.swift in Sources */,
 				4F5AE8BC24A7D49A00567D05 /* EditEmailTVC.swift in Sources */,
 				4F43BC2024A3ED22006CF40F /* TripHistoryVC.swift in Sources */,
@@ -598,6 +605,7 @@
 				4FB978EC24A4BF910093C10F /* TripDayDataVC.swift in Sources */,
 				4F43BC1C24A3DF4A006CF40F /* mapSettingTVC.swift in Sources */,
 				4FB978F324A4D9030093C10F /* OderDetailModel.swift in Sources */,
+				4F393B2824AB7C07009D08AB /* EarningsVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

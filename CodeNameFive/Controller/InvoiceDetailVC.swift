@@ -45,7 +45,7 @@ extension InvoiceDetailVC : UITableViewDelegate,UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "InvoiceDetailCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "InvoiceDetailCell", for: indexPath) as! InvoiceDetailCell
         cell.textLabel?.text = titleOfCell[indexPath.row]
         cell.detailTextLabel?.text = detail[indexPath.row]
         if indexPath.row == 2{
@@ -55,7 +55,7 @@ extension InvoiceDetailVC : UITableViewDelegate,UITableViewDataSource{
         return cell
     }
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return CGFloat.leastNormalMagnitude
+        return 30
     }
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         return UIView()

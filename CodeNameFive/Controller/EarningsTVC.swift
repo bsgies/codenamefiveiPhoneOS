@@ -10,11 +10,12 @@ import UIKit
 
 class EarningsTVC: UITableViewController {
 
+    let titleofCell = ["Cureent balance", "Previous balance"]
+    let disOfCell = ["1000",""]
     override func viewDidLoad() {
         super.viewDidLoad()
-        let navigationController = self.navigationController
-        navigationController?.navigationItem.title = "Earnings"
         setCrossButton()
+        
     
     }
     
@@ -43,6 +44,10 @@ class EarningsTVC: UITableViewController {
 
 
 extension EarningsTVC{
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 2
+    }
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 30
@@ -108,5 +113,14 @@ extension EarningsTVC{
                          let vc = storyBoard.instantiateViewController(withIdentifier: "PreviousPaymentVC") as! PreviousPaymentVC
         navigationController?.pushViewController(vc, animated: true)
         
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        //
+        let cell = tableView.dequeueReusableCell(withIdentifier: "balcell", for: indexPath) as! PaymentInfoCell
+        cell.title.text = titleofCell[indexPath.row]
+        cell.dis.text = disOfCell[indexPath.row]
+        
+        return cell
     }
 }

@@ -87,7 +87,7 @@ extension UILabel {
     let mutableAttributedString = NSMutableAttributedString()
     mutableAttributedString.append(attachmentStr)
 
-    let textString = NSAttributedString(string: text, attributes: [.font: self.font])
+    let textString = NSAttributedString(string: text, attributes: [.font: self.font!])
     mutableAttributedString.append(textString)
 
     self.attributedText = mutableAttributedString

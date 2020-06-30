@@ -1,17 +1,16 @@
 //
-//  TripHistoryCell.swift
+//  PaymentInfoCell.swift
 //  CodeNameFive
 //
-//  Created by Muhammad Imran on 25/06/2020.
+//  Created by Muhammad Imran on 30/06/2020.
 //  Copyright © 2020 ITRID TECHNOLOGIES LTD. All rights reserved.
 //
 
 import UIKit
 
-class TripHistoryCell: UITableViewCell {
-
-    @IBOutlet weak var dateCell: UILabel!
-    @IBOutlet weak var earnLbl: UILabel!
+class PaymentInfoCell: UITableViewCell {
+    @IBOutlet weak var title: UILabel!
+    @IBOutlet weak var dis: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
