@@ -194,6 +194,20 @@ extension MainMenuTableViewController{
                 navigationController?.pushViewController(vc, animated: false)
             }
         }
+        if currentSection == 3 {
+                   if indexPath.row == 0 {
+                       let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                       let vc = storyBoard.instantiateViewController(withIdentifier: "PromotionVC") as! PromotionVC
+                       let transition = CATransition()
+                       transition.duration = 0.2
+                       transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
+                       transition.type = CATransitionType.moveIn
+                       transition.subtype = CATransitionSubtype.fromTop
+                       navigationController?.view.layer.add(transition, forKey: nil)
+                       navigationController?.pushViewController(vc, animated: false)
+                   }
+               }
+
         if currentSection == 4 {
             if indexPath.row == 0 {
                 let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
@@ -207,17 +221,38 @@ extension MainMenuTableViewController{
                 navigationController?.pushViewController(vc, animated: false)
             }
         }
+        if currentSection == 5 {
+                  if indexPath.row == 0 {
+                      let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                      let vc = storyBoard.instantiateViewController(withIdentifier: "HelpCenterVC") as! HelpCenterVC
+                      let transition = CATransition()
+                      transition.duration = 0.2
+                      transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
+                      transition.type = CATransitionType.moveIn
+                      transition.subtype = CATransitionSubtype.fromTop
+                      navigationController?.view.layer.add(transition, forKey: nil)
+                      navigationController?.pushViewController(vc, animated: false)
+                  }
+              }
         if currentSection == 6 {
             if indexPath.row == 1 {
                 let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
                 let vc = storyBoard.instantiateViewController(withIdentifier: "mapSettingTVC") as! mapSettingTVC
                 navigationController?.pushViewController(vc, animated: false)
             }
+            if indexPath.row == 2 {
+                let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                let vc = storyBoard.instantiateViewController(withIdentifier: "ViewController") as! ViewController
+                navigationController?.pushViewController(vc, animated: false)
+            }
+
         }
+                }
+
         
     }
     
-    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         cell.preservesSuperviewLayoutMargins = false
         cell.separatorInset = UIEdgeInsets.zero
         cell.layoutMargins = UIEdgeInsets.zero
@@ -237,7 +272,7 @@ extension MainMenuTableViewController{
         }
         
     }
-}
+
 
 
 

@@ -33,6 +33,10 @@
 		4F2E567F249B59D100D28462 /* Roboto-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4F2E5673249B59D000D28462 /* Roboto-BoldItalic.ttf */; };
 		4F2E5680249B59D100D28462 /* Roboto-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4F2E5674249B59D000D28462 /* Roboto-Thin.ttf */; };
 		4F2E5683249B684400D28462 /* ButtonRounded.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2E5682249B684400D28462 /* ButtonRounded.swift */; };
+		4F393B1E24AB47F6009D08AB /* InvoiceDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F393B1D24AB47F6009D08AB /* InvoiceDetailCell.swift */; };
+		4F393B2024AB48CD009D08AB /* InvoiceDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F393B1F24AB48CD009D08AB /* InvoiceDetailVC.swift */; };
+		4F393B2224AB4EA3009D08AB /* HelpCenterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F393B2124AB4EA3009D08AB /* HelpCenterVC.swift */; };
+		4F393B2424AB4F88009D08AB /* PromotionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F393B2324AB4F88009D08AB /* PromotionVC.swift */; };
 		4F43BC1824A3D971006CF40F /* VehicleinformationTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F43BC1724A3D971006CF40F /* VehicleinformationTVC.swift */; };
 		4F43BC1A24A3DC39006CF40F /* PaymentInformationTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F43BC1924A3DC39006CF40F /* PaymentInformationTVC.swift */; };
 		4F43BC1C24A3DF4A006CF40F /* mapSettingTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F43BC1B24A3DF4A006CF40F /* mapSettingTVC.swift */; };
@@ -131,6 +135,10 @@
 		4F2E5673249B59D000D28462 /* Roboto-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-BoldItalic.ttf"; sourceTree = "<group>"; };
 		4F2E5674249B59D000D28462 /* Roboto-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Thin.ttf"; sourceTree = "<group>"; };
 		4F2E5682249B684400D28462 /* ButtonRounded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonRounded.swift; sourceTree = "<group>"; };
+		4F393B1D24AB47F6009D08AB /* InvoiceDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoiceDetailCell.swift; sourceTree = "<group>"; };
+		4F393B1F24AB48CD009D08AB /* InvoiceDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoiceDetailVC.swift; sourceTree = "<group>"; };
+		4F393B2124AB4EA3009D08AB /* HelpCenterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpCenterVC.swift; sourceTree = "<group>"; };
+		4F393B2324AB4F88009D08AB /* PromotionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromotionVC.swift; sourceTree = "<group>"; };
 		4F43BC1724A3D971006CF40F /* VehicleinformationTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleinformationTVC.swift; sourceTree = "<group>"; };
 		4F43BC1924A3DC39006CF40F /* PaymentInformationTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentInformationTVC.swift; sourceTree = "<group>"; };
 		4F43BC1B24A3DF4A006CF40F /* mapSettingTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mapSettingTVC.swift; sourceTree = "<group>"; };
@@ -316,6 +324,9 @@
 				4F14A5F324A8AF130095CA9B /* EmmergencycontactTVC.swift */,
 				4F14A5F524A8DAC80095CA9B /* PreviousPaymentVC.swift */,
 				4FD32D8224AA72060086766C /* InboxVC.swift */,
+				4F393B1F24AB48CD009D08AB /* InvoiceDetailVC.swift */,
+				4F393B2124AB4EA3009D08AB /* HelpCenterVC.swift */,
+				4F393B2324AB4F88009D08AB /* PromotionVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -372,6 +383,7 @@
 				4FB978ED24A4D83F0093C10F /* OrderDetailCell.swift */,
 				4F14A5F724A8DBF50095CA9B /* PreviouspaymentsCell.swift */,
 				4FD32D8424AA73C00086766C /* InboxCell.swift */,
+				4F393B1D24AB47F6009D08AB /* InvoiceDetailCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -550,6 +562,7 @@
 				4F2E5683249B684400D28462 /* ButtonRounded.swift in Sources */,
 				4F14A5F624A8DAC80095CA9B /* PreviousPaymentVC.swift in Sources */,
 				4FB978E824A4A8E90093C10F /* TripWeeklyData.swift in Sources */,
+				4F393B2424AB4F88009D08AB /* PromotionVC.swift in Sources */,
 				4F61D991249BEFC300B9FE89 /* MainMenuTableViewController.swift in Sources */,
 				4F14A5F224A8AD250095CA9B /* EditPhoneTVC.swift in Sources */,
 				4F2E563A249B4FA800D28462 /* ViewController.swift in Sources */,
@@ -559,6 +572,7 @@
 				4FBBA4B4249CD90B007F72E7 /* Color.swift in Sources */,
 				4F64AD9F249E40B80047E9D5 /* hit.swift in Sources */,
 				4FB978E524A4A8990093C10F /* TripHistoryCell.swift in Sources */,
+				4F393B1E24AB47F6009D08AB /* InvoiceDetailCell.swift in Sources */,
 				4F14A5F824A8DBF50095CA9B /* PreviouspaymentsCell.swift in Sources */,
 				4FB11F14249FEDB000EC629B /* Constant.swift in Sources */,
 				4FD32D8324AA72060086766C /* InboxVC.swift in Sources */,
@@ -566,10 +580,12 @@
 				4FB11F11249FEC3A00EC629B /* ProfileTVC.swift in Sources */,
 				4F5AE8BC24A7D49A00567D05 /* EditEmailTVC.swift in Sources */,
 				4F43BC2024A3ED22006CF40F /* TripHistoryVC.swift in Sources */,
+				4F393B2024AB48CD009D08AB /* InvoiceDetailVC.swift in Sources */,
 				4F43BC1824A3D971006CF40F /* VehicleinformationTVC.swift in Sources */,
 				4FB978F724A4DB3A0093C10F /* EarningsTVC.swift in Sources */,
 				4F2E5638249B4FA800D28462 /* SceneDelegate.swift in Sources */,
 				4F617DEE249F6D820022DB8B /* ButtonAnimation.swift in Sources */,
+				4F393B2224AB4EA3009D08AB /* HelpCenterVC.swift in Sources */,
 				4F43BC2224A3EE40006CF40F /* WeeklyTripsDataViewController.swift in Sources */,
 				4FE4A400249FF93300CFFC3B /* EditProfileTVC.swift in Sources */,
 				4F2E5640249B4FA800D28462 /* CodeNameFive.xcdatamodeld in Sources */,

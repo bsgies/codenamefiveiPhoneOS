@@ -1,19 +1,17 @@
 //
-//  PreviousPaymentVC.swift
+//  InvoiceDetailVC.swift
 //  CodeNameFive
 //
-//  Created by Muhammad Imran on 28/06/2020.
+//  Created by Muhammad Imran on 30/06/2020.
 //  Copyright © 2020 ITRID TECHNOLOGIES LTD. All rights reserved.
 //
 
 import UIKit
 
-class PreviousPaymentVC: UIViewController {
+class InvoiceDetailVC: UIViewController {
     
-    
-    var days = ["8 Jun - 14 Jun","1 Jun - 7 Jun","25 May - 31 May","18 May - 27 May"]
-    var earning = ["$100","$90","$10","$12"]
-    var status = ["Paid","Unpaid","Paid","Unpaid"]
+   let titleOfCell = ["Total amount","Service render","View invoice PDF"]
+   let detail = ["$305.00","2 Jun - 7 Jun","Paid"]
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -41,25 +39,23 @@ class PreviousPaymentVC: UIViewController {
         self.navigationController?.popViewController(animated: true)
     }
 }
-
-extension PreviousPaymentVC : UITableViewDelegate,UITableViewDataSource{
+extension InvoiceDetailVC : UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return days.count
+        return titleOfCell.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "PreviouspaymentsCell", for: indexPath) as! PreviouspaymentsCell
-        cell.date.text = days[indexPath.row]
-        cell.earnLbl.text = earning[indexPath.row]
-        cell.statusLbl.text = status[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: "InvoiceDetailCell", for: indexPath)
+        cell.textLabel?.text = titleOfCell[indexPath.row]
+        cell.detailTextLabel?.text = detail[indexPath.row]
+        if indexPath.row == 2{
+            cell.textLabel?.textColor = UIColor(#colorLiteral(red: 0, green: 0.8465872407, blue: 0.7545004487, alpha: 1))
+            cell.detailTextLabel?.textColor = UIColor(#colorLiteral(red: 0, green: 0.8465872407, blue: 0.7545004487, alpha: 1))
+        }
         return cell
     }
-    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
-        
-        let headerView: UITableViewHeaderFooterView = view as! UITableViewHeaderFooterView
-        
-        headerView.backgroundView = UIView()
-        headerView.backgroundColor = .clear
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return CGFloat.leastNormalMagnitude
     }
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         return UIView()
@@ -70,17 +66,9 @@ extension PreviousPaymentVC : UITableViewDelegate,UITableViewDataSource{
         cell.preservesSuperviewLayoutMargins = false
         cell.separatorInset = UIEdgeInsets.zero
         cell.layoutMargins = UIEdgeInsets.zero
-        cell.accessoryView = UIImageView(image: UIImage(named: "chevron-right"))
-            
         }
-    
-     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-       
-        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-                         let vc = storyBoard.instantiateViewController(withIdentifier: "InvoiceDetailVC") as! InvoiceDetailVC
-        navigationController?.pushViewController(vc, animated: true)
-        
-    }
         
     
 }
+
+

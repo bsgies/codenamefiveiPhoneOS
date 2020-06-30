@@ -108,6 +108,5 @@ extension EarningsTVC{
                          let vc = storyBoard.instantiateViewController(withIdentifier: "PreviousPaymentVC") as! PreviousPaymentVC
         navigationController?.pushViewController(vc, animated: true)
         
-        
     }
 }
