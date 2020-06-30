@@ -10,6 +10,8 @@ import UIKit
 
 class InvoiceDetailCell: UITableViewCell {
 
+    @IBOutlet weak var titleLbl: UILabel!
+    @IBOutlet weak var disLbl: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

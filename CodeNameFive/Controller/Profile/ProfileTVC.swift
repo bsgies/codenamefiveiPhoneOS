@@ -14,8 +14,6 @@ class ProfileTVC: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let navigationController = self.navigationController
-        navigationController?.navigationItem.title = "Profile"
         setCrossButton()
         
     }

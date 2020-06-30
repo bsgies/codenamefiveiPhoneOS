@@ -265,7 +265,6 @@ func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forR
             else{
                 
                 cell.accessoryView = UIImageView(image: UIImage(named: "chevron-right"))
-                //cell.accessoryView?.addBottomBorder(with: .lightGray, andWidth: 0.3)
             }
         }
         else{

@@ -37,10 +37,10 @@ class DashboardVC: UIViewController,CLLocationManagerDelegate,MKMapViewDelegate 
             locationManager.startUpdatingLocation()
         }
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 5.0, execute: {
-            print("\(self.currentLocation!.coordinate.latitude) and \(String(describing: self.currentLocation?.coordinate.longitude))")
-                       self.userAddres(Latitude: self.currentLocation!.coordinate.latitude, withLongitude: (self.currentLocation?.coordinate.longitude)!)
-        })
+//        DispatchQueue.main.asyncAfter(deadline: .now() + 5.0, execute: {
+//            print("\(self.currentLocation!.coordinate.latitude) and \(String(describing: self.currentLocation?.coordinate.longitude))")
+//                       self.userAddres(Latitude: self.currentLocation!.coordinate.latitude, withLongitude: (self.currentLocation?.coordinate.longitude)!)
+//        })
     }
     
     @IBAction func MenuButtonAction(_ sender: Any) {

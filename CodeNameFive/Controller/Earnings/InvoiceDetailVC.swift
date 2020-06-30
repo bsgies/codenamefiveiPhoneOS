@@ -46,11 +46,11 @@ extension InvoiceDetailVC : UITableViewDelegate,UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "InvoiceDetailCell", for: indexPath) as! InvoiceDetailCell
-        cell.textLabel?.text = titleOfCell[indexPath.row]
-        cell.detailTextLabel?.text = detail[indexPath.row]
+        cell.titleLbl.text = titleOfCell[indexPath.row]
+        cell.disLbl.text = detail[indexPath.row]
         if indexPath.row == 2{
-            cell.textLabel?.textColor = UIColor(#colorLiteral(red: 0, green: 0.8465872407, blue: 0.7545004487, alpha: 1))
-            cell.detailTextLabel?.textColor = UIColor(#colorLiteral(red: 0, green: 0.8465872407, blue: 0.7545004487, alpha: 1))
+            cell.titleLbl.textColor = UIColor(#colorLiteral(red: 0, green: 0.8465872407, blue: 0.7545004487, alpha: 1))
+            cell.disLbl.textColor = UIColor(#colorLiteral(red: 0, green: 0.8465872407, blue: 0.7545004487, alpha: 1))
         }
         return cell
     }

@@ -109,9 +109,11 @@ extension EarningsTVC{
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
        
+        if indexPath.row == 1{
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
                          let vc = storyBoard.instantiateViewController(withIdentifier: "PreviousPaymentVC") as! PreviousPaymentVC
         navigationController?.pushViewController(vc, animated: true)
+        }
         
     }
     
