@@ -46,10 +46,7 @@ class OrderDetailVC: UIViewController {
 
 
 extension OrderDetailVC : UITableViewDelegate,UITableViewDataSource{
-    
-    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return 10
-    }
+
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 3
@@ -94,7 +91,7 @@ extension OrderDetailVC : UITableViewDelegate,UITableViewDataSource{
         if traitCollection.userInterfaceStyle == .light {
             let headerView: UITableViewHeaderFooterView = view as! UITableViewHeaderFooterView
             
-            headerView.textLabel!.textColor = UIColor.darkGray
+            headerView.textLabel!.textColor = UIColor(#colorLiteral(red: 0.4705882353, green: 0.4705882353, blue: 0.4705882353, alpha: 1))
             headerView.textLabel!.font = UIFont(name: "Poppins-Regular", size: 15)
             headerView.backgroundView = UIView()
             headerView.backgroundColor = .clear
@@ -123,6 +120,9 @@ extension OrderDetailVC : UITableViewDelegate,UITableViewDataSource{
     
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        cell.preservesSuperviewLayoutMargins = false
+        cell.separatorInset = UIEdgeInsets.zero
+        cell.layoutMargins = UIEdgeInsets.zero
         if indexPath.section == 2{
             if indexPath.row == 0{
                 cell.backgroundColor = .clear
@@ -134,7 +134,7 @@ extension OrderDetailVC : UITableViewDelegate,UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if section == 2{
-            return 0
+            return CGFloat.leastNormalMagnitude
         }
         else{
             return 20

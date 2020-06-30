@@ -2070,10 +2070,10 @@
             </objects>
             <point key="canvasLocation" x="16557.971014492756" y="97.767857142857139"/>
         </scene>
-        <!--Vehical Information-->
+        <!--Edit Email-->
         <scene sceneID="CLT-PD-mBD">
             <objects>
-                <tableViewController storyboardIdentifier="Editemail" title="Vehical Information" useStoryboardIdentifierAsRestorationIdentifier="YES" id="3ok-af-WRm" customClass="EditEmailTVC" customModule="CNF" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="Editemail" title="Edit Email" useStoryboardIdentifierAsRestorationIdentifier="YES" id="3ok-af-WRm" customClass="EditEmailTVC" customModule="CNF" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="F0F-xp-Mog">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2081,15 +2081,15 @@
                         <sections>
                             <tableViewSection headerTitle="Email" id="lgX-Gx-3lp">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="email" rowHeight="65" id="kfk-fs-uhG">
-                                        <rect key="frame" x="0.0" y="55.5" width="414" height="65"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="email" rowHeight="44" id="kfk-fs-uhG">
+                                        <rect key="frame" x="0.0" y="55.5" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="kfk-fs-uhG" id="bal-KF-SUk">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="65"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="imranrasheed.developer@outlook.com" placeholder="Email" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="10" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="lA4-F3-dsX">
-                                                    <rect key="frame" x="20" y="12.5" width="384" height="40"/>
+                                                    <rect key="frame" x="20" y="12.5" width="384" height="19"/>
                                                     <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="13"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
@@ -2117,10 +2117,10 @@
             </objects>
             <point key="canvasLocation" x="5728" y="98"/>
         </scene>
-        <!--Vehical Information-->
+        <!--Edit phone number-->
         <scene sceneID="2tC-bp-uTY">
             <objects>
-                <tableViewController storyboardIdentifier="EditPhoneTVC" title="Vehical Information" useStoryboardIdentifierAsRestorationIdentifier="YES" id="5sj-PY-etK" customClass="EditPhoneTVC" customModule="CNF" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="EditPhoneTVC" title="Edit phone number" useStoryboardIdentifierAsRestorationIdentifier="YES" id="5sj-PY-etK" customClass="EditPhoneTVC" customModule="CNF" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="cdf-4f-ITj">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2128,15 +2128,15 @@
                         <sections>
                             <tableViewSection headerTitle="Phone number" id="S1Y-8i-m7K">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="phonenumber" rowHeight="65" id="hMA-pj-UBV">
-                                        <rect key="frame" x="0.0" y="55.5" width="414" height="65"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="phonenumber" rowHeight="44" id="hMA-pj-UBV">
+                                        <rect key="frame" x="0.0" y="55.5" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="hMA-pj-UBV" id="mjJ-d4-aZv">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="65"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="+923084706656" placeholder="Email" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="10" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="F1N-lC-rUn">
-                                                    <rect key="frame" x="20" y="12.5" width="384" height="40"/>
+                                                    <rect key="frame" x="20" y="12.5" width="384" height="19"/>
                                                     <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="13"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
@@ -2175,15 +2175,15 @@
                         <sections>
                             <tableViewSection id="rhJ-3G-ZVO">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="65" id="Il0-SG-Edc">
-                                        <rect key="frame" x="0.0" y="18" width="414" height="65"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="44" id="Il0-SG-Edc">
+                                        <rect key="frame" x="0.0" y="18" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Il0-SG-Edc" id="k0b-6H-K6O">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="65"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Emergency contact name" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="10" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="edJ-2d-rdY">
-                                                    <rect key="frame" x="20" y="12.5" width="384" height="40"/>
+                                                    <rect key="frame" x="20" y="12.5" width="384" height="19"/>
                                                     <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="13"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
@@ -2197,20 +2197,20 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" name="tableCellColor"/>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="65" id="GdO-r4-UrI">
-                                        <rect key="frame" x="0.0" y="83" width="414" height="65"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="44" id="GdO-r4-UrI">
+                                        <rect key="frame" x="0.0" y="62" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="GdO-r4-UrI" id="0M7-JI-oNX">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="65"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Emergency contact phone number" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="10" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="cAX-r9-qAj">
-                                                    <rect key="frame" x="20" y="12.5" width="384" height="40"/>
+                                                    <rect key="frame" x="20" y="12.5" width="384" height="19"/>
                                                     <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="13"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WpW-wb-BeG">
-                                                    <rect key="frame" x="0.0" y="55" width="414" height="10"/>
+                                                    <rect key="frame" x="0.0" y="34" width="414" height="10"/>
                                                     <color key="backgroundColor" name="tableCellColor"/>
                                                 </view>
                                             </subviews>

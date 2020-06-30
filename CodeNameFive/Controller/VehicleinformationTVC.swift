@@ -12,6 +12,7 @@ class VehicleinformationTVC: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setBackButton()
         let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(MainMenuTableViewController.BackviewController(gesture:)))
         swipeRight.direction = UISwipeGestureRecognizer.Direction.right
         self.view.addGestureRecognizer(swipeRight)
@@ -28,21 +29,13 @@ class VehicleinformationTVC: UITableViewController {
 extension VehicleinformationTVC{
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        if section == 0{
-            return 40
-        }
-        else{
-            return 30
-        }
+        return 30
     }
     
     override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         return UIView()
     }
-    
-        override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-            return 10
-        }
+
     
     func setBackButton(){
         let button: UIButton = UIButton (type: UIButton.ButtonType.custom)
@@ -67,7 +60,7 @@ extension VehicleinformationTVC{
         let headerView: UITableViewHeaderFooterView = view as! UITableViewHeaderFooterView
         if traitCollection.userInterfaceStyle == .light {
             
-            headerView.textLabel!.textColor = UIColor.darkGray
+            headerView.textLabel!.textColor = UIColor(#colorLiteral(red: 0.4705882353, green: 0.4705882353, blue: 0.4705882353, alpha: 1))
             headerView.textLabel!.font = UIFont(name: "Poppins-Regular", size: 15)
             
             headerView.backgroundView = UIView()
@@ -103,6 +96,12 @@ extension VehicleinformationTVC{
                 navigationController?.pushViewController(vc, animated: false)
             }
         }
+    }
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        cell.preservesSuperviewLayoutMargins = false
+        cell.separatorInset = UIEdgeInsets.zero
+        cell.layoutMargins = UIEdgeInsets.zero
+        cell.selectionStyle = .none
     }
     
 }

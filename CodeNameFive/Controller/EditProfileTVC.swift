@@ -27,30 +27,24 @@ class EditProfileTVC: UITableViewController {
  extension EditProfileTVC{
     
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        cell.preservesSuperviewLayoutMargins = false
+        cell.separatorInset = UIEdgeInsets.zero
+        cell.layoutMargins = UIEdgeInsets.zero
         cell.selectionStyle = .none
         cell.accessoryView = UIImageView(image: UIImage(named: "chevron-right"))
     }
     
     
            override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-                 if section == 0{
-                     return 35
-                 }
-                 else{
-                     return 25
-                 }
+                 return 30
              }
     
-       
-       override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-           return 10
-       }
           override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
              let headerView: UITableViewHeaderFooterView = view as! UITableViewHeaderFooterView
             
             if traitCollection.userInterfaceStyle == .light {
                            
-                            headerView.textLabel!.textColor = UIColor.darkGray
+                            headerView.textLabel!.textColor = UIColor(#colorLiteral(red: 0.4705882353, green: 0.4705882353, blue: 0.4705882353, alpha: 1))
                             headerView.textLabel!.font = UIFont(name: "Poppins-Regular", size: 15)
                             headerView.backgroundView = UIView()
                             headerView.backgroundColor = .clear

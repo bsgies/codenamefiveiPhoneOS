@@ -98,8 +98,7 @@ extension MainMenuTableViewController{
         let headerView: UITableViewHeaderFooterView = view as! UITableViewHeaderFooterView
         if traitCollection.userInterfaceStyle == .light {
             
-            
-            headerView.textLabel!.textColor = UIColor(hex: 21312312)
+            headerView.textLabel!.textColor = UIColor(#colorLiteral(red: 0.4705882353, green: 0.4705882353, blue: 0.4705882353, alpha: 1))
             headerView.textLabel!.font = UIFont(name: "Poppins-Regular", size: 15)
             
             headerView.backgroundView = UIView()
@@ -173,7 +172,7 @@ extension MainMenuTableViewController{
                 let vc = storyBoard.instantiateViewController(withIdentifier: "TripHistoryVC") as! TripHistoryVC
                 
                 let transition = CATransition()
-                transition.duration = 0.5
+                transition.duration = 0.2
                 transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
                 transition.type = CATransitionType.moveIn
                 transition.subtype = CATransitionSubtype.fromTop
@@ -187,7 +186,7 @@ extension MainMenuTableViewController{
                 let vc = storyBoard.instantiateViewController(withIdentifier: "EarningsTVC") as! EarningsTVC
                 
                 let transition = CATransition()
-                transition.duration = 0.5
+                transition.duration = 0.2
                 transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
                 transition.type = CATransitionType.moveIn
                 transition.subtype = CATransitionSubtype.fromTop
@@ -200,7 +199,7 @@ extension MainMenuTableViewController{
                 let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
                 let vc = storyBoard.instantiateViewController(withIdentifier: "InboxVC") as! InboxVC
                 let transition = CATransition()
-                transition.duration = 0.5
+                transition.duration = 0.2
                 transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
                 transition.type = CATransitionType.moveIn
                 transition.subtype = CATransitionSubtype.fromTop
@@ -219,7 +218,9 @@ extension MainMenuTableViewController{
     }
     
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        //cell.contentView.addBottomBorder(with: .lightGray, andWidth: 0.5)
+        cell.preservesSuperviewLayoutMargins = false
+        cell.separatorInset = UIEdgeInsets.zero
+        cell.layoutMargins = UIEdgeInsets.zero
         cell.selectionStyle = .none
         if indexPath.section == 6{
             if indexPath.row != 1{

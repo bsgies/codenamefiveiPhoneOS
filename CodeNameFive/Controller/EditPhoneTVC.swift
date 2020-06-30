@@ -45,7 +45,7 @@ class EditPhoneTVC: UITableViewController {
                 let headerView: UITableViewHeaderFooterView = view as! UITableViewHeaderFooterView
                 if traitCollection.userInterfaceStyle == .light {
                   
-                    headerView.textLabel!.textColor = UIColor.darkGray
+                    headerView.textLabel!.textColor = UIColor(#colorLiteral(red: 0.6666666865, green: 0.6666666865, blue: 0.6666666865, alpha: 1))
                     headerView.textLabel!.font = UIFont(name: "Poppins-Regular", size: 15)
                     
                     headerView.backgroundView = UIView()
@@ -73,6 +73,9 @@ class EditPhoneTVC: UITableViewController {
                 }
         override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
             cell.selectionStyle = .none
+            cell.preservesSuperviewLayoutMargins = false
+            cell.separatorInset = UIEdgeInsets.zero
+            cell.layoutMargins = UIEdgeInsets.zero
         }
 
 

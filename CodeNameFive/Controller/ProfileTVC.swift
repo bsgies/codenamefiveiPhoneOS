@@ -45,6 +45,9 @@ class ProfileTVC: UITableViewController {
 extension ProfileTVC{
     
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        cell.preservesSuperviewLayoutMargins = false
+        cell.separatorInset = UIEdgeInsets.zero
+        cell.layoutMargins = UIEdgeInsets.zero
         cell.selectionStyle = .none
         if indexPath.section != 0{
         cell.accessoryView = UIImageView(image: UIImage(named: "chevron-right"))
@@ -76,7 +79,7 @@ extension ProfileTVC{
        }
        else{
          
-           headerView.textLabel!.textColor = UIColor.darkGray
+           headerView.textLabel!.textColor = UIColor(#colorLiteral(red: 0.4705882353, green: 0.4705882353, blue: 0.4705882353, alpha: 1))
            headerView.textLabel!.font = UIFont(name: "Poppins-Regular", size: 15)
            
            
@@ -121,9 +124,9 @@ extension ProfileTVC{
         
     }
     
-    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+      override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if section == 0{
-            return 0
+            return CGFloat.leastNormalMagnitude
         }
         else{
             return 30
