@@ -10,11 +10,8 @@ import UIKit
 import MapKit
 import CoreLocation
 class DashboardVC: UIViewController,CLLocationManagerDelegate,MKMapViewDelegate {
-    @IBAction func OnlineOfflineButton(_ sender: Any) {
-    }
-    @IBAction func EarningsButton(_ sender: Any) {
-    }
-    @IBOutlet weak var addressLbl: UILabel!
+    
+    var gotorider :  Timer?
     var address = ""
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var menuButton: UIButton!
@@ -24,6 +21,7 @@ class DashboardVC: UIViewController,CLLocationManagerDelegate,MKMapViewDelegate 
     
     override func viewDidLoad() {
         super.viewDidLoad()
+       gotorider =  Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(runTimedCode), userInfo: nil, repeats: false)
         menuButton.layer.cornerRadius = menuButton.frame.size.width / 2
         menuButton.layer.shadowColor = UIColor(ciColor: .gray).cgColor
         menuButton.layer.shadowRadius = 1
@@ -34,19 +32,18 @@ class DashboardVC: UIViewController,CLLocationManagerDelegate,MKMapViewDelegate 
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         
         if CLLocationManager.locationServicesEnabled() {
-            guard let currentLocation = locationManager.location else {
-                return
-            }
             locationManager.requestWhenInUseAuthorization()
             locationManager.startUpdatingLocation()
         }
-        
-//        DispatchQueue.main.asyncAfter(deadline: .now() + 5.0, execute: {
-//            print("\(self.currentLocation!.coordinate.latitude) and \(String(describing: self.currentLocation?.coordinate.longitude))")
-//                       self.userAddres(Latitude: self.currentLocation!.coordinate.latitude, withLongitude: (self.currentLocation?.coordinate.longitude)!)
-//        })
     }
     
+   @objc func runTimedCode()  {
+    gotorider?.invalidate()
+    let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+    let newViewController = storyBoard.instantiateViewController(withIdentifier: "NewTripRequestVC") as! NewTripRequestVC
+    navigationController?.pushViewController(newViewController, animated: true)
+    }
+
     @IBAction func MenuButtonAction(_ sender: Any) {
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let newViewController = storyBoard.instantiateViewController(withIdentifier: "AppMenu")
@@ -55,7 +52,6 @@ class DashboardVC: UIViewController,CLLocationManagerDelegate,MKMapViewDelegate 
     
     
     override func viewWillAppear(_ animated: Bool) {
-
          super.viewWillAppear(animated)
          navigationController?.setNavigationBarHidden(true, animated: animated)
          
@@ -76,45 +72,25 @@ class DashboardVC: UIViewController,CLLocationManagerDelegate,MKMapViewDelegate 
         }
     }
     
-    func userAddres(Latitude: Double, withLongitude Longitude: Double) {
-        var center : CLLocationCoordinate2D = CLLocationCoordinate2D()
-        let lat: Double = Latitude
-        let lon: Double = Longitude
-        let geocoder: CLGeocoder = CLGeocoder()
-        center.latitude = lat
-        center.longitude = lon
 
-        let loc: CLLocation = CLLocation(latitude:center.latitude, longitude: center.longitude)
+}
 
 
-        geocoder.reverseGeocodeLocation(loc, completionHandler:
-            {(placemarks, error) in
-                if (error != nil)
-                {
-                    print(error!.localizedDescription)
-                }
-                let pm = placemarks! as [CLPlacemark]
-                if pm.count > 0 {
-                    let placeMark = placemarks![0]
-                  
-                    if placeMark.subLocality != nil {
-                        self.address = self.address + placeMark.subLocality! + ", "
-                    }
-                    if placeMark.thoroughfare != nil {
-                        self.address = self.address + placeMark.thoroughfare! + ", "
-                    }
-                    if placeMark.locality != nil {
-                        self.address = self.address + placeMark.locality! + ", "
-                    }
-                    if placeMark.country != nil {
-                        self.address = self.address + placeMark.country! + ", "
-                    }
- 
-                    self.addressLbl.text = self.address
-                    print(self.address)
-              }
-        })
-
+extension DashboardVC{
+    @IBAction func OnlineOfflineButton(_ sender: Any) {
+        
+        
     }
-
+    @IBAction func EarningsButton(_ sender: Any) {
+       let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyBoard.instantiateViewController(withIdentifier: "EarningsVC") as! EarningsVC
+        let transition = CATransition()
+        transition.duration = 0.2
+        transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
+        transition.type = CATransitionType.moveIn
+        transition.subtype = CATransitionSubtype.fromTop
+        navigationController?.view.layer.add(transition, forKey: nil)
+        navigationController?.pushViewController(vc, animated: false)
+        
+    }
 }

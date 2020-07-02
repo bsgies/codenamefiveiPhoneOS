@@ -82,7 +82,6 @@ class ViewController: UIViewController, UIViewControllerTransitioningDelegate {
         
     }
     @IBAction func securityContinueButton(_ sender: Any) {
-        //performSegue(withIdentifier: "dashboard", sender: nil)
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let newViewController = storyBoard.instantiateViewController(withIdentifier: "DashboardVC")
         navigationController?.pushViewController(newViewController, animated: true)
