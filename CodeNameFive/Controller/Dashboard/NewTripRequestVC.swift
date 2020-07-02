@@ -51,7 +51,6 @@ class NewTripRequestVC: UIViewController,CLLocationManagerDelegate,MKMapViewDele
     
     @objc  func setProgress() {
         time += 0.1
-        print(time)
         remaningTiemForAccepOrder.progress = time
         
         if time >= 0.7{

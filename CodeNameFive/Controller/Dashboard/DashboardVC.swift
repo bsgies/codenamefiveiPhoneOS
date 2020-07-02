@@ -21,7 +21,7 @@ class DashboardVC: UIViewController,CLLocationManagerDelegate,MKMapViewDelegate 
     
     override func viewDidLoad() {
         super.viewDidLoad()
-       gotorider =  Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(runTimedCode), userInfo: nil, repeats: false)
+       gotorider =  Timer.scheduledTimer(timeInterval: 4, target: self, selector: #selector(runTimedCode), userInfo: nil, repeats: false)
         menuButton.layer.cornerRadius = menuButton.frame.size.width / 2
         menuButton.layer.shadowColor = UIColor(ciColor: .gray).cgColor
         menuButton.layer.shadowRadius = 1
