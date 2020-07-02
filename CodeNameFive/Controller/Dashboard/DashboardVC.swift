@@ -10,6 +10,10 @@ import UIKit
 import MapKit
 import CoreLocation
 class DashboardVC: UIViewController,CLLocationManagerDelegate,MKMapViewDelegate {
+    @IBAction func OnlineOfflineButton(_ sender: Any) {
+    }
+    @IBAction func EarningsButton(_ sender: Any) {
+    }
     @IBOutlet weak var addressLbl: UILabel!
     var address = ""
     @IBOutlet weak var mapView: MKMapView!
