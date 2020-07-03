@@ -54,11 +54,13 @@ class NewTripRequestVC: UIViewController,CLLocationManagerDelegate,MKMapViewDele
         remaningTiemForAccepOrder.progress = time
         
         if time >= 0.7{
+            timer?.invalidate()
             remaningTiemForAccepOrder.tintColor = .red
         }
         
         if time >= 1.0 {
-            timer!.invalidate()
+            timer?.invalidate()
+            timer  = nil
             GoToDashBoard()
         }
     }
@@ -68,7 +70,7 @@ class NewTripRequestVC: UIViewController,CLLocationManagerDelegate,MKMapViewDele
     }
     @IBAction func RejectButton(_ sender: UIBarButtonItem) {
         UIDevice.vibrate()
-        timer?.invalidate()
+        //timer?.invalidate()
         self.GoToDashBoard()
         
     }
