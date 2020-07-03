@@ -80,6 +80,9 @@
 		4FE4A400249FF93300CFFC3B /* EditProfileTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FE4A3FF249FF93300CFFC3B /* EditProfileTVC.swift */; };
 		4FF1F72024AFB1A40035A9A5 /* HelpOrCancelVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF1F71F24AFB1A40035A9A5 /* HelpOrCancelVC.swift */; };
 		4FF1F72424AFBB2D0035A9A5 /* HelpOrCancelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF1F72324AFBB2D0035A9A5 /* HelpOrCancelCell.swift */; };
+		4FF1F72624AFCDAA0035A9A5 /* CollectOrderTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF1F72524AFCDAA0035A9A5 /* CollectOrderTVC.swift */; };
+		4FF1F72824AFD2180035A9A5 /* DeliverOrderTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF1F72724AFD2180035A9A5 /* DeliverOrderTVC.swift */; };
+		4FF1F72A24AFD92C0035A9A5 /* CollectcashVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF1F72924AFD92C0035A9A5 /* CollectcashVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -179,6 +182,9 @@
 		4FE4A3FF249FF93300CFFC3B /* EditProfileTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileTVC.swift; sourceTree = "<group>"; };
 		4FF1F71F24AFB1A40035A9A5 /* HelpOrCancelVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpOrCancelVC.swift; sourceTree = "<group>"; };
 		4FF1F72324AFBB2D0035A9A5 /* HelpOrCancelCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpOrCancelCell.swift; sourceTree = "<group>"; };
+		4FF1F72524AFCDAA0035A9A5 /* CollectOrderTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectOrderTVC.swift; sourceTree = "<group>"; };
+		4FF1F72724AFD2180035A9A5 /* DeliverOrderTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliverOrderTVC.swift; sourceTree = "<group>"; };
+		4FF1F72924AFD92C0035A9A5 /* CollectcashVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectcashVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -336,6 +342,9 @@
 				4F9A46D224AE1E1800A39380 /* NewTripRequestVC.swift */,
 				4FD8E15A24AE713A00482106 /* GoToPickupVC.swift */,
 				4FF1F71F24AFB1A40035A9A5 /* HelpOrCancelVC.swift */,
+				4FF1F72524AFCDAA0035A9A5 /* CollectOrderTVC.swift */,
+				4FF1F72724AFD2180035A9A5 /* DeliverOrderTVC.swift */,
+				4FF1F72924AFD92C0035A9A5 /* CollectcashVC.swift */,
 			);
 			path = Dashboard;
 			sourceTree = "<group>";
@@ -626,6 +635,8 @@
 				4F14A5F224A8AD250095CA9B /* EditPhoneTVC.swift in Sources */,
 				4F2E563A249B4FA800D28462 /* ViewController.swift in Sources */,
 				4FB978EA24A4BF6A0093C10F /* TripDayDataCell.swift in Sources */,
+				4FF1F72824AFD2180035A9A5 /* DeliverOrderTVC.swift in Sources */,
+				4FF1F72624AFCDAA0035A9A5 /* CollectOrderTVC.swift in Sources */,
 				4F9A46D324AE1E1800A39380 /* NewTripRequestVC.swift in Sources */,
 				4FBBA4B6249CE014007F72E7 /* DashboardVC.swift in Sources */,
 				4F6EDA0924AF686000C058AA /* RegisterVC.swift in Sources */,
@@ -663,6 +674,7 @@
 				4FB978F124A4D8A70093C10F /* OrderDetailVC.swift in Sources */,
 				4F64AD9D249E40710047E9D5 /* ViewExtenstions.swift in Sources */,
 				4FB978EC24A4BF910093C10F /* TripDayDataVC.swift in Sources */,
+				4FF1F72A24AFD92C0035A9A5 /* CollectcashVC.swift in Sources */,
 				4F43BC1C24A3DF4A006CF40F /* mapSettingTVC.swift in Sources */,
 				4FB978F324A4D9030093C10F /* OderDetailModel.swift in Sources */,
 				4F393B2824AB7C07009D08AB /* EarningsVC.swift in Sources */,
