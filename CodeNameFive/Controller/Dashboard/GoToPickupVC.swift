@@ -42,11 +42,24 @@ class GoToPickupVC: UIViewController,CLLocationManagerDelegate,MKMapViewDelegate
     }
     @IBAction func helpCenterBarButton(_ sender: UIBarButtonItem) {
         
+        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyBoard.instantiateViewController(withIdentifier: "HelpOrCancelVC") as! HelpOrCancelVC
+        
+        let transition = CATransition()
+        transition.duration = 0.2
+        transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
+        transition.type = CATransitionType.moveIn
+        transition.subtype = CATransitionSubtype.fromTop
+        navigationController?.view.layer.add(transition, forKey: nil)
+        navigationController?.pushViewController(vc, animated: false)
+        
     }
     @IBAction func callBarButton(_ sender: UIBarButtonItem) {
         phoneNumber()
     }
     @IBAction func deliveryInformationButton(_ sender: UIButton) {
+        
+        
         
     }
     
