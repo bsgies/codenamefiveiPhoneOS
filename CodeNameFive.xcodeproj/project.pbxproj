@@ -56,6 +56,9 @@
 		4F5AE8BC24A7D49A00567D05 /* EditEmailTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5AE8BB24A7D49A00567D05 /* EditEmailTVC.swift */; };
 		4F617DEE249F6D820022DB8B /* ButtonAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F617DED249F6D820022DB8B /* ButtonAnimation.swift */; };
 		4F61D991249BEFC300B9FE89 /* MainMenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F61D990249BEFC300B9FE89 /* MainMenuTableViewController.swift */; };
+		4F64166B24B088A200B2700F /* PartnerSupportTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F64166A24B088A200B2700F /* PartnerSupportTVC.swift */; };
+		4F64166D24B0935A00B2700F /* MessagesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F64166C24B0935A00B2700F /* MessagesVC.swift */; };
+		4F64166F24B0970E00B2700F /* MessagesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F64166E24B0970E00B2700F /* MessagesCell.swift */; };
 		4F64AD9D249E40710047E9D5 /* ViewExtenstions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F64AD9C249E40710047E9D5 /* ViewExtenstions.swift */; };
 		4F64AD9F249E40B80047E9D5 /* hit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F64AD9E249E40B80047E9D5 /* hit.swift */; };
 		4F64ADA4249E5AAF0047E9D5 /* Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F64ADA3249E5AAF0047E9D5 /* Validation.swift */; };
@@ -158,6 +161,9 @@
 		4F5AE8BB24A7D49A00567D05 /* EditEmailTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditEmailTVC.swift; sourceTree = "<group>"; };
 		4F617DED249F6D820022DB8B /* ButtonAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonAnimation.swift; sourceTree = "<group>"; };
 		4F61D990249BEFC300B9FE89 /* MainMenuTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuTableViewController.swift; sourceTree = "<group>"; };
+		4F64166A24B088A200B2700F /* PartnerSupportTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartnerSupportTVC.swift; sourceTree = "<group>"; };
+		4F64166C24B0935A00B2700F /* MessagesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesVC.swift; sourceTree = "<group>"; };
+		4F64166E24B0970E00B2700F /* MessagesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesCell.swift; sourceTree = "<group>"; };
 		4F64AD9C249E40710047E9D5 /* ViewExtenstions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtenstions.swift; sourceTree = "<group>"; };
 		4F64AD9E249E40B80047E9D5 /* hit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = hit.swift; sourceTree = "<group>"; };
 		4F64ADA3249E5AAF0047E9D5 /* Validation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validation.swift; sourceTree = "<group>"; };
@@ -345,6 +351,8 @@
 				4FF1F72524AFCDAA0035A9A5 /* CollectOrderTVC.swift */,
 				4FF1F72724AFD2180035A9A5 /* DeliverOrderTVC.swift */,
 				4FF1F72924AFD92C0035A9A5 /* CollectcashVC.swift */,
+				4F64166A24B088A200B2700F /* PartnerSupportTVC.swift */,
+				4F64166C24B0935A00B2700F /* MessagesVC.swift */,
 			);
 			path = Dashboard;
 			sourceTree = "<group>";
@@ -465,6 +473,7 @@
 				4F393B1D24AB47F6009D08AB /* InvoiceDetailCell.swift */,
 				4F393B2524AB717C009D08AB /* PaymentInfoCell.swift */,
 				4FF1F72324AFBB2D0035A9A5 /* HelpOrCancelCell.swift */,
+				4F64166E24B0970E00B2700F /* MessagesCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -644,6 +653,7 @@
 				4F2E5636249B4FA800D28462 /* AppDelegate.swift in Sources */,
 				4FBBA4B4249CD90B007F72E7 /* Color.swift in Sources */,
 				4F2E561F24AF403700C591EC /* LoginVC.swift in Sources */,
+				4F64166D24B0935A00B2700F /* MessagesVC.swift in Sources */,
 				4F64AD9F249E40B80047E9D5 /* hit.swift in Sources */,
 				4FB978E524A4A8990093C10F /* TripHistoryCell.swift in Sources */,
 				4F393B1E24AB47F6009D08AB /* InvoiceDetailCell.swift in Sources */,
@@ -654,6 +664,7 @@
 				4F393B2624AB717C009D08AB /* PaymentInfoCell.swift in Sources */,
 				4FF1F72024AFB1A40035A9A5 /* HelpOrCancelVC.swift in Sources */,
 				4FB11F11249FEC3A00EC629B /* ProfileTVC.swift in Sources */,
+				4F64166F24B0970E00B2700F /* MessagesCell.swift in Sources */,
 				4F5AE8BC24A7D49A00567D05 /* EditEmailTVC.swift in Sources */,
 				4F43BC2024A3ED22006CF40F /* TripHistoryVC.swift in Sources */,
 				4F393B2024AB48CD009D08AB /* InvoiceDetailVC.swift in Sources */,
@@ -669,6 +680,7 @@
 				4F5AE8B824A77D0B00567D05 /* AppFont.swift in Sources */,
 				4F2E562124AF405900C591EC /* SecurityVC.swift in Sources */,
 				4F64ADA4249E5AAF0047E9D5 /* Validation.swift in Sources */,
+				4F64166B24B088A200B2700F /* PartnerSupportTVC.swift in Sources */,
 				4F14A5F424A8AF130095CA9B /* EmmergencycontactTVC.swift in Sources */,
 				4FD32D8524AA73C00086766C /* InboxCell.swift in Sources */,
 				4FB978F124A4D8A70093C10F /* OrderDetailVC.swift in Sources */,
