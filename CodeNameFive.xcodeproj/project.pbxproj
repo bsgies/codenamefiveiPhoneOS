@@ -64,6 +64,8 @@
 		4F64ADA4249E5AAF0047E9D5 /* Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F64ADA3249E5AAF0047E9D5 /* Validation.swift */; };
 		4F6EDA0924AF686000C058AA /* RegisterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F6EDA0824AF686000C058AA /* RegisterVC.swift */; };
 		4F6EDA0D24AF6D7200C058AA /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F6EDA0C24AF6D7200C058AA /* WebKit.framework */; };
+		4F7CBD2624B1257E00672010 /* ChatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F7CBD2524B1257E00672010 /* ChatCell.swift */; };
+		4F7CBD2824B126EF00672010 /* MessageInboxTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F7CBD2724B126EF00672010 /* MessageInboxTVC.swift */; };
 		4F9A46D324AE1E1800A39380 /* NewTripRequestVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F9A46D224AE1E1800A39380 /* NewTripRequestVC.swift */; };
 		4FB11F11249FEC3A00EC629B /* ProfileTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FB11F10249FEC3A00EC629B /* ProfileTVC.swift */; };
 		4FB11F14249FEDB000EC629B /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FB11F13249FEDB000EC629B /* Constant.swift */; };
@@ -169,6 +171,8 @@
 		4F64ADA3249E5AAF0047E9D5 /* Validation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validation.swift; sourceTree = "<group>"; };
 		4F6EDA0824AF686000C058AA /* RegisterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterVC.swift; sourceTree = "<group>"; };
 		4F6EDA0C24AF6D7200C058AA /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
+		4F7CBD2524B1257E00672010 /* ChatCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatCell.swift; sourceTree = "<group>"; };
+		4F7CBD2724B126EF00672010 /* MessageInboxTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageInboxTVC.swift; sourceTree = "<group>"; };
 		4F9A46D224AE1E1800A39380 /* NewTripRequestVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTripRequestVC.swift; sourceTree = "<group>"; };
 		4FB11F10249FEC3A00EC629B /* ProfileTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTVC.swift; sourceTree = "<group>"; };
 		4FB11F13249FEDB000EC629B /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
@@ -353,6 +357,7 @@
 				4FF1F72924AFD92C0035A9A5 /* CollectcashVC.swift */,
 				4F64166A24B088A200B2700F /* PartnerSupportTVC.swift */,
 				4F64166C24B0935A00B2700F /* MessagesVC.swift */,
+				4F7CBD2724B126EF00672010 /* MessageInboxTVC.swift */,
 			);
 			path = Dashboard;
 			sourceTree = "<group>";
@@ -474,6 +479,7 @@
 				4F393B2524AB717C009D08AB /* PaymentInfoCell.swift */,
 				4FF1F72324AFBB2D0035A9A5 /* HelpOrCancelCell.swift */,
 				4F64166E24B0970E00B2700F /* MessagesCell.swift */,
+				4F7CBD2524B1257E00672010 /* ChatCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -660,6 +666,7 @@
 				4F14A5F824A8DBF50095CA9B /* PreviouspaymentsCell.swift in Sources */,
 				4FB11F14249FEDB000EC629B /* Constant.swift in Sources */,
 				4FD32D8324AA72060086766C /* InboxVC.swift in Sources */,
+				4F7CBD2624B1257E00672010 /* ChatCell.swift in Sources */,
 				4F43BC1A24A3DC39006CF40F /* PaymentInformationTVC.swift in Sources */,
 				4F393B2624AB717C009D08AB /* PaymentInfoCell.swift in Sources */,
 				4FF1F72024AFB1A40035A9A5 /* HelpOrCancelVC.swift in Sources */,
@@ -680,6 +687,7 @@
 				4F5AE8B824A77D0B00567D05 /* AppFont.swift in Sources */,
 				4F2E562124AF405900C591EC /* SecurityVC.swift in Sources */,
 				4F64ADA4249E5AAF0047E9D5 /* Validation.swift in Sources */,
+				4F7CBD2824B126EF00672010 /* MessageInboxTVC.swift in Sources */,
 				4F64166B24B088A200B2700F /* PartnerSupportTVC.swift in Sources */,
 				4F14A5F424A8AF130095CA9B /* EmmergencycontactTVC.swift in Sources */,
 				4FD32D8524AA73C00086766C /* InboxCell.swift in Sources */,

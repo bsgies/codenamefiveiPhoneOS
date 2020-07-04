@@ -10,6 +10,9 @@ import UIKit
 
 class MessagesCell: UITableViewCell {
 
+    @IBOutlet weak var statusLbl: UILabel!
+    @IBOutlet weak var rightConstrain: NSLayoutConstraint!
+    @IBOutlet weak var leftContrain: NSLayoutConstraint!
     @IBOutlet weak var heightConstrainsOfBubble: NSLayoutConstraint!
     @IBOutlet weak var bubbleImage: UIImageView!
     override func awakeFromNib() {
@@ -20,7 +23,6 @@ class MessagesCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
-        // Configure the view for the selected state
     }
 
 }

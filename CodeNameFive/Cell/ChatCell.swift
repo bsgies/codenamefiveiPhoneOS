@@ -1,0 +1,47 @@
+//
+//  ChatCell.swift
+//  CodeNameFive
+//
+//  Created by Muhammad Imran on 05/07/2020.
+//  Copyright © 2020 ITRID TECHNOLOGIES LTD. All rights reserved.
+//
+
+import UIKit
+
+class ChatCell: UITableViewCell {
+
+  let messageLabel = UILabel()
+        let bubbleBackgroundView = UIView()
+        
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+            super.init(style: style, reuseIdentifier: reuseIdentifier)
+            
+            bubbleBackgroundView.backgroundColor = #colorLiteral(red: 0, green: 0.8465872407, blue: 0.7545004487, alpha: 1)
+            bubbleBackgroundView.layer.cornerRadius = 5
+            bubbleBackgroundView.translatesAutoresizingMaskIntoConstraints = false
+            addSubview(bubbleBackgroundView)
+            addSubview(messageLabel)
+            messageLabel.numberOfLines = 0
+            
+            messageLabel.translatesAutoresizingMaskIntoConstraints = false
+            
+            // lets set up some constraints for our label
+            let constraints = [messageLabel.topAnchor.constraint(equalTo: topAnchor, constant: 32),
+            //messageLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 32),
+            messageLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -32),
+            messageLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -32),
+            messageLabel.widthAnchor.constraint(equalToConstant: 250),
+            
+            bubbleBackgroundView.topAnchor.constraint(equalTo: messageLabel.topAnchor, constant: -16),
+            bubbleBackgroundView.leadingAnchor.constraint(equalTo: messageLabel.leadingAnchor, constant: -16),
+            bubbleBackgroundView.bottomAnchor.constraint(equalTo: messageLabel.bottomAnchor, constant: 16),
+            bubbleBackgroundView.trailingAnchor.constraint(equalTo: messageLabel.trailingAnchor, constant: 16),
+            ]
+            NSLayoutConstraint.activate(constraints)
+        }
+        
+        required init?(coder aDecoder: NSCoder) {
+            fatalError("init(coder:) has not been implemented")
+        }
+
+}
