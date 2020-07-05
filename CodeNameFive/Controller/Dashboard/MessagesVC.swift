@@ -11,10 +11,21 @@ import UIKit
 class MessagesVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
     @IBOutlet weak var bottomView: UIView!
    
+    @IBOutlet weak var messageTextfiled: UITextField!
+    @IBAction func SendMessage(_ sender: UIButton) {
+        if let message = messageTextfiled.text{
+            textMessages.append(message)
+            messageTextfiled.text = nil
+            taped()
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }
+    }
     fileprivate let cellId = "id123"
     @IBOutlet weak var tableView: UITableView!
     
-    let textMessages = ["Hello, I’m here can you open the door for me please?",
+    var textMessages = ["Hello, I’m here can you open the door for me please?",
         "Number 14. Just take a left from the porch and come inside the doors",
         "Number 14. Just take a left from the porch and come inside the doors Number 14. Just take a left from the porch and come inside the doors Number 14. Just take a left from the porch and come inside the doors","Hello, I’m here can you open the door for me please?"
     ]
@@ -22,7 +33,7 @@ class MessagesVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-    
+      
         bottomView.addTopBorder(with: .gray, andWidth: 0.5)
         tableView.register(ChatCell.self, forCellReuseIdentifier: cellId)
         tableView.separatorStyle = .none
@@ -162,4 +173,5 @@ class MessagesVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         }
         
     }
+     
 }

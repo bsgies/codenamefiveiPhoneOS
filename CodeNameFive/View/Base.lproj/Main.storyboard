@@ -299,7 +299,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="jIC-BV-xge">
-                                <rect key="frame" x="0.0" y="44" width="414" height="743.66666666666663"/>
+                                <rect key="frame" x="0.0" y="54" width="414" height="734.66666666666663"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <connections>
                                     <outlet property="dataSource" destination="BEk-gK-osk" id="P2h-hq-gC0"/>
@@ -307,26 +307,30 @@
                                 </connections>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jeD-1V-1an">
-                                <rect key="frame" x="0.0" y="787.66666666666663" width="414" height="74.333333333333371"/>
+                                <rect key="frame" x="0.0" y="788.66666666666663" width="414" height="73.333333333333371"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Type a message " textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hUp-41-jGv">
-                                        <rect key="frame" x="8" y="17" width="108.66666666666667" height="34"/>
+                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Type a message " textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hUp-41-jGv">
+                                        <rect key="frame" x="10" y="10.000000000000004" width="353" height="53.333333333333343"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ygD-Vl-Exs">
-                                        <rect key="frame" x="363" y="20.000000000000004" width="51" height="39.333333333333343"/>
+                                        <rect key="frame" x="363" y="10.000000000000004" width="51" height="63.333333333333343"/>
                                         <state key="normal" image="send"/>
+                                        <connections>
+                                            <action selector="SendMessage:" destination="BEk-gK-osk" eventType="touchUpInside" id="uTs-cy-Cgr"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" name="BottomViewColor"/>
                                 <constraints>
-                                    <constraint firstItem="ygD-Vl-Exs" firstAttribute="top" secondItem="jeD-1V-1an" secondAttribute="top" constant="20" id="2TB-0k-aPE"/>
-                                    <constraint firstAttribute="bottom" secondItem="hUp-41-jGv" secondAttribute="bottom" constant="23.333333333333371" id="BpL-iI-kvN"/>
-                                    <constraint firstItem="hUp-41-jGv" firstAttribute="leading" secondItem="jeD-1V-1an" secondAttribute="leadingMargin" id="Cml-rk-SGp"/>
-                                    <constraint firstItem="hUp-41-jGv" firstAttribute="top" secondItem="jeD-1V-1an" secondAttribute="top" constant="17" id="XjF-W2-7e1"/>
-                                    <constraint firstAttribute="bottom" secondItem="ygD-Vl-Exs" secondAttribute="bottom" constant="15" id="Xyb-z1-i0m"/>
+                                    <constraint firstItem="ygD-Vl-Exs" firstAttribute="top" secondItem="jeD-1V-1an" secondAttribute="top" constant="10" id="2TB-0k-aPE"/>
+                                    <constraint firstAttribute="bottom" secondItem="hUp-41-jGv" secondAttribute="bottom" constant="10" id="5np-gw-twX"/>
+                                    <constraint firstItem="ygD-Vl-Exs" firstAttribute="leading" secondItem="hUp-41-jGv" secondAttribute="trailing" id="Hlm-fh-U0f"/>
+                                    <constraint firstItem="hUp-41-jGv" firstAttribute="top" secondItem="jeD-1V-1an" secondAttribute="top" constant="10" id="O8R-Nm-ebu"/>
+                                    <constraint firstAttribute="bottom" secondItem="ygD-Vl-Exs" secondAttribute="bottom" id="Xyb-z1-i0m"/>
                                     <constraint firstAttribute="trailing" secondItem="ygD-Vl-Exs" secondAttribute="trailing" id="k2v-gO-y8T"/>
+                                    <constraint firstItem="hUp-41-jGv" firstAttribute="leading" secondItem="jeD-1V-1an" secondAttribute="leading" constant="10" id="kYz-Bd-BS2"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -340,12 +344,13 @@
                             <constraint firstItem="jeD-1V-1an" firstAttribute="width" secondItem="jIC-BV-xge" secondAttribute="width" id="V1d-64-Aid"/>
                             <constraint firstItem="jIC-BV-xge" firstAttribute="leading" secondItem="nAJ-hd-Ycb" secondAttribute="leading" id="enJ-qE-qp1"/>
                             <constraint firstItem="jeD-1V-1an" firstAttribute="trailing" secondItem="nAJ-hd-Ycb" secondAttribute="trailing" id="fUi-Ow-K9z"/>
-                            <constraint firstItem="jIC-BV-xge" firstAttribute="top" secondItem="nAJ-hd-Ycb" secondAttribute="top" id="xWu-bw-lWk"/>
+                            <constraint firstItem="jIC-BV-xge" firstAttribute="top" secondItem="nAJ-hd-Ycb" secondAttribute="top" constant="10" id="xWu-bw-lWk"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="nAJ-hd-Ycb"/>
                     </view>
                     <connections>
                         <outlet property="bottomView" destination="jeD-1V-1an" id="uYl-D5-Nc3"/>
+                        <outlet property="messageTextfiled" destination="hUp-41-jGv" id="rJl-jA-lgx"/>
                         <outlet property="tableView" destination="jIC-BV-xge" id="X0N-wU-wGt"/>
                     </connections>
                 </viewController>
