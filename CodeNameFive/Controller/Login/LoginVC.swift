@@ -37,21 +37,24 @@ class LoginVC: UIViewController {
     
     @IBAction func contniueForPassword(_ sender: Any) {
         
-        if let validate = EmailorPhone.text{
-            if validate.isValidEmail(validate){
-                let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-                       let newViewController = storyBoard.instantiateViewController(withIdentifier: "DashboardVC")
-                       navigationController?.pushViewController(newViewController, animated: false)
-                       showToast(message: "Error in Email please check email", controller: self)
-            }
-            else{
-                showToast(message: "Please check your email", controller: self)
-            }
-            
-        }
-        else{
-            showToast(message: "Fill your email or password", controller: self)
-        }
+//        if let validate = EmailorPhone.text{
+//            if validate.isValidEmail(validate){
+//                let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+//                       let newViewController = storyBoard.instantiateViewController(withIdentifier: "DashboardVC")
+//                       navigationController?.pushViewController(newViewController, animated: false)
+//                       showToast(message: "Error in Email please check email", controller: self)
+//            }
+//            else{
+//                showToast(message: "Please check your email", controller: self)
+//            }
+//
+//        }
+//        else{
+//            showToast(message: "Fill your email or password", controller: self)
+//        }
+        
+        let vc = ChatVC()
+        navigationController?.pushViewController(vc, animated: true)
        
     }
     
