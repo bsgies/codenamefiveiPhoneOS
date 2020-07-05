@@ -28,18 +28,15 @@ class ChatCell: UITableViewCell {
             
             messageLabel.translatesAutoresizingMaskIntoConstraints = false
             time.translatesAutoresizingMaskIntoConstraints = false
+        status.translatesAutoresizingMaskIntoConstraints = false
             time.text = "21:21"
-        status.text = "sent"
-        //time.font = UIFont(name: "Poppins-Light", size: 9.0)
+        status.text = "Sent"
         time.font = UIFont.systemFont(ofSize: 11.0)
-            // lets set up some constraints for our label
+        status.font = UIFont.systemFont(ofSize: 11.0)
             let constraints = [messageLabel.topAnchor.constraint(equalTo: topAnchor, constant: 32),
-            //messageLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 32),
             messageLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -32),
             messageLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -32),
             messageLabel.widthAnchor.constraint(equalToConstant: 250),
-            
-            
             bubbleBackgroundView.topAnchor.constraint(equalTo: messageLabel.topAnchor, constant: -16),
             bubbleBackgroundView.leadingAnchor.constraint(equalTo: messageLabel.leadingAnchor, constant: -16),
             bubbleBackgroundView.bottomAnchor.constraint(equalTo: messageLabel.bottomAnchor, constant: 16),
@@ -49,9 +46,11 @@ class ChatCell: UITableViewCell {
             time.bottomAnchor.constraint(equalTo: messageLabel.bottomAnchor, constant: 10),
             
             time.trailingAnchor.constraint(equalTo: messageLabel.trailingAnchor, constant: 10),
-            
-            
-            
+
+//            status.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 10),
+//            //status.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
+//            status.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
+
             
             
             ]
