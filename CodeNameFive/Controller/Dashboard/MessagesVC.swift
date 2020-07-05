@@ -19,12 +19,52 @@ class MessagesVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         "Number 14. Just take a left from the porch and come inside the doors Number 14. Just take a left from the porch and come inside the doors Number 14. Just take a left from the porch and come inside the doors","Hello, I’m here can you open the door for me please?"
     ]
     
+
     override func viewDidLoad() {
         super.viewDidLoad()
+    
         bottomView.addTopBorder(with: .gray, andWidth: 0.5)
         tableView.register(ChatCell.self, forCellReuseIdentifier: cellId)
         tableView.separatorStyle = .none
+        let tap = UITapGestureRecognizer(target: self, action: #selector(taped))
+                 tableView.addGestureRecognizer(tap)
+    
+        NotificationCenter.default.addObserver(self, selector: #selector(KeyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+                NotificationCenter.default.addObserver(self, selector: #selector(KeyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
+    
+    @objc func taped(){
+          self.view.endEditing(true)
+      }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+           super.viewWillDisappear(true)
+           NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+           NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+           super.viewWillDisappear(animated)
+           navigationController?.setNavigationBarHidden(false, animated: animated)
+       }
+      
+    @objc func KeyboardWillShow(sender: NSNotification){
+            
+            let keyboardSize : CGSize = ((sender.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue.size)!
+            if self.view.frame.origin.y == 0{
+                self.view.frame.origin.y -= keyboardSize.height
+            }
+            
+            
+        }
+        
+        @objc func KeyboardWillHide(sender : NSNotification){
+            
+            
+            let keyboardSize : CGSize = ((sender.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue.size)!
+            if self.view.frame.origin.y != 0{
+                self.view.frame.origin.y += keyboardSize.height
+            }
+            
+            
+        }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return textMessages.count
