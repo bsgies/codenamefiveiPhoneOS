@@ -13,7 +13,7 @@ class RegisterVC: UIViewController,WKUIDelegate {
     @IBOutlet weak var registerationPageWebView: WKWebView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        setBackButton()
+       // setBackButton()
 //        let forwardBarItem = UIBarButtonItem(title: "Forward", style: .plain, target: self,
 //                                             action: #selector(forwardAction))
 //        let backBarItem = UIBarButtonItem(title: "Backward", style: .plain, target: self,
@@ -38,23 +38,13 @@ class RegisterVC: UIViewController,WKUIDelegate {
             registerationPageWebView.goBack()
         }
     }
-    
-    func setBackButton(){
-        navigationController?.navigationBar.backItem?.titleView?.tintColor = UIColor(hex: "#12D2B3")
-        
-        let button: UIButton = UIButton (type: UIButton.ButtonType.custom)
-        button.setImage(UIImage(named: "back"), for: UIControl.State.normal)
-        button.addTarget(self, action: #selector(backButtonPressed(btn:)), for: UIControl.Event.touchUpInside)
-        button.frame = CGRect(x: 0 , y: 0, width: 30, height: 30)
-        
-        let barButton = UIBarButtonItem(customView: button)
-        
-        self.navigationItem.leftBarButtonItem = barButton
-        
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+         navigationController?.setNavigationBarHidden(false, animated: true)
     }
     
-    @objc func backButtonPressed(btn : UIButton) {
-        
-        self.navigationController?.popViewController(animated: true)
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(true)
+        navigationController?.setNavigationBarHidden(true, animated: animated)
     }
 }
