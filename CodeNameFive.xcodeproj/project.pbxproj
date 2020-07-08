@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4F08878624B5EE5D00CD5554 /* GoToCustomerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F08878524B5EE5D00CD5554 /* GoToCustomerVC.swift */; };
+		4F08878824B5F13400CD5554 /* CollectOrderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F08878724B5F13400CD5554 /* CollectOrderCell.swift */; };
 		4F14A5F224A8AD250095CA9B /* EditPhoneTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F14A5F124A8AD250095CA9B /* EditPhoneTVC.swift */; };
 		4F14A5F424A8AF130095CA9B /* EmmergencycontactTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F14A5F324A8AF130095CA9B /* EmmergencycontactTVC.swift */; };
 		4F14A5F624A8DAC80095CA9B /* PreviousPaymentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F14A5F524A8DAC80095CA9B /* PreviousPaymentVC.swift */; };
@@ -20,8 +22,6 @@
 		4F2E5640249B4FA800D28462 /* CodeNameFive.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4F2E563E249B4FA800D28462 /* CodeNameFive.xcdatamodeld */; };
 		4F2E5642249B4FAA00D28462 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F2E5641249B4FAA00D28462 /* Assets.xcassets */; };
 		4F2E5645249B4FAA00D28462 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F2E5643249B4FAA00D28462 /* LaunchScreen.storyboard */; };
-		4F2E5650249B4FAB00D28462 /* CodeNameFiveTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2E564F249B4FAB00D28462 /* CodeNameFiveTests.swift */; };
-		4F2E565B249B4FAB00D28462 /* CodeNameFiveUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2E565A249B4FAB00D28462 /* CodeNameFiveUITests.swift */; };
 		4F2E5683249B684400D28462 /* ButtonRounded.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2E5682249B684400D28462 /* ButtonRounded.swift */; };
 		4F393B1E24AB47F6009D08AB /* InvoiceDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F393B1D24AB47F6009D08AB /* InvoiceDetailCell.swift */; };
 		4F393B2024AB48CD009D08AB /* InvoiceDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F393B1F24AB48CD009D08AB /* InvoiceDetailVC.swift */; };
@@ -115,6 +115,8 @@
 		19A89ABD2A0223A8CDF3BBA7 /* Pods_CodeNameFive_CodeNameFiveUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CodeNameFive_CodeNameFiveUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C81F92899D83424286BAED4 /* Pods-CodeNameFive-CodeNameFiveUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CodeNameFive-CodeNameFiveUITests.debug.xcconfig"; path = "Target Support Files/Pods-CodeNameFive-CodeNameFiveUITests/Pods-CodeNameFive-CodeNameFiveUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		4B96F66020BFE9B5A5C4E053 /* Pods-CodeNameFive.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CodeNameFive.debug.xcconfig"; path = "Target Support Files/Pods-CodeNameFive/Pods-CodeNameFive.debug.xcconfig"; sourceTree = "<group>"; };
+		4F08878524B5EE5D00CD5554 /* GoToCustomerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoToCustomerVC.swift; sourceTree = "<group>"; };
+		4F08878724B5F13400CD5554 /* CollectOrderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectOrderCell.swift; sourceTree = "<group>"; };
 		4F14A5F124A8AD250095CA9B /* EditPhoneTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPhoneTVC.swift; sourceTree = "<group>"; };
 		4F14A5F324A8AF130095CA9B /* EmmergencycontactTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmmergencycontactTVC.swift; sourceTree = "<group>"; };
 		4F14A5F524A8DAC80095CA9B /* PreviousPaymentVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviousPaymentVC.swift; sourceTree = "<group>"; };
@@ -374,6 +376,7 @@
 				4FF1F72924AFD92C0035A9A5 /* CollectcashVC.swift */,
 				4F64166A24B088A200B2700F /* PartnerSupportTVC.swift */,
 				4F64166C24B0935A00B2700F /* MessagesVC.swift */,
+				4F08878524B5EE5D00CD5554 /* GoToCustomerVC.swift */,
 			);
 			path = Dashboard;
 			sourceTree = "<group>";
@@ -499,6 +502,7 @@
 				4FF1F72324AFBB2D0035A9A5 /* HelpOrCancelCell.swift */,
 				4F64166E24B0970E00B2700F /* MessagesCell.swift */,
 				4F7CBD2524B1257E00672010 /* ChatCell.swift */,
+				4F08878724B5F13400CD5554 /* CollectOrderCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -782,6 +786,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4FB978EE24A4D83F0093C10F /* OrderDetailCell.swift in Sources */,
+				4F08878624B5EE5D00CD5554 /* GoToCustomerVC.swift in Sources */,
 				4F2E5683249B684400D28462 /* ButtonRounded.swift in Sources */,
 				4F14A5F624A8DAC80095CA9B /* PreviousPaymentVC.swift in Sources */,
 				4FB978E824A4A8E90093C10F /* TripWeeklyData.swift in Sources */,
@@ -832,6 +837,7 @@
 				4F14A5F424A8AF130095CA9B /* EmmergencycontactTVC.swift in Sources */,
 				4FD32D8524AA73C00086766C /* InboxCell.swift in Sources */,
 				4FB978F124A4D8A70093C10F /* OrderDetailVC.swift in Sources */,
+				4F08878824B5F13400CD5554 /* CollectOrderCell.swift in Sources */,
 				4F64AD9D249E40710047E9D5 /* ViewExtenstions.swift in Sources */,
 				4FB978EC24A4BF910093C10F /* TripDayDataVC.swift in Sources */,
 				4FF1F72A24AFD92C0035A9A5 /* CollectcashVC.swift in Sources */,
@@ -845,7 +851,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4F2E5650249B4FAB00D28462 /* CodeNameFiveTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -853,7 +858,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4F2E565B249B4FAB00D28462 /* CodeNameFiveUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

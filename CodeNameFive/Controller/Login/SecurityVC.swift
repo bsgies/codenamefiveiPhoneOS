@@ -27,6 +27,7 @@ class SecurityVC: UIViewController {
         }
         else{
             securityCodeOrPasswordField.keyboardType = UIKeyboardType.numberPad
+            disLbl.isHidden = false
         }
         CodeNotReceived.isUserInteractionEnabled = true
         let tap = UITapGestureRecognizer(target: self, action: #selector(taped))
@@ -114,7 +115,7 @@ extension SecurityVC{
         if self.view.frame.origin.y != 0{
             self.view.frame.origin.y += keyboardSize.height
         }
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
             UIView.transition(with: self.view, duration: 1, options: .transitionCrossDissolve, animations: {
                 self.pathnerImage.isHidden = false
             })

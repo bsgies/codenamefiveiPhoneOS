@@ -42,16 +42,18 @@ class GoToPickupVC: UIViewController,CLLocationManagerDelegate,MKMapViewDelegate
     }
     @IBAction func helpCenterBarButton(_ sender: UIBarButtonItem) {
         
-        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = storyBoard.instantiateViewController(withIdentifier: "HelpOrCancelVC") as! HelpOrCancelVC
-        
-        let transition = CATransition()
-        transition.duration = 0.2
-        transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
-        transition.type = CATransitionType.moveIn
-        transition.subtype = CATransitionSubtype.fromTop
-        navigationController?.view.layer.add(transition, forKey: nil)
-        navigationController?.pushViewController(vc, animated: false)
+        let helptoCancel : HelpOrCancelVC = self.storyboard?.instantiateViewController(withIdentifier: "HelpOrCancelVC") as! HelpOrCancelVC
+        self.presentOnRoot(viewController: helptoCancel)
+//        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+//        let vc = storyBoard.instantiateViewController(withIdentifier: "HelpOrCancelVC") as! HelpOrCancelVC
+//
+//        let transition = CATransition()
+//        transition.duration = 0.2
+//        transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
+//        transition.type = CATransitionType.moveIn
+//        transition.subtype = CATransitionSubtype.fromTop
+//        navigationController?.view.layer.add(transition, forKey: nil)
+//        navigationController?.pushViewController(vc, animated: false)
         
     }
     @IBAction func callBarButton(_ sender: UIBarButtonItem) {
@@ -59,10 +61,14 @@ class GoToPickupVC: UIViewController,CLLocationManagerDelegate,MKMapViewDelegate
     }
     @IBAction func deliveryInformationButton(_ sender: UIButton) {
         
-        
-        
+        GotoDeliveryInformation()
     }
-    
+    func presentOnRoot(viewController : UIViewController){
+           let navigationController = UINavigationController(rootViewController: viewController)
+           navigationController.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
+           self.present(navigationController, animated: false, completion: nil)
+           
+       }
 }
 
 
@@ -83,6 +89,21 @@ extension GoToPickupVC{
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let newViewController = storyBoard.instantiateViewController(withIdentifier: "AppMenu")
         navigationController?.pushViewController(newViewController, animated: true)
+    }
+    func GotoDeliveryInformation() {
+        
+        let collect : CollectOrderTVC = self.storyboard?.instantiateViewController(withIdentifier: "CollectOrderTVC") as! CollectOrderTVC
+               self.presentOnRoot(viewController: collect)
+//        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+//                       let vc = storyBoard.instantiateViewController(withIdentifier: "CollectOrderTVC") as! CollectOrderTVC
+//
+//                       let transition = CATransition()
+//                       transition.duration = 0.2
+//                       transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
+//                       transition.type = CATransitionType.moveIn
+//                       transition.subtype = CATransitionSubtype.fromTop
+//                       navigationController?.view.layer.add(transition, forKey: nil)
+//                       navigationController?.pushViewController(vc, animated: false)
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -118,3 +139,4 @@ extension GoToPickupVC{
     }
     
 }
+

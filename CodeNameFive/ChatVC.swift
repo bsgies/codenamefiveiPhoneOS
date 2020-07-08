@@ -12,7 +12,6 @@ import MessageKit
 
 struct Sender : SenderType {
     var senderId: String
-    
     var displayName: String
     
 }
@@ -30,12 +29,14 @@ struct Message: MessageType {
 
 class ChatVC: MessagesViewController, MessagesDataSource,MessagesLayoutDelegate,MessagesDisplayDelegate, MessageCellDelegate {
     
-     let currentUser = Sender(senderId: "self", displayName: "Imran")
+    let currentUser = Sender(senderId: "self", displayName: "Imran")
     let otherUser = Sender(senderId: "other", displayName: "Bilal")
     var messages = [MessageType]()
     override func viewDidLoad() {
-          super.viewDidLoad()
         
+          setCrossButton()
+          super.viewDidLoad()
+        navigationItem.title = "Inbox"
                if let layout = messagesCollectionView.collectionViewLayout as? MessagesCollectionViewFlowLayout {
                  layout.setMessageIncomingAvatarSize(.zero)
                  layout.setMessageOutgoingAvatarSize(.zero)
@@ -45,7 +46,7 @@ class ChatVC: MessagesViewController, MessagesDataSource,MessagesLayoutDelegate,
         messagesCollectionView.messagesDisplayDelegate = self
         messagesCollectionView.messageCellDelegate = self
         messages.append(Message(sender: currentUser, messageId: "1", sentDate: Date().addingTimeInterval(-86400), kind: .text("Hello, I’m here can you open the door for me please?")))
-         messages.append(Message(sender: otherUser, messageId: "2", sentDate: Date().addingTimeInterval(-86400), kind: .text("Hello, I’m here can you open the door for me please?")))
+        messages.append(Message(sender: otherUser, messageId: "2", sentDate: Date().addingTimeInterval(-86400), kind: .text("Hello, I’m here can you open the door for me please?")))
          messages.append(Message(sender: currentUser, messageId: "3", sentDate: Date().addingTimeInterval(-86400), kind: .text("Hello, I’m here can you open the door for me please?")))
          messages.append(Message(sender: otherUser, messageId: "4", sentDate: Date().addingTimeInterval(-86400), kind: .text("Hello, I’m here can you open the door for me please?")))
          messages.append(Message(sender: currentUser, messageId: "5", sentDate: Date().addingTimeInterval(-86400), kind: .text("Hello, I’m here can you open the door for me please?")))
@@ -85,9 +86,9 @@ class ChatVC: MessagesViewController, MessagesDataSource,MessagesLayoutDelegate,
         
     }
     
-    func cellTopLabelHeight(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> CGFloat {
-        return 20
-    }
+//    func cellTopLabelHeight(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> CGFloat {
+//        return 20
+//    }
     
     func configureMessageCollectionView() {
 
@@ -116,14 +117,14 @@ class ChatVC: MessagesViewController, MessagesDataSource,MessagesLayoutDelegate,
 //             df.dateFormat = "hh:mm"
 //             let dateString = df.string(from: message.sentDate)
 //            return NSAttributedString(string: dateString, attributes: [NSAttributedString.Key.font: UIFont.preferredFont(forTextStyle: .caption1)])
-             return NSAttributedString(string: "Read", attributes: [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 10),NSAttributedString.Key.foregroundColor :UIColor.darkGray ])
+             return NSAttributedString(string: "Read 21:21", attributes: [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 10),NSAttributedString.Key.foregroundColor :UIColor.darkGray ])
             
          }
     
-    func cellBottomLabelAttributedText(for message: MessageType, at indexPath: IndexPath) -> NSAttributedString? {
-            
-        return NSAttributedString(string: "read", attributes: [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 10),NSAttributedString.Key.foregroundColor :UIColor.darkGray ])
-           }
+//    func cellBottomLabelAttributedText(for message: MessageType, at indexPath: IndexPath) -> NSAttributedString? {
+//
+//        return NSAttributedString(string: "read", attributes: [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 10),NSAttributedString.Key.foregroundColor :UIColor.darkGray ])
+//           }
     
     
     
@@ -158,6 +159,28 @@ extension ChatVC {
         print("Accessory view tapped")
     }
     
+}
+
+extension ChatVC{
+    func setCrossButton(){
+        let button = UIButton(type: .custom)
+        button.setImage(UIImage(named: "x.png"), for: .normal)
+        button.addTarget(self, action: #selector(closeView), for: .touchUpInside)
+        button.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
+        let barButton = UIBarButtonItem(customView: button)
+        navigationItem.leftBarButtonItem = barButton
+    }
+    
+    @objc func closeView(){
+        self.dismiss(animated: true, completion: nil)
+//        let transition = CATransition()
+//        transition.duration = 0.5
+//        transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
+//        transition.type = CATransitionType.reveal
+//        transition.subtype = CATransitionSubtype.fromBottom
+//        navigationController?.view.layer.add(transition, forKey: nil)
+//        _ = navigationController?.popViewController(animated: false)
+    }
 }
 
 

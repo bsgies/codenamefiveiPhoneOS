@@ -59,9 +59,7 @@ class LoginVC: UIViewController {
         else{
             showToast(message: "Fill your email or password", controller: self)
         }
-        
-        //        let vc = ChatVC()
-        //        navigationController?.pushViewController(vc, animated: true)
+    
         
     }
     

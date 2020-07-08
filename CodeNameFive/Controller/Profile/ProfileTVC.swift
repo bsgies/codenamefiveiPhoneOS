@@ -15,6 +15,7 @@ class ProfileTVC: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setCrossButton()
+
         
     }
     
@@ -24,17 +25,19 @@ class ProfileTVC: UITableViewController {
         button.addTarget(self, action: #selector(closeView), for: .touchUpInside)
         button.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
         let barButton = UIBarButtonItem(customView: button)
-        navigationItem.leftBarButtonItem = barButton
+        self.navigationItem.leftBarButtonItem = barButton
+        
     }
     
     @objc func closeView(){
-        let transition = CATransition()
-        transition.duration = 0.5
-        transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
-        transition.type = CATransitionType.reveal
-        transition.subtype = CATransitionSubtype.fromBottom
-        navigationController?.view.layer.add(transition, forKey: nil)
-        _ = navigationController?.popViewController(animated: false)
+//        let transition = CATransition()
+//        transition.duration = 0.5
+//        transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.linear)
+//        transition.type = CATransitionType.reveal
+//        transition.subtype = CATransitionSubtype.fromBottom
+//        navigationController?.view.layer.add(transition, forKey: nil)
+//        _ = navigationController?.popViewController(animated: false)
+        self.dismiss(animated: true, completion: nil)
     }
     
     
@@ -48,7 +51,7 @@ extension ProfileTVC{
         cell.layoutMargins = UIEdgeInsets.zero
         cell.selectionStyle = .none
         if indexPath.section != 0{
-        cell.accessoryView = UIImageView(image: UIImage(named: "chevron-right"))
+            cell.accessoryView = UIImageView(image: UIImage(named: "chevron-right"))
         }
     }
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -65,30 +68,30 @@ extension ProfileTVC{
     }
     override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         
-       let headerView: UITableViewHeaderFooterView = view as! UITableViewHeaderFooterView
-       if traitCollection.userInterfaceStyle == .light {
-           
-           headerView.textLabel!.textColor = UIColor.darkGray
-           headerView.textLabel!.font = UIFont(name: "Poppins-Regular", size: 15)
-           
-           headerView.backgroundView = UIView()
-           headerView.backgroundColor = .clear
-           
-       }
-       else{
-         
-           headerView.textLabel!.textColor = UIColor(#colorLiteral(red: 0.4705882353, green: 0.4705882353, blue: 0.4705882353, alpha: 1))
-           headerView.textLabel!.font = UIFont(name: "Poppins-Regular", size: 15)
-           
-           
-           headerView.backgroundView = UIView()
-           headerView.backgroundColor = .clear
-           
-           // For Header Text Color
-           let header = view as! UITableViewHeaderFooterView
-           header.textLabel?.textColor = .white
-           
-       }
+        let headerView: UITableViewHeaderFooterView = view as! UITableViewHeaderFooterView
+        if traitCollection.userInterfaceStyle == .light {
+            
+            headerView.textLabel!.textColor = UIColor.darkGray
+            headerView.textLabel!.font = UIFont(name: "Poppins-Regular", size: 15)
+            
+            headerView.backgroundView = UIView()
+            headerView.backgroundColor = .clear
+            
+        }
+        else{
+            
+            headerView.textLabel!.textColor = UIColor(#colorLiteral(red: 0.4705882353, green: 0.4705882353, blue: 0.4705882353, alpha: 1))
+            headerView.textLabel!.font = UIFont(name: "Poppins-Regular", size: 15)
+            
+            
+            headerView.backgroundView = UIView()
+            headerView.backgroundColor = .clear
+            
+            // For Header Text Color
+            let header = view as! UITableViewHeaderFooterView
+            header.textLabel?.textColor = .white
+            
+        }
         
     }
     override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
@@ -122,7 +125,7 @@ extension ProfileTVC{
         
     }
     
-      override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if section == 0{
             return CGFloat.leastNormalMagnitude
         }
