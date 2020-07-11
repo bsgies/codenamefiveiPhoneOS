@@ -10,6 +10,7 @@ import UIKit
 
 class CollectOrderTVC: UITableViewController {
 
+    @IBOutlet weak var gotoCustomerOutlet: UIButton!
     @IBOutlet weak var orderNumber: UILabel!
     @IBOutlet weak var likeButton: UIButton!
     @IBOutlet weak var dislikeButton: UIButton!
@@ -18,13 +19,13 @@ class CollectOrderTVC: UITableViewController {
     @IBOutlet weak var resturentName: UILabel!
     @IBOutlet weak var resturentAddress: UILabel!
     @IBAction func DislikeButtonAction(_ sender: Any) {
-        dislikeButton.imageView?.tintColor = #colorLiteral(red: 1, green: 0.2705882353, blue: 0.2274509804, alpha: 1)
+        setDisLikeImage()
          print("dislike")
         
     }
     @IBAction func likeButtonAction(_ sender: Any) {
         
-        likeButton.imageView?.tintColor = #colorLiteral(red: 0, green: 0.8465872407, blue: 0.7545004487, alpha: 1)
+        setLikeImage()
         print("like")
     }
     @IBAction func GoTOCustomerAction(_ sender: Any) {
@@ -44,7 +45,7 @@ class CollectOrderTVC: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-         
+        gotoCustomerOutlet.isEnabled = false
         setCrossButton()
     }
     
@@ -126,4 +127,24 @@ extension CollectOrderTVC{
             navigationController?.pushViewController(newViewController, animated: true)
         
     }
+    
+    func setLikeImage() {
+        gotoCustomerOutlet.isEnabled = true
+        let origImage = UIImage(named: "thumbs-up")
+        let tintedImage = origImage?.withRenderingMode(.alwaysTemplate)
+        likeButton.setImage(tintedImage, for: .normal)
+        likeButton.tintColor = #colorLiteral(red: 0, green: 0.8465872407, blue: 0.7545004487, alpha: 1)
+        likeButton.isUserInteractionEnabled = false
+        dislikeButton.isUserInteractionEnabled = false
+       
+    }
+    func setDisLikeImage() {
+        gotoCustomerOutlet.isEnabled = true
+         let origImage = UIImage(named: "thumbs-down")
+         let tintedImage = origImage?.withRenderingMode(.alwaysTemplate)
+         dislikeButton.setImage(tintedImage, for: .normal)
+         dislikeButton.tintColor = .red
+        dislikeButton.isUserInteractionEnabled = false
+        likeButton.isUserInteractionEnabled = false
+     }
 }

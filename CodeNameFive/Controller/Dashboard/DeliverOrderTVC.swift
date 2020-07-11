@@ -10,6 +10,7 @@ import UIKit
 
 class DeliverOrderTVC: UITableViewController {
 
+    @IBOutlet weak var collectCashOutlet: UIButton!
     @IBOutlet weak var orderNumber: UILabel!
     @IBOutlet weak var cureentOrderPersonName: UILabel!
     @IBOutlet weak var PersonName: UILabel!
@@ -37,8 +38,10 @@ class DeliverOrderTVC: UITableViewController {
     //        _ = navigationController?.popViewController(animated: false)
         }
     @IBAction func dislikeButtonAction(_ sender: Any) {
+        setDisLikeImage()
     }
     @IBAction func likeButonAction(_ sender: Any) {
+        setLikeImage()
     }
     @IBAction func CollectPayment(_ sender: UIButton) {
         GoToCollectCash()
@@ -68,6 +71,7 @@ class DeliverOrderTVC: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        collectCashOutlet.isEnabled = false
         setCrossButton()
     }
 
@@ -124,9 +128,23 @@ extension DeliverOrderTVC{
       }
     
     func setLikeImage() {
-        let origImage = UIImage(named: "imageName")
+      
+        collectCashOutlet.isEnabled = true
+        let origImage = UIImage(named: "thumbs-up")
         let tintedImage = origImage?.withRenderingMode(.alwaysTemplate)
         likeButton.setImage(tintedImage, for: .normal)
-        likeButton.tintColor = .red
+        likeButton.tintColor = #colorLiteral(red: 0, green: 0.8465872407, blue: 0.7545004487, alpha: 1)
+        likeButton.isUserInteractionEnabled = false
+        likeButton.isUserInteractionEnabled = false
+       
     }
+    func setDisLikeImage() {
+        collectCashOutlet.isEnabled = true
+         let origImage = UIImage(named: "thumbs-down")
+         let tintedImage = origImage?.withRenderingMode(.alwaysTemplate)
+         dilikeButton.setImage(tintedImage, for: .normal)
+         dilikeButton.tintColor = .red
+         dilikeButton.isUserInteractionEnabled = false
+         likeButton.isUserInteractionEnabled = false
+     }
 }

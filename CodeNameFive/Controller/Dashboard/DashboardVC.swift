@@ -9,8 +9,10 @@
 import UIKit
 import MapKit
 import CoreLocation
+import MaterialProgressBar
 class DashboardVC: UIViewController,CLLocationManagerDelegate,MKMapViewDelegate {
     
+    @IBOutlet weak var loadingView: UIView!
     
     @IBOutlet weak var loadingBar: UIProgressView!
     weak var gotorider :  Timer?
@@ -23,10 +25,12 @@ class DashboardVC: UIViewController,CLLocationManagerDelegate,MKMapViewDelegate 
     @IBOutlet weak var menuButton: UIButton!
     private var locationManager: CLLocationManager!
     private var currentLocation: CLLocation?
-    
+    let progressBar = LinearProgressBar()
+
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        
         if !checkOnlineOrOffline{
             
             goOnlineOfflineButton.backgroundColor = #colorLiteral(red: 0, green: 0.8465872407, blue: 0.7545004487, alpha: 1)
@@ -60,6 +64,7 @@ class DashboardVC: UIViewController,CLLocationManagerDelegate,MKMapViewDelegate 
     
     @objc func runTimedCode()  {
         gotorider?.invalidate()
+        progressBar.stopAnimating()
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let newViewController = storyBoard.instantiateViewController(withIdentifier: "NewTripRequestVC") as! NewTripRequestVC
         navigationController?.pushViewController(newViewController, animated: true)
@@ -99,20 +104,20 @@ extension DashboardVC{
     @IBAction func OnlineOfflineButton(_ sender: Any) {
         
         if checkOnlineOrOffline{
-             
+            progressBar.tintColor = #colorLiteral(red: 0, green: 0.8465872407, blue: 0.7545004487, alpha: 1)
+            self.view.addSubview(progressBar)
+            progressBar.startAnimating()
             goOnlineOfflineButton.backgroundColor = #colorLiteral(red: 1, green: 0.2705882353, blue: 0.2274509804, alpha: 1)
             goOnlineOfflineButton.setTitle("Go offline", for: .normal)
             timetoConectedLbl.isHidden = false
             findingTripsLbl.text = "Finding trips for you..."
             findingTripsLbl.font = UIFont.boldSystemFont(ofSize: 18.0)
             checkOnlineOrOffline = false
-            loadingBar.startProgressing(duration: 1.0, resetProgress: true) {
-                
-            }
-            gotorider =  Timer.scheduledTimer(timeInterval: 4, target: self, selector: #selector(runTimedCode), userInfo: nil, repeats: false)
+            gotorider =  Timer.scheduledTimer(timeInterval: 10, target: self, selector: #selector(runTimedCode), userInfo: nil, repeats: false)
             
         }
         else{
+            
             goOnlineOfflineButton.backgroundColor = #colorLiteral(red: 0, green: 0.8465872407, blue: 0.7545004487, alpha: 1)
             goOnlineOfflineButton.setTitle("Go online", for: .normal)
             timetoConectedLbl.isHidden = true

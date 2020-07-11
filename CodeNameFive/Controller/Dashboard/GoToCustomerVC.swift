@@ -23,14 +23,14 @@ class GoToCustomerVC: UIViewController {
     }
     @IBAction func MessageButton(_ sender: UIBarButtonItem) {
         let vc = ChatVC()
-
-        let transition = CATransition()
-        transition.duration = 0.2
-        transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
-        transition.type = CATransitionType.moveIn
-        transition.subtype = CATransitionSubtype.fromTop
-        navigationController?.view.layer.add(transition, forKey: nil)
-        navigationController?.pushViewController(vc, animated: false)
+      self.presentOnRoot(viewController: vc)
+//        let transition = CATransition()
+//        transition.duration = 0.2
+//        transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
+//        transition.type = CATransitionType.moveIn
+//        transition.subtype = CATransitionSubtype.fromTop
+//        navigationController?.view.layer.add(transition, forKey: nil)
+//        navigationController?.pushViewController(vc, animated: false)
     }
     @IBAction func MenuButton(_ sender: UIBarButtonItem) {
         GoToAppMenu()

@@ -19,6 +19,8 @@ class WeeklyTripsDataViewController: UIViewController {
     @IBOutlet weak var totalNumberOfTrips: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
+        let attributes = [NSAttributedString.Key.font: UIFont(name: "HelveticaNeue-Light", size: 16)!]
+        UINavigationBar.appearance().titleTextAttributes = attributes
         navigationController?.navigationBar.topItem?.title =   navigationBartitle
         setBackButton()
         weeklyDataEarningView.layer.shadowColor = UIColor.gray.cgColor

@@ -260,7 +260,7 @@ extension MainMenuTableViewController{
             if indexPath.row == 1 {
                 let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
                 let vc = storyBoard.instantiateViewController(withIdentifier: "mapSettingTVC") as! mapSettingTVC
-                navigationController?.pushViewController(vc, animated: false)
+                navigationController?.pushViewController(vc, animated: true)
             }
             if indexPath.row == 2 {
                 let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
