@@ -134,10 +134,10 @@ extension LoginVC{
     
     @objc func openRegisterPage(){
         
-        let registerVc : RegisterVC = self.storyboard?.instantiateViewController(withIdentifier: "RegisterVC") as! RegisterVC
         
-        self.presentOnRoot(viewController: registerVc)
-        
+        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let newViewController = storyBoard.instantiateViewController(withIdentifier: "Register1TVC") as! Register1TVC
+        navigationController?.pushViewController(newViewController, animated: false)
         
     }
     

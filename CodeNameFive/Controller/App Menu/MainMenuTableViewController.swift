@@ -23,9 +23,9 @@ class MainMenuTableViewController: UITableViewController {
         self.tableView.tableFooterView = UIView()
         
         setBackButton()
-        if traitCollection.userInterfaceStyle == .dark {
-            navigationController?.navigationBar.barTintColor = UIColor(hex: "#1D1D1E")
-        }
+//        if traitCollection.userInterfaceStyle == .dark {
+//            navigationController?.navigationBar.barTintColor = UIColor(hex: "#1D1D1E")
+//        }
         let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(BackviewController))
         swipeRight.direction = UISwipeGestureRecognizer.Direction.right
         self.view.addGestureRecognizer(swipeRight)
@@ -96,30 +96,18 @@ extension MainMenuTableViewController{
         
         
         let headerView: UITableViewHeaderFooterView = view as! UITableViewHeaderFooterView
-        if traitCollection.userInterfaceStyle == .light {
-            
-            headerView.textLabel!.textColor = UIColor(#colorLiteral(red: 0.4705882353, green: 0.4705882353, blue: 0.4705882353, alpha: 1))
-            headerView.textLabel!.font = UIFont(name: "Poppins-Regular", size: 15)
-            
-            headerView.backgroundView = UIView()
-            headerView.backgroundColor = .clear
-            
-        } else {
-            
-            headerView.textLabel!.textColor = UIColor.darkGray
-            headerView.textLabel!.font = UIFont(name: "Poppins-Regular", size: 15)
-            
-            
-            headerView.backgroundView = UIView()
-            headerView.backgroundColor = .clear
-            
-            let header = view as! UITableViewHeaderFooterView
-            header.textLabel?.textColor = .white
-            
-            
-            
-        }
-        
+        headerView.backgroundView = UIView()
+        headerView.backgroundColor = .clear
+      
+    }
+    
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+//        if traitCollection.userInterfaceStyle == .light {
+//        navigationController?.navigationBar.tintColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+//        }
+//        else{
+//        navigationController?.navigationBar.tintColor = #colorLiteral(red: 0.1764705882, green: 0.1607843137, blue: 0.1490196078, alpha: 1)
+//        }
     }
     
     override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {

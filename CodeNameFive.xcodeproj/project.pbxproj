@@ -36,6 +36,9 @@
 		4F43BC2224A3EE40006CF40F /* WeeklyTripsDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F43BC2124A3EE40006CF40F /* WeeklyTripsDataViewController.swift */; };
 		4F5AE8B824A77D0B00567D05 /* AppFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5AE8B724A77D0B00567D05 /* AppFont.swift */; };
 		4F5AE8BC24A7D49A00567D05 /* EditEmailTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5AE8BB24A7D49A00567D05 /* EditEmailTVC.swift */; };
+		4F5C99FC24BA6D5500DC4A27 /* Register1TVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5C99FB24BA6D5500DC4A27 /* Register1TVC.swift */; };
+		4F5C99FE24BA6D6500DC4A27 /* Register2TVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5C99FD24BA6D6500DC4A27 /* Register2TVC.swift */; };
+		4F5C9A0024BA6D7400DC4A27 /* Register3TVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5C99FF24BA6D7400DC4A27 /* Register3TVC.swift */; };
 		4F617DEE249F6D820022DB8B /* ButtonAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F617DED249F6D820022DB8B /* ButtonAnimation.swift */; };
 		4F61D991249BEFC300B9FE89 /* MainMenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F61D990249BEFC300B9FE89 /* MainMenuTableViewController.swift */; };
 		4F64166B24B088A200B2700F /* PartnerSupportTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F64166A24B088A200B2700F /* PartnerSupportTVC.swift */; };
@@ -134,6 +137,9 @@
 		4F43BC2124A3EE40006CF40F /* WeeklyTripsDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyTripsDataViewController.swift; sourceTree = "<group>"; };
 		4F5AE8B724A77D0B00567D05 /* AppFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFont.swift; sourceTree = "<group>"; };
 		4F5AE8BB24A7D49A00567D05 /* EditEmailTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditEmailTVC.swift; sourceTree = "<group>"; };
+		4F5C99FB24BA6D5500DC4A27 /* Register1TVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Register1TVC.swift; sourceTree = "<group>"; };
+		4F5C99FD24BA6D6500DC4A27 /* Register2TVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Register2TVC.swift; sourceTree = "<group>"; };
+		4F5C99FF24BA6D7400DC4A27 /* Register3TVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Register3TVC.swift; sourceTree = "<group>"; };
 		4F617DED249F6D820022DB8B /* ButtonAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonAnimation.swift; sourceTree = "<group>"; };
 		4F61D990249BEFC300B9FE89 /* MainMenuTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuTableViewController.swift; sourceTree = "<group>"; };
 		4F64166A24B088A200B2700F /* PartnerSupportTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartnerSupportTVC.swift; sourceTree = "<group>"; };
@@ -229,6 +235,7 @@
 		4F2E5634249B4FA800D28462 /* CodeNameFive */ = {
 			isa = PBXGroup;
 			children = (
+				4F5C99FA24BA6D3900DC4A27 /* Register */,
 				4FB978EF24A4D8600093C10F /* Model */,
 				4FB11F12249FED9F00EC629B /* Utilities */,
 				4F61D994249BF04400B9FE89 /* View */,
@@ -404,6 +411,16 @@
 				4F6EDA0824AF686000C058AA /* RegisterVC.swift */,
 			);
 			path = Login;
+			sourceTree = "<group>";
+		};
+		4F5C99FA24BA6D3900DC4A27 /* Register */ = {
+			isa = PBXGroup;
+			children = (
+				4F5C99FB24BA6D5500DC4A27 /* Register1TVC.swift */,
+				4F5C99FD24BA6D6500DC4A27 /* Register2TVC.swift */,
+				4F5C99FF24BA6D7400DC4A27 /* Register3TVC.swift */,
+			);
+			path = Register;
 			sourceTree = "<group>";
 		};
 		4F61D994249BF04400B9FE89 /* View */ = {
@@ -728,6 +745,7 @@
 				4F9A46D324AE1E1800A39380 /* NewTripRequestVC.swift in Sources */,
 				4FBBA4B6249CE014007F72E7 /* DashboardVC.swift in Sources */,
 				4F6EDA0924AF686000C058AA /* RegisterVC.swift in Sources */,
+				4F5C99FE24BA6D6500DC4A27 /* Register2TVC.swift in Sources */,
 				4FD8E15B24AE713A00482106 /* GoToPickupVC.swift in Sources */,
 				4F2E5636249B4FA800D28462 /* AppDelegate.swift in Sources */,
 				4FBBA4B4249CD90B007F72E7 /* Color.swift in Sources */,
@@ -737,6 +755,7 @@
 				4FB978E524A4A8990093C10F /* TripHistoryCell.swift in Sources */,
 				4F92BDB624B290FC00DEDDF3 /* ChatVC.swift in Sources */,
 				4F393B1E24AB47F6009D08AB /* InvoiceDetailCell.swift in Sources */,
+				4F5C99FC24BA6D5500DC4A27 /* Register1TVC.swift in Sources */,
 				4F14A5F824A8DBF50095CA9B /* PreviouspaymentsCell.swift in Sources */,
 				4FB11F14249FEDB000EC629B /* Constant.swift in Sources */,
 				4FD32D8324AA72060086766C /* InboxVC.swift in Sources */,
@@ -757,6 +776,7 @@
 				4F393B2224AB4EA3009D08AB /* HelpCenterVC.swift in Sources */,
 				4F43BC2224A3EE40006CF40F /* WeeklyTripsDataViewController.swift in Sources */,
 				4FE4A400249FF93300CFFC3B /* EditProfileTVC.swift in Sources */,
+				4F5C9A0024BA6D7400DC4A27 /* Register3TVC.swift in Sources */,
 				4F2E5640249B4FA800D28462 /* CodeNameFive.xcdatamodeld in Sources */,
 				4F5AE8B824A77D0B00567D05 /* AppFont.swift in Sources */,
 				4F2E562124AF405900C591EC /* SecurityVC.swift in Sources */,
