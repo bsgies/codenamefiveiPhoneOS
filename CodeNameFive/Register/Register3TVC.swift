@@ -16,16 +16,14 @@ class Register3TVC: UITableViewController {
 
     }
     @IBAction func Register3Continue(_ sender: Any) {
-        
+        navigationController?.setNavigationBarHidden(true, animated: true)
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
                let newViewController = storyBoard.instantiateViewController(withIdentifier: "LoginVC") as! LoginVC
                navigationController?.pushViewController(newViewController, animated: false)
         
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        navigationController?.setNavigationBarHidden(true, animated: animated)
-    }
+
     
    
 
@@ -46,7 +44,7 @@ extension Register3TVC{
      }
      
      @objc func backButtonPressed(btn : UIButton) {
-         
+         //navigationController?.setNavigationBarHidden(false, animated: true)
          self.navigationController?.popViewController(animated: true)
      }
 }
