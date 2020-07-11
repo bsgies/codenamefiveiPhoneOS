@@ -63,8 +63,8 @@ class DashboardVC: UIViewController,CLLocationManagerDelegate,MKMapViewDelegate 
     
     
     @objc func runTimedCode()  {
-        gotorider?.invalidate()
-        progressBar.stopAnimating()
+        //gotorider?.invalidate()
+        //progressBar.stopAnimating()
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let newViewController = storyBoard.instantiateViewController(withIdentifier: "NewTripRequestVC") as! NewTripRequestVC
         navigationController?.pushViewController(newViewController, animated: true)
@@ -132,16 +132,19 @@ extension DashboardVC{
     @IBAction func EarningsButton(_ sender: Any) {
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyBoard.instantiateViewController(withIdentifier: "EarningsVC") as! EarningsVC
-        let transition = CATransition()
-        transition.duration = 0.2
-        transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
-        transition.type = CATransitionType.moveIn
-        transition.subtype = CATransitionSubtype.fromTop
-        navigationController?.view.layer.add(transition, forKey: nil)
-        navigationController?.pushViewController(vc, animated: false)
+        self.presentOnRoot(viewController: vc)
+        
+        
         
     }
+    func presentOnRoot(viewController : UIViewController){
+          let navigationController = UINavigationController(rootViewController: viewController)
+          navigationController.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
+          self.present(navigationController, animated: false, completion: nil)
+          
+      }
 }
+
 
 
 extension UIProgressView {

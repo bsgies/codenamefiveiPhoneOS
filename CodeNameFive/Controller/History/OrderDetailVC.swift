@@ -54,7 +54,6 @@ extension OrderDetailVC : UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 1{
             return detail.count
-            
         }
         else{
             return 1

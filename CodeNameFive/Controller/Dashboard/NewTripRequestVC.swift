@@ -13,7 +13,7 @@ import AVFoundation
 class NewTripRequestVC: UIViewController,CLLocationManagerDelegate,MKMapViewDelegate {
     
     
-    var time : Float = 0
+    var time : Float = 1
     var timer: Timer?
     @IBOutlet weak var remaningTiemForAccepOrder: UIProgressView!
     @IBOutlet weak var cardView: UIView!
@@ -29,6 +29,7 @@ class NewTripRequestVC: UIViewController,CLLocationManagerDelegate,MKMapViewDele
     override func viewDidLoad() {
         super.viewDidLoad()
         UIDevice.vibrate()
+        remaningTiemForAccepOrder.progress = 1
         timer  = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(setProgress), userInfo: nil, repeats: true)
         mapView.delegate = self
         mapView.showsUserLocation = true
@@ -50,15 +51,15 @@ class NewTripRequestVC: UIViewController,CLLocationManagerDelegate,MKMapViewDele
     }
     
     @objc  func setProgress() {
-        time += 0.1
+        time -= 0.1
         remaningTiemForAccepOrder.progress = time
         
-        if time >= 0.7{
+        if time >= 0.1{
             timer?.invalidate()
             remaningTiemForAccepOrder.tintColor = .red
         }
         
-        if time >= 1.0 {
+        if time == 0.0 {
             timer?.invalidate()
             timer  = nil
             GoToDashBoard()

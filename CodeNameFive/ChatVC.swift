@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 import MessageKit
-
+import InputBarAccessoryView
 struct Sender : SenderType {
     var senderId: String
     var displayName: String
@@ -41,6 +41,7 @@ class ChatVC: MessagesViewController, MessagesDataSource,MessagesLayoutDelegate,
                  layout.setMessageIncomingAvatarSize(.zero)
                  layout.setMessageOutgoingAvatarSize(.zero)
                }
+        messageInputBar.delegate = self
         messagesCollectionView.messagesDataSource = self
         messagesCollectionView.messagesLayoutDelegate = self
         messagesCollectionView.messagesDisplayDelegate = self
@@ -158,6 +159,7 @@ extension ChatVC {
     func didTapAccessoryView(in cell: MessageCollectionViewCell) {
         print("Accessory view tapped")
     }
+
     
 }
 
@@ -181,6 +183,51 @@ extension ChatVC{
 //        navigationController?.view.layer.add(transition, forKey: nil)
 //        _ = navigationController?.popViewController(animated: false)
     }
+}
+
+extension ChatVC : InputBarAccessoryViewDelegate  {
+    
+    func inputBar(_ inputBar: InputBarAccessoryView, didPressSendButtonWith text: String) {
+    
+           // Here we can parse for which substrings were autocompleted
+           let attributedText = messageInputBar.inputTextView.attributedText!
+           let range = NSRange(location: 0, length: attributedText.length)
+           attributedText.enumerateAttribute(.autocompleted, in: range, options: []) { (_, range, _) in
+    
+               let substring = attributedText.attributedSubstring(from: range)
+               let context = substring.attribute(.autocompletedContext, at: 0, effectiveRange: nil)
+               print("Autocompleted: `", substring, "` with context: ", context ?? [])
+           }
+        
+        let components = inputBar.inputTextView.text
+        print(components!)
+        
+        messages.append(Message(sender: currentUser, messageId: "8", sentDate: Date().addingTimeInterval(-86400), kind: .text(components!)))
+        DispatchQueue.main.async {
+            self.messagesCollectionView.reloadData()
+        }
+//           messageInputBar.inputTextView.text = String()
+           messageInputBar.invalidatePlugins()
+    
+           // Send button activity animation
+           messageInputBar.sendButton.startAnimating()
+           messageInputBar.inputTextView.placeholder = "Sending..."
+           DispatchQueue.global(qos: .default).async {
+               // fake send request task
+               sleep(1)
+               DispatchQueue.main.async { [weak self] in
+                   self?.messageInputBar.sendButton.stopAnimating()
+                   self?.messageInputBar.inputTextView.placeholder = "Aa"
+                   //self?.insertMessages(components)
+                   self?.messagesCollectionView.scrollToBottom(animated: true)
+               }
+           }
+       }
+    func messageInputBar(_ inputBar: InputBarAccessoryView, textViewTextDidChangeTo text: String) {
+           print("Typing")
+    }
+    
+
 }
 
 

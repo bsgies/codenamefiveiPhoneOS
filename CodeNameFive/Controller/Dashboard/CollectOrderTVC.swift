@@ -45,6 +45,7 @@ class CollectOrderTVC: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        gotoCustomerOutlet.backgroundColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
         gotoCustomerOutlet.isEnabled = false
         setCrossButton()
     }
@@ -136,6 +137,7 @@ extension CollectOrderTVC{
         likeButton.tintColor = #colorLiteral(red: 0, green: 0.8465872407, blue: 0.7545004487, alpha: 1)
         likeButton.isUserInteractionEnabled = false
         dislikeButton.isUserInteractionEnabled = false
+        gotoCustomerOutlet.backgroundColor = #colorLiteral(red: 0, green: 0.8465872407, blue: 0.7545004487, alpha: 1)
        
     }
     func setDisLikeImage() {
@@ -146,5 +148,6 @@ extension CollectOrderTVC{
          dislikeButton.tintColor = .red
         dislikeButton.isUserInteractionEnabled = false
         likeButton.isUserInteractionEnabled = false
+        gotoCustomerOutlet.backgroundColor = #colorLiteral(red: 0, green: 0.8465872407, blue: 0.7545004487, alpha: 1)
      }
 }
