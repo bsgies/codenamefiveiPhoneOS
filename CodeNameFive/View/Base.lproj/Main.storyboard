@@ -3008,7 +3008,7 @@
                                     <outlet property="delegate" destination="b5b-Zf-09A" id="TKi-Y7-ayO"/>
                                 </connections>
                             </tableView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tIU-O3-0Ly">
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tIU-O3-0Ly">
                                 <rect key="frame" x="0.0" y="615.66666666666663" width="414" height="246.33333333333337"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Unable to find pickup" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hcl-yq-gGS">
@@ -4173,6 +4173,9 @@
                                                     <rect key="frame" x="20" y="12.666666666666664" width="384" height="19"/>
                                                     <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="13"/>
                                                     <textInputTraits key="textInputTraits"/>
+                                                    <connections>
+                                                        <action selector="textFieldVehicalType:" destination="tsI-oB-DWY" eventType="editingDidBegin" id="Olq-ld-M1X"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -4261,6 +4264,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Apply to become a partner" largeTitleDisplayMode="always" id="Qec-PF-9DK"/>
+                    <connections>
+                        <outlet property="vechicalType" destination="gVP-3S-F67" id="mwv-JB-idC"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xdc-MV-Bzc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -4292,6 +4298,9 @@
                                                     <rect key="frame" x="20" y="12.666666666666664" width="384" height="19"/>
                                                     <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="13"/>
                                                     <textInputTraits key="textInputTraits"/>
+                                                    <connections>
+                                                        <action selector="dateOfBirthSelection:" destination="vzv-tN-eid" eventType="editingDidBegin" id="gcr-wh-6TI"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -4424,6 +4433,9 @@
                                                     <rect key="frame" x="20" y="12.666666666666664" width="384" height="19"/>
                                                     <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="13"/>
                                                     <textInputTraits key="textInputTraits"/>
+                                                    <connections>
+                                                        <action selector="countrySelection:" destination="vzv-tN-eid" eventType="editingDidBegin" id="dFK-mJ-tNU"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -4490,6 +4502,10 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Apply to become a partner" largeTitleDisplayMode="always" id="FD0-hf-GHZ"/>
+                    <connections>
+                        <outlet property="country" destination="wzN-zZ-hDR" id="b1c-zm-6kn"/>
+                        <outlet property="dateOfBirth" destination="D3t-eg-T0c" id="pnF-Uv-c5k"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nYX-dJ-dDA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -4521,6 +4537,9 @@
                                                     <rect key="frame" x="20" y="12.666666666666664" width="384" height="19"/>
                                                     <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="13"/>
                                                     <textInputTraits key="textInputTraits"/>
+                                                    <connections>
+                                                        <action selector="uploadProffIDSelection:" destination="QKT-UU-Hmn" eventType="editingDidBegin" id="3aF-gq-iax"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -4543,6 +4562,9 @@
                                                     <rect key="frame" x="20" y="12.666666666666664" width="384" height="19"/>
                                                     <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="13"/>
                                                     <textInputTraits key="textInputTraits"/>
+                                                    <connections>
+                                                        <action selector="uploadProofAddress:" destination="QKT-UU-Hmn" eventType="editingDidBegin" id="5b9-qn-7iA"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -4612,6 +4634,10 @@ read the Privacy policy</string>
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Apply to become a partner" largeTitleDisplayMode="always" id="yrR-BD-X3a"/>
+                    <connections>
+                        <outlet property="uploadProofID" destination="Gu6-5G-DSh" id="i8k-FA-sfn"/>
+                        <outlet property="uploadproofAddess" destination="o8m-ch-QvL" id="Re9-af-MXz"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zNW-tB-lii" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

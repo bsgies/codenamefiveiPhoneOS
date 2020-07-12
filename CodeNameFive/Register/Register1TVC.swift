@@ -9,11 +9,29 @@
 import UIKit
 
 class Register1TVC: UITableViewController {
-
+    let picker = UIPickerView()
+    var pickerData: [String] = [String]()
+    var overlayView = UIView()
+    
+    @IBOutlet weak var vechicalType: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
         setBackButton()
+       // Connect data:
+            self.picker.delegate = self
+            self.picker.dataSource = self
+            
+            // Input the data into the array
+            pickerData = ["Bike", "Scooter", "Car", "Rikshaw", "Truk", "Trolly"]
       
+        
+      
+    }
+  
+    @IBAction func textFieldVehicalType(_ sender: Any) {
+        view.endEditing(true)
+        showOverlay()
+                     
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
@@ -24,6 +42,7 @@ class Register1TVC: UITableViewController {
                let newViewController = storyBoard.instantiateViewController(withIdentifier: "Register2TVC") as! Register2TVC
                navigationController?.pushViewController(newViewController, animated: false)
     }
+   
     
 
 }
@@ -53,16 +72,58 @@ extension Register1TVC{
               cell.separatorInset = UIEdgeInsets.zero
               cell.layoutMargins = UIEdgeInsets.zero
     }
-//   override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-//
-//        let myLabel = UILabel()
-//        myLabel.frame = CGRect(x: 20, y: 8, width: 320, height: 20)
-//        myLabel.font = UIFont.boldSystemFont(ofSize: 18)
-//        myLabel.text = self.tableView(tableView, titleForHeaderInSection: section)
-//
-//        let headerView = UIView()
-//        headerView.addSubview(myLabel)
-//
-//        return headerView
-//    }
+    
+
+    
+    
+}
+
+
+extension Register1TVC: UIPickerViewDataSource,UIPickerViewDelegate{
+    // Number of columns of data
+      func numberOfComponents(in pickerView: UIPickerView) -> Int {
+          return 1
+      }
+      
+      func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+          return pickerData.count
+      }
+      
+      
+      func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+          return pickerData[row]
+      }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        removeSubview()
+        vechicalType.text = pickerData[row]
+        
+    }
+
+    public func showOverlay() {
+        
+      if let window = view.window {
+        let subView = UIView(frame: window.frame)
+        subView.tag = 100
+        subView.backgroundColor = UIColor.black.withAlphaComponent(0.5)
+        window.addSubview(subView)
+        subView.addSubview(picker)
+           picker.translatesAutoresizingMaskIntoConstraints = false
+                   // view.addSubview(picker)
+
+        picker.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor).isActive = true
+        picker.centerYAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerYAnchor).isActive = true
+        }
+    }
+    
+    func removeSubview(){
+        let window = view.window
+        if let viewWithTag = window?.viewWithTag(100) {
+         viewWithTag.removeFromSuperview()
+     }else{
+         print("No!")
+        }
+    }
+
+    
 }

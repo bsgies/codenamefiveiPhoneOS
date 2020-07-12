@@ -10,10 +10,16 @@ import UIKit
 
 class Register3TVC: UITableViewController {
 
+    @IBOutlet weak var uploadProofID: UITextField!
+    @IBOutlet weak var uploadproofAddess: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
         setBackButton()
 
+    }
+    @IBAction func uploadProffIDSelection(_ sender: UITextField) {
+    }
+    @IBAction func uploadProofAddress(_ sender: UITextField) {
     }
     @IBAction func Register3Continue(_ sender: Any) {
         navigationController?.setNavigationBarHidden(true, animated: true)

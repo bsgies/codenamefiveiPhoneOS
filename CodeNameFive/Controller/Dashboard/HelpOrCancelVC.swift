@@ -25,7 +25,7 @@ class HelpOrCancelVC: UIViewController,UITableViewDataSource,UITableViewDelegate
     }
     @IBAction func GoBack(_ sender: Any) {
         myTableView.isUserInteractionEnabled = true
-        HideShowView(view: bottomView, hidden: true)
+        removeSubview()
         DispatchQueue.main.async {
             self.myTableView.reloadData()
         }
@@ -134,7 +134,8 @@ class HelpOrCancelVC: UIViewController,UITableViewDataSource,UITableViewDelegate
         tableView.cellForRow(at: indexPath as IndexPath)?.accessoryType = .checkmark
         //addBlur()
         myTableView.isUserInteractionEnabled = false
-        HideShowView(view: bottomView, hidden: false)
+       
+        showOverlay()
         reasonLbl.text =  rejection[indexPath.row]
         
         
@@ -149,26 +150,34 @@ class HelpOrCancelVC: UIViewController,UITableViewDataSource,UITableViewDelegate
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 50
     }
-    
-    func removeBlur() {
-        for subview in myTableView.subviews {
-            if subview is UIVisualEffectView {
-                subview.removeFromSuperview()
-            }
+    func HideShowView(view: UIView, hidden: Bool) {
+           UIView.transition(with: view, duration: 0.5, options: .transitionCrossDissolve, animations: {
+               view.isHidden = hidden
+           })
+       }
+
+    public func showOverlay() {
+        
+      if let window = view.window {
+        let subView = UIView(frame: window.frame)
+        subView.tag = 100
+        subView.backgroundColor = UIColor.black.withAlphaComponent(0.5)
+        window.addSubview(subView)
+        subView.addSubview(bottomView)
+         HideShowView(view: bottomView, hidden: false)
+     
         }
     }
     
-    func HideShowView(view: UIView, hidden: Bool) {
-        UIView.transition(with: view, duration: 0.5, options: .transitionCrossDissolve, animations: {
-            view.isHidden = hidden
-        })
+    func removeSubview(){
+        let window = view.window
+        if let viewWithTag = window?.viewWithTag(100) {
+        HideShowView(view: bottomView, hidden: true)
+         viewWithTag.removeFromSuperview()
+     }else{
+         print("No!")
+        }
     }
-    func addBlur() {
-        let blurEffect = UIBlurEffect(style: .dark)
-        let blurEffectView = UIVisualEffectView(effect: blurEffect)
-        myTableView.backgroundView = blurEffectView
-    }
-    
     
 }
 
