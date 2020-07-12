@@ -27,6 +27,16 @@ class Register1TVC: UITableViewController {
         
       
     }
+    
+    override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        if section == 0{
+        let header = view as! UITableViewHeaderFooterView
+            header.textLabel?.font = UIFont(name: "HelveticaNeue-Bold", size: 20)
+             header.textLabel?.textColor = .black
+            
+        }
+    }
+
   
     @IBAction func textFieldVehicalType(_ sender: Any) {
         view.endEditing(true)
@@ -42,6 +52,7 @@ class Register1TVC: UITableViewController {
                let newViewController = storyBoard.instantiateViewController(withIdentifier: "Register2TVC") as! Register2TVC
                navigationController?.pushViewController(newViewController, animated: false)
     }
+    
    
     
 

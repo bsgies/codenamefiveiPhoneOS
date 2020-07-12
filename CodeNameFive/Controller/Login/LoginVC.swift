@@ -24,13 +24,14 @@ class LoginVC: UIViewController {
         topView.addGestureRecognizer(tap)
         let registerationPage = UITapGestureRecognizer(target: self, action: #selector(openRegisterPage))
         register.addGestureRecognizer(registerationPage)
-        NotificationCenter.default.addObserver(self, selector: #selector(KeyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(KeyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+        
         
     }
     
     override func viewWillAppear(_ animated: Bool) {
         //securityCenterAlign.constant -= self.view.bounds.width
+        NotificationCenter.default.addObserver(self, selector: #selector(KeyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(KeyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: animated)
         
@@ -44,12 +45,12 @@ class LoginVC: UIViewController {
                 GoToSecurityScreen()
                 
             }
-               else if validate.isValidPhone(phone: validate)
-                {
-                    checkemail = "phone"
-                 GoToSecurityScreen()
-                }
-            
+            else if validate.isValidPhone(phone: validate)
+            {
+                checkemail = "phone"
+                GoToSecurityScreen()
+            }
+                
             else{
                 
                 showToast(message: "Please check your email or phone", controller: self)
@@ -59,7 +60,7 @@ class LoginVC: UIViewController {
         else{
             showToast(message: "Fill your email or password", controller: self)
         }
-    
+        
         
     }
     
@@ -184,7 +185,7 @@ extension LoginVC{
         })
     }
     
-
+    
     
     func GoToSecurityScreen() {
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
@@ -193,9 +194,9 @@ extension LoginVC{
         navigationController?.pushViewController(newViewController, animated: false)
     }
     func presentOnRoot(viewController : UIViewController){
-           let navigationController = UINavigationController(rootViewController: viewController)
-           navigationController.modalPresentationStyle = UIModalPresentationStyle.formSheet
-           self.present(navigationController, animated: false, completion: nil)
-           
-       }
+        let navigationController = UINavigationController(rootViewController: viewController)
+        navigationController.modalPresentationStyle = UIModalPresentationStyle.formSheet
+        self.present(navigationController, animated: false, completion: nil)
+        
+    }
 }

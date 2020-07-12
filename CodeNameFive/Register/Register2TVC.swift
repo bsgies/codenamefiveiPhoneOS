@@ -45,6 +45,15 @@ class Register2TVC: UITableViewController {
         showDatePicker()
     }
     
+    override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+          if section == 0{
+          let header = view as! UITableViewHeaderFooterView
+              header.textLabel?.font = UIFont(name: "HelveticaNeue-Bold", size: 20)
+             header.textLabel?.textColor = .black
+              
+          }
+      }
+    
     
     
     @IBAction func Register2Continue(_ sender: Any) {

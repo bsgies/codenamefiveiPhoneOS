@@ -34,6 +34,7 @@
 		4F43BC1C24A3DF4A006CF40F /* mapSettingTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F43BC1B24A3DF4A006CF40F /* mapSettingTVC.swift */; };
 		4F43BC2024A3ED22006CF40F /* TripHistoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F43BC1F24A3ED22006CF40F /* TripHistoryVC.swift */; };
 		4F43BC2224A3EE40006CF40F /* WeeklyTripsDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F43BC2124A3EE40006CF40F /* WeeklyTripsDataViewController.swift */; };
+		4F58477D24BB2F9300B42CB8 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F58477C24BB2F9300B42CB8 /* CloudKit.framework */; };
 		4F5AE8B824A77D0B00567D05 /* AppFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5AE8B724A77D0B00567D05 /* AppFont.swift */; };
 		4F5AE8BC24A7D49A00567D05 /* EditEmailTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5AE8BB24A7D49A00567D05 /* EditEmailTVC.swift */; };
 		4F5C99FC24BA6D5500DC4A27 /* Register1TVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5C99FB24BA6D5500DC4A27 /* Register1TVC.swift */; };
@@ -135,6 +136,8 @@
 		4F43BC1B24A3DF4A006CF40F /* mapSettingTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mapSettingTVC.swift; sourceTree = "<group>"; };
 		4F43BC1F24A3ED22006CF40F /* TripHistoryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripHistoryVC.swift; sourceTree = "<group>"; };
 		4F43BC2124A3EE40006CF40F /* WeeklyTripsDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyTripsDataViewController.swift; sourceTree = "<group>"; };
+		4F58477B24BB2F8100B42CB8 /* CNF.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CNF.entitlements; sourceTree = "<group>"; };
+		4F58477C24BB2F9300B42CB8 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		4F5AE8B724A77D0B00567D05 /* AppFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFont.swift; sourceTree = "<group>"; };
 		4F5AE8BB24A7D49A00567D05 /* EditEmailTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditEmailTVC.swift; sourceTree = "<group>"; };
 		4F5C99FB24BA6D5500DC4A27 /* Register1TVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Register1TVC.swift; sourceTree = "<group>"; };
@@ -186,6 +189,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4F58477D24BB2F9300B42CB8 /* CloudKit.framework in Frameworks */,
 				4F6EDA0D24AF6D7200C058AA /* WebKit.framework in Frameworks */,
 				9DEB037DA4F9D0F45A7EEA67 /* Pods_CodeNameFive.framework in Frameworks */,
 			);
@@ -235,6 +239,7 @@
 		4F2E5634249B4FA800D28462 /* CodeNameFive */ = {
 			isa = PBXGroup;
 			children = (
+				4F58477B24BB2F8100B42CB8 /* CNF.entitlements */,
 				4F5C99FA24BA6D3900DC4A27 /* Register */,
 				4FB978EF24A4D8600093C10F /* Model */,
 				4FB11F12249FED9F00EC629B /* Utilities */,
@@ -435,6 +440,7 @@
 		4F6EDA0B24AF6D7200C058AA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4F58477C24BB2F9300B42CB8 /* CloudKit.framework */,
 				4F6EDA0C24AF6D7200C058AA /* WebKit.framework */,
 				7B5DF454794E155BA3BB3E3E /* Pods_CodeNameFive.framework */,
 				19A89ABD2A0223A8CDF3BBA7 /* Pods_CodeNameFive_CodeNameFiveUITests.framework */,
@@ -963,6 +969,8 @@
 			baseConfigurationReference = 4B96F66020BFE9B5A5C4E053 /* Pods-CodeNameFive.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = CodeNameFive/CNF.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = AJV7J8S8ZJ;
 				INFOPLIST_FILE = CodeNameFive/Info.plist;
@@ -971,8 +979,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = itridtechnologies.CodeNameFive;
+				PRODUCT_BUNDLE_IDENTIFIER = com.itridtechnologies.CodeNameFive;
 				PRODUCT_NAME = CNF;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -983,6 +992,8 @@
 			baseConfigurationReference = F19FE926B322E5B6A3F7E588 /* Pods-CodeNameFive.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = CodeNameFive/CNF.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = AJV7J8S8ZJ;
 				INFOPLIST_FILE = CodeNameFive/Info.plist;
@@ -991,8 +1002,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = itridtechnologies.CodeNameFive;
+				PRODUCT_BUNDLE_IDENTIFIER = com.itridtechnologies.CodeNameFive;
 				PRODUCT_NAME = CNF;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
