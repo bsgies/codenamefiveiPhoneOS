@@ -14,12 +14,13 @@ class CollectcashVC: UIViewController {
     @IBOutlet weak var nameofCustomer: UILabel!
     @IBOutlet weak var amount: UILabel!
     @IBAction func deliveryComplete(_ sender: UIButton) {
-        func GoToDashBoard(){
-            let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-            let newViewController = storyBoard.instantiateViewController(withIdentifier: "DashboardVC")
-            navigationController?.pushViewController(newViewController, animated: true)
-        }
+       GoToDashBoard()
     }
+    func GoToDashBoard(){
+               let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+               let newViewController = storyBoard.instantiateViewController(withIdentifier: "DashboardVC")
+               navigationController?.pushViewController(newViewController, animated: true)
+           }
     override func viewDidLoad() {
         super.viewDidLoad()
         setBackButton()

@@ -138,6 +138,22 @@
 		4F43BC2124A3EE40006CF40F /* WeeklyTripsDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyTripsDataViewController.swift; sourceTree = "<group>"; };
 		4F58477B24BB2F8100B42CB8 /* CNF.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CNF.entitlements; sourceTree = "<group>"; };
 		4F58477C24BB2F9300B42CB8 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
+		4F58477E24BB415500B42CB8 /* Helvetica86HeavyItalic_22450.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Helvetica86HeavyItalic_22450.ttf; sourceTree = "<group>"; };
+		4F58477F24BB415500B42CB8 /* HelveticaNeueBlackItalic 1.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "HelveticaNeueBlackItalic 1.otf"; sourceTree = "<group>"; };
+		4F58478024BB415500B42CB8 /* HelveticaNeueMediumItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = HelveticaNeueMediumItalic.otf; sourceTree = "<group>"; };
+		4F58478124BB415500B42CB8 /* Helvetica55Roman_22439.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Helvetica55Roman_22439.ttf; sourceTree = "<group>"; };
+		4F58478224BB415600B42CB8 /* Helvetica25UltraLight_22433.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Helvetica25UltraLight_22433.ttf; sourceTree = "<group>"; };
+		4F58478324BB415600B42CB8 /* Helvetica45Light_22437.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Helvetica45Light_22437.ttf; sourceTree = "<group>"; };
+		4F58478424BB415600B42CB8 /* HelveticaNeueBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = HelveticaNeueBold.otf; sourceTree = "<group>"; };
+		4F58478524BB415600B42CB8 /* Helvetica85Heavy_22449.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Helvetica85Heavy_22449.ttf; sourceTree = "<group>"; };
+		4F58478624BB415600B42CB8 /* Helvetica65Medium_22443.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Helvetica65Medium_22443.ttf; sourceTree = "<group>"; };
+		4F58478724BB415700B42CB8 /* Helvetica36ThinItalic_22436.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Helvetica36ThinItalic_22436.ttf; sourceTree = "<group>"; };
+		4F58478824BB415700B42CB8 /* Helvetica35Thin_22435.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Helvetica35Thin_22435.ttf; sourceTree = "<group>"; };
+		4F58478924BB415700B42CB8 /* Helvetica95Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Helvetica95Black.ttf; sourceTree = "<group>"; };
+		4F58478A24BB415700B42CB8 /* Helvetica46LightItalic_22438.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Helvetica46LightItalic_22438.ttf; sourceTree = "<group>"; };
+		4F58478B24BB415800B42CB8 /* Helvetica56Italic_22440.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Helvetica56Italic_22440.ttf; sourceTree = "<group>"; };
+		4F58478C24BB415800B42CB8 /* Helvetica26UltraLightItalic_22434.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Helvetica26UltraLightItalic_22434.ttf; sourceTree = "<group>"; };
+		4F58478D24BB415800B42CB8 /* Helvetica 76 Bold Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Helvetica 76 Bold Italic.ttf"; sourceTree = "<group>"; };
 		4F5AE8B724A77D0B00567D05 /* AppFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFont.swift; sourceTree = "<group>"; };
 		4F5AE8BB24A7D49A00567D05 /* EditEmailTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditEmailTVC.swift; sourceTree = "<group>"; };
 		4F5C99FB24BA6D5500DC4A27 /* Register1TVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Register1TVC.swift; sourceTree = "<group>"; };
@@ -280,6 +296,22 @@
 		4F2E5668249B599000D28462 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				4F58478D24BB415800B42CB8 /* Helvetica 76 Bold Italic.ttf */,
+				4F58478224BB415600B42CB8 /* Helvetica25UltraLight_22433.ttf */,
+				4F58478C24BB415800B42CB8 /* Helvetica26UltraLightItalic_22434.ttf */,
+				4F58478824BB415700B42CB8 /* Helvetica35Thin_22435.ttf */,
+				4F58478724BB415700B42CB8 /* Helvetica36ThinItalic_22436.ttf */,
+				4F58478324BB415600B42CB8 /* Helvetica45Light_22437.ttf */,
+				4F58478A24BB415700B42CB8 /* Helvetica46LightItalic_22438.ttf */,
+				4F58478124BB415500B42CB8 /* Helvetica55Roman_22439.ttf */,
+				4F58478B24BB415800B42CB8 /* Helvetica56Italic_22440.ttf */,
+				4F58478624BB415600B42CB8 /* Helvetica65Medium_22443.ttf */,
+				4F58478524BB415600B42CB8 /* Helvetica85Heavy_22449.ttf */,
+				4F58477E24BB415500B42CB8 /* Helvetica86HeavyItalic_22450.ttf */,
+				4F58478924BB415700B42CB8 /* Helvetica95Black.ttf */,
+				4F58477F24BB415500B42CB8 /* HelveticaNeueBlackItalic 1.otf */,
+				4F58478424BB415600B42CB8 /* HelveticaNeueBold.otf */,
+				4F58478024BB415500B42CB8 /* HelveticaNeueMediumItalic.otf */,
 			);
 			path = Fonts;
 			sourceTree = "<group>";
