@@ -20,7 +20,7 @@ class TripDayDataVC: UIViewController {
     @IBOutlet weak var totalEarning: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationController?.navigationBar.topItem?.title = navigationBarTitle
+        self.navigationItem.title = navigationBarTitle
         setBackButton()
         dayDataEarnView.layer.shadowColor = UIColor.gray.cgColor
         dayDataEarnView.layer.shadowOpacity = 0.5
@@ -74,30 +74,10 @@ extension TripDayDataVC : UITableViewDelegate,UITableViewDataSource{
     
     
     func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
-        
         let headerView: UITableViewHeaderFooterView = view as! UITableViewHeaderFooterView
-        if traitCollection.userInterfaceStyle == .light {
-            headerView.textLabel!.textColor = UIColor(#colorLiteral(red: 0.4705882353, green: 0.4705882353, blue: 0.4705882353, alpha: 1))
-            headerView.textLabel!.font = UIFont(name: "Poppins-Regular", size: 15)
-            
-            headerView.backgroundView = UIView()
-            headerView.backgroundColor = .clear
-            
-        } else {
-            
-            headerView.textLabel!.textColor = UIColor.darkGray
-            headerView.textLabel!.font = UIFont(name: "Poppins-Regular", size: 15)
-            
-            
-            headerView.backgroundView = UIView()
-            headerView.backgroundColor = .clear
-            
-            // For Header Text Color
-            let header = view as! UITableViewHeaderFooterView
-            header.textLabel?.textColor = .white
-            
-        }
-        
+        headerView.backgroundView = UIView()
+        headerView.backgroundColor = .clear
+      
     }
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         return UIView()

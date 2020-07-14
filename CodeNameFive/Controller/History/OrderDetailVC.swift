@@ -16,7 +16,7 @@ class OrderDetailVC: UIViewController {
     var orderedResturantName : String?
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationController?.navigationBar.topItem?.title = "#14792"
+        self.navigationItem.title = "#14792"
         setBackButton()
         
         let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(MainMenuTableViewController.BackviewController(gesture:)))
@@ -85,32 +85,10 @@ extension OrderDetailVC : UITableViewDelegate,UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
-        
-        if traitCollection.userInterfaceStyle == .light {
-            let headerView: UITableViewHeaderFooterView = view as! UITableViewHeaderFooterView
-            
-            headerView.textLabel!.textColor = UIColor(#colorLiteral(red: 0.4705882353, green: 0.4705882353, blue: 0.4705882353, alpha: 1))
-            headerView.textLabel!.font = UIFont(name: "Poppins-Regular", size: 15)
-            headerView.backgroundView = UIView()
-            headerView.backgroundColor = .clear
-            
-        } else {
-            
-            let headerView: UITableViewHeaderFooterView = view as! UITableViewHeaderFooterView
-            headerView.layer.borderWidth = 0.6
-            headerView.layer.borderColor = UIColor(hex: "1D1D1E")?.cgColor
-            headerView.textLabel!.textColor = UIColor.darkGray
-            headerView.textLabel!.font = UIFont(name: "Poppins-Regular", size: 15)
-            
-            
-            headerView.backgroundView = UIView()
-            headerView.backgroundColor = .clear
-            
-            let header = view as! UITableViewHeaderFooterView
-            header.textLabel?.textColor = .white
-            
-        }
-        
+        let headerView: UITableViewHeaderFooterView = view as! UITableViewHeaderFooterView
+        headerView.backgroundView = UIView()
+        headerView.backgroundColor = .clear
+      
     }
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         return UIView()
