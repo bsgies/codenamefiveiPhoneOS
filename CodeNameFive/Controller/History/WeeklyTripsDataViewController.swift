@@ -19,9 +19,8 @@ class WeeklyTripsDataViewController: UIViewController {
     @IBOutlet weak var totalNumberOfTrips: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
-        let attributes = [NSAttributedString.Key.font: UIFont(name: "HelveticaNeue-Light", size: 16)!]
-        UINavigationBar.appearance().titleTextAttributes = attributes
-        navigationController?.navigationBar.topItem?.title =   navigationBartitle
+
+        self.navigationItem.title =   navigationBartitle
         setBackButton()
         weeklyDataEarningView.layer.shadowColor = UIColor.gray.cgColor
         weeklyDataEarningView.layer.shadowOpacity = 0.5
@@ -67,32 +66,13 @@ extension WeeklyTripsDataViewController : UITableViewDataSource,UITableViewDeleg
         return cell
     }
     
-    
-    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
-        
+     func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         let headerView: UITableViewHeaderFooterView = view as! UITableViewHeaderFooterView
-        if traitCollection.userInterfaceStyle == .light {
-            
-            headerView.textLabel!.textColor = UIColor(#colorLiteral(red: 0.4705882353, green: 0.4705882353, blue: 0.4705882353, alpha: 1))
-            headerView.textLabel!.font = UIFont(name: "Poppins-Regular", size: 15)
-            
-            headerView.backgroundView = UIView()
-            headerView.backgroundColor = .clear
-            
-        } else {
-            
-            headerView.textLabel!.textColor = UIColor.darkGray
-            headerView.textLabel!.font = UIFont(name: "Poppins-Regular", size: 15)
-            
-            
-            headerView.backgroundView = UIView()
-            headerView.backgroundColor = .clear
-            
-            let header = view as! UITableViewHeaderFooterView
-            header.textLabel?.textColor = .white
-            
-        }
+        headerView.backgroundView = UIView()
+        headerView.backgroundColor = .clear
+      
     }
+    
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         return UIView()
     }
