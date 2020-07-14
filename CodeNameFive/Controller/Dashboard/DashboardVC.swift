@@ -22,6 +22,8 @@ class DashboardVC: UIViewController,CLLocationManagerDelegate,MKMapViewDelegate 
     @IBOutlet weak var timetoConectedLbl: UILabel!
     @IBOutlet weak var findingTripsLbl: UILabel!
     @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var hamburger: UIView!
+    
     @IBOutlet weak var menuButton: UIButton!
     private var locationManager: CLLocationManager!
     private var currentLocation: CLLocation?
@@ -30,6 +32,8 @@ class DashboardVC: UIViewController,CLLocationManagerDelegate,MKMapViewDelegate 
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        let tap = UITapGestureRecognizer(target: self, action: #selector(menuopen))
+        hamburger.addGestureRecognizer(tap)
         
         if !checkOnlineOrOffline{
             
@@ -37,17 +41,18 @@ class DashboardVC: UIViewController,CLLocationManagerDelegate,MKMapViewDelegate 
             goOnlineOfflineButton.setTitle("Go online", for: .normal)
             findingTripsLbl.font = UIFont.boldSystemFont(ofSize: 18.0)
             timetoConectedLbl.isHidden = true
-            findingTripsLbl.text = "You're offline"
+            findingTripsLbl.isHidden = true
+            ///findingTripsLbl.text = "You're offline"
             checkOnlineOrOffline = true
         }
         else{
             
              gotorider =  Timer.scheduledTimer(timeInterval: 4, target: self, selector: #selector(runTimedCode), userInfo: nil, repeats: false)
         }
-       
-        menuButton.layer.cornerRadius = menuButton.frame.size.width / 2
-        menuButton.layer.shadowColor = UIColor(ciColor: .gray).cgColor
-        menuButton.layer.shadowRadius = 1
+//
+//        menuButton.layer.cornerRadius = menuButton.frame.size.width / 2
+//        menuButton.layer.shadowColor = UIColor(ciColor: .gray).cgColor
+//        menuButton.layer.shadowRadius = 1
         mapView.delegate = self
         mapView.showsUserLocation = true
         locationManager = CLLocationManager()
@@ -60,7 +65,11 @@ class DashboardVC: UIViewController,CLLocationManagerDelegate,MKMapViewDelegate 
         }
     }
     
-    
+    @objc func menuopen(){
+        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let newViewController = storyBoard.instantiateViewController(withIdentifier: "AppMenu")
+        navigationController?.pushViewController(newViewController, animated: true)
+    }
     
     @objc func runTimedCode()  {
         //gotorider?.invalidate()
@@ -113,15 +122,17 @@ extension DashboardVC{
             findingTripsLbl.text = "Finding trips for you..."
             findingTripsLbl.font = UIFont.boldSystemFont(ofSize: 18.0)
             checkOnlineOrOffline = false
+            findingTripsLbl.isHidden = false
             gotorider =  Timer.scheduledTimer(timeInterval: 10, target: self, selector: #selector(runTimedCode), userInfo: nil, repeats: false)
             
         }
         else{
-            
+            //goOnlineOfflineButton.centerYAnchor.constraint(equalToSystemSpacingBelow: ce, multiplier: <#T##CGFloat#>)
             goOnlineOfflineButton.backgroundColor = #colorLiteral(red: 0, green: 0.8465872407, blue: 0.7545004487, alpha: 1)
             goOnlineOfflineButton.setTitle("Go online", for: .normal)
             timetoConectedLbl.isHidden = true
-            findingTripsLbl.text = "You're offline"
+            findingTripsLbl.isHidden = true
+            // findingTripsLbl.text = "You're offline"
             findingTripsLbl.font = UIFont.boldSystemFont(ofSize: 18.0)
             checkOnlineOrOffline = true
             self.gotorider?.invalidate()

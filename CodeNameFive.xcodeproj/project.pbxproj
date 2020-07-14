@@ -76,6 +76,7 @@
 		4FF1F72A24AFD92C0035A9A5 /* CollectcashVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF1F72924AFD92C0035A9A5 /* CollectcashVC.swift */; };
 		7F3396838BE8D31C1B074DF4 /* Pods_CodeNameFive_CodeNameFiveUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19A89ABD2A0223A8CDF3BBA7 /* Pods_CodeNameFive_CodeNameFiveUITests.framework */; };
 		8AAC7931ED84BAF73954F75F /* Pods_CodeNameFiveTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D45D1DF0B7A37F0288B18144 /* Pods_CodeNameFiveTests.framework */; };
+		9256B97C24BDC61600FF7CA0 /* ViewEXT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9256B97B24BDC61500FF7CA0 /* ViewEXT.swift */; };
 		9DEB037DA4F9D0F45A7EEA67 /* Pods_CodeNameFive.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B5DF454794E155BA3BB3E3E /* Pods_CodeNameFive.framework */; };
 /* End PBXBuildFile section */
 
@@ -194,6 +195,7 @@
 		4FF1F72724AFD2180035A9A5 /* DeliverOrderTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliverOrderTVC.swift; sourceTree = "<group>"; };
 		4FF1F72924AFD92C0035A9A5 /* CollectcashVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectcashVC.swift; sourceTree = "<group>"; };
 		7B5DF454794E155BA3BB3E3E /* Pods_CodeNameFive.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CodeNameFive.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9256B97B24BDC61500FF7CA0 /* ViewEXT.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewEXT.swift; sourceTree = "<group>"; };
 		AAB8B8806A0B0B2488F59EC0 /* Pods-CodeNameFiveTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CodeNameFiveTests.release.xcconfig"; path = "Target Support Files/Pods-CodeNameFiveTests/Pods-CodeNameFiveTests.release.xcconfig"; sourceTree = "<group>"; };
 		AC1342AE50D70025F56E6189 /* Pods-CodeNameFiveTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CodeNameFiveTests.debug.xcconfig"; path = "Target Support Files/Pods-CodeNameFiveTests/Pods-CodeNameFiveTests.debug.xcconfig"; sourceTree = "<group>"; };
 		D45D1DF0B7A37F0288B18144 /* Pods_CodeNameFiveTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CodeNameFiveTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -325,6 +327,7 @@
 				4F64ADA3249E5AAF0047E9D5 /* Validation.swift */,
 				4F617DED249F6D820022DB8B /* ButtonAnimation.swift */,
 				4F5AE8B724A77D0B00567D05 /* AppFont.swift */,
+				9256B97B24BDC61500FF7CA0 /* ViewEXT.swift */,
 			);
 			path = Extentions;
 			sourceTree = "<group>";
@@ -822,6 +825,7 @@
 				4F64166B24B088A200B2700F /* PartnerSupportTVC.swift in Sources */,
 				4F14A5F424A8AF130095CA9B /* EmmergencycontactTVC.swift in Sources */,
 				4FD32D8524AA73C00086766C /* InboxCell.swift in Sources */,
+				9256B97C24BDC61600FF7CA0 /* ViewEXT.swift in Sources */,
 				4FB978F124A4D8A70093C10F /* OrderDetailVC.swift in Sources */,
 				4F08878824B5F13400CD5554 /* CollectOrderCell.swift in Sources */,
 				4F64AD9D249E40710047E9D5 /* ViewExtenstions.swift in Sources */,
@@ -1015,7 +1019,7 @@
 				PRODUCT_NAME = CNF;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -1038,7 +1042,7 @@
 				PRODUCT_NAME = CNF;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
