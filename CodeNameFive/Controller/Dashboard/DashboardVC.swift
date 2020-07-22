@@ -11,11 +11,9 @@ import GoogleMaps
 import MapKit
 import CoreLocation
 import MaterialProgressBar
-class DashboardVC: UIViewController,CLLocationManagerDelegate,MKMapViewDelegate {
+class DashboardVC: UIViewController {
     
-    @IBOutlet weak var loadingView: UIView!
     
-    @IBOutlet weak var loadingBar: UIProgressView!
     weak var gotorider :  Timer?
     var address = ""
     var checkOnlineOrOffline : Bool = false
@@ -27,8 +25,6 @@ class DashboardVC: UIViewController,CLLocationManagerDelegate,MKMapViewDelegate 
     @IBOutlet weak var dashboardBottomView: UIView!
 
     
-    
-    @IBOutlet weak var menuButton: UIButton!
     private var locationManager: CLLocationManager!
     private var currentLocation: CLLocation?
     let progressBar = LinearProgressBar()
@@ -54,20 +50,29 @@ class DashboardVC: UIViewController,CLLocationManagerDelegate,MKMapViewDelegate 
             
              gotorider =  Timer.scheduledTimer(timeInterval: 4, target: self, selector: #selector(runTimedCode), userInfo: nil, repeats: false)
         }
+        let camera = GMSCameraPosition.camera(withLatitude: 31.520370, longitude: 74.358749, zoom: 6.0)
+        let mapView = GMSMapView.map(withFrame: self.view.frame, camera: camera)
+        self.mapView.addSubview(mapView)
+
+        let marker = GMSMarker()
+        marker.position = CLLocationCoordinate2D(latitude: 31.520370, longitude: 74.358749)
+        marker.title = "Lahore"
+        marker.snippet = "Lahore"
+        marker.map = mapView
 //
 //        menuButton.layer.cornerRadius = menuButton.frame.size.width / 2
 //        menuButton.layer.shadowColor = UIColor(ciColor: .gray).cgColor
 //        menuButton.layer.shadowRadius = 1
-        mapView.delegate = self
-        mapView.showsUserLocation = true
-        locationManager = CLLocationManager()
-        locationManager.delegate = self
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        
-        if CLLocationManager.locationServicesEnabled() {
-            locationManager.requestWhenInUseAuthorization()
-            locationManager.startUpdatingLocation()
-        }
+//        mapView.delegate = self
+//        mapView.showsUserLocation = true
+//        locationManager = CLLocationManager()
+//        locationManager.delegate = self
+//        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+//
+//        if CLLocationManager.locationServicesEnabled() {
+//            locationManager.requestWhenInUseAuthorization()
+//            locationManager.startUpdatingLocation()
+//        }
     }
     
     @objc func menuopen(){
@@ -107,17 +112,7 @@ class DashboardVC: UIViewController,CLLocationManagerDelegate,MKMapViewDelegate 
         super.viewWillDisappear(animated)
         navigationController?.setNavigationBarHidden(false, animated: animated)
     }
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        defer { currentLocation = locations.last }
-        
-        if currentLocation == nil {
-            // Zoom to user location
-            if let userLocation = locations.last {
-                let viewRegion = MKCoordinateRegion(center: userLocation.coordinate, latitudinalMeters: 2000, longitudinalMeters: 2000)
-                mapView.setRegion(viewRegion, animated: false)
-            }
-        }
-    }
+
 }
 
 
