@@ -42,12 +42,56 @@ class NewTripRequestVC: UIViewController,CLLocationManagerDelegate,MKMapViewDele
             locationManager.startUpdatingLocation()
         }
         
+        
+        
+    }
+    func cardViewRadius() {
+        cardView.layer.cornerRadius = 5
+        cardView.layer.maskedCorners = [.layerMaxXMaxYCorner,.layerMinXMaxYCorner]
+        cardView.layer.masksToBounds = false
+    }
+    
+    func cardViewShadow() {
         cardView.layer.shadowColor = UIColor.white.cgColor
         cardView.layer.shadowOpacity = 0.2
         cardView.layer.shadowOffset = .zero
         cardView.layer.shadowRadius = 3
-        cardView.layer.cornerRadius = 12
-        cardView.layer.masksToBounds = false
+        
+    }
+    func cardViewNoShadow() {
+        cardView.layer.shadowOpacity = 0
+        cardView.layer.shadowColor = UIColor.clear.cgColor
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        if traitCollection.userInterfaceStyle == .light {
+            cardViewShadow()
+            cardViewRadius()
+        }
+        else
+        {  cardViewNoShadow()
+           cardViewRadius()
+        }
+    }
+    
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        
+        if #available(iOS 13.0, *) {
+            if self.traitCollection.hasDifferentColorAppearance(comparedTo: previousTraitCollection) {
+                if traitCollection.userInterfaceStyle == .light {
+                    cardViewShadow()
+                    cardViewRadius()
+                }
+                else {
+                    cardViewNoShadow()
+                    cardViewRadius()
+                }
+            }
+        } else {
+            // Fallback on earlier versions
+        }
     }
     
     @objc  func setProgress() {
@@ -90,13 +134,13 @@ extension NewTripRequestVC{
     
     func GoToDashBoard(){
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-               let newViewController = storyBoard.instantiateViewController(withIdentifier: "DashboardVC")
-               navigationController?.pushViewController(newViewController, animated: true)
+        let newViewController = storyBoard.instantiateViewController(withIdentifier: "DashboardVC")
+        navigationController?.pushViewController(newViewController, animated: true)
     }
     func GoToPickup(){
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-               let newViewController = storyBoard.instantiateViewController(withIdentifier: "GoToPickupVC")
-               navigationController?.pushViewController(newViewController, animated: true)
+        let newViewController = storyBoard.instantiateViewController(withIdentifier: "GoToPickupVC")
+        navigationController?.pushViewController(newViewController, animated: true)
     }
     
     
@@ -106,5 +150,5 @@ extension UIDevice {
         AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
     }
     
- 
+    
 }

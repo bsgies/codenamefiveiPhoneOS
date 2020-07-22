@@ -9,20 +9,30 @@
 import UIKit
 
 class TripHistoryVC: UIViewController {
+    let button = UIButton(type: .custom)
 
     var days = ["8 Jun - 14 Jun","1 Jun - 7 Jun","25 May - 31 May","18 May - 27 May"]
     var earning = ["$100","$0.00","$10","$12"]
     override func viewDidLoad() {
         super.viewDidLoad()
+        setImage()
         setCrossButton()
-        
     }
     
+    func setImage() {
+        let origImage = UIImage(named: "close")
+        let tintedImage = origImage?.withRenderingMode(.alwaysTemplate)
+        button.setImage(tintedImage, for: .normal)
+        button.tintColor = #colorLiteral(red: 0, green: 0.8465872407, blue: 0.7545004487, alpha: 1)
+    }
     
+
     func setCrossButton(){
-         let button = UIButton(type: .custom)
+        
+         
          //button.backgroundColor = .red
-         button.setImage(UIImage(named: "close"), for: .normal)
+         //button.setImage(UIImage(named: "close"), for: .normal)
+         
          button.addTarget(self, action: #selector(closeView), for: .touchUpInside)
          button.frame = CGRect(x: 0, y: 0, width: 16, height: 16)
          let barButton = UIBarButtonItem(customView: button)

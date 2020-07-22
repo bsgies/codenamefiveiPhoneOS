@@ -21,6 +21,24 @@ class MainMenuTableViewController: UITableViewController {
         //autoAcceptswitch.isOn = true
     }
     
+    
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+
+        if #available(iOS 13.0, *) {
+            if self.traitCollection.hasDifferentColorAppearance(comparedTo: previousTraitCollection) {
+                if traitCollection.userInterfaceStyle == .dark {
+                    historyIcon.tintColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+                }
+                else {
+                    historyIcon.tintColor = #colorLiteral(red: 0.05882352963, green: 0.180392161, blue: 0.2470588237, alpha: 1)
+                }
+            }
+        } else {
+            // Fallback on earlier versions
+        }
+    }
+    
       override  func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.tableFooterView = UIView()
@@ -92,7 +110,15 @@ extension MainMenuTableViewController{
     //            }
     //
     //        }
-    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        if traitCollection.userInterfaceStyle == .dark {
+               historyIcon.tintColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+           }
+           else {
+               historyIcon.tintColor = #colorLiteral(red: 0.05882352963, green: 0.180392161, blue: 0.2470588237, alpha: 1)
+           }
+    }
     
     override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         let headerView: UITableViewHeaderFooterView = view as! UITableViewHeaderFooterView
@@ -101,19 +127,9 @@ extension MainMenuTableViewController{
         
     }
     
-    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
-        //        if traitCollection.userInterfaceStyle == .light {
-        //        navigationController?.navigationBar.tintColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-        //        }
-        //        else{
-        //        navigationController?.navigationBar.tintColor = #colorLiteral(red: 0.1764705882, green: 0.1607843137, blue: 0.1490196078, alpha: 1)
-        //        }
-    }
-    
     override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         return UIView()
     }
-    
     
     override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return 10

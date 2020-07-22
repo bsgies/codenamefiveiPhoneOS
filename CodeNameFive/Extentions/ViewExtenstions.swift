@@ -35,7 +35,7 @@ extension UIView {
         border.frame = CGRect(x: 0, y: 0, width: frame.size.width, height: borderWidth)
         addSubview(border)
     }
-
+    
     func addBottomBorder(with color: UIColor?, andWidth borderWidth: CGFloat) {
         let border = UIView()
         border.backgroundColor = color

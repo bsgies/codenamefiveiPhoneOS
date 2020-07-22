@@ -18,7 +18,7 @@
             <objects>
                 <viewController storyboardIdentifier="LoginVC" title="Login" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="LoginVC" customModule="CNF" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PS8-g6-vuE">
@@ -82,7 +82,7 @@
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SK5-TU-Ni0">
                                         <rect key="frame" x="0.0" y="104.33333333333326" width="374" height="47"/>
-                                        <color key="backgroundColor" name="primary button"/>
+                                        <color key="backgroundColor" name="primaryButton"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="47" id="VGc-NS-0My"/>
                                         </constraints>
@@ -96,7 +96,7 @@
                                                 <real key="value" value="1"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                <color key="value" name="primary button border"/>
+                                                <color key="value" name="primaryButtonBorder"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
@@ -2582,7 +2582,7 @@
                                     </progressView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JYU-dK-oja">
                                         <rect key="frame" x="14" y="131.66666666666663" width="328" height="50"/>
-                                        <color key="backgroundColor" name="primary button"/>
+                                        <color key="backgroundColor" name="primaryButton"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="EWN-6U-JEI"/>
                                         </constraints>
@@ -2601,7 +2601,7 @@
                                                 <real key="value" value="1"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                <color key="value" name="primary button border"/>
+                                                <color key="value" name="primaryButtonBorder"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
@@ -2705,7 +2705,7 @@
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BmL-hJ-0Ou">
                                         <rect key="frame" x="22" y="85" width="334" height="50"/>
-                                        <color key="backgroundColor" name="primary button"/>
+                                        <color key="backgroundColor" name="primaryButton"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="6xx-TB-f0G"/>
                                         </constraints>
@@ -2724,7 +2724,7 @@
                                                 <real key="value" value="1"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                <color key="value" name="primary button border"/>
+                                                <color key="value" name="primaryButtonBorder"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
@@ -2893,7 +2893,7 @@
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JnO-jh-Ve4">
                                         <rect key="frame" x="16" y="204.99999999999989" width="398" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" name="primary button"/>
+                                        <color key="backgroundColor" name="primaryButton"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="16"/>
                                         <state key="normal" title="Login">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -2909,7 +2909,7 @@
                                                 <real key="value" value="1"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                <color key="value" name="primary button border"/>
+                                                <color key="value" name="primaryButtonBorder"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
@@ -3305,7 +3305,7 @@
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IRD-LV-aoM">
                                                     <rect key="frame" x="20" y="11" width="374" height="50"/>
-                                                    <color key="backgroundColor" name="primary button"/>
+                                                    <color key="backgroundColor" name="primaryButton"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="50" id="DMp-iD-XaT"/>
                                                     </constraints>
@@ -3327,7 +3327,7 @@
                                                             <real key="value" value="1"/>
                                                         </userDefinedRuntimeAttribute>
                                                         <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                            <color key="value" name="primary button border"/>
+                                                            <color key="value" name="primaryButtonBorder"/>
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                     <connections>
@@ -3571,7 +3571,7 @@
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SrE-wQ-XE8">
                                                     <rect key="frame" x="20" y="11" width="374" height="50"/>
-                                                    <color key="backgroundColor" name="primary button"/>
+                                                    <color key="backgroundColor" name="primaryButton"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="50" id="dr1-Gs-XGI"/>
                                                     </constraints>
@@ -3590,7 +3590,7 @@
                                                             <real key="value" value="1"/>
                                                         </userDefinedRuntimeAttribute>
                                                         <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                            <color key="value" name="primary button border"/>
+                                                            <color key="value" name="primaryButtonBorder"/>
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                     <connections>
@@ -3662,7 +3662,7 @@
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S3a-e7-6CG">
                                 <rect key="frame" x="20" y="784" width="374" height="50"/>
-                                <color key="backgroundColor" name="primary button"/>
+                                <color key="backgroundColor" name="primaryButton"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="XFV-PN-RCh"/>
                                 </constraints>
@@ -3681,7 +3681,7 @@
                                         <real key="value" value="1"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                        <color key="value" name="primary button border"/>
+                                        <color key="value" name="primaryButtonBorder"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
@@ -3903,7 +3903,7 @@
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o1Z-iO-arF">
                                         <rect key="frame" x="22" y="85" width="334" height="50"/>
-                                        <color key="backgroundColor" name="primary button"/>
+                                        <color key="backgroundColor" name="primaryButton"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="S8N-jD-XrF"/>
                                         </constraints>
@@ -3922,7 +3922,7 @@
                                                 <real key="value" value="1"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                <color key="value" name="primary button border"/>
+                                                <color key="value" name="primaryButtonBorder"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
@@ -4157,7 +4157,7 @@
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nTY-hJ-eR4">
                                                     <rect key="frame" x="20" y="10" width="374" height="47"/>
-                                                    <color key="backgroundColor" name="primary button"/>
+                                                    <color key="backgroundColor" name="primaryButton"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="16"/>
                                                     <state key="normal" title="Continue">
                                                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -4176,7 +4176,7 @@
                                                             <real key="value" value="1"/>
                                                         </userDefinedRuntimeAttribute>
                                                         <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                            <color key="value" name="primary button border"/>
+                                                            <color key="value" name="primaryButtonBorder"/>
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                     <connections>
@@ -4398,7 +4398,7 @@
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3eB-59-Dvm">
                                                     <rect key="frame" x="20" y="10" width="374" height="47"/>
-                                                    <color key="backgroundColor" name="primary button"/>
+                                                    <color key="backgroundColor" name="primaryButton"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="16"/>
                                                     <state key="normal" title="Continue">
                                                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -4417,7 +4417,7 @@
                                                             <real key="value" value="1"/>
                                                         </userDefinedRuntimeAttribute>
                                                         <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                            <color key="value" name="primary button border"/>
+                                                            <color key="value" name="primaryButtonBorder"/>
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                     <connections>
@@ -4532,7 +4532,7 @@ read the Privacy policy</string>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Ht-TJ-dTf">
                                                     <rect key="frame" x="20" y="10" width="374" height="47"/>
-                                                    <color key="backgroundColor" name="primary button"/>
+                                                    <color key="backgroundColor" name="primaryButton"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="16"/>
                                                     <state key="normal" title="Continue">
                                                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -4551,7 +4551,7 @@ read the Privacy policy</string>
                                                             <real key="value" value="1"/>
                                                         </userDefinedRuntimeAttribute>
                                                         <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                            <color key="value" name="primary button border"/>
+                                                            <color key="value" name="primaryButtonBorder"/>
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                     <connections>
@@ -4668,10 +4668,13 @@ read the Privacy policy</string>
         <namedColor name="navigation">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </namedColor>
-        <namedColor name="primary button">
+        <namedColor name="primary button border">
+            <color red="0.0" green="0.74900001287460327" blue="0.66299998760223389" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="primaryButton">
             <color red="0.071000002324581146" green="0.82400000095367432" blue="0.70200002193450928" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <namedColor name="primary button border">
+        <namedColor name="primaryButtonBorder">
             <color red="0.0" green="0.74900001287460327" blue="0.66299998760223389" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="secondary">
