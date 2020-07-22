@@ -13,10 +13,13 @@ class EditProfileTVC: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setBackButton()
-        let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(MainMenuTableViewController.BackviewController(gesture:)))
+        let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(BackviewController(gesture:)))
                swipeRight.direction = UISwipeGestureRecognizer.Direction.right
                self.view.addGestureRecognizer(swipeRight)
 
+    }
+    @objc func BackviewController(gesture: UIGestureRecognizer) {
+        self.navigationController?.popViewController(animated: true)
     }
     
     func setBackButton(){
@@ -39,13 +42,12 @@ class EditProfileTVC: UITableViewController {
         cell.separatorInset = UIEdgeInsets.zero
         cell.layoutMargins = UIEdgeInsets.zero
         cell.selectionStyle = .none
-        cell.accessoryView = UIImageView(image: UIImage(named: "chevron-right"))
     }
     
     
-           override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-                 return 30
-             }
+//           override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+//                 return 30
+//             }
     
           override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
              let headerView: UITableViewHeaderFooterView = view as! UITableViewHeaderFooterView
@@ -96,9 +98,6 @@ class EditProfileTVC: UITableViewController {
 
         self.navigationController?.popViewController(animated: true)
     }
-    
-
-
  }
 
 extension EditProfileTVC {

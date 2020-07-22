@@ -1,4 +1,9 @@
 PODS:
+  - GoogleMaps (3.9.0):
+    - GoogleMaps/Maps (= 3.9.0)
+  - GoogleMaps/Base (3.9.0)
+  - GoogleMaps/Maps (3.9.0):
+    - GoogleMaps/Base
   - InputBarAccessoryView (4.3.2):
     - InputBarAccessoryView/Core (= 4.3.2)
   - InputBarAccessoryView/Core (4.3.2)
@@ -7,20 +12,23 @@ PODS:
     - InputBarAccessoryView (~> 4.3.0)
 
 DEPENDENCIES:
+  - GoogleMaps
   - MaterialProgressBar
   - MessageKit
 
 SPEC REPOS:
   trunk:
+    - GoogleMaps
     - InputBarAccessoryView
     - MaterialProgressBar
     - MessageKit
 
 SPEC CHECKSUMS:
+  GoogleMaps: 4b5346bddfe6911bb89155d43c903020170523ac
   InputBarAccessoryView: 7985d418040a05fe894bd4b8328dd43ab35517c3
   MaterialProgressBar: 5119975877966d7efd6b8556dea4bc9c036254d6
   MessageKit: 3beb578737a5aa2bba25cc27c7b6d6faa09af5a7
 
-PODFILE CHECKSUM: ad72603f61601e67297be853d40fa1d4c4ad9b96
+PODFILE CHECKSUM: 95e89996580d51b5e9c0c4c194e9b224d6a4c8b0
 
 COCOAPODS: 1.9.3

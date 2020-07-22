@@ -22,12 +22,12 @@ class WeeklyTripsDataViewController: UIViewController {
 
         self.navigationItem.title =   navigationBartitle
         setBackButton()
-        weeklyDataEarningView.layer.shadowColor = UIColor.gray.cgColor
-        weeklyDataEarningView.layer.shadowOpacity = 0.5
-        weeklyDataEarningView.layer.shadowOffset = .zero
-        weeklyDataEarningView.layer.shadowRadius = 4
-        weeklyDataEarningView.layer.masksToBounds = false
-        weeklyDataEarningView.fadeIn()
+        //weeklyDataEarningView.layer.shadowColor = UIColor.gray.cgColor
+        //weeklyDataEarningView.layer.shadowOpacity = 0.5
+        //weeklyDataEarningView.layer.shadowOffset = .zero
+        //weeklyDataEarningView.layer.shadowRadius = 4
+        //weeklyDataEarningView.layer.masksToBounds = false
+        //weeklyDataEarningView.fadeIn()
         let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(MainMenuTableViewController.BackviewController(gesture:)))
         swipeRight.direction = UISwipeGestureRecognizer.Direction.right
         self.view.addGestureRecognizer(swipeRight)
@@ -83,7 +83,7 @@ extension WeeklyTripsDataViewController : UITableViewDataSource,UITableViewDeleg
         cell.preservesSuperviewLayoutMargins = false
         cell.separatorInset = UIEdgeInsets.zero
         cell.layoutMargins = UIEdgeInsets.zero
-        cell.accessoryView = UIImageView(image: UIImage(named: "chevron-right"))
+        // cell.accessoryView = UIImageView(image: UIImage(named: "chevron-right"))
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

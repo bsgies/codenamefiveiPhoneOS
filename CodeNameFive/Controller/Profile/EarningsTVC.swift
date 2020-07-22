@@ -21,9 +21,9 @@ class EarningsTVC: UITableViewController {
     
     func setCrossButton(){
          let button = UIButton(type: .custom)
-         button.setImage(UIImage(named: "x.png"), for: .normal)
+         button.setImage(UIImage(named: "close"), for: .normal)
          button.addTarget(self, action: #selector(closeView), for: .touchUpInside)
-         button.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
+         button.frame = CGRect(x: 0, y: 0, width: 16, height: 16)
          let barButton = UIBarButtonItem(customView: button)
          navigationItem.leftBarButtonItem = barButton
      }
@@ -101,7 +101,7 @@ extension EarningsTVC{
             
         }
         if indexPath.row == 1{
-            cell.accessoryView = UIImageView(image: UIImage(named: "chevron-right"))
+            // cell.accessoryView = UIImageView(image: UIImage(named: "chevron-right"))
             cell.textLabel?.text = "Previous payments"
             cell.detailTextLabel?.text = ""
         }

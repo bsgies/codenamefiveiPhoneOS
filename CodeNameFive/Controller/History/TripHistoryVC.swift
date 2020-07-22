@@ -11,7 +11,7 @@ import UIKit
 class TripHistoryVC: UIViewController {
 
     var days = ["8 Jun - 14 Jun","1 Jun - 7 Jun","25 May - 31 May","18 May - 27 May"]
-    var earning = ["$100","$90","$10","$12"]
+    var earning = ["$100","$0.00","$10","$12"]
     override func viewDidLoad() {
         super.viewDidLoad()
         setCrossButton()
@@ -21,9 +21,10 @@ class TripHistoryVC: UIViewController {
     
     func setCrossButton(){
          let button = UIButton(type: .custom)
-         button.setImage(UIImage(named: "x.png"), for: .normal)
+         //button.backgroundColor = .red
+         button.setImage(UIImage(named: "close"), for: .normal)
          button.addTarget(self, action: #selector(closeView), for: .touchUpInside)
-         button.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
+         button.frame = CGRect(x: 0, y: 0, width: 16, height: 16)
          let barButton = UIBarButtonItem(customView: button)
          navigationItem.leftBarButtonItem = barButton
      }
@@ -48,9 +49,9 @@ extension TripHistoryVC : UITableViewDelegate,UITableViewDataSource{
         return 1
     }
     
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 35
-    }
+//    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+//        return 35
+//    }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
          return days.count
        }
@@ -78,7 +79,7 @@ extension TripHistoryVC : UITableViewDelegate,UITableViewDataSource{
         cell.preservesSuperviewLayoutMargins = false
         cell.separatorInset = UIEdgeInsets.zero
         cell.layoutMargins = UIEdgeInsets.zero
-        cell.accessoryView = UIImageView(image: UIImage(named: "chevron-right"))
+        // cell.accessoryView = UIImageView(image: UIImage(named: "chevron-right"))
        }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

@@ -4,7 +4,6 @@
 //
 //  Created by Muhammad Imran on 25/06/2020.
 //  Copyright © 2020 ITRID TECHNOLOGIES LTD. All rights reserved.
-//
 
 import UIKit
 
@@ -89,7 +88,7 @@ extension TripDayDataVC : UITableViewDelegate,UITableViewDataSource{
         cell.preservesSuperviewLayoutMargins = false
         cell.separatorInset = UIEdgeInsets.zero
         cell.layoutMargins = UIEdgeInsets.zero
-        cell.accessoryView = UIImageView(image: UIImage(named: "chevron-right"))
+       // cell.accessoryView = UIImageView(image: UIImage(named: "chevron-right"))
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

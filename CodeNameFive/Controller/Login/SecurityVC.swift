@@ -124,20 +124,30 @@ extension SecurityVC{
         
     }
     
+     @objc func showAlert(){
+
+         let alertController = UIAlertController(title: "Code not received?", message: "Resend security code (it can take up to a minute to arrive)", preferredStyle: .alert)
+              alertController.view.tintColor = UIColor(#colorLiteral(red: 0, green: 0.8465872407, blue: 0.7545004487, alpha: 1))
+
+                // Create resend button
+                let OKAction = UIAlertAction(title: "Resend", style: .default) { (action:UIAlertAction!) in
+
+                }
+                alertController.addAction(OKAction)
+
+                // Create cancel button
+                let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (action:UIAlertAction!) in
+
+        }
+                // Change cancel title color
+                cancelAction.setValue(UIColor(named: "danger"), forKey: "titleTextColor")
+
+                alertController.addAction(cancelAction)
+
+                // Present Dialog message
+                self.present(alertController, animated: true, completion:nil)
+     }
     
-    @objc func showAlert(){
-        let codeNotReceivedAlert = UIAlertController(title: "Not received it?", message: "Resend security code (it can take up to a minute to arrive)", preferredStyle: UIAlertController.Style.alert)
-        codeNotReceivedAlert.view.tintColor = UIColor(#colorLiteral(red: 0, green: 0.8465872407, blue: 0.7545004487, alpha: 1))
-        codeNotReceivedAlert.addAction(UIAlertAction(title: "Resend", style: .default, handler: { (action: UIAlertAction!) in
-            
-        }))
-        
-        codeNotReceivedAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action: UIAlertAction!) in
-            
-        }))
-        
-        present(codeNotReceivedAlert, animated: true, completion: nil)
-    }
     
     func  GoToDashboard(){
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)

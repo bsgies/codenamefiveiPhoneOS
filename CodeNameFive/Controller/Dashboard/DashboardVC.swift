@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import GoogleMaps
 import MapKit
 import CoreLocation
 import MaterialProgressBar
@@ -23,12 +24,16 @@ class DashboardVC: UIViewController,CLLocationManagerDelegate,MKMapViewDelegate 
     @IBOutlet weak var findingTripsLbl: UILabel!
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var hamburger: UIView!
+    @IBOutlet weak var dashboardBottomView: UIView!
+
+    
     
     @IBOutlet weak var menuButton: UIButton!
     private var locationManager: CLLocationManager!
     private var currentLocation: CLLocation?
     let progressBar = LinearProgressBar()
 
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
@@ -88,9 +93,16 @@ class DashboardVC: UIViewController,CLLocationManagerDelegate,MKMapViewDelegate 
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        
         navigationController?.setNavigationBarHidden(true, animated: animated)
         
+        dashboardBottomView.addTopBorder(with: UIColor(named: "borderColor")!, andWidth: 1.0)
+        dashboardBottomView.addBottomBorder(with: UIColor(named: "borderColor")!, andWidth: 1.0)
+        
+        
     }
+
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         navigationController?.setNavigationBarHidden(false, animated: animated)
@@ -109,14 +121,19 @@ class DashboardVC: UIViewController,CLLocationManagerDelegate,MKMapViewDelegate 
 }
 
 
+
+
 extension DashboardVC{
-    @IBAction func OnlineOfflineButton(_ sender: Any) {
+    @IBAction func OnlineOfflineButton(_ sender: UIButton) {
         
         if checkOnlineOrOffline{
+            sender.setBackgroundColor(color: UIColor(named: "hoverDanger")!, forState: .highlighted)
             progressBar.tintColor = #colorLiteral(red: 0, green: 0.8465872407, blue: 0.7545004487, alpha: 1)
             self.view.addSubview(progressBar)
             progressBar.startAnimating()
-            goOnlineOfflineButton.backgroundColor = #colorLiteral(red: 1, green: 0.2705882353, blue: 0.2274509804, alpha: 1)
+            goOnlineOfflineButton.layer.borderWidth = 1
+            goOnlineOfflineButton.layer.borderColor = #colorLiteral(red: 0.7803921569, green: 0.137254902, blue: 0.1960784314, alpha: 1)
+            goOnlineOfflineButton.backgroundColor = #colorLiteral(red: 0.862745098, green: 0.2078431373, blue: 0.2705882353, alpha: 1)
             goOnlineOfflineButton.setTitle("Go offline", for: .normal)
             timetoConectedLbl.isHidden = false
             findingTripsLbl.text = "Finding trips for you..."
@@ -128,7 +145,10 @@ extension DashboardVC{
         }
         else{
             //goOnlineOfflineButton.centerYAnchor.constraint(equalToSystemSpacingBelow: ce, multiplier: <#T##CGFloat#>)
-            goOnlineOfflineButton.backgroundColor = #colorLiteral(red: 0, green: 0.8465872407, blue: 0.7545004487, alpha: 1)
+            sender.setBackgroundColor(color: UIColor(named: "hover")!, forState: .highlighted)
+            goOnlineOfflineButton.layer.borderWidth = 1
+            goOnlineOfflineButton.layer.borderColor = #colorLiteral(red: 0, green: 0.7490196078, blue: 0.662745098, alpha: 1)
+            goOnlineOfflineButton.backgroundColor = #colorLiteral(red: 0, green: 0.8470588235, blue: 0.7529411765, alpha: 1)
             goOnlineOfflineButton.setTitle("Go online", for: .normal)
             timetoConectedLbl.isHidden = true
             findingTripsLbl.isHidden = true

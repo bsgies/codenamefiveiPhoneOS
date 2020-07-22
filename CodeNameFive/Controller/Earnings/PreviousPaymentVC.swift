@@ -70,8 +70,6 @@ extension PreviousPaymentVC : UITableViewDelegate,UITableViewDataSource{
         cell.preservesSuperviewLayoutMargins = false
         cell.separatorInset = UIEdgeInsets.zero
         cell.layoutMargins = UIEdgeInsets.zero
-        cell.accessoryView = UIImageView(image: UIImage(named: "chevron-right"))
-            
         }
     
      func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

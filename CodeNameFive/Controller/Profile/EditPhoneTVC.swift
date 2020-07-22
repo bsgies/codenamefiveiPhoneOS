@@ -15,10 +15,7 @@ class EditPhoneTVC: UITableViewController {
            self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(Cancel(btn:)))
             self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(Save(btn:)))
             self.navigationController?.navigationBar.tintColor = UIColor(#colorLiteral(red: 0, green: 0.8465872407, blue: 0.7545004487, alpha: 1))
-            
                 self.clearsSelectionOnViewWillAppear = false
-
-            
         }
         
 
@@ -77,6 +74,4 @@ class EditPhoneTVC: UITableViewController {
             cell.separatorInset = UIEdgeInsets.zero
             cell.layoutMargins = UIEdgeInsets.zero
         }
-
-
 }

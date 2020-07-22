@@ -22,11 +22,10 @@ class Register1TVC: UITableViewController {
             self.picker.dataSource = self
             
             // Input the data into the array
-            pickerData = ["Bike", "Scooter", "Car", "Rikshaw", "Truk", "Trolly"]
-      
-        
-      
+            pickerData = ["Bike", "Moped", "Car"]
     }
+    
+    
     
     override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         if section == 0{

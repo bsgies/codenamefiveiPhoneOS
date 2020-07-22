@@ -10,22 +10,34 @@ import UIKit
 
 class LoginVC: UIViewController {
     
+    // Declaring variables
+    @IBOutlet weak var continueOutlet:  UIButton!
     @IBOutlet weak var topView: UIView!
     @IBOutlet weak var register: UILabel!
     @IBOutlet weak var EmailorPhone: UITextField!
     @IBOutlet weak var pathnerImage: UIImageView!
     @IBOutlet weak var bottomView: hit!
     var checkemail: String?
+
+    // Button touchdown event
+    @IBAction func touchdown(_ sender: UIButton) {
+        sender.setBackgroundColor(color: UIColor(named: "hover")!, forState: .highlighted)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        EmailorPhone.layer.borderColor = #colorLiteral(red: 0.9294117647, green: 0.9294117647, blue: 0.9294117647, alpha: 1)
+        EmailorPhone.layer.backgroundColor = #colorLiteral(red: 0.968627451, green: 0.968627451, blue: 0.968627451, alpha: 1)
+        EmailorPhone.layer.borderWidth = 1
+        EmailorPhone.layer.cornerRadius = 3
+        EmailorPhone.clearButtonMode = .always
+        EmailorPhone.clearButtonMode = .whileEditing
         register.isUserInteractionEnabled = true
         let tap = UITapGestureRecognizer(target: self, action: #selector(taped))
         pathnerImage.addGestureRecognizer(tap)
         topView.addGestureRecognizer(tap)
         let registerationPage = UITapGestureRecognizer(target: self, action: #selector(openRegisterPage))
         register.addGestureRecognizer(registerationPage)
-        
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -34,11 +46,10 @@ class LoginVC: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(KeyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: animated)
-        
     }
+
     
-    @IBAction func contniueForPassword(_ sender: Any) {
-        
+    @IBAction func contniueForPassword(_ sender: UIButton) {
         if let validate = EmailorPhone.text{
             if validate.isValidEmail(validate){
                 checkemail = "email"
@@ -53,26 +64,24 @@ class LoginVC: UIViewController {
                 
             else{
                 
-                showToast(message: "Please check your email or phone", controller: self)
+                showToast(message: "Enter a valid email or phone", controller: self)
             }
             
         }
         else{
             showToast(message: "Fill your email or password", controller: self)
         }
-        
-        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(true)
+    
+        
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
         super.viewWillDisappear(animated)
         //navigationController?.setNavigationBarHidden(false, animated: animated)
     }
-    
-    
 }
 
 extension LoginVC{
@@ -199,4 +208,18 @@ extension LoginVC{
         self.present(navigationController, animated: false, completion: nil)
         
     }
+}
+extension UIButton {
+
+    func setBackgroundColor(color: UIColor, forState: UIControl.State) {
+
+        UIGraphicsBeginImageContext(CGSize(width: 1, height: 1))
+        UIGraphicsGetCurrentContext()!.setFillColor(color.cgColor)
+        UIGraphicsGetCurrentContext()!.fill(CGRect(x: 0, y: 0, width: 1, height: 1))
+        let colorImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+
+        self.setBackgroundImage(colorImage, for: forState)
+    }
+
 }
