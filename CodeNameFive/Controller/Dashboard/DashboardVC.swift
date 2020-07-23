@@ -8,7 +8,6 @@
 
 import UIKit
 import GoogleMaps
-import MapKit
 import CoreLocation
 import MaterialProgressBar
 class DashboardVC: UIViewController {
@@ -25,13 +24,13 @@ class DashboardVC: UIViewController {
     @IBOutlet weak var dashboardBottomView: UIView!
 
     
-    private var locationManager: CLLocationManager!
-    private var currentLocation: CLLocation?
-    let progressBar = LinearProgressBar()
+    var locationManager: CLLocationManager!
+    var currentLocation: CLLocation?
+    var mapView: GMSMapView!
+    var zoomLevel: Float = 15.0
 
     
     override func viewDidLoad() {
-        
         super.viewDidLoad()
         let tap = UITapGestureRecognizer(target: self, action: #selector(menuopen))
         hamburger.addGestureRecognizer(tap)
@@ -50,38 +49,21 @@ class DashboardVC: UIViewController {
             
              gotorider =  Timer.scheduledTimer(timeInterval: 4, target: self, selector: #selector(runTimedCode), userInfo: nil, repeats: false)
         }
-        googleMapView.isMyLocationEnabled = true
-        googleMapView.settings.myLocationButton = true
+        LocationManger()
+        Autrize()
+        //SetupMap()
+        
+    
         //googleMapView.padding = UIEdgeInsets(top: 0, left: 0, bottom: 50, right: 50)
     }
+
     
-    @objc func menuopen(){
-        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let newViewController = storyBoard.instantiateViewController(withIdentifier: "AppMenu")
-        navigationController?.pushViewController(newViewController, animated: true)
-    }
-    
-    @objc func runTimedCode()  {
-        //gotorider?.invalidate()
-        //progressBar.stopAnimating()
-        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let newViewController = storyBoard.instantiateViewController(withIdentifier: "NewTripRequestVC") as! NewTripRequestVC
-        navigationController?.pushViewController(newViewController, animated: true)
-    }
-    
-    @IBAction func MenuButtonAction(_ sender: Any) {
-        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let newViewController = storyBoard.instantiateViewController(withIdentifier: "AppMenu")
-        navigationController?.pushViewController(newViewController, animated: true)
-    }
     
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        
         navigationController?.setNavigationBarHidden(true, animated: animated)
-        
         dashboardBottomView.addTopBorder(with: UIColor(named: "borderColor")!, andWidth: 1.0)
         dashboardBottomView.addBottomBorder(with: UIColor(named: "borderColor")!, andWidth: 1.0)
         
@@ -92,6 +74,8 @@ class DashboardVC: UIViewController {
         super.viewWillDisappear(animated)
         navigationController?.setNavigationBarHidden(false, animated: animated)
     }
+    
+    
 
 }
 
@@ -103,9 +87,6 @@ extension DashboardVC{
         
         if checkOnlineOrOffline{
             sender.setBackgroundColor(color: UIColor(named: "dangerHover")!, forState: .highlighted)
-            progressBar.tintColor = #colorLiteral(red: 0, green: 0.8465872407, blue: 0.7545004487, alpha: 1)
-            self.view.addSubview(progressBar)
-            progressBar.startAnimating()
             goOnlineOfflineButton.layer.borderWidth = 1
             goOnlineOfflineButton.layer.borderColor = #colorLiteral(red: 0.7803921569, green: 0.137254902, blue: 0.1960784314, alpha: 1)
             goOnlineOfflineButton.backgroundColor = #colorLiteral(red: 0.862745098, green: 0.2078431373, blue: 0.2705882353, alpha: 1)
@@ -149,38 +130,110 @@ extension DashboardVC{
           self.present(navigationController, animated: false, completion: nil)
           
       }
+
+    @objc func menuopen(){
+        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let newViewController = storyBoard.instantiateViewController(withIdentifier: "AppMenu")
+        navigationController?.pushViewController(newViewController, animated: true)
+    }
+    @objc func runTimedCode()  {
+        //gotorider?.invalidate()
+        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let newViewController = storyBoard.instantiateViewController(withIdentifier: "NewTripRequestVC") as! NewTripRequestVC
+        navigationController?.pushViewController(newViewController, animated: true)
+    }
+    
+    
+    func Autrize(){
+        let locStatus = CLLocationManager.authorizationStatus()
+        switch locStatus {
+           case .notDetermined:
+            locationManager?.requestWhenInUseAuthorization()
+           return
+           case .denied, .restricted:
+              let alert = UIAlertController(title: "Location Services are disabled", message: "Please enable Location Services in your Settings", preferredStyle: .alert)
+              let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+              alert.addAction(okAction)
+              present(alert, animated: true, completion: nil)
+           return
+           case .authorizedAlways, .authorizedWhenInUse:
+           break
+        @unknown default:
+            fatalError()
+        }
+
+    }
+    
+    
+    func LocationManger(){
+        locationManager = CLLocationManager()
+        locationManager?.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager?.requestAlwaysAuthorization()
+        locationManager?.distanceFilter = 50
+        locationManager?.startUpdatingLocation()
+        locationManager?.delegate = self
+    }
+    
+    
+    
+    
 }
 
+extension DashboardVC: CLLocationManagerDelegate {
 
+ 
+    func SetupMap() {
+        mapView.settings.myLocationButton = true
+        mapView.isMyLocationEnabled = true
+        mapView.isHidden = true
+    }
+    
+    
+  func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+    let location: CLLocation = locations.last!
 
-extension UIProgressView {
+    let camera = GMSCameraPosition.camera(withLatitude: location.coordinate.latitude,
+                                          longitude: location.coordinate.longitude,
+                                          zoom: zoomLevel)
+    if mapView.isHidden {
+      mapView.isHidden = false
+      mapView.camera = camera
+    } else {
+      mapView.animate(to: camera)
+    }
 
-    func startProgressing(duration: TimeInterval, resetProgress: Bool, completion: @escaping () -> Void) {
-        stopProgressing()
+  }
 
-        // Reset to 0
-        progress = 0.0
-        layoutIfNeeded()
+  // Handle authorization for the location manager.
+  func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+    switch status {
+    case .restricted:
+      print("Location access was restricted.")
+    case .denied:
+      print("User denied access to location.")
+      // Display the map using the default location.
+      googleMapView.isHidden = false
+    case .notDetermined:
+      print("Location status not determined.")
+    case .authorizedAlways: fallthrough
+    case .authorizedWhenInUse:
+      print("Location status is OK.")
+    @unknown default:
+      fatalError()
+    }
+  }
 
-        // Set the 'destination' progress
-        progress = 1.0
+  // Handle location manager errors.
+  func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+    locationManager.stopUpdatingLocation()
+    print("Error: \(error)")
+  }
+    
+    func isAuthorizedtoGetUserLocation() {
 
-        // Animate the progress
-        UIView.animate(withDuration: duration, animations: {
-            self.layoutIfNeeded()
-
-        }) { finished in
-            // Remove this guard-block, if you want the completion to be called all the time - even when the progression was interrupted
-           // guard finished else { return }
-
-            if resetProgress { self.progress = 0.0 }
-
-            completion()
+        if CLLocationManager.authorizationStatus() != .authorizedWhenInUse     {
+            locationManager.requestWhenInUseAuthorization()
         }
     }
-
-    func stopProgressing() {
-        // Because the 'track' layer has animations on it, we'll try to remove them
-        layer.sublayers?.forEach { $0.removeAllAnimations() }
-    }
 }
+
