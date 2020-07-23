@@ -14,13 +14,13 @@ import MaterialProgressBar
 class DashboardVC: UIViewController {
     
     
+    @IBOutlet weak var googleMapView: GMSMapView!
     weak var gotorider :  Timer?
     var address = ""
     var checkOnlineOrOffline : Bool = false
     @IBOutlet weak var goOnlineOfflineButton: UIButton!
     @IBOutlet weak var timetoConectedLbl: UILabel!
     @IBOutlet weak var findingTripsLbl: UILabel!
-    @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var hamburger: UIView!
     @IBOutlet weak var dashboardBottomView: UIView!
 
@@ -43,36 +43,16 @@ class DashboardVC: UIViewController {
             findingTripsLbl.font = UIFont.boldSystemFont(ofSize: 18.0)
             timetoConectedLbl.isHidden = true
             findingTripsLbl.isHidden = true
-            ///findingTripsLbl.text = "You're offline"
+            //findingTripsLbl.text = "You're offline"
             checkOnlineOrOffline = true
         }
         else{
             
              gotorider =  Timer.scheduledTimer(timeInterval: 4, target: self, selector: #selector(runTimedCode), userInfo: nil, repeats: false)
         }
-        let camera = GMSCameraPosition.camera(withLatitude: 31.520370, longitude: 74.358749, zoom: 6.0)
-        let mapView = GMSMapView.map(withFrame: self.view.frame, camera: camera)
-        self.mapView.addSubview(mapView)
-
-        let marker = GMSMarker()
-        marker.position = CLLocationCoordinate2D(latitude: 31.520370, longitude: 74.358749)
-        marker.title = "Lahore"
-        marker.snippet = "Lahore"
-        marker.map = mapView
-//
-//        menuButton.layer.cornerRadius = menuButton.frame.size.width / 2
-//        menuButton.layer.shadowColor = UIColor(ciColor: .gray).cgColor
-//        menuButton.layer.shadowRadius = 1
-//        mapView.delegate = self
-//        mapView.showsUserLocation = true
-//        locationManager = CLLocationManager()
-//        locationManager.delegate = self
-//        locationManager.desiredAccuracy = kCLLocationAccuracyBest
-//
-//        if CLLocationManager.locationServicesEnabled() {
-//            locationManager.requestWhenInUseAuthorization()
-//            locationManager.startUpdatingLocation()
-//        }
+        googleMapView.isMyLocationEnabled = true
+        googleMapView.settings.myLocationButton = true
+        //googleMapView.padding = UIEdgeInsets(top: 0, left: 0, bottom: 50, right: 50)
     }
     
     @objc func menuopen(){
