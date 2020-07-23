@@ -78,17 +78,10 @@ class CollectOrderTVC: UITableViewController {
 extension CollectOrderTVC{
     
         func phoneNumber(){
-            //let image = UIImage(systemName: "phone.fil" )
-            let ac = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-            
-               ac.addAction(UIAlertAction(title: "+923084706656", style: .default, handler: callingnNumber(action:)))
-    //        ac.setValue(UIImage(systemName: "phone.fil")?.withRenderingMode(UIImage.RenderingMode.alwaysOriginal), forKey: "image")
-               ac.addAction(UIAlertAction(title: "Cancel", style: .cancel))
-               ac.popoverPresentationController?.barButtonItem = self.navigationItem.rightBarButtonItem
-               present(ac, animated: true)
+           callingnNumber()
         }
         
-        func callingnNumber(action: UIAlertAction) {
+        func callingnNumber() {
             if let url = URL(string: "tel://\("+923084706656")") {
                 if #available(iOS 10, *) {
                     UIApplication.shared.open(url)
