@@ -33,6 +33,7 @@ class DashboardVC: UIViewController {
     let path = GMSMutablePath()
     var engine: CHHapticEngine?
     var i = 0
+    var change : Bool = false
     
     var counter = 0
     func customFeedback() {
@@ -118,11 +119,17 @@ class DashboardVC: UIViewController {
         navigationController?.setNavigationBarHidden(true, animated: animated)
         dashboardBottomView.addTopBorder(with: UIColor(named: "borderColor")!, andWidth: 1.0)
         dashboardBottomView.addBottomBorder(with: UIColor(named: "borderColor")!, andWidth: 1.0)
+        NotificationCenter.default.addObserver(self, selector:#selector(DashboardVC.comefrombackground), name: UIApplication.willEnterForegroundNotification, object: UIApplication.shared)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         navigationController?.setNavigationBarHidden(false, animated: animated)
+         NotificationCenter.default.removeObserver(self)
+    }
+    
+    @objc func comefrombackground() {
+        Autrize()
     }
     
     
@@ -378,16 +385,17 @@ extension DashboardVC: CLLocationManagerDelegate {
 extension DashboardVC: GMSMapViewDelegate {
     
     func mapView(_ mapView: GMSMapView, willMove gesture: Bool) {
-        googleMapView.settings.myLocationButton = true
+        if !change{
+            googleMapView.settings.myLocationButton = true}
+            change = false
     }
-//    func mapView(_ mapView: GMSMapView, didChange position: GMSCameraPosition) {
-//            self.googleMapView.settings.myLocationButton = false
-//    }
-   func didTapMyLocationButton(for mapView: GMSMapView) -> Bool {
-
-    self.googleMapView.settings.myLocationButton = false
-                self.googleMapView.reloadInputViews()
-                return true
-            }
+    func didTapMyLocationButton(for mapView: GMSMapView) -> Bool {
+        googleMapView.settings.myLocationButton = false
+        change = true
+        return false
+    }
+    func mapView(_ mapView: GMSMapView, didTapMyLocation location: CLLocationCoordinate2D) {
+        googleMapView.settings.myLocationButton = false
+    }
 }
 
