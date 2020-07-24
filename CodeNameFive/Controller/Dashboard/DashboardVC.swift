@@ -11,6 +11,7 @@ import UIKit
 import GoogleMaps
 import CoreLocation
 import MaterialProgressBar
+import CoreHaptics
 class DashboardVC: UIViewController {
     
     
@@ -30,6 +31,61 @@ class DashboardVC: UIViewController {
     var zoomLevel: Float = 15.0
     var debounce_timer: Timer?
     let path = GMSMutablePath()
+    var engine: CHHapticEngine?
+    var i = 0
+    
+    var counter = 0
+    func customFeedback() {
+        counter += 1
+        switch counter {
+            case 1, 2, 3, 4, 5:
+                let medium = UIImpactFeedbackGenerator(style: .medium)
+                medium.prepare()
+                medium.impactOccurred()
+            case 6:
+                let error = UINotificationFeedbackGenerator()
+                error.prepare()
+                error.notificationOccurred(.error)
+        default:
+            let heavy = UIImpactFeedbackGenerator(style: .heavy)
+            heavy.prepare()
+            heavy.impactOccurred()
+        }
+    }
+    
+     func tapped() {
+        i += 1
+        switch i {
+        case 1:
+            let generator = UINotificationFeedbackGenerator()
+            generator.notificationOccurred(.error)
+
+        case 2:
+            let generator = UINotificationFeedbackGenerator()
+            generator.notificationOccurred(.success)
+
+        case 3:
+            let generator = UINotificationFeedbackGenerator()
+            generator.notificationOccurred(.warning)
+
+        case 4:
+            let generator = UIImpactFeedbackGenerator(style: .light)
+            generator.impactOccurred()
+
+        case 5:
+            let generator = UIImpactFeedbackGenerator(style: .medium)
+            generator.impactOccurred()
+
+        case 6:
+            let generator = UIImpactFeedbackGenerator(style: .heavy)
+            generator.impactOccurred()
+
+        default:
+            let generator = UISelectionFeedbackGenerator()
+            generator.selectionChanged()
+            i = 0
+        }
+    }
     
     //MARK:- Life Cycles
     override func viewDidLoad() {
@@ -69,6 +125,45 @@ class DashboardVC: UIViewController {
         navigationController?.setNavigationBarHidden(false, animated: animated)
     }
     
+    
+    func Haptic()  {
+       
+        guard CHHapticEngine.capabilitiesForHardware().supportsHaptics else { return }
+
+        do {
+            engine = try CHHapticEngine()
+            try engine?.start()
+        } catch {
+            print("There was an error creating the engine: \(error.localizedDescription)")
+        }
+        // create a dull, strong haptic
+        let sharpness = CHHapticEventParameter(parameterID: .hapticSharpness, value: 0)
+        let intensity = CHHapticEventParameter(parameterID: .hapticIntensity, value: 1)
+
+        // create a curve that fades from 1 to 0 over one second
+        let start = CHHapticParameterCurve.ControlPoint(relativeTime: 0, value: 1)
+        let end = CHHapticParameterCurve.ControlPoint(relativeTime: 1, value: 0)
+
+        // use that curve to control the haptic strength
+        let parameter = CHHapticParameterCurve(parameterID: .hapticIntensityControl, controlPoints: [start, end], relativeTime: 0)
+
+        // create a continuous haptic event starting immediately and lasting one second
+        let event = CHHapticEvent(eventType: .hapticContinuous, parameters: [sharpness, intensity], relativeTime: 0, duration: 1)
+
+        // now attempt to play the haptic, with our fading parameter
+        do {
+            let pattern = try CHHapticPattern(events: [event], parameterCurves: [parameter])
+
+            let player = try engine?.makePlayer(with: pattern)
+            try player?.start(atTime: 0)
+        } catch {
+            // add your own meaningful error handling here!
+            print(error.localizedDescription)
+        }
+        
+        
+    }
+    
 }
 
 extension DashboardVC{
@@ -79,6 +174,9 @@ extension DashboardVC{
         
         if checkOnlineOrOffline{
             if onlineButtonCheckAuthrizationForLocation() {
+                //tapped()
+                //Haptic()
+                customFeedback()
                 sender.setBackgroundColor(color: UIColor(named: "dangerHover")!, forState: .highlighted)
                 goOnlineOfflineButton.layer.borderWidth = 1
                 goOnlineOfflineButton.layer.borderColor = #colorLiteral(red: 0.7803921569, green: 0.137254902, blue: 0.1960784314, alpha: 1)
@@ -282,13 +380,14 @@ extension DashboardVC: GMSMapViewDelegate {
     func mapView(_ mapView: GMSMapView, willMove gesture: Bool) {
         googleMapView.settings.myLocationButton = true
     }
-    
-    func mapView(_ mapView: GMSMapView, didChange position: GMSCameraPosition) {
-        
-        debounce_timer?.invalidate()
-        debounce_timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: false) { _ in
-            self.googleMapView.settings.myLocationButton = false
-        }
-    }
+//    func mapView(_ mapView: GMSMapView, didChange position: GMSCameraPosition) {
+//            self.googleMapView.settings.myLocationButton = false
+//    }
+   func didTapMyLocationButton(for mapView: GMSMapView) -> Bool {
+
+    self.googleMapView.settings.myLocationButton = false
+                self.googleMapView.reloadInputViews()
+                return true
+            }
 }
 
