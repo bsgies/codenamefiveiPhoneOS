@@ -29,21 +29,34 @@ class NewTripRequestVC: UIViewController,GMSMapViewDelegate,CLLocationManagerDel
     var timer: Timer?
     private var locationManager: CLLocationManager!
     private var currentLocation: CLLocation?
-    
-    
-//    let url_string = "URL STRING"
-//    let url = URL(string:url_string.addingPercentEncoding(withAllowedCharacters:  CharacterSet.urlQueryAllowed))
-//
-    
+    var fromLoc : CLLocationCoordinate2D?
+    var toLoc : CLLocationCoordinate2D?
+
     //MARK:- LifeCycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        callWebService()
-        //        getPolylineRoute(from: CLLocationCoordinate2D(latitude: 37.36, longitude: -122.0), to: CLLocationCoordinate2D(latitude: 37.45, longitude: -122.0))
+        
         UIDevice.vibrate()
         remaningTiemForAccepOrder.progress = 1
         timer  = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(setProgress), userInfo: nil, repeats: true)
+        
+        
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        mapstyleSilver()
+        if traitCollection.userInterfaceStyle == .light {
+            cardViewShadow()
+            cardViewRadius()
+            mapstyleSilver()
+        }
+        else
+        {  cardViewNoShadow()
+            cardViewRadius()
+            mapstyleDark()        }
         googleMaps.delegate = self
         
         locationManager = CLLocationManager()
@@ -54,18 +67,14 @@ class NewTripRequestVC: UIViewController,GMSMapViewDelegate,CLLocationManagerDel
             locationManager.requestWhenInUseAuthorization()
             locationManager.startUpdatingLocation()
         }
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
-        if traitCollection.userInterfaceStyle == .light {
-            cardViewShadow()
-            cardViewRadius()
+        if CLLocationManager.authorizationStatus() == .authorizedWhenInUse{
+            currentLocation = locationManager.location
+            fromLoc = CLLocationCoordinate2DMake((currentLocation?.coordinate.latitude)!, (currentLocation?.coordinate.longitude)!)
+            toLoc = CLLocationCoordinate2DMake(31.5690, 74.3586)
+            drawPolygon(from: fromLoc!, to: toLoc!)
         }
-        else
-        {  cardViewNoShadow()
-            cardViewRadius()
-        }
+        
+        
     }
     
     //MARK:- CardView Customiztion
@@ -99,8 +108,10 @@ class NewTripRequestVC: UIViewController,GMSMapViewDelegate,CLLocationManagerDel
                 if traitCollection.userInterfaceStyle == .light {
                     cardViewShadow()
                     cardViewRadius()
+                    mapstyleSilver()
                 }
                 else {
+                    mapstyleDark()
                     cardViewNoShadow()
                     cardViewRadius()
                 }
@@ -167,42 +178,147 @@ extension NewTripRequestVC{
 }
 
 
+
+private struct MapPath : Decodable{
+    var routes : [Route]?
+}
+
+private struct Route : Decodable{
+    var overview_polyline : OverView?
+}
+
+private struct OverView : Decodable {
+    var points : String?
+}
+
 extension NewTripRequestVC{
     
-    func callWebService(){
+    //MARK:- Call API for polyline points
+    func drawPolygon(from source: CLLocationCoordinate2D, to destination: CLLocationCoordinate2D){
         
-        let url = NSURL(string: "https://maps.googleapis.com/maps/api/directions/json?origin=Machilipatnam&destination=Vijayawada&mode=driving&key=AIzaSyBXfR7Zu7mvhxO4aydatsUY-VUH-_NG15g")
+        let config = URLSessionConfiguration.default
+        let session = URLSession(configuration: config)
         
-        //let url = NSURL(string: "\("https://maps.googleapis.com/maps/api/directions/json")?origin=\("17.521100"),\("78.452854")&destination=\("15.1393932"),\("76.9214428")")
-        
-        let task = URLSession.shared.dataTask(with: url! as URL) { (data, response, error) -> Void in
-            
-            do {
-                if data != nil {
-                    let dic = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.mutableLeaves) as!  [String:AnyObject]
-                    //                        print(dic)
-                    
-                    let status = dic["status"] as! String
-                    var routesArray:String!
-                    if status == "OK" {
-                        routesArray = (((dic["routes"]!as! [Any])[0] as! [String:Any])["overview_polyline"] as! [String:Any])["points"] as? String
-                    }
-                    
-                    DispatchQueue.main.async {
-                        let path = GMSPath.init(fromEncodedPath: routesArray!)
-                        let singleLine = GMSPolyline.init(path: path)
-                        singleLine.strokeWidth = 6.0
-                        singleLine.strokeColor = .blue
-                        singleLine.map = self.googleMaps
-                    }
-                    
-                }
-            } catch {
-                print("Error")
-            }
+        guard let url = URL(string: "https://maps.googleapis.com/maps/api/directions/json?origin=\(source.latitude),\(source.longitude)&destination=\(destination.latitude),\(destination.longitude)&sensor=false&mode=driving&key=AIzaSyBXfR7Zu7mvhxO4aydatsUY-VUH-_NG15g") else {
+            return
         }
         
-        task.resume()
+        DispatchQueue.main.async {
+            session.dataTask(with: url) { (data, response, error) in
+                guard data != nil else {
+                    return
+                }
+                do {
+                    
+                    let route = try JSONDecoder().decode(MapPath.self, from: data!)
+                    
+                    if let points = route.routes?.first?.overview_polyline?.points {
+                        self.drawPath(with: points)
+                    }
+                    print(route.routes?.first?.overview_polyline?.points as Any)
+                    
+                } catch let error {
+                    
+                    print("Failed to draw ",error.localizedDescription)
+                }
+            }.resume()
+        }
+    }
+    
+    //MARK:- Draw polyline
+    
+    private func drawPath(with points : String){
         
+        DispatchQueue.main.async {
+            
+            let path = GMSPath(fromEncodedPath: points)
+            let polyline = GMSPolyline(path: path)
+            polyline.strokeWidth = 6.0
+            polyline.strokeColor = #colorLiteral(red: 0, green: 0.8465872407, blue: 0.7545004487, alpha: 1)
+            polyline.map = self.googleMaps
+            self.addMarker()
+            
+            let bounds = GMSCoordinateBounds(coordinate: self.fromLoc!, coordinate: self.toLoc!)
+            let update = GMSCameraUpdate.fit(bounds, with: UIEdgeInsets(top: 170, left: 30, bottom: 30, right: 30))
+            
+            self.googleMaps!.moveCamera(update)
+            
+            
+            
+            
+        }
+    }
+    
+    func addMarker(){
+        let smarker = GMSMarker()
+        smarker.position = self.toLoc!
+        smarker.title = "Gullberg"
+        smarker.snippet = "III"
+        smarker.map = self.googleMaps
+        
+        let dmarker = GMSMarker()
+        dmarker.position = self.fromLoc!
+        dmarker.title = "Mughlpura"
+        dmarker.snippet = "Lahore"
+        dmarker.map = self.googleMaps
+        
+    }
+    
+}
+
+
+extension NewTripRequestVC{
+    func mapstyle() {
+        do {
+            
+            if let styleURL = Bundle.main.url(forResource: "style", withExtension: "json") {
+                googleMaps.mapStyle = try GMSMapStyle(contentsOfFileURL: styleURL)
+                
+            } else {
+                NSLog("Unable to find style.json")
+            }
+        } catch {
+            NSLog("One or more of the map styles failed to load. \(error)")
+        }
+    }
+    
+    func mapstyleDark() {
+        do {
+            
+            if let styleURL = Bundle.main.url(forResource: "darkstyle", withExtension: "json") {
+                googleMaps.mapStyle = try GMSMapStyle(contentsOfFileURL: styleURL)
+                
+            } else {
+                NSLog("Unable to find style.json")
+            }
+        } catch {
+            NSLog("One or more of the map styles failed to load. \(error)")
+        }
+    }
+    func mapstyleSilver() {
+        do {
+            
+            if let styleURL = Bundle.main.url(forResource: "Sliver", withExtension: "json") {
+                googleMaps.mapStyle = try GMSMapStyle(contentsOfFileURL: styleURL)
+                
+            } else {
+                NSLog("Unable to find style.json")
+            }
+        } catch {
+            NSLog("One or more of the map styles failed to load. \(error)")
+        }
+    }
+    func mapstyleDarkMode() {
+        do {
+            
+            if let styleURL = Bundle.main.url(forResource: "DarkModeMap", withExtension: "json") {
+                googleMaps.mapStyle = try GMSMapStyle(contentsOfFileURL: styleURL)
+                
+            } else {
+                NSLog("Unable to find style.json")
+            }
+        } catch {
+            NSLog("One or more of the map styles failed to load. \(error)")
+        }
     }
 }

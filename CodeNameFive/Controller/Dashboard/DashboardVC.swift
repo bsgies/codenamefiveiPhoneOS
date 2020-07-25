@@ -105,16 +105,19 @@ class DashboardVC: UIViewController {
             checkOnlineOrOffline = true
         }
         else{
-            gotorider =  Timer.scheduledTimer(timeInterval: 4, target: self, selector: #selector(runTimedCode), userInfo: nil, repeats: false)
+            gotorider =  Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(runTimedCode), userInfo: nil, repeats: false)
         }
         LocationManger()
         Autrize()
         SetupMap()
         
     }
+
+    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        mapstyleSilver()
         Autrize()
         navigationController?.setNavigationBarHidden(true, animated: animated)
         dashboardBottomView.addTopBorder(with: UIColor(named: "borderColor")!, andWidth: 1.0)
@@ -127,6 +130,29 @@ class DashboardVC: UIViewController {
         navigationController?.setNavigationBarHidden(false, animated: animated)
          NotificationCenter.default.removeObserver(self)
     }
+    
+    
+    //MARK:- Light and Dark Mode Delegate
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        
+        if #available(iOS 13.0, *) {
+            if self.traitCollection.hasDifferentColorAppearance(comparedTo: previousTraitCollection) {
+                if traitCollection.userInterfaceStyle == .light {
+                    
+                    mapstyleSilver()
+                                   
+                }
+                else {
+                   mapstyleDark()
+                }
+            }
+        } else {
+            // Fallback on earlier versions
+        }
+    }
+
+    
     
     @objc func comefrombackground() {
         Autrize()
@@ -396,6 +422,63 @@ extension DashboardVC: GMSMapViewDelegate {
     }
     func mapView(_ mapView: GMSMapView, didTapMyLocation location: CLLocationCoordinate2D) {
         googleMapView.settings.myLocationButton = false
+    }
+}
+
+// MARK: - Extension Map Styling
+extension DashboardVC {
+    func mapstyle() {
+        do {
+
+            if let styleURL = Bundle.main.url(forResource: "style", withExtension: "json") {
+                googleMapView.mapStyle = try GMSMapStyle(contentsOfFileURL: styleURL)
+
+            } else {
+                NSLog("Unable to find style.json")
+            }
+        } catch {
+            NSLog("One or more of the map styles failed to load. \(error)")
+        }
+    }
+    
+    func mapstyleDark() {
+          do {
+              
+              if let styleURL = Bundle.main.url(forResource: "darkstyle", withExtension: "json") {
+                  googleMapView.mapStyle = try GMSMapStyle(contentsOfFileURL: styleURL)
+
+              } else {
+                  NSLog("Unable to find style.json")
+              }
+          } catch {
+              NSLog("One or more of the map styles failed to load. \(error)")
+          }
+      }
+    func mapstyleSilver() {
+            do {
+                
+                if let styleURL = Bundle.main.url(forResource: "Sliver", withExtension: "json") {
+                    googleMapView.mapStyle = try GMSMapStyle(contentsOfFileURL: styleURL)
+
+                } else {
+                    NSLog("Unable to find style.json")
+                }
+            } catch {
+                NSLog("One or more of the map styles failed to load. \(error)")
+            }
+        }
+    func mapstyleDarkMode() {
+        do {
+            
+            if let styleURL = Bundle.main.url(forResource: "DarkModeMap", withExtension: "json") {
+                googleMapView.mapStyle = try GMSMapStyle(contentsOfFileURL: styleURL)
+
+            } else {
+                NSLog("Unable to find style.json")
+            }
+        } catch {
+            NSLog("One or more of the map styles failed to load. \(error)")
+        }
     }
 }
 

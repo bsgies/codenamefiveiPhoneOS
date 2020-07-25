@@ -52,6 +52,10 @@
 		4F6EDA0D24AF6D7200C058AA /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F6EDA0C24AF6D7200C058AA /* WebKit.framework */; };
 		4F7CBD2624B1257E00672010 /* ChatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F7CBD2524B1257E00672010 /* ChatCell.swift */; };
 		4F8ED08824CC30F500F658DA /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F8ED08724CC30F500F658DA /* Device.swift */; };
+		4F8ED08E24CC55BB00F658DA /* style.json in Resources */ = {isa = PBXBuildFile; fileRef = 4F8ED08D24CC55BB00F658DA /* style.json */; };
+		4F8ED09024CC567900F658DA /* darkstyle.json in Resources */ = {isa = PBXBuildFile; fileRef = 4F8ED08F24CC567900F658DA /* darkstyle.json */; };
+		4F8ED09224CC575E00F658DA /* Sliver.json in Resources */ = {isa = PBXBuildFile; fileRef = 4F8ED09124CC575E00F658DA /* Sliver.json */; };
+		4F8ED09424CC57A000F658DA /* DarkModeMap.json in Resources */ = {isa = PBXBuildFile; fileRef = 4F8ED09324CC57A000F658DA /* DarkModeMap.json */; };
 		4F92BDB624B290FC00DEDDF3 /* ChatVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F92BDB524B290FC00DEDDF3 /* ChatVC.swift */; };
 		4F9A46D324AE1E1800A39380 /* NewTripRequestVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F9A46D224AE1E1800A39380 /* NewTripRequestVC.swift */; };
 		4FB11F11249FEC3A00EC629B /* ProfileTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FB11F10249FEC3A00EC629B /* ProfileTVC.swift */; };
@@ -174,6 +178,10 @@
 		4F6EDA0C24AF6D7200C058AA /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		4F7CBD2524B1257E00672010 /* ChatCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatCell.swift; sourceTree = "<group>"; };
 		4F8ED08724CC30F500F658DA /* Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
+		4F8ED08D24CC55BB00F658DA /* style.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = style.json; sourceTree = "<group>"; };
+		4F8ED08F24CC567900F658DA /* darkstyle.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = darkstyle.json; sourceTree = "<group>"; };
+		4F8ED09124CC575E00F658DA /* Sliver.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Sliver.json; sourceTree = "<group>"; };
+		4F8ED09324CC57A000F658DA /* DarkModeMap.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = DarkModeMap.json; sourceTree = "<group>"; };
 		4F92BDB524B290FC00DEDDF3 /* ChatVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatVC.swift; sourceTree = "<group>"; };
 		4F9A46D224AE1E1800A39380 /* NewTripRequestVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTripRequestVC.swift; sourceTree = "<group>"; };
 		4FB11F10249FEC3A00EC629B /* ProfileTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTVC.swift; sourceTree = "<group>"; };
@@ -261,6 +269,7 @@
 		4F2E5634249B4FA800D28462 /* CodeNameFive */ = {
 			isa = PBXGroup;
 			children = (
+				4F8ED08924CC53AD00F658DA /* JSON */,
 				4F8ED08424CB59B200F658DA /* Location Services */,
 				4F58477B24BB2F8100B42CB8 /* CNF.entitlements */,
 				4F5C99FA24BA6D3900DC4A27 /* Register */,
@@ -498,6 +507,17 @@
 			path = "Location Services";
 			sourceTree = "<group>";
 		};
+		4F8ED08924CC53AD00F658DA /* JSON */ = {
+			isa = PBXGroup;
+			children = (
+				4F8ED08D24CC55BB00F658DA /* style.json */,
+				4F8ED08F24CC567900F658DA /* darkstyle.json */,
+				4F8ED09124CC575E00F658DA /* Sliver.json */,
+				4F8ED09324CC57A000F658DA /* DarkModeMap.json */,
+			);
+			path = JSON;
+			sourceTree = "<group>";
+		};
 		4FB11F12249FED9F00EC629B /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
@@ -660,6 +680,10 @@
 				4F2E5645249B4FAA00D28462 /* LaunchScreen.storyboard in Resources */,
 				4F2E5642249B4FAA00D28462 /* Assets.xcassets in Resources */,
 				4F2E563D249B4FA800D28462 /* Main.storyboard in Resources */,
+				4F8ED09424CC57A000F658DA /* DarkModeMap.json in Resources */,
+				4F8ED09024CC567900F658DA /* darkstyle.json in Resources */,
+				4F8ED09224CC575E00F658DA /* Sliver.json in Resources */,
+				4F8ED08E24CC55BB00F658DA /* style.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
