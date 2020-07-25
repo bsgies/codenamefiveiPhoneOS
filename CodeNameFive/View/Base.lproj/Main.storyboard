@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="rtz-zU-JNu">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="SbE-77-hSa">
     <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -2507,93 +2507,98 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QdS-WH-Pvp" customClass="GMSMapView">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KOa-aQ-uNt">
-                                <rect key="frame" x="20" y="631.66666666666663" width="361.66666666666669" height="215.33333333333337"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="case" translatesAutoresizingMaskIntoConstraints="NO" id="aXh-GU-7CC">
-                                        <rect key="frame" x="10" y="36" width="24" height="24"/>
-                                    </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hardees" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5bm-ge-rGt">
-                                        <rect key="frame" x="42" y="26" width="287.66666666666669" height="19"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KOa-aQ-uNt">
+                                        <rect key="frame" x="56" y="710" width="302" height="152"/>
+                                        <subviews>
+                                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Fk6-fo-gE1">
+                                                <rect key="frame" x="0.0" y="-9" width="279" height="2"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="2" id="m8L-63-b2t"/>
+                                                </constraints>
+                                            </progressView>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="case" translatesAutoresizingMaskIntoConstraints="NO" id="aXh-GU-7CC">
+                                                <rect key="frame" x="0.0" y="20" width="24" height="24"/>
+                                            </imageView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="X5J-Bm-8lm">
+                                                <rect key="frame" x="32" y="12" width="287" height="71"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hardees" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5bm-ge-rGt">
+                                                        <rect key="frame" x="0.0" y="0.0" width="287" height="17"/>
+                                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="16"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="A-55 Block A, North Nazimabad Karachi" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="gcQ-6h-Cnj">
+                                                        <rect key="frame" x="0.0" y="27" width="287" height="17"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="17" id="sdD-IP-bqf"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="L-144 Sector 11/B, Bufferzone, Karachi" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="Po6-2u-wJY">
+                                                        <rect key="frame" x="0.0" y="54" width="287" height="17"/>
+                                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JYU-dK-oja">
+                                                <rect key="frame" x="17" y="91" width="263" height="40"/>
+                                                <color key="backgroundColor" name="primaryButton"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="40" id="7Od-on-u5N"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="16"/>
+                                                <state key="normal" title="Accept">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="3"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                                        <real key="value" value="0.0"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                        <real key="value" value="1"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                        <color key="value" name="primaryButtonBorder"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="AcceptandGo:" destination="zM2-vo-C3p" eventType="touchUpInside" id="ali-8t-b0w"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" name="UIViewCard"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="19" id="UKf-Jh-yt9"/>
+                                            <constraint firstItem="JYU-dK-oja" firstAttribute="leading" secondItem="X5J-Bm-8lm" secondAttribute="leading" constant="-15" id="8VX-Zf-reK"/>
+                                            <constraint firstItem="JYU-dK-oja" firstAttribute="top" secondItem="X5J-Bm-8lm" secondAttribute="bottom" constant="8" id="FHd-OL-Bdh"/>
+                                            <constraint firstItem="X5J-Bm-8lm" firstAttribute="leading" secondItem="aXh-GU-7CC" secondAttribute="trailing" constant="8" id="GNW-aU-Ldo"/>
+                                            <constraint firstItem="aXh-GU-7CC" firstAttribute="top" secondItem="Fk6-fo-gE1" secondAttribute="bottom" constant="27" id="K8z-Q2-cNR"/>
+                                            <constraint firstItem="JYU-dK-oja" firstAttribute="centerX" secondItem="X5J-Bm-8lm" secondAttribute="centerX" constant="-27" id="PWV-4i-qst"/>
+                                            <constraint firstItem="Fk6-fo-gE1" firstAttribute="top" secondItem="KOa-aQ-uNt" secondAttribute="top" constant="-9" id="Pqm-lO-hyz"/>
+                                            <constraint firstAttribute="trailing" secondItem="X5J-Bm-8lm" secondAttribute="trailing" constant="-17" id="dZM-qJ-XN4"/>
+                                            <constraint firstItem="JYU-dK-oja" firstAttribute="centerX" secondItem="Fk6-fo-gE1" secondAttribute="centerX" constant="8.9999999999999716" id="fkj-EX-jqc"/>
+                                            <constraint firstItem="Fk6-fo-gE1" firstAttribute="leading" secondItem="KOa-aQ-uNt" secondAttribute="leading" id="iPk-6D-xmv"/>
+                                            <constraint firstItem="X5J-Bm-8lm" firstAttribute="top" secondItem="Fk6-fo-gE1" secondAttribute="bottom" constant="19" id="mTZ-6p-VEF"/>
+                                            <constraint firstItem="aXh-GU-7CC" firstAttribute="leading" secondItem="KOa-aQ-uNt" secondAttribute="leading" id="xqJ-oP-xnH"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="16"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="A-55 Block A, North Nazimabad Karachi" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gcQ-6h-Cnj">
-                                        <rect key="frame" x="42" y="53" width="287.66666666666669" height="17"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="17" id="sdD-IP-bqf"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="L-144 Sector 11/B, Bufferzone, Karachi" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="Po6-2u-wJY">
-                                        <rect key="frame" x="42" y="92" width="311.66666666666669" height="18.333333333333329"/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Fk6-fo-gE1">
-                                        <rect key="frame" x="0.0" y="0.0" width="361.66666666666669" height="2"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="2" id="m8L-63-b2t"/>
-                                        </constraints>
-                                    </progressView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JYU-dK-oja">
-                                        <rect key="frame" x="42" y="135.33333333333337" width="287.66666666666669" height="40"/>
-                                        <color key="backgroundColor" name="primaryButton"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="40" id="EWN-6U-JEI"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="16"/>
-                                        <state key="normal" title="Accept">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                <real key="value" value="3"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
-                                                <real key="value" value="0.0"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                                <real key="value" value="1"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                <color key="value" name="primaryButtonBorder"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                        <connections>
-                                            <action selector="AcceptandGo:" destination="zM2-vo-C3p" eventType="touchUpInside" id="ali-8t-b0w"/>
-                                        </connections>
-                                    </button>
+                                    </view>
                                 </subviews>
-                                <color key="backgroundColor" name="UIViewCard"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
-                                    <constraint firstItem="Po6-2u-wJY" firstAttribute="top" secondItem="gcQ-6h-Cnj" secondAttribute="bottom" constant="22" id="6Yl-OF-w3W"/>
-                                    <constraint firstItem="5bm-ge-rGt" firstAttribute="top" secondItem="Fk6-fo-gE1" secondAttribute="bottom" constant="24" id="8xb-2d-E0A"/>
-                                    <constraint firstItem="gcQ-6h-Cnj" firstAttribute="leading" secondItem="Po6-2u-wJY" secondAttribute="leading" id="BIY-zJ-6Ks"/>
-                                    <constraint firstItem="5bm-ge-rGt" firstAttribute="leading" secondItem="gcQ-6h-Cnj" secondAttribute="leading" id="IUw-Ci-V8j"/>
-                                    <constraint firstItem="aXh-GU-7CC" firstAttribute="top" secondItem="Fk6-fo-gE1" secondAttribute="bottom" constant="34" id="K8z-Q2-cNR"/>
-                                    <constraint firstItem="Po6-2u-wJY" firstAttribute="leading" secondItem="KOa-aQ-uNt" secondAttribute="leading" constant="42" id="LoX-dA-Z5M"/>
-                                    <constraint firstItem="gcQ-6h-Cnj" firstAttribute="trailing" secondItem="JYU-dK-oja" secondAttribute="trailing" id="Nsm-ZA-MHl"/>
-                                    <constraint firstItem="Fk6-fo-gE1" firstAttribute="top" secondItem="KOa-aQ-uNt" secondAttribute="top" id="Pqm-lO-hyz"/>
-                                    <constraint firstItem="JYU-dK-oja" firstAttribute="top" secondItem="Po6-2u-wJY" secondAttribute="bottom" constant="25" id="TnM-zJ-Ssy"/>
-                                    <constraint firstItem="Fk6-fo-gE1" firstAttribute="centerX" secondItem="KOa-aQ-uNt" secondAttribute="centerX" id="Tnp-58-lgJ"/>
-                                    <constraint firstItem="gcQ-6h-Cnj" firstAttribute="top" secondItem="5bm-ge-rGt" secondAttribute="bottom" constant="8" id="YV8-Ng-YXe"/>
-                                    <constraint firstAttribute="trailing" secondItem="5bm-ge-rGt" secondAttribute="trailing" constant="32" id="asv-fh-teO"/>
-                                    <constraint firstAttribute="bottom" secondItem="JYU-dK-oja" secondAttribute="bottom" constant="40" id="eAi-8h-aFv"/>
-                                    <constraint firstItem="5bm-ge-rGt" firstAttribute="trailing" secondItem="gcQ-6h-Cnj" secondAttribute="trailing" id="hNP-FA-O1W"/>
-                                    <constraint firstItem="Fk6-fo-gE1" firstAttribute="leading" secondItem="KOa-aQ-uNt" secondAttribute="leading" id="iPk-6D-xmv"/>
-                                    <constraint firstItem="Po6-2u-wJY" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="JYU-dK-oja" secondAttribute="leading" id="iwP-xM-bZh"/>
-                                    <constraint firstItem="5bm-ge-rGt" firstAttribute="leading" secondItem="aXh-GU-7CC" secondAttribute="trailing" constant="8" id="p5R-7A-Oan"/>
-                                    <constraint firstItem="Po6-2u-wJY" firstAttribute="trailing" secondItem="KOa-aQ-uNt" secondAttribute="trailingMargin" id="sMB-hd-hj5"/>
+                                    <constraint firstItem="KOa-aQ-uNt" firstAttribute="bottom" secondItem="QdS-WH-Pvp" secondAttribute="bottomMargin" constant="8" id="03C-ix-Eew"/>
+                                    <constraint firstItem="KOa-aQ-uNt" firstAttribute="top" secondItem="QdS-WH-Pvp" secondAttribute="top" constant="710" id="CfH-cI-tXV"/>
+                                    <constraint firstAttribute="width" secondItem="KOa-aQ-uNt" secondAttribute="width" multiplier="1.37086" id="ZAI-Zu-oj2"/>
+                                    <constraint firstItem="KOa-aQ-uNt" firstAttribute="leading" secondItem="QdS-WH-Pvp" secondAttribute="leadingMargin" constant="48" id="cgs-Cb-n8I"/>
+                                    <constraint firstItem="KOa-aQ-uNt" firstAttribute="centerX" secondItem="QdS-WH-Pvp" secondAttribute="centerX" id="qUg-8k-e5Z"/>
+                                    <constraint firstAttribute="height" secondItem="KOa-aQ-uNt" secondAttribute="height" multiplier="5.67105" id="sw3-Hb-mx0"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -2603,10 +2608,6 @@
                             <constraint firstItem="QdS-WH-Pvp" firstAttribute="top" secondItem="nrg-ZC-pW0" secondAttribute="top" id="V4O-f5-QqI"/>
                             <constraint firstItem="QdS-WH-Pvp" firstAttribute="trailing" secondItem="W8O-ZS-VJ3" secondAttribute="trailing" id="a1T-TN-RRD"/>
                             <constraint firstItem="QdS-WH-Pvp" firstAttribute="leading" secondItem="W8O-ZS-VJ3" secondAttribute="leading" id="dQa-TB-hVB"/>
-                            <constraint firstItem="KOa-aQ-uNt" firstAttribute="leading" secondItem="nrg-ZC-pW0" secondAttribute="leadingMargin" id="g58-Wv-rbW"/>
-                            <constraint firstItem="QdS-WH-Pvp" firstAttribute="width" secondItem="KOa-aQ-uNt" secondAttribute="width" multiplier="1.1447" id="lzg-rg-ivw"/>
-                            <constraint firstItem="W8O-ZS-VJ3" firstAttribute="bottom" secondItem="KOa-aQ-uNt" secondAttribute="bottom" constant="15" id="nQX-lk-ND8"/>
-                            <constraint firstItem="QdS-WH-Pvp" firstAttribute="height" secondItem="KOa-aQ-uNt" secondAttribute="height" multiplier="4" id="s18-AS-iuv"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="W8O-ZS-VJ3"/>
                     </view>

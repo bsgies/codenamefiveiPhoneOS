@@ -48,6 +48,7 @@ class NewTripRequestVC: UIViewController,GMSMapViewDelegate,CLLocationManagerDel
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         mapstyleSilver()
+       // ColorLocationButton()
         if traitCollection.userInterfaceStyle == .light {
             cardViewShadow()
             cardViewRadius()
@@ -240,14 +241,18 @@ extension NewTripRequestVC{
             
             let bounds = GMSCoordinateBounds(coordinate: self.fromLoc!, coordinate: self.toLoc!)
             let update = GMSCameraUpdate.fit(bounds, with: UIEdgeInsets(top: 170, left: 30, bottom: 30, right: 30))
-            
+    
+            //self.googleMaps.animate(with: GMSCameraUpdate.fit(bounds, withPadding: 20.0))
+            self.googleMaps.animate(toZoom: 15)
+            self.googleMaps.animate(toViewingAngle: 70)
             self.googleMaps!.moveCamera(update)
-            
             
             
             
         }
     }
+    
+
     
     func addMarker(){
         let smarker = GMSMarker()

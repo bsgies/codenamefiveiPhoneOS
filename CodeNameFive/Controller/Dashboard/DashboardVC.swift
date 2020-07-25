@@ -117,7 +117,16 @@ class DashboardVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        mapstyleSilver()
+        if traitCollection.userInterfaceStyle == .light {
+            
+            mapstyleSilver()
+        
+                           
+        }
+        else {
+           mapstyleDark()
+        }
+
         Autrize()
         navigationController?.setNavigationBarHidden(true, animated: animated)
         dashboardBottomView.addTopBorder(with: UIColor(named: "borderColor")!, andWidth: 1.0)
@@ -141,6 +150,7 @@ class DashboardVC: UIViewController {
                 if traitCollection.userInterfaceStyle == .light {
                     
                     mapstyleSilver()
+                
                                    
                 }
                 else {
@@ -150,6 +160,39 @@ class DashboardVC: UIViewController {
         } else {
             // Fallback on earlier versions
         }
+    }
+    
+    func ColorLocationButton() -> Void{
+//     for object in googleMapView.subviews{
+//        for obj in object.subviews{
+//           if let button = obj as? UIButton{
+//             let name = button.accessibilityIdentifier
+//            print(name as Any)
+//                if(name == "my_location"){
+//                        //config a position
+//                    button.tintColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+//                    }
+//                }
+//            }
+//        }
+        
+        for object in self.googleMapView.subviews{
+                    if(object.theClassName == "GMSUISettingsPaddingView"){
+                        for view in object.subviews{
+                            if(view.theClassName == "GMSUISettingsView"){
+                                for btn in view.subviews{
+                                    if(btn.theClassName == "GMSx_QTMButton"){
+                                        
+                                        btn.tintColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+
+         
     }
 
     
@@ -412,7 +455,9 @@ extension DashboardVC: GMSMapViewDelegate {
     
     func mapView(_ mapView: GMSMapView, willMove gesture: Bool) {
         if !change{
-            googleMapView.settings.myLocationButton = true}
+            googleMapView.settings.myLocationButton = true
+            ColorLocationButton()
+        }
             change = false
     }
     func didTapMyLocationButton(for mapView: GMSMapView) -> Bool {
@@ -481,4 +526,10 @@ extension DashboardVC {
         }
     }
 }
+
+public extension NSObject {
+         public var theClassName: String {
+             return NSStringFromClass(type(of: self))
+         }
+     }
 
