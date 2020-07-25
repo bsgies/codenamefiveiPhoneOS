@@ -10,29 +10,42 @@ import UIKit
 import MapKit
 import CoreHaptics
 import AVFoundation
-class NewTripRequestVC: UIViewController,CLLocationManagerDelegate,MKMapViewDelegate {
+import GoogleMaps
+
+class NewTripRequestVC: UIViewController,GMSMapViewDelegate,CLLocationManagerDelegate {
     
+    //MARK:- outlets
+    
+    @IBOutlet weak var googleMaps: GMSMapView!
+    @IBOutlet weak var resturanName: UILabel!
+    @IBOutlet weak var resturanAddress: UILabel!
+    @IBOutlet weak var deliverAddress: UILabel!
+    @IBOutlet weak var remaningTiemForAccepOrder: UIProgressView!
+    @IBOutlet weak var cardView: UIView!
+    
+    //MARK:- variables Declareation
     
     var time : Float = 1
     var timer: Timer?
-    @IBOutlet weak var remaningTiemForAccepOrder: UIProgressView!
-    @IBOutlet weak var cardView: UIView!
     private var locationManager: CLLocationManager!
     private var currentLocation: CLLocation?
-    @IBOutlet weak var resturanName: UILabel!
-    @IBOutlet weak var mapView: MKMapView!
-    @IBOutlet weak var resturanAddress: UILabel!
-    @IBOutlet weak var deliverAddress: UILabel!
     
     
+//    let url_string = "URL STRING"
+//    let url = URL(string:url_string.addingPercentEncoding(withAllowedCharacters:  CharacterSet.urlQueryAllowed))
+//
+    
+    //MARK:- LifeCycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        callWebService()
+        //        getPolylineRoute(from: CLLocationCoordinate2D(latitude: 37.36, longitude: -122.0), to: CLLocationCoordinate2D(latitude: 37.45, longitude: -122.0))
         UIDevice.vibrate()
         remaningTiemForAccepOrder.progress = 1
         timer  = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(setProgress), userInfo: nil, repeats: true)
-        mapView.delegate = self
-        mapView.showsUserLocation = true
+        googleMaps.delegate = self
+        
         locationManager = CLLocationManager()
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
@@ -41,10 +54,22 @@ class NewTripRequestVC: UIViewController,CLLocationManagerDelegate,MKMapViewDele
             locationManager.requestWhenInUseAuthorization()
             locationManager.startUpdatingLocation()
         }
-        
-        
-        
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        if traitCollection.userInterfaceStyle == .light {
+            cardViewShadow()
+            cardViewRadius()
+        }
+        else
+        {  cardViewNoShadow()
+            cardViewRadius()
+        }
+    }
+    
+    //MARK:- CardView Customiztion
+    
     func cardViewRadius() {
         cardView.layer.cornerRadius = 5
         cardView.layer.maskedCorners = [.layerMaxXMaxYCorner,.layerMinXMaxYCorner]
@@ -63,17 +88,8 @@ class NewTripRequestVC: UIViewController,CLLocationManagerDelegate,MKMapViewDele
         cardView.layer.shadowColor = UIColor.clear.cgColor
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
-        if traitCollection.userInterfaceStyle == .light {
-            cardViewShadow()
-            cardViewRadius()
-        }
-        else
-        {  cardViewNoShadow()
-           cardViewRadius()
-        }
-    }
+    
+    //MARK:- Light and Dark Mode Delegate
     
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
@@ -94,6 +110,8 @@ class NewTripRequestVC: UIViewController,CLLocationManagerDelegate,MKMapViewDele
         }
     }
     
+    //MARK:- ProgressBar Timer
+    
     @objc  func setProgress() {
         time -= 0.1
         remaningTiemForAccepOrder.progress = time
@@ -110,14 +128,15 @@ class NewTripRequestVC: UIViewController,CLLocationManagerDelegate,MKMapViewDele
         }
     }
     
+    
+    //MARK:- Button Actions
+    
     @IBAction func AcceptandGo(_ sender: Any) {
         GoToPickup()
     }
     @IBAction func RejectButton(_ sender: UIBarButtonItem) {
         UIDevice.vibrate()
-        //timer?.invalidate()
         self.GoToDashBoard()
-        
     }
     @IBAction func menuButton(_ sender: UIBarButtonItem) {
         
@@ -127,8 +146,9 @@ class NewTripRequestVC: UIViewController,CLLocationManagerDelegate,MKMapViewDele
         
     }
     
-    
 }
+
+//MARK:- Extenstion
 
 extension NewTripRequestVC{
     
@@ -145,10 +165,44 @@ extension NewTripRequestVC{
     
     
 }
-extension UIDevice {
-    static func vibrate() {
-        AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
+
+
+extension NewTripRequestVC{
+    
+    func callWebService(){
+        
+        let url = NSURL(string: "https://maps.googleapis.com/maps/api/directions/json?origin=Machilipatnam&destination=Vijayawada&mode=driving&key=AIzaSyBXfR7Zu7mvhxO4aydatsUY-VUH-_NG15g")
+        
+        //let url = NSURL(string: "\("https://maps.googleapis.com/maps/api/directions/json")?origin=\("17.521100"),\("78.452854")&destination=\("15.1393932"),\("76.9214428")")
+        
+        let task = URLSession.shared.dataTask(with: url! as URL) { (data, response, error) -> Void in
+            
+            do {
+                if data != nil {
+                    let dic = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.mutableLeaves) as!  [String:AnyObject]
+                    //                        print(dic)
+                    
+                    let status = dic["status"] as! String
+                    var routesArray:String!
+                    if status == "OK" {
+                        routesArray = (((dic["routes"]!as! [Any])[0] as! [String:Any])["overview_polyline"] as! [String:Any])["points"] as? String
+                    }
+                    
+                    DispatchQueue.main.async {
+                        let path = GMSPath.init(fromEncodedPath: routesArray!)
+                        let singleLine = GMSPolyline.init(path: path)
+                        singleLine.strokeWidth = 6.0
+                        singleLine.strokeColor = .blue
+                        singleLine.map = self.googleMaps
+                    }
+                    
+                }
+            } catch {
+                print("Error")
+            }
+        }
+        
+        task.resume()
+        
     }
-    
-    
 }
