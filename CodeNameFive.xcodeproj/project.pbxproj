@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 53;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -13,6 +13,9 @@
 		4F14A5F424A8AF130095CA9B /* EmmergencycontactTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F14A5F324A8AF130095CA9B /* EmmergencycontactTVC.swift */; };
 		4F14A5F624A8DAC80095CA9B /* PreviousPaymentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F14A5F524A8DAC80095CA9B /* PreviousPaymentVC.swift */; };
 		4F14A5F824A8DBF50095CA9B /* PreviouspaymentsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F14A5F724A8DBF50095CA9B /* PreviouspaymentsCell.swift */; };
+		4F209E5E24CD7A1E001F34BC /* CheckBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F209E5D24CD7A1E001F34BC /* CheckBox.swift */; };
+		4F209E6224CDC3E1001F34BC /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F209E6124CDC3E1001F34BC /* Label.swift */; };
+		4F209E6424CE0997001F34BC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F209E6324CE0997001F34BC /* Foundation.framework */; };
 		4F2E561F24AF403700C591EC /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2E561E24AF403700C591EC /* LoginVC.swift */; };
 		4F2E562124AF405900C591EC /* SecurityVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2E562024AF405900C591EC /* SecurityVC.swift */; };
 		4F2E5636249B4FA800D28462 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2E5635249B4FA800D28462 /* AppDelegate.swift */; };
@@ -23,6 +26,7 @@
 		4F2E5642249B4FAA00D28462 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F2E5641249B4FAA00D28462 /* Assets.xcassets */; };
 		4F2E5645249B4FAA00D28462 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F2E5643249B4FAA00D28462 /* LaunchScreen.storyboard */; };
 		4F2E5683249B684400D28462 /* ButtonRounded.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2E5682249B684400D28462 /* ButtonRounded.swift */; };
+		4F31608B24CE359800347571 /* noti.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4F31608A24CE359700347571 /* noti.mp3 */; };
 		4F393B1E24AB47F6009D08AB /* InvoiceDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F393B1D24AB47F6009D08AB /* InvoiceDetailCell.swift */; };
 		4F393B2024AB48CD009D08AB /* InvoiceDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F393B1F24AB48CD009D08AB /* InvoiceDetailVC.swift */; };
 		4F393B2224AB4EA3009D08AB /* HelpCenterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F393B2124AB4EA3009D08AB /* HelpCenterVC.swift */; };
@@ -114,6 +118,9 @@
 		4F14A5F324A8AF130095CA9B /* EmmergencycontactTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmmergencycontactTVC.swift; sourceTree = "<group>"; };
 		4F14A5F524A8DAC80095CA9B /* PreviousPaymentVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviousPaymentVC.swift; sourceTree = "<group>"; };
 		4F14A5F724A8DBF50095CA9B /* PreviouspaymentsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviouspaymentsCell.swift; sourceTree = "<group>"; };
+		4F209E5D24CD7A1E001F34BC /* CheckBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckBox.swift; sourceTree = "<group>"; };
+		4F209E6124CDC3E1001F34BC /* Label.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Label.swift; sourceTree = "<group>"; };
+		4F209E6324CE0997001F34BC /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		4F2E561E24AF403700C591EC /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		4F2E562024AF405900C591EC /* SecurityVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecurityVC.swift; sourceTree = "<group>"; };
 		4F2E5632249B4FA800D28462 /* CNF.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CNF.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -132,6 +139,7 @@
 		4F2E565A249B4FAB00D28462 /* CodeNameFiveUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeNameFiveUITests.swift; sourceTree = "<group>"; };
 		4F2E565C249B4FAB00D28462 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4F2E5682249B684400D28462 /* ButtonRounded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonRounded.swift; sourceTree = "<group>"; };
+		4F31608A24CE359700347571 /* noti.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = noti.mp3; sourceTree = "<group>"; };
 		4F393B1D24AB47F6009D08AB /* InvoiceDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoiceDetailCell.swift; sourceTree = "<group>"; };
 		4F393B1F24AB48CD009D08AB /* InvoiceDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoiceDetailVC.swift; sourceTree = "<group>"; };
 		4F393B2124AB4EA3009D08AB /* HelpCenterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpCenterVC.swift; sourceTree = "<group>"; };
@@ -222,6 +230,7 @@
 				4F58477D24BB2F9300B42CB8 /* CloudKit.framework in Frameworks */,
 				4F6EDA0D24AF6D7200C058AA /* WebKit.framework in Frameworks */,
 				9DEB037DA4F9D0F45A7EEA67 /* Pods_CodeNameFive.framework in Frameworks */,
+				4F209E6424CE0997001F34BC /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -287,6 +296,7 @@
 				4F2E563E249B4FA800D28462 /* CodeNameFive.xcdatamodeld */,
 				4FB978E624A4A8A70093C10F /* Cell */,
 				4F92BDB524B290FC00DEDDF3 /* ChatVC.swift */,
+				4F31608A24CE359700347571 /* noti.mp3 */,
 			);
 			path = CodeNameFive;
 			sourceTree = "<group>";
@@ -344,6 +354,7 @@
 				9256B97B24BDC61500FF7CA0 /* ViewEXT.swift */,
 				92CD0A1A24BF02AC00CB3572 /* placeholder.swift */,
 				4F8ED08724CC30F500F658DA /* Device.swift */,
+				4F209E6124CDC3E1001F34BC /* Label.swift */,
 			);
 			path = Extentions;
 			sourceTree = "<group>";
@@ -484,6 +495,7 @@
 			children = (
 				4F2E563B249B4FA800D28462 /* Main.storyboard */,
 				4F64AD9E249E40B80047E9D5 /* hit.swift */,
+				4F209E5D24CD7A1E001F34BC /* CheckBox.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -491,6 +503,7 @@
 		4F6EDA0B24AF6D7200C058AA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4F209E6324CE0997001F34BC /* Foundation.framework */,
 				4F58477C24BB2F9300B42CB8 /* CloudKit.framework */,
 				4F6EDA0C24AF6D7200C058AA /* WebKit.framework */,
 				7B5DF454794E155BA3BB3E3E /* Pods_CodeNameFive.framework */,
@@ -653,7 +666,7 @@
 				};
 			};
 			buildConfigurationList = 4F2E562D249B4FA800D28462 /* Build configuration list for PBXProject "CodeNameFive" */;
-			compatibilityVersion = "Xcode 11.4";
+			compatibilityVersion = "Xcode 10.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -677,6 +690,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4F31608B24CE359800347571 /* noti.mp3 in Resources */,
 				4F2E5645249B4FAA00D28462 /* LaunchScreen.storyboard in Resources */,
 				4F2E5642249B4FAA00D28462 /* Assets.xcassets in Resources */,
 				4F2E563D249B4FA800D28462 /* Main.storyboard in Resources */,
@@ -859,6 +873,8 @@
 				4FF1F72624AFCDAA0035A9A5 /* CollectOrderTVC.swift in Sources */,
 				4F9A46D324AE1E1800A39380 /* NewTripRequestVC.swift in Sources */,
 				4FBBA4B6249CE014007F72E7 /* DashboardVC.swift in Sources */,
+				4F209E6224CDC3E1001F34BC /* Label.swift in Sources */,
+				4F209E5E24CD7A1E001F34BC /* CheckBox.swift in Sources */,
 				4F6EDA0924AF686000C058AA /* RegisterVC.swift in Sources */,
 				4F5C99FE24BA6D6500DC4A27 /* Register2TVC.swift in Sources */,
 				4FD8E15B24AE713A00482106 /* GoToPickupVC.swift in Sources */,

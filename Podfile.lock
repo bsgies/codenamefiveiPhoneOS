@@ -7,12 +7,24 @@ PODS:
   - InputBarAccessoryView (4.3.2):
     - InputBarAccessoryView/Core (= 4.3.2)
   - InputBarAccessoryView/Core (4.3.2)
+  - MaterialComponents/ActivityIndicator (107.4.0):
+    - MaterialComponents/Palettes
+    - MaterialComponents/private/Application
+    - MDFInternationalization
+    - MotionAnimator (~> 2.0)
+  - MaterialComponents/Palettes (107.4.0)
+  - MaterialComponents/private/Application (107.4.0)
   - MaterialProgressBar (1.2.0)
+  - MDFInternationalization (2.0.0)
   - MessageKit (3.1.0):
     - InputBarAccessoryView (~> 4.3.0)
+  - MotionAnimator (2.8.1):
+    - MotionInterchange (~> 1.6)
+  - MotionInterchange (1.6.0)
 
 DEPENDENCIES:
   - GoogleMaps
+  - MaterialComponents/ActivityIndicator (~> 107.4)
   - MaterialProgressBar
   - MessageKit
 
@@ -20,15 +32,23 @@ SPEC REPOS:
   trunk:
     - GoogleMaps
     - InputBarAccessoryView
+    - MaterialComponents
     - MaterialProgressBar
+    - MDFInternationalization
     - MessageKit
+    - MotionAnimator
+    - MotionInterchange
 
 SPEC CHECKSUMS:
   GoogleMaps: 4b5346bddfe6911bb89155d43c903020170523ac
   InputBarAccessoryView: 7985d418040a05fe894bd4b8328dd43ab35517c3
+  MaterialComponents: 52e2ade4684e3017eff7f62587b37522d217ea50
   MaterialProgressBar: 5119975877966d7efd6b8556dea4bc9c036254d6
+  MDFInternationalization: 010097556d6b09d2c4ea38e0820ea6d37be6a314
   MessageKit: 3beb578737a5aa2bba25cc27c7b6d6faa09af5a7
+  MotionAnimator: ee16aa30567c5bae0fb2750c132915829cfaaf8a
+  MotionInterchange: ead0e3ae1f3a5fb539e289debbc7ae036160a10d
 
-PODFILE CHECKSUM: 95e89996580d51b5e9c0c4c194e9b224d6a4c8b0
+PODFILE CHECKSUM: 1123c4d4200f4636f8bdf161facf8da73b4b7498
 
-COCOAPODS: 1.9.1
+COCOAPODS: 1.10.0.beta.1

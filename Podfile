@@ -4,8 +4,9 @@
 target 'CodeNameFive' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
-   pod "GoogleMaps"
+   pod 'GoogleMaps'
    pod 'MessageKit'
+   pod 'MaterialComponents/ActivityIndicator', '~> 107.4'
    pod 'MaterialProgressBar'
   
   # Pods for CodeNameFive

@@ -24,8 +24,8 @@ class NewTripRequestVC: UIViewController,GMSMapViewDelegate,CLLocationManagerDel
     @IBOutlet weak var cardView: UIView!
     
     //MARK:- variables Declareation
-    
-    var time : Float = 1
+    var player: AVAudioPlayer?
+    var time : Float = 1.0
     var timer: Timer?
     private var locationManager: CLLocationManager!
     private var currentLocation: CLLocation?
@@ -36,18 +36,61 @@ class NewTripRequestVC: UIViewController,GMSMapViewDelegate,CLLocationManagerDel
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        UIDevice.vibrate()
+        playSound()
         remaningTiemForAccepOrder.progress = 1
-        timer  = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(setProgress), userInfo: nil, repeats: true)
+        UIDevice.vibrate()
+        remaningTiemForAccepOrder.progress = 0
+        timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
         
+    }
+
+    @objc func updateTimer()
+     {
+        if time <= 0.0 {
+            //Invalidate timer when time reaches 0
+            timer!.invalidate()
+            GoToDashBoard()
+        }
+       
+        else {
+            time -= 0.01
+            remaningTiemForAccepOrder.progress = time
+            if time <= 0.4{
+            remaningTiemForAccepOrder.tintColor = .red
+            }
         
-        
+        }
+    }
+    
+    func playSound() {
+        guard let url = Bundle.main.url(forResource: "noti", withExtension: "mp3") else { return }
+
+        do {
+            try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default)
+            try AVAudioSession.sharedInstance().setActive(true)
+            
+            
+            player = try AVAudioPlayer(contentsOf: url, fileTypeHint: AVFileType.mp3.rawValue)
+
+
+            guard let player = player else { return }
+            player.numberOfLoops = -1
+            player.prepareToPlay()
+            player.play()
+            
+        } catch let error {
+            print(error.localizedDescription)
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
+    
+        
+        self.googleMaps.bringSubviewToFront(cardView)
+      
         mapstyleSilver()
+    
        // ColorLocationButton()
         if traitCollection.userInterfaceStyle == .light {
             cardViewShadow()
@@ -94,7 +137,7 @@ class NewTripRequestVC: UIViewController,GMSMapViewDelegate,CLLocationManagerDel
         
     }
     func cardViewNoShadow() {
-        cardView.layer.shadowOpacity = 0
+        cardView.layer.shadowOpacity = 10
         cardView.layer.shadowColor = UIColor.clear.cgColor
     }
     
@@ -121,33 +164,23 @@ class NewTripRequestVC: UIViewController,GMSMapViewDelegate,CLLocationManagerDel
             // Fallback on earlier versions
         }
     }
-    
-    //MARK:- ProgressBar Timer
-    
-    @objc  func setProgress() {
-        time -= 0.1
-        remaningTiemForAccepOrder.progress = time
-        
-        if time >= 0.1{
-            timer?.invalidate()
-            remaningTiemForAccepOrder.tintColor = .red
-        }
-        
-        if time == 0.0 {
-            timer?.invalidate()
-            timer  = nil
-            GoToDashBoard()
-        }
-    }
+
     
     
     //MARK:- Button Actions
     
     @IBAction func AcceptandGo(_ sender: Any) {
+        DispatchQueue.main.async {
+            self.player?.stop()
+        }
+        
         GoToPickup()
     }
     @IBAction func RejectButton(_ sender: UIBarButtonItem) {
         UIDevice.vibrate()
+       DispatchQueue.main.async {
+            self.player?.stop()
+        }
         self.GoToDashBoard()
     }
     @IBAction func menuButton(_ sender: UIBarButtonItem) {
@@ -242,11 +275,10 @@ extension NewTripRequestVC{
             let bounds = GMSCoordinateBounds(coordinate: self.fromLoc!, coordinate: self.toLoc!)
             let update = GMSCameraUpdate.fit(bounds, with: UIEdgeInsets(top: 170, left: 30, bottom: 30, right: 30))
     
-            //self.googleMaps.animate(with: GMSCameraUpdate.fit(bounds, withPadding: 20.0))
+            self.googleMaps.animate(with: GMSCameraUpdate.fit(bounds, withPadding: 20.0))
             self.googleMaps.animate(toZoom: 15)
             self.googleMaps.animate(toViewingAngle: 70)
             self.googleMaps!.moveCamera(update)
-            
             
             
         }
@@ -255,18 +287,34 @@ extension NewTripRequestVC{
 
     
     func addMarker(){
+        
+        
+        let pickupIcon = self.imageWithImage(image: UIImage(named: "Pickup")!, scaledToSize: CGSize(width: 30.0, height: 30.0))
+        
         let smarker = GMSMarker()
+        smarker.icon = pickupIcon
         smarker.position = self.toLoc!
         smarker.title = "Gullberg"
         smarker.snippet = "III"
         smarker.map = self.googleMaps
         
+        
+        let customerIcon = self.imageWithImage(image: UIImage(named: "Customer")!, scaledToSize: CGSize(width: 50.0, height: 50.0))
         let dmarker = GMSMarker()
+        dmarker.icon = customerIcon
         dmarker.position = self.fromLoc!
         dmarker.title = "Mughlpura"
         dmarker.snippet = "Lahore"
         dmarker.map = self.googleMaps
         
+    }
+    
+    func imageWithImage(image:UIImage, scaledToSize newSize:CGSize) -> UIImage{
+        UIGraphicsBeginImageContextWithOptions(newSize, false, 0.0)
+        image.draw(in: CGRect(x: 0, y: 0, width: newSize.width, height: newSize.height))
+        let newImage:UIImage = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+        return newImage
     }
     
 }

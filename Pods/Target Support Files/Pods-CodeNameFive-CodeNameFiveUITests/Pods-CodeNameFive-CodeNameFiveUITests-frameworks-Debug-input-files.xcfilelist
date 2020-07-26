@@ -1,4 +1,8 @@
 ${PODS_ROOT}/Target Support Files/Pods-CodeNameFive-CodeNameFiveUITests/Pods-CodeNameFive-CodeNameFiveUITests-frameworks.sh
 ${BUILT_PRODUCTS_DIR}/InputBarAccessoryView/InputBarAccessoryView.framework
+${BUILT_PRODUCTS_DIR}/MDFInternationalization/MDFInternationalization.framework
+${BUILT_PRODUCTS_DIR}/MaterialComponents/MaterialComponents.framework
 ${BUILT_PRODUCTS_DIR}/MaterialProgressBar/MaterialProgressBar.framework
 ${BUILT_PRODUCTS_DIR}/MessageKit/MessageKit.framework
+${BUILT_PRODUCTS_DIR}/MotionAnimator/MotionAnimator.framework
+${BUILT_PRODUCTS_DIR}/MotionInterchange/MotionInterchange.framework
