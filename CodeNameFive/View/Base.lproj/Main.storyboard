@@ -18,7 +18,7 @@
             <objects>
                 <viewController storyboardIdentifier="LoginVC" title="Login" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="LoginVC" customModule="CNF" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PS8-g6-vuE">
@@ -3950,55 +3950,6 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection id="Hj3-ea-KXX">
-                                <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="67" id="ZKN-va-mHE">
-                                        <rect key="frame" x="0.0" y="411.33333206176758" width="414" height="67"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ZKN-va-mHE" id="l6h-rW-m1a">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="67"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nTY-hJ-eR4">
-                                                    <rect key="frame" x="20" y="10" width="374" height="47"/>
-                                                    <color key="backgroundColor" name="primaryButton"/>
-                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="16"/>
-                                                    <state key="normal" title="Continue">
-                                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    </state>
-                                                    <state key="disabled">
-                                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    </state>
-                                                    <userDefinedRuntimeAttributes>
-                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                            <real key="value" value="3"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                        <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
-                                                            <real key="value" value="0.0"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                        <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                                            <real key="value" value="1"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                        <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                            <color key="value" name="primaryButtonBorder"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                    </userDefinedRuntimeAttributes>
-                                                    <connections>
-                                                        <action selector="Register1Continue:" destination="tsI-oB-DWY" eventType="touchUpInside" id="F8O-fL-Tmf"/>
-                                                    </connections>
-                                                </button>
-                                            </subviews>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            <constraints>
-                                                <constraint firstItem="nTY-hJ-eR4" firstAttribute="top" secondItem="l6h-rW-m1a" secondAttribute="top" constant="10" id="5HJ-AN-HzZ"/>
-                                                <constraint firstItem="nTY-hJ-eR4" firstAttribute="leading" secondItem="l6h-rW-m1a" secondAttribute="leading" constant="20" id="9LR-T4-kwO"/>
-                                                <constraint firstAttribute="bottom" secondItem="nTY-hJ-eR4" secondAttribute="bottom" constant="10" id="N1x-fe-11k"/>
-                                                <constraint firstAttribute="trailing" secondItem="nTY-hJ-eR4" secondAttribute="trailing" constant="20" id="sbf-Wl-ehj"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </cells>
-                            </tableViewSection>
                         </sections>
                         <connections>
                             <outlet property="dataSource" destination="tsI-oB-DWY" id="gey-WT-SsA"/>
@@ -4191,55 +4142,6 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection id="AeB-Np-u2T">
-                                <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="67" id="aeq-BY-S9y">
-                                        <rect key="frame" x="0.0" y="473.33333206176758" width="414" height="67"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="aeq-BY-S9y" id="HBz-7N-Yh5">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="67"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3eB-59-Dvm">
-                                                    <rect key="frame" x="20" y="10" width="374" height="47"/>
-                                                    <color key="backgroundColor" name="primaryButton"/>
-                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="16"/>
-                                                    <state key="normal" title="Continue">
-                                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    </state>
-                                                    <state key="disabled">
-                                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    </state>
-                                                    <userDefinedRuntimeAttributes>
-                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                            <real key="value" value="3"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                        <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
-                                                            <real key="value" value="0.0"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                        <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                                            <real key="value" value="1"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                        <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                            <color key="value" name="primaryButtonBorder"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                    </userDefinedRuntimeAttributes>
-                                                    <connections>
-                                                        <action selector="Register2Continue:" destination="vzv-tN-eid" eventType="touchUpInside" id="Erg-ul-Hfa"/>
-                                                    </connections>
-                                                </button>
-                                            </subviews>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            <constraints>
-                                                <constraint firstAttribute="bottom" secondItem="3eB-59-Dvm" secondAttribute="bottom" constant="10" id="NLi-5g-CbF"/>
-                                                <constraint firstItem="3eB-59-Dvm" firstAttribute="leading" secondItem="HBz-7N-Yh5" secondAttribute="leading" constant="20" id="U1S-tM-8ZT"/>
-                                                <constraint firstItem="3eB-59-Dvm" firstAttribute="top" secondItem="HBz-7N-Yh5" secondAttribute="top" constant="10" id="kEq-4e-s3A"/>
-                                                <constraint firstAttribute="trailing" secondItem="3eB-59-Dvm" secondAttribute="trailing" constant="20" id="mzY-nd-Jtz"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </cells>
-                            </tableViewSection>
                         </sections>
                         <connections>
                             <outlet property="dataSource" destination="vzv-tN-eid" id="2bO-tg-aPW"/>
@@ -4324,53 +4226,25 @@
                                 </cells>
                             </tableViewSection>
                             <tableViewSection id="flF-V4-uzn">
-                                <string key="headerTitle">By proceeding, I agree to platform’s Terms of use and acknowledge that I have 
-read the Privacy policy</string>
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="67" id="jWy-lP-UAM">
-                                        <rect key="frame" x="0.0" y="309.33333206176758" width="414" height="67"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="Oti-Rm-2Hh" rowHeight="67" style="IBUITableViewCellStyleDefault" id="jWy-lP-UAM">
+                                        <rect key="frame" x="0.0" y="253.33333206176758" width="414" height="67"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="jWy-lP-UAM" id="9kh-pF-Lzz">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="67"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Ht-TJ-dTf">
-                                                    <rect key="frame" x="20" y="10" width="374" height="47"/>
-                                                    <color key="backgroundColor" name="primaryButton"/>
-                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="16"/>
-                                                    <state key="normal" title="Continue">
-                                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    </state>
-                                                    <state key="disabled">
-                                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    </state>
-                                                    <userDefinedRuntimeAttributes>
-                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                            <real key="value" value="3"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                        <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
-                                                            <real key="value" value="0.0"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                        <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                                            <real key="value" value="1"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                        <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                            <color key="value" name="primaryButtonBorder"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                    </userDefinedRuntimeAttributes>
-                                                    <connections>
-                                                        <action selector="GoTOCustomerAction:" destination="Ahh-0J-cUf" eventType="touchUpInside" id="sOP-iG-pBC"/>
-                                                        <action selector="Register3Continue:" destination="QKT-UU-Hmn" eventType="touchUpInside" id="y99-Pj-C2v"/>
-                                                    </connections>
-                                                </button>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Oti-Rm-2Hh">
+                                                    <rect key="frame" x="20" y="0.0" width="374" height="67"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <string key="text">By proceeding, I agree to platform’s Terms of use and acknowledge that I have 
+read the Privacy policy</string>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="16"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            <constraints>
-                                                <constraint firstAttribute="bottom" secondItem="0Ht-TJ-dTf" secondAttribute="bottom" constant="10" id="KEu-O2-7e6"/>
-                                                <constraint firstItem="0Ht-TJ-dTf" firstAttribute="top" secondItem="9kh-pF-Lzz" secondAttribute="top" constant="10" id="jie-eL-hsM"/>
-                                                <constraint firstAttribute="trailing" secondItem="0Ht-TJ-dTf" secondAttribute="trailing" constant="20" id="pDY-2c-rpf"/>
-                                                <constraint firstItem="0Ht-TJ-dTf" firstAttribute="leading" secondItem="9kh-pF-Lzz" secondAttribute="leading" constant="20" id="u7C-ZR-pMR"/>
-                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </cells>

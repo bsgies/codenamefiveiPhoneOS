@@ -12,17 +12,62 @@ class Register1TVC: UITableViewController {
     let picker = UIPickerView()
     var pickerData: [String] = [String]()
     var overlayView = UIView()
-    
+    let button = UIButton(type: .system)
     @IBOutlet weak var vechicalType: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
         setBackButton()
-       // Connect data:
             self.picker.delegate = self
             self.picker.dataSource = self
-            
-            // Input the data into the array
             pickerData = ["Bike", "Moped", "Car"]
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidDisappear(true)
+        goToNextScreen()
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewDidDisappear(true)
+         guard let window = UIApplication.shared.windows.filter({$0.isKeyWindow}).first else { return }
+        window.viewWithTag(200)?.removeFromSuperview()
+    }
+    
+    func goToNextScreen() {
+         guard let window = UIApplication.shared.windows.filter({$0.isKeyWindow}).first else { return }
+        let bottomview = UIView()
+        bottomview.tag = 200
+        bottomview.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        window.addSubview(bottomview)
+        bottomview.translatesAutoresizingMaskIntoConstraints = false
+        bottomview.widthAnchor.constraint(equalTo: tableView.widthAnchor, multiplier: 1).isActive = true
+        
+        bottomview.heightAnchor.constraint(equalToConstant: 60).isActive = true
+        bottomview.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 0).isActive = true
+        bottomview.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: 0).isActive = true
+        bottomview.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: 0).isActive = true
+        
+        button.backgroundColor = #colorLiteral(red: 0, green: 0.8465872407, blue: 0.7545004487, alpha: 1)
+        button.setTitleColor(.white, for: .normal)
+        button.setTitle("Next", for: .normal)
+        button.titleLabel?.font = UIFont(name: "HelveticaNeue-Bold", size: 16)
+        button.addTarget(self, action: #selector(Next), for: UIControl.Event.touchUpInside)
+        bottomview.addSubview(button)
+        button.isEnabled = false
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.centerXAnchor.constraint(equalTo: bottomview.centerXAnchor).isActive = true
+        button.leadingAnchor.constraint(equalTo: bottomview.leadingAnchor, constant: 25).isActive = true
+        button.trailingAnchor.constraint(equalTo: bottomview.trailingAnchor, constant: -25).isActive = true
+        button.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        button.topAnchor.constraint(equalTo: bottomview.topAnchor, constant: 10).isActive = true
+        button.bottomAnchor.constraint(equalTo: bottomview.bottomAnchor, constant: -10).isActive = true
+        
+        
+    }
+    
+    @objc func Next(){
+         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                      let newViewController = storyBoard.instantiateViewController(withIdentifier: "Register2TVC") as! Register2TVC
+                      navigationController?.pushViewController(newViewController, animated: false)
     }
     
     
@@ -46,30 +91,18 @@ class Register1TVC: UITableViewController {
         super.viewWillAppear(true)
         navigationController?.setNavigationBarHidden(false, animated: animated)
     }
-    @IBAction func Register1Continue(_ sender: Any) {
-        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-               let newViewController = storyBoard.instantiateViewController(withIdentifier: "Register2TVC") as! Register2TVC
-               navigationController?.pushViewController(newViewController, animated: false)
-    }
-    
-   
-    
 
 }
 
 extension Register1TVC{
     func setBackButton(){
          navigationController?.navigationBar.backItem?.titleView?.tintColor = UIColor(hex: "#12D2B3")
-         
          let button: UIButton = UIButton (type: UIButton.ButtonType.custom)
          button.setImage(UIImage(named: "back"), for: UIControl.State.normal)
          button.addTarget(self, action: #selector(backButtonPressed(btn:)), for: UIControl.Event.touchUpInside)
          button.frame = CGRect(x: 0 , y: 0, width: 30, height: 30)
-         
          let barButton = UIBarButtonItem(customView: button)
-         
          self.navigationItem.leftBarButtonItem = barButton
-         
      }
      
      @objc func backButtonPressed(btn : UIButton) {

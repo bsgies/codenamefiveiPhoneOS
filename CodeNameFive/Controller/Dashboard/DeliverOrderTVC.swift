@@ -40,7 +40,7 @@ class DeliverOrderTVC: UITableViewController {
     }
     override func viewWillDisappear(_ animated: Bool) {
            super.viewWillDisappear(true)
-           guard let window = UIApplication.shared.keyWindow else { return }
+          guard let window = UIApplication.shared.windows.filter({$0.isKeyWindow}).first else { return }
            window.viewWithTag(200)?.removeFromSuperview()
 
        }
@@ -91,7 +91,7 @@ class DeliverOrderTVC: UITableViewController {
     }
     
     func goToCollectCashButton() {
-        guard let window = UIApplication.shared.keyWindow else { return }
+       guard let window = UIApplication.shared.windows.filter({$0.isKeyWindow}).first else { return }
         let bottomview = UIView()
         bottomview.tag = 200
         bottomview.backgroundColor = .white
@@ -107,6 +107,7 @@ class DeliverOrderTVC: UITableViewController {
         button.backgroundColor = #colorLiteral(red: 0, green: 0.8465872407, blue: 0.7545004487, alpha: 1)
         button.setTitleColor(.white, for: .normal)
         button.setTitle("collect Payment", for: .normal)
+        button.titleLabel?.font = UIFont(name: "HelveticaNeue-Bold", size: 16)
         button.addTarget(self, action: #selector(submit), for: UIControl.Event.touchUpInside)
         bottomview.addSubview(button)
         button.isEnabled = false

@@ -44,16 +44,7 @@ class GoToPickupVC: UIViewController,CLLocationManagerDelegate,MKMapViewDelegate
         
         let helptoCancel : HelpOrCancelVC = self.storyboard?.instantiateViewController(withIdentifier: "HelpOrCancelVC") as! HelpOrCancelVC
         self.presentOnRoot(viewController: helptoCancel)
-//        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-//        let vc = storyBoard.instantiateViewController(withIdentifier: "HelpOrCancelVC") as! HelpOrCancelVC
-//
-//        let transition = CATransition()
-//        transition.duration = 0.2
-//        transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
-//        transition.type = CATransitionType.moveIn
-//        transition.subtype = CATransitionSubtype.fromTop
-//        navigationController?.view.layer.add(transition, forKey: nil)
-//        navigationController?.pushViewController(vc, animated: false)
+
         
     }
     @IBAction func callBarButton(_ sender: UIBarButtonItem) {
@@ -94,16 +85,7 @@ extension GoToPickupVC{
         
         let collect : CollectOrderTVC = self.storyboard?.instantiateViewController(withIdentifier: "CollectOrderTVC") as! CollectOrderTVC
                self.presentOnRoot(viewController: collect)
-//        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-//                       let vc = storyBoard.instantiateViewController(withIdentifier: "CollectOrderTVC") as! CollectOrderTVC
-//
-//                       let transition = CATransition()
-//                       transition.duration = 0.2
-//                       transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
-//                       transition.type = CATransitionType.moveIn
-//                       transition.subtype = CATransitionSubtype.fromTop
-//                       navigationController?.view.layer.add(transition, forKey: nil)
-//                       navigationController?.pushViewController(vc, animated: false)
+
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -117,14 +99,7 @@ extension GoToPickupVC{
         }
     }
     func phoneNumber(){
-        //let image = UIImage(systemName: "phone.fil" )
-        let ac = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        
-          // ac.addAction(UIAlertAction(title: "+923084706656", style: .default, handler: callingnNumber(action:)))
-//        ac.setValue(UIImage(systemName: "phone.fil")?.withRenderingMode(UIImage.RenderingMode.alwaysOriginal), forKey: "image")
-           ac.addAction(UIAlertAction(title: "Cancel", style: .cancel))
-           ac.popoverPresentationController?.barButtonItem = self.navigationItem.rightBarButtonItem
-           present(ac, animated: true)
+      callingnNumber()
     }
     
     func callingnNumber() {

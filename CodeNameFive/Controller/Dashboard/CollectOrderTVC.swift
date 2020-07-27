@@ -13,7 +13,6 @@ import CoreLocation
 import GoogleMaps
 class CollectOrderTVC: UITableViewController {
     
-    
     //MARK:- Outlets
     
     @IBOutlet weak var googleMapView: GMSMapView!
@@ -52,13 +51,13 @@ class CollectOrderTVC: UITableViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(true)
-        guard let window = UIApplication.shared.keyWindow else { return }
+         guard let window = UIApplication.shared.windows.filter({$0.isKeyWindow}).first else { return }
         window.viewWithTag(200)?.removeFromSuperview()
 
     }
     
     func goToCustomerScreenButtonSetup() {
-        guard let window = UIApplication.shared.keyWindow else { return }
+        guard let window = UIApplication.shared.windows.filter({$0.isKeyWindow}).first else { return }
         let bottomview = UIView()
         bottomview.tag = 200
         bottomview.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
@@ -74,6 +73,7 @@ class CollectOrderTVC: UITableViewController {
         button.backgroundColor = #colorLiteral(red: 0, green: 0.8465872407, blue: 0.7545004487, alpha: 1)
         button.setTitleColor(.white, for: .normal)
         button.setTitle("go To Customer", for: .normal)
+        button.titleLabel?.font = UIFont(name: "HelveticaNeue-Bold", size: 16)
         button.addTarget(self, action: #selector(submit), for: UIControl.Event.touchUpInside)
         bottomview.addSubview(button)
         button.isEnabled = false

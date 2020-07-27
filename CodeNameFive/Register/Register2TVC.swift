@@ -25,7 +25,7 @@ class Register2TVC: UITableViewController {
     var pickerData: [String] = [String]()
     var overlayView = UIView()
     let datePicker = UIDatePicker()
-
+let button = UIButton(type: .system)
     @IBOutlet weak var country: UITextField!
     @IBOutlet weak var dateOfBirth: UITextField!
     override func viewDidLoad() {
@@ -33,9 +33,55 @@ class Register2TVC: UITableViewController {
         setBackButton()
         self.picker.delegate = self
         self.picker.dataSource = self
-        
+        goToNextScreen()
         pickerData = ["Bike", "Scooter", "Car", "Rikshaw", "Truk", "Trolly"]
         
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewDidDisappear(true)
+         guard let window = UIApplication.shared.windows.filter({$0.isKeyWindow}).first else { return }
+        window.viewWithTag(200)?.removeFromSuperview()
+    }
+    
+    
+    
+    
+    func goToNextScreen() {
+         guard let window = UIApplication.shared.windows.filter({$0.isKeyWindow}).first else { return }
+        let bottomview = UIView()
+        bottomview.tag = 200
+        bottomview.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        window.addSubview(bottomview)
+        bottomview.translatesAutoresizingMaskIntoConstraints = false
+        bottomview.widthAnchor.constraint(equalTo: tableView.widthAnchor, multiplier: 1).isActive = true
+        
+        bottomview.heightAnchor.constraint(equalToConstant: 60).isActive = true
+        bottomview.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 0).isActive = true
+        bottomview.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: 0).isActive = true
+        bottomview.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: 0).isActive = true
+        
+        button.backgroundColor = #colorLiteral(red: 0, green: 0.8465872407, blue: 0.7545004487, alpha: 1)
+        button.setTitleColor(.white, for: .normal)
+        button.setTitle("Continue", for: .normal)
+        button.titleLabel?.font = UIFont(name: "HelveticaNeue-Bold", size: 16)
+        button.addTarget(self, action: #selector(submit), for: UIControl.Event.touchUpInside)
+        bottomview.addSubview(button)
+        button.isEnabled = false
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.centerXAnchor.constraint(equalTo: bottomview.centerXAnchor).isActive = true
+        button.leadingAnchor.constraint(equalTo: bottomview.leadingAnchor, constant: 25).isActive = true
+        button.trailingAnchor.constraint(equalTo: bottomview.trailingAnchor, constant: -25).isActive = true
+        button.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        button.topAnchor.constraint(equalTo: bottomview.topAnchor, constant: 10).isActive = true
+        button.bottomAnchor.constraint(equalTo: bottomview.bottomAnchor, constant: -10).isActive = true
+        
+        
+    }
+    
+    @objc func submit(){
+        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let newViewController = storyBoard.instantiateViewController(withIdentifier: "Register3TVC") as! Register3TVC
+        navigationController?.pushViewController(newViewController, animated: false)
     }
     @IBAction func countrySelection(_ sender: Any) {
         view.endEditing(true)
@@ -53,15 +99,6 @@ class Register2TVC: UITableViewController {
               
           }
       }
-    
-    
-    
-    @IBAction func Register2Continue(_ sender: Any) {
-        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let newViewController = storyBoard.instantiateViewController(withIdentifier: "Register3TVC") as! Register3TVC
-        navigationController?.pushViewController(newViewController, animated: false)
-        
-    }
     
 }
 
