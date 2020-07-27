@@ -7,7 +7,8 @@ target 'CodeNameFive' do
    pod 'GoogleMaps'
    pod 'MessageKit'
    pod 'MaterialComponents/ActivityIndicator', '~> 107.4'
-   pod 'MaterialProgressBar'
+   pod 'MaterialComponents/ProgressView'
+
   
   # Pods for CodeNameFive
 

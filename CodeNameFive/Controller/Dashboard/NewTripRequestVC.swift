@@ -42,13 +42,15 @@ class NewTripRequestVC: UIViewController,GMSMapViewDelegate,CLLocationManagerDel
         remaningTiemForAccepOrder.progress = 0
         timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
         
+      
+        
     }
 
     @objc func updateTimer()
      {
         if time <= 0.0 {
-            //Invalidate timer when time reaches 0
             timer!.invalidate()
+            stopPlayer()
             GoToDashBoard()
         }
        
@@ -85,13 +87,10 @@ class NewTripRequestVC: UIViewController,GMSMapViewDelegate,CLLocationManagerDel
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-    
-        
+
         self.googleMaps.bringSubviewToFront(cardView)
-      
-        mapstyleSilver()
-    
        // ColorLocationButton()
+        
         if traitCollection.userInterfaceStyle == .light {
             cardViewShadow()
             cardViewRadius()
@@ -164,23 +163,29 @@ class NewTripRequestVC: UIViewController,GMSMapViewDelegate,CLLocationManagerDel
             // Fallback on earlier versions
         }
     }
+    func stopPlayer() {
+          if let play = player {
+              
+              play.pause()
+              player = nil
+          } else {
+              print("player was already deallocated")
+          }
+      }
 
     
     
     //MARK:- Button Actions
     
     @IBAction func AcceptandGo(_ sender: Any) {
-        DispatchQueue.main.async {
-            self.player?.stop()
-        }
-        
+        timer!.invalidate()
+        stopPlayer()
         GoToPickup()
     }
     @IBAction func RejectButton(_ sender: UIBarButtonItem) {
         UIDevice.vibrate()
-       DispatchQueue.main.async {
-            self.player?.stop()
-        }
+        timer!.invalidate()
+        stopPlayer()
         self.GoToDashBoard()
     }
     @IBAction func menuButton(_ sender: UIBarButtonItem) {
@@ -277,7 +282,7 @@ extension NewTripRequestVC{
     
             self.googleMaps.animate(with: GMSCameraUpdate.fit(bounds, withPadding: 20.0))
             self.googleMaps.animate(toZoom: 15)
-            self.googleMaps.animate(toViewingAngle: 70)
+            self.googleMaps.animate(toViewingAngle: 30)
             self.googleMaps!.moveCamera(update)
             
             
@@ -288,8 +293,7 @@ extension NewTripRequestVC{
     
     func addMarker(){
         
-        
-        let pickupIcon = self.imageWithImage(image: UIImage(named: "Pickup")!, scaledToSize: CGSize(width: 30.0, height: 30.0))
+        let pickupIcon = self.imageWithImage(image: UIImage(named: "Pickup")!, scaledToSize: CGSize(width: 50.0, height: 50.0))
         
         let smarker = GMSMarker()
         smarker.icon = pickupIcon

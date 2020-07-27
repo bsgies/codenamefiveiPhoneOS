@@ -12,7 +12,7 @@ import GoogleMaps
 import CoreLocation
 import CoreHaptics
 import MaterialComponents.MaterialActivityIndicator
-import MaterialProgressBar
+import MaterialComponents.MaterialProgressView
 class DashboardVC: UIViewController {
     
     //MARK:- outlets
@@ -76,12 +76,23 @@ class DashboardVC: UIViewController {
             i = 0
         }
     }
-    //let progressBar = UIProgressView(progressViewStyle: .bar)
-    //let progressBar = LinearProgressBar()
+    
+    func setBarAnimation() {
+        UIView.animate(withDuration: 1, animations: {
+            self.findingRoutesLoadingBarView.frame.origin.x = +self.dashboardBottomView.frame.width
+        }) { (_) in
+            UIView.animate(withDuration: 1, delay: 0.5
+                , options: [.repeat, .autoreverse], animations: {
+                self.findingRoutesLoadingBarView.frame.origin.x -= self.dashboardBottomView.frame.width
+            })
+        }
+     
+    }
+    
+    let progressView = MDCProgressView()
     //MARK:- Life Cycles
     override func viewDidLoad() {
         super.viewDidLoad()
-        findingRoutesLoadingBarView.isHidden = false
         
         googleMapView.delegate = self
         let tap = UITapGestureRecognizer(target: self, action: #selector(menuopen))
@@ -129,29 +140,11 @@ class DashboardVC: UIViewController {
         navigationController?.setNavigationBarHidden(false, animated: animated)
         NotificationCenter.default.removeObserver(self)
     }
-    
-    var mytimer : Timer?
-    func LabelAnimating() {
-        mytimer  = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(showLoading), userInfo: nil, repeats: true)
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        currentEarning.backgroundColor = #colorLiteral(red: 0, green: 0.8465872407, blue: 0.7545004487, alpha: 1)
     }
     
-    @objc func showLoading() {
-        
-        if findingTripsLbl.text == "Finding trips for you." {
-            findingTripsLbl.text = "Finding trips for you.."
-        } else if findingTripsLbl.text == "Finding trips for you.." {
-            findingTripsLbl.text = "Finding trips for you..."
-        } else if findingTripsLbl.text == "Finding trips for you..." {
-            findingTripsLbl.text = "Finding trips for you."
-        } else {
-            findingTripsLbl.text = "Finding trips for you."
-        }
-        
-    
-}
-    func StopLoading()  {
-        mytimer?.invalidate()
-    }
     
     //MARK:- Light and Dark Mode Delegate
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
@@ -244,18 +237,16 @@ extension DashboardVC{
     @IBAction func OnlineOfflineButton(_ sender: UIButton) {
         goOnlineOfflineButton.backgroundColor = #colorLiteral(red: 0, green: 0.8465872407, blue: 0.7545004487, alpha: 1)
         if checkOnlineOrOffline{
-            
             if onlineButtonCheckAuthrizationForLocation() {
                 tapped(case: 4)
-                goOnlineOfflineButton.backgroundColor = #colorLiteral(red: 0.6666666865, green: 0.6666666865, blue: 0.6666666865, alpha: 1)
-                goOnlineOfflineButton.borderColor = #colorLiteral(red: 0.6666666865, green: 0.6666666865, blue: 0.6666666865, alpha: 1)
                 goOnlineOfflineButton.showLoading()
                 buttonServerResponse()
-                
                 DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
-                    self.LabelAnimating()
+                    
                     self.goOnlineOfflineButton.hideLoading()
                     self.ServerResponseReceived()
+                    self.findingRoutesLoadingBarView.isHidden = false
+                    self.setBarAnimation()
                     sender.setBackgroundColor(color: UIColor(named: "dangerHover")!, forState: .highlighted)
                     self.goOnlineOfflineButton.layer.borderWidth = 1
                     self.goOnlineOfflineButton.layer.borderColor = #colorLiteral(red: 0.7803921569, green: 0.137254902, blue: 0.1960784314, alpha: 1)
@@ -278,6 +269,8 @@ extension DashboardVC{
             
         }
         else{
+            findingRoutesLoadingBarView.layer.removeAllAnimations()
+            self.findingRoutesLoadingBarView.isHidden = true
             sender.setBackgroundColor(color: UIColor(named: "hover")!, forState: .highlighted)
             goOnlineOfflineButton.layer.borderWidth = 1
             goOnlineOfflineButton.layer.borderColor = #colorLiteral(red: 0, green: 0.7490196078, blue: 0.662745098, alpha: 1)
@@ -304,15 +297,12 @@ extension DashboardVC{
     
     //MARK:- Server Response Loading
     
-
-    
-    
      func buttonServerResponse() {
          
-         serverResponseActivityIndicator.sizeToFit()
-         serverResponseActivityIndicator.indicatorMode = .indeterminate
+        serverResponseActivityIndicator.sizeToFit()
+        serverResponseActivityIndicator.indicatorMode = .indeterminate
          //activityIndicator1.tintColor = #colorLiteral(red: 0, green: 0.8465872407, blue: 0.7545004487, alpha: 1)
-         serverResponseActivityIndicator.cycleColors = [#colorLiteral(red: 0, green: 0.8465872407, blue: 0.7545004487, alpha: 1), #colorLiteral(red: 0, green: 0.8465872407, blue: 0.7545004487, alpha: 1), #colorLiteral(red: 0, green: 0.8465872407, blue: 0.7545004487, alpha: 1), #colorLiteral(red: 0, green: 0.8465872407, blue: 0.7545004487, alpha: 1)]
+         serverResponseActivityIndicator.cycleColors = [#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1), #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1), #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1), #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)]
          serverResponseActivityIndicator.translatesAutoresizingMaskIntoConstraints = false
          goOnlineOfflineButton.addSubview(serverResponseActivityIndicator)
          
@@ -321,6 +311,7 @@ extension DashboardVC{
              serverResponseActivityIndicator.centerYAnchor.constraint(equalTo: goOnlineOfflineButton.centerYAnchor, constant: 0.0)
          ])
          serverResponseActivityIndicator.startAnimating()
+        
      }
      
      func ServerResponseReceived() {
@@ -345,7 +336,7 @@ extension DashboardVC{
     }
     @objc func runTimedCode()  {
         //gotorider?.invalidate()
-        //        findingTripsLbl.stopAnimation()
+        //findingTripsLbl.stopAnimation()
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let newViewController = storyBoard.instantiateViewController(withIdentifier: "NewTripRequestVC") as! NewTripRequestVC
         navigationController?.pushViewController(newViewController, animated: true)
