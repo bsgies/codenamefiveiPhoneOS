@@ -12,7 +12,6 @@ import GoogleMaps
 import CoreLocation
 import CoreHaptics
 import MaterialComponents.MaterialActivityIndicator
-import MaterialComponents.MaterialProgressView
 class DashboardVC: UIViewController,UIGestureRecognizerDelegate {
     
     //MARK:- outlets
