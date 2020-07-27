@@ -13,9 +13,10 @@ import CoreLocation
 import CoreHaptics
 import MaterialComponents.MaterialActivityIndicator
 import MaterialComponents.MaterialProgressView
-class DashboardVC: UIViewController {
+class DashboardVC: UIViewController,UIGestureRecognizerDelegate {
     
     //MARK:- outlets
+    @IBOutlet weak var hamburgerImage: UIImageView!
     @IBOutlet weak var googleMapView: GMSMapView!
     @IBOutlet weak var findingRoutesLoadingBarView: UIView!
     @IBOutlet weak var goOnlineOfflineButton: UIButton!
@@ -89,15 +90,10 @@ class DashboardVC: UIViewController {
      
     }
     
-    let progressView = MDCProgressView()
     //MARK:- Life Cycles
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         googleMapView.delegate = self
-        let tap = UITapGestureRecognizer(target: self, action: #selector(menuopen))
-        hamburger.addGestureRecognizer(tap)
-        
         if !checkOnlineOrOffline{
             Autrize()
             goOnlineOfflineButton.backgroundColor = #colorLiteral(red: 0, green: 0.8465872407, blue: 0.7545004487, alpha: 1)
@@ -113,6 +109,10 @@ class DashboardVC: UIViewController {
         LocationManger()
         Autrize()
         SetupMap()
+    }
+    
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        return true
     }
     
     
@@ -133,6 +133,14 @@ class DashboardVC: UIViewController {
         dashboardBottomView.addTopBorder(with: UIColor(named: "borderColor")!, andWidth: 1.0)
         dashboardBottomView.addBottomBorder(with: UIColor(named: "borderColor")!, andWidth: 1.0)
         NotificationCenter.default.addObserver(self, selector:#selector(DashboardVC.comefrombackground), name: UIApplication.willEnterForegroundNotification, object: UIApplication.shared)
+        
+           hamburgerImage.isUserInteractionEnabled = true
+           hamburger.isUserInteractionEnabled = true
+        let tap = UITapGestureRecognizer(target: self, action: #selector(menuopen(gesture:)))
+        tap.delegate = self
+             hamburger.addGestureRecognizer(tap)
+             hamburgerImage.addGestureRecognizer(tap)
+        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -329,7 +337,7 @@ extension DashboardVC{
         self.present(navigationController, animated: false, completion: nil)
         
     }
-    @objc func menuopen(){
+    @objc func menuopen(gesture: UITapGestureRecognizer){
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let newViewController = storyBoard.instantiateViewController(withIdentifier: "AppMenu")
         navigationController?.pushViewController(newViewController, animated: true)
@@ -341,6 +349,7 @@ extension DashboardVC{
         let newViewController = storyBoard.instantiateViewController(withIdentifier: "NewTripRequestVC") as! NewTripRequestVC
         navigationController?.pushViewController(newViewController, animated: true)
     }
+    
     
     
     //MARK:- Buttons Actions Location Service Determining

@@ -160,8 +160,8 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EX9-NE-RZa">
                                 <rect key="frame" x="0.0" y="780" width="414" height="82"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="WC7-pr-TNN">
-                                        <rect key="frame" x="15" y="21.666666666666625" width="175" height="38.666666666666657"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="WC7-pr-TNN">
+                                        <rect key="frame" x="15" y="24.333333333333375" width="175" height="33.333333333333343"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Findings trips for you..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="OSd-BX-5cu">
                                                 <rect key="frame" x="0.0" y="0.0" width="175" height="19.333333333333332"/>
@@ -170,7 +170,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Time connected: 10h 40m" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="Lyl-9M-0t4">
-                                                <rect key="frame" x="0.0" y="19.333333333333371" width="175" height="19.333333333333329"/>
+                                                <rect key="frame" x="0.0" y="19.333333333333258" width="175" height="14"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue-Roman" family="Helvetica 55 Roman" pointSize="12"/>
                                                 <color key="textColor" name="secondary color"/>
                                                 <nil key="highlightedColor"/>
@@ -237,7 +237,7 @@
                                     <view contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6g9-UM-o8V" userLabel="Hamburger">
                                         <rect key="frame" x="20" y="55" width="50" height="50"/>
                                         <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="hamburgerbars" translatesAutoresizingMaskIntoConstraints="NO" id="omh-Oo-ONQ">
+                                            <imageView contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="hamburgerbars" translatesAutoresizingMaskIntoConstraints="NO" id="omh-Oo-ONQ">
                                                 <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                             </imageView>
                                         </subviews>
@@ -337,6 +337,7 @@
                         <outlet property="goOnlineOfflineButton" destination="0BL-x8-qsA" id="Ehf-8P-VbU"/>
                         <outlet property="googleMapView" destination="TSl-fa-Hbe" id="6EN-vg-YXS"/>
                         <outlet property="hamburger" destination="6g9-UM-o8V" id="RXl-Dg-9aA"/>
+                        <outlet property="hamburgerImage" destination="omh-Oo-ONQ" id="gQD-Ku-8Uw"/>
                         <outlet property="timetoConectedLbl" destination="Lyl-9M-0t4" id="zHd-kb-dln"/>
                     </connections>
                 </viewController>
