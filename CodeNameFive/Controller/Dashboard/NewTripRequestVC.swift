@@ -6,6 +6,19 @@
 //  Copyright © 2020 ITRID TECHNOLOGIES LTD. All rights reserved.
 //
 
+
+struct MapPath : Decodable{
+    var routes : [Route]?
+}
+
+struct Route : Decodable{
+    var overview_polyline : OverView?
+}
+
+struct OverView : Decodable {
+    var points : String?
+}
+
 import UIKit
 import MapKit
 import CoreHaptics
@@ -87,10 +100,7 @@ class NewTripRequestVC: UIViewController,GMSMapViewDelegate,CLLocationManagerDel
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-
         self.googleMaps.bringSubviewToFront(cardView)
-       // ColorLocationButton()
-        
         if traitCollection.userInterfaceStyle == .light {
             cardViewShadow()
             cardViewRadius()
@@ -105,7 +115,7 @@ class NewTripRequestVC: UIViewController,GMSMapViewDelegate,CLLocationManagerDel
         locationManager = CLLocationManager()
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        
+        googleMaps.isMyLocationEnabled = true
         if CLLocationManager.locationServicesEnabled() {
             locationManager.requestWhenInUseAuthorization()
             locationManager.startUpdatingLocation()
@@ -113,11 +123,18 @@ class NewTripRequestVC: UIViewController,GMSMapViewDelegate,CLLocationManagerDel
         if CLLocationManager.authorizationStatus() == .authorizedWhenInUse{
             currentLocation = locationManager.location
             fromLoc = CLLocationCoordinate2DMake((currentLocation?.coordinate.latitude)!, (currentLocation?.coordinate.longitude)!)
-            toLoc = CLLocationCoordinate2DMake(31.5690, 74.3586)
-            drawPolygon(from: fromLoc!, to: toLoc!)
+            toLoc = CLLocationCoordinate2DMake(((currentLocation?.coordinate.latitude)! + 0.01), ((currentLocation?.coordinate.longitude)! + 0.03))
+            
         }
+        addMarker()
         
         
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+         let newLocation = locations.last // find your device location
+         googleMaps.camera = GMSCameraPosition.camera(withTarget: newLocation!.coordinate, zoom: 14.0)
+
     }
     
     //MARK:- CardView Customiztion
@@ -215,91 +232,15 @@ extension NewTripRequestVC{
     
     
 }
-
-
-
-private struct MapPath : Decodable{
-    var routes : [Route]?
-}
-
-private struct Route : Decodable{
-    var overview_polyline : OverView?
-}
-
-private struct OverView : Decodable {
-    var points : String?
-}
-
 extension NewTripRequestVC{
-    
-    //MARK:- Call API for polyline points
-    func drawPolygon(from source: CLLocationCoordinate2D, to destination: CLLocationCoordinate2D){
-        
-        let config = URLSessionConfiguration.default
-        let session = URLSession(configuration: config)
-        
-        guard let url = URL(string: "https://maps.googleapis.com/maps/api/directions/json?origin=\(source.latitude),\(source.longitude)&destination=\(destination.latitude),\(destination.longitude)&sensor=false&mode=driving&key=AIzaSyBXfR7Zu7mvhxO4aydatsUY-VUH-_NG15g") else {
-            return
-        }
-        
-        DispatchQueue.main.async {
-            session.dataTask(with: url) { (data, response, error) in
-                guard data != nil else {
-                    return
-                }
-                do {
-                    
-                    let route = try JSONDecoder().decode(MapPath.self, from: data!)
-                    
-                    if let points = route.routes?.first?.overview_polyline?.points {
-                        self.drawPath(with: points)
-                    }
-                    print(route.routes?.first?.overview_polyline?.points as Any)
-                    
-                } catch let error {
-                    
-                    print("Failed to draw ",error.localizedDescription)
-                }
-            }.resume()
-        }
-    }
-    
-    //MARK:- Draw polyline
-    
-    private func drawPath(with points : String){
-        
-        DispatchQueue.main.async {
-            
-            let path = GMSPath(fromEncodedPath: points)
-            let polyline = GMSPolyline(path: path)
-            polyline.strokeWidth = 6.0
-            polyline.strokeColor = #colorLiteral(red: 0, green: 0.8465872407, blue: 0.7545004487, alpha: 1)
-            polyline.map = self.googleMaps
-            self.addMarker()
-            
-            let bounds = GMSCoordinateBounds(coordinate: self.fromLoc!, coordinate: self.toLoc!)
-            let update = GMSCameraUpdate.fit(bounds, with: UIEdgeInsets(top: 170, left: 30, bottom: 30, right: 30))
-    
-            self.googleMaps.animate(with: GMSCameraUpdate.fit(bounds, withPadding: 20.0))
-            self.googleMaps.animate(toZoom: 15)
-            self.googleMaps.animate(toViewingAngle: 30)
-            self.googleMaps!.moveCamera(update)
-            
-            
-        }
-    }
-    
 
-    
     func addMarker(){
         
-        let pickupIcon = self.imageWithImage(image: UIImage(named: "Pickup")!, scaledToSize: CGSize(width: 50.0, height: 50.0))
+        let pickupIcon = self.imageWithImage(image: UIImage(named: "Pickup")!, scaledToSize: CGSize(width: 40.0, height: 40.0))
         
         let smarker = GMSMarker()
         smarker.icon = pickupIcon
         smarker.position = self.toLoc!
-        smarker.title = "Gullberg"
-        smarker.snippet = "III"
         smarker.map = self.googleMaps
         
         
@@ -307,8 +248,6 @@ extension NewTripRequestVC{
         let dmarker = GMSMarker()
         dmarker.icon = customerIcon
         dmarker.position = self.fromLoc!
-        dmarker.title = "Mughlpura"
-        dmarker.snippet = "Lahore"
         dmarker.map = self.googleMaps
         
     }
@@ -322,8 +261,6 @@ extension NewTripRequestVC{
     }
     
 }
-
-
 extension NewTripRequestVC{
     func mapstyle() {
         do {

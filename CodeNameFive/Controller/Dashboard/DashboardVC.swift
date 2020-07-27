@@ -32,7 +32,6 @@ class DashboardVC: UIViewController,UIGestureRecognizerDelegate {
     var locationManager: CLLocationManager!
     var currentLocation: CLLocation?
     var zoomLevel: Float = 15.0
-    var debounce_timer: Timer?
     let path = GMSMutablePath()
     var engine: CHHapticEngine?
     var i = 0
@@ -126,9 +125,8 @@ class DashboardVC: UIViewController,UIGestureRecognizerDelegate {
         else {
             mapstyleDark()
         }
-        
-        Autrize()
         navigationController?.setNavigationBarHidden(true, animated: animated)
+        Autrize()
         dashboardBottomView.addTopBorder(with: UIColor(named: "borderColor")!, andWidth: 1.0)
         dashboardBottomView.addBottomBorder(with: UIColor(named: "borderColor")!, andWidth: 1.0)
         NotificationCenter.default.addObserver(self, selector:#selector(DashboardVC.comefrombackground), name: UIApplication.willEnterForegroundNotification, object: UIApplication.shared)
@@ -342,8 +340,6 @@ extension DashboardVC{
         navigationController?.pushViewController(newViewController, animated: true)
     }
     @objc func runTimedCode()  {
-        //gotorider?.invalidate()
-        //findingTripsLbl.stopAnimation()
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let newViewController = storyBoard.instantiateViewController(withIdentifier: "NewTripRequestVC") as! NewTripRequestVC
         navigationController?.pushViewController(newViewController, animated: true)
@@ -416,7 +412,6 @@ extension DashboardVC: CLLocationManagerDelegate {
             googleMapView.camera = camera
             path.add(CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude))
             path.add(CLLocationCoordinate2D(latitude: location.coordinate.latitude + 2, longitude: location.coordinate.longitude + 2))
-            
             let rectangle = GMSPolyline(path: path)
             rectangle.map = googleMapView
         } else {

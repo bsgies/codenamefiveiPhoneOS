@@ -7,6 +7,7 @@ target 'CodeNameFive' do
    pod 'GoogleMaps'
    pod 'MessageKit'
    pod 'MaterialComponents/ActivityIndicator', '~> 107.4'
+   pod 'Alamofire', '~> 5.2'
 
   
   # Pods for CodeNameFive

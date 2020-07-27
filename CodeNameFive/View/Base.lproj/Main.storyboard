@@ -2639,32 +2639,33 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="USU-Ka-CvV">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
-                            </mapView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GP1-j4-nRi" customClass="GMSMapView">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7cC-d0-iLz">
-                                <rect key="frame" x="20" y="667" width="374" height="155"/>
+                                <rect key="frame" x="20" y="697" width="374" height="155"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="8 minutes  - 1.7 miles" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rq8-j6-CFM">
-                                        <rect key="frame" x="22" y="4" width="332" height="16.333333333333332"/>
+                                        <rect key="frame" x="22" y="13.999999999999998" width="332" height="16.333333333333329"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                         <color key="textColor" name="secondary color"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hardess" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QfH-Ph-sRa">
-                                        <rect key="frame" x="22" y="28.333333333333371" width="334" height="18.666666666666671"/>
+                                        <rect key="frame" x="22" y="38.333333333333371" width="334" height="18.666666666666671"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="16"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="A-55 Block A, North Nazimabad Karachi" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1RW-On-erF">
-                                        <rect key="frame" x="22" y="57" width="334" height="18"/>
+                                        <rect key="frame" x="22" y="67" width="334" height="18"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                                         <color key="textColor" name="secondary color"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BmL-hJ-0Ou">
-                                        <rect key="frame" x="22" y="85" width="334" height="50"/>
+                                        <rect key="frame" x="22" y="95" width="334" height="50"/>
                                         <color key="backgroundColor" name="primaryButton"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="6xx-TB-f0G"/>
@@ -2707,19 +2708,19 @@
                                     <constraint firstItem="BmL-hJ-0Ou" firstAttribute="leading" secondItem="7cC-d0-iLz" secondAttribute="leading" constant="22" id="jGe-lj-sJN"/>
                                     <constraint firstAttribute="trailing" secondItem="QfH-Ph-sRa" secondAttribute="trailing" constant="18" id="kVd-zs-jn1"/>
                                     <constraint firstItem="BmL-hJ-0Ou" firstAttribute="top" secondItem="1RW-On-erF" secondAttribute="bottom" constant="10" id="rab-FW-jOZ"/>
-                                    <constraint firstAttribute="bottom" secondItem="BmL-hJ-0Ou" secondAttribute="bottom" constant="20" id="zu2-PG-PNS"/>
+                                    <constraint firstAttribute="bottom" secondItem="BmL-hJ-0Ou" secondAttribute="bottom" constant="10" id="zu2-PG-PNS"/>
                                 </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="hde-IG-3vM" firstAttribute="bottom" secondItem="USU-Ka-CvV" secondAttribute="bottom" id="D5P-B8-kHi"/>
-                            <constraint firstItem="USU-Ka-CvV" firstAttribute="top" secondItem="RS0-ja-R6G" secondAttribute="top" id="FIz-hv-EqF"/>
-                            <constraint firstAttribute="trailing" secondItem="USU-Ka-CvV" secondAttribute="trailing" id="HjU-Rr-MOx"/>
-                            <constraint firstItem="USU-Ka-CvV" firstAttribute="leading" secondItem="RS0-ja-R6G" secondAttribute="leading" id="gsr-dP-wcl"/>
-                            <constraint firstItem="7cC-d0-iLz" firstAttribute="centerX" secondItem="USU-Ka-CvV" secondAttribute="centerX" id="qZL-9g-nm5"/>
+                            <constraint firstItem="GP1-j4-nRi" firstAttribute="leading" secondItem="hde-IG-3vM" secondAttribute="leading" id="Gwp-iB-3eb"/>
+                            <constraint firstItem="7cC-d0-iLz" firstAttribute="centerX" secondItem="RS0-ja-R6G" secondAttribute="centerX" id="c8w-su-2Q5"/>
+                            <constraint firstItem="GP1-j4-nRi" firstAttribute="trailing" secondItem="hde-IG-3vM" secondAttribute="trailing" id="hFE-IC-YWZ"/>
+                            <constraint firstItem="GP1-j4-nRi" firstAttribute="bottom" secondItem="hde-IG-3vM" secondAttribute="bottom" id="mhD-ej-vDW"/>
+                            <constraint firstItem="GP1-j4-nRi" firstAttribute="top" secondItem="hde-IG-3vM" secondAttribute="top" id="xuc-78-wMl"/>
                             <constraint firstItem="7cC-d0-iLz" firstAttribute="leading" secondItem="RS0-ja-R6G" secondAttribute="leadingMargin" id="zOH-Ex-HzN"/>
-                            <constraint firstItem="hde-IG-3vM" firstAttribute="bottom" secondItem="7cC-d0-iLz" secondAttribute="bottom" constant="40" id="zTY-Gc-eHI"/>
+                            <constraint firstItem="hde-IG-3vM" firstAttribute="bottom" secondItem="7cC-d0-iLz" secondAttribute="bottom" constant="10" id="zTY-Gc-eHI"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="hde-IG-3vM"/>
                     </view>
@@ -2747,7 +2748,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="cardView" destination="7cC-d0-iLz" id="L09-a6-AIv"/>
-                        <outlet property="mapView" destination="USU-Ka-CvV" id="bef-vb-bt8"/>
+                        <outlet property="googleMaps" destination="GP1-j4-nRi" id="vP8-Lk-LJi"/>
                         <outlet property="resturentAddress" destination="1RW-On-erF" id="R3C-TF-4h1"/>
                         <outlet property="resturentName" destination="QfH-Ph-sRa" id="6Y0-O2-kzT"/>
                         <outlet property="timeAndDistance" destination="Rq8-j6-CFM" id="ldd-4S-pKh"/>
@@ -2755,7 +2756,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PD0-o8-CUL" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3496" y="811"/>
+            <point key="canvasLocation" x="3495.652173913044" y="810.9375"/>
         </scene>
         <!--Register-->
         <scene sceneID="vii-bB-Tbp">
