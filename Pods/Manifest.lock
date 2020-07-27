@@ -14,11 +14,6 @@ PODS:
     - MotionAnimator (~> 2.0)
   - MaterialComponents/Palettes (107.4.0)
   - MaterialComponents/private/Application (107.4.0)
-  - MaterialComponents/private/Math (107.4.0)
-  - MaterialComponents/ProgressView (107.4.0):
-    - MaterialComponents/Palettes
-    - MaterialComponents/private/Math
-    - MDFInternationalization
   - MDFInternationalization (2.0.0)
   - MessageKit (3.1.0):
     - InputBarAccessoryView (~> 4.3.0)
@@ -29,7 +24,6 @@ PODS:
 DEPENDENCIES:
   - GoogleMaps
   - MaterialComponents/ActivityIndicator (~> 107.4)
-  - MaterialComponents/ProgressView
   - MessageKit
 
 SPEC REPOS:
@@ -51,6 +45,6 @@ SPEC CHECKSUMS:
   MotionAnimator: ee16aa30567c5bae0fb2750c132915829cfaaf8a
   MotionInterchange: ead0e3ae1f3a5fb539e289debbc7ae036160a10d
 
-PODFILE CHECKSUM: 0b39d144cbdc119730864713ce152d4db531ecea
+PODFILE CHECKSUM: 5d3b66894904c470291a8e9e5b547ce3994f5955
 
 COCOAPODS: 1.10.0.beta.1
