@@ -132,8 +132,8 @@ class NewTripRequestVC: UIViewController,GMSMapViewDelegate,CLLocationManagerDel
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-         let newLocation = locations.last // find your device location
-         googleMaps.camera = GMSCameraPosition.camera(withTarget: newLocation!.coordinate, zoom: 14.0)
+//         let newLocation = locations.last // find your device location
+//         googleMaps.camera = GMSCameraPosition.camera(withTarget: newLocation!.coordinate, zoom: 14.0)
 
     }
     
@@ -251,8 +251,7 @@ extension NewTripRequestVC{
         dmarker.map = self.googleMaps
         
         let bounds = GMSCoordinateBounds(coordinate: fromLoc!, coordinate: toLoc!)
-       // let camera: GMSCameraUpdate = GMSCameraUpdate.fit(bounds)
-          let cameraWithPadding: GMSCameraUpdate = GMSCameraUpdate.fit(bounds, withPadding: 100.0)
+          let cameraWithPadding: GMSCameraUpdate = GMSCameraUpdate.fit(bounds, withPadding: 15.0)
          self.googleMaps.animate(toZoom: 10)
         self.googleMaps.animate(with: cameraWithPadding)
 
