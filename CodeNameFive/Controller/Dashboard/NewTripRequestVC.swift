@@ -250,6 +250,12 @@ extension NewTripRequestVC{
         dmarker.position = self.fromLoc!
         dmarker.map = self.googleMaps
         
+        let bounds = GMSCoordinateBounds(coordinate: fromLoc!, coordinate: toLoc!)
+       // let camera: GMSCameraUpdate = GMSCameraUpdate.fit(bounds)
+          let cameraWithPadding: GMSCameraUpdate = GMSCameraUpdate.fit(bounds, withPadding: 100.0)
+         self.googleMaps.animate(toZoom: 10)
+        self.googleMaps.animate(with: cameraWithPadding)
+
     }
     
     func imageWithImage(image:UIImage, scaledToSize newSize:CGSize) -> UIImage{

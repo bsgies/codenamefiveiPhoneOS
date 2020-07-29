@@ -37,14 +37,14 @@ class DashboardVC: UIViewController,UIGestureRecognizerDelegate {
     var i = 0
     var change : Bool = false
     let serverResponseActivityIndicator = MDCActivityIndicator()
-
-
+    
+    
     
     var counter = 0
     
-    func tapped(case : Int) {
-        i += 1
-        switch i {
+    func tapped(caseRun : Int) {
+        
+        switch caseRun {
         case 1:
             let generator = UINotificationFeedbackGenerator()
             generator.notificationOccurred(.error)
@@ -82,10 +82,10 @@ class DashboardVC: UIViewController,UIGestureRecognizerDelegate {
         }) { (_) in
             UIView.animate(withDuration: 1, delay: 0.5
                 , options: [.repeat, .autoreverse], animations: {
-                self.findingRoutesLoadingBarView.frame.origin.x -= self.dashboardBottomView.frame.width
+                    self.findingRoutesLoadingBarView.frame.origin.x -= self.dashboardBottomView.frame.width
             })
         }
-     
+        
     }
     
     //MARK:- Life Cycles
@@ -131,12 +131,12 @@ class DashboardVC: UIViewController,UIGestureRecognizerDelegate {
         dashboardBottomView.addBottomBorder(with: UIColor(named: "borderColor")!, andWidth: 1.0)
         NotificationCenter.default.addObserver(self, selector:#selector(DashboardVC.comefrombackground), name: UIApplication.willEnterForegroundNotification, object: UIApplication.shared)
         
-           hamburgerImage.isUserInteractionEnabled = true
-           hamburger.isUserInteractionEnabled = true
+        hamburgerImage.isUserInteractionEnabled = true
+        hamburger.isUserInteractionEnabled = true
         let tap = UITapGestureRecognizer(target: self, action: #selector(menuopen(gesture:)))
         tap.delegate = self
-             hamburger.addGestureRecognizer(tap)
-             hamburgerImage.addGestureRecognizer(tap)
+        hamburger.addGestureRecognizer(tap)
+        hamburgerImage.addGestureRecognizer(tap)
         
     }
     
@@ -243,7 +243,7 @@ extension DashboardVC{
         goOnlineOfflineButton.backgroundColor = #colorLiteral(red: 0, green: 0.8465872407, blue: 0.7545004487, alpha: 1)
         if checkOnlineOrOffline{
             if onlineButtonCheckAuthrizationForLocation() {
-                tapped(case: 4)
+                tapped(caseRun: 4)
                 goOnlineOfflineButton.showLoading()
                 buttonServerResponse()
                 DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
@@ -302,27 +302,27 @@ extension DashboardVC{
     
     //MARK:- Server Response Loading
     
-     func buttonServerResponse() {
-         
+    func buttonServerResponse() {
+        
         serverResponseActivityIndicator.sizeToFit()
         serverResponseActivityIndicator.indicatorMode = .indeterminate
-         //activityIndicator1.tintColor = #colorLiteral(red: 0, green: 0.8465872407, blue: 0.7545004487, alpha: 1)
-         serverResponseActivityIndicator.cycleColors = [#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1), #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1), #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1), #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)]
-         serverResponseActivityIndicator.translatesAutoresizingMaskIntoConstraints = false
-         goOnlineOfflineButton.addSubview(serverResponseActivityIndicator)
-         
-         NSLayoutConstraint.activate([
-             serverResponseActivityIndicator.centerXAnchor.constraint(equalTo: goOnlineOfflineButton.centerXAnchor, constant: 0.0),
-             serverResponseActivityIndicator.centerYAnchor.constraint(equalTo: goOnlineOfflineButton.centerYAnchor, constant: 0.0)
-         ])
-         serverResponseActivityIndicator.startAnimating()
+        //activityIndicator1.tintColor = #colorLiteral(red: 0, green: 0.8465872407, blue: 0.7545004487, alpha: 1)
+        serverResponseActivityIndicator.cycleColors = [#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1), #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1), #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1), #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)]
+        serverResponseActivityIndicator.translatesAutoresizingMaskIntoConstraints = false
+        goOnlineOfflineButton.addSubview(serverResponseActivityIndicator)
         
-     }
-     
-     func ServerResponseReceived() {
-         tapped(case: 1)
-         serverResponseActivityIndicator.stopAnimating()
-     }
+        NSLayoutConstraint.activate([
+            serverResponseActivityIndicator.centerXAnchor.constraint(equalTo: goOnlineOfflineButton.centerXAnchor, constant: 0.0),
+            serverResponseActivityIndicator.centerYAnchor.constraint(equalTo: goOnlineOfflineButton.centerYAnchor, constant: 0.0)
+        ])
+        serverResponseActivityIndicator.startAnimating()
+        
+    }
+    
+    func ServerResponseReceived() {
+        tapped(caseRun: 1)
+        serverResponseActivityIndicator.stopAnimating()
+    }
     
     
     
@@ -368,14 +368,23 @@ extension DashboardVC{
     //MARK:- Alert Controller
     
     func goToSettingAlert() {
-        let alert = UIAlertController(title: "location are disabled", message: "please enable Location Services in your Settings", preferredStyle: .alert)
-        UILabel.appearance(whenContainedInInstancesOf: [UIAlertController.self]).numberOfLines = 0
-        let okAction = UIAlertAction(title: "go To Setting", style: UIAlertAction.Style.default) {
+        
+        let alertController = UIAlertController(title: "location are disabled", message: "please enable Location Services in your Settings", preferredStyle: .alert)
+        
+        
+        let okAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default) {
             UIAlertAction in
             UIApplication.shared.open(URL(string:UIApplication.openSettingsURLString)!)
         }
-        alert.addAction(okAction)
-        present(alert, animated: true, completion: nil)
+        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel) {
+            UIAlertAction in
+            NSLog("Cancel Pressed")
+        }
+        
+        alertController.addAction(okAction)
+        alertController.addAction(cancelAction)
+        
+        self.present(alertController, animated: true, completion: nil)
     }
 }
 
@@ -577,7 +586,7 @@ extension UIProgressView{
         static var _progressFull:Bool = false
         static var _completeLoading:Bool = false;
     }
-
+    
     var progressFull:Bool {
         get {
             return Holder._progressFull
@@ -586,7 +595,7 @@ extension UIProgressView{
             Holder._progressFull = newValue
         }
     }
-
+    
     var completeLoading:Bool {
         get {
             return Holder._completeLoading
@@ -595,7 +604,7 @@ extension UIProgressView{
             Holder._completeLoading = newValue
         }
     }
-
+    
     func animateProgress(){
         if(completeLoading){
             return
@@ -603,20 +612,20 @@ extension UIProgressView{
         UIView.animate(withDuration: 1, animations: {
             self.setProgress(self.progressFull ? 1.0 : 0.0, animated: true)
         })
-
+        
         progressFull = !progressFull;
-
+        
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.9) {
             self.animateProgress();
         }
     }
-
+    
     func startIndefinateProgress(){
         isHidden = false
         completeLoading = false
         animateProgress()
     }
-
+    
     func stopIndefinateProgress(){
         completeLoading = true
         isHidden = true
