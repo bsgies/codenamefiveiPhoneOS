@@ -15,7 +15,9 @@ import MaterialComponents.MaterialActivityIndicator
 class DashboardVC: UIViewController,UIGestureRecognizerDelegate {
     
     //MARK:- outlets
+    @IBOutlet weak var recenterView: UIView!
     @IBOutlet weak var hamburgerImage: UIImageView!
+    @IBOutlet weak var recenter: UIImageView!
     @IBOutlet weak var googleMapView: GMSMapView!
     @IBOutlet weak var findingRoutesLoadingBarView: UIView!
     @IBOutlet weak var goOnlineOfflineButton: UIButton!
@@ -94,6 +96,7 @@ class DashboardVC: UIViewController,UIGestureRecognizerDelegate {
         googleMapView.delegate = self
         if !checkOnlineOrOffline{
             Autrize()
+            recenter.isHidden = true
             goOnlineOfflineButton.backgroundColor = #colorLiteral(red: 0, green: 0.8465872407, blue: 0.7545004487, alpha: 1)
             goOnlineOfflineButton.setTitle("Go online", for: .normal)
             findingTripsLbl.font = UIFont.boldSystemFont(ofSize: 18.0)
@@ -119,26 +122,52 @@ class DashboardVC: UIViewController,UIGestureRecognizerDelegate {
         
         self.googleMapView.bringSubviewToFront(self.hamburger)
         self.googleMapView.bringSubviewToFront(self.currentEarning)
+        self.googleMapView.bringSubviewToFront(self.recenterView)
+       
+        
         if traitCollection.userInterfaceStyle == .light {
             mapstyleSilver()
+            recenterView.tintColor = .white
         }
         else {
             mapstyleDark()
+            recenterView.tintColor = .black
         }
+        recenterView.isHidden = true
         navigationController?.setNavigationBarHidden(true, animated: animated)
         Autrize()
         dashboardBottomView.addTopBorder(with: UIColor(named: "borderColor")!, andWidth: 1.0)
         dashboardBottomView.addBottomBorder(with: UIColor(named: "borderColor")!, andWidth: 1.0)
         NotificationCenter.default.addObserver(self, selector:#selector(DashboardVC.comefrombackground), name: UIApplication.willEnterForegroundNotification, object: UIApplication.shared)
-        
         hamburgerImage.isUserInteractionEnabled = true
         hamburger.isUserInteractionEnabled = true
         let tap = UITapGestureRecognizer(target: self, action: #selector(menuopen(gesture:)))
         tap.delegate = self
         hamburger.addGestureRecognizer(tap)
         hamburgerImage.addGestureRecognizer(tap)
+        recenterView.isUserInteractionEnabled = true
+        recenter.isUserInteractionEnabled = true
+        let tapOnRecenter = UITapGestureRecognizer(target: self, action: #selector(recenterTheMap(gesture:)))
+        tapOnRecenter.delegate = self
+        recenter.addGestureRecognizer(tapOnRecenter)
+        recenterView.addGestureRecognizer(tapOnRecenter)
+        recenterView.layer.shadowColor  = UIColor(ciColor: .gray).cgColor
+        recenterView.layer.shadowRadius = 12
+       
         
     }
+    
+    @objc func recenterTheMap(gesture: UITapGestureRecognizer){
+         guard let lat = self.googleMapView.myLocation?.coordinate.latitude,
+               let lng = self.googleMapView.myLocation?.coordinate.longitude else { return }
+         
+         let camera = GMSCameraPosition.camera(withLatitude: lat ,longitude: lng , zoom: 15)
+         self.googleMapView.animate(to: camera)
+         recenterView.isHidden = true
+         change = false
+    }
+    
+    
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
@@ -160,11 +189,12 @@ class DashboardVC: UIViewController,UIGestureRecognizerDelegate {
                 if traitCollection.userInterfaceStyle == .light {
                     
                     mapstyleSilver()
-                    
-                    
+                    recenterView.tintColor = .white
+                
                 }
                 else {
                     mapstyleDark()
+                    recenterView.tintColor = .black
                 }
             }
         } else {
@@ -172,29 +202,11 @@ class DashboardVC: UIViewController,UIGestureRecognizerDelegate {
         }
     }
     
-    func ColorLocationButton() -> Void{
-        //     for object in googleMapView.subviews{
-        //        for obj in object.subviews{
-        //           if let button = obj as? UIButton{
-        //             let name = button.accessibilityIdentifier
-        //            print(name as Any)
-        //                if(name == "my_location"){
-        //                        //config a position
-        //                    button.tintColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
-        //                    }
-        //                }
-        //            }
-        //        }
-        
-        
-    }
-    
-    
-    
+ 
     @objc func comefrombackground() {
         Autrize()
     }
-    
+    //GMSx_QTMButton
     
     func Haptic()  {
         
@@ -306,7 +318,6 @@ extension DashboardVC{
         
         serverResponseActivityIndicator.sizeToFit()
         serverResponseActivityIndicator.indicatorMode = .indeterminate
-        //activityIndicator1.tintColor = #colorLiteral(red: 0, green: 0.8465872407, blue: 0.7545004487, alpha: 1)
         serverResponseActivityIndicator.cycleColors = [#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1), #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1), #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1), #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)]
         serverResponseActivityIndicator.translatesAutoresizingMaskIntoConstraints = false
         goOnlineOfflineButton.addSubview(serverResponseActivityIndicator)
@@ -429,6 +440,8 @@ extension DashboardVC: CLLocationManagerDelegate {
         
     }
     
+  
+    
     //MARK:- Handle authorization for the location manager
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         switch status {
@@ -455,7 +468,6 @@ extension DashboardVC: CLLocationManagerDelegate {
     func TurnOffLocationService() {
         Autrize()
         googleMapView.isHidden = true
-        googleMapView.isMyLocationEnabled = false
     }
     
     // Handle location manager errors.
@@ -495,19 +507,19 @@ extension DashboardVC: GMSMapViewDelegate {
     
     func mapView(_ mapView: GMSMapView, willMove gesture: Bool) {
         if !change{
-            googleMapView.settings.myLocationButton = true
-            ColorLocationButton()
+            recenterView.isHidden = true
+            change = true
         }
-        change = false
+        else{
+            recenterView.isHidden = false
+        }
+        
+        
     }
-    func didTapMyLocationButton(for mapView: GMSMapView) -> Bool {
-        googleMapView.settings.myLocationButton = false
-        change = true
-        return false
+    func mapView(_ mapView: GMSMapView, didChange position: GMSCameraPosition) {
+        recenterView.isHidden = false
     }
-    func mapView(_ mapView: GMSMapView, didTapMyLocation location: CLLocationCoordinate2D) {
-        googleMapView.settings.myLocationButton = false
-    }
+    
 }
 
 // MARK: - Extension Map Styling
@@ -630,4 +642,5 @@ extension UIProgressView{
         completeLoading = true
         isHidden = true
     }
+    
 }

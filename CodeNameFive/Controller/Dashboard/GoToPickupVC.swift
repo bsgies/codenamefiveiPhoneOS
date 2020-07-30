@@ -28,13 +28,14 @@ class GoToPickupVC: UIViewController,CLLocationManagerDelegate, GMSMapViewDelega
     var iPosition:Int = 0;
     var timer = Timer()
     var marker:GMSMarker?
-    var path = GMSPath()
+    var path = GMSMutablePath()
     var animationPath = GMSMutablePath()
     var animationPolyline = GMSPolyline()
     var i: UInt = 0
     var driverLat : CLLocationDegrees?
     var driverLong : CLLocationDegrees?
-    
+    var polyline : GMSPolyline?
+    var ponits : String?
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -71,7 +72,7 @@ class GoToPickupVC: UIViewController,CLLocationManagerDelegate, GMSMapViewDelega
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(true)
-        self.timer.invalidate()
+       
     }
     
     
@@ -176,10 +177,10 @@ extension GoToPickupVC {
                         OperationQueue.main.addOperation({
                             for route in routes{
                                 let routeOverviewPolyline = route["overview_polyline"] as! [String:String]
-                                let points = routeOverviewPolyline["points"]
-                                self.path = GMSPath.init(fromEncodedPath: points!)!
-                                let polyline = GMSPolyline(path: self.path)
-                                self.drawPath(polyline: polyline)
+                                self.ponits = routeOverviewPolyline["points"]
+                                self.path = GMSMutablePath.init(fromEncodedPath: self.ponits!)!
+                                self.polyline = GMSPolyline(path: self.path)
+                                self.drawPath(polyline: self.polyline!)
                             }
                         })
                     }
@@ -207,9 +208,10 @@ extension GoToPickupVC {
             let update = GMSCameraUpdate.fit(bounds, with: UIEdgeInsets(top: 170, left: 30, bottom: 30, right: 30))
             self.googleMaps.animate(with: GMSCameraUpdate.fit(bounds, withPadding: 20.0))
             self.googleMaps.animate(toZoom: 10)
-            self.googleMaps.animate(toViewingAngle: 30)
+            self.googleMaps.animate(toViewingAngle: 45)
+            self.googleMaps.animate(toBearing: 270)
             self.googleMaps!.moveCamera(update)
-          self.timer = Timer.scheduledTimer(timeInterval: 0.003, target: self, selector: #selector(animatePolylinePath), userInfo: nil, repeats: true)
+            animatePolylinePath()
             
         //}
     }
@@ -247,10 +249,12 @@ extension GoToPickupVC {
     }
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let location: CLLocation = locations.last!
-        googleMaps.camera = GMSCameraPosition(target: location.coordinate, zoom: 15, bearing: 0, viewingAngle: 0)
+//        googleMaps.camera = GMSCameraPosition(target: location.coordinate, zoom: 15, bearing: 0, viewingAngle: 0)
         driverLat = location.coordinate.latitude
         driverLong = location.coordinate.longitude
-               
+        TrackedPolyLine()
+        ChangedTheRoute()
+        
         
         
     }
@@ -259,7 +263,19 @@ extension GoToPickupVC {
             locationManager.startUpdatingLocation()
             googleMaps.isMyLocationEnabled = true
             locationManager.startMonitoringSignificantLocationChanges()
+            
         }
+    }
+    
+    func TrackedPolyLine() {
+        if let routePolyline =  polyline {
+                routePolyline.map = nil
+        }
+
+        // create new polyline
+        let path: GMSPath = GMSPath(fromEncodedPath: ponits!)!
+        polyline = GMSPolyline(path: path)
+        polyline?.map = googleMaps
     }
     
     func ChangedTheRoute() {
@@ -268,5 +284,6 @@ extension GoToPickupVC {
             drawPolygon(from: CLLocationCoordinate2D(latitude: driverLat!, longitude: driverLong!), to: toLoc!)
         }
     }
+
 }
 
