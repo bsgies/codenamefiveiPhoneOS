@@ -7,8 +7,8 @@ target 'CodeNameFive' do
    pod 'GoogleMaps'
    pod 'MessageKit'
    pod 'MaterialComponents/ActivityIndicator', '~> 107.4'
-   pod 'Alamofire', '~> 5.2'
-
+   pod 'CVCalendar', '~> 1.7.0'
+   pod 'GoogleMapDirectionLib'
   
   # Pods for CodeNameFive
 

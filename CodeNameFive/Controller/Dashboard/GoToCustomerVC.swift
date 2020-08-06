@@ -7,9 +7,12 @@
 //
 
 import UIKit
-
+import GoogleMaps
 class GoToCustomerVC: UIViewController {
 
+    @IBOutlet weak var openInMapsImage: UIImageView!
+    @IBOutlet weak var openInmapsView: UIView!
+    @IBOutlet weak var googleMaps: GMSMapView!
     @IBOutlet weak var personAddress: UILabel!
     @IBOutlet weak var distanceLbl: UILabel!
     @IBOutlet weak var personName: UILabel!
@@ -24,13 +27,7 @@ class GoToCustomerVC: UIViewController {
     @IBAction func MessageButton(_ sender: UIBarButtonItem) {
         let vc = ChatVC()
       self.presentOnRoot(viewController: vc)
-//        let transition = CATransition()
-//        transition.duration = 0.2
-//        transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
-//        transition.type = CATransitionType.moveIn
-//        transition.subtype = CATransitionSubtype.fromTop
-//        navigationController?.view.layer.add(transition, forKey: nil)
-//        navigationController?.pushViewController(vc, animated: false)
+
     }
     @IBAction func MenuButton(_ sender: UIBarButtonItem) {
         GoToAppMenu()

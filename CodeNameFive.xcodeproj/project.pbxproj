@@ -189,6 +189,8 @@
 		4F8ED09124CC575E00F658DA /* Sliver.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Sliver.json; sourceTree = "<group>"; };
 		4F8ED09324CC57A000F658DA /* DarkModeMap.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = DarkModeMap.json; sourceTree = "<group>"; };
 		4F92BDB524B290FC00DEDDF3 /* ChatVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatVC.swift; sourceTree = "<group>"; };
+		4F97A20424D46B2B006734BF /* FSCalendar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FSCalendar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4F97A20824D46C62006734BF /* CodeNameFive-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CodeNameFive-Bridging-Header.h"; sourceTree = "<group>"; };
 		4F9A46D224AE1E1800A39380 /* NewTripRequestVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTripRequestVC.swift; sourceTree = "<group>"; };
 		4FB11F10249FEC3A00EC629B /* ProfileTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTVC.swift; sourceTree = "<group>"; };
 		4FB11F13249FEDB000EC629B /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
@@ -276,6 +278,7 @@
 		4F2E5634249B4FA800D28462 /* CodeNameFive */ = {
 			isa = PBXGroup;
 			children = (
+				4F97A20824D46C62006734BF /* CodeNameFive-Bridging-Header.h */,
 				4F58477B24BB2F8100B42CB8 /* CNF.entitlements */,
 				4F8ED08424CB59B200F658DA /* Location Services */,
 				4F8ED08924CC53AD00F658DA /* JSON */,
@@ -500,6 +503,7 @@
 		4F6EDA0B24AF6D7200C058AA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4F97A20424D46B2B006734BF /* FSCalendar.framework */,
 				4F209E6324CE0997001F34BC /* Foundation.framework */,
 				4F58477C24BB2F9300B42CB8 /* CloudKit.framework */,
 				4F6EDA0C24AF6D7200C058AA /* WebKit.framework */,

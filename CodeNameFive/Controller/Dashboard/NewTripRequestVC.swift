@@ -136,6 +136,9 @@ class NewTripRequestVC: UIViewController,GMSMapViewDelegate,CLLocationManagerDel
 //         googleMaps.camera = GMSCameraPosition.camera(withTarget: newLocation!.coordinate, zoom: 14.0)
 
     }
+    func mapView(_ mapView: GMSMapView, didChange position: GMSCameraPosition) {
+          
+       }
     
     //MARK:- CardView Customiztion
     

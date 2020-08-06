@@ -1,5 +1,13 @@
 PODS:
-  - Alamofire (5.2.2)
+  - Alamofire (4.9.1)
+  - AlamofireObjectMapper (5.2.1):
+    - Alamofire (~> 4.7)
+    - ObjectMapper (~> 3.4)
+  - CVCalendar (1.7.0)
+  - GoogleMapDirectionLib (0.0.4):
+    - Alamofire
+    - AlamofireObjectMapper
+    - RxAlamofire
   - GoogleMaps (3.9.0):
     - GoogleMaps/Maps (= 3.9.0)
   - GoogleMaps/Base (3.9.0)
@@ -21,9 +29,17 @@ PODS:
   - MotionAnimator (2.8.1):
     - MotionInterchange (~> 1.6)
   - MotionInterchange (1.6.0)
+  - ObjectMapper (3.5.3)
+  - RxAlamofire (5.1.0):
+    - RxAlamofire/Core (= 5.1.0)
+  - RxAlamofire/Core (5.1.0):
+    - Alamofire (~> 4.8)
+    - RxSwift (~> 5.0)
+  - RxSwift (5.1.1)
 
 DEPENDENCIES:
-  - Alamofire (~> 5.2)
+  - CVCalendar (~> 1.7.0)
+  - GoogleMapDirectionLib
   - GoogleMaps
   - MaterialComponents/ActivityIndicator (~> 107.4)
   - MessageKit
@@ -31,6 +47,9 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - Alamofire
+    - AlamofireObjectMapper
+    - CVCalendar
+    - GoogleMapDirectionLib
     - GoogleMaps
     - InputBarAccessoryView
     - MaterialComponents
@@ -38,9 +57,15 @@ SPEC REPOS:
     - MessageKit
     - MotionAnimator
     - MotionInterchange
+    - ObjectMapper
+    - RxAlamofire
+    - RxSwift
 
 SPEC CHECKSUMS:
-  Alamofire: 814429acc853c6c54ff123fc3d2ef66803823ce0
+  Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
+  AlamofireObjectMapper: 1989f690e982b71921b9253f53a4f33a9bc00d88
+  CVCalendar: 1174c1b43c1a258970e14c1e8b19ef4106c5900b
+  GoogleMapDirectionLib: 573468c6d3b26443c5a919abc766871bddb94b83
   GoogleMaps: 4b5346bddfe6911bb89155d43c903020170523ac
   InputBarAccessoryView: 7985d418040a05fe894bd4b8328dd43ab35517c3
   MaterialComponents: 52e2ade4684e3017eff7f62587b37522d217ea50
@@ -48,7 +73,10 @@ SPEC CHECKSUMS:
   MessageKit: 3beb578737a5aa2bba25cc27c7b6d6faa09af5a7
   MotionAnimator: ee16aa30567c5bae0fb2750c132915829cfaaf8a
   MotionInterchange: ead0e3ae1f3a5fb539e289debbc7ae036160a10d
+  ObjectMapper: 97111c97e054a6ee25917662106689f0b4127b37
+  RxAlamofire: a2d7621de4c23a0c6e7b476b504acc32838ee341
+  RxSwift: 81470a2074fa8780320ea5fe4102807cb7118178
 
-PODFILE CHECKSUM: aa1d8f531d3253bd2765c1f533d426eaeed6e72f
+PODFILE CHECKSUM: 91ad94c64680ce33e5c07288f358f4308760e549
 
 COCOAPODS: 1.10.0.beta.1

@@ -7,18 +7,35 @@
 //
 
 import UIKit
-
+import CVCalendar
 class PromotionVC: UIViewController {
 
+    @IBOutlet weak var calender: CVCalendarWeekView!
+    
     let time = ["00:00 - 03:00","18:00 - 21:00"]
     let boost = ["1.3x","1.5x"]
     
     @IBOutlet weak var promotionsTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-//        self.promotionsTableView.contentInset = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 0)
+
     setCrossButton()
+    calender.calendarView.calendarMode = .weekView
+    }
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+       // prmotionCalender.scope = .week
+    }
+    
+    override func viewDidLayoutSubviews() {
+         super.viewDidLayoutSubviews()
         
+    }
+
+    func firstWeekday() -> Weekday {
+        return .sunday
     }
     
     func setCrossButton(){
@@ -32,13 +49,6 @@ class PromotionVC: UIViewController {
     
     @objc func closeView(){
         self.dismiss(animated: true, completion: nil)
-//        let transition = CATransition()
-//        transition.duration = 0.5
-//        transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
-//        transition.type = CATransitionType.reveal
-//        transition.subtype = CATransitionSubtype.fromBottom
-//        navigationController?.view.layer.add(transition, forKey: nil)
-//        _ = navigationController?.popViewController(animated: false)
     }
 
 }
