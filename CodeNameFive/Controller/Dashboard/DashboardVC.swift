@@ -12,7 +12,7 @@ import GoogleMaps
 import CoreLocation
 import CoreHaptics
 import MaterialComponents.MaterialActivityIndicator
-class DashboardVC: UIViewController,UIGestureRecognizerDelegate {
+class DashboardVC: UIViewController ,  CLLocationManagerDelegate, GMSMapViewDelegate, UIGestureRecognizerDelegate {
     
     //MARK:- outlets
     @IBOutlet weak var recenterView: UIView!
@@ -37,10 +37,9 @@ class DashboardVC: UIViewController,UIGestureRecognizerDelegate {
     let path = GMSMutablePath()
     var engine: CHHapticEngine?
     var i = 0
-    var change : Bool = false
     let serverResponseActivityIndicator = MDCActivityIndicator()
-    
-    
+    var locValue = CLLocationCoordinate2D(latitude: 0, longitude: 0)
+    var isUserTouch = false
     
     var counter = 0
     
@@ -160,11 +159,9 @@ class DashboardVC: UIViewController,UIGestureRecognizerDelegate {
     @objc func recenterTheMap(gesture: UITapGestureRecognizer){
          guard let lat = self.googleMapView.myLocation?.coordinate.latitude,
                let lng = self.googleMapView.myLocation?.coordinate.longitude else { return }
-         
          let camera = GMSCameraPosition.camera(withLatitude: lat ,longitude: lng , zoom: 15)
          self.googleMapView.animate(to: camera)
          recenterView.isHidden = true
-         change = false
     }
     
     
@@ -400,7 +397,7 @@ extension DashboardVC{
 }
 
 // MARK: - Extension LocationManager
-extension DashboardVC: CLLocationManagerDelegate {
+extension DashboardVC {
     
     //MARK:- CoreLocation Services & Google Map Setting
     func SetupMap() {
@@ -423,7 +420,7 @@ extension DashboardVC: CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let location: CLLocation = locations.last!
-        
+        locValue = location.coordinate
         let camera = GMSCameraPosition.camera(withLatitude: location.coordinate.latitude,
                                               longitude: location.coordinate.longitude,
                                               zoom: zoomLevel)
@@ -439,9 +436,6 @@ extension DashboardVC: CLLocationManagerDelegate {
         }
         
     }
-    
-  
-    
     //MARK:- Handle authorization for the location manager
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         switch status {
@@ -503,21 +497,21 @@ extension DashboardVC: CLLocationManagerDelegate {
     }
 }
 // MARK: - Extension MapView
-extension DashboardVC: GMSMapViewDelegate {
+extension DashboardVC {
     
-    func mapView(_ mapView: GMSMapView, willMove gesture: Bool) {
-        if !change{
-            recenterView.isHidden = true
-            change = true
-        }
-        else{
+    func mapView(_ mapView: GMSMapView, idleAt position: GMSCameraPosition) {
+        let dist = position.target.getDistanceMetresBetweenLocationCoordinates(self.locValue)
+        if dist > 5 {
+            if self.isUserTouch {
             recenterView.isHidden = false
+            }
         }
-        
-        
     }
-    func mapView(_ mapView: GMSMapView, didChange position: GMSCameraPosition) {
-        recenterView.isHidden = false
+    func mapView(_ mapView: GMSMapView, willMove gesture: Bool) {
+        if gesture {
+            self.isUserTouch = true
+        }
+ 
     }
     
 }
@@ -578,7 +572,6 @@ extension DashboardVC {
         }
     }
 }
-
 //MARK:- Durring Server Response Hide Tittel of Button Extension
 var originalButtonText: String?
 extension UIButton{
@@ -591,8 +584,6 @@ extension UIButton{
         
     }
 }
-
-
 extension UIProgressView{
     private struct Holder {
         static var _progressFull:Bool = false
@@ -631,16 +622,13 @@ extension UIProgressView{
             self.animateProgress();
         }
     }
-    
     func startIndefinateProgress(){
         isHidden = false
         completeLoading = false
         animateProgress()
     }
-    
     func stopIndefinateProgress(){
         completeLoading = true
         isHidden = true
     }
-    
 }

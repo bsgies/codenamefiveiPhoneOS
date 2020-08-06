@@ -2744,23 +2744,73 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="U1v-vR-QIU" userLabel="Hamburger">
-                                        <rect key="frame" x="356" y="8" width="50" height="50"/>
+                                        <rect key="frame" x="354" y="10" width="50" height="50"/>
                                         <subviews>
-                                            <imageView contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="recenter" translatesAutoresizingMaskIntoConstraints="NO" id="I78-F9-PsD">
+                                            <imageView contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gps-location-map-marker-navigation-pin-navigate_174-512" translatesAutoresizingMaskIntoConstraints="NO" id="I78-F9-PsD">
                                                 <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                             </imageView>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
                                             <constraint firstItem="I78-F9-PsD" firstAttribute="leading" secondItem="yWw-ze-x1l" secondAttribute="leading" id="4jH-t1-btA"/>
+                                            <constraint firstItem="I78-F9-PsD" firstAttribute="centerY" secondItem="U1v-vR-QIU" secondAttribute="centerY" id="Fgw-ZY-fG2"/>
+                                            <constraint firstItem="I78-F9-PsD" firstAttribute="centerX" secondItem="U1v-vR-QIU" secondAttribute="centerX" id="GZI-SI-JgQ"/>
                                             <constraint firstItem="I78-F9-PsD" firstAttribute="trailing" secondItem="yWw-ze-x1l" secondAttribute="trailing" id="H5W-Id-pQD"/>
+                                            <constraint firstAttribute="height" constant="50" id="Hby-d9-DWY"/>
                                             <constraint firstItem="I78-F9-PsD" firstAttribute="top" secondItem="yWw-ze-x1l" secondAttribute="top" id="L3T-C7-A8l"/>
                                             <constraint firstItem="I78-F9-PsD" firstAttribute="leading" secondItem="yWw-ze-x1l" secondAttribute="leading" id="SvL-Ea-tiK"/>
                                             <constraint firstItem="I78-F9-PsD" firstAttribute="bottom" secondItem="yWw-ze-x1l" secondAttribute="bottom" id="gZd-qK-avS"/>
                                             <constraint firstItem="I78-F9-PsD" firstAttribute="trailing" secondItem="yWw-ze-x1l" secondAttribute="trailing" id="kek-Jv-AOq"/>
                                             <constraint firstItem="I78-F9-PsD" firstAttribute="bottom" secondItem="yWw-ze-x1l" secondAttribute="bottom" id="wgt-Lt-sOl"/>
+                                            <constraint firstAttribute="width" constant="50" id="xVN-QZ-BIE"/>
                                         </constraints>
                                         <viewLayoutGuide key="safeArea" id="yWw-ze-x1l"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="27.5"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                                <real key="value" value="2"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                                <real key="value" value="0.29999999999999999"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
+                                                <size key="value" width="0.40000000000000002" height="0.40000000000000002"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                                <color key="value" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <view contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="E7q-3z-jR5" userLabel="Hamburger">
+                                        <rect key="frame" x="354" y="68" width="50" height="50"/>
+                                        <subviews>
+                                            <imageView contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="recenter" translatesAutoresizingMaskIntoConstraints="NO" id="vpF-aN-SV7">
+                                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            </imageView>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <constraints>
+                                            <constraint firstItem="vpF-aN-SV7" firstAttribute="bottom" secondItem="EQY-x7-x3M" secondAttribute="bottom" id="33d-b2-uHa"/>
+                                            <constraint firstItem="vpF-aN-SV7" firstAttribute="trailing" secondItem="EQY-x7-x3M" secondAttribute="trailing" id="35w-5o-H7i"/>
+                                            <constraint firstItem="vpF-aN-SV7" firstAttribute="leading" secondItem="EQY-x7-x3M" secondAttribute="leading" id="38N-fg-uAv"/>
+                                            <constraint firstItem="vpF-aN-SV7" firstAttribute="centerY" secondItem="E7q-3z-jR5" secondAttribute="centerY" id="4QQ-ZP-enA"/>
+                                            <constraint firstAttribute="width" constant="50" id="6LW-OJ-i3V"/>
+                                            <constraint firstItem="vpF-aN-SV7" firstAttribute="trailing" secondItem="EQY-x7-x3M" secondAttribute="trailing" id="FPx-Oh-Ts7"/>
+                                            <constraint firstItem="vpF-aN-SV7" firstAttribute="top" secondItem="EQY-x7-x3M" secondAttribute="top" id="HlH-UY-ztf"/>
+                                            <constraint firstItem="vpF-aN-SV7" firstAttribute="leading" secondItem="EQY-x7-x3M" secondAttribute="leading" id="NQz-7Y-e1D"/>
+                                            <constraint firstItem="vpF-aN-SV7" firstAttribute="bottom" secondItem="EQY-x7-x3M" secondAttribute="bottom" id="O0g-yd-caL"/>
+                                            <constraint firstItem="vpF-aN-SV7" firstAttribute="bottom" secondItem="EQY-x7-x3M" secondAttribute="bottom" id="Qrf-oB-sKY"/>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="50" id="R5a-eu-ael"/>
+                                            <constraint firstAttribute="height" constant="50" id="UBP-yK-ZWE"/>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="cCD-0g-xnF"/>
+                                            <constraint firstItem="vpF-aN-SV7" firstAttribute="centerX" secondItem="E7q-3z-jR5" secondAttribute="centerX" id="fgW-X1-wMB"/>
+                                            <constraint firstItem="vpF-aN-SV7" firstAttribute="top" secondItem="EQY-x7-x3M" secondAttribute="top" id="hA9-io-bR8"/>
+                                            <constraint firstItem="vpF-aN-SV7" firstAttribute="leading" secondItem="EQY-x7-x3M" secondAttribute="leading" id="j05-0x-Qhw"/>
+                                            <constraint firstItem="vpF-aN-SV7" firstAttribute="trailing" secondItem="EQY-x7-x3M" secondAttribute="trailing" id="or4-xP-1fq"/>
+                                        </constraints>
+                                        <viewLayoutGuide key="safeArea" id="EQY-x7-x3M"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                 <real key="value" value="27.5"/>
@@ -2782,10 +2832,10 @@
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
-                                    <constraint firstItem="U1v-vR-QIU" firstAttribute="top" secondItem="GP1-j4-nRi" secondAttribute="topMargin" id="Hr1-XQ-rTT"/>
-                                    <constraint firstItem="U1v-vR-QIU" firstAttribute="leading" secondItem="GP1-j4-nRi" secondAttribute="leading" constant="356" id="Ie4-ve-fSS"/>
-                                    <constraint firstAttribute="bottom" secondItem="U1v-vR-QIU" secondAttribute="bottom" constant="760" id="lRy-lq-PZx"/>
-                                    <constraint firstItem="U1v-vR-QIU" firstAttribute="trailing" secondItem="GP1-j4-nRi" secondAttribute="trailingMargin" id="ugc-ZA-8uD"/>
+                                    <constraint firstAttribute="trailing" secondItem="U1v-vR-QIU" secondAttribute="trailing" constant="10" id="0d3-2T-B5X"/>
+                                    <constraint firstItem="U1v-vR-QIU" firstAttribute="top" secondItem="GP1-j4-nRi" secondAttribute="top" constant="10" id="L2t-wW-5Ei"/>
+                                    <constraint firstAttribute="trailing" secondItem="E7q-3z-jR5" secondAttribute="trailing" constant="10" id="NDX-Y9-3rb"/>
+                                    <constraint firstItem="E7q-3z-jR5" firstAttribute="top" secondItem="U1v-vR-QIU" secondAttribute="bottom" constant="8" id="TmE-Eb-iAz"/>
                                 </constraints>
                                 <connections>
                                     <outlet property="delegate" destination="fPk-Ih-mSb" id="fTs-7H-Tpa"/>
@@ -2899,6 +2949,7 @@
                         <outlet property="googleMaps" destination="GP1-j4-nRi" id="vP8-Lk-LJi"/>
                         <outlet property="openInMapsImage" destination="I78-F9-PsD" id="bS4-E9-ocz"/>
                         <outlet property="openInMapsView" destination="U1v-vR-QIU" id="FVK-zo-WKC"/>
+                        <outlet property="recenterButtonView" destination="E7q-3z-jR5" id="mqn-yl-6pR"/>
                         <outlet property="resturentAddress" destination="1RW-On-erF" id="R3C-TF-4h1"/>
                         <outlet property="resturentName" destination="QfH-Ph-sRa" id="6Y0-O2-kzT"/>
                         <outlet property="timeAndDistance" destination="Rq8-j6-CFM" id="ldd-4S-pKh"/>
@@ -4476,6 +4527,7 @@ read the Privacy policy</string>
         <image name="case" width="24" height="24"/>
         <image name="comment" width="24" height="24"/>
         <image name="dollarsign.circle.fill" catalog="system" width="128" height="121"/>
+        <image name="gps-location-map-marker-navigation-pin-navigate_174-512" width="170.66667175292969" height="170.66667175292969"/>
         <image name="hamburgerbars" width="24" height="24"/>
         <image name="helpcenter" width="22" height="22"/>
         <image name="map" width="32" height="32"/>

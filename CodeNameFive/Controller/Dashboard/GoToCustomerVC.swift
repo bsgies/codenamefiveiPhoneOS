@@ -18,8 +18,6 @@ class GoToCustomerVC: UIViewController {
     @IBOutlet weak var personName: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
     }
     @IBAction func NavPhoneNumber(_ sender: UIBarButtonItem) {
         callingnNumber()
@@ -37,8 +35,6 @@ class GoToCustomerVC: UIViewController {
         GoToDeliverOrder()
         
     }
-
-    
 }
 
 extension GoToCustomerVC{
@@ -49,9 +45,6 @@ extension GoToCustomerVC{
          navigationController?.pushViewController(newViewController, animated: true)
      }
     func GoToDeliverOrder() {
-//        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-//        let newViewController = storyBoard.instantiateViewController(withIdentifier: "DeliverOrderTVC")
-//        navigationController?.pushViewController(newViewController, animated: true)
         let deliver : DeliverOrderTVC = self.storyboard?.instantiateViewController(withIdentifier: "DeliverOrderTVC") as! DeliverOrderTVC
             self.presentOnRoot(viewController: deliver)
     }
@@ -61,17 +54,6 @@ extension GoToCustomerVC{
            self.present(navigationController, animated: false, completion: nil)
            
        }
-       func phoneNumber(){
-            //let image = UIImage(systemName: "phone.fil" )
-            let ac = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-            
-               //ac.addAction(UIAlertAction(title: "+923084706656", style: .default, handler: callingnNumber()))
-    //        ac.setValue(UIImage(systemName: "phone.fil")?.withRenderingMode(UIImage.RenderingMode.alwaysOriginal), forKey: "image")
-               ac.addAction(UIAlertAction(title: "Cancel", style: .cancel))
-               ac.popoverPresentationController?.barButtonItem = self.navigationItem.rightBarButtonItem
-               present(ac, animated: true)
-        }
-        
         func callingnNumber() {
             if let url = URL(string: "tel://\("+923084706656")") {
                 if #available(iOS 10, *) {
