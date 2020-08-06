@@ -122,6 +122,7 @@ class DashboardVC: UIViewController ,  CLLocationManagerDelegate, GMSMapViewDele
         self.googleMapView.bringSubviewToFront(self.hamburger)
         self.googleMapView.bringSubviewToFront(self.currentEarning)
         self.googleMapView.bringSubviewToFront(self.recenterView)
+        self.googleMapView.bringSubviewToFront(self.recenter)
        
         
         if traitCollection.userInterfaceStyle == .light {
