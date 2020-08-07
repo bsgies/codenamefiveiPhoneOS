@@ -1,0 +1,6 @@
+framework module GoogleMapDirectionLib {
+  umbrella header "GoogleMapDirectionLib-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -57,7 +57,7 @@ class GoToPickupVC: UIViewController,CLLocationManagerDelegate, GMSMapViewDelega
     @IBOutlet weak var recenterButtonView: UIView!
     
     func Direction(from source: CLLocationCoordinate2D, to destination: CLLocationCoordinate2D) {
-        
+    
         GoogleDirection.withServerKey(apiKey: "AIzaSyBXfR7Zu7mvhxO4aydatsUY-VUH-_NG15g")
             .from(origin: CLLocationCoordinate2D(latitude: source.latitude, longitude: source.longitude))
             .to(destination: CLLocationCoordinate2D(latitude: destination.latitude, longitude: destination.longitude))
@@ -114,12 +114,13 @@ class GoToPickupVC: UIViewController,CLLocationManagerDelegate, GMSMapViewDelega
         if CLLocationManager.authorizationStatus() == .authorizedWhenInUse{
             currentLocation = locationManager.location
             fromLoc = CLLocationCoordinate2DMake((currentLocation?.coordinate.latitude)!, (currentLocation?.coordinate.longitude)!)
-            toLoc = CLLocationCoordinate2DMake(((currentLocation?.coordinate.latitude)! + 0.01), ((currentLocation?.coordinate.longitude)! + 0.03))
+           // toLoc = CLLocationCoordinate2DMake(((currentLocation?.coordinate.latitude)! + 0.01), ((currentLocation?.coordinate.longitude)! + 0.03))
+            toLoc = CLLocationCoordinate2DMake(51.6173559,-0.020734)
             Direction(from: fromLoc!, to: toLoc!)
+            
         }
         
-        
-        
+
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(true)
@@ -150,22 +151,22 @@ class GoToPickupVC: UIViewController,CLLocationManagerDelegate, GMSMapViewDelega
         self.present(navigationController, animated: false, completion: nil)
         
     }
-    func animateWithCameraUpdateForMap(_ cameraUpdate: GMSCameraUpdate) {
-        
-        DispatchQueue.main.async {
-            self.googleMaps.animate(with: cameraUpdate)
-            self.googleMaps.animate(toViewingAngle: 45)
-            self.googleMaps.animate(toZoom: 4)
-        }
-    }
+//    func animateWithCameraUpdateForMap(_ cameraUpdate: GMSCameraUpdate) {
+//
+//        DispatchQueue.main.async {
+//            self.googleMaps.animate(with: cameraUpdate)
+//            self.googleMaps.animate(toViewingAngle: 45)
+//            self.googleMaps.animate(toZoom: 4)
+//        }
+//    }
     
     func LocationManger(){
         locationManager = CLLocationManager()
         locationManager?.delegate = self
         locationManager?.requestAlwaysAuthorization()
-        locationManager?.desiredAccuracy =  kCLLocationAccuracyBestForNavigation //kCLLocationAccuracyBest
+        locationManager?.desiredAccuracy = kCLLocationAccuracyBest
         locationManager?.requestWhenInUseAuthorization()
-        //locationManager?.distanceFilter = 50
+        locationManager?.distanceFilter = 50
         locationManager?.startUpdatingLocation()
         locationManager.startMonitoringSignificantLocationChanges()
         
@@ -192,9 +193,9 @@ class GoToPickupVC: UIViewController,CLLocationManagerDelegate, GMSMapViewDelega
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        let location: CLLocation = locations.last!
-        locValue = location.coordinate
-        //locValue = manager.location!.coordinate
+        //let location: CLLocation = locations.last!
+        //locValue = location.coordinate
+        locValue = manager.location!.coordinate
         driverLat = locValue?.latitude
         driverLong = locValue?.longitude
        
@@ -245,7 +246,6 @@ class GoToPickupVC: UIViewController,CLLocationManagerDelegate, GMSMapViewDelega
         }
         
     }
-    
     func createPoly(index :Int){
         print(index)
         let newPath = GMSMutablePath()
@@ -265,7 +265,6 @@ class GoToPickupVC: UIViewController,CLLocationManagerDelegate, GMSMapViewDelega
                          isDashed: false)
         }
     }
-    
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         resturentName.text = error.localizedDescription
     }
@@ -514,9 +513,9 @@ extension GoToPickupVC{
         }    }
     
     @objc func alertSheetForMaps(gesture: UITapGestureRecognizer){
-        let alert = UIAlertController(title: "Maps", message: "Please Select an Map", preferredStyle: .actionSheet)
+        let alert = UIAlertController(title: "Maps", message: "Please select a map", preferredStyle: .actionSheet)
         UIView.appearance(whenContainedInInstancesOf: [UIAlertController.self]).tintColor = #colorLiteral(red: 0, green: 0.8465872407, blue: 0.7545004487, alpha: 1)
-        alert.addAction(UIAlertAction(title: "Google Maps", style: .default , handler:{ (UIAlertAction)in
+        alert.addAction(UIAlertAction(title: "Google maps", style: .default , handler:{ (UIAlertAction)in
             self.openGoogleMap()
         }))
         
@@ -524,7 +523,7 @@ extension GoToPickupVC{
             self.openWaze()
         }))
         
-        alert.addAction(UIAlertAction(title: "Apple Map", style: .default , handler:{ (UIAlertAction)in
+        alert.addAction(UIAlertAction(title: "Apple maps", style: .default , handler:{ (UIAlertAction)in
             let url = "http://maps.apple.com/maps?saddr=\(self.fromLoc!.latitude),\(self.fromLoc!.longitude)&daddr=\(self.toLoc!.latitude),\(self.toLoc!.longitude)"
             UIApplication.shared.open(URL(string:url)! , options: [:], completionHandler: nil)
         }))
