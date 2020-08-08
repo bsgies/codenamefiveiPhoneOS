@@ -63,6 +63,10 @@ class GoToPickupVC: UIViewController,CLLocationManagerDelegate, GMSMapViewDelega
             .to(destination: CLLocationCoordinate2D(latitude: destination.latitude, longitude: destination.longitude))
             .avoid(avoid: AvoidType.FERRIES)
             .avoid(avoid: AvoidType.HIGHWAYS)
+            .avoid(avoid: AvoidType.TOLLS)
+            .avoid(avoid: AvoidType.INDOOR)
+            .optimizeWaypoints(optimize: true)
+            .language(language: Language.ENGLISH)
             .transportMode(transportMode: TransportMode.DRIVING)
             .execute(callback: self)
     }
@@ -114,8 +118,8 @@ class GoToPickupVC: UIViewController,CLLocationManagerDelegate, GMSMapViewDelega
         if CLLocationManager.authorizationStatus() == .authorizedWhenInUse{
             currentLocation = locationManager.location
             fromLoc = CLLocationCoordinate2DMake((currentLocation?.coordinate.latitude)!, (currentLocation?.coordinate.longitude)!)
-           // toLoc = CLLocationCoordinate2DMake(((currentLocation?.coordinate.latitude)! + 0.01), ((currentLocation?.coordinate.longitude)! + 0.03))
-            toLoc = CLLocationCoordinate2DMake(51.6173559,-0.020734)
+            toLoc = CLLocationCoordinate2DMake(31.584478,74.388419)
+            //toLoc = CLLocationCoordinate2DMake(51.6173559,-0.020734)
             Direction(from: fromLoc!, to: toLoc!)
             
         }
@@ -164,7 +168,7 @@ class GoToPickupVC: UIViewController,CLLocationManagerDelegate, GMSMapViewDelega
         locationManager = CLLocationManager()
         locationManager?.delegate = self
         locationManager?.requestAlwaysAuthorization()
-        locationManager?.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager?.desiredAccuracy = kCLLocationAccuracyBestForNavigation//kCLLocationAccuracyBest
         locationManager?.requestWhenInUseAuthorization()
         locationManager?.distanceFilter = 50
         locationManager?.startUpdatingLocation()
@@ -195,6 +199,7 @@ class GoToPickupVC: UIViewController,CLLocationManagerDelegate, GMSMapViewDelega
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         //let location: CLLocation = locations.last!
         //locValue = location.coordinate
+        
         locValue = manager.location!.coordinate
         driverLat = locValue?.latitude
         driverLong = locValue?.longitude
@@ -202,7 +207,7 @@ class GoToPickupVC: UIViewController,CLLocationManagerDelegate, GMSMapViewDelega
         driverRouteManage(driverLat: driverLat!, driverLong: driverLong!)
         updateTravelledPath(currentLoc: locValue!)
         
-        self.googleMaps.animate(toLocation: locValue!)
+        //self.googleMaps.animate(toLocation: locValue!)
         //googleMaps.animate(toViewingAngle: 45)
     }
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
@@ -233,7 +238,7 @@ class GoToPickupVC: UIViewController,CLLocationManagerDelegate, GMSMapViewDelega
         for i in 0..<path.count(){
             let pathLat = path.coordinate(at: i).latitude.rounded(toPlaces: 3)
             let pathLong = path.coordinate(at: i).longitude.rounded(toPlaces: 3)
-            
+        
             let currentLat = currentLoc.latitude.rounded(toPlaces: 3)
             let currentLong = currentLoc.longitude.rounded(toPlaces: 3)
             
@@ -256,11 +261,11 @@ class GoToPickupVC: UIViewController,CLLocationManagerDelegate, GMSMapViewDelega
             }
             googleMaps.clear()
             addMarker()
-            self.path              = newPath
+            self.path = newPath
             self.myGMSPolyline          = GMSPolyline.init(path: self.path)
             drawPolyline(mapView: self.googleMaps,
                          polyline: self.myGMSPolyline,
-                         strokeWidth: 6.0,
+                         strokeWidth: 5.0,
                          polylineColor: #colorLiteral(red: 0, green: 0.8465872407, blue: 0.7545004487, alpha: 1),
                          isDashed: false)
         }
@@ -270,8 +275,12 @@ class GoToPickupVC: UIViewController,CLLocationManagerDelegate, GMSMapViewDelega
     }
     func driverRouteManage(driverLat: Double, driverLong: Double){
         if !GMSGeometryIsLocationOnPath(locValue!,path, true){
-            Direction(from: locValue!, to: toLoc!)
+Direction(from: locValue!, to: toLoc!)
         }
+//
+//        if !isInRoute(posLL: locValue!, path: path){
+//            Direction(from: locValue!, to: toLoc!)
+//        }
     }
     func isInRoute(posLL: CLLocationCoordinate2D, path: GMSPath) -> Bool
     {
@@ -367,14 +376,20 @@ extension GoToPickupVC: DirectionCallback {
             addMarker()
             // Draw polyline
             let routes = direction.routes
+            var legs = [Leg]()
             OperationQueue.main.addOperation({
                 for route in routes{
                     let routeOverviewPolyline =   route.overviewPolyline
-                    
+                    legs = route.legs
                     self.ponits = routeOverviewPolyline?.rawPoints
                     self.path = GMSMutablePath.init(fromEncodedPath: self.ponits!)!
                     self.myGMSPolyline = GMSPolyline(path: self.path)
                     self.updateTravelledPath(currentLoc: CLLocationCoordinate2DMake ((self.currentLocation?.coordinate.latitude)! , (self.currentLocation?.coordinate.longitude)!))
+                }
+                for leg in legs{
+                   let dis =  leg.distance
+                   let time =  leg.duration
+                    self.timeAndDistance.text = "\(dis?.text! ?? "0KM")  \(time?.text! ?? "0mins")"
                 }
             })
             
@@ -419,7 +434,7 @@ extension GoToPickupVC{
         }
         if first{
             mapView.animate(with: .fit(bounds))
-            self.timer = Timer.scheduledTimer(timeInterval: 0.09, target: self, selector: #selector(animatePolylinePath), userInfo: nil, repeats: true)
+            self.timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(animatePolylinePath), userInfo: nil, repeats: true)
             first = false
         }
         if isUserTouch{
