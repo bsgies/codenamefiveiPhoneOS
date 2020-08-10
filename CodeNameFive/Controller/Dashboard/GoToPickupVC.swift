@@ -5,13 +5,13 @@
 //  Created by Muhammad Imran on 03/07/2020.
 //  Copyright © 2020 ITRID TECHNOLOGIES LTD. All rights reserved.
 //
-
 import UIKit
 import MapKit
 import GoogleMaps
 import Alamofire
 import CoreLocation
 import GoogleMapDirectionLib
+import SwiftSVG
 class GoToPickupVC: UIViewController,CLLocationManagerDelegate, GMSMapViewDelegate, UIGestureRecognizerDelegate {
     
     var pathIndex = 0
@@ -47,13 +47,9 @@ class GoToPickupVC: UIViewController,CLLocationManagerDelegate, GMSMapViewDelega
     var locValue:CLLocationCoordinate2D?
     var isUserTouch = false
     var first : Bool = true
-    var sourceMarker : GMSMarker = {
-        let marker = GMSMarker()
-        marker.appearAnimation = .pop
-        marker.icon =  #imageLiteral(resourceName: "gps-location-map-marker-navigation-pin-navigate_174-512").resizeImage(newWidth: 30)
-        return marker
-    }()
-    
+    var startLocationLat : Double?
+    var startLocationLong : Double?
+    var dotedCord : CLLocationCoordinate2D?
     @IBOutlet weak var recenterButtonView: UIView!
     
     func Direction(from source: CLLocationCoordinate2D, to destination: CLLocationCoordinate2D) {
@@ -102,6 +98,13 @@ class GoToPickupVC: UIViewController,CLLocationManagerDelegate, GMSMapViewDelega
         let tapOnRecenter = UITapGestureRecognizer(target: self, action: #selector(recenter(gesture:)))
         tapOnRecenter.delegate = self
         recenterButtonView.addGestureRecognizer(tapOnRecenter)
+        let open = UIView(SVGNamed: "open"){ (svgLayer) in
+            svgLayer.fillColor = #colorLiteral(red: 0, green: 0.8465872407, blue: 0.7545004487, alpha: 1)
+            svgLayer.lineWidth = 2
+            svgLayer.strokeColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+            svgLayer.resizeToFit(self.openInMapsImage.bounds)
+        }
+        openInMapsImage.addSubview(open)
     }
     @objc func recenter(gesture: UITapGestureRecognizer){
         recenterButtonView.isHidden = true
@@ -163,14 +166,14 @@ class GoToPickupVC: UIViewController,CLLocationManagerDelegate, GMSMapViewDelega
 //            self.googleMaps.animate(toZoom: 4)
 //        }
 //    }
-    
+
     func LocationManger(){
         locationManager = CLLocationManager()
         locationManager?.delegate = self
         locationManager?.requestAlwaysAuthorization()
-        locationManager?.desiredAccuracy = kCLLocationAccuracyBestForNavigation//kCLLocationAccuracyBest
+        locationManager?.desiredAccuracy = kCLLocationAccuracyBest
         locationManager?.requestWhenInUseAuthorization()
-        locationManager?.distanceFilter = 50
+        //locationManager?.distanceFilter = 50
         locationManager?.startUpdatingLocation()
         locationManager.startMonitoringSignificantLocationChanges()
         
@@ -204,9 +207,9 @@ class GoToPickupVC: UIViewController,CLLocationManagerDelegate, GMSMapViewDelega
         driverLat = locValue?.latitude
         driverLong = locValue?.longitude
        
-        driverRouteManage(driverLat: driverLat!, driverLong: driverLong!)
-        updateTravelledPath(currentLoc: locValue!)
-        
+       // driverRouteManage(driverLat: driverLat!, driverLong: driverLong!)
+       // updateTravelledPath(currentLoc: locValue!)
+        myupdateTravelledPath(currentLoc: locValue!)
         //self.googleMaps.animate(toLocation: locValue!)
         //googleMaps.animate(toViewingAngle: 45)
     }
@@ -231,44 +234,76 @@ class GoToPickupVC: UIViewController,CLLocationManagerDelegate, GMSMapViewDelega
         }
     }
     func updateTravelledPath(currentLoc: CLLocationCoordinate2D){
-        if myGMSPolyline == nil{
-            return
-        }
+        if myGMSPolyline != nil{
         createPoly(index: pathIndex)
         for i in 0..<path.count(){
-            let pathLat = path.coordinate(at: i).latitude.rounded(toPlaces: 3)
-            let pathLong = path.coordinate(at: i).longitude.rounded(toPlaces: 3)
-        
-            let currentLat = currentLoc.latitude.rounded(toPlaces: 3)
-            let currentLong = currentLoc.longitude.rounded(toPlaces: 3)
-            
-            
+            let pathLat = path.coordinate(at: i).latitude.rounded(toPlaces: 4)
+            let pathLong = path.coordinate(at: i).longitude.rounded(toPlaces: 4)
+            let currentLat = currentLoc.latitude.rounded(toPlaces: 4)
+            let currentLong = currentLoc.longitude.rounded(toPlaces: 4)
             if currentLat == pathLat && currentLong == pathLong{
                 pathIndex = Int(i)
-                print(i)
-                break   //Breaking the loop when the index found
+               let alert = UIAlertController(title: String(currentLat), message: String(pathLat), preferredStyle: UIAlertController.Style.alert)
+               alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+               self.present(alert, animated: true, completion: nil)
+                break
             }
         }
+        }
+
         
     }
     func createPoly(index :Int){
-        print(index)
+        resturentName.text = String(index)
         let newPath = GMSMutablePath()
-        
         if Int(path.count()) > index {
             for i in index..<Int(path.count()){
                 newPath.add(path.coordinate(at: UInt(i)))
+                print(path.coordinate(at: UInt(i)))
             }
-            googleMaps.clear()
-            addMarker()
             self.path = newPath
-            self.myGMSPolyline          = GMSPolyline.init(path: self.path)
-            drawPolyline(mapView: self.googleMaps,
-                         polyline: self.myGMSPolyline,
-                         strokeWidth: 5.0,
-                         polylineColor: #colorLiteral(red: 0, green: 0.8465872407, blue: 0.7545004487, alpha: 1),
-                         isDashed: false)
+            self.myGMSPolyline = GMSPolyline.init(path: self.path)
+            DispatchQueue.main.async {
+                self.drawPolyline(mapView: self.googleMaps,polyline: self.myGMSPolyline,strokeWidth: 5.0,polylineColor: #colorLiteral(red: 0, green: 0.8465872407, blue: 0.7545004487, alpha: 1),isDashed: false)
+                //self.addPolyLine(polyline: self.myGMSPolyline, dotCoordinate: self.dotedCord!)
+            }
+           
+            
+//            DispatchQueue.main.async {
+//                self.addPolyLine(polyline: self.myGMSPolyline, dotCoordinate: self.dotedCord!)
+//            }
         }
+    }
+    func myupdateTravelledPath(currentLoc: CLLocationCoordinate2D){
+        let newPath = GMSMutablePath()
+        var indexToRemove: UInt = 0
+        for i in 0..<self.path.count(){
+            
+            let coordinate = self.path.coordinate(at: i)
+            print(coordinate)
+            
+            if self.myGMSPolyline != nil {
+                let distance = coordinate.getDistanceMetresBetweenLocationCoordinates(currentLoc)
+                print(distance)
+                if distance >= 10 {
+                    indexToRemove = i
+                    break
+                }
+            }
+        }
+        for i in indexToRemove..<self.path.count(){
+            newPath.add(self.path.coordinate(at: i))
+        }
+
+        self.myGMSPolyline.map      = nil
+        self.myupdateTravelledPath(currentLoc: locValue!)
+        self.path              = newPath
+        self.myGMSPolyline          = GMSPolyline.init(path: self.path)
+       drawPolyline(mapView: self.googleMaps,
+        polyline: self.myGMSPolyline,
+        strokeWidth: 5.0,
+        polylineColor: UIColor.green,
+        isDashed: false)
     }
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         resturentName.text = error.localizedDescription
@@ -384,17 +419,24 @@ extension GoToPickupVC: DirectionCallback {
                     self.ponits = routeOverviewPolyline?.rawPoints
                     self.path = GMSMutablePath.init(fromEncodedPath: self.ponits!)!
                     self.myGMSPolyline = GMSPolyline(path: self.path)
-                    self.updateTravelledPath(currentLoc: CLLocationCoordinate2DMake ((self.currentLocation?.coordinate.latitude)! , (self.currentLocation?.coordinate.longitude)!))
                 }
+                  
+                var steps = [Step]()
                 for leg in legs{
                    let dis =  leg.distance
                    let time =  leg.duration
+                   steps =  leg.steps
                     self.timeAndDistance.text = "\(dis?.text! ?? "0KM")  \(time?.text! ?? "0mins")"
                 }
+                var startLocation : Coordination?
+                for step in steps{
+                   startLocation =  step.startLoation
+                    self.startLocationLat =  startLocation?.latitude
+                    self.startLocationLong =  startLocation?.longitude
+                }
+                self.dotedCord = CLLocationCoordinate2D(latitude: CLLocationDegrees(self.startLocationLat!), longitude: CLLocationDegrees(self.startLocationLong!))
+ self.updateTravelledPath(currentLoc: CLLocationCoordinate2DMake ((self.currentLocation?.coordinate.latitude)! , (self.currentLocation?.coordinate.longitude)!))
             })
-            
-            
-            
         } else {
             // Do something
         }
@@ -409,62 +451,41 @@ extension GoToPickupVC: DirectionCallback {
 extension GoToPickupVC{
     func drawPolyline(mapView: GMSMapView, polyline: GMSPolyline, strokeWidth: CGFloat, polylineColor: UIColor, isDashed: Bool){
         //googleMaps.animate(toViewingAngle: 45)
-        polyline.strokeWidth            = strokeWidth//5.0
-        
-        //Polyline style setup
-        let styles                      = [GMSStrokeStyle.solidColor(.clear), GMSStrokeStyle.solidColor(polylineColor)]
-        let scaleFactor                 = 1.0 / mapView.projection.points(forMeters: 1, at: mapView.camera.target)
-        
-        var dashedLine: NSNumber        = NSNumber(value: 0 )
-        var solidLine: NSNumber         = NSNumber(value: Double(50 * scaleFactor))
-        
-        if isDashed {
-            dashedLine                  = NSNumber(value: Double(0.1 * scaleFactor))
-            solidLine                   = NSNumber(value: Double(0.2 * scaleFactor))
-        }
-        
-        let lenghts                     = [dashedLine, solidLine]
-        polyline.spans                  = GMSStyleSpans(polyline.path!, styles, lenghts, .rhumb)
-        polyline.map                    = mapView
-        
+        googleMaps.clear()
+        addMarker()
+        polyline.strokeWidth = strokeWidth
+        polyline.strokeColor = polylineColor
+
+        polyline.map  = mapView
         var bounds = GMSCoordinateBounds()
-        
         for i in 0 ... path.count() {
             bounds = bounds.includingCoordinate((path.coordinate(at: i)))
         }
         if first{
             mapView.animate(with: .fit(bounds))
-            self.timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(animatePolylinePath), userInfo: nil, repeats: true)
             first = false
         }
         if isUserTouch{
             mapView.moveCamera(.fit(bounds))
             self.isUserTouch = false
         }
-        
-        
-        
     }
-    
-    @objc func animatePolylinePath(){
-        if (self.i < self.path.count()) {
-                self.animationPath.add(self.path.coordinate(at: self.i))
-                self.animationPolyline.path = self.animationPath
-                self.animationPolyline.strokeColor = #colorLiteral(red: 0.8392156863, green: 0.8352941176, blue: 0.8431372549, alpha: 1)
-            self.animationPolyline.strokeWidth = 6.0
-                self.animationPolyline.map = self.googleMaps
-                self.i += 1
-            }
-            else {
-                self.i = 0
-                self.animationPath = GMSMutablePath()
-                self.animationPolyline.map = nil
-                self.timer.invalidate()
-            }
-        }
-    }
+    func addPolyLine(polyline: GMSPolyline ,dotCoordinate : CLLocationCoordinate2D) {
+
+        //--------Dash line to connect starting point---------\\
+
+        let dotPath :GMSMutablePath = GMSMutablePath()
+        dotPath.add(CLLocationCoordinate2DMake(dotCoordinate.latitude, dotCoordinate.longitude))
+        let dottedPolyline  = GMSPolyline(path: dotPath)
+        dottedPolyline.strokeWidth = 3.0
+        let styles: [Any] = [GMSStrokeStyle.solidColor(UIColor.green), GMSStrokeStyle.solidColor(UIColor.clear)]
+        let lengths: [Any] = [10, 5]
+        dottedPolyline.spans = GMSStyleSpans(dottedPolyline.path!, styles as! [GMSStrokeStyle], lengths as! [NSNumber], .rhumb)
+        dottedPolyline.map = self.googleMaps
 
 
+    }
+}
 extension GoToPickupVC{
     func mapView(_ mapView: GMSMapView, idleAt position: GMSCameraPosition) {
         let dist = position.target.getDistanceMetresBetweenLocationCoordinates(self.locValue!)

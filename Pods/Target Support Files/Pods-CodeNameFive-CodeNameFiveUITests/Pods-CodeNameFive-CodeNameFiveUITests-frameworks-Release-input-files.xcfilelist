@@ -12,3 +12,11 @@ ${BUILT_PRODUCTS_DIR}/MotionInterchange/MotionInterchange.framework
 ${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework
 ${BUILT_PRODUCTS_DIR}/RxAlamofire/RxAlamofire.framework
 ${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework
+${BUILT_PRODUCTS_DIR}/SwiftSVG/SwiftSVG.framework
+${PODS_ROOT}/ZendeskCommonUISDK/CommonUISDK.framework
+${PODS_ROOT}/ZendeskCoreSDK/ZendeskCoreSDK.framework
+${PODS_ROOT}/ZendeskMessagingAPISDK/MessagingAPI.framework
+${PODS_ROOT}/ZendeskMessagingSDK/MessagingSDK.framework
+${PODS_ROOT}/ZendeskSDKConfigurationsSDK/SDKConfigurations.framework
+${PODS_ROOT}/ZendeskSupportProvidersSDK/SupportProvidersSDK.framework
+${PODS_ROOT}/ZendeskSupportSDK/SupportSDK.framework

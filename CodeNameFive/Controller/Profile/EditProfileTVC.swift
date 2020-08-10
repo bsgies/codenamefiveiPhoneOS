@@ -103,9 +103,8 @@ class EditProfileTVC: UITableViewController {
 extension EditProfileTVC {
     func presentOnRoot(viewController : UIViewController){
         let navigationController = UINavigationController(rootViewController: viewController)
-        navigationController.modalPresentationStyle = UIModalPresentationStyle.formSheet
+        navigationController.modalPresentationStyle = UIModalPresentationStyle.popover
         self.present(navigationController, animated: false, completion: nil)
-        
     }
 }
 

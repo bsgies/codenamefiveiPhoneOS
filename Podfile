@@ -9,10 +9,11 @@ target 'CodeNameFive' do
    pod 'MaterialComponents/ActivityIndicator', '~> 107.4'
    pod 'CVCalendar', '~> 1.7.0'
    pod 'GoogleMapDirectionLib'
-   
+   pod 'ZendeskSupportSDK'
+   pod 'SwiftSVG', '~> 2.3.0'
   # Pods for CodeNameFive
 
-  target 'CodeNameFiveTests' do
+  target 'CodeNameFiveTests'  do
     inherit! :search_paths
     # Pods for testing
   end

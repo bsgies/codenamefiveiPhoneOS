@@ -593,6 +593,7 @@
 				4F2E5630249B4FA800D28462 /* Resources */,
 				325FDA05046768BB4298226F /* [CP] Embed Pods Frameworks */,
 				49738CA2587ED73ADDECC573 /* [CP] Copy Pods Resources */,
+				4FA414B224E16A2B003A57B7 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -769,6 +770,23 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CodeNameFive/Pods-CodeNameFive-resources.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		4FA414B224E16A2B003A57B7 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nbash \"${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}/SupportSDK.framework/strip-frameworks.sh\"\n";
 		};
 		5B4806833C6B2F19A6650534 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
