@@ -11,7 +11,6 @@ import GoogleMaps
 import Alamofire
 import CoreLocation
 import GoogleMapDirectionLib
-import SwiftSVG
 class GoToPickupVC: UIViewController,CLLocationManagerDelegate, GMSMapViewDelegate, UIGestureRecognizerDelegate {
     
     var pathIndex = 0
@@ -98,14 +97,7 @@ class GoToPickupVC: UIViewController,CLLocationManagerDelegate, GMSMapViewDelega
         let tapOnRecenter = UITapGestureRecognizer(target: self, action: #selector(recenter(gesture:)))
         tapOnRecenter.delegate = self
         recenterButtonView.addGestureRecognizer(tapOnRecenter)
-        let open = UIView(SVGNamed: "open"){ (svgLayer) in
-            svgLayer.fillColor = #colorLiteral(red: 0, green: 0.8465872407, blue: 0.7545004487, alpha: 1)
-            svgLayer.lineWidth = 2
-            svgLayer.strokeColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-            svgLayer.resizeToFit(self.openInMapsImage.bounds)
         }
-        openInMapsImage.addSubview(open)
-    }
     @objc func recenter(gesture: UITapGestureRecognizer){
         recenterButtonView.isHidden = true
         self.updateTravelledPath(currentLoc: CLLocationCoordinate2DMake ((self.currentLocation?.coordinate.latitude)! , (self.currentLocation?.coordinate.longitude)!))
@@ -173,9 +165,9 @@ class GoToPickupVC: UIViewController,CLLocationManagerDelegate, GMSMapViewDelega
         locationManager?.requestAlwaysAuthorization()
         locationManager?.desiredAccuracy = kCLLocationAccuracyBest
         locationManager?.requestWhenInUseAuthorization()
-        //locationManager?.distanceFilter = 50
+        locationManager?.distanceFilter = 50
         locationManager?.startUpdatingLocation()
-        locationManager.startMonitoringSignificantLocationChanges()
+        //locationManager.startMonitoringSignificantLocationChanges()
         
     }
     
@@ -208,8 +200,8 @@ class GoToPickupVC: UIViewController,CLLocationManagerDelegate, GMSMapViewDelega
         driverLong = locValue?.longitude
        
        // driverRouteManage(driverLat: driverLat!, driverLong: driverLong!)
-       // updateTravelledPath(currentLoc: locValue!)
-        myupdateTravelledPath(currentLoc: locValue!)
+        updateTravelledPath(currentLoc: locValue!)
+        //myupdateTravelledPath(currentLoc: locValue!)
         //self.googleMaps.animate(toLocation: locValue!)
         //googleMaps.animate(toViewingAngle: 45)
     }
@@ -241,16 +233,13 @@ class GoToPickupVC: UIViewController,CLLocationManagerDelegate, GMSMapViewDelega
             let pathLong = path.coordinate(at: i).longitude.rounded(toPlaces: 4)
             let currentLat = currentLoc.latitude.rounded(toPlaces: 4)
             let currentLong = currentLoc.longitude.rounded(toPlaces: 4)
-            if currentLat == pathLat && currentLong == pathLong{
+            if currentLoc.latitude == pathLat{
                 pathIndex = Int(i)
-               let alert = UIAlertController(title: String(currentLat), message: String(pathLat), preferredStyle: UIAlertController.Style.alert)
-               alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
-               self.present(alert, animated: true, completion: nil)
                 break
             }
         }
         }
-
+//currentLat == pathLat &&
         
     }
     func createPoly(index :Int){
@@ -267,43 +256,8 @@ class GoToPickupVC: UIViewController,CLLocationManagerDelegate, GMSMapViewDelega
                 self.drawPolyline(mapView: self.googleMaps,polyline: self.myGMSPolyline,strokeWidth: 5.0,polylineColor: #colorLiteral(red: 0, green: 0.8465872407, blue: 0.7545004487, alpha: 1),isDashed: false)
                 //self.addPolyLine(polyline: self.myGMSPolyline, dotCoordinate: self.dotedCord!)
             }
-           
-            
-//            DispatchQueue.main.async {
-//                self.addPolyLine(polyline: self.myGMSPolyline, dotCoordinate: self.dotedCord!)
-//            }
-        }
-    }
-    func myupdateTravelledPath(currentLoc: CLLocationCoordinate2D){
-        let newPath = GMSMutablePath()
-        var indexToRemove: UInt = 0
-        for i in 0..<self.path.count(){
-            
-            let coordinate = self.path.coordinate(at: i)
-            print(coordinate)
-            
-            if self.myGMSPolyline != nil {
-                let distance = coordinate.getDistanceMetresBetweenLocationCoordinates(currentLoc)
-                print(distance)
-                if distance >= 10 {
-                    indexToRemove = i
-                    break
-                }
-            }
-        }
-        for i in indexToRemove..<self.path.count(){
-            newPath.add(self.path.coordinate(at: i))
-        }
 
-        self.myGMSPolyline.map      = nil
-        self.myupdateTravelledPath(currentLoc: locValue!)
-        self.path              = newPath
-        self.myGMSPolyline          = GMSPolyline.init(path: self.path)
-       drawPolyline(mapView: self.googleMaps,
-        polyline: self.myGMSPolyline,
-        strokeWidth: 5.0,
-        polylineColor: UIColor.green,
-        isDashed: false)
+        }
     }
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         resturentName.text = error.localizedDescription

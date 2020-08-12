@@ -10,7 +10,6 @@ target 'CodeNameFive' do
    pod 'CVCalendar', '~> 1.7.0'
    pod 'GoogleMapDirectionLib'
    pod 'ZendeskSupportSDK'
-   pod 'SwiftSVG', '~> 2.3.0'
   # Pods for CodeNameFive
 
   target 'CodeNameFiveTests'  do

@@ -36,7 +36,6 @@ PODS:
     - Alamofire (~> 4.8)
     - RxSwift (~> 5.0)
   - RxSwift (5.1.1)
-  - SwiftSVG (2.3.2)
   - ZendeskCommonUISDK (5.1.0):
     - ZendeskSDKConfigurationsSDK (~> 1.1.6)
   - ZendeskCoreSDK (2.4.1)
@@ -58,7 +57,6 @@ DEPENDENCIES:
   - GoogleMaps
   - MaterialComponents/ActivityIndicator (~> 107.4)
   - MessageKit
-  - SwiftSVG (~> 2.3.0)
   - ZendeskSupportSDK
 
 SPEC REPOS:
@@ -77,7 +75,6 @@ SPEC REPOS:
     - ObjectMapper
     - RxAlamofire
     - RxSwift
-    - SwiftSVG
     - ZendeskCommonUISDK
     - ZendeskCoreSDK
     - ZendeskMessagingAPISDK
@@ -101,7 +98,6 @@ SPEC CHECKSUMS:
   ObjectMapper: 97111c97e054a6ee25917662106689f0b4127b37
   RxAlamofire: a2d7621de4c23a0c6e7b476b504acc32838ee341
   RxSwift: 81470a2074fa8780320ea5fe4102807cb7118178
-  SwiftSVG: ca7f64e403b8ea7ea8eba8c823b83ba4a059834c
   ZendeskCommonUISDK: fff44133c8bf74ef6407c31c7cab56084c58dbf4
   ZendeskCoreSDK: 2dc9457ae01d024ca02f60f6134ad1ad90136c29
   ZendeskMessagingAPISDK: 64543aaa24e63a6eefe44d0dd6909e55edfe1cc5
@@ -110,6 +106,6 @@ SPEC CHECKSUMS:
   ZendeskSupportProvidersSDK: 209011ffad4cbd256839444571defad1b83006f2
   ZendeskSupportSDK: 95aea2ab473768d8b01fa837002415fb93f8c3e0
 
-PODFILE CHECKSUM: 0f09e28169c3df1ac54392f38c89c92f7cea393a
+PODFILE CHECKSUM: 182e7d6fb2da71caa947d98930dc0c6f87755111
 
 COCOAPODS: 1.10.0.beta.1

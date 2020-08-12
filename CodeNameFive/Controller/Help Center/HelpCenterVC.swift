@@ -12,7 +12,7 @@ class HelpCenterVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setCrossButton()
+         setCrossButton()
         
     }
     
