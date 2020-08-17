@@ -2269,6 +2269,10 @@
                                                     <rect key="frame" x="20" y="12" width="20" height="20"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="X1M-3S-sTy">
+                                                    <rect key="frame" x="347" y="7" width="49" height="31"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </switch>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="FO2-7W-LBX" firstAttribute="top" secondItem="JLg-Q4-m8A" secondAttribute="topMargin" constant="5" id="5F7-Ad-OMe"/>
