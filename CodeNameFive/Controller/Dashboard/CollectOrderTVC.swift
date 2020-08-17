@@ -11,8 +11,12 @@ import CoreLocation
 import GoogleMaps
 import CoreLocation
 import GoogleMaps
-class CollectOrderTVC: UITableViewController {
-    
+import MTSlideToOpen
+class CollectOrderTVC: UITableViewController, MTSlideToOpenDelegate {
+    func mtSlideToOpenDelegateDidFinish(_ sender: MTSlideToOpenView) {
+        GotToCustomer()
+    }
+
     //MARK:- Outlets
     
     @IBOutlet weak var googleMapView: GMSMapView!
@@ -65,25 +69,32 @@ class CollectOrderTVC: UITableViewController {
         bottomview.translatesAutoresizingMaskIntoConstraints = false
         bottomview.widthAnchor.constraint(equalTo: tableView.widthAnchor, multiplier: 1).isActive = true
         
-        bottomview.heightAnchor.constraint(equalToConstant: 60).isActive = true
+        bottomview.heightAnchor.constraint(equalToConstant: 70).isActive = true
         bottomview.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 0).isActive = true
         bottomview.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: 0).isActive = true
         bottomview.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: 0).isActive = true
         
-        button.backgroundColor = #colorLiteral(red: 0, green: 0.8465872407, blue: 0.7545004487, alpha: 1)
-        button.setTitleColor(.white, for: .normal)
-        button.setTitle("go To Customer", for: .normal)
-        button.titleLabel?.font = UIFont(name: "HelveticaNeue-Bold", size: 16)
-        button.addTarget(self, action: #selector(submit), for: UIControl.Event.touchUpInside)
-        bottomview.addSubview(button)
-        button.isEnabled = false
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.centerXAnchor.constraint(equalTo: bottomview.centerXAnchor).isActive = true
-        button.leadingAnchor.constraint(equalTo: bottomview.leadingAnchor, constant: 25).isActive = true
-        button.trailingAnchor.constraint(equalTo: bottomview.trailingAnchor, constant: -25).isActive = true
-        button.heightAnchor.constraint(equalToConstant: 40).isActive = true
-        button.topAnchor.constraint(equalTo: bottomview.topAnchor, constant: 10).isActive = true
-        button.bottomAnchor.constraint(equalTo: bottomview.bottomAnchor, constant: -10).isActive = true
+        let slide = MTSlideToOpenView(frame: CGRect(x: 26, y: 400, width: 317, height: 60))
+        slide.sliderViewTopDistance = 6
+        slide.sliderCornerRadius = 0
+        slide.delegate = self
+        slide.labelText = "go To Customer"
+        slide.textFont = UIFont(name: "HelveticaNeue-Bold", size: 16)!
+        slide.ViewShadow()
+        slide.thumbnailColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        slide.slidingColor = #colorLiteral(red: 0, green: 0.8465872407, blue: 0.7545004487, alpha: 1)
+        slide.thumnailImageView.image = #imageLiteral(resourceName: "chevron-right-1")
+    
+        bottomview.addSubview(slide)
+        
+
+        slide.translatesAutoresizingMaskIntoConstraints = false
+        slide.centerXAnchor.constraint(equalTo: bottomview.centerXAnchor).isActive = true
+        slide.leadingAnchor.constraint(equalTo: bottomview.leadingAnchor, constant: 25).isActive = true
+        slide.trailingAnchor.constraint(equalTo: bottomview.trailingAnchor, constant: -25).isActive = true
+        slide.heightAnchor.constraint(equalToConstant: 60).isActive = true
+        slide.topAnchor.constraint(equalTo: bottomview.topAnchor, constant: 5).isActive = true
+        slide.bottomAnchor.constraint(equalTo: bottomview.bottomAnchor, constant: -5).isActive = true
         
         
     }
@@ -183,16 +194,15 @@ extension CollectOrderTVC{
 extension CollectOrderTVC : GMSMapViewDelegate,CLLocationManagerDelegate{
     
     func setupMap()  {
-         
-        let camera = GMSCameraPosition.camera(withLatitude: -33.86, longitude: 151.20, zoom: 5.0)
+        let camera = GMSCameraPosition.camera(withLatitude: -33.86, longitude: 151.20, zoom: 15.0)
         let mapView = GMSMapView.map(withFrame: self.view.frame, camera: camera)
         self.googleMapView.addSubview(mapView)
-        self.googleMapView.animate(toViewingAngle: 70)
         let customerIcon = self.imageWithImage(image: UIImage(named: "Customer")!, scaledToSize: CGSize(width: 60.0, height: 60.0))
         let dmarker = GMSMarker()
         dmarker.position = CLLocationCoordinate2D(latitude: -33.86, longitude: 151.20)
         dmarker.icon = customerIcon
         dmarker.map = mapView
+        mapView.animate(to: camera)
     }
     func imageWithImage(image:UIImage, scaledToSize newSize:CGSize) -> UIImage{
         UIGraphicsBeginImageContextWithOptions(newSize, false, 0.0)

@@ -16,6 +16,7 @@ PODS:
   - InputBarAccessoryView (4.3.2):
     - InputBarAccessoryView/Core (= 4.3.2)
   - InputBarAccessoryView/Core (4.3.2)
+  - LanguageKit (0.1.5)
   - MaterialComponents/ActivityIndicator (107.4.0):
     - MaterialComponents/Palettes
     - MaterialComponents/private/Application
@@ -29,6 +30,7 @@ PODS:
   - MotionAnimator (2.8.1):
     - MotionInterchange (~> 1.6)
   - MotionInterchange (1.6.0)
+  - MTSlideToOpen (1.5.1)
   - ObjectMapper (3.5.3)
   - RxAlamofire (5.1.0):
     - RxAlamofire/Core (= 5.1.0)
@@ -55,8 +57,10 @@ DEPENDENCIES:
   - CVCalendar (~> 1.7.0)
   - GoogleMapDirectionLib
   - GoogleMaps
+  - LanguageKit
   - MaterialComponents/ActivityIndicator (~> 107.4)
   - MessageKit
+  - MTSlideToOpen
   - ZendeskSupportSDK
 
 SPEC REPOS:
@@ -67,11 +71,13 @@ SPEC REPOS:
     - GoogleMapDirectionLib
     - GoogleMaps
     - InputBarAccessoryView
+    - LanguageKit
     - MaterialComponents
     - MDFInternationalization
     - MessageKit
     - MotionAnimator
     - MotionInterchange
+    - MTSlideToOpen
     - ObjectMapper
     - RxAlamofire
     - RxSwift
@@ -90,11 +96,13 @@ SPEC CHECKSUMS:
   GoogleMapDirectionLib: 573468c6d3b26443c5a919abc766871bddb94b83
   GoogleMaps: 4b5346bddfe6911bb89155d43c903020170523ac
   InputBarAccessoryView: 7985d418040a05fe894bd4b8328dd43ab35517c3
+  LanguageKit: a3fa3dfba22b61388e86f07fd236d565b9b1e9e6
   MaterialComponents: 52e2ade4684e3017eff7f62587b37522d217ea50
   MDFInternationalization: 010097556d6b09d2c4ea38e0820ea6d37be6a314
   MessageKit: 3beb578737a5aa2bba25cc27c7b6d6faa09af5a7
   MotionAnimator: ee16aa30567c5bae0fb2750c132915829cfaaf8a
   MotionInterchange: ead0e3ae1f3a5fb539e289debbc7ae036160a10d
+  MTSlideToOpen: dedc9abf1e377fef40544b84e5590d4981055030
   ObjectMapper: 97111c97e054a6ee25917662106689f0b4127b37
   RxAlamofire: a2d7621de4c23a0c6e7b476b504acc32838ee341
   RxSwift: 81470a2074fa8780320ea5fe4102807cb7118178
@@ -106,6 +114,6 @@ SPEC CHECKSUMS:
   ZendeskSupportProvidersSDK: 209011ffad4cbd256839444571defad1b83006f2
   ZendeskSupportSDK: 95aea2ab473768d8b01fa837002415fb93f8c3e0
 
-PODFILE CHECKSUM: 182e7d6fb2da71caa947d98930dc0c6f87755111
+PODFILE CHECKSUM: aab191df0923e4d7b493d8fec723b88f60617e51
 
 COCOAPODS: 1.10.0.beta.1
