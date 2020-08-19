@@ -249,10 +249,12 @@ import UIKit
         let translatedPoint = sender.translation(in: view).x * (self.isOnRightToLeftLanguage() ? -1 : 1)
         switch sender.state {
         case .began:
+            //slidingColor = #colorLiteral(red: 0.05490196078, green: 0.6823529412, blue: 0.5294117647, alpha: 1)
             break
         case .changed:
             if translatedPoint >= xEndingPoint {
                 updateThumbnailXPosition(xEndingPoint)
+                
                 return
             }
             if translatedPoint <= thumbnailViewStartingDistance {

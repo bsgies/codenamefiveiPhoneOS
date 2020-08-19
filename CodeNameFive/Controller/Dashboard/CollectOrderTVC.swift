@@ -16,7 +16,8 @@ class CollectOrderTVC: UITableViewController, MTSlideToOpenDelegate {
     func mtSlideToOpenDelegateDidFinish(_ sender: MTSlideToOpenView) {
         GotToCustomer()
     }
-
+    
+    
     //MARK:- Outlets
     
     @IBOutlet weak var googleMapView: GMSMapView!
@@ -29,6 +30,7 @@ class CollectOrderTVC: UITableViewController, MTSlideToOpenDelegate {
     
     //MARK:- Variables Declrations
     var unchecked = true
+    let bottomview = UIView()
     let button = UIButton(type: .system)
     private var locationManager: CLLocationManager!
     private var currentLocation: CLLocation?
@@ -49,20 +51,27 @@ class CollectOrderTVC: UITableViewController, MTSlideToOpenDelegate {
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
-        goToCustomerScreenButtonSetup()
+        if traitCollection.userInterfaceStyle == .light {
+            goToCustomerScreenButtonSetup()
+            bottomview.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        }
+        else {
+            goToCustomerScreenButtonSetup()
+            bottomview.backgroundColor = #colorLiteral(red: 0.05882352963, green: 0.180392161, blue: 0.2470588237, alpha: 1)
+        }
     }
     
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(true)
-         guard let window = UIApplication.shared.windows.filter({$0.isKeyWindow}).first else { return }
+        guard let window = UIApplication.shared.windows.filter({$0.isKeyWindow}).first else { return }
         window.viewWithTag(200)?.removeFromSuperview()
-
+        
     }
     
     func goToCustomerScreenButtonSetup() {
         guard let window = UIApplication.shared.windows.filter({$0.isKeyWindow}).first else { return }
-        let bottomview = UIView()
+        
         bottomview.tag = 200
         bottomview.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         window.addSubview(bottomview)
@@ -75,19 +84,19 @@ class CollectOrderTVC: UITableViewController, MTSlideToOpenDelegate {
         bottomview.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: 0).isActive = true
         
         let slide = MTSlideToOpenView(frame: CGRect(x: 26, y: 400, width: 317, height: 60))
-        slide.sliderViewTopDistance = 6
-        slide.sliderCornerRadius = 0
+        //slide.sliderViewTopDistance = 6
+        slide.sliderCornerRadius = 3
         slide.delegate = self
         slide.labelText = "go To Customer"
         slide.textFont = UIFont(name: "HelveticaNeue-Bold", size: 16)!
+        slide.textColor = .white
         slide.ViewShadow()
         slide.thumbnailColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-        slide.slidingColor = #colorLiteral(red: 0, green: 0.8465872407, blue: 0.7545004487, alpha: 1)
+        slide.slidingColor = #colorLiteral(red: 0.05490196078, green: 0.6823529412, blue: 0.5294117647, alpha: 1)
         slide.thumnailImageView.image = #imageLiteral(resourceName: "chevron-right-1")
-    
+        slide.sliderBackgroundColor = #colorLiteral(red: 0.07058823529, green: 0.8235294118, blue: 0.7019607843, alpha: 1)
         bottomview.addSubview(slide)
         
-
         slide.translatesAutoresizingMaskIntoConstraints = false
         slide.centerXAnchor.constraint(equalTo: bottomview.centerXAnchor).isActive = true
         slide.leadingAnchor.constraint(equalTo: bottomview.leadingAnchor, constant: 25).isActive = true
@@ -95,10 +104,7 @@ class CollectOrderTVC: UITableViewController, MTSlideToOpenDelegate {
         slide.heightAnchor.constraint(equalToConstant: 60).isActive = true
         slide.topAnchor.constraint(equalTo: bottomview.topAnchor, constant: 5).isActive = true
         slide.bottomAnchor.constraint(equalTo: bottomview.bottomAnchor, constant: -5).isActive = true
-        
-        
     }
-    
     @objc func submit(){
         GotToCustomer()
     }
@@ -131,7 +137,22 @@ class CollectOrderTVC: UITableViewController, MTSlideToOpenDelegate {
     }
     
     
-    
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        
+        if #available(iOS 13.0, *) {
+            if self.traitCollection.hasDifferentColorAppearance(comparedTo: previousTraitCollection) {
+                if traitCollection.userInterfaceStyle == .light {
+                    bottomview.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+                }
+                else {
+                    bottomview.backgroundColor = #colorLiteral(red: 0.05882352963, green: 0.180392161, blue: 0.2470588237, alpha: 1)
+                }
+            }
+        } else {
+            // Fallback on earlier versions
+        }
+    }
     
     //MARK:- View Close Actions and Close Button Setting
     

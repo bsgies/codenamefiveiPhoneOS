@@ -101,6 +101,7 @@ class NewTripRequestVC: UIViewController,GMSMapViewDelegate,CLLocationManagerDel
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         self.googleMaps.bringSubviewToFront(cardView)
+        self.googleMaps.bringSubviewToFront(resturanName)
         if traitCollection.userInterfaceStyle == .light {
             cardViewShadow()
             cardViewRadius()

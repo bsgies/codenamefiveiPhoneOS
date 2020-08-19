@@ -11,7 +11,9 @@ target 'CodeNameFive' do
    pod 'GoogleMapDirectionLib'
    pod 'ZendeskSupportSDK'
    pod 'MTSlideToOpen'
+   pod 'ReachabilitySwift'
    pod 'LanguageKit'
+   pod 'SwiftyGif'
   # Pods for CodeNameFive
 
   target 'CodeNameFiveTests'  do

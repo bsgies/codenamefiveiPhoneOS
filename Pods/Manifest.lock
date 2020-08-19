@@ -32,12 +32,14 @@ PODS:
   - MotionInterchange (1.6.0)
   - MTSlideToOpen (1.5.1)
   - ObjectMapper (3.5.3)
+  - ReachabilitySwift (5.0.0)
   - RxAlamofire (5.1.0):
     - RxAlamofire/Core (= 5.1.0)
   - RxAlamofire/Core (5.1.0):
     - Alamofire (~> 4.8)
     - RxSwift (~> 5.0)
   - RxSwift (5.1.1)
+  - SwiftyGif (5.3.0)
   - ZendeskCommonUISDK (5.1.0):
     - ZendeskSDKConfigurationsSDK (~> 1.1.6)
   - ZendeskCoreSDK (2.4.1)
@@ -61,6 +63,8 @@ DEPENDENCIES:
   - MaterialComponents/ActivityIndicator (~> 107.4)
   - MessageKit
   - MTSlideToOpen
+  - ReachabilitySwift
+  - SwiftyGif
   - ZendeskSupportSDK
 
 SPEC REPOS:
@@ -79,8 +83,10 @@ SPEC REPOS:
     - MotionInterchange
     - MTSlideToOpen
     - ObjectMapper
+    - ReachabilitySwift
     - RxAlamofire
     - RxSwift
+    - SwiftyGif
     - ZendeskCommonUISDK
     - ZendeskCoreSDK
     - ZendeskMessagingAPISDK
@@ -104,8 +110,10 @@ SPEC CHECKSUMS:
   MotionInterchange: ead0e3ae1f3a5fb539e289debbc7ae036160a10d
   MTSlideToOpen: dedc9abf1e377fef40544b84e5590d4981055030
   ObjectMapper: 97111c97e054a6ee25917662106689f0b4127b37
+  ReachabilitySwift: 985039c6f7b23a1da463388634119492ff86c825
   RxAlamofire: a2d7621de4c23a0c6e7b476b504acc32838ee341
   RxSwift: 81470a2074fa8780320ea5fe4102807cb7118178
+  SwiftyGif: e466e86c660d343357ab944a819a101c4127cb40
   ZendeskCommonUISDK: fff44133c8bf74ef6407c31c7cab56084c58dbf4
   ZendeskCoreSDK: 2dc9457ae01d024ca02f60f6134ad1ad90136c29
   ZendeskMessagingAPISDK: 64543aaa24e63a6eefe44d0dd6909e55edfe1cc5
@@ -114,6 +122,6 @@ SPEC CHECKSUMS:
   ZendeskSupportProvidersSDK: 209011ffad4cbd256839444571defad1b83006f2
   ZendeskSupportSDK: 95aea2ab473768d8b01fa837002415fb93f8c3e0
 
-PODFILE CHECKSUM: aab191df0923e4d7b493d8fec723b88f60617e51
+PODFILE CHECKSUM: 797d14be308479633d01bddf870db9283a5947ef
 
 COCOAPODS: 1.10.0.beta.1

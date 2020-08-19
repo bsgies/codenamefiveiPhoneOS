@@ -13,6 +13,7 @@ import CoreLocation
 import GoogleMapDirectionLib
 class GoToPickupVC: UIViewController,CLLocationManagerDelegate, GMSMapViewDelegate, UIGestureRecognizerDelegate {
     
+    @IBOutlet weak var recenterAndOpenInMapView: UIView!
     var pathIndex = 0
     var ii = 0
     @IBOutlet weak var openInMapsImage: UIImageView!
@@ -78,11 +79,33 @@ class GoToPickupVC: UIViewController,CLLocationManagerDelegate, GMSMapViewDelega
             NSLog("One or more of the map styles failed to load. \(error)")
         }
     }
+    func mapstyleDark() {
+          do {
+              
+              if let styleURL = Bundle.main.url(forResource: "darkstyle", withExtension: "json") {
+                  googleMaps.mapStyle = try GMSMapStyle(contentsOfFileURL: styleURL)
+                  
+              } else {
+                  NSLog("Unable to find style.json")
+              }
+          } catch {
+              NSLog("One or more of the map styles failed to load. \(error)")
+          }
+      }
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         LocationManger()
-        mapstyleSilver()
+         if traitCollection.userInterfaceStyle == .light {
+                 Loadlight()
+              }
+              else
+              {
+               loadDark()
+              }
+              
         cardView.layer.shadowColor = UIColor.white.cgColor
         cardView.layer.shadowOpacity = 0.2
         cardView.layer.shadowOffset = .zero
@@ -99,15 +122,17 @@ class GoToPickupVC: UIViewController,CLLocationManagerDelegate, GMSMapViewDelega
         recenterButtonView.addGestureRecognizer(tapOnRecenter)
         }
     @objc func recenter(gesture: UITapGestureRecognizer){
-        recenterButtonView.isHidden = true
+        //recenterButtonView.isHidden = true
         self.updateTravelledPath(currentLoc: CLLocationCoordinate2DMake ((self.currentLocation?.coordinate.latitude)! , (self.currentLocation?.coordinate.longitude)!))
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        self.googleMaps.bringSubviewToFront(cardView)
-        self.googleMaps.bringSubviewToFront(openInMapsView)
-        self.googleMaps.bringSubviewToFront(recenterButtonView)
-        recenterButtonView.isHidden = true
+       self.googleMaps.bringSubviewToFront(cardView)
+       self.googleMaps.bringSubviewToFront(recenterAndOpenInMapView)
+       self.recenterAndOpenInMapView.bringSubviewToFront(openInMapsView)
+       self.recenterAndOpenInMapView.bringSubviewToFront(recenterButtonView)
+        
+       // recenterButtonView.isHidden = true
         googleMaps.delegate = self
         SetupMap()
         if CLLocationManager.authorizationStatus() == .authorizedWhenInUse{
@@ -119,7 +144,58 @@ class GoToPickupVC: UIViewController,CLLocationManagerDelegate, GMSMapViewDelega
             
         }
         
+      
 
+    }
+    //MARK:- Light and Dark Mode Delegate
+      
+      override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+          super.traitCollectionDidChange(previousTraitCollection)
+          
+          if #available(iOS 13.0, *) {
+              if self.traitCollection.hasDifferentColorAppearance(comparedTo: previousTraitCollection) {
+                  if traitCollection.userInterfaceStyle == .light {
+                    view.viewWithTag(10)?.removeFromSuperview()
+                    Loadlight()
+                    
+                    
+                  }
+                  else {
+                    view.viewWithTag(10)?.removeFromSuperview()
+                     loadDark()
+                  }
+              }
+          } else {
+              // Fallback on earlier versions
+          }
+      }
+    
+    func loadDark(){
+        
+               let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.dark)
+               let blurEffectView = UIVisualEffectView(effect: blurEffect)
+               blurEffectView.frame = recenterAndOpenInMapView.bounds
+               blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+                blurEffectView.tag = 10
+               let vibrancyEffect = UIVibrancyEffect(blurEffect: blurEffect)
+               let vibrancyEffectView = UIVisualEffectView(effect: vibrancyEffect)
+               blurEffectView.contentView.addSubview(vibrancyEffectView)
+               recenterAndOpenInMapView.addSubview(blurEffectView)
+               mapstyleDark()
+        
+    }
+    func Loadlight(){
+        
+        let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.light)
+        let blurEffectView = UIVisualEffectView(effect: blurEffect)
+        blurEffectView.frame = recenterAndOpenInMapView.bounds
+        blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        let vibrancyEffect = UIVibrancyEffect(blurEffect: blurEffect)
+        let vibrancyEffectView = UIVisualEffectView(effect: vibrancyEffect)
+        blurEffectView.contentView.addSubview(vibrancyEffectView)
+        blurEffectView.tag = 10
+        recenterAndOpenInMapView.addSubview(blurEffectView)
+        mapstyleSilver()
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(true)
@@ -445,7 +521,7 @@ extension GoToPickupVC{
         let dist = position.target.getDistanceMetresBetweenLocationCoordinates(self.locValue!)
         if dist > 5 {
             if self.isUserTouch {
-            recenterButtonView.isHidden = false
+            //recenterButtonView.isHidden = false
             }
         }
     }
