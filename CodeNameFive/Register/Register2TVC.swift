@@ -59,10 +59,9 @@ class Register2TVC: UITableViewController,UITextFieldDelegate {
     
     // MARK:- Textefield Delegate
     
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        if textField.tag == 6 {
-            textField.resignFirstResponder()
-        }
+        textField.resignFirstResponder()
         return true
     }
     
@@ -108,14 +107,13 @@ class Register2TVC: UITableViewController,UITextFieldDelegate {
     }
     
     @objc func submit(){
-        if !(country.text!.isEmpty && dateOfBirth.text!.isEmpty && addressLine1.text!.isEmpty && town.text!.isEmpty && city.text!.isEmpty && zipCode.text!.isEmpty){
-            
+        if country.text!.isEmpty && dateOfBirth.text!.isEmpty && addressLine1.text!.isEmpty && town.text!.isEmpty && city.text!.isEmpty && zipCode.text!.isEmpty{
+            snackBar(errorMessage: "one Or More Fields Are Empty")
+        }
+        else{
             let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
             let newViewController = storyBoard.instantiateViewController(withIdentifier: "Register3TVC") as! Register3TVC
             navigationController?.pushViewController(newViewController, animated: false)
-        }
-        else{
-            snackBar(errorMessage: "one Or More Fields Are Empty")
         }
         
         
@@ -182,8 +180,6 @@ extension Register2TVC: UIPickerViewDataSource,UIPickerViewDelegate{
             window.addSubview(subView)
             subView.addSubview(picker)
             picker.translatesAutoresizingMaskIntoConstraints = false
-            // view.addSubview(picker)
-            
             picker.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor).isActive = true
             picker.centerYAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerYAnchor).isActive = true
         }
