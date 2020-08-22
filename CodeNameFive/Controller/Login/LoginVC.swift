@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import MaterialComponents.MaterialSnackbar
 class LoginVC: UIViewController {
     
     // Declaring variables
@@ -39,7 +39,6 @@ class LoginVC: UIViewController {
         let registerationPage = UITapGestureRecognizer(target: self, action: #selector(openRegisterPage))
         register.addGestureRecognizer(registerationPage)
     }
-    
     override func viewWillAppear(_ animated: Bool) {
         //securityCenterAlign.constant -= self.view.bounds.width
         NotificationCenter.default.addObserver(self, selector: #selector(KeyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
@@ -51,10 +50,9 @@ class LoginVC: UIViewController {
     
     @IBAction func contniueForPassword(_ sender: UIButton) {
         if let validate = EmailorPhone.text{
-            if validate.isValidEmail(validate){
+            if validate.isEmail(){
                 checkemail = "email"
                 GoToSecurityScreen()
-                
             }
             else if validate.isValidPhone(phone: validate)
             {
@@ -63,13 +61,13 @@ class LoginVC: UIViewController {
             }
                 
             else{
-                
-                showToast(message: "Enter a valid email or phone", controller: self)
+                self.snackBar(errorMessage: "enter A Valid Email Or Phone")
+           
             }
             
         }
         else{
-            showToast(message: "Fill your email or password", controller: self)
+            self.snackBar(errorMessage: "fill Your Email Or Password")
         }
     }
     
@@ -80,7 +78,13 @@ class LoginVC: UIViewController {
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
         super.viewWillDisappear(animated)
-        //navigationController?.setNavigationBarHidden(false, animated: animated)
+    }
+    func snackBar(errorMessage : String) {
+        let message = MDCSnackbarMessage()
+        message.text = errorMessage
+        MDCSnackbarManager.messageTextColor = .white
+        MDCSnackbarManager.snackbarMessageViewBackgroundColor = #colorLiteral(red: 0, green: 0.8465872407, blue: 0.7545004487, alpha: 1)
+        MDCSnackbarManager.show(message)
     }
 }
 

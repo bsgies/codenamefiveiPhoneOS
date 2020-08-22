@@ -55,6 +55,10 @@ class CollectcashVC: UIViewController {
     func setChangePayments() {
         
     }
+    @IBAction func backButtonAction(_ sender: UIButton) {
+        self.navigationController?.popViewController(animated: true)
+
+    }
     func setGestures() {
         let gesture1 = UITapGestureRecognizer(target: self, action: #selector(firschangeBackGround))
         firstAmount.addGestureRecognizer(gesture1)
@@ -89,13 +93,20 @@ class CollectcashVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setBackButton()
+       
         setReceiptAmount()
         setGestures()
-        centerView.layer.cornerRadius = 8
-        centerView.layer.shadowColor = UIColor(ciColor: .gray).cgColor
-        centerView.layer.shadowRadius = 8
-        centerView.layer.shadowOpacity = 2
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(true)
+        navigationController?.setNavigationBarHidden(false, animated: animated)
     }
     
     func setReceiptAmount() {
@@ -103,34 +114,6 @@ class CollectcashVC: UIViewController {
         received.text = "50"
         changeDueLbl.text = "30"
     }
-    
-    func setBackButton(){
-         navigationController?.navigationBar.backItem?.titleView?.tintColor = UIColor(hex: "#12D2B3")
-         
-         let button: UIButton = UIButton (type: UIButton.ButtonType.custom)
-         button.setImage(UIImage(named: "back"), for: UIControl.State.normal)
-         button.addTarget(self, action: #selector(backButtonPressed(btn:)), for: UIControl.Event.touchUpInside)
-         button.frame = CGRect(x: 0 , y: 0, width: 30, height: 30)
-         
-         let barButton = UIBarButtonItem(customView: button)
-         
-         self.navigationItem.leftBarButtonItem = barButton
-         
-     }
-     
-     @objc func backButtonPressed(btn : UIButton) {
-         
-         self.navigationController?.popViewController(animated: true)
-     }
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
+
     
 }

@@ -11,9 +11,11 @@ import CoreData
 import GoogleMaps
 import Reachability
 import SwiftyGif
+import IQKeyboardManagerSwift
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
    var reachability: Reachability!
+    var window: UIWindow?
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         GMSServices.provideAPIKey("AIzaSyBXfR7Zu7mvhxO4aydatsUY-VUH-_NG15g")
@@ -24,8 +26,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         } catch {
              print("This is not working.")
         }
-//        reachability.stopNotifier()
-//        NotificationCenter.default.removeObserver(self, name: .reachabilityChanged, object: reachability)
+        
+        //IQKeyboardManager.shared.enable = true
+    
         return true
     }
 
@@ -98,11 +101,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     } else {
     print("Not reachable")
         // create the alert
-       showNoInterNetview()
+       //showNoInterNetview()
+        Alert()
     }
-    }
-    
-    
+  }
     
     func showNoInterNetview(){
           guard let window = UIApplication.shared.windows.filter({$0.isKeyWindow}).first else { return }
@@ -113,7 +115,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        let jeremyGif = UIImage.gifImageWithName(name: "Data")
 //        let imageView = UIImageView(image: jeremyGif)
 //        noInternetView.addSubview(imageView)
-       
+         
         
         do {
             let gif = try UIImage(gifName: "Data.gif")
@@ -126,6 +128,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             print(error)
         }
         
+    }
+    
+    func Alert() {
+                let codeNotReceivedAlert = UIAlertController(title: "No Internet", message: "Please check your conectivity", preferredStyle: UIAlertController.Style.alert)
+                   codeNotReceivedAlert.view.tintColor = UIColor(#colorLiteral(red: 0, green: 0.8465872407, blue: 0.7545004487, alpha: 1))
+                   codeNotReceivedAlert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action: UIAlertAction!) in
+                   }))
+        self.window?.rootViewController?.present(codeNotReceivedAlert, animated: true, completion: nil)
     }
 
 }

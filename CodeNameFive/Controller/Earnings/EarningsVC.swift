@@ -15,8 +15,7 @@ class EarningsVC: UIViewController {
         super.viewDidLoad()
 
             setCrossButton()
-            
-            
+
         }
         
         func setCrossButton(){
@@ -30,13 +29,6 @@ class EarningsVC: UIViewController {
         
         @objc func closeView(){
             self.dismiss(animated: true, completion: nil)
-//            let transition = CATransition()
-//            transition.duration = 0.5
-//            transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
-//            transition.type = CATransitionType.reveal
-//            transition.subtype = CATransitionSubtype.fromBottom
-//            navigationController?.view.layer.add(transition, forKey: nil)
-//            _ = navigationController?.popViewController(animated: false)
         }
         
         

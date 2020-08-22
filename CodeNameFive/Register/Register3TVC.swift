@@ -21,8 +21,10 @@ class Register3TVC: UITableViewController {
         uploadProofID.tag = 1
         uploadproofAddess.tag = 2
         setBackButton()
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
         goToNextScreen()
-
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewDidDisappear(true)

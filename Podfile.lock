@@ -16,15 +16,75 @@ PODS:
   - InputBarAccessoryView (4.3.2):
     - InputBarAccessoryView/Core (= 4.3.2)
   - InputBarAccessoryView/Core (4.3.2)
+  - IQKeyboardManagerSwift (6.5.5)
   - LanguageKit (0.1.5)
   - MaterialComponents/ActivityIndicator (107.4.0):
     - MaterialComponents/Palettes
     - MaterialComponents/private/Application
     - MDFInternationalization
     - MotionAnimator (~> 2.0)
+  - MaterialComponents/AnimationTiming (107.4.0)
+  - MaterialComponents/Availability (107.4.0)
+  - MaterialComponents/Buttons (107.4.0):
+    - MaterialComponents/Elevation
+    - MaterialComponents/Ink
+    - MaterialComponents/private/Math
+    - MaterialComponents/Ripple
+    - MaterialComponents/ShadowElevations
+    - MaterialComponents/ShadowLayer
+    - MaterialComponents/Shapes
+    - MaterialComponents/Typography
+    - MDFInternationalization
+    - MDFTextAccessibility
+  - MaterialComponents/Elevation (107.4.0):
+    - MaterialComponents/Availability
+    - MaterialComponents/private/Color
+    - MaterialComponents/private/Math
+  - MaterialComponents/Ink (107.4.0):
+    - MaterialComponents/Availability
+    - MaterialComponents/private/Color
+    - MaterialComponents/private/Math
+  - MaterialComponents/OverlayWindow (107.4.0):
+    - MaterialComponents/Availability
+    - MaterialComponents/private/Application
   - MaterialComponents/Palettes (107.4.0)
   - MaterialComponents/private/Application (107.4.0)
+  - MaterialComponents/private/Color (107.4.0):
+    - MaterialComponents/Availability
+  - MaterialComponents/private/KeyboardWatcher (107.4.0):
+    - MaterialComponents/private/Application
+  - MaterialComponents/private/Math (107.4.0)
+  - MaterialComponents/private/Overlay (107.4.0)
+  - MaterialComponents/Ripple (107.4.0):
+    - MaterialComponents/AnimationTiming
+    - MaterialComponents/Availability
+    - MaterialComponents/private/Color
+    - MaterialComponents/private/Math
+  - MaterialComponents/ShadowElevations (107.4.0)
+  - MaterialComponents/ShadowLayer (107.4.0):
+    - MaterialComponents/ShadowElevations
+  - MaterialComponents/Shapes (107.4.0):
+    - MaterialComponents/private/Color
+    - MaterialComponents/private/Math
+    - MaterialComponents/ShadowLayer
+  - MaterialComponents/Snackbar (107.4.0):
+    - MaterialComponents/AnimationTiming
+    - MaterialComponents/Availability
+    - MaterialComponents/Buttons
+    - MaterialComponents/Elevation
+    - MaterialComponents/OverlayWindow
+    - MaterialComponents/private/Application
+    - MaterialComponents/private/KeyboardWatcher
+    - MaterialComponents/private/Math
+    - MaterialComponents/private/Overlay
+    - MaterialComponents/ShadowElevations
+    - MaterialComponents/ShadowLayer
+    - MaterialComponents/Typography
+  - MaterialComponents/Typography (107.4.0):
+    - MaterialComponents/private/Application
+    - MaterialComponents/private/Math
   - MDFInternationalization (2.0.0)
+  - MDFTextAccessibility (2.0.0)
   - MessageKit (3.1.0):
     - InputBarAccessoryView (~> 4.3.0)
   - MotionAnimator (2.8.1):
@@ -59,8 +119,10 @@ DEPENDENCIES:
   - CVCalendar (~> 1.7.0)
   - GoogleMapDirectionLib
   - GoogleMaps
+  - IQKeyboardManagerSwift
   - LanguageKit
   - MaterialComponents/ActivityIndicator (~> 107.4)
+  - MaterialComponents/Snackbar
   - MessageKit
   - MTSlideToOpen
   - ReachabilitySwift
@@ -75,9 +137,11 @@ SPEC REPOS:
     - GoogleMapDirectionLib
     - GoogleMaps
     - InputBarAccessoryView
+    - IQKeyboardManagerSwift
     - LanguageKit
     - MaterialComponents
     - MDFInternationalization
+    - MDFTextAccessibility
     - MessageKit
     - MotionAnimator
     - MotionInterchange
@@ -102,9 +166,11 @@ SPEC CHECKSUMS:
   GoogleMapDirectionLib: 573468c6d3b26443c5a919abc766871bddb94b83
   GoogleMaps: 4b5346bddfe6911bb89155d43c903020170523ac
   InputBarAccessoryView: 7985d418040a05fe894bd4b8328dd43ab35517c3
+  IQKeyboardManagerSwift: 0fb93310284665245591f50f7a5e38de615960b7
   LanguageKit: a3fa3dfba22b61388e86f07fd236d565b9b1e9e6
   MaterialComponents: 52e2ade4684e3017eff7f62587b37522d217ea50
   MDFInternationalization: 010097556d6b09d2c4ea38e0820ea6d37be6a314
+  MDFTextAccessibility: 85c09a1bd9c321f494348e632a25063bcda35a53
   MessageKit: 3beb578737a5aa2bba25cc27c7b6d6faa09af5a7
   MotionAnimator: ee16aa30567c5bae0fb2750c132915829cfaaf8a
   MotionInterchange: ead0e3ae1f3a5fb539e289debbc7ae036160a10d
@@ -122,6 +188,6 @@ SPEC CHECKSUMS:
   ZendeskSupportProvidersSDK: 209011ffad4cbd256839444571defad1b83006f2
   ZendeskSupportSDK: 95aea2ab473768d8b01fa837002415fb93f8c3e0
 
-PODFILE CHECKSUM: 797d14be308479633d01bddf870db9283a5947ef
+PODFILE CHECKSUM: 85278731a01c7f70e5004531e3c9f4a9d8feef09
 
 COCOAPODS: 1.10.0.beta.1

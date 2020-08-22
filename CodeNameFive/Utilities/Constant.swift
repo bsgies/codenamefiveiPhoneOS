@@ -8,5 +8,21 @@
 
 import Foundation
 import UIKit
-
+import Reachability
+import UIKit
+class Constant {
+    @objc func reachabilityChanged(_ note: NSNotification) {
+    let reachability = note.object as! Reachability
+    if reachability.connection != .unavailable {
+    if reachability.connection == .wifi {
+    print("Reachable via WiFi")
+    } else {
+    print("Reachable via Cellular")
+    }
+    } else {
+    print("Not reachable")
+     
+    }
+    }
+}
 

@@ -14,6 +14,8 @@ target 'CodeNameFive' do
    pod 'ReachabilitySwift'
    pod 'LanguageKit'
    pod 'SwiftyGif'
+   pod 'MaterialComponents/Snackbar'
+   pod 'IQKeyboardManagerSwift'
   # Pods for CodeNameFive
 
   target 'CodeNameFiveTests'  do
