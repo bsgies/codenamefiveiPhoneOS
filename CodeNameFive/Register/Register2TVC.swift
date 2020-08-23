@@ -68,8 +68,8 @@ class Register2TVC: UITableViewController,UITextFieldDelegate {
     //MARK:- TextFields Actions
     
     @IBAction func countrySelection(_ sender: Any) {
-        view.endEditing(true)
-        showOverlay()
+
+        ShowCountryPicker()
     }
     @IBAction func dateOfBirthSelection(_ sender: Any) {
         showDatePicker()
@@ -77,11 +77,12 @@ class Register2TVC: UITableViewController,UITextFieldDelegate {
     
     
     
+    
     func goToNextScreen() {
         guard let window = UIApplication.shared.windows.filter({$0.isKeyWindow}).first else { return }
         let bottomview = UIView()
         bottomview.tag = 200
-        bottomview.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        bottomview.backgroundColor = UIColor(named: "BottomButtonView")
         window.addSubview(bottomview)
         bottomview.translatesAutoresizingMaskIntoConstraints = false
         bottomview.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 1).isActive = true
@@ -124,13 +125,19 @@ class Register2TVC: UITableViewController,UITextFieldDelegate {
         if section == 0{
             let header = view as! UITableViewHeaderFooterView
             header.textLabel?.font = UIFont(name: "HelveticaNeue-Bold", size: 20)
-            header.textLabel?.textColor = .black
-            
+            header.textLabel?.textColor = UIColor(named: "RegisterationLblColors")
+            header.textLabel?.text = "things We Need To Check"
         }
+        if section == 1{
+            let header = view as! UITableViewHeaderFooterView
+            header.textLabel?.font = UIFont(name: "HelveticaNeue-Light", size: 16)
+            header.textLabel?.textColor = UIColor(named: "RegisterationLblColors")
+            header.textLabel?.text = "enter Your Date Of Birth And Address To Verify Your Identity"
+        }
+        
     }
     
 }
-
 extension Register2TVC: UIPickerViewDataSource,UIPickerViewDelegate{
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -147,9 +154,7 @@ extension Register2TVC: UIPickerViewDataSource,UIPickerViewDelegate{
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        removeSubview()
         country.text = countries[row]
-        
     }
     func setBackButton(){
         navigationController?.navigationBar.backItem?.titleView?.tintColor = UIColor(hex: "#12D2B3")
@@ -170,37 +175,26 @@ extension Register2TVC: UIPickerViewDataSource,UIPickerViewDelegate{
         self.navigationController?.popViewController(animated: true)
     }
     
-    
-    public func showOverlay() {
-        
-        if let window = view.window {
-            let subView = UIView(frame: window.frame)
-            subView.tag = 100
-            subView.backgroundColor = UIColor.black.withAlphaComponent(0.5)
-            window.addSubview(subView)
-            subView.addSubview(picker)
-            picker.translatesAutoresizingMaskIntoConstraints = false
-            picker.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor).isActive = true
-            picker.centerYAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerYAnchor).isActive = true
-        }
-    }
-    
-    func removeSubview(){
-        let window = view.window
-        if let viewWithTag = window?.viewWithTag(100) {
-            viewWithTag.removeFromSuperview()
-        }else{
-            print("No!")
-        }
-    }
 }
 
 extension Register2TVC{
+    
+    func ShowCountryPicker(){
+        
+        let toolbar = UIToolbar();
+        toolbar.sizeToFit()
+        let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(DoneCoutryPicker));
+        let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
+        let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelDatePicker));
+        toolbar.setItems([doneButton,spaceButton,cancelButton], animated: false)
+        country.inputAccessoryView = toolbar
+        country.inputView = picker
+        country.text = countries[0]
+    }
+    
+    
     func showDatePicker(){
-        
         datePicker.datePickerMode = .date
-        
-        
         let toolbar = UIToolbar();
         toolbar.sizeToFit()
         let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(donedatePicker));
@@ -227,10 +221,17 @@ extension Register2TVC{
         dateOfBirth.text = formatter.string(from: datePicker.date)
         self.view.endEditing(true)
     }
+    @objc func DoneCoutryPicker(){
+     self.view.endEditing(true)
+    }
     
     @objc func cancelDatePicker(){
         self.view.endEditing(true)
     }
+    @objc func CancelCountryPicker(){
+        country.text = nil
+    }
+
 }
 extension Register2TVC : MDCSnackbarManagerDelegate{
     func willPresentSnackbar(with messageView: MDCSnackbarMessageView?) {

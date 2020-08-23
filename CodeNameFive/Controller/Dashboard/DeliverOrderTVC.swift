@@ -94,7 +94,7 @@ class DeliverOrderTVC: UITableViewController {
        guard let window = UIApplication.shared.windows.filter({$0.isKeyWindow}).first else { return }
         let bottomview = UIView()
         bottomview.tag = 200
-        bottomview.backgroundColor = .white
+        bottomview.backgroundColor = UIColor(named: "BottomButtonView")
         window.addSubview(bottomview)
         bottomview.translatesAutoresizingMaskIntoConstraints = false
         bottomview.widthAnchor.constraint(equalTo: tableView.widthAnchor, multiplier: 1).isActive = true

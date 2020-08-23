@@ -44,9 +44,7 @@ class MainMenuTableViewController: UITableViewController {
         self.tableView.tableFooterView = UIView()
         
         setBackButton()
-//        if traitCollection.userInterfaceStyle == .dark {
-//            navigationController?.navigationBar.barTintColor = UIColor(hex: "#1D1D1E")
-//        }
+
         let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(BackviewController))
         swipeRight.direction = UISwipeGestureRecognizer.Direction.right
         self.view.addGestureRecognizer(swipeRight)
@@ -168,16 +166,7 @@ extension MainMenuTableViewController{
             if indexPath.row == 0 {
                 let editemail : ProfileTVC = self.storyboard?.instantiateViewController(withIdentifier: "Profile") as! ProfileTVC
                 self.presentOnRoot(viewController: editemail)
-                //                let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-                //                let vc = storyBoard.instantiateViewController(withIdentifier: "Profile") as! ProfileTVC
-                //
-                //                let transition = CATransition()
-                //                transition.duration = 0.2
-                //                transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.linear)
-                //                transition.type = CATransitionType.reveal
-                //                transition.subtype = CATransitionSubtype.fromTop
-                //                navigationController?.view.layer.add(transition, forKey: nil)
-                //                navigationController?.pushViewController(vc, animated: false)
+               
             }
         }
         if currentSection == 1 {
@@ -185,16 +174,6 @@ extension MainMenuTableViewController{
                 
                 let trip : TripHistoryVC = self.storyboard?.instantiateViewController(withIdentifier: "TripHistoryVC") as! TripHistoryVC
                 self.presentOnRoot(viewController: trip)
-                //                let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-                //                let vc = storyBoard.instantiateViewController(withIdentifier: "TripHistoryVC") as! TripHistoryVC
-                //
-                //                let transition = CATransition()
-                //                transition.duration = 0.2
-                //                transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
-                //                transition.type = CATransitionType.moveIn
-                //                transition.subtype = CATransitionSubtype.fromTop
-                //                navigationController?.view.layer.add(transition, forKey: nil)
-                //                navigationController?.pushViewController(vc, animated: false)
             }
         }
         if currentSection == 2 {
@@ -202,32 +181,14 @@ extension MainMenuTableViewController{
                 
                 let earning : EarningsVC = self.storyboard?.instantiateViewController(withIdentifier: "EarningsVC") as! EarningsVC
                 self.presentOnRoot(viewController: earning)
-                //                let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-                //                let vc = storyBoard.instantiateViewController(withIdentifier: "EarningsVC") as! EarningsVC
-                //
-                //
-                //                let transition = CATransition()
-                //                transition.duration = 0.2
-                //                transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
-                //                transition.type = CATransitionType.moveIn
-                //                transition.subtype = CATransitionSubtype.fromTop
-                //                navigationController?.view.layer.add(transition, forKey: nil)
-                //                navigationController?.pushViewController(vc, animated: false)
+          
             }
         }
         if currentSection == 3 {
             if indexPath.row == 0 {
                 let pro : PromotionVC = self.storyboard?.instantiateViewController(withIdentifier: "PromotionVC") as! PromotionVC
                 self.presentOnRoot(viewController: pro)
-                //                       let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-                //                       let vc = storyBoard.instantiateViewController(withIdentifier: "PromotionVC") as! PromotionVC
-                //                       let transition = CATransition()
-                //                       transition.duration = 0.2
-                //                       transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
-                //                       transition.type = CATransitionType.moveIn
-                //                       transition.subtype = CATransitionSubtype.fromTop
-                //                       navigationController?.view.layer.add(transition, forKey: nil)
-                //                       navigationController?.pushViewController(vc, animated: false)
+                
             }
         }
         
@@ -235,30 +196,13 @@ extension MainMenuTableViewController{
             if indexPath.row == 0 {
                 let inbox : InboxVC = self.storyboard?.instantiateViewController(withIdentifier: "InboxVC") as! InboxVC
                 self.presentOnRoot(viewController: inbox)
-                //                let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-                //                let vc = storyBoard.instantiateViewController(withIdentifier: "InboxVC") as! InboxVC
-                //                let transition = CATransition()
-                //                transition.duration = 0.2
-                //                transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
-                //                transition.type = CATransitionType.moveIn
-                //                transition.subtype = CATransitionSubtype.fromTop
-                //                navigationController?.view.layer.add(transition, forKey: nil)
-                //                navigationController?.pushViewController(vc, animated: false)
+                
             }
         }
         if currentSection == 5 {
             if indexPath.row == 0 {
                 let help : HelpCenterVC = self.storyboard?.instantiateViewController(withIdentifier: "HelpCenterVC") as! HelpCenterVC
                 self.presentOnRoot(viewController: help)
-                //                      let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-                //                      let vc = storyBoard.instantiateViewController(withIdentifier: "HelpCenterVC") as! HelpCenterVC
-                //                      let transition = CATransition()
-                //                      transition.duration = 0.2
-                //                      transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
-                //                      transition.type = CATransitionType.moveIn
-                //                      transition.subtype = CATransitionSubtype.fromTop
-                //                      navigationController?.view.layer.add(transition, forKey: nil)
-                //                      navigationController?.pushViewController(vc, animated: false)
             }
         }
         if currentSection == 6 {

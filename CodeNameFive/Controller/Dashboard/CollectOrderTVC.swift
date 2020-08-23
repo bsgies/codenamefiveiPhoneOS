@@ -73,7 +73,7 @@ class CollectOrderTVC: UITableViewController, MTSlideToOpenDelegate {
         guard let window = UIApplication.shared.windows.filter({$0.isKeyWindow}).first else { return }
         
         bottomview.tag = 200
-        bottomview.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        bottomview.backgroundColor = UIColor(named: "BottomButtonView")
         window.addSubview(bottomview)
         bottomview.translatesAutoresizingMaskIntoConstraints = false
         bottomview.widthAnchor.constraint(equalTo: tableView.widthAnchor, multiplier: 1).isActive = true

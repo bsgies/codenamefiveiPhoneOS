@@ -28,26 +28,16 @@ class TripHistoryVC: UIViewController {
     
 
     func setCrossButton(){
-        
-         
-         //button.backgroundColor = .red
-         //button.setImage(UIImage(named: "close"), for: .normal)
-         
-         button.addTarget(self, action: #selector(closeView), for: .touchUpInside)
-         button.frame = CGRect(x: 0, y: 0, width: 16, height: 16)
-         let barButton = UIBarButtonItem(customView: button)
-         navigationItem.leftBarButtonItem = barButton
+        let button = UIButton(type: .custom)
+        button.setImage(UIImage(named: "close"), for: .normal)
+        button.addTarget(self, action: #selector(closeView), for: .touchUpInside)
+        button.frame = CGRect(x: 0, y: 0, width: 16, height: 16)
+        let barButton = UIBarButtonItem(customView: button)
+        navigationItem.leftBarButtonItem = barButton
      }
      
      @objc func closeView(){
         self.dismiss(animated: true, completion: nil)
-//         let transition = CATransition()
-//         transition.duration = 0.5
-//         transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
-//         transition.type = CATransitionType.reveal
-//         transition.subtype = CATransitionSubtype.fromBottom
-//         navigationController?.view.layer.add(transition, forKey: nil)
-//         _ = navigationController?.popViewController(animated: false)
      }
     
 
@@ -58,10 +48,7 @@ extension TripHistoryVC : UITableViewDelegate,UITableViewDataSource{
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
-    
-//    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-//        return 35
-//    }
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
          return days.count
        }
@@ -89,7 +76,6 @@ extension TripHistoryVC : UITableViewDelegate,UITableViewDataSource{
         cell.preservesSuperviewLayoutMargins = false
         cell.separatorInset = UIEdgeInsets.zero
         cell.layoutMargins = UIEdgeInsets.zero
-        // cell.accessoryView = UIImageView(image: UIImage(named: "chevron-right"))
        }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

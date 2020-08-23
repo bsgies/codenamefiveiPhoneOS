@@ -9,6 +9,7 @@
 import UIKit
 import PDFKit
 import MobileCoreServices
+
 class Register3TVC: UITableViewController {
     var indicator = UIActivityIndicatorView()
     @IBOutlet weak var uploadProofID: UITextField!
@@ -36,11 +37,10 @@ class Register3TVC: UITableViewController {
          guard let window = UIApplication.shared.windows.filter({$0.isKeyWindow}).first else { return }
         let bottomview = UIView()
         bottomview.tag = 200
-        bottomview.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        bottomview.backgroundColor = UIColor(named: "BottomButtonView")
         window.addSubview(bottomview)
         bottomview.translatesAutoresizingMaskIntoConstraints = false
         bottomview.widthAnchor.constraint(equalTo: tableView.widthAnchor, multiplier: 1).isActive = true
-        
         bottomview.heightAnchor.constraint(equalToConstant: 60).isActive = true
         bottomview.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 0).isActive = true
         bottomview.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: 0).isActive = true
@@ -52,7 +52,6 @@ class Register3TVC: UITableViewController {
         button.titleLabel?.font = UIFont(name: "HelveticaNeue-Bold", size: 16)
         button.addTarget(self, action: #selector(submit), for: UIControl.Event.touchUpInside)
         bottomview.addSubview(button)
-        button.isEnabled = false
         button.translatesAutoresizingMaskIntoConstraints = false
         button.centerXAnchor.constraint(equalTo: bottomview.centerXAnchor).isActive = true
         button.leadingAnchor.constraint(equalTo: bottomview.leadingAnchor, constant: 25).isActive = true
@@ -73,22 +72,30 @@ class Register3TVC: UITableViewController {
     override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
           if section == 0{
           let header = view as! UITableViewHeaderFooterView
-              header.textLabel?.font = UIFont(name: "HelveticaNeue-Bold", size: 20)
-            header.textLabel?.textColor = .black
-              
+            header.textLabel?.font = UIFont(name: "HelveticaNeue-Bold", size: 20)
+            header.textLabel?.textColor = UIColor(named: "RegisterationLblColors")
+            header.textLabel?.text = "supporting Documents"
           }
+        if section == 1{
+        let header = view as! UITableViewHeaderFooterView
+          header.textLabel?.font = UIFont(name: "HelveticaNeue-Light", size: 16)
+          header.textLabel?.textColor = UIColor(named: "RegisterationLblColors")
+          header.textLabel?.text = "provide Your Supporting Document To Complete Your Application"
+        }
+        
+        
       }
     @IBAction func uploadProffIDSelection(_ sender: UITextField) {
         currentlySelectedField = "id"
         view.endEditing(true)
-        openDocumentPicker()
+        showActionSheet()
         
     }
     @IBAction func uploadProofAddress(_ sender: UITextField) {
         //MyLoadingIndicator()
         currentlySelectedField = "address"
         view.endEditing(true)
-        openDocumentPicker()
+        showActionSheet()
     
 
     }
@@ -110,7 +117,6 @@ extension Register3TVC{
      }
      
      @objc func backButtonPressed(btn : UIButton) {
-         //navigationController?.setNavigationBarHidden(false, animated: true)
          self.navigationController?.popViewController(animated: true)
      }
 }
@@ -175,4 +181,61 @@ extension Register3TVC : UIDocumentMenuDelegate,UIDocumentPickerDelegate,UINavig
     }
     
 
+
+
+    
+
+}
+
+extension Register3TVC : UIImagePickerControllerDelegate{
+    func camera()
+    {
+        let myPickerController = UIImagePickerController()
+        myPickerController.delegate = self;
+        myPickerController.sourceType = UIImagePickerController.SourceType.camera
+
+        self.present(myPickerController, animated: true, completion: nil)
+
+    }
+
+    func photoLibrary()
+    {
+
+        let myPickerController = UIImagePickerController()
+        myPickerController.delegate = self;
+        myPickerController.sourceType = UIImagePickerController.SourceType.photoLibrary
+
+        self.present(myPickerController, animated: true, completion: nil)
+
+    }
+    
+    func showActionSheet() {
+        let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertController.Style.actionSheet)
+
+        actionSheet.addAction(UIAlertAction(title: "Camera", style: UIAlertAction.Style.default, handler: { (alert:UIAlertAction!) -> Void in
+            self.camera()
+        }))
+
+        actionSheet.addAction(UIAlertAction(title: "Gallery", style: UIAlertAction.Style.default, handler: { (alert:UIAlertAction!) -> Void in
+            self.photoLibrary()
+        }))
+        
+        actionSheet.addAction(UIAlertAction(title: "Documents", style: UIAlertAction.Style.default, handler: { (alert:UIAlertAction!) -> Void in
+            self.openDocumentPicker()
+               }))
+
+        actionSheet.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
+
+        self.present(actionSheet, animated: true, completion: nil)
+        
+        
+
+    }
+
+    private func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
+
+       //image = info[UIImagePickerControllerOriginalImage] as? UIImage
+        self.dismiss(animated: true, completion: nil)
+
+    }
 }

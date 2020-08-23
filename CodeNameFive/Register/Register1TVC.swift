@@ -56,7 +56,26 @@ class Register1TVC: UITableViewController , UITextFieldDelegate {
     }
     
     
-    //MARK;- Keyboard
+    //MARK:- Light and Dark Mode Delegate
+       override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+           super.traitCollectionDidChange(previousTraitCollection)
+           
+           if #available(iOS 13.0, *) {
+               if self.traitCollection.hasDifferentColorAppearance(comparedTo: previousTraitCollection) {
+                   if traitCollection.userInterfaceStyle == .light {
+                      
+                   }
+                   else {
+                   
+                   }
+               }
+           } else {
+               // Fallback on earlier versions
+           }
+       }
+       
+    
+    //MARK:- Keyboard
     func KeyboardObserver(){
         let tap = UITapGestureRecognizer(target: self, action: #selector(taped))
         view.addGestureRecognizer(tap)
@@ -89,7 +108,7 @@ class Register1TVC: UITableViewController , UITextFieldDelegate {
         guard let window = UIApplication.shared.windows.filter({$0.isKeyWindow}).first else { return }
         let bottomview = UIView()
         bottomview.tag = 200
-        bottomview.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        bottomview.backgroundColor = UIColor(named: "BottomButtonView")
         window.addSubview(bottomview)
         bottomview.translatesAutoresizingMaskIntoConstraints = false
         bottomview.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 1).isActive = true
@@ -144,18 +163,25 @@ class Register1TVC: UITableViewController , UITextFieldDelegate {
     
     
     override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+
         if section == 0{
             let header = view as! UITableViewHeaderFooterView
             header.textLabel?.font = UIFont(name: "HelveticaNeue-Bold", size: 20)
-            header.textLabel?.textColor = .black
-            
+            header.textLabel?.textColor = UIColor(named: "RegisterationLblColors")
+            header.textLabel?.text = "apply To Become A Partner"
+        }
+        if section == 1{
+            let header = view as! UITableViewHeaderFooterView
+            header.textLabel?.font = UIFont(name: "HelveticaNeue-Light", size: 16)
+            header.textLabel?.textColor = UIColor(named: "RegisterationLblColors")
+            header.textLabel?.text = "enter Your Personal Information"
         }
     }
     
     
     @IBAction func textFieldVehicalType(_ sender: Any) {
-        view.endEditing(true)
-        showOverlay()
+        ShowVehicalTypes()
+        
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
@@ -187,47 +213,43 @@ extension Register1TVC{
     }
 }
 extension Register1TVC: UIPickerViewDataSource,UIPickerViewDelegate{
-    // Number of columns of data
+
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
+    
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return pickerData.count
     }
+    
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return pickerData[row]
     }
+    
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        removeSubview()
         vechicalType.text = pickerData[row]
+    }
         
+    public func ShowVehicalTypes(){
+        let toolbar = UIToolbar();
+              toolbar.sizeToFit()
+              let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(DoneVehicalTypePicker));
+              let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
+              let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(CancelVehicalTypePicker));
+              toolbar.setItems([doneButton,spaceButton,cancelButton], animated: false)
+              vechialType.inputAccessoryView = toolbar
+              vechialType.inputView = picker
+              vechialType.text = pickerData[0]
     }
     
-    public func showOverlay() {
-        
-        if let window = view.window {
-            let subView = UIView(frame: window.frame)
-            subView.tag = 100
-            subView.backgroundColor = UIColor.black.withAlphaComponent(0.5)
-            window.addSubview(subView)
-            subView.addSubview(picker)
-            picker.translatesAutoresizingMaskIntoConstraints = false
-            // view.addSubview(picker)
-            
-            picker.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor).isActive = true
-            picker.centerYAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerYAnchor).isActive = true
-        }
+    @objc func DoneVehicalTypePicker(){
+        self.view.endEditing(true)
     }
     
-    func removeSubview(){
-        let window = view.window
-        if let viewWithTag = window?.viewWithTag(100) {
-            viewWithTag.removeFromSuperview()
-        }
-        else{
-            print("No!")
-        }
+    @objc func CancelVehicalTypePicker(){
+        vechialType.text = nil
     }
+
     func snackBar(errorMessage : String) {
         let message = MDCSnackbarMessage()
         message.text = errorMessage
@@ -235,10 +257,10 @@ extension Register1TVC: UIPickerViewDataSource,UIPickerViewDelegate{
         MDCSnackbarManager.snackbarMessageViewBackgroundColor = #colorLiteral(red: 0, green: 0.8465872407, blue: 0.7545004487, alpha: 1)
         MDCSnackbarManager.show(message)
     }
-    
 }
 
 extension Register1TVC : MDCSnackbarManagerDelegate{
+    
     func willPresentSnackbar(with messageView: MDCSnackbarMessageView?) {
         guard let window = UIApplication.shared.windows.filter({$0.isKeyWindow}).first else { return }
         window.viewWithTag(200)?.removeFromSuperview()
@@ -246,4 +268,5 @@ extension Register1TVC : MDCSnackbarManagerDelegate{
     func snackbarDidDisappear() {
         goToNextScreen()
     }
+    
 }
