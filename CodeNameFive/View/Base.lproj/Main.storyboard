@@ -4362,8 +4362,65 @@
                             </tableViewSection>
                             <tableViewSection headerTitle="Enter your personal information" id="rng-j9-muP">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="firstName" rowHeight="44" id="PCO-YI-qZC">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="vehicalRegistration" rowHeight="44" id="Ya2-2w-CRY">
                                         <rect key="frame" x="0.0" y="111.33333206176758" width="414" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Ya2-2w-CRY" id="EJV-Uc-9Ah">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Upload your profile photo" textAlignment="natural" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="HTo-gB-Msu">
+                                                    <rect key="frame" x="30" y="12.666666666666664" width="354" height="19"/>
+                                                    <color key="textColor" red="0.070588235289999995" green="0.82352941180000006" blue="0.70196078429999997" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                                                    <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="tsI-oB-DWY" id="GmJ-8h-dpN"/>
+                                                    </connections>
+                                                </textField>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailingMargin" secondItem="HTo-gB-Msu" secondAttribute="trailing" constant="10" id="8Sr-xh-Qt8"/>
+                                                <constraint firstItem="HTo-gB-Msu" firstAttribute="top" secondItem="EJV-Uc-9Ah" secondAttribute="topMargin" constant="1.5" id="InV-Bl-O94"/>
+                                                <constraint firstItem="HTo-gB-Msu" firstAttribute="centerY" secondItem="EJV-Uc-9Ah" secondAttribute="centerY" id="rDn-mY-oD0"/>
+                                                <constraint firstItem="HTo-gB-Msu" firstAttribute="leading" secondItem="EJV-Uc-9Ah" secondAttribute="leadingMargin" constant="10" id="uO8-ZD-RLE"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" name="tableCellColor"/>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="vehicalRegistration" rowHeight="81" id="5hE-nw-iYj">
+                                        <rect key="frame" x="0.0" y="155.33333206176758" width="414" height="81"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="5hE-nw-iYj" id="pOy-mw-3bN">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="81"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Ellipse" translatesAutoresizingMaskIntoConstraints="NO" id="tKK-Aa-3a6">
+                                                    <rect key="frame" x="20" y="15" width="58" height="50"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="50" id="B2z-cQ-Mmd"/>
+                                                        <constraint firstAttribute="width" constant="58" id="au6-Pg-bcZ"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3eB-1H-Do1">
+                                                    <rect key="frame" x="86" y="25" width="178" height="30"/>
+                                                    <state key="normal" title="Change profile photo"/>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="3eB-1H-Do1" secondAttribute="bottom" constant="20" id="1FA-xq-mPf"/>
+                                                <constraint firstItem="tKK-Aa-3a6" firstAttribute="top" secondItem="pOy-mw-3bN" secondAttribute="top" constant="15" id="9pb-46-khW"/>
+                                                <constraint firstItem="tKK-Aa-3a6" firstAttribute="leading" secondItem="pOy-mw-3bN" secondAttribute="leading" constant="20" id="EsI-zp-z8F"/>
+                                                <constraint firstAttribute="trailing" secondItem="3eB-1H-Do1" secondAttribute="trailing" constant="150" id="cK2-xf-lre"/>
+                                                <constraint firstAttribute="bottom" secondItem="tKK-Aa-3a6" secondAttribute="bottom" constant="5" id="doV-mc-sTJ"/>
+                                                <constraint firstItem="3eB-1H-Do1" firstAttribute="top" secondItem="pOy-mw-3bN" secondAttribute="top" constant="25" id="fY7-9h-1NU"/>
+                                                <constraint firstItem="3eB-1H-Do1" firstAttribute="leading" secondItem="tKK-Aa-3a6" secondAttribute="trailing" constant="8" id="t2l-LB-dU0"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" name="tableCellColor"/>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="firstName" rowHeight="44" id="PCO-YI-qZC">
+                                        <rect key="frame" x="0.0" y="236.33333206176758" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="PCO-YI-qZC" id="8xx-6E-lzt">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
@@ -4388,7 +4445,7 @@
                                         <color key="backgroundColor" name="tableCellColor"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="lastName" rowHeight="44" id="Psn-zg-8it">
-                                        <rect key="frame" x="0.0" y="155.33333206176758" width="414" height="44"/>
+                                        <rect key="frame" x="0.0" y="280.33333206176758" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Psn-zg-8it" id="SPM-6v-ret">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
@@ -4413,7 +4470,7 @@
                                         <color key="backgroundColor" name="tableCellColor"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="emailAddress" rowHeight="44" id="ReN-MI-jHL">
-                                        <rect key="frame" x="0.0" y="199.33333206176758" width="414" height="44"/>
+                                        <rect key="frame" x="0.0" y="324.33333206176758" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ReN-MI-jHL" id="27Z-Ch-SH8">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
@@ -4438,7 +4495,7 @@
                                         <color key="backgroundColor" name="tableCellColor"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="phonenumber" rowHeight="44" id="hk1-Af-Z5p">
-                                        <rect key="frame" x="0.0" y="243.33333206176758" width="414" height="44"/>
+                                        <rect key="frame" x="0.0" y="368.33333206176758" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="hk1-Af-Z5p" id="dBx-6d-fwx">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
@@ -4463,7 +4520,7 @@
                                         <color key="backgroundColor" name="tableCellColor"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="vehicalType" rowHeight="44" id="fjk-af-6hR">
-                                        <rect key="frame" x="0.0" y="287.33333206176758" width="414" height="44"/>
+                                        <rect key="frame" x="0.0" y="412.33333206176758" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="fjk-af-6hR" id="6UA-9a-Eai">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
@@ -4489,7 +4546,7 @@
                                         <color key="backgroundColor" name="tableCellColor"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="vehicalRegistration" rowHeight="44" id="2p6-KP-upT">
-                                        <rect key="frame" x="0.0" y="331.33333206176758" width="414" height="44"/>
+                                        <rect key="frame" x="0.0" y="456.33333206176758" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="2p6-KP-upT" id="bGF-7r-bOR">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
@@ -4549,10 +4606,18 @@
                             <tableViewSection headerTitle="Things we need to check" id="Uwo-Tn-qu5">
                                 <cells/>
                             </tableViewSection>
-                            <tableViewSection headerTitle="Enter your date of birth and address to verify your identity" id="PkP-ks-6KJ">
+                            <tableViewSection headerTitle="Enter your date of birth and address to verify your identity" id="0ab-9Z-Gcw">
                                 <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="0vn-eO-Cex">
+                                        <rect key="frame" x="0.0" y="129.33333206176758" width="414" height="1.1920928955078125e-07"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="0vn-eO-Cex" id="pLs-Rx-mhY">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="1.1920928955078125e-07"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="dateOfBirth" rowHeight="44" id="GVw-yU-L8D">
-                                        <rect key="frame" x="0.0" y="129.33333206176758" width="414" height="44"/>
+                                        <rect key="frame" x="0.0" y="129.33333218097687" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="GVw-yU-L8D" id="fes-Hj-qm7">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
@@ -4577,8 +4642,12 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" name="tableCellColor"/>
                                     </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection headerTitle="You must be at least 18 years old to apply as a partner" id="PkP-ks-6KJ">
+                                <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="addressLine1" rowHeight="44" id="gXl-Eq-hJP">
-                                        <rect key="frame" x="0.0" y="173.33333206176758" width="414" height="44"/>
+                                        <rect key="frame" x="0.0" y="247.33333218097687" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="gXl-Eq-hJP" id="6pO-vM-7vw">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
@@ -4603,7 +4672,7 @@
                                         <color key="backgroundColor" name="tableCellColor"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="addressLine2" rowHeight="44" id="6Vi-Gk-HXh">
-                                        <rect key="frame" x="0.0" y="217.33333206176758" width="414" height="44"/>
+                                        <rect key="frame" x="0.0" y="291.33333218097687" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="6Vi-Gk-HXh" id="rXi-wH-tEB">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
@@ -4628,7 +4697,7 @@
                                         <color key="backgroundColor" name="tableCellColor"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="town" rowHeight="44" id="QbA-fl-jyQ">
-                                        <rect key="frame" x="0.0" y="261.33333206176758" width="414" height="44"/>
+                                        <rect key="frame" x="0.0" y="335.33333218097687" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="QbA-fl-jyQ" id="rva-g6-g9p">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
@@ -4653,7 +4722,7 @@
                                         <color key="backgroundColor" name="tableCellColor"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="city" rowHeight="44" id="sGa-vR-mcH">
-                                        <rect key="frame" x="0.0" y="305.33333206176758" width="414" height="44"/>
+                                        <rect key="frame" x="0.0" y="379.33333218097687" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="sGa-vR-mcH" id="dtW-bu-tjy">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
@@ -4678,7 +4747,7 @@
                                         <color key="backgroundColor" name="tableCellColor"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="zipCode" rowHeight="44" id="FET-Bd-YYP">
-                                        <rect key="frame" x="0.0" y="349.33333206176758" width="414" height="44"/>
+                                        <rect key="frame" x="0.0" y="423.33333218097687" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="FET-Bd-YYP" id="tGm-dW-POC">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
@@ -4703,7 +4772,7 @@
                                         <color key="backgroundColor" name="tableCellColor"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="country" rowHeight="44" id="4vg-CI-neF">
-                                        <rect key="frame" x="0.0" y="393.33333206176758" width="414" height="44"/>
+                                        <rect key="frame" x="0.0" y="467.33333218097687" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="4vg-CI-neF" id="o9D-ja-2oS">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
@@ -4764,17 +4833,21 @@
                             <tableViewSection headerTitle="Supporting documents" id="quO-Q1-r5a">
                                 <cells/>
                             </tableViewSection>
-                            <tableViewSection headerTitle="Provide your supporting document to complete your application" id="zVl-v4-FF2">
+                            <tableViewSection headerTitle="Provide your supporting document to complete your application" id="9lJ-IH-E2c">
+                                <cells/>
+                            </tableViewSection>
+                            <tableViewSection headerTitle="Proof of ID" id="zVl-v4-FF2">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="44" id="MQE-oe-5Zb">
-                                        <rect key="frame" x="0.0" y="129.33333206176758" width="414" height="44"/>
+                                        <rect key="frame" x="0.0" y="185.33333206176758" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="MQE-oe-5Zb" id="I2Q-YA-X4h">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Upload proof of ID" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="10" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="Gu6-5G-DSh">
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Upload front of the document" placeholder="Upload proof of ID" textAlignment="natural" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="Gu6-5G-DSh">
                                                     <rect key="frame" x="30" y="12.666666666666664" width="374" height="19"/>
+                                                    <color key="textColor" red="0.070588235289999995" green="0.82352941180000006" blue="0.70196078429999997" alpha="1" colorSpace="calibratedRGB"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                     <connections>
@@ -4792,14 +4865,15 @@
                                         <color key="backgroundColor" name="tableCellColor"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="44" id="Vp8-Lt-fmB">
-                                        <rect key="frame" x="0.0" y="173.33333206176758" width="414" height="44"/>
+                                        <rect key="frame" x="0.0" y="229.33333206176758" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Vp8-Lt-fmB" id="PJl-hg-m7a">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Upload proof of address" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="10" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="o8m-ch-QvL">
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Upload back of the document" textAlignment="natural" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="o8m-ch-QvL">
                                                     <rect key="frame" x="30" y="12.666666666666664" width="374" height="19"/>
+                                                    <color key="textColor" red="0.070588235289999995" green="0.82352941180000006" blue="0.70196078429999997" alpha="1" colorSpace="calibratedRGB"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                     <connections>
@@ -4818,10 +4892,40 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
+                            <tableViewSection headerTitle="Proof of address" id="cCD-i0-eKE">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="44" id="DGG-sU-srl">
+                                        <rect key="frame" x="0.0" y="329.33333206176758" width="414" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="DGG-sU-srl" id="Kt8-NZ-IMs">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Upload proof of address" placeholder="Upload proof of ID" textAlignment="natural" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="6LH-zA-IDx">
+                                                    <rect key="frame" x="30" y="12.666666666666664" width="374" height="19"/>
+                                                    <color key="textColor" red="0.070588235289999995" green="0.82352941180000006" blue="0.70196078429999997" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                    <connections>
+                                                        <action selector="uploadProffIDSelection:" destination="QKT-UU-Hmn" eventType="editingDidBegin" id="y2B-FE-r5l"/>
+                                                    </connections>
+                                                </textField>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="6LH-zA-IDx" firstAttribute="top" secondItem="Kt8-NZ-IMs" secondAttribute="topMargin" constant="1.5" id="Bz2-MX-CTL"/>
+                                                <constraint firstItem="6LH-zA-IDx" firstAttribute="leading" secondItem="Kt8-NZ-IMs" secondAttribute="leadingMargin" constant="10" id="IvT-fH-OP8"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="6LH-zA-IDx" secondAttribute="trailing" constant="-10" id="Tqj-Q7-esg"/>
+                                                <constraint firstItem="6LH-zA-IDx" firstAttribute="centerY" secondItem="Kt8-NZ-IMs" secondAttribute="centerY" id="lBH-of-QWa"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" name="tableCellColor"/>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
                             <tableViewSection id="flF-V4-uzn">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="Oti-Rm-2Hh" rowHeight="67" style="IBUITableViewCellStyleDefault" id="jWy-lP-UAM">
-                                        <rect key="frame" x="0.0" y="253.33333206176758" width="414" height="67"/>
+                                        <rect key="frame" x="0.0" y="409.33333206176758" width="414" height="67"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="jWy-lP-UAM" id="9kh-pF-Lzz">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="67"/>

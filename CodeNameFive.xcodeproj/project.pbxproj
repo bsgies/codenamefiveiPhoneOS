@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4F085A0C24FD398C005EA82E /* VehicalTypeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F085A0B24FD398C005EA82E /* VehicalTypeModel.swift */; };
+		4F085A0E24FD39EB005EA82E /* HTTPVehicalType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F085A0D24FD39EB005EA82E /* HTTPVehicalType.swift */; };
 		4F08878624B5EE5D00CD5554 /* GoToCustomerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F08878524B5EE5D00CD5554 /* GoToCustomerVC.swift */; };
 		4F08878824B5F13400CD5554 /* CollectOrderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F08878724B5F13400CD5554 /* CollectOrderCell.swift */; };
 		4F14A5F224A8AD250095CA9B /* EditPhoneTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F14A5F124A8AD250095CA9B /* EditPhoneTVC.swift */; };
@@ -116,6 +118,8 @@
 		2C7DB2144377852017506D20 /* Pods_CodeNameFiveTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CodeNameFiveTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A7EF917E3DE529CA6C4C385 /* Pods-CodeNameFive.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CodeNameFive.release.xcconfig"; path = "Target Support Files/Pods-CodeNameFive/Pods-CodeNameFive.release.xcconfig"; sourceTree = "<group>"; };
 		3D3A47F8A169D0CA79DC7B9B /* Pods_CodeNameFive_CodeNameFiveUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CodeNameFive_CodeNameFiveUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4F085A0B24FD398C005EA82E /* VehicalTypeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicalTypeModel.swift; sourceTree = "<group>"; };
+		4F085A0D24FD39EB005EA82E /* HTTPVehicalType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPVehicalType.swift; sourceTree = "<group>"; };
 		4F08878524B5EE5D00CD5554 /* GoToCustomerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoToCustomerVC.swift; sourceTree = "<group>"; };
 		4F08878724B5F13400CD5554 /* CollectOrderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectOrderCell.swift; sourceTree = "<group>"; };
 		4F14A5F124A8AD250095CA9B /* EditPhoneTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPhoneTVC.swift; sourceTree = "<group>"; };
@@ -290,7 +294,8 @@
 			children = (
 				4F97A20824D46C62006734BF /* CodeNameFive-Bridging-Header.h */,
 				4F58477B24BB2F8100B42CB8 /* CNF.entitlements */,
-				4F8ED08424CB59B200F658DA /* Location Services */,
+				4F085A0D24FD39EB005EA82E /* HTTPVehicalType.swift */,
+				4F8ED08424CB59B200F658DA /* HTTP */,
 				4F8ED08924CC53AD00F658DA /* JSON */,
 				4F5C99FA24BA6D3900DC4A27 /* Register */,
 				4FB978EF24A4D8600093C10F /* Model */,
@@ -527,11 +532,11 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		4F8ED08424CB59B200F658DA /* Location Services */ = {
+		4F8ED08424CB59B200F658DA /* HTTP */ = {
 			isa = PBXGroup;
 			children = (
 			);
-			path = "Location Services";
+			path = HTTP;
 			sourceTree = "<group>";
 		};
 		4F8ED08924CC53AD00F658DA /* JSON */ = {
@@ -577,6 +582,7 @@
 			children = (
 				4FB978F224A4D9030093C10F /* OderDetailModel.swift */,
 				4F827CB624F12B530061F3BF /* Registration.swift */,
+				4F085A0B24FD398C005EA82E /* VehicalTypeModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -923,6 +929,7 @@
 				4F5C99FC24BA6D5500DC4A27 /* Register1TVC.swift in Sources */,
 				4F14A5F824A8DBF50095CA9B /* PreviouspaymentsCell.swift in Sources */,
 				4FB11F14249FEDB000EC629B /* Constant.swift in Sources */,
+				4F085A0E24FD39EB005EA82E /* HTTPVehicalType.swift in Sources */,
 				4FD32D8324AA72060086766C /* InboxVC.swift in Sources */,
 				4F7CBD2624B1257E00672010 /* ChatCell.swift in Sources */,
 				4F43BC1A24A3DC39006CF40F /* PaymentInformationTVC.swift in Sources */,
@@ -947,6 +954,7 @@
 				4F2E5640249B4FA800D28462 /* CodeNameFive.xcdatamodeld in Sources */,
 				4F5AE8B824A77D0B00567D05 /* AppFont.swift in Sources */,
 				4FDC63DE24F00EE000B990AB /* Helping.swift in Sources */,
+				4F085A0C24FD398C005EA82E /* VehicalTypeModel.swift in Sources */,
 				4F2E562124AF405900C591EC /* SecurityVC.swift in Sources */,
 				4F64ADA4249E5AAF0047E9D5 /* Validation.swift in Sources */,
 				4F64166B24B088A200B2700F /* PartnerSupportTVC.swift in Sources */,

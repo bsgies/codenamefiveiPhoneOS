@@ -24,20 +24,32 @@ class Register1TVC: UITableViewController , UITextFieldDelegate {
     var pickerData: [String] = [String]()
     var overlayView = UIView()
     let button = UIButton(type: .system)
-    
+    let vehicalObj  = HTTPVehicalType()
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
     }
-    
+    func LoadVehical() {
+        vehicalObj.loadVehicals { (result, error) in
+            if error == nil{
+              
+                for vehicals in result!.data{
+                    self.pickerData.append(vehicals.vehicleName)
+                    print(vehicals.vehicleName)
+                }
+              
+            }
+        }
+    }
     //MARK:- LifeCyles
     override func viewDidLoad() {
         super.viewDidLoad()
         setBackButton()
         self.picker.delegate = self
         self.picker.dataSource = self
-        pickerData = ["Bike", "Moped", "Car"]
+        //pickerData = ["Bike", "Moped", "Car"]
+        LoadVehical()
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidDisappear(true)

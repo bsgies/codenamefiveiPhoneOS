@@ -336,7 +336,7 @@ class GoToPickupVC: UIViewController,CLLocationManagerDelegate, GMSMapViewDelega
         }
     }
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        resturentName.text = error.localizedDescription
+        //resturentName.text = error.localizedDescription
     }
     func driverRouteManage(driverLat: Double, driverLong: Double){
         if !GMSGeometryIsLocationOnPath(locValue!,path, true){
