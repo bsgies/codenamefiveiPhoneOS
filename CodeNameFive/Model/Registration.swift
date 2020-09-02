@@ -26,3 +26,53 @@ struct Registration {
     var proofOfId : NSData
     var proofOfFAddress : NSData
 }
+
+// MARK: - Countries
+struct Countries: Codable {
+    let success: Bool
+    let data: [countryData]
+}
+
+// MARK: - countryData
+struct countryData: Codable {
+    let countryID: Int
+    let countryName: String
+
+    enum CodingKeys: String, CodingKey {
+        case countryID = "countryId"
+        case countryName
+    }
+}
+
+
+struct State: Codable {
+    let success: Bool
+    let data: [stateData]
+}
+
+// MARK: - stateData
+struct stateData: Codable {
+    let stateID: Int
+    let stateName: String
+
+    enum CodingKeys: String, CodingKey {
+        case stateID = "stateId"
+        case stateName
+    }
+}
+
+struct Cities: Codable {
+    let success: Bool
+    let data: [citydata]
+}
+
+// MARK: - cityData
+struct citydata: Codable {
+    let cityID: Int
+    let cityName: String
+
+    enum CodingKeys: String, CodingKey {
+        case cityID = "cityId"
+        case cityName
+    }
+}

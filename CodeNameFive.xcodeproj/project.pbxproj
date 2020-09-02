@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		4F085A0C24FD398C005EA82E /* VehicalTypeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F085A0B24FD398C005EA82E /* VehicalTypeModel.swift */; };
 		4F085A0E24FD39EB005EA82E /* HTTPVehicalType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F085A0D24FD39EB005EA82E /* HTTPVehicalType.swift */; };
+		4F085A1024FD83DD005EA82E /* HTTPRegisterationRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F085A0F24FD83DD005EA82E /* HTTPRegisterationRequest.swift */; };
 		4F08878624B5EE5D00CD5554 /* GoToCustomerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F08878524B5EE5D00CD5554 /* GoToCustomerVC.swift */; };
 		4F08878824B5F13400CD5554 /* CollectOrderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F08878724B5F13400CD5554 /* CollectOrderCell.swift */; };
 		4F14A5F224A8AD250095CA9B /* EditPhoneTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F14A5F124A8AD250095CA9B /* EditPhoneTVC.swift */; };
@@ -53,6 +54,8 @@
 		4F64AD9D249E40710047E9D5 /* ViewExtenstions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F64AD9C249E40710047E9D5 /* ViewExtenstions.swift */; };
 		4F64AD9F249E40B80047E9D5 /* hit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F64AD9E249E40B80047E9D5 /* hit.swift */; };
 		4F64ADA4249E5AAF0047E9D5 /* Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F64ADA3249E5AAF0047E9D5 /* Validation.swift */; };
+		4F6992FE24FE7D20008D43B9 /* HTTPLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F6992FD24FE7D20008D43B9 /* HTTPLocation.swift */; };
+		4F69930024FE7D48008D43B9 /* Endpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F6992FF24FE7D48008D43B9 /* Endpoints.swift */; };
 		4F6EDA0924AF686000C058AA /* RegisterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F6EDA0824AF686000C058AA /* RegisterVC.swift */; };
 		4F6EDA0D24AF6D7200C058AA /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F6EDA0C24AF6D7200C058AA /* WebKit.framework */; };
 		4F7CBD2624B1257E00672010 /* ChatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F7CBD2524B1257E00672010 /* ChatCell.swift */; };
@@ -120,6 +123,7 @@
 		3D3A47F8A169D0CA79DC7B9B /* Pods_CodeNameFive_CodeNameFiveUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CodeNameFive_CodeNameFiveUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F085A0B24FD398C005EA82E /* VehicalTypeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicalTypeModel.swift; sourceTree = "<group>"; };
 		4F085A0D24FD39EB005EA82E /* HTTPVehicalType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPVehicalType.swift; sourceTree = "<group>"; };
+		4F085A0F24FD83DD005EA82E /* HTTPRegisterationRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPRegisterationRequest.swift; sourceTree = "<group>"; };
 		4F08878524B5EE5D00CD5554 /* GoToCustomerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoToCustomerVC.swift; sourceTree = "<group>"; };
 		4F08878724B5F13400CD5554 /* CollectOrderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectOrderCell.swift; sourceTree = "<group>"; };
 		4F14A5F124A8AD250095CA9B /* EditPhoneTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPhoneTVC.swift; sourceTree = "<group>"; };
@@ -189,6 +193,8 @@
 		4F64AD9C249E40710047E9D5 /* ViewExtenstions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtenstions.swift; sourceTree = "<group>"; };
 		4F64AD9E249E40B80047E9D5 /* hit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = hit.swift; sourceTree = "<group>"; };
 		4F64ADA3249E5AAF0047E9D5 /* Validation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validation.swift; sourceTree = "<group>"; };
+		4F6992FD24FE7D20008D43B9 /* HTTPLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPLocation.swift; sourceTree = "<group>"; };
+		4F6992FF24FE7D48008D43B9 /* Endpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoints.swift; sourceTree = "<group>"; };
 		4F6EDA0824AF686000C058AA /* RegisterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterVC.swift; sourceTree = "<group>"; };
 		4F6EDA0C24AF6D7200C058AA /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		4F739B8724EABE4E00DB2BDC /* ur-PK */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "ur-PK"; path = "ur-PK.lproj/Main.strings"; sourceTree = "<group>"; };
@@ -535,6 +541,9 @@
 		4F8ED08424CB59B200F658DA /* HTTP */ = {
 			isa = PBXGroup;
 			children = (
+				4F085A0F24FD83DD005EA82E /* HTTPRegisterationRequest.swift */,
+				4F6992FD24FE7D20008D43B9 /* HTTPLocation.swift */,
+				4F6992FF24FE7D48008D43B9 /* Endpoints.swift */,
 			);
 			path = HTTP;
 			sourceTree = "<group>";
@@ -931,7 +940,9 @@
 				4FB11F14249FEDB000EC629B /* Constant.swift in Sources */,
 				4F085A0E24FD39EB005EA82E /* HTTPVehicalType.swift in Sources */,
 				4FD32D8324AA72060086766C /* InboxVC.swift in Sources */,
+				4F6992FE24FE7D20008D43B9 /* HTTPLocation.swift in Sources */,
 				4F7CBD2624B1257E00672010 /* ChatCell.swift in Sources */,
+				4F69930024FE7D48008D43B9 /* Endpoints.swift in Sources */,
 				4F43BC1A24A3DC39006CF40F /* PaymentInformationTVC.swift in Sources */,
 				4F393B2624AB717C009D08AB /* PaymentInfoCell.swift in Sources */,
 				4FF1F72024AFB1A40035A9A5 /* HelpOrCancelVC.swift in Sources */,
@@ -948,6 +959,7 @@
 				4F2E5638249B4FA800D28462 /* SceneDelegate.swift in Sources */,
 				4F617DEE249F6D820022DB8B /* ButtonAnimation.swift in Sources */,
 				4F393B2224AB4EA3009D08AB /* HelpCenterVC.swift in Sources */,
+				4F085A1024FD83DD005EA82E /* HTTPRegisterationRequest.swift in Sources */,
 				4F43BC2224A3EE40006CF40F /* WeeklyTripsDataViewController.swift in Sources */,
 				4FE4A400249FF93300CFFC3B /* EditProfileTVC.swift in Sources */,
 				4F5C9A0024BA6D7400DC4A27 /* Register3TVC.swift in Sources */,

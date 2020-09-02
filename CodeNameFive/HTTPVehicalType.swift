@@ -8,21 +8,16 @@
 
 import Foundation
 
-struct Endpoints {
-    static let vehchicalTypes = "http://ec2-18-222-200-202.us-east-2.compute.amazonaws.com:3000/api/v1/partner/vehicle/type"
-}
 
 class HTTPVehicalType {
     
-    let semaphore = DispatchSemaphore (value: 0)
     func loadVehicals(completionalHandler: @escaping(VehicalTypeModel? , Error?) -> Void)  {
         
         let request = NSMutableURLRequest(url: NSURL(string: Endpoints.vehchicalTypes)! as URL,
                                           cachePolicy: .useProtocolCachePolicy,
                                           timeoutInterval: 10.0)
         request.httpMethod = "GET"
-       // request.allHTTPHeaderFields = headers
-
+   
         let session = URLSession.shared
         let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
             if (error != nil) {
@@ -33,7 +28,7 @@ class HTTPVehicalType {
                 do{
                     let jsondata = try decode.decode(VehicalTypeModel.self, from: data!)
                       completionalHandler(jsondata , nil)
-//                        self.semaphore.signal()
+
                 }catch let error{
                     completionalHandler(nil , error)
                     print(error.localizedDescription)
@@ -42,7 +37,7 @@ class HTTPVehicalType {
         })
         
         dataTask.resume()
-//        semaphore.wait()
+
 
     }
 }

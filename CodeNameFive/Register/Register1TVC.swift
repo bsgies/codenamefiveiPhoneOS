@@ -48,7 +48,6 @@ class Register1TVC: UITableViewController , UITextFieldDelegate {
         setBackButton()
         self.picker.delegate = self
         self.picker.dataSource = self
-        //pickerData = ["Bike", "Moped", "Car"]
         LoadVehical()
     }
     override func viewDidAppear(_ animated: Bool) {
