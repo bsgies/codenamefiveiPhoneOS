@@ -1,17 +1,8 @@
-//
-//  Register2TVC.swift
-//  CodeNameFive
-//
-//  Created by Muhammad Imran on 12/07/2020.
-//  Copyright © 2020 ITRID TECHNOLOGIES LTD. All rights reserved.
-//
-
 import UIKit
 import MaterialComponents.MaterialSnackbar
 class Register2TVC: UITableViewController,UITextFieldDelegate {
     
     //MARK:- Variables
-    
     let httplocationobj = HTTPLocation()
     var countries: [String] = []
     var countriesID: [Int] = []
@@ -27,7 +18,6 @@ class Register2TVC: UITableViewController,UITextFieldDelegate {
     let button = UIButton(type: .system)
     var countryId  : Int?
     var stateId : Int?
-    //  var countrydic  :  [Int : String]?
     func loadCountries() {
         httplocationobj.getCountries { (result, error) in
             
@@ -133,18 +123,12 @@ class Register2TVC: UITableViewController,UITextFieldDelegate {
     
     @IBAction func stateSelectionforPicker(_ sender: UITextField) {
         currentSelectedField = address.state.rawValue
-        if let countryId = countryId{
-            loadStates(countryId: countryId)
-            ShowStatePicker()
-        }
+        ShowStatePicker()
     }
     
     @IBAction func citySelectionforPicker(_ sender: UITextField) {
         currentSelectedField = address.city.rawValue
-              if let stateId =  stateId{
-                 loadCities(stateId: stateId)
-                ShowCityPicker()
-        }
+        ShowCityPicker()
     }
     
     
@@ -239,11 +223,8 @@ extension Register2TVC: UIPickerViewDataSource,UIPickerViewDelegate{
     
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        print(currentSelectedField)
         if currentSelectedField == address.country.rawValue{
-            
             return countries[row]
-            
         }
         else if currentSelectedField == address.state.rawValue {
             
@@ -258,10 +239,17 @@ extension Register2TVC: UIPickerViewDataSource,UIPickerViewDelegate{
         if currentSelectedField == address.country.rawValue{
             countryId =  countriesID[row]
             country.text = countries[row]
+            if let countryId = countryId{
+            loadStates(countryId: countryId)
+            }
         }
         else if currentSelectedField == address.state.rawValue {
             stateId = stateID[row]
             stateTextField.text = states[row]
+            if let stateId =  stateId{
+                loadCities(stateId: stateId)
+                
+            }
         }
         else{
             city.text = cities[row]
@@ -301,7 +289,7 @@ extension Register2TVC{
         toolbar.setItems([doneButton,spaceButton,cancelButton], animated: false)
         country.inputAccessoryView = toolbar
         country.inputView = picker
-        country.text = countries[0]
+       // country.text = countries[0]
     }
     
     func ShowStatePicker(){
@@ -314,7 +302,7 @@ extension Register2TVC{
         toolbar.setItems([doneButton,spaceButton,cancelButton], animated: false)
         stateTextField.inputAccessoryView = toolbar
         stateTextField.inputView = picker
-        stateTextField.text = countries[0]
+//        stateTextField.text = states[0]
     }
     func ShowCityPicker(){
            
@@ -324,9 +312,9 @@ extension Register2TVC{
            let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
            let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelDatePicker));
            toolbar.setItems([doneButton,spaceButton,cancelButton], animated: false)
-           stateTextField.inputAccessoryView = toolbar
-           stateTextField.inputView = picker
-           stateTextField.text = countries[0]
+           city.inputAccessoryView = toolbar
+           city.inputView = picker
+//           city.text = cities[0]
        }
     
     func showDatePicker(){
