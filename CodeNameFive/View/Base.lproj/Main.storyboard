@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="vzv-tN-eid">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="rtz-zU-JNu">
     <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -21,7 +21,7 @@
             <objects>
                 <viewController storyboardIdentifier="LoginVC" title="Login" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="LoginVC" customModule="CNF" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PS8-g6-vuE">
@@ -4726,7 +4726,6 @@
                                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                                                     <textInputTraits key="textInputTraits" returnKeyType="done" textContentType="address-level2"/>
                                                     <connections>
-                                                        <action selector="stateSelection:" destination="vzv-tN-eid" eventType="touchDragInside" id="lUI-VP-Vyo"/>
                                                         <action selector="stateSelectionforPicker:" destination="vzv-tN-eid" eventType="editingDidBegin" id="MCD-IW-ya0"/>
                                                     </connections>
                                                 </textField>
@@ -4752,7 +4751,6 @@
                                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                                                     <textInputTraits key="textInputTraits" returnKeyType="done" textContentType="address-level2"/>
                                                     <connections>
-                                                        <action selector="cittSelection:" destination="vzv-tN-eid" eventType="touchUpInside" id="csg-4u-3bQ"/>
                                                         <action selector="citySelectionforPicker:" destination="vzv-tN-eid" eventType="editingDidBegin" id="5Nk-oB-hdg"/>
                                                         <outlet property="delegate" destination="vzv-tN-eid" id="t8z-jh-DbM"/>
                                                     </connections>

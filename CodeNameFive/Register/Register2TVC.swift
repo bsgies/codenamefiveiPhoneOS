@@ -18,59 +18,6 @@ class Register2TVC: UITableViewController,UITextFieldDelegate {
     let button = UIButton(type: .system)
     var countryId  : Int?
     var stateId : Int?
-    func loadCountries() {
-        httplocationobj.getCountries { (result, error) in
-            
-            if error == nil{
-                if let result = result{
-                    
-                    for country in result.data{
-                        self.countries.append(country.countryName)
-                        self.countriesID.append(country.countryID)
-                    
-                    }
-                }
-            }
-            
-        }
-    }
-    
-    func loadStates(countryId : Int){
-        httplocationobj.getState(countryId: countryId) { (result, error) in
-            if let result = result
-            {
-                for state in result.data{
-                    print(state.stateName)
-                    self.states.append(state.stateName)
-                    self.stateID.append(state.stateID)
-                }}
-            
-            
-        }
-    }
-    
-    func loadCities(stateId : Int){
-        httplocationobj.getCities(stateId: stateId) { (result, error) in
-            
-            if let result = result{
-                for city in result.data{
-                    print(city.cityName)
-                    self.cities.append(city.cityName)
-                    self.cityID.append(city.cityID)
-                }
-            }
-            
-            
-        }
-        
-    }
-    
-    enum address : String {
-        case country = "country"
-        case state = "state"
-        case city = "city"
-    }
-    
     
     //MARK:- OUTLETS
     @IBOutlet weak var country: UITextField!
@@ -83,6 +30,12 @@ class Register2TVC: UITableViewController,UITextFieldDelegate {
     @IBOutlet weak var zipCode: UITextField!
     
     
+    enum address : String {
+        case country = "country"
+        case state = "state"
+        case city = "city"
+    }
+
     //MARK:- LifeCyles
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -99,12 +52,12 @@ class Register2TVC: UITableViewController,UITextFieldDelegate {
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
-        goToNextScreen()
+        ScreenBottombutton.goToNextScreen(button: button , view: self.view)
+        button.addTarget(self, action: #selector(submit), for: .touchUpInside)
+        MDCSnackbarManager.delegate = self
     }
     
     // MARK:- Textefield Delegate
-    
-    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
@@ -131,44 +84,42 @@ class Register2TVC: UITableViewController,UITextFieldDelegate {
         ShowCityPicker()
     }
     
-    
-    @IBAction func stateSelection(_ sender: UITextField) {
-       
-    }
-    @IBAction func cittSelection(_ sender: UITextField) {
-      
+    //MARK:- Load Data from Network
+    func loadCountries() {
+        httplocationobj.getCountries { (result, error) in
+            if error == nil{
+                if let result = result{
+                    for country in result.data{
+                        self.countries.append(country.countryName)
+                        self.countriesID.append(country.countryID)
+                    }
+                }
+            }
         }
-        
+    }
+    func loadStates(countryId : Int){
+        httplocationobj.getState(countryId: countryId) { (result, error) in
+            if let result = result
+            {
+                for state in result.data{
+                    print(state.stateName)
+                    self.states.append(state.stateName)
+                    self.stateID.append(state.stateID)
+                }}
+        }
+    }
     
-    
-
-    func goToNextScreen() {
-        guard let window = UIApplication.shared.windows.filter({$0.isKeyWindow}).first else { return }
-        let bottomview = UIView()
-        bottomview.tag = 200
-        bottomview.backgroundColor = UIColor(named: "BottomButtonView")
-        window.addSubview(bottomview)
-        bottomview.translatesAutoresizingMaskIntoConstraints = false
-        bottomview.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 1).isActive = true
-        bottomview.heightAnchor.constraint(equalToConstant: 60).isActive = true
-        bottomview.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 0).isActive = true
-        bottomview.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: 0).isActive = true
-        bottomview.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: 0).isActive = true
-        
-        button.backgroundColor = #colorLiteral(red: 0, green: 0.8465872407, blue: 0.7545004487, alpha: 1)
-        button.setTitleColor(.white, for: .normal)
-        button.setTitle("Next", for: .normal)
-        button.titleLabel?.font = UIFont(name: "HelveticaNeue-Bold", size: 16)
-        button.addTarget(self, action: #selector(submit), for: .touchUpInside)
-        bottomview.addSubview(button)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.centerXAnchor.constraint(equalTo: bottomview.centerXAnchor).isActive = true
-        button.leadingAnchor.constraint(equalTo: bottomview.leadingAnchor, constant: 25).isActive = true
-        button.trailingAnchor.constraint(equalTo: bottomview.trailingAnchor, constant: -25).isActive = true
-        button.heightAnchor.constraint(equalToConstant: 40).isActive = true
-        button.topAnchor.constraint(equalTo: bottomview.topAnchor, constant: 10).isActive = true
-        button.bottomAnchor.constraint(equalTo: bottomview.bottomAnchor, constant: -10).isActive = true
-        
+    func loadCities(stateId : Int){
+        httplocationobj.getCities(stateId: stateId) { (result, error) in
+            
+            if let result = result{
+                for city in result.data{
+                    print(city.cityName)
+                    self.cities.append(city.cityName)
+                    self.cityID.append(city.cityID)
+                }
+            }
+        }
     }
     
     @objc func submit(){
@@ -180,8 +131,6 @@ class Register2TVC: UITableViewController,UITextFieldDelegate {
             let newViewController = storyBoard.instantiateViewController(withIdentifier: "Register3TVC") as! Register3TVC
             navigationController?.pushViewController(newViewController, animated: false)
         }
-        
-        
     }
     
     
@@ -280,41 +229,39 @@ extension Register2TVC{
     
     
     func ShowCountryPicker(){
-        
         let toolbar = UIToolbar();
         toolbar.sizeToFit()
-        let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(DoneCoutryPicker));
+        let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(Done));
         let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
         let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelDatePicker));
         toolbar.setItems([doneButton,spaceButton,cancelButton], animated: false)
         country.inputAccessoryView = toolbar
         country.inputView = picker
-       // country.text = countries[0]
     }
     
     func ShowStatePicker(){
         
         let toolbar = UIToolbar();
         toolbar.sizeToFit()
-        let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(DoneCoutryPicker));
+        let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(Done));
         let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
         let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelDatePicker));
         toolbar.setItems([doneButton,spaceButton,cancelButton], animated: false)
         stateTextField.inputAccessoryView = toolbar
         stateTextField.inputView = picker
-//        stateTextField.text = states[0]
+
     }
     func ShowCityPicker(){
            
            let toolbar = UIToolbar();
            toolbar.sizeToFit()
-           let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(DoneCoutryPicker));
+           let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(Done));
            let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
            let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelDatePicker));
            toolbar.setItems([doneButton,spaceButton,cancelButton], animated: false)
            city.inputAccessoryView = toolbar
            city.inputView = picker
-//           city.text = cities[0]
+
        }
     
     func showDatePicker(){
@@ -339,13 +286,12 @@ extension Register2TVC{
         MDCSnackbarManager.show(message)
     }
     @objc func donedatePicker(){
-        
         let formatter = DateFormatter()
         formatter.dateFormat = "dd/MM/yyyy"
         dateOfBirth.text = formatter.string(from: datePicker.date)
         self.view.endEditing(true)
     }
-    @objc func DoneCoutryPicker(){
+    @objc func Done(){
         self.view.endEditing(true)
     }
     @objc func cancelDatePicker(){
@@ -354,16 +300,14 @@ extension Register2TVC{
     @objc func CancelCountryPicker(){
         country.text = nil
     }
-    
 }
 extension Register2TVC : MDCSnackbarManagerDelegate{
     func willPresentSnackbar(with messageView: MDCSnackbarMessageView?) {
-        
         guard let window = UIApplication.shared.windows.filter({$0.isKeyWindow}).first else { return }
         window.viewWithTag(200)?.removeFromSuperview()
     }
     func snackbarDidDisappear() {
-        goToNextScreen()
+    ScreenBottombutton.goToNextScreen(button: button , view: self.view)
     }
     
 }

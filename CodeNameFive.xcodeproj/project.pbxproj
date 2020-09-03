@@ -58,6 +58,8 @@
 		4F69930024FE7D48008D43B9 /* Endpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F6992FF24FE7D48008D43B9 /* Endpoints.swift */; };
 		4F6EDA0924AF686000C058AA /* RegisterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F6EDA0824AF686000C058AA /* RegisterVC.swift */; };
 		4F6EDA0D24AF6D7200C058AA /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F6EDA0C24AF6D7200C058AA /* WebKit.framework */; };
+		4F785A4C2500E06E002D192D /* ScreenBottombutton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F785A4B2500E06E002D192D /* ScreenBottombutton.swift */; };
+		4F785A4E25018C21002D192D /* Data.gif in Resources */ = {isa = PBXBuildFile; fileRef = 4F785A4D25018C21002D192D /* Data.gif */; };
 		4F7CBD2624B1257E00672010 /* ChatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F7CBD2524B1257E00672010 /* ChatCell.swift */; };
 		4F827CB724F12B530061F3BF /* Registration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F827CB624F12B530061F3BF /* Registration.swift */; };
 		4F8ED08824CC30F500F658DA /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F8ED08724CC30F500F658DA /* Device.swift */; };
@@ -199,6 +201,8 @@
 		4F6EDA0C24AF6D7200C058AA /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		4F739B8724EABE4E00DB2BDC /* ur-PK */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "ur-PK"; path = "ur-PK.lproj/Main.strings"; sourceTree = "<group>"; };
 		4F739B8824EABE4F00DB2BDC /* ur-PK */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "ur-PK"; path = "ur-PK.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		4F785A4B2500E06E002D192D /* ScreenBottombutton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenBottombutton.swift; sourceTree = "<group>"; };
+		4F785A4D25018C21002D192D /* Data.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = Data.gif; sourceTree = "<group>"; };
 		4F7CBD2524B1257E00672010 /* ChatCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatCell.swift; sourceTree = "<group>"; };
 		4F827CB624F12B530061F3BF /* Registration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Registration.swift; sourceTree = "<group>"; };
 		4F8ED08724CC30F500F658DA /* Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
@@ -318,6 +322,7 @@
 				4F2E563E249B4FA800D28462 /* CodeNameFive.xcdatamodeld */,
 				4FB978E624A4A8A70093C10F /* Cell */,
 				4F92BDB524B290FC00DEDDF3 /* ChatVC.swift */,
+				4F785A4D25018C21002D192D /* Data.gif */,
 				4F31608A24CE359700347571 /* noti.mp3 */,
 				4FDC63DD24F00EE000B990AB /* Helping.swift */,
 			);
@@ -520,6 +525,7 @@
 				4F64AD9E249E40B80047E9D5 /* hit.swift */,
 				4F209E5D24CD7A1E001F34BC /* CheckBox.swift */,
 				4FF8996F24EDBFA50050A57E /* GifFileLoader.swift */,
+				4F785A4B2500E06E002D192D /* ScreenBottombutton.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -727,6 +733,7 @@
 				4F2E5642249B4FAA00D28462 /* Assets.xcassets in Resources */,
 				4F2E563D249B4FA800D28462 /* Main.storyboard in Resources */,
 				4F8ED09424CC57A000F658DA /* DarkModeMap.json in Resources */,
+				4F785A4E25018C21002D192D /* Data.gif in Resources */,
 				4F8ED09024CC567900F658DA /* darkstyle.json in Resources */,
 				4F8ED09224CC575E00F658DA /* Sliver.json in Resources */,
 				4F8ED08E24CC55BB00F658DA /* style.json in Resources */,
@@ -956,6 +963,7 @@
 				4FE12A1A24E54F78006F55E1 /* MMSlidingButton.swift in Sources */,
 				4FF1F72424AFBB2D0035A9A5 /* HelpOrCancelCell.swift in Sources */,
 				4FB978F724A4DB3A0093C10F /* EarningsTVC.swift in Sources */,
+				4F785A4C2500E06E002D192D /* ScreenBottombutton.swift in Sources */,
 				4F2E5638249B4FA800D28462 /* SceneDelegate.swift in Sources */,
 				4F617DEE249F6D820022DB8B /* ButtonAnimation.swift in Sources */,
 				4F393B2224AB4EA3009D08AB /* HelpCenterVC.swift in Sources */,

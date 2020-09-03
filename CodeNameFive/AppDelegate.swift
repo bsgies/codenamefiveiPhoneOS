@@ -10,7 +10,6 @@ import UIKit
 import CoreData
 import GoogleMaps
 import Reachability
-import SwiftyGif
 import IQKeyboardManagerSwift
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -19,19 +18,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         GMSServices.provideAPIKey("AIzaSyBXfR7Zu7mvhxO4aydatsUY-VUH-_NG15g")
-        do {
-        try reachability = Reachability()
-        NotificationCenter.default.addObserver(self, selector: #selector(self.reachabilityChanged(_:)), name: Notification.Name.reachabilityChanged, object: reachability)
-        try reachability.startNotifier()
-        } catch {
-             print("This is not working.")
-        }
+         checkReachabilitly()
         
         //IQKeyboardManager.shared.enable = true
     
         return true
     }
 
+    
+    func checkReachabilitly() {
+        do {
+               try reachability = Reachability()
+               NotificationCenter.default.addObserver(self, selector: #selector(self.reachabilityChanged(_:)), name: Notification.Name.reachabilityChanged, object: reachability)
+               try reachability.startNotifier()
+               } catch {
+                    print("This is not working.")
+               }
+    }
     // MARK: UISceneSession Lifecycle
 
     func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
@@ -90,6 +93,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
     }
+    
     @objc func reachabilityChanged(_ note: NSNotification) {
     let reachability = note.object as! Reachability
     if reachability.connection != .unavailable {
@@ -106,51 +110,40 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
   }
     
-    func showNoInterNetview(){
-          guard let window = UIApplication.shared.windows.filter({$0.isKeyWindow}).first else { return }
-        
-        let noInternetView = UIView()
-        noInternetView.tag = 200
-//        noInternetView.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-//        let jeremyGif = UIImage.gifImageWithName(name: "Data")
-//        let imageView = UIImageView(image: jeremyGif)
-//        noInternetView.addSubview(imageView)
-         
-        
-        do {
-            let gif = try UIImage(gifName: "Data.gif")
-            let imageview = UIImageView(gifImage: gif, loopCount: 3) // Will loop 3 times
-            imageview.frame = noInternetView.bounds
-            noInternetView.addSubview(imageview)
-            window.addSubview(noInternetView)
-            noInternetView.bindFrameToSuperviewBounds()
-        } catch {
-            print(error)
-        }
-        
-    }
-    
+//    func showNoInterNetview(){
+//        let image = UIImageView()
+//        let window = UIApplication.shared.keyWindow!
+//        let v = UIView(frame: window.bounds)
+//        window.addSubview(v);
+//        v.backgroundColor = UIColor.black
+//        image.loadGif(name: "Data")
+//
+//        v.addSubview(image)
+//
+//    }
     func Alert() {
-                let codeNotReceivedAlert = UIAlertController(title: "No Internet", message: "Please check your conectivity", preferredStyle: UIAlertController.Style.alert)
-                   codeNotReceivedAlert.view.tintColor = UIColor(#colorLiteral(red: 0, green: 0.8465872407, blue: 0.7545004487, alpha: 1))
-                   codeNotReceivedAlert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action: UIAlertAction!) in
-                   }))
-        self.window?.rootViewController?.present(codeNotReceivedAlert, animated: true, completion: nil)
-    }
-
-}
-extension UIView {
-
-    func bindFrameToSuperviewBounds() {
-        guard let superview = self.superview else {
-            print("Error! `superview` was nil – call `addSubview(view: UIView)` before calling `bindFrameToSuperviewBounds()` to fix this.")
-            return
+        
+        if let keyWindow = UIWindow.key {
+            
+            let alert = UIAlertController(title: "no Interent", message:"The Internet connection appears to be offline", preferredStyle: UIAlertController.Style.alert)
+            let retry = UIAlertAction(title: "retry", style: UIAlertAction.Style.default) {
+                UIAlertAction in
+                self.checkReachabilitly()
+            }
+            alert.addAction(retry)
+            DispatchQueue.main.async {
+                 keyWindow.rootViewController?.present(alert, animated: true, completion: nil)
+            }
         }
-
-        self.translatesAutoresizingMaskIntoConstraints = false
-        superview.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[subview]-0-|", options: .directionLeadingToTrailing, metrics: nil, views: ["subview": self]))
-        superview.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-0-[subview]-0-|", options: .directionLeadingToTrailing, metrics: nil, views: ["subview": self]))
     }
 
 }
-
+extension UIWindow {
+    static var key: UIWindow? {
+        if #available(iOS 13, *) {
+            return UIApplication.shared.windows.first { $0.isKeyWindow }
+        } else {
+            return UIApplication.shared.keyWindow
+        }
+    }
+}
