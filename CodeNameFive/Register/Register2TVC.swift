@@ -25,7 +25,6 @@ class Register2TVC: UITableViewController,UITextFieldDelegate {
     @IBOutlet weak var dateOfBirth: UITextField!
     @IBOutlet weak var addressLine1: UITextField!
     @IBOutlet weak var addressLine2: UITextField?
-    @IBOutlet weak var town: UITextField!
     @IBOutlet weak var city: UITextField!
     @IBOutlet weak var zipCode: UITextField!
     
@@ -90,6 +89,8 @@ class Register2TVC: UITableViewController,UITextFieldDelegate {
         httplocationobj.getCountries { (result, error) in
             if error == nil{
                 if let result = result{
+                    self.countries.removeAll()
+                    self.countriesID.removeAll()
                     for country in result.data{
                         self.countries.append(country.countryName)
                         self.countriesID.append(country.countryID)
@@ -101,7 +102,8 @@ class Register2TVC: UITableViewController,UITextFieldDelegate {
     func loadStates(countryId : Int){
         httplocationobj.getState(countryId: countryId) { (result, error) in
             if let result = result
-            {
+            {   self.states.removeAll()
+                self.stateID.removeAll()
                 for state in result.data{
                     print(state.stateName)
                     self.states.append(state.stateName)
@@ -114,6 +116,8 @@ class Register2TVC: UITableViewController,UITextFieldDelegate {
         httplocationobj.getCities(stateId: stateId) { (result, error) in
             
             if let result = result{
+                self.cities.removeAll()
+                self.cityID.removeAll()
                 for city in result.data{
                     print(city.cityName)
                     self.cities.append(city.cityName)
@@ -124,27 +128,25 @@ class Register2TVC: UITableViewController,UITextFieldDelegate {
     }
     
     @objc func submit(){
-        if country.text!.isEmpty && dateOfBirth.text!.isEmpty && addressLine1.text!.isEmpty && town.text!.isEmpty && city.text!.isEmpty && zipCode.text!.isEmpty{
+        if country.text!.isEmpty && dateOfBirth.text!.isEmpty && addressLine1.text!.isEmpty && city.text!.isEmpty && zipCode.text!.isEmpty{
             snackBar(errorMessage: "one Or More Fields Are Empty")
         }
         else{
             
             Registration.country = country.text
-            Registration.dateOfBirth = dateOfBirth.text
-            Registration.addressLine1 = addressLine1.text
-            Registration.addressLine2 = addressLine2?.text
+            Registration.dob = dateOfBirth.text
+            Registration.address1 = addressLine1.text
+            Registration.address2 = addressLine2?.text
             Registration.country = country.text
             Registration.city = city.text
             Registration.state = stateTextField.text
             Registration.zipCode = zipCode.text
-            Registration.town = town.text
+            
             let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
             let newViewController = storyBoard.instantiateViewController(withIdentifier: "Register3TVC") as! Register3TVC
             navigationController?.pushViewController(newViewController, animated: false)
         }
     }
-    
-    
     override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         if section == 0{
             let header = view as! UITableViewHeaderFooterView
@@ -160,7 +162,6 @@ class Register2TVC: UITableViewController,UITextFieldDelegate {
         }
         
     }
-    
 }
 extension Register2TVC: UIPickerViewDataSource,UIPickerViewDelegate{
     

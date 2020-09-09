@@ -33,6 +33,7 @@ func uploadFiles(image : UIImage ,  completionalHandler: @escaping(ImageResponse
                               let decode = JSONDecoder()
                               do{
                                   let jsondata = try decode.decode(ImageResponse.self, from: data!)
+                                dump(jsondata)
                                     completionalHandler(jsondata , nil)
 
                               }catch let error{
@@ -58,7 +59,7 @@ func uploadFiles(image : UIImage ,  completionalHandler: @escaping(ImageResponse
             for (key, value) in parameters {
                 body.append("--\(boundary + lineBreak)")
                 body.append("Content-Disposition: form-data; name=\"\(key)\"\(lineBreak + lineBreak)")
-                body.append("\(value + lineBreak)")
+                body.append("\(value as! String + lineBreak)")
             }
         }
         

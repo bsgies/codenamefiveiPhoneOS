@@ -10,22 +10,24 @@ import Foundation
 import UIKit
 
 struct Registration {
-    static var fullName : String?
-    static var lastName : String?
-    static var emailAddress : String?
+    static var firstName : String?
+    static var lastName :  String?
+    static var email : String?
+    static var password : String?
     static var phoneNumber : String?
-    static var vehicalType : String?
-    static var vehicalRegistrationNumber : String?
-    static var dateOfBirth : String?
-    static var addressLine1 : String?
-    static var addressLine2 : String?
-    static var town : String?
+    static var dob : String?
     static var city : String?
     static var state : String?
     static var zipCode : String?
     static var country : String?
-    static var proofOfId : String?
-    static var proofOfFAddress : String?
+    static var vehicleReg : String?
+    static var vehicle : String?
+    static var profilePhoto : String?
+    static var address1 : String?
+    static var address2 : String?
+    static var frontDocument : String?
+    static var backDocument : String?
+    static var addressProof : String?
 }
 
 struct ProfileImage {

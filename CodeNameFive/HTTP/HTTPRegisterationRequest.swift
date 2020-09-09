@@ -9,56 +9,72 @@
 import Foundation
 
 class HTTPRegisterationRequest {
-    let parameters = [
-     "firstName" : "ahsan",
-     "lastName" : "ali",
-     "email" : "ssabssc@gmail.com",
-     "password" : "12345678",
-     "phoneNumber" : "+92002356795",
-     "dob" : "18-06-2020",
-     "city" : 1,
-     "state" : 1,
-     "zipCode" : "78600",
-     "country" : 1,
-     "vehicleReg" : "KGD 123",
-     "vehicle" : "2",
-     "profilePhoto" : "abc.png",
-     "address1" : "A 50",
-     "address2" : "Block S",
-     "document1" : "1.png",
-     "document2" : "2.png"] as [String : Any]
-    
-    
     func registerUser() {
-        let url = URL(string: "http://www.thisismylink.com/postName.php")!
-        var request = URLRequest(url: url)
-        request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
-        request.httpMethod = "POST"
-        let parameters: [String: Any] = [
-            "id": 13,
-            "name": "Jack & Jill"
-        ]
-        //request.httpBody = parameters.percentEncoded()
-       
-        let task = URLSession.shared.dataTask(with: request) { data, response, error in
-            guard let data = data,
-                let response = response as? HTTPURLResponse,
-                error == nil else {                                              // check for fundamental networking error
-                    print("error", error ?? "Unknown error")
-                    return
-            }
-            
-            guard (200 ... 299) ~= response.statusCode else {                    // check for http errors
-                print("statusCode should be 2xx, but is \(response.statusCode)")
-                print("response = \(response)")
+        let Url = String(format: Endpoints.registeration)
+            guard let serviceUrl = URL(string: Url) else { return }
+//            let parameters: [String: Any] = [
+//                "firstName" : Registration.firstName!,
+//                "lastName" : Registration.lastName!,
+//                "email" : Registration.email!,
+//                "password" : Registration.password!,
+//                "phoneNumber" : Registration.phoneNumber! ,
+//                "dob" : Registration.dob!,
+//                "city" : Registration.city!,
+//                "state" : Registration.state!,
+//                "zipCode" : Registration.zipCode!,
+//                "country" : Registration.country!,
+//                "vehicleReg" : Registration.vehicleReg ?? "",
+//                "vehicle" : Registration.vehicle!,
+//                "profilePhoto" : Registration.profilePhoto!,
+//                "address1" : Registration.address1!,
+//                "address2" : Registration.address2 ?? "",
+//                "frontDocument" : Registration.frontDocument!,
+//                "backDocument" : Registration.backDocument!,
+//                "addressProof" : Registration.addressProof!
+//        ]
+        
+              let parameters: [String: Any] = [
+                    "firstName" : "ahsan",
+                    "lastName" : "ali",
+                    "email" : "ssabssfsc@gmail.com",
+                    "password" : "12345678",
+                    "phoneNumber" : "+92002356795",
+                    "dob" : "18-06-2020",
+                    "city" : 1,
+                    "state" : 1,
+                    "zipCode" : "78600",
+                    "country" : 1,
+                    "vehicleReg" : "KGD 123",
+                    "vehicle" : "2",
+                    "profilePhoto" : "abc.png",
+                    "address1" : "A 50",
+                    "address2" : "Block S",
+                    "frontDocument" : "1.png",
+                    "backDocument" : "2.png",
+                    "addressProof" : "sdasd.png"
+              ]
+     
+            var request = URLRequest(url: serviceUrl)
+            request.httpMethod = "POST"
+            request.setValue("Application/json", forHTTPHeaderField: "Content-Type")
+            guard let httpBody = try? JSONSerialization.data(withJSONObject: parameters, options: []) else {
                 return
             }
-            
-            let responseString = String(data: data, encoding: .utf8)
-            print("responseString = \(responseString)")
+            request.httpBody = httpBody
+            request.timeoutInterval = 20
+            let session = URLSession.shared
+            session.dataTask(with: request) { (data, response, error) in
+                if let response = response {
+                    print(response)
+                }
+                if let data = data {
+                    do {
+                        let json = try JSONSerialization.jsonObject(with: data, options: [])
+                        print(json)
+                    } catch {
+                        print(error)
+                    }
+                }
+            }.resume()
         }
-        
-        task.resume()
     }
-
-}

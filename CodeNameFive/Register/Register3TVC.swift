@@ -10,23 +10,32 @@ import UIKit
 import PDFKit
 import MobileCoreServices
 import Alamofire
-
-
-typealias Parameters = [String: String]
 class Register3TVC: UITableViewController {
+    
+    
+    
     var indicator = UIActivityIndicatorView()
     @IBOutlet weak var uploadProofID: UITextField!
     @IBOutlet weak var uploadproofAddess: UITextField!
-    let ImageUploadObj = HTTPImageUpload()
+    @IBOutlet weak var uploadBackProofId: UITextField!
     
+    
+    let ImageUploadObj = HTTPImageUpload()
     var fileData : Data?
-    var currentlySelectedField = "id"
     let button = UIButton(type: .system)
     var myURL : String?
+    let httpregister = HTTPRegisterationRequest()
+    var frontImage  : UIImage?
+    var backImage : UIImage?
+    var addresProofImage : UIImage?
+    var docTag : String?
+
+    
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        uploadProofID.tag = 1
-        uploadproofAddess.tag = 2
         setBackButton()
     }
     override func viewDidAppear(_ animated: Bool) {
@@ -41,13 +50,7 @@ class Register3TVC: UITableViewController {
     }
     
     @objc func submit(){
-        
-        print(Registration.city)
-        print(Registration.dateOfBirth)
-        print(Registration.fullName)
-        print(Registration.country)
-        print(Registration.addressLine1)
-       
+        httpregister.registerUser()
         navigationController?.setNavigationBarHidden(true, animated: true)
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
                let newViewController = storyBoard.instantiateViewController(withIdentifier: "LoginVC") as! LoginVC
@@ -66,22 +69,21 @@ class Register3TVC: UITableViewController {
           header.textLabel?.textColor = UIColor(named: "RegisterationLblColors")
           header.textLabel?.text = "provide Your Supporting Document To Complete Your Application"
         }
-        
-        
       }
-    @IBAction func uploadProffIDSelection(_ sender: UITextField) {
-        currentlySelectedField = "id"
+    @IBAction func frontProof(_ sender: UITextField) {
         view.endEditing(true)
+        docTag = docs.front.rawValue
         showActionSheet()
-        
     }
-    @IBAction func uploadProofAddress(_ sender: UITextField) {
-        //MyLoadingIndicator()
-        currentlySelectedField = "address"
+    @IBAction func backProof(_ sender: UITextField) {
         view.endEditing(true)
+        docTag = docs.back.rawValue
         showActionSheet()
-    
-
+    }
+    @IBAction func addressProof(_ sender: UITextField) {
+        view.endEditing(true)
+        docTag = docs.address.rawValue
+        showActionSheet()
     }
 
 }
@@ -109,12 +111,12 @@ extension Register3TVC : UIDocumentMenuDelegate,UIDocumentPickerDelegate,UINavig
     
     func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentAt url: URL){
         myURL = url.lastPathComponent
-        if currentlySelectedField == "id"{
-            uploadProofID.text = myURL
-        }
-        else if currentlySelectedField == "address"{
-            uploadproofAddess.text = myURL
-        }
+//        if currentlySelectedField == "id"{
+//            uploadProofID.text = myURL
+//        }
+//        else if currentlySelectedField == "address"{
+//            uploadproofAddess.text = myURL
+//        }
         }
 
 
@@ -195,16 +197,13 @@ extension Register3TVC : UIImagePickerControllerDelegate{
             self.photoLibrary()
         }))
         
-        actionSheet.addAction(UIAlertAction(title: "Documents", style: UIAlertAction.Style.default, handler: { (alert:UIAlertAction!) -> Void in
-            self.openDocumentPicker()
-               }))
+//        actionSheet.addAction(UIAlertAction(title: "Documents", style: UIAlertAction.Style.default, handler: { (alert:UIAlertAction!) -> Void in
+//            self.openDocumentPicker()
+//               }))
 
         actionSheet.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
-
         self.present(actionSheet, animated: true, completion: nil)
         
-        
-
     }
     func imagePickerController(_ picker: UIImagePickerController,didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         let image = info[.originalImage] as? UIImage
@@ -214,18 +213,113 @@ extension Register3TVC : UIImagePickerControllerDelegate{
             let imageSize: Int = imgData.count
             print("actual size of image in KB: %f ", Double(imageSize) / 1000.0)
             
-            ImageUploadObj.uploadFiles(image: image) { (result, error) in
-                if error == nil{
-                    print(result?.data.fileName.path)
-                }
+            if docTag == docs.front.rawValue{
+                frontImage = image
+            }
+            else if docTag == docs.back.rawValue {
+                backImage = image
+            }
+            else if docTag == docs.address.rawValue {
+                addresProofImage  = image
             }
         }
         else{
-            print("Image Size Is not 5MB")
+            print("Image not Loaded")
+        }
+    }
+    
+    
+    func RegisterUser(){
+      let serialQueue = DispatchQueue(label: "swiftlee.serial.queue")
+        serialQueue.async {
+             print("Task 1 started")
+            if let frontimage = self.frontImage{
+                self.uploadFrontImage(image: frontimage)
+                
+            }
+         }
+         serialQueue.async {
+             print("Task 2 started")
+            if let backImage = self.backImage{
+                self.uploadBackImage(image: backImage)
+            }
+         }
+        serialQueue.async {
+            print("Task 3 started")
+            if let addresProofImage = self.addresProofImage{
+                self.uploadAddressVerification(image: addresProofImage)
+            }
+
+        }
+        serialQueue.async {
+            print("Task 4 started")
+            if let profileImage = ProfileImage.profileImage{
+                self.profileImage(image: profileImage)
+            }
+        }
+        serialQueue.async {
+            print("Task 5 started")
+            self.httpregister.registerUser()
         }
         
-        
     }
+    func uploadFrontImage(image : UIImage) {
+        ImageUploadObj.uploadFiles(image: image) { (result, error) in
+            if error == nil{
+                Registration.frontDocument = result!.data.fileName.path
+            }
+        }
+    }
+    func uploadBackImage(image : UIImage) {
+        ImageUploadObj.uploadFiles(image: image) { (result, error) in
+            if error == nil{
+                Registration.backDocument = result!.data.fileName.path
+            }
+        }
+    }
+    func uploadAddressVerification(image : UIImage) {
+        ImageUploadObj.uploadFiles(image: image) { (result, error) in
+            if error == nil{
+                Registration.addressProof = result!.data.fileName.path
+            }
+        }
+    }
+    func profileImage(image : UIImage) {
+        ImageUploadObj.uploadFiles(image: image) { (result, error) in
+            if error == nil{
+                Registration.profilePhoto = result!.data.fileName.path
+            }
+        }
+    }
+    
+    
+    func showSpinner() {
+        let child = SpinnerViewController()
+
+         // add the spinner view controller
+         addChild(child)
+         child.view.frame = view.frame
+         view.addSubview(child.view)
+         child.didMove(toParent: self)
+
+         // wait two seconds to simulate some work happening
+         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+             // then remove the spinner view controller
+             child.willMove(toParent: nil)
+             child.view.removeFromSuperview()
+             child.removeFromParent()
+         }
+    }
+    
+    enum docs : String {
+        case front = "front"
+        case back = "back"
+        case address = "address"
+    }
+
 }
+
+
+
 
 

@@ -70,6 +70,7 @@ class Register1TVC: UITableViewController , UITextFieldDelegate, UINavigationCon
             // Fallback on earlier versions
         }
     }
+    
     @objc func Next(){
         
         if !(firstName.text!.isEmpty && lastName.text!.isEmpty && emailAddress.text!.isEmpty && phoneNumber.text!.isEmpty && vechialType.text!.isEmpty && vehicleRegisterationNumber.text!.isEmpty){
@@ -77,15 +78,14 @@ class Register1TVC: UITableViewController , UITextFieldDelegate, UINavigationCon
                 let validateemail =  email.removingWhitespaces()
                 if validateemail.isEmail() {
                     if (phoneNumber.text?.isValidPhone(phone: phoneNumber.text!))!{
-                        
                         if let image = profileImage.image{
                             ProfileImage.profileImage = image
-                            Registration.fullName = firstName.text
+                            Registration.firstName = firstName.text
                             Registration.lastName = lastName.text
-                            Registration.emailAddress = emailAddress.text
+                            Registration.email = emailAddress.text
                             Registration.phoneNumber = phoneNumber.text
-                            Registration.vehicalType = vechialType.text
-                            Registration.vehicalRegistrationNumber = vehicleRegisterationNumber.text
+                            Registration.vehicle = vechialType.text
+                            Registration.vehicleReg = vehicleRegisterationNumber.text
                             let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
                             let newViewController = storyBoard.instantiateViewController(withIdentifier: "Register2TVC") as! Register2TVC
                             navigationController?.pushViewController(newViewController, animated: false)
@@ -93,9 +93,6 @@ class Register1TVC: UITableViewController , UITextFieldDelegate, UINavigationCon
                         else{
                             snackBar(errorMessage: "Profile Image Miss")
                         }
-
-                       
-                        
                     }
                     else{
                         self.snackBar(errorMessage: "invalid Phone Number")
@@ -145,9 +142,6 @@ class Register1TVC: UITableViewController , UITextFieldDelegate, UINavigationCon
         showActionSheet()
           
     }
-    
-    
-    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true

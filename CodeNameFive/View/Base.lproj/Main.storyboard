@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="rtz-zU-JNu">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="QKT-UU-Hmn">
     <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -4792,31 +4792,6 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" name="tableCellColor"/>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="town" rowHeight="44" id="QbA-fl-jyQ">
-                                        <rect key="frame" x="0.0" y="511.33333206176758" width="414" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="QbA-fl-jyQ" id="rva-g6-g9p">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Town" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="10" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="63u-hm-MTc">
-                                                    <rect key="frame" x="30" y="12.666666666666664" width="354" height="19"/>
-                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
-                                                    <textInputTraits key="textInputTraits" returnKeyType="done" textContentType="location"/>
-                                                    <connections>
-                                                        <outlet property="delegate" destination="vzv-tN-eid" id="60k-HQ-ygx"/>
-                                                    </connections>
-                                                </textField>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="63u-hm-MTc" firstAttribute="centerY" secondItem="rva-g6-g9p" secondAttribute="centerY" id="MaT-1z-AEJ"/>
-                                                <constraint firstItem="63u-hm-MTc" firstAttribute="top" secondItem="rva-g6-g9p" secondAttribute="topMargin" constant="1.5" id="Mv7-Kj-kJb"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="63u-hm-MTc" secondAttribute="trailing" constant="10" id="izd-zd-6QZ"/>
-                                                <constraint firstItem="63u-hm-MTc" firstAttribute="leading" secondItem="rva-g6-g9p" secondAttribute="leadingMargin" constant="10" id="kvG-DZ-6sH"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <color key="backgroundColor" name="tableCellColor"/>
-                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                         </sections>
@@ -4833,7 +4808,6 @@
                         <outlet property="country" destination="wzN-zZ-hDR" id="FKE-vY-cGv"/>
                         <outlet property="dateOfBirth" destination="D3t-eg-T0c" id="pnF-Uv-c5k"/>
                         <outlet property="stateTextField" destination="wyc-SG-6n6" id="dfy-K1-YZc"/>
-                        <outlet property="town" destination="63u-hm-MTc" id="Srd-pP-VCw"/>
                         <outlet property="zipCode" destination="Wt8-QR-Zdc" id="K0N-xD-Pce"/>
                     </connections>
                 </tableViewController>
@@ -4872,7 +4846,7 @@
                                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                     <connections>
-                                                        <action selector="uploadProffIDSelection:" destination="QKT-UU-Hmn" eventType="editingDidBegin" id="3aF-gq-iax"/>
+                                                        <action selector="frontProof:" destination="QKT-UU-Hmn" eventType="editingDidBegin" id="ngG-cC-QZc"/>
                                                     </connections>
                                                 </textField>
                                             </subviews>
@@ -4898,7 +4872,7 @@
                                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                     <connections>
-                                                        <action selector="uploadProofAddress:" destination="QKT-UU-Hmn" eventType="editingDidBegin" id="5b9-qn-7iA"/>
+                                                        <action selector="backProof:" destination="QKT-UU-Hmn" eventType="editingDidBegin" id="mlS-TK-Pvo"/>
                                                     </connections>
                                                 </textField>
                                             </subviews>
@@ -4928,7 +4902,7 @@
                                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                     <connections>
-                                                        <action selector="uploadProffIDSelection:" destination="QKT-UU-Hmn" eventType="editingDidBegin" id="y2B-FE-r5l"/>
+                                                        <action selector="addressProof:" destination="QKT-UU-Hmn" eventType="editingDidBegin" id="hgf-Gn-0Eq"/>
                                                     </connections>
                                                 </textField>
                                             </subviews>
@@ -4975,8 +4949,9 @@ read the Privacy policy</string>
                     </tableView>
                     <navigationItem key="navigationItem" title="Apply to become a partner" largeTitleDisplayMode="always" id="yrR-BD-X3a"/>
                     <connections>
+                        <outlet property="uploadBackProofId" destination="o8m-ch-QvL" id="31I-iO-EqS"/>
                         <outlet property="uploadProofID" destination="Gu6-5G-DSh" id="i8k-FA-sfn"/>
-                        <outlet property="uploadproofAddess" destination="o8m-ch-QvL" id="Re9-af-MXz"/>
+                        <outlet property="uploadproofAddess" destination="6LH-zA-IDx" id="Bt0-5h-MbL"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zNW-tB-lii" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
