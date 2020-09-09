@@ -8,7 +8,7 @@
 
 import UIKit
 import MaterialComponents.MaterialSnackbar
-class Register1TVC: UITableViewController , UITextFieldDelegate {
+class Register1TVC: UITableViewController , UITextFieldDelegate, UINavigationControllerDelegate {
     
     //MARK:- Outlets
     @IBOutlet weak var firstName: UITextField!
@@ -18,14 +18,14 @@ class Register1TVC: UITableViewController , UITextFieldDelegate {
     @IBOutlet weak var vechialType: UITextField!
     @IBOutlet weak var vehicleRegisterationNumber: UITextField!
     @IBOutlet weak var vechicalType: UITextField!
-    
+    @IBOutlet weak var profileImage: UIImageView!
     //MARK:- variables
     let picker = UIPickerView()
     var pickerData: [String] = [String]()
     var overlayView = UIView()
     let button = UIButton(type: .system)
     let vehicalObj  = HTTPVehicalType()
-    
+    let ImageUploadObj = HTTPImageUpload()
     //MARK:- LifeCyles
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,6 +33,7 @@ class Register1TVC: UITableViewController , UITextFieldDelegate {
         self.picker.delegate = self
         self.picker.dataSource = self
         LoadVehical()
+        profileImage.makeRounded()
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidDisappear(true)
@@ -77,9 +78,23 @@ class Register1TVC: UITableViewController , UITextFieldDelegate {
                 if validateemail.isEmail() {
                     if (phoneNumber.text?.isValidPhone(phone: phoneNumber.text!))!{
                         
-                        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-                        let newViewController = storyBoard.instantiateViewController(withIdentifier: "Register2TVC") as! Register2TVC
-                        navigationController?.pushViewController(newViewController, animated: false)
+                        if let image = profileImage.image{
+                            ProfileImage.profileImage = image
+                            Registration.fullName = firstName.text
+                            Registration.lastName = lastName.text
+                            Registration.emailAddress = emailAddress.text
+                            Registration.phoneNumber = phoneNumber.text
+                            Registration.vehicalType = vechialType.text
+                            Registration.vehicalRegistrationNumber = vehicleRegisterationNumber.text
+                            let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                            let newViewController = storyBoard.instantiateViewController(withIdentifier: "Register2TVC") as! Register2TVC
+                            navigationController?.pushViewController(newViewController, animated: false)
+                        }
+                        else{
+                            snackBar(errorMessage: "Profile Image Miss")
+                        }
+
+                       
                         
                     }
                     else{
@@ -120,6 +135,19 @@ class Register1TVC: UITableViewController , UITextFieldDelegate {
         ShowVehicalTypes()
         
     }
+    
+    @IBAction func uploadprofileImage(_ sender: UIButton) {
+        showActionSheet()
+    }
+    
+    
+    @IBAction func updateProfileImage(_ sender: UIButton) {
+        showActionSheet()
+          
+    }
+    
+    
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
@@ -191,6 +219,7 @@ extension Register1TVC: UIPickerViewDataSource,UIPickerViewDelegate{
         vechialType.text = pickerData[0]
     }
     
+    
     @objc func DoneVehicalTypePicker(){
         self.view.endEditing(true)
     }
@@ -219,3 +248,69 @@ extension Register1TVC : MDCSnackbarManagerDelegate{
     }
     
 }
+
+extension Register1TVC : UIImagePickerControllerDelegate{
+    func camera()
+    {
+        let myPickerController = UIImagePickerController()
+        myPickerController.delegate = self
+        myPickerController.sourceType = UIImagePickerController.SourceType.camera
+
+        self.present(myPickerController, animated: true, completion: nil)
+
+    }
+
+    func photoLibrary()
+    {
+
+        let myPickerController = UIImagePickerController()
+        myPickerController.delegate = self
+        myPickerController.sourceType = UIImagePickerController.SourceType.photoLibrary
+        self.present(myPickerController, animated: true, completion: nil)
+
+    }
+    
+    func showActionSheet() {
+        let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertController.Style.actionSheet)
+
+        actionSheet.addAction(UIAlertAction(title: "Camera", style: UIAlertAction.Style.default, handler: { (alert:UIAlertAction!) -> Void in
+            self.camera()
+        }))
+
+        actionSheet.addAction(UIAlertAction(title: "Gallery", style: UIAlertAction.Style.default, handler: { (alert:UIAlertAction!) -> Void in
+            self.photoLibrary()
+        }))
+        
+        actionSheet.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
+
+        self.present(actionSheet, animated: true, completion: nil)
+        
+
+    }
+    func imagePickerController(_ picker: UIImagePickerController,didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        let image = info[.originalImage] as? UIImage
+        profileImage.image = image
+       // profileImage.contentMode = .scaleAspectFit
+        profileImage.makeRounded()
+        self.dismiss(animated: true, completion: nil)
+        if let image = image{
+            let imgData = NSData(data: image.jpegData(compressionQuality: 1)!)
+            let imageSize: Int = imgData.count
+            print("actual size of image in KB: %f ", Double(imageSize) / 1000.0)
+            
+            ImageUploadObj.uploadFiles(image: image) { (result, error) in
+                if error == nil{
+                    print(result?.data.fileName.path)
+                }
+            }
+        }
+        else{
+            print("Image Size Is not 5MB")
+        }
+        
+        
+    }
+}
+
+
+

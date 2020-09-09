@@ -13,6 +13,7 @@ struct Endpoints {
     static let countries = "http://ec2-18-222-200-202.us-east-2.compute.amazonaws.com:3000/api/v1/country"
     static let states = "http://ec2-18-222-200-202.us-east-2.compute.amazonaws.com:3000/api/v1/state"
     static let cities = "http://ec2-18-222-200-202.us-east-2.compute.amazonaws.com:3000/api/v1/city"
+    static let imageUpload = "http://ec2-18-222-200-202.us-east-2.compute.amazonaws.com:3000/api/v1/partner/image"
     
     
     

@@ -21,7 +21,7 @@
             <objects>
                 <viewController storyboardIdentifier="LoginVC" title="Login" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="LoginVC" customModule="CNF" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PS8-g6-vuE">
@@ -4369,21 +4369,19 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Upload your profile photo" textAlignment="natural" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="HTo-gB-Msu">
-                                                    <rect key="frame" x="30" y="12.666666666666664" width="354" height="19"/>
-                                                    <color key="textColor" red="0.070588235289999995" green="0.82352941180000006" blue="0.70196078429999997" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
-                                                    <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kSg-eE-Gip">
+                                                    <rect key="frame" x="28" y="10" width="334" height="24"/>
+                                                    <state key="normal" title="Upload your profile photo"/>
                                                     <connections>
-                                                        <outlet property="delegate" destination="tsI-oB-DWY" id="GmJ-8h-dpN"/>
+                                                        <action selector="uploadprofileImage:" destination="tsI-oB-DWY" eventType="touchUpInside" id="6S4-JM-sNT"/>
                                                     </connections>
-                                                </textField>
+                                                </button>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="trailingMargin" secondItem="HTo-gB-Msu" secondAttribute="trailing" constant="10" id="8Sr-xh-Qt8"/>
-                                                <constraint firstItem="HTo-gB-Msu" firstAttribute="top" secondItem="EJV-Uc-9Ah" secondAttribute="topMargin" constant="1.5" id="InV-Bl-O94"/>
-                                                <constraint firstItem="HTo-gB-Msu" firstAttribute="centerY" secondItem="EJV-Uc-9Ah" secondAttribute="centerY" id="rDn-mY-oD0"/>
-                                                <constraint firstItem="HTo-gB-Msu" firstAttribute="leading" secondItem="EJV-Uc-9Ah" secondAttribute="leadingMargin" constant="10" id="uO8-ZD-RLE"/>
+                                                <constraint firstItem="kSg-eE-Gip" firstAttribute="top" secondItem="EJV-Uc-9Ah" secondAttribute="top" constant="10" id="2pL-EZ-Dxu"/>
+                                                <constraint firstAttribute="bottom" secondItem="kSg-eE-Gip" secondAttribute="bottom" constant="10" id="8OU-zS-hSH"/>
+                                                <constraint firstItem="kSg-eE-Gip" firstAttribute="leading" secondItem="EJV-Uc-9Ah" secondAttribute="leading" constant="28" id="ECn-jh-dJl"/>
+                                                <constraint firstAttribute="trailing" secondItem="kSg-eE-Gip" secondAttribute="trailing" constant="52" id="dFg-ZM-RWi"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" name="tableCellColor"/>
@@ -4405,6 +4403,9 @@
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3eB-1H-Do1">
                                                     <rect key="frame" x="86" y="25" width="228" height="30"/>
                                                     <state key="normal" title="Change profile photo"/>
+                                                    <connections>
+                                                        <action selector="updateProfileImage:" destination="tsI-oB-DWY" eventType="touchUpInside" id="tJV-kS-YQJ"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
@@ -4584,6 +4585,7 @@
                         <outlet property="firstName" destination="fMk-Cy-UTa" id="lSR-LN-863"/>
                         <outlet property="lastName" destination="Rb8-mN-Vhb" id="wrC-4W-wqM"/>
                         <outlet property="phoneNumber" destination="7Vd-H2-eTe" id="rgf-ZZ-FMh"/>
+                        <outlet property="profileImage" destination="tKK-Aa-3a6" id="Uao-Zh-IXe"/>
                         <outlet property="vechialType" destination="gVP-3S-F67" id="mFG-8I-kYk"/>
                         <outlet property="vechicalType" destination="gVP-3S-F67" id="mwv-JB-idC"/>
                         <outlet property="vehicleRegisterationNumber" destination="pKU-4R-urg" id="Tmc-3a-Fm7"/>

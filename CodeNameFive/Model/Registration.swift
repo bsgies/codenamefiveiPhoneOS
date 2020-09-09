@@ -7,24 +7,29 @@
 //
 
 import Foundation
-
+import UIKit
 
 struct Registration {
-    var fullName : String
-    var lastName : String
-    var emailAddress : String
-    var phoneNumber : String
-    var vehicalType : String
-    var vehicalRegistrationNumber : String
-    var dateOfBirth : String
-    var addressLine1 : String
-    var addressLine2 : String?
-    var town : String
-    var city : String
-    var zipCode : String
-    var country : String
-    var proofOfId : NSData
-    var proofOfFAddress : NSData
+    static var fullName : String?
+    static var lastName : String?
+    static var emailAddress : String?
+    static var phoneNumber : String?
+    static var vehicalType : String?
+    static var vehicalRegistrationNumber : String?
+    static var dateOfBirth : String?
+    static var addressLine1 : String?
+    static var addressLine2 : String?
+    static var town : String?
+    static var city : String?
+    static var state : String?
+    static var zipCode : String?
+    static var country : String?
+    static var proofOfId : String?
+    static var proofOfFAddress : String?
+}
+
+struct ProfileImage {
+    static var profileImage : UIImage?
 }
 
 // MARK: - Countries

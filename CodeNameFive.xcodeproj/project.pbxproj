@@ -61,6 +61,9 @@
 		4F785A4C2500E06E002D192D /* ScreenBottombutton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F785A4B2500E06E002D192D /* ScreenBottombutton.swift */; };
 		4F785A4E25018C21002D192D /* Data.gif in Resources */ = {isa = PBXBuildFile; fileRef = 4F785A4D25018C21002D192D /* Data.gif */; };
 		4F7CBD2624B1257E00672010 /* ChatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F7CBD2524B1257E00672010 /* ChatCell.swift */; };
+		4F7DE759250259F50046A158 /* ImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F7DE758250259F50046A158 /* ImageManager.swift */; };
+		4F7DE75B25025F6A0046A158 /* HTTPImageUpload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F7DE75A25025F6A0046A158 /* HTTPImageUpload.swift */; };
+		4F7DE75F25027F3C0046A158 /* ImageResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F7DE75E25027F3C0046A158 /* ImageResponse.swift */; };
 		4F827CB724F12B530061F3BF /* Registration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F827CB624F12B530061F3BF /* Registration.swift */; };
 		4F8ED08824CC30F500F658DA /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F8ED08724CC30F500F658DA /* Device.swift */; };
 		4F8ED08E24CC55BB00F658DA /* style.json in Resources */ = {isa = PBXBuildFile; fileRef = 4F8ED08D24CC55BB00F658DA /* style.json */; };
@@ -87,6 +90,9 @@
 		4FDC63DE24F00EE000B990AB /* Helping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FDC63DD24F00EE000B990AB /* Helping.swift */; };
 		4FE12A1A24E54F78006F55E1 /* MMSlidingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FE12A1924E54F78006F55E1 /* MMSlidingButton.swift */; };
 		4FE4A400249FF93300CFFC3B /* EditProfileTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FE4A3FF249FF93300CFFC3B /* EditProfileTVC.swift */; };
+		4FEB2E8B2507BEEF00917715 /* Media.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FEB2E8A2507BEEF00917715 /* Media.swift */; };
+		4FEB2E8E2507DCB700917715 /* ImageAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FEB2E8D2507DCB700917715 /* ImageAlert.swift */; };
+		4FEB2E902507E43900917715 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FEB2E8F2507E43900917715 /* Image.swift */; };
 		4FF1F72024AFB1A40035A9A5 /* HelpOrCancelVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF1F71F24AFB1A40035A9A5 /* HelpOrCancelVC.swift */; };
 		4FF1F72424AFBB2D0035A9A5 /* HelpOrCancelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF1F72324AFBB2D0035A9A5 /* HelpOrCancelCell.swift */; };
 		4FF1F72624AFCDAA0035A9A5 /* CollectOrderTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF1F72524AFCDAA0035A9A5 /* CollectOrderTVC.swift */; };
@@ -204,6 +210,9 @@
 		4F785A4B2500E06E002D192D /* ScreenBottombutton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenBottombutton.swift; sourceTree = "<group>"; };
 		4F785A4D25018C21002D192D /* Data.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = Data.gif; sourceTree = "<group>"; };
 		4F7CBD2524B1257E00672010 /* ChatCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatCell.swift; sourceTree = "<group>"; };
+		4F7DE758250259F50046A158 /* ImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageManager.swift; sourceTree = "<group>"; };
+		4F7DE75A25025F6A0046A158 /* HTTPImageUpload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPImageUpload.swift; sourceTree = "<group>"; };
+		4F7DE75E25027F3C0046A158 /* ImageResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageResponse.swift; sourceTree = "<group>"; };
 		4F827CB624F12B530061F3BF /* Registration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Registration.swift; sourceTree = "<group>"; };
 		4F8ED08724CC30F500F658DA /* Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
 		4F8ED08D24CC55BB00F658DA /* style.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = style.json; sourceTree = "<group>"; };
@@ -232,6 +241,9 @@
 		4FDC63DD24F00EE000B990AB /* Helping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helping.swift; sourceTree = "<group>"; };
 		4FE12A1924E54F78006F55E1 /* MMSlidingButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MMSlidingButton.swift; sourceTree = "<group>"; };
 		4FE4A3FF249FF93300CFFC3B /* EditProfileTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileTVC.swift; sourceTree = "<group>"; };
+		4FEB2E8A2507BEEF00917715 /* Media.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Media.swift; sourceTree = "<group>"; };
+		4FEB2E8D2507DCB700917715 /* ImageAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageAlert.swift; sourceTree = "<group>"; };
+		4FEB2E8F2507E43900917715 /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 		4FF1F71F24AFB1A40035A9A5 /* HelpOrCancelVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpOrCancelVC.swift; sourceTree = "<group>"; };
 		4FF1F72324AFBB2D0035A9A5 /* HelpOrCancelCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpOrCancelCell.swift; sourceTree = "<group>"; };
 		4FF1F72524AFCDAA0035A9A5 /* CollectOrderTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectOrderTVC.swift; sourceTree = "<group>"; };
@@ -302,6 +314,7 @@
 		4F2E5634249B4FA800D28462 /* CodeNameFive */ = {
 			isa = PBXGroup;
 			children = (
+				4F7DE757250259CB0046A158 /* Manager */,
 				4F97A20824D46C62006734BF /* CodeNameFive-Bridging-Header.h */,
 				4F58477B24BB2F8100B42CB8 /* CNF.entitlements */,
 				4F085A0D24FD39EB005EA82E /* HTTPVehicalType.swift */,
@@ -382,6 +395,7 @@
 				9256B97B24BDC61500FF7CA0 /* ViewEXT.swift */,
 				92CD0A1A24BF02AC00CB3572 /* placeholder.swift */,
 				4F8ED08724CC30F500F658DA /* Device.swift */,
+				4FEB2E8F2507E43900917715 /* Image.swift */,
 			);
 			path = Extentions;
 			sourceTree = "<group>";
@@ -520,6 +534,7 @@
 		4F61D994249BF04400B9FE89 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				4FEB2E8C2507DC8F00917715 /* Alert */,
 				4F2E563B249B4FA800D28462 /* Main.storyboard */,
 				4FE12A1924E54F78006F55E1 /* MMSlidingButton.swift */,
 				4F64AD9E249E40B80047E9D5 /* hit.swift */,
@@ -544,12 +559,21 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		4F7DE757250259CB0046A158 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				4F7DE758250259F50046A158 /* ImageManager.swift */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
 		4F8ED08424CB59B200F658DA /* HTTP */ = {
 			isa = PBXGroup;
 			children = (
 				4F085A0F24FD83DD005EA82E /* HTTPRegisterationRequest.swift */,
 				4F6992FD24FE7D20008D43B9 /* HTTPLocation.swift */,
 				4F6992FF24FE7D48008D43B9 /* Endpoints.swift */,
+				4F7DE75A25025F6A0046A158 /* HTTPImageUpload.swift */,
 			);
 			path = HTTP;
 			sourceTree = "<group>";
@@ -598,8 +622,18 @@
 				4FB978F224A4D9030093C10F /* OderDetailModel.swift */,
 				4F827CB624F12B530061F3BF /* Registration.swift */,
 				4F085A0B24FD398C005EA82E /* VehicalTypeModel.swift */,
+				4F7DE75E25027F3C0046A158 /* ImageResponse.swift */,
+				4FEB2E8A2507BEEF00917715 /* Media.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		4FEB2E8C2507DC8F00917715 /* Alert */ = {
+			isa = PBXGroup;
+			children = (
+				4FEB2E8D2507DCB700917715 /* ImageAlert.swift */,
+			);
+			path = Alert;
 			sourceTree = "<group>";
 		};
 		6BBE904D716A1FE4CFAC92FB /* Pods */ = {
@@ -923,7 +957,9 @@
 				4F393B2424AB4F88009D08AB /* PromotionVC.swift in Sources */,
 				4F61D991249BEFC300B9FE89 /* MainMenuTableViewController.swift in Sources */,
 				4F14A5F224A8AD250095CA9B /* EditPhoneTVC.swift in Sources */,
+				4F7DE75B25025F6A0046A158 /* HTTPImageUpload.swift in Sources */,
 				4F2E563A249B4FA800D28462 /* ViewController.swift in Sources */,
+				4F7DE759250259F50046A158 /* ImageManager.swift in Sources */,
 				4FB978EA24A4BF6A0093C10F /* TripDayDataCell.swift in Sources */,
 				4FF1F72824AFD2180035A9A5 /* DeliverOrderTVC.swift in Sources */,
 				4FF1F72624AFCDAA0035A9A5 /* CollectOrderTVC.swift in Sources */,
@@ -940,10 +976,13 @@
 				4F64AD9F249E40B80047E9D5 /* hit.swift in Sources */,
 				4FF8997024EDBFA50050A57E /* GifFileLoader.swift in Sources */,
 				4FB978E524A4A8990093C10F /* TripHistoryCell.swift in Sources */,
+				4FEB2E8E2507DCB700917715 /* ImageAlert.swift in Sources */,
 				4F92BDB624B290FC00DEDDF3 /* ChatVC.swift in Sources */,
 				4F393B1E24AB47F6009D08AB /* InvoiceDetailCell.swift in Sources */,
 				4F5C99FC24BA6D5500DC4A27 /* Register1TVC.swift in Sources */,
 				4F14A5F824A8DBF50095CA9B /* PreviouspaymentsCell.swift in Sources */,
+				4FEB2E8B2507BEEF00917715 /* Media.swift in Sources */,
+				4F7DE75F25027F3C0046A158 /* ImageResponse.swift in Sources */,
 				4FB11F14249FEDB000EC629B /* Constant.swift in Sources */,
 				4F085A0E24FD39EB005EA82E /* HTTPVehicalType.swift in Sources */,
 				4FD32D8324AA72060086766C /* InboxVC.swift in Sources */,
@@ -963,6 +1002,7 @@
 				4FE12A1A24E54F78006F55E1 /* MMSlidingButton.swift in Sources */,
 				4FF1F72424AFBB2D0035A9A5 /* HelpOrCancelCell.swift in Sources */,
 				4FB978F724A4DB3A0093C10F /* EarningsTVC.swift in Sources */,
+				4FEB2E902507E43900917715 /* Image.swift in Sources */,
 				4F785A4C2500E06E002D192D /* ScreenBottombutton.swift in Sources */,
 				4F2E5638249B4FA800D28462 /* SceneDelegate.swift in Sources */,
 				4F617DEE249F6D820022DB8B /* ButtonAnimation.swift in Sources */,

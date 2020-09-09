@@ -44,6 +44,7 @@ class Register2TVC: UITableViewController,UITextFieldDelegate {
         self.picker.dataSource = self
         loadCountries()
         pickerData = ["Bike", "Scooter", "Car", "Rikshaw", "Truk", "Trolly"]
+        
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(true)
@@ -127,6 +128,16 @@ class Register2TVC: UITableViewController,UITextFieldDelegate {
             snackBar(errorMessage: "one Or More Fields Are Empty")
         }
         else{
+            
+            Registration.country = country.text
+            Registration.dateOfBirth = dateOfBirth.text
+            Registration.addressLine1 = addressLine1.text
+            Registration.addressLine2 = addressLine2?.text
+            Registration.country = country.text
+            Registration.city = city.text
+            Registration.state = stateTextField.text
+            Registration.zipCode = zipCode.text
+            Registration.town = town.text
             let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
             let newViewController = storyBoard.instantiateViewController(withIdentifier: "Register3TVC") as! Register3TVC
             navigationController?.pushViewController(newViewController, animated: false)

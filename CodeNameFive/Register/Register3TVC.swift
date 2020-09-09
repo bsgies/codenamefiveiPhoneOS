@@ -9,11 +9,17 @@
 import UIKit
 import PDFKit
 import MobileCoreServices
+import Alamofire
 
+
+typealias Parameters = [String: String]
 class Register3TVC: UITableViewController {
     var indicator = UIActivityIndicatorView()
     @IBOutlet weak var uploadProofID: UITextField!
     @IBOutlet weak var uploadproofAddess: UITextField!
+    let ImageUploadObj = HTTPImageUpload()
+    
+    var fileData : Data?
     var currentlySelectedField = "id"
     let button = UIButton(type: .system)
     var myURL : String?
@@ -25,7 +31,8 @@ class Register3TVC: UITableViewController {
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
-        goToNextScreen()
+        ScreenBottombutton.goToNextScreen(button: button , view: self.view)
+        button.addTarget(self, action: #selector(submit), for: UIControl.Event.touchUpInside)
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewDidDisappear(true)
@@ -33,37 +40,14 @@ class Register3TVC: UITableViewController {
         window.viewWithTag(200)?.removeFromSuperview()
     }
     
-    func goToNextScreen() {
-         guard let window = UIApplication.shared.windows.filter({$0.isKeyWindow}).first else { return }
-        let bottomview = UIView()
-        bottomview.tag = 200
-        bottomview.backgroundColor = UIColor(named: "BottomButtonView")
-        window.addSubview(bottomview)
-        bottomview.translatesAutoresizingMaskIntoConstraints = false
-        bottomview.widthAnchor.constraint(equalTo: tableView.widthAnchor, multiplier: 1).isActive = true
-        bottomview.heightAnchor.constraint(equalToConstant: 60).isActive = true
-        bottomview.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 0).isActive = true
-        bottomview.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: 0).isActive = true
-        bottomview.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: 0).isActive = true
-        
-        button.backgroundColor = #colorLiteral(red: 0, green: 0.8465872407, blue: 0.7545004487, alpha: 1)
-        button.setTitleColor(.white, for: .normal)
-        button.setTitle("Finish", for: .normal)
-        button.titleLabel?.font = UIFont(name: "HelveticaNeue-Bold", size: 16)
-        button.addTarget(self, action: #selector(submit), for: UIControl.Event.touchUpInside)
-        bottomview.addSubview(button)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.centerXAnchor.constraint(equalTo: bottomview.centerXAnchor).isActive = true
-        button.leadingAnchor.constraint(equalTo: bottomview.leadingAnchor, constant: 25).isActive = true
-        button.trailingAnchor.constraint(equalTo: bottomview.trailingAnchor, constant: -25).isActive = true
-        button.heightAnchor.constraint(equalToConstant: 40).isActive = true
-        button.topAnchor.constraint(equalTo: bottomview.topAnchor, constant: 10).isActive = true
-        button.bottomAnchor.constraint(equalTo: bottomview.bottomAnchor, constant: -10).isActive = true
-        
-        
-    }
-    
     @objc func submit(){
+        
+        print(Registration.city)
+        print(Registration.dateOfBirth)
+        print(Registration.fullName)
+        print(Registration.country)
+        print(Registration.addressLine1)
+       
         navigationController?.setNavigationBarHidden(true, animated: true)
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
                let newViewController = storyBoard.instantiateViewController(withIdentifier: "LoginVC") as! LoginVC
@@ -171,20 +155,12 @@ extension Register3TVC : UIDocumentMenuDelegate,UIDocumentPickerDelegate,UINavig
         indicator.layer.cornerRadius = 12
         self.view.addSubview(indicator)
     }
-  
-    
     func openDocumentPicker(){
            let docMenu = UIDocumentMenuViewController(documentTypes: [String(kUTTypePDF)], in: .import)
            docMenu.delegate = self
            docMenu.modalPresentationStyle = .formSheet
            self.present(docMenu, animated: true, completion: nil)
     }
-    
-
-
-
-    
-
 }
 
 extension Register3TVC : UIImagePickerControllerDelegate{
@@ -204,7 +180,6 @@ extension Register3TVC : UIImagePickerControllerDelegate{
         let myPickerController = UIImagePickerController()
         myPickerController.delegate = self;
         myPickerController.sourceType = UIImagePickerController.SourceType.photoLibrary
-
         self.present(myPickerController, animated: true, completion: nil)
 
     }
@@ -231,11 +206,26 @@ extension Register3TVC : UIImagePickerControllerDelegate{
         
 
     }
-
-    private func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
-
-       //image = info[UIImagePickerControllerOriginalImage] as? UIImage
+    func imagePickerController(_ picker: UIImagePickerController,didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        let image = info[.originalImage] as? UIImage
         self.dismiss(animated: true, completion: nil)
-
+        if let image = image{
+            let imgData = NSData(data: image.jpegData(compressionQuality: 1)!)
+            let imageSize: Int = imgData.count
+            print("actual size of image in KB: %f ", Double(imageSize) / 1000.0)
+            
+            ImageUploadObj.uploadFiles(image: image) { (result, error) in
+                if error == nil{
+                    print(result?.data.fileName.path)
+                }
+            }
+        }
+        else{
+            print("Image Size Is not 5MB")
+        }
+        
+        
     }
 }
+
+
