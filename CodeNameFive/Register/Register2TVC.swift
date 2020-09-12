@@ -18,6 +18,8 @@ class Register2TVC: UITableViewController,UITextFieldDelegate {
     let button = UIButton(type: .system)
     var countryId  : Int?
     var stateId : Int?
+    var cityId  :Int?
+    
     
     //MARK:- OUTLETS
     @IBOutlet weak var country: UITextField!
@@ -133,13 +135,12 @@ class Register2TVC: UITableViewController,UITextFieldDelegate {
         }
         else{
             
-            Registration.country = country.text
+            Registration.country = countryId
+            Registration.city = cityId
+            Registration.state = stateId
             Registration.dob = dateOfBirth.text
             Registration.address1 = addressLine1.text
             Registration.address2 = addressLine2?.text
-            Registration.country = country.text
-            Registration.city = city.text
-            Registration.state = stateTextField.text
             Registration.zipCode = zipCode.text
             
             let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
@@ -185,13 +186,16 @@ extension Register2TVC: UIPickerViewDataSource,UIPickerViewDelegate{
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         if currentSelectedField == address.country.rawValue{
+            countryId =  countriesID[row]
             return countries[row]
         }
         else if currentSelectedField == address.state.rawValue {
             
+            stateId = stateID[row]
             return states[row]
         }
         else{
+            cityId = cityID[row]
             return cities[row]
         }
     }

@@ -10,6 +10,8 @@ import Foundation
 import Alamofire
 struct HTTPImageUpload {
 func uploadFiles(image : UIImage ,  completionalHandler: @escaping(ImageResponse? , Error?) -> Void){
+    
+        let semaphore = DispatchSemaphore(value: 0)
         let parameters = ["name": "file",
                                 "description": "VerificationsDocument"]
               
@@ -35,6 +37,7 @@ func uploadFiles(image : UIImage ,  completionalHandler: @escaping(ImageResponse
                                   let jsondata = try decode.decode(ImageResponse.self, from: data!)
                                 dump(jsondata)
                                     completionalHandler(jsondata , nil)
+                                semaphore.signal()
 
                               }catch let error{
                                   completionalHandler(nil , error)
@@ -43,6 +46,7 @@ func uploadFiles(image : UIImage ,  completionalHandler: @escaping(ImageResponse
                           }
                       })
                       dataTask.resume()
+    semaphore.wait()
     }
     
     func generateBoundary() -> String {

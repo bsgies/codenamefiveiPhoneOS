@@ -16,10 +16,10 @@ struct Registration {
     static var password : String?
     static var phoneNumber : String?
     static var dob : String?
-    static var city : String?
-    static var state : String?
+    static var city : Int?
+    static var state : Int?
     static var zipCode : String?
-    static var country : String?
+    static var country : Int?
     static var vehicleReg : String?
     static var vehicle : String?
     static var profilePhoto : String?
@@ -28,6 +28,35 @@ struct Registration {
     static var frontDocument : String?
     static var backDocument : String?
     static var addressProof : String?
+    
+    
+    static public func InfoIsEmpty() -> Bool{
+       
+        if firstName != nil && lastName != nil && email != nil && password != nil && phoneNumber != nil  && dob != nil && city != nil && state != nil && zipCode != nil && country != nil && vehicle != nil && address1 != nil && address2 != nil{
+            return true
+            
+        }
+        else {
+            return false
+        }
+    }
+    static public func isDocumentUploaded() -> Bool {
+        
+        if frontDocument != nil && backDocument != nil && addressProof != nil {
+           
+            return true
+        }
+        else {
+         
+            return false
+        }
+        
+    }
+}
+
+struct myRegisterationResponse {
+    static var sucsess : Bool?
+    static var error : Any = ""
 }
 
 struct ProfileImage {
@@ -83,3 +112,15 @@ struct citydata: Codable {
         case cityName
     }
 }
+
+// MARK: - Registeration
+struct RegisterResponse: Codable {
+    let success: Bool
+    let data: Int
+    let registerError : myError
+}
+struct myError : Codable{
+     let error: String?
+}
+
+

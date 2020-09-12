@@ -12,6 +12,8 @@ class Register1TVC: UITableViewController , UITextFieldDelegate, UINavigationCon
     
     //MARK:- Outlets
     @IBOutlet weak var firstName: UITextField!
+    @IBOutlet weak var vehcicalRegisterationCell: UITableViewCell!
+    @IBOutlet weak var changePhotoButton: UIButton!
     @IBOutlet weak var lastName: UITextField!
     @IBOutlet weak var emailAddress: UITextField!
     @IBOutlet weak var phoneNumber: UITextField!
@@ -19,6 +21,8 @@ class Register1TVC: UITableViewController , UITextFieldDelegate, UINavigationCon
     @IBOutlet weak var vehicleRegisterationNumber: UITextField!
     @IBOutlet weak var vechicalType: UITextField!
     @IBOutlet weak var profileImage: UIImageView!
+    @IBOutlet weak var passwordTextfield: UITextField!
+    
     //MARK:- variables
     let picker = UIPickerView()
     var pickerData: [String] = [String]()
@@ -43,7 +47,6 @@ class Register1TVC: UITableViewController , UITextFieldDelegate, UINavigationCon
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(true)
-        
         guard let window = UIApplication.shared.windows.filter({$0.isKeyWindow}).first else { return }
         window.viewWithTag(200)?.removeFromSuperview()
         
@@ -73,7 +76,7 @@ class Register1TVC: UITableViewController , UITextFieldDelegate, UINavigationCon
     
     @objc func Next(){
         
-        if !(firstName.text!.isEmpty && lastName.text!.isEmpty && emailAddress.text!.isEmpty && phoneNumber.text!.isEmpty && vechialType.text!.isEmpty && vehicleRegisterationNumber.text!.isEmpty){
+        if !(firstName.text!.isEmpty && lastName.text!.isEmpty && emailAddress.text!.isEmpty && phoneNumber.text!.isEmpty && vechialType.text!.isEmpty && vehicleRegisterationNumber.text!.isEmpty  && ((passwordTextfield.text?.isEmpty) != nil) ){
             if let email = emailAddress.text{
                 let validateemail =  email.removingWhitespaces()
                 if validateemail.isEmail() {
@@ -84,6 +87,7 @@ class Register1TVC: UITableViewController , UITextFieldDelegate, UINavigationCon
                             Registration.lastName = lastName.text
                             Registration.email = emailAddress.text
                             Registration.phoneNumber = phoneNumber.text
+                            Registration.password = passwordTextfield.text
                             Registration.vehicle = vechialType.text
                             Registration.vehicleReg = vehicleRegisterationNumber.text
                             let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
@@ -108,9 +112,6 @@ class Register1TVC: UITableViewController , UITextFieldDelegate, UINavigationCon
             self.snackBar(errorMessage: "one Or More Fields Are Empty")
         }
     }
-    
-    
-    
     override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         
         if section == 0{
@@ -157,10 +158,7 @@ class Register1TVC: UITableViewController , UITextFieldDelegate, UINavigationCon
             }
         }
     }
-    
-    
 }
-
 extension Register1TVC{
     func setBackButton(){
         navigationController?.navigationBar.backItem?.titleView?.tintColor = UIColor(hex: "#12D2B3")
@@ -198,7 +196,15 @@ extension Register1TVC: UIPickerViewDataSource,UIPickerViewDelegate{
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        if pickerData[row] == "Bicycle"{
+            vehcicalRegisterationCell.isHidden = true
+        }
+        else{
+            vehcicalRegisterationCell.isHidden = false
+        }
         vechicalType.text = pickerData[row]
+        
+        
     }
     
     public func ShowVehicalTypes(){
@@ -212,8 +218,6 @@ extension Register1TVC: UIPickerViewDataSource,UIPickerViewDelegate{
         vechialType.inputView = picker
         vechialType.text = pickerData[0]
     }
-    
-    
     @objc func DoneVehicalTypePicker(){
         self.view.endEditing(true)
     }
@@ -256,7 +260,6 @@ extension Register1TVC : UIImagePickerControllerDelegate{
 
     func photoLibrary()
     {
-
         let myPickerController = UIImagePickerController()
         myPickerController.delegate = self
         myPickerController.sourceType = UIImagePickerController.SourceType.photoLibrary
@@ -265,6 +268,7 @@ extension Register1TVC : UIImagePickerControllerDelegate{
     }
     
     func showActionSheet() {
+        
         let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertController.Style.actionSheet)
 
         actionSheet.addAction(UIAlertAction(title: "Camera", style: UIAlertAction.Style.default, handler: { (alert:UIAlertAction!) -> Void in
@@ -281,6 +285,7 @@ extension Register1TVC : UIImagePickerControllerDelegate{
         
 
     }
+    
     func imagePickerController(_ picker: UIImagePickerController,didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         let image = info[.originalImage] as? UIImage
         profileImage.image = image
@@ -292,17 +297,15 @@ extension Register1TVC : UIImagePickerControllerDelegate{
             let imageSize: Int = imgData.count
             print("actual size of image in KB: %f ", Double(imageSize) / 1000.0)
             
-            ImageUploadObj.uploadFiles(image: image) { (result, error) in
-                if error == nil{
-                    print(result?.data.fileName.path)
-                }
-            }
+            changePhotoButton.titleLabel?.text = "change Profilr Photo"
+           
+           
+          
+            
         }
         else{
             print("Image Size Is not 5MB")
         }
-        
-        
     }
 }
 

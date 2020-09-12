@@ -71,7 +71,6 @@
 		4F8ED09224CC575E00F658DA /* Sliver.json in Resources */ = {isa = PBXBuildFile; fileRef = 4F8ED09124CC575E00F658DA /* Sliver.json */; };
 		4F8ED09424CC57A000F658DA /* DarkModeMap.json in Resources */ = {isa = PBXBuildFile; fileRef = 4F8ED09324CC57A000F658DA /* DarkModeMap.json */; };
 		4F92BDB624B290FC00DEDDF3 /* ChatVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F92BDB524B290FC00DEDDF3 /* ChatVC.swift */; };
-		4F94F6AA2509408300E065F9 /* SpinnerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F94F6A92509408300E065F9 /* SpinnerViewController.swift */; };
 		4F9A46D324AE1E1800A39380 /* NewTripRequestVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F9A46D224AE1E1800A39380 /* NewTripRequestVC.swift */; };
 		4FB11F11249FEC3A00EC629B /* ProfileTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FB11F10249FEC3A00EC629B /* ProfileTVC.swift */; };
 		4FB11F14249FEDB000EC629B /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FB11F13249FEDB000EC629B /* Constant.swift */; };
@@ -221,7 +220,6 @@
 		4F8ED09124CC575E00F658DA /* Sliver.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Sliver.json; sourceTree = "<group>"; };
 		4F8ED09324CC57A000F658DA /* DarkModeMap.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = DarkModeMap.json; sourceTree = "<group>"; };
 		4F92BDB524B290FC00DEDDF3 /* ChatVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatVC.swift; sourceTree = "<group>"; };
-		4F94F6A92509408300E065F9 /* SpinnerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinnerViewController.swift; sourceTree = "<group>"; };
 		4F97A20424D46B2B006734BF /* FSCalendar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FSCalendar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F97A20824D46C62006734BF /* CodeNameFive-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CodeNameFive-Bridging-Header.h"; sourceTree = "<group>"; };
 		4F9A46D224AE1E1800A39380 /* NewTripRequestVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTripRequestVC.swift; sourceTree = "<group>"; };
@@ -415,7 +413,6 @@
 				4F46BD7F24ABD9B100CB4058 /* Maps */,
 				4F46BD7C24ABD8EE00CB4058 /* Profile */,
 				4F46BD7B24ABD8D800CB4058 /* Dashboard */,
-				4F94F6A92509408300E065F9 /* SpinnerViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1005,7 +1002,6 @@
 				4FE12A1A24E54F78006F55E1 /* MMSlidingButton.swift in Sources */,
 				4FF1F72424AFBB2D0035A9A5 /* HelpOrCancelCell.swift in Sources */,
 				4FB978F724A4DB3A0093C10F /* EarningsTVC.swift in Sources */,
-				4F94F6AA2509408300E065F9 /* SpinnerViewController.swift in Sources */,
 				4FEB2E902507E43900917715 /* Image.swift in Sources */,
 				4F785A4C2500E06E002D192D /* ScreenBottombutton.swift in Sources */,
 				4F2E5638249B4FA800D28462 /* SceneDelegate.swift in Sources */,

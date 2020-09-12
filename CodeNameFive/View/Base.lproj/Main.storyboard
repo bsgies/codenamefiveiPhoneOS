@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="QKT-UU-Hmn">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="rtz-zU-JNu">
     <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -4362,32 +4362,8 @@
                             </tableViewSection>
                             <tableViewSection headerTitle="Enter your personal information" id="rng-j9-muP">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="vehicalRegistration" rowHeight="44" id="Ya2-2w-CRY">
-                                        <rect key="frame" x="0.0" y="111.33333206176758" width="414" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Ya2-2w-CRY" id="EJV-Uc-9Ah">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kSg-eE-Gip">
-                                                    <rect key="frame" x="28" y="10" width="334" height="24"/>
-                                                    <state key="normal" title="Upload your profile photo"/>
-                                                    <connections>
-                                                        <action selector="uploadprofileImage:" destination="tsI-oB-DWY" eventType="touchUpInside" id="6S4-JM-sNT"/>
-                                                    </connections>
-                                                </button>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="kSg-eE-Gip" firstAttribute="top" secondItem="EJV-Uc-9Ah" secondAttribute="top" constant="10" id="2pL-EZ-Dxu"/>
-                                                <constraint firstAttribute="bottom" secondItem="kSg-eE-Gip" secondAttribute="bottom" constant="10" id="8OU-zS-hSH"/>
-                                                <constraint firstItem="kSg-eE-Gip" firstAttribute="leading" secondItem="EJV-Uc-9Ah" secondAttribute="leading" constant="28" id="ECn-jh-dJl"/>
-                                                <constraint firstAttribute="trailing" secondItem="kSg-eE-Gip" secondAttribute="trailing" constant="52" id="dFg-ZM-RWi"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <color key="backgroundColor" name="tableCellColor"/>
-                                    </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="vehicalRegistration" rowHeight="81" id="5hE-nw-iYj">
-                                        <rect key="frame" x="0.0" y="155.33333206176758" width="414" height="81"/>
+                                        <rect key="frame" x="0.0" y="111.33333206176758" width="414" height="81"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="5hE-nw-iYj" id="pOy-mw-3bN">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="81"/>
@@ -4401,8 +4377,9 @@
                                                     </constraints>
                                                 </imageView>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3eB-1H-Do1">
-                                                    <rect key="frame" x="86" y="25" width="228" height="30"/>
-                                                    <state key="normal" title="Change profile photo"/>
+                                                    <rect key="frame" x="86" y="25" width="308" height="30"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
+                                                    <state key="normal" title="upload Your Profile Photo"/>
                                                     <connections>
                                                         <action selector="updateProfileImage:" destination="tsI-oB-DWY" eventType="touchUpInside" id="tJV-kS-YQJ"/>
                                                     </connections>
@@ -4412,7 +4389,7 @@
                                                 <constraint firstAttribute="bottom" secondItem="3eB-1H-Do1" secondAttribute="bottom" constant="20" id="1FA-xq-mPf"/>
                                                 <constraint firstItem="tKK-Aa-3a6" firstAttribute="top" secondItem="pOy-mw-3bN" secondAttribute="top" constant="15" id="9pb-46-khW"/>
                                                 <constraint firstItem="tKK-Aa-3a6" firstAttribute="leading" secondItem="pOy-mw-3bN" secondAttribute="leading" constant="20" id="EsI-zp-z8F"/>
-                                                <constraint firstAttribute="trailing" secondItem="3eB-1H-Do1" secondAttribute="trailing" constant="100" id="cK2-xf-lre"/>
+                                                <constraint firstAttribute="trailing" secondItem="3eB-1H-Do1" secondAttribute="trailing" constant="20" id="cK2-xf-lre"/>
                                                 <constraint firstAttribute="bottom" secondItem="tKK-Aa-3a6" secondAttribute="bottom" constant="5" id="doV-mc-sTJ"/>
                                                 <constraint firstItem="3eB-1H-Do1" firstAttribute="top" secondItem="pOy-mw-3bN" secondAttribute="top" constant="25" id="fY7-9h-1NU"/>
                                                 <constraint firstItem="3eB-1H-Do1" firstAttribute="leading" secondItem="tKK-Aa-3a6" secondAttribute="trailing" constant="8" id="t2l-LB-dU0"/>
@@ -4421,7 +4398,7 @@
                                         <color key="backgroundColor" name="tableCellColor"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="firstName" rowHeight="44" id="PCO-YI-qZC">
-                                        <rect key="frame" x="0.0" y="236.33333206176758" width="414" height="44"/>
+                                        <rect key="frame" x="0.0" y="192.33333206176758" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="PCO-YI-qZC" id="8xx-6E-lzt">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
@@ -4446,7 +4423,7 @@
                                         <color key="backgroundColor" name="tableCellColor"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="lastName" rowHeight="44" id="Psn-zg-8it">
-                                        <rect key="frame" x="0.0" y="280.33333206176758" width="414" height="44"/>
+                                        <rect key="frame" x="0.0" y="236.33333206176758" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Psn-zg-8it" id="SPM-6v-ret">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
@@ -4471,13 +4448,13 @@
                                         <color key="backgroundColor" name="tableCellColor"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="emailAddress" rowHeight="44" id="ReN-MI-jHL">
-                                        <rect key="frame" x="0.0" y="324.33333206176758" width="414" height="44"/>
+                                        <rect key="frame" x="0.0" y="280.33333206176758" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ReN-MI-jHL" id="27Z-Ch-SH8">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email address" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="10" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="YBy-Hf-BSl">
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email address" textAlignment="natural" minimumFontSize="10" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="YBy-Hf-BSl">
                                                     <rect key="frame" x="30" y="12.666666666666664" width="354" height="19"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                                                     <textInputTraits key="textInputTraits" keyboardType="emailAddress" returnKeyType="done" textContentType="email"/>
@@ -4495,6 +4472,31 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" name="tableCellColor"/>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="password" rowHeight="44" id="uza-vc-R2O">
+                                        <rect key="frame" x="0.0" y="324.33333206176758" width="414" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="uza-vc-R2O" id="A8S-GL-grK">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="password" textAlignment="natural" minimumFontSize="10" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="Pqw-TB-RaJ">
+                                                    <rect key="frame" x="30" y="12.666666666666664" width="354" height="19"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                                                    <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="tsI-oB-DWY" id="wl8-qJ-BOg"/>
+                                                    </connections>
+                                                </textField>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="Pqw-TB-RaJ" firstAttribute="centerY" secondItem="A8S-GL-grK" secondAttribute="centerY" id="9Av-xf-YPP"/>
+                                                <constraint firstItem="Pqw-TB-RaJ" firstAttribute="top" secondItem="A8S-GL-grK" secondAttribute="topMargin" constant="1.5" id="ZXW-SJ-sMi"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="Pqw-TB-RaJ" secondAttribute="trailing" constant="10" id="ebJ-Fa-bO5"/>
+                                                <constraint firstItem="Pqw-TB-RaJ" firstAttribute="leading" secondItem="A8S-GL-grK" secondAttribute="leadingMargin" constant="10" id="ucj-yO-YQe"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" name="tableCellColor"/>
+                                    </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="phonenumber" rowHeight="44" id="hk1-Af-Z5p">
                                         <rect key="frame" x="0.0" y="368.33333206176758" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
@@ -4502,7 +4504,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Phone number" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="10" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="7Vd-H2-eTe">
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Phone number" textAlignment="natural" minimumFontSize="10" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="7Vd-H2-eTe">
                                                     <rect key="frame" x="30" y="12.666666666666664" width="354" height="19"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                                                     <textInputTraits key="textInputTraits" returnKeyType="done" textContentType="tel"/>
@@ -4527,7 +4529,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Select your vehicle type" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="10" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="gVP-3S-F67">
+                                                <textField opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Select your vehicle type" textAlignment="natural" minimumFontSize="10" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="gVP-3S-F67">
                                                     <rect key="frame" x="30" y="12.666666666666664" width="354" height="19"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                                                     <textInputTraits key="textInputTraits"/>
@@ -4581,13 +4583,16 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Apply to become a partner" largeTitleDisplayMode="always" id="Qec-PF-9DK"/>
                     <connections>
+                        <outlet property="changePhotoButton" destination="3eB-1H-Do1" id="rpi-ln-Gjo"/>
                         <outlet property="emailAddress" destination="YBy-Hf-BSl" id="FEu-vR-2KN"/>
                         <outlet property="firstName" destination="fMk-Cy-UTa" id="lSR-LN-863"/>
                         <outlet property="lastName" destination="Rb8-mN-Vhb" id="wrC-4W-wqM"/>
+                        <outlet property="passwordTextfield" destination="Pqw-TB-RaJ" id="yjJ-sq-Ivb"/>
                         <outlet property="phoneNumber" destination="7Vd-H2-eTe" id="rgf-ZZ-FMh"/>
                         <outlet property="profileImage" destination="tKK-Aa-3a6" id="Uao-Zh-IXe"/>
                         <outlet property="vechialType" destination="gVP-3S-F67" id="mFG-8I-kYk"/>
                         <outlet property="vechicalType" destination="gVP-3S-F67" id="mwv-JB-idC"/>
+                        <outlet property="vehcicalRegisterationCell" destination="2p6-KP-upT" id="Ol6-u7-cel"/>
                         <outlet property="vehicleRegisterationNumber" destination="pKU-4R-urg" id="Tmc-3a-Fm7"/>
                     </connections>
                 </tableViewController>
@@ -4647,7 +4652,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Address line 1" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="10" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="NjB-TJ-6NV">
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Address line 1" textAlignment="natural" minimumFontSize="10" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="NjB-TJ-6NV">
                                                     <rect key="frame" x="30" y="12.666666666666664" width="354" height="19"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                                                     <textInputTraits key="textInputTraits" returnKeyType="done" textContentType="address-line1"/>
@@ -4672,7 +4677,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Address line 2" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="10" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="UbR-c7-tLH">
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Address line 2" textAlignment="natural" minimumFontSize="10" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="UbR-c7-tLH">
                                                     <rect key="frame" x="30" y="12.666666666666664" width="354" height="19"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                                                     <textInputTraits key="textInputTraits" returnKeyType="done" textContentType="address-line2"/>
@@ -4774,7 +4779,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Zip code" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="10" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="Wt8-QR-Zdc">
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Zip code" textAlignment="natural" minimumFontSize="10" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="Wt8-QR-Zdc">
                                                     <rect key="frame" x="30" y="12.666666666666664" width="354" height="19"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                                                     <textInputTraits key="textInputTraits" returnKeyType="done" textContentType="postal-code"/>

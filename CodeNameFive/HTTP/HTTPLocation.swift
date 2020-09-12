@@ -11,7 +11,7 @@ import Foundation
 
 class HTTPLocation {
         func getCountries(completionalHandler: @escaping(Countries? , Error?) -> Void)  {
-         
+            let semaphore = DispatchSemaphore(value: 0)
             let request = NSMutableURLRequest(url: NSURL(string: Endpoints.countries)! as URL,
                                            cachePolicy: .useProtocolCachePolicy,
                                            timeoutInterval: 10.0)
@@ -27,6 +27,7 @@ class HTTPLocation {
                  do{
                      let jsondata = try decode.decode(Countries.self, from: data!)
                        completionalHandler(jsondata , nil)
+                    semaphore.signal()
 
                  }catch let error{
                      completionalHandler(nil , error)
@@ -35,10 +36,11 @@ class HTTPLocation {
              }
          })
          dataTask.resume()
+            semaphore.wait()
      }
     
     func getState(countryId : Int , completionalHandler: @escaping(State? , Error?) -> Void)  {
-         
+        let semaphore = DispatchSemaphore(value: 0)
         let request = NSMutableURLRequest(url: NSURL(string: Endpoints.states + "/\(countryId)")! as URL,
                                            cachePolicy: .useProtocolCachePolicy,
                                            timeoutInterval: 10.0)
@@ -54,6 +56,7 @@ class HTTPLocation {
                  do{
                      let jsondata = try decode.decode(State.self, from: data!)
                        completionalHandler(jsondata , nil)
+                    semaphore.signal()
 
                  }catch let error{
                      completionalHandler(nil , error)
@@ -62,10 +65,11 @@ class HTTPLocation {
              }
          })
          dataTask.resume()
+        semaphore.wait()
      }
     
     func getCities(stateId : Int , completionalHandler: @escaping(Cities? , Error?) -> Void)  {
-          
+          let semaphore = DispatchSemaphore(value: 0)
          let request = NSMutableURLRequest(url: NSURL(string: Endpoints.cities + "/\(stateId)")! as URL,
                                             cachePolicy: .useProtocolCachePolicy,
                                             timeoutInterval: 10.0)
@@ -81,6 +85,7 @@ class HTTPLocation {
                   do{
                       let jsondata = try decode.decode(Cities.self, from: data!)
                         completionalHandler(jsondata , nil)
+                    semaphore.signal()
 
                   }catch let error{
                       completionalHandler(nil , error)
@@ -89,6 +94,7 @@ class HTTPLocation {
               }
           })
           dataTask.resume()
+        semaphore.wait()
       }
 
     

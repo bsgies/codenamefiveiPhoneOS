@@ -10,16 +10,15 @@ import UIKit
 import PDFKit
 import MobileCoreServices
 import Alamofire
+
 class Register3TVC: UITableViewController {
     
+
     
-    
-    var indicator = UIActivityIndicatorView()
     @IBOutlet weak var uploadProofID: UITextField!
     @IBOutlet weak var uploadproofAddess: UITextField!
     @IBOutlet weak var uploadBackProofId: UITextField!
-    
-    
+    let lock = NSLock()
     let ImageUploadObj = HTTPImageUpload()
     var fileData : Data?
     let button = UIButton(type: .system)
@@ -29,15 +28,45 @@ class Register3TVC: UITableViewController {
     var backImage : UIImage?
     var addresProofImage : UIImage?
     var docTag : String?
-
     
-    
-    
+    var indicator =  UIActivityIndicatorView()
+     let alert = UIAlertController(title: nil, message: "Please wait...", preferredStyle: .alert)
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setBackButton()
+        httpregister.registerUser()
+        if myRegisterationResponse.sucsess == true {
+            DispatchQueue.main.async {
+                self.MyshowAlertWith(title: "Succeses", message: "Registered")
+            }
+        }
+        else{
+            DispatchQueue.main.async {
+                self.MyshowAlertWith(title: "Error", message: myRegisterationResponse.error as! String ?? "Some Error Occur")
+            }
+            
+        }
     }
+    
+    func loadindIndicator(){
+    
+        let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
+        loadingIndicator.hidesWhenStopped = true
+        loadingIndicator.style = UIActivityIndicatorView.Style.large
+        loadingIndicator.startAnimating()
+        alert.view.addSubview(loadingIndicator)
+        present(alert, animated: true, completion: nil)
+    }
+    
+    
+        internal func dismissAlert() {
+            if let vc = self.presentedViewController, vc is UIAlertController {
+                dismiss(animated: false, completion: nil)
+                
+            }
+    }
+
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
         ScreenBottombutton.goToNextScreen(button: button , view: self.view)
@@ -50,7 +79,7 @@ class Register3TVC: UITableViewController {
     }
     
     @objc func submit(){
-        httpregister.registerUser()
+        RegisterUser()
         navigationController?.setNavigationBarHidden(true, animated: true)
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
                let newViewController = storyBoard.instantiateViewController(withIdentifier: "LoginVC") as! LoginVC
@@ -90,7 +119,6 @@ class Register3TVC: UITableViewController {
 extension Register3TVC{
     func setBackButton(){
          navigationController?.navigationBar.backItem?.titleView?.tintColor = UIColor(hex: "#12D2B3")
-         
          let button: UIButton = UIButton (type: UIButton.ButtonType.custom)
          button.setImage(UIImage(named: "back"), for: UIControl.State.normal)
          button.addTarget(self, action: #selector(backButtonPressed(btn:)), for: UIControl.Event.touchUpInside)
@@ -131,32 +159,7 @@ extension Register3TVC : UIDocumentMenuDelegate,UIDocumentPickerDelegate,UINavig
                 dismiss(animated: true, completion: nil)
         }
     
-    
-    func MyLoadingIndicator(){
-        DispatchQueue.main.async {
-            self.activityIndicator()
-            self.indicator.startAnimating()
-            self.indicator.backgroundColor = .black
-            self.indicator.color = .white
-            let date = Date().addingTimeInterval(6)
-            let timer = Timer(fireAt: date, interval: 0, target: self, selector: #selector(self.runCode), userInfo: nil, repeats: false)
-            RunLoop.main.add(timer, forMode: .common)
-        }
-    }
-    
-    @objc func  runCode(){
-        DispatchQueue.main.async {
-            self.indicator.stopAnimating()
-        }
-    }
-    
-    func activityIndicator() {
-        indicator = UIActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
-        indicator.style = UIActivityIndicatorView.Style.large
-        indicator.center = self.view.center
-        indicator.layer.cornerRadius = 12
-        self.view.addSubview(indicator)
-    }
+        
     func openDocumentPicker(){
            let docMenu = UIDocumentMenuViewController(documentTypes: [String(kUTTypePDF)], in: .import)
            docMenu.delegate = self
@@ -230,38 +233,56 @@ extension Register3TVC : UIImagePickerControllerDelegate{
     
     
     func RegisterUser(){
-      let serialQueue = DispatchQueue(label: "swiftlee.serial.queue")
-        serialQueue.async {
-             print("Task 1 started")
-            if let frontimage = self.frontImage{
-                self.uploadFrontImage(image: frontimage)
+     
+        let queue = DispatchQueue(label: "que" , attributes: .concurrent)
+        if Registration.InfoIsEmpty(){
                 
+            queue.sync {
+               loadindIndicator()
+                print("Task 1 started")
+                if let frontimage = self.frontImage{
+                    self.uploadFrontImage(image: frontimage)
+                }
             }
-         }
-         serialQueue.async {
-             print("Task 2 started")
-            if let backImage = self.backImage{
-                self.uploadBackImage(image: backImage)
+                 
+            queue.sync {
+                print("Task 2 started")
+                if let backImage = self.backImage{
+                    self.uploadBackImage(image: backImage)
+                }
             }
-         }
-        serialQueue.async {
-            print("Task 3 started")
-            if let addresProofImage = self.addresProofImage{
-                self.uploadAddressVerification(image: addresProofImage)
+                  
+            queue.sync {
+                print("Task 3 started")
+                if let addresProofImage = self.addresProofImage{
+                    self.uploadAddressVerification(image: addresProofImage)
+                }
+            }
+            queue.sync {
+                print("Task 4 started")
+                if let profileImage = ProfileImage.profileImage{
+                    self.profileImage(image: profileImage)
+                }
             }
 
+               
         }
-        serialQueue.async {
-            print("Task 4 started")
-            if let profileImage = ProfileImage.profileImage{
-                self.profileImage(image: profileImage)
+        else{
+            print("Some Data is Missing")
+        }
+      if Registration.isDocumentUploaded(){
+            queue.sync {
+             print("Task 5 started")
+                //httpregister.registerUser()
+        DispatchQueue.main.async {
+            self.dismissAlert()
+        }
             }
         }
-        serialQueue.async {
-            print("Task 5 started")
-            self.httpregister.registerUser()
+        else{
+            print("Document are Missing")
         }
-        
+
     }
     func uploadFrontImage(image : UIImage) {
         ImageUploadObj.uploadFiles(image: image) { (result, error) in
@@ -274,10 +295,12 @@ extension Register3TVC : UIImagePickerControllerDelegate{
         ImageUploadObj.uploadFiles(image: image) { (result, error) in
             if error == nil{
                 Registration.backDocument = result!.data.fileName.path
+                
             }
         }
     }
     func uploadAddressVerification(image : UIImage) {
+
         ImageUploadObj.uploadFiles(image: image) { (result, error) in
             if error == nil{
                 Registration.addressProof = result!.data.fileName.path
@@ -291,33 +314,22 @@ extension Register3TVC : UIImagePickerControllerDelegate{
             }
         }
     }
-    
-    
-    func showSpinner() {
-        let child = SpinnerViewController()
-
-         // add the spinner view controller
-         addChild(child)
-         child.view.frame = view.frame
-         view.addSubview(child.view)
-         child.didMove(toParent: self)
-
-         // wait two seconds to simulate some work happening
-         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-             // then remove the spinner view controller
-             child.willMove(toParent: nil)
-             child.view.removeFromSuperview()
-             child.removeFromParent()
-         }
-    }
-    
     enum docs : String {
         case front = "front"
         case back = "back"
         case address = "address"
     }
+    
+
+        func MyshowAlertWith(title: String, message: String){
+             let ac = UIAlertController(title: title, message: message, preferredStyle: .alert)
+             ac.addAction(UIAlertAction(title: "OK", style: .default))
+             present(ac, animated: true)
+         }
 
 }
+
+
 
 
 
