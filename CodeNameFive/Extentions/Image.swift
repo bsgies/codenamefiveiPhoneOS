@@ -10,10 +10,12 @@ import Foundation
 import UIKit
 extension UIImageView {
 
-    func makeRounded() {
+    public func maskCircle(inputImage: UIImage) {
+        self.contentMode = UIView.ContentMode.scaleAspectFill
+       self.layer.cornerRadius = self.frame.height / 2
+       self.layer.masksToBounds = false
+       self.clipsToBounds = true
 
-        let radius = self.frame.width / 2
-        self.layer.cornerRadius = radius
-        self.layer.masksToBounds = true
-    }
+      self.image = inputImage
+     }
 }

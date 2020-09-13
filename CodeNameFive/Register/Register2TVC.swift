@@ -11,7 +11,6 @@ class Register2TVC: UITableViewController,UITextFieldDelegate {
     var cities: [String] = []
     var cityID: [Int] = []
     let picker = UIPickerView()
-    var pickerData: [String] = [String]()
     var overlayView = UIView()
     let datePicker = UIDatePicker()
     var currentSelectedField : String?
@@ -36,7 +35,7 @@ class Register2TVC: UITableViewController,UITextFieldDelegate {
         case state = "state"
         case city = "city"
     }
-
+    
     //MARK:- LifeCyles
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,7 +43,7 @@ class Register2TVC: UITableViewController,UITextFieldDelegate {
         self.picker.delegate = self
         self.picker.dataSource = self
         loadCountries()
-        pickerData = ["Bike", "Scooter", "Car", "Rikshaw", "Truk", "Trolly"]
+        
         
     }
     override func viewWillDisappear(_ animated: Bool) {
@@ -77,13 +76,26 @@ class Register2TVC: UITableViewController,UITextFieldDelegate {
     }
     
     @IBAction func stateSelectionforPicker(_ sender: UITextField) {
-        currentSelectedField = address.state.rawValue
-        ShowStatePicker()
+        if country.text!.isEmpty{
+             self.view.endEditing(true)
+            snackBar(errorMessage: "select Country First")
+        }
+        else{
+            currentSelectedField = address.state.rawValue
+            ShowStatePicker()
+            
+        }
     }
     
     @IBAction func citySelectionforPicker(_ sender: UITextField) {
-        currentSelectedField = address.city.rawValue
-        ShowCityPicker()
+        if stateTextField.text!.isEmpty{
+            self.view.endEditing(true)
+            snackBar(errorMessage: "select State First")
+        }
+        else{
+            currentSelectedField = address.city.rawValue
+            ShowCityPicker()
+        }
     }
     
     //MARK:- Load Data from Network
@@ -110,13 +122,14 @@ class Register2TVC: UITableViewController,UITextFieldDelegate {
                     print(state.stateName)
                     self.states.append(state.stateName)
                     self.stateID.append(state.stateID)
-                }}
+                    
+                }
+            }
         }
     }
     
     func loadCities(stateId : Int){
         httplocationobj.getCities(stateId: stateId) { (result, error) in
-            
             if let result = result{
                 self.cities.removeAll()
                 self.cityID.removeAll()
@@ -130,11 +143,7 @@ class Register2TVC: UITableViewController,UITextFieldDelegate {
     }
     
     @objc func submit(){
-        if country.text!.isEmpty && dateOfBirth.text!.isEmpty && addressLine1.text!.isEmpty && city.text!.isEmpty && zipCode.text!.isEmpty{
-            snackBar(errorMessage: "one Or More Fields Are Empty")
-        }
-        else{
-            
+        if isEmptyOrNot() {
             Registration.country = countryId
             Registration.city = cityId
             Registration.state = stateId
@@ -142,7 +151,6 @@ class Register2TVC: UITableViewController,UITextFieldDelegate {
             Registration.address1 = addressLine1.text
             Registration.address2 = addressLine2?.text
             Registration.zipCode = zipCode.text
-            
             let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
             let newViewController = storyBoard.instantiateViewController(withIdentifier: "Register3TVC") as! Register3TVC
             navigationController?.pushViewController(newViewController, animated: false)
@@ -205,7 +213,7 @@ extension Register2TVC: UIPickerViewDataSource,UIPickerViewDelegate{
             countryId =  countriesID[row]
             country.text = countries[row]
             if let countryId = countryId{
-            loadStates(countryId: countryId)
+                loadStates(countryId: countryId)
             }
         }
         else if currentSelectedField == address.state.rawValue {
@@ -265,20 +273,20 @@ extension Register2TVC{
         toolbar.setItems([doneButton,spaceButton,cancelButton], animated: false)
         stateTextField.inputAccessoryView = toolbar
         stateTextField.inputView = picker
-
+        
     }
     func ShowCityPicker(){
-           
-           let toolbar = UIToolbar();
-           toolbar.sizeToFit()
-           let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(Done));
-           let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
-           let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelDatePicker));
-           toolbar.setItems([doneButton,spaceButton,cancelButton], animated: false)
-           city.inputAccessoryView = toolbar
-           city.inputView = picker
-
-       }
+        
+        let toolbar = UIToolbar();
+        toolbar.sizeToFit()
+        let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(Done));
+        let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
+        let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelDatePicker));
+        toolbar.setItems([doneButton,spaceButton,cancelButton], animated: false)
+        city.inputAccessoryView = toolbar
+        city.inputView = picker
+        
+    }
     
     func showDatePicker(){
         datePicker.datePickerMode = .date
@@ -287,9 +295,7 @@ extension Register2TVC{
         let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(donedatePicker));
         let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
         let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelDatePicker));
-        
         toolbar.setItems([doneButton,spaceButton,cancelButton], animated: false)
-        
         dateOfBirth.inputAccessoryView = toolbar
         dateOfBirth.inputView = datePicker
         
@@ -302,10 +308,16 @@ extension Register2TVC{
         MDCSnackbarManager.show(message)
     }
     @objc func donedatePicker(){
-        let formatter = DateFormatter()
-        formatter.dateFormat = "dd/MM/yyyy"
-        dateOfBirth.text = formatter.string(from: datePicker.date)
-        self.view.endEditing(true)
+        if checkDateofBirth(){
+            let formatter = DateFormatter()
+            formatter.dateFormat = "dd/MM/yyyy"
+            dateOfBirth.text = formatter.string(from: datePicker.date)
+            self.view.endEditing(true)
+        }
+        else{
+            self.view.endEditing(true)
+            snackBar(errorMessage: "you Are Under 18")
+        }
     }
     @objc func Done(){
         self.view.endEditing(true)
@@ -316,6 +328,56 @@ extension Register2TVC{
     @objc func CancelCountryPicker(){
         country.text = nil
     }
+    func checkDateofBirth() -> Bool {
+        
+        let dateOfBirth = datePicker.date
+        let today = Date()
+        let gregorian = NSCalendar(calendarIdentifier: NSCalendar.Identifier.gregorian)!
+        let age = gregorian.components([.year], from: dateOfBirth, to: today, options: [])
+        
+        if age.year! < 18 {
+            print("user is under 18")
+            return false
+        }
+        else{
+            return true
+        }
+    }
+    func isEmptyOrNot() -> Bool {
+        if dateOfBirth.text!.isEmpty{
+            snackBar(errorMessage: "select Your Date of Birth")
+            return false
+        }
+            
+        else if addressLine1.text!.isEmpty{
+            snackBar(errorMessage: "fill Address Line 1")
+            return false
+        }
+        else if country.text!.isEmpty{
+            snackBar(errorMessage: "select Your Country")
+            return false
+        }
+            
+        else if stateTextField.text!.isEmpty{
+            snackBar(errorMessage: "select Your State")
+            return false
+        }
+            
+        else if city.text!.isEmpty{
+            
+            snackBar(errorMessage: "select Your City")
+            return false
+            
+        }
+        else if zipCode.text!.isEmpty{
+            snackBar(errorMessage: "fill Zip Code")
+            return false
+        }
+            
+        else {
+            return true
+        }
+    }
 }
 extension Register2TVC : MDCSnackbarManagerDelegate{
     func willPresentSnackbar(with messageView: MDCSnackbarMessageView?) {
@@ -323,7 +385,7 @@ extension Register2TVC : MDCSnackbarManagerDelegate{
         window.viewWithTag(200)?.removeFromSuperview()
     }
     func snackbarDidDisappear() {
-    ScreenBottombutton.goToNextScreen(button: button , view: self.view)
+        ScreenBottombutton.goToNextScreen(button: button , view: self.view)
     }
     
 }

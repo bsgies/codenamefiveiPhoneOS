@@ -23,6 +23,9 @@ class Register1TVC: UITableViewController , UITextFieldDelegate, UINavigationCon
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var passwordTextfield: UITextField!
     
+    let customErrorView = UIView(frame: CGRect(x: 0, y: 0, width: 300, height: 30))
+    let lable = UILabel(frame: CGRect(x: 0, y: 0, width: 300, height: 30))
+    
     //MARK:- variables
     let picker = UIPickerView()
     var pickerData: [String] = [String]()
@@ -37,7 +40,8 @@ class Register1TVC: UITableViewController , UITextFieldDelegate, UINavigationCon
         self.picker.delegate = self
         self.picker.dataSource = self
         LoadVehical()
-        profileImage.makeRounded()
+        profileImage.isHidden = true
+        //setupErrorView()
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidDisappear(true)
@@ -49,13 +53,11 @@ class Register1TVC: UITableViewController , UITextFieldDelegate, UINavigationCon
         super.viewWillDisappear(true)
         guard let window = UIApplication.shared.windows.filter({$0.isKeyWindow}).first else { return }
         window.viewWithTag(200)?.removeFromSuperview()
-        
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         navigationController?.setNavigationBarHidden(false, animated: animated)
     }
-    
     //MARK:- Light and Dark Mode Delegate
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
@@ -75,41 +77,41 @@ class Register1TVC: UITableViewController , UITextFieldDelegate, UINavigationCon
     }
     
     @objc func Next(){
-        
-        if !(firstName.text!.isEmpty && lastName.text!.isEmpty && emailAddress.text!.isEmpty && phoneNumber.text!.isEmpty && vechialType.text!.isEmpty && vehicleRegisterationNumber.text!.isEmpty  && ((passwordTextfield.text?.isEmpty) != nil) ){
+        if isEmptyorNot(){
             if let email = emailAddress.text{
                 let validateemail =  email.removingWhitespaces()
                 if validateemail.isEmail() {
-                    if (phoneNumber.text?.isValidPhone(phone: phoneNumber.text!))!{
-                        if let image = profileImage.image{
-                            ProfileImage.profileImage = image
-                            Registration.firstName = firstName.text
-                            Registration.lastName = lastName.text
-                            Registration.email = emailAddress.text
-                            Registration.phoneNumber = phoneNumber.text
-                            Registration.password = passwordTextfield.text
-                            Registration.vehicle = vechialType.text
-                            Registration.vehicleReg = vehicleRegisterationNumber.text
-                            let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-                            let newViewController = storyBoard.instantiateViewController(withIdentifier: "Register2TVC") as! Register2TVC
-                            navigationController?.pushViewController(newViewController, animated: false)
+                    if let validPassword = passwordTextfield.text{
+                        if validPassword.isPassword(){
+                            if (phoneNumber.text?.isValidPhone(phone: phoneNumber.text!))!{
+                                ProfileImage.profileImage = profileImage.image
+                                Registration.firstName = firstName.text
+                                Registration.lastName = lastName.text
+                                Registration.email = emailAddress.text
+                                Registration.phoneNumber = phoneNumber.text
+                                Registration.password = passwordTextfield.text
+                                Registration.vehicle = vechialType.text
+                                Registration.vehicleReg = vehicleRegisterationNumber.text
+                                let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                                let newViewController = storyBoard.instantiateViewController(withIdentifier: "Register2TVC") as! Register2TVC
+                                navigationController?.pushViewController(newViewController, animated: false)
+                            }
+                            else{
+                                //self.erroView(message: "Invalid Phone")
+                                self.snackBar(errorMessage: "invalid Phone Number")
+                            }
                         }
                         else{
-                            snackBar(errorMessage: "Profile Image Miss")
+                            self.snackBar(errorMessage: "password Not Strong")
                         }
+                        
                     }
                     else{
-                        self.snackBar(errorMessage: "invalid Phone Number")
+                        self.snackBar(errorMessage: "invalid Email Address")
                     }
-                }
-                else{
-                    self.snackBar(errorMessage: "invalid Email Address")
+                    
                 }
             }   
-        }
-            
-        else{
-            self.snackBar(errorMessage: "one Or More Fields Are Empty")
         }
     }
     override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
@@ -141,7 +143,7 @@ class Register1TVC: UITableViewController , UITextFieldDelegate, UINavigationCon
     
     @IBAction func updateProfileImage(_ sender: UIButton) {
         showActionSheet()
-          
+        
     }
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
@@ -181,6 +183,9 @@ extension Register1TVC{
         cell.layoutMargins = UIEdgeInsets.zero
     }
 }
+
+
+
 extension Register1TVC: UIPickerViewDataSource,UIPickerViewDelegate{
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -203,8 +208,6 @@ extension Register1TVC: UIPickerViewDataSource,UIPickerViewDelegate{
             vehcicalRegisterationCell.isHidden = false
         }
         vechicalType.text = pickerData[row]
-        
-        
     }
     
     public func ShowVehicalTypes(){
@@ -216,7 +219,13 @@ extension Register1TVC: UIPickerViewDataSource,UIPickerViewDelegate{
         toolbar.setItems([doneButton,spaceButton,cancelButton], animated: false)
         vechialType.inputAccessoryView = toolbar
         vechialType.inputView = picker
-        vechialType.text = pickerData[0]
+        if pickerData.count != 0{
+            if vechialType.text != nil{
+                vechialType.text = pickerData[0]
+                
+            }
+            
+        }
     }
     @objc func DoneVehicalTypePicker(){
         self.view.endEditing(true)
@@ -224,6 +233,8 @@ extension Register1TVC: UIPickerViewDataSource,UIPickerViewDelegate{
     
     @objc func CancelVehicalTypePicker(){
         vechialType.text = nil
+        self.view.endEditing(true)
+        
     }
     
     func snackBar(errorMessage : String) {
@@ -253,60 +264,128 @@ extension Register1TVC : UIImagePickerControllerDelegate{
         let myPickerController = UIImagePickerController()
         myPickerController.delegate = self
         myPickerController.sourceType = UIImagePickerController.SourceType.camera
-
         self.present(myPickerController, animated: true, completion: nil)
-
+        
     }
-
+    
     func photoLibrary()
     {
         let myPickerController = UIImagePickerController()
         myPickerController.delegate = self
         myPickerController.sourceType = UIImagePickerController.SourceType.photoLibrary
         self.present(myPickerController, animated: true, completion: nil)
-
+        
     }
     
     func showActionSheet() {
         
         let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertController.Style.actionSheet)
-
+        
         actionSheet.addAction(UIAlertAction(title: "Camera", style: UIAlertAction.Style.default, handler: { (alert:UIAlertAction!) -> Void in
             self.camera()
         }))
-
+        
         actionSheet.addAction(UIAlertAction(title: "Gallery", style: UIAlertAction.Style.default, handler: { (alert:UIAlertAction!) -> Void in
             self.photoLibrary()
         }))
         
         actionSheet.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
-
+        
         self.present(actionSheet, animated: true, completion: nil)
         
-
+        
     }
     
     func imagePickerController(_ picker: UIImagePickerController,didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         let image = info[.originalImage] as? UIImage
-        profileImage.image = image
-       // profileImage.contentMode = .scaleAspectFit
-        profileImage.makeRounded()
-        self.dismiss(animated: true, completion: nil)
+        
+        
         if let image = image{
+            profileImage.maskCircle(inputImage: image)
             let imgData = NSData(data: image.jpegData(compressionQuality: 1)!)
             let imageSize: Int = imgData.count
             print("actual size of image in KB: %f ", Double(imageSize) / 1000.0)
-            
-            changePhotoButton.titleLabel?.text = "change Profilr Photo"
-           
-           
-          
+            changePhotoButton.setTitle("chnage Profile Photo", for: .normal)
+            profileImage.isHidden = false
+            profileImage.contentMode = .scaleAspectFill
+            profileImage.image = image
             
         }
         else{
             print("Image Size Is not 5MB")
         }
+        self.dismiss(animated: true, completion: nil)
     }
+    
+    
+    func erroView(message : String) {
+        lable.text = message
+        lable.textColor = .red
+    }
+    
+    func setupErrorView() {
+        customErrorView.backgroundColor = .blue
+        customErrorView.addSubview(lable)
+        lable.font = UIFont.systemFont(ofSize: 15)
+        lable.textAlignment = .right
+        tableView.tableFooterView = customErrorView
+    }
+    
+}
+
+
+extension Register1TVC{
+    func isEmptyorNot() -> Bool{
+        if profileImage.isHidden {
+            snackBar(errorMessage: "select Profile Photo")
+            return false
+        }
+            
+        else if firstName.text!.isEmpty
+        {
+            snackBar(errorMessage: "fill first Name")
+            return false
+        }
+        else if lastName.text!.isEmpty
+        {   snackBar(errorMessage: "fill last Name")
+            return false
+        }
+        else if emailAddress.text!.isEmpty
+        {   snackBar(errorMessage: "fill Email Address")
+            return false
+        }
+        else if passwordTextfield.text!.isEmpty{
+            snackBar(errorMessage: "fill Password")
+            return false
+        }
+        else if phoneNumber.text!.isEmpty
+        {   snackBar(errorMessage: "fill Phone Number")
+            return false
+        }
+        else if vechialType.text!.isEmpty
+        {    snackBar(errorMessage: "select Vehical Type")
+            return false
+        }
+            
+        else if vehicleRegisterationNumber.text!.isEmpty{
+            if vechialType.text! == "Bicycle"{
+                return true
+            }
+            else {
+                snackBar(errorMessage: "fill Registeration Number")
+                return false
+            }
+        }
+            
+        else{
+            return true
+        }
+    }
+    
+    
+    
+    
+    
 }
 
 
