@@ -65,6 +65,7 @@
 		4F7DE75B25025F6A0046A158 /* HTTPImageUpload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F7DE75A25025F6A0046A158 /* HTTPImageUpload.swift */; };
 		4F7DE75F25027F3C0046A158 /* ImageResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F7DE75E25027F3C0046A158 /* ImageResponse.swift */; };
 		4F827CB724F12B530061F3BF /* Registration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F827CB624F12B530061F3BF /* Registration.swift */; };
+		4F8374AE250F9F1D00009659 /* HttpLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F8374AD250F9F1D00009659 /* HttpLogin.swift */; };
 		4F8ED08824CC30F500F658DA /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F8ED08724CC30F500F658DA /* Device.swift */; };
 		4F8ED08E24CC55BB00F658DA /* style.json in Resources */ = {isa = PBXBuildFile; fileRef = 4F8ED08D24CC55BB00F658DA /* style.json */; };
 		4F8ED09024CC567900F658DA /* darkstyle.json in Resources */ = {isa = PBXBuildFile; fileRef = 4F8ED08F24CC567900F658DA /* darkstyle.json */; };
@@ -214,6 +215,7 @@
 		4F7DE75A25025F6A0046A158 /* HTTPImageUpload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPImageUpload.swift; sourceTree = "<group>"; };
 		4F7DE75E25027F3C0046A158 /* ImageResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageResponse.swift; sourceTree = "<group>"; };
 		4F827CB624F12B530061F3BF /* Registration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Registration.swift; sourceTree = "<group>"; };
+		4F8374AD250F9F1D00009659 /* HttpLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpLogin.swift; sourceTree = "<group>"; };
 		4F8ED08724CC30F500F658DA /* Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
 		4F8ED08D24CC55BB00F658DA /* style.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = style.json; sourceTree = "<group>"; };
 		4F8ED08F24CC567900F658DA /* darkstyle.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = darkstyle.json; sourceTree = "<group>"; };
@@ -574,6 +576,7 @@
 				4F6992FD24FE7D20008D43B9 /* HTTPLocation.swift */,
 				4F6992FF24FE7D48008D43B9 /* Endpoints.swift */,
 				4F7DE75A25025F6A0046A158 /* HTTPImageUpload.swift */,
+				4F8374AD250F9F1D00009659 /* HttpLogin.swift */,
 			);
 			path = HTTP;
 			sourceTree = "<group>";
@@ -1029,6 +1032,7 @@
 				92CD0A1B24BF02AC00CB3572 /* placeholder.swift in Sources */,
 				4FF1F72A24AFD92C0035A9A5 /* CollectcashVC.swift in Sources */,
 				4F43BC1C24A3DF4A006CF40F /* mapSettingTVC.swift in Sources */,
+				4F8374AE250F9F1D00009659 /* HttpLogin.swift in Sources */,
 				4FB978F324A4D9030093C10F /* OderDetailModel.swift in Sources */,
 				4F393B2824AB7C07009D08AB /* EarningsVC.swift in Sources */,
 			);

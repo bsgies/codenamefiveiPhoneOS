@@ -13,8 +13,8 @@ import Alamofire
 
 class Register3TVC: UITableViewController {
     
-    
-    
+    var vSpinner : UIView?
+    let queue = DispatchQueue(label: "que" , attributes: .concurrent)
     @IBOutlet weak var uploadProofID: UITextField!
     @IBOutlet weak var uploadproofAddess: UITextField!
     @IBOutlet weak var uploadBackProofId: UITextField!
@@ -163,14 +163,12 @@ extension Register3TVC : UIImagePickerControllerDelegate{
         let myPickerController = UIImagePickerController()
         myPickerController.delegate = self;
         myPickerController.sourceType = UIImagePickerController.SourceType.camera
-        
         self.present(myPickerController, animated: true, completion: nil)
         
     }
     
     func photoLibrary()
     {
-        
         let myPickerController = UIImagePickerController()
         myPickerController.delegate = self;
         myPickerController.sourceType = UIImagePickerController.SourceType.photoLibrary
@@ -206,13 +204,31 @@ extension Register3TVC : UIImagePickerControllerDelegate{
             print("actual size of image in KB: %f ", Double(imageSize) / 1000.0)
             
             if docTag == docs.front.rawValue{
+                if Double(imageSize) / 1000.0 < 8000{
+                    uploadProofID.text = "front of ID Seleced"
                 frontImage = image
+                }
+                else{
+                    MyshowAlertWith(title: "Image Size" , message: "image Size Should Not Larger Than 8MB")
+                }
             }
             else if docTag == docs.back.rawValue {
+                if Double(imageSize) / 1000.0 < 8000{
+                    uploadBackProofId.text = "back of ID Seleced"
                 backImage = image
+                }
+                else{
+                    MyshowAlertWith(title: "Image Size" , message: "image Size Should Not Larger Than 8MB")
+                }
             }
             else if docTag == docs.address.rawValue {
+                if Double(imageSize) / 1000.0 < 8000{
+                uploadproofAddess.text = "proof of Address Seleced"
                 addresProofImage  = image
+                }
+                else{
+                    MyshowAlertWith(title: "Image Size" , message: "image Size Should Not Larger Than 8MB")
+                }
             }
         }
         else{
@@ -220,79 +236,95 @@ extension Register3TVC : UIImagePickerControllerDelegate{
         }
     }
     
+    func uploadfirst(){
+        self.loadindIndicator()
+        print("Task 1 started")
+        if let frontimage = self.frontImage{
+            self.uploadFrontImage(image: frontimage)
+        }
+    }
+    func uploadsecond() {
+         print("Task 2 started")
+        if let backImage = self.backImage{
+            self.uploadBackImage(image: backImage)
+        }
+    }
+    
+    func uploadThird() {
+         print("Task 3 started")
+        if let addresProofImage = self.addresProofImage{
+            self.uploadAddressVerification(image: addresProofImage)
+        }
+    }
+    
+    func uploadFourth() {
+         print("Task 4 started")
+        if let profileImage = ProfileImage.profileImage{
+            self.profileImage(image: profileImage)
+        }
+    }
+    
+    
     
     func RegisterUser(){
-        
-        let queue = DispatchQueue(label: "que" , attributes: .concurrent)
         if Registration.InfoIsEmpty(){
-            
-            queue.sync {
-                loadindIndicator()
-                print("Task 1 started")
-                if let frontimage = self.frontImage{
-                    self.uploadFrontImage(image: frontimage)
-                }
-            }
-            
-            queue.sync {
-                print("Task 2 started")
-                if let backImage = self.backImage{
-                    self.uploadBackImage(image: backImage)
-                }
-            }
-            
-            queue.sync {
-                print("Task 3 started")
-                if let addresProofImage = self.addresProofImage{
-                    self.uploadAddressVerification(image: addresProofImage)
-                }
-            }
-            queue.sync {
-                print("Task 4 started")
-                if let profileImage = ProfileImage.profileImage{
-                    self.profileImage(image: profileImage)
-                }
-            }
-            
-            
+        queue.sync {
+            uploadfirst()
+            uploadsecond()
+            uploadThird()
+            uploadFourth()
+        }
+        
         }
         else{
             print("Some Data is Missing")
         }
-        if Registration.isDocumentUploaded(){
-            queue.sync {
-                print("Task 5 started")
-                httpregister.registerUser()
-                if myRegisterationResponse.sucsess == true {
-                    DispatchQueue.main.async {
-                        self.MyshowAlertWith(title: "Succeses", message: "Registered")
-                    }
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 50, execute: {
+            if Registration.isDocumentUploaded(){
+             print("Task 5 started")
+            self.httpregister.registerUser()
+                            if myRegisterationResponse.sucsess == true {
+                                DispatchQueue.main.async {
+                                    self.dismissAlert()
+                                }
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                                    self.successAlert(title: "Succeses", message: "Registered")
+                                }
+                            }
+                            else{
+                                DispatchQueue.main.async {
+                                    self.dismissAlert()
+                                }
+                                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                                self.MyshowAlertWith(title: "Error", message: (myRegisterationResponse.error as! String) ?? "Some Error Occur")
+                                    
+                                }
+                            }
                 }
-                else{
-                    DispatchQueue.main.async {
-                        self.MyshowAlertWith(title: "Error", message: (myRegisterationResponse.error as! String) ?? "Some Error Occur")
-                    }
-                    
-                }
+            else{
                 DispatchQueue.main.async {
                     self.dismissAlert()
                 }
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                    self.MyshowAlertWith(title: "Error", message: "connection Error")
+                }
+                
             }
-        }
-        else{
-            print("Document are Missing")
-        }
-        
+        })
+       
     }
+        
     func uploadFrontImage(image : UIImage) {
-        ImageUploadObj.uploadFiles(image: image) { (result, error) in
+        
+        ImageUploadObj.uploadIDPhotoFirst(image: image) { (result, error) in
             if error == nil{
                 Registration.frontDocument = result!.data.fileName.path
             }
         }
     }
     func uploadBackImage(image : UIImage) {
-        ImageUploadObj.uploadFiles(image: image) { (result, error) in
+        ImageUploadObj.uploadIdPhoto2(image: image) { (result, error) in
             if error == nil{
                 Registration.backDocument = result!.data.fileName.path
                 
@@ -301,14 +333,14 @@ extension Register3TVC : UIImagePickerControllerDelegate{
     }
     func uploadAddressVerification(image : UIImage) {
         
-        ImageUploadObj.uploadFiles(image: image) { (result, error) in
+        ImageUploadObj.uploadAddressDocs(image: image) { (result, error) in
             if error == nil{
                 Registration.addressProof = result!.data.fileName.path
             }
         }
     }
     func profileImage(image : UIImage) {
-        ImageUploadObj.uploadFiles(image: image) { (result, error) in
+        ImageUploadObj.uploadProflePhoto(image: image) { (result, error) in
             if error == nil{
                 Registration.profilePhoto = result!.data.fileName.path
             }
@@ -327,11 +359,48 @@ extension Register3TVC : UIImagePickerControllerDelegate{
         present(ac, animated: true)
     }
     
+    func successAlert(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+
+        
+        alert.addAction(UIAlertAction(title:  "Ok", style: UIAlertAction.Style.default, handler: { action in
+          
+            let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                       let vc = storyBoard.instantiateViewController(withIdentifier: "LoginVC") as! LoginVC
+            self.navigationController?.pushViewController(vc, animated: true)
+
+        }))
+            // show the alert
+            self.present(alert, animated: true, completion: nil)
+        }
+    }
+    
+
+
+
+
+
+extension Register3TVC {
+    func showSpinner(onView : UIView) {
+        let spinnerView = UIView.init(frame: onView.bounds)
+        spinnerView.backgroundColor = UIColor.init(red: 0.5, green: 0.5, blue: 0.5, alpha: 0.5)
+        let ai = UIActivityIndicatorView.init(style: .large)
+        ai.startAnimating()
+        ai.center = spinnerView.center
+        
+        DispatchQueue.main.async {
+            spinnerView.addSubview(ai)
+            onView.addSubview(spinnerView)
+        }
+        
+        vSpinner = spinnerView
+    }
+    
+    func removeSpinner() {
+        DispatchQueue.main.async {
+            self.vSpinner?.removeFromSuperview()
+            self.vSpinner = nil
+        }
+    }
 }
-
-
-
-
-
-
 

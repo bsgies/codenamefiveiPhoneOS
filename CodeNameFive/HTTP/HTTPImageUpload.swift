@@ -9,9 +9,9 @@
 import Foundation
 import Alamofire
 struct HTTPImageUpload {
-func uploadFiles(image : UIImage ,  completionalHandler: @escaping(ImageResponse? , Error?) -> Void){
+func uploadProflePhoto(image : UIImage ,  completionalHandler: @escaping(ImageResponse? , Error?) -> Void){
     
-        let semaphore = DispatchSemaphore(value: 0)
+        //let semaphore = DispatchSemaphore(value: 0)
         let parameters = ["name": "file",
                                 "description": "VerificationsDocument"]
               
@@ -37,7 +37,7 @@ func uploadFiles(image : UIImage ,  completionalHandler: @escaping(ImageResponse
                                   let jsondata = try decode.decode(ImageResponse.self, from: data!)
                                 dump(jsondata)
                                     completionalHandler(jsondata , nil)
-                                semaphore.signal()
+                               // semaphore.signal()
 
                               }catch let error{
                                   completionalHandler(nil , error)
@@ -46,9 +46,126 @@ func uploadFiles(image : UIImage ,  completionalHandler: @escaping(ImageResponse
                           }
                       })
                       dataTask.resume()
-    semaphore.wait()
+   // semaphore.wait()
     }
     
+   func uploadIDPhotoFirst(image : UIImage ,  completionalHandler: @escaping(ImageResponse? , Error?) -> Void){
+    
+        //let semaphore = DispatchSemaphore(value: 0)
+        let parameters = ["name": "file",
+                                "description": "VerificationsDocument"]
+              
+        guard let mediaImage = Media(withImage: image, forKey: "file") else { return }
+        guard let url = URL(string: Endpoints.imageUpload) else { return }
+              var request = URLRequest(url: url)
+              request.httpMethod = "POST"
+              
+              let boundary = generateBoundary()
+              
+              request.setValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
+
+              let dataBody = createDataBody(withParameters: parameters, media: [mediaImage], boundary: boundary)
+              request.httpBody = dataBody
+              let session = URLSession.shared
+                      let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
+                          if (error != nil) {
+                              print(error?.localizedDescription as Any)
+                          } else {
+                              
+                              let decode = JSONDecoder()
+                              do{
+                                  let jsondata = try decode.decode(ImageResponse.self, from: data!)
+                                dump(jsondata)
+                                    completionalHandler(jsondata , nil)
+                               // semaphore.signal()
+
+                              }catch let error{
+                                  completionalHandler(nil , error)
+                                  print(error.localizedDescription)
+                              }
+                          }
+                      })
+                      dataTask.resume()
+   // semaphore.wait()
+    }
+    func uploadIdPhoto2(image : UIImage ,  completionalHandler: @escaping(ImageResponse? , Error?) -> Void){
+     
+         //let semaphore = DispatchSemaphore(value: 0)
+         let parameters = ["name": "file",
+                                 "description": "VerificationsDocument"]
+               
+         guard let mediaImage = Media(withImage: image, forKey: "file") else { return }
+         guard let url = URL(string: Endpoints.imageUpload) else { return }
+               var request = URLRequest(url: url)
+               request.httpMethod = "POST"
+               
+               let boundary = generateBoundary()
+               
+               request.setValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
+
+               let dataBody = createDataBody(withParameters: parameters, media: [mediaImage], boundary: boundary)
+               request.httpBody = dataBody
+               let session = URLSession.shared
+                       let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
+                           if (error != nil) {
+                               print(error?.localizedDescription as Any)
+                           } else {
+                               
+                               let decode = JSONDecoder()
+                               do{
+                                   let jsondata = try decode.decode(ImageResponse.self, from: data!)
+                                 dump(jsondata)
+                                     completionalHandler(jsondata , nil)
+                                //semaphore.signal()
+
+                               }catch let error{
+                                   completionalHandler(nil , error)
+                                   print(error.localizedDescription)
+                               }
+                           }
+                       })
+                       dataTask.resume()
+    // semaphore.wait()
+     }
+    func uploadAddressDocs(image : UIImage ,  completionalHandler: @escaping(ImageResponse? , Error?) -> Void){
+     
+         //let semaphore = DispatchSemaphore(value: 0)
+         let parameters = ["name": "file",
+                                 "description": "VerificationsDocument"]
+               
+         guard let mediaImage = Media(withImage: image, forKey: "file") else { return }
+         guard let url = URL(string: Endpoints.imageUpload) else { return }
+               var request = URLRequest(url: url)
+               request.httpMethod = "POST"
+               
+               let boundary = generateBoundary()
+               
+               request.setValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
+
+               let dataBody = createDataBody(withParameters: parameters, media: [mediaImage], boundary: boundary)
+               request.httpBody = dataBody
+               let session = URLSession.shared
+                       let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
+                           if (error != nil) {
+                               print(error?.localizedDescription as Any)
+                           } else {
+                               
+                               let decode = JSONDecoder()
+                               do{
+                                   let jsondata = try decode.decode(ImageResponse.self, from: data!)
+                                 dump(jsondata)
+                                     completionalHandler(jsondata , nil)
+                                // semaphore.signal()
+
+                               }catch let error{
+                                   completionalHandler(nil , error)
+                                   print(error.localizedDescription)
+                               }
+                           }
+                       })
+                       dataTask.resume()
+    // semaphore.wait()
+     }
     func generateBoundary() -> String {
            return "Boundary-\(NSUUID().uuidString)"
        }

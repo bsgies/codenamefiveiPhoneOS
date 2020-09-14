@@ -27,7 +27,9 @@ class HTTPVehicalType {
                 let decode = JSONDecoder()
                 do{
                     let jsondata = try decode.decode(VehicalTypeModel.self, from: data!)
+                    print(jsondata)
                       completionalHandler(jsondata , nil)
+                      //print(jsondata)
 
                 }catch let error{
                     completionalHandler(nil , error)

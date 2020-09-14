@@ -33,6 +33,8 @@ class Register1TVC: UITableViewController , UITextFieldDelegate, UINavigationCon
     let button = UIButton(type: .system)
     let vehicalObj  = HTTPVehicalType()
     let ImageUploadObj = HTTPImageUpload()
+    var vehicalId :  [Int]?
+    var selectedVehicalId : String?
     //MARK:- LifeCyles
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -75,7 +77,6 @@ class Register1TVC: UITableViewController , UITextFieldDelegate, UINavigationCon
             // Fallback on earlier versions
         }
     }
-    
     @objc func Next(){
         if isEmptyorNot(){
             if let email = emailAddress.text{
@@ -90,7 +91,18 @@ class Register1TVC: UITableViewController , UITextFieldDelegate, UINavigationCon
                                 Registration.email = emailAddress.text
                                 Registration.phoneNumber = phoneNumber.text
                                 Registration.password = passwordTextfield.text
-                                Registration.vehicle = vechialType.text
+                                if vechialType.text == vehicals.Bicycle.rawValue{
+                                    Registration.vehicle = "1"
+                                }
+                                else if vechialType.text == vehicals.Moped.rawValue{
+                                    Registration.vehicle = "2"
+                                }
+                                else if vechialType.text == vehicals.Car.rawValue{
+                                    Registration.vehicle =  "3"
+                                }
+                                else {
+                                    Registration.vehicle =  "4"
+                                }
                                 Registration.vehicleReg = vehicleRegisterationNumber.text
                                 let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
                                 let newViewController = storyBoard.instantiateViewController(withIdentifier: "Register2TVC") as! Register2TVC
@@ -106,10 +118,9 @@ class Register1TVC: UITableViewController , UITextFieldDelegate, UINavigationCon
                         }
                         
                     }
-                    else{
-                        self.snackBar(errorMessage: "invalid Email Address")
-                    }
-                    
+                }
+                else{
+                    self.snackBar(errorMessage: "invalid Email Address")
                 }
             }   
         }
@@ -153,10 +164,12 @@ class Register1TVC: UITableViewController , UITextFieldDelegate, UINavigationCon
         vehicalObj.loadVehicals { (result, error) in
             if error == nil{
                 for vehicals in result!.data{
+                    self.vehicalId?.append(vehicals.id)
                     self.pickerData.append(vehicals.vehicleName)
+                    print(vehicals.id)
                     print(vehicals.vehicleName)
+                    
                 }
-                
             }
         }
     }
@@ -173,7 +186,6 @@ extension Register1TVC{
     }
     
     @objc func backButtonPressed(btn : UIButton) {
-        
         self.navigationController?.popViewController(animated: true)
     }
     
@@ -183,9 +195,6 @@ extension Register1TVC{
         cell.layoutMargins = UIEdgeInsets.zero
     }
 }
-
-
-
 extension Register1TVC: UIPickerViewDataSource,UIPickerViewDelegate{
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -222,7 +231,6 @@ extension Register1TVC: UIPickerViewDataSource,UIPickerViewDelegate{
         if pickerData.count != 0{
             if vechialType.text != nil{
                 vechialType.text = pickerData[0]
-                
             }
             
         }
@@ -247,7 +255,6 @@ extension Register1TVC: UIPickerViewDataSource,UIPickerViewDelegate{
 }
 
 extension Register1TVC : MDCSnackbarManagerDelegate{
-    
     func willPresentSnackbar(with messageView: MDCSnackbarMessageView?) {
         guard let window = UIApplication.shared.windows.filter({$0.isKeyWindow}).first else { return }
         window.viewWithTag(200)?.removeFromSuperview()
@@ -383,6 +390,12 @@ extension Register1TVC{
     }
     
     
+    
+    enum vehicals : String {
+        case Bicycle = "Bicycle"
+        case Moped   = "Moped"
+        case Car   = "Car"
+    }
     
     
     

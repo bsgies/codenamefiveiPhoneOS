@@ -18,7 +18,7 @@ class Register2TVC: UITableViewController,UITextFieldDelegate {
     var countryId  : Int?
     var stateId : Int?
     var cityId  :Int?
-    
+     var vSpinner : UIView?
     
     //MARK:- OUTLETS
     @IBOutlet weak var country: UITextField!
@@ -122,8 +122,8 @@ class Register2TVC: UITableViewController,UITextFieldDelegate {
                     print(state.stateName)
                     self.states.append(state.stateName)
                     self.stateID.append(state.stateID)
-                    
                 }
+                self.removeSpinner()
             }
         }
     }
@@ -138,6 +138,7 @@ class Register2TVC: UITableViewController,UITextFieldDelegate {
                     self.cities.append(city.cityName)
                     self.cityID.append(city.cityID)
                 }
+                self.removeSpinner()
             }
         }
     }
@@ -213,6 +214,7 @@ extension Register2TVC: UIPickerViewDataSource,UIPickerViewDelegate{
             countryId =  countriesID[row]
             country.text = countries[row]
             if let countryId = countryId{
+                showSpinner(onView: self.view)
                 loadStates(countryId: countryId)
             }
         }
@@ -220,6 +222,7 @@ extension Register2TVC: UIPickerViewDataSource,UIPickerViewDelegate{
             stateId = stateID[row]
             stateTextField.text = states[row]
             if let stateId =  stateId{
+                showSpinner(onView: self.view)
                 loadCities(stateId: stateId)
                 
             }
@@ -388,4 +391,28 @@ extension Register2TVC : MDCSnackbarManagerDelegate{
         ScreenBottombutton.goToNextScreen(button: button , view: self.view)
     }
     
+}
+
+extension Register2TVC {
+    func showSpinner(onView : UIView) {
+        let spinnerView = UIView.init(frame: onView.bounds)
+        spinnerView.backgroundColor = UIColor.init(red: 0.5, green: 0.5, blue: 0.5, alpha: 0.5)
+        let ai = UIActivityIndicatorView.init(style: .large)
+        ai.startAnimating()
+        ai.center = spinnerView.center
+        
+        DispatchQueue.main.async {
+            spinnerView.addSubview(ai)
+            onView.addSubview(spinnerView)
+        }
+        
+        vSpinner = spinnerView
+    }
+    
+    func removeSpinner() {
+        DispatchQueue.main.async {
+            self.vSpinner?.removeFromSuperview()
+            self.vSpinner = nil
+        }
+    }
 }
