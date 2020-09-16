@@ -11,7 +11,7 @@ import Foundation
 struct VehicalTypeModel: Codable {
     let success: Bool
     let data: [data]
-    let error: Error1
+
 }
 
 // MARK: - Datum
@@ -30,3 +30,4 @@ struct data: Codable {
 // MARK: - Error
 struct Error1: Codable {
 }
+

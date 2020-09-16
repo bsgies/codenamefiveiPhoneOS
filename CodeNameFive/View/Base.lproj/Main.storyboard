@@ -4461,6 +4461,7 @@
                                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                                                     <textInputTraits key="textInputTraits" keyboardType="emailAddress" returnKeyType="done" textContentType="email"/>
                                                     <connections>
+                                                        <action selector="emailValidateAction:" destination="tsI-oB-DWY" eventType="editingDidEnd" id="G3v-NX-tSD"/>
                                                         <outlet property="delegate" destination="tsI-oB-DWY" id="hPD-LO-Kiv"/>
                                                     </connections>
                                                 </textField>
@@ -4511,6 +4512,7 @@
                                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                                                     <textInputTraits key="textInputTraits" returnKeyType="done" textContentType="tel"/>
                                                     <connections>
+                                                        <action selector="phoneValidationAction:" destination="tsI-oB-DWY" eventType="editingDidEnd" id="2Sp-Q6-LRi"/>
                                                         <outlet property="delegate" destination="tsI-oB-DWY" id="Unv-ff-P7L"/>
                                                     </connections>
                                                 </textField>
@@ -4840,54 +4842,76 @@
                             </tableViewSection>
                             <tableViewSection headerTitle="Proof of ID" id="zVl-v4-FF2">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="44" id="MQE-oe-5Zb">
-                                        <rect key="frame" x="0.0" y="185.33333206176758" width="414" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="72" id="MQE-oe-5Zb">
+                                        <rect key="frame" x="0.0" y="185.33333206176758" width="414" height="72"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="MQE-oe-5Zb" id="I2Q-YA-X4h">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="72"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Upload front of the document" placeholder="Upload proof of ID" textAlignment="natural" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="Gu6-5G-DSh">
-                                                    <rect key="frame" x="30" y="12.666666666666664" width="374" height="19"/>
-                                                    <color key="textColor" red="0.070588235289999995" green="0.82352941180000006" blue="0.70196078429999997" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
-                                                    <textInputTraits key="textInputTraits"/>
-                                                    <connections>
-                                                        <action selector="frontProof:" destination="QKT-UU-Hmn" eventType="editingDidBegin" id="ngG-cC-QZc"/>
-                                                    </connections>
-                                                </textField>
+                                                <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="f1u-5u-8sF">
+                                                    <rect key="frame" x="10" y="3" width="394" height="64"/>
+                                                    <subviews>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="f2v-Iy-mEc">
+                                                            <rect key="frame" x="0.0" y="0.0" width="64" height="64"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="64" id="0o9-ai-b3N"/>
+                                                                <constraint firstAttribute="height" constant="64" id="BiW-Xj-OMh"/>
+                                                            </constraints>
+                                                        </imageView>
+                                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Upload front of the document" placeholder="Upload proof of ID" textAlignment="natural" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="Gu6-5G-DSh">
+                                                            <rect key="frame" x="84" y="0.0" width="310" height="64"/>
+                                                            <color key="textColor" red="0.070588235289999995" green="0.82352941180000006" blue="0.70196078429999997" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                                                            <textInputTraits key="textInputTraits"/>
+                                                            <connections>
+                                                                <action selector="frontProof:" destination="QKT-UU-Hmn" eventType="editingDidBegin" id="ngG-cC-QZc"/>
+                                                            </connections>
+                                                        </textField>
+                                                    </subviews>
+                                                </stackView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="Gu6-5G-DSh" firstAttribute="top" secondItem="I2Q-YA-X4h" secondAttribute="topMargin" constant="1.5" id="0VO-JL-TnT"/>
-                                                <constraint firstItem="Gu6-5G-DSh" firstAttribute="leading" secondItem="I2Q-YA-X4h" secondAttribute="leadingMargin" constant="10" id="25P-1S-pJ1"/>
-                                                <constraint firstItem="Gu6-5G-DSh" firstAttribute="centerY" secondItem="I2Q-YA-X4h" secondAttribute="centerY" id="EVD-TB-h1J"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="Gu6-5G-DSh" secondAttribute="trailing" constant="-10" id="FXY-Zf-C7P"/>
+                                                <constraint firstAttribute="trailing" secondItem="f1u-5u-8sF" secondAttribute="trailing" constant="10" id="6Wd-Dz-bxa"/>
+                                                <constraint firstAttribute="bottom" secondItem="f1u-5u-8sF" secondAttribute="bottom" constant="5" id="fnU-2V-g3p"/>
+                                                <constraint firstItem="f1u-5u-8sF" firstAttribute="leading" secondItem="I2Q-YA-X4h" secondAttribute="leading" constant="10" id="kyr-wZ-lrG"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" name="tableCellColor"/>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="44" id="Vp8-Lt-fmB">
-                                        <rect key="frame" x="0.0" y="229.33333206176758" width="414" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="72" id="Vp8-Lt-fmB">
+                                        <rect key="frame" x="0.0" y="257.33333206176758" width="414" height="72"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Vp8-Lt-fmB" id="PJl-hg-m7a">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="72"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Upload back of the document" textAlignment="natural" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="o8m-ch-QvL">
-                                                    <rect key="frame" x="30" y="12.666666666666664" width="374" height="19"/>
-                                                    <color key="textColor" red="0.070588235289999995" green="0.82352941180000006" blue="0.70196078429999997" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
-                                                    <textInputTraits key="textInputTraits"/>
-                                                    <connections>
-                                                        <action selector="backProof:" destination="QKT-UU-Hmn" eventType="editingDidBegin" id="mlS-TK-Pvo"/>
-                                                    </connections>
-                                                </textField>
+                                                <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="9Dp-uL-jux">
+                                                    <rect key="frame" x="10" y="3" width="394" height="64"/>
+                                                    <subviews>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="JOy-RY-agq">
+                                                            <rect key="frame" x="0.0" y="0.0" width="64" height="64"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="64" id="aSD-Kn-F3s"/>
+                                                                <constraint firstAttribute="width" constant="64" id="kHD-iu-IgZ"/>
+                                                            </constraints>
+                                                        </imageView>
+                                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Upload back of the document" textAlignment="natural" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="o8m-ch-QvL">
+                                                            <rect key="frame" x="84" y="0.0" width="310" height="64"/>
+                                                            <color key="textColor" red="0.070588235289999995" green="0.82352941180000006" blue="0.70196078429999997" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                                                            <textInputTraits key="textInputTraits"/>
+                                                            <connections>
+                                                                <action selector="backProof:" destination="QKT-UU-Hmn" eventType="editingDidBegin" id="mlS-TK-Pvo"/>
+                                                            </connections>
+                                                        </textField>
+                                                    </subviews>
+                                                </stackView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="o8m-ch-QvL" firstAttribute="top" secondItem="PJl-hg-m7a" secondAttribute="topMargin" constant="1.5" id="Kk8-6Z-inz"/>
-                                                <constraint firstItem="o8m-ch-QvL" firstAttribute="centerY" secondItem="PJl-hg-m7a" secondAttribute="centerY" id="Swf-HK-b2z"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="o8m-ch-QvL" secondAttribute="trailing" constant="-10" id="dRm-wi-y60"/>
-                                                <constraint firstItem="o8m-ch-QvL" firstAttribute="leading" secondItem="PJl-hg-m7a" secondAttribute="leadingMargin" constant="10" id="x2R-aA-T3h"/>
+                                                <constraint firstAttribute="trailing" secondItem="9Dp-uL-jux" secondAttribute="trailing" constant="10" id="3Bo-A8-1Ss"/>
+                                                <constraint firstItem="9Dp-uL-jux" firstAttribute="leading" secondItem="PJl-hg-m7a" secondAttribute="leading" constant="10" id="7xJ-im-qpu"/>
+                                                <constraint firstAttribute="bottom" secondItem="9Dp-uL-jux" secondAttribute="bottom" constant="5" id="RSq-Hu-89Y"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" name="tableCellColor"/>
@@ -4896,28 +4920,39 @@
                             </tableViewSection>
                             <tableViewSection headerTitle="Proof of address" id="cCD-i0-eKE">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="44" id="DGG-sU-srl">
-                                        <rect key="frame" x="0.0" y="329.33333206176758" width="414" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="72" id="DGG-sU-srl">
+                                        <rect key="frame" x="0.0" y="385.33333206176758" width="414" height="72"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="DGG-sU-srl" id="Kt8-NZ-IMs">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="72"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Upload proof of address" placeholder="Upload proof of ID" textAlignment="natural" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="6LH-zA-IDx">
-                                                    <rect key="frame" x="30" y="12.666666666666664" width="374" height="19"/>
-                                                    <color key="textColor" red="0.070588235289999995" green="0.82352941180000006" blue="0.70196078429999997" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
-                                                    <textInputTraits key="textInputTraits"/>
-                                                    <connections>
-                                                        <action selector="addressProof:" destination="QKT-UU-Hmn" eventType="editingDidBegin" id="hgf-Gn-0Eq"/>
-                                                    </connections>
-                                                </textField>
+                                                <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="0p8-8k-93a">
+                                                    <rect key="frame" x="10" y="3" width="394" height="64"/>
+                                                    <subviews>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="d5q-W4-Hii">
+                                                            <rect key="frame" x="0.0" y="0.0" width="64" height="64"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="64" id="8kg-bh-re9"/>
+                                                                <constraint firstAttribute="width" constant="64" id="8m4-t6-1nw"/>
+                                                            </constraints>
+                                                        </imageView>
+                                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Upload proof of address" placeholder="Upload proof of ID" textAlignment="natural" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="6LH-zA-IDx">
+                                                            <rect key="frame" x="84" y="0.0" width="310" height="64"/>
+                                                            <color key="textColor" red="0.070588235289999995" green="0.82352941180000006" blue="0.70196078429999997" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                                                            <textInputTraits key="textInputTraits"/>
+                                                            <connections>
+                                                                <action selector="addressProof:" destination="QKT-UU-Hmn" eventType="editingDidBegin" id="hgf-Gn-0Eq"/>
+                                                            </connections>
+                                                        </textField>
+                                                    </subviews>
+                                                </stackView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="6LH-zA-IDx" firstAttribute="top" secondItem="Kt8-NZ-IMs" secondAttribute="topMargin" constant="1.5" id="Bz2-MX-CTL"/>
-                                                <constraint firstItem="6LH-zA-IDx" firstAttribute="leading" secondItem="Kt8-NZ-IMs" secondAttribute="leadingMargin" constant="10" id="IvT-fH-OP8"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="6LH-zA-IDx" secondAttribute="trailing" constant="-10" id="Tqj-Q7-esg"/>
-                                                <constraint firstItem="6LH-zA-IDx" firstAttribute="centerY" secondItem="Kt8-NZ-IMs" secondAttribute="centerY" id="lBH-of-QWa"/>
+                                                <constraint firstItem="0p8-8k-93a" firstAttribute="leading" secondItem="Kt8-NZ-IMs" secondAttribute="leading" constant="10" id="8Te-aB-4sS"/>
+                                                <constraint firstAttribute="bottom" secondItem="0p8-8k-93a" secondAttribute="bottom" constant="5" id="TqS-Ab-kui"/>
+                                                <constraint firstAttribute="trailing" secondItem="0p8-8k-93a" secondAttribute="trailing" constant="10" id="gk5-I4-35v"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" name="tableCellColor"/>
@@ -4926,24 +4961,43 @@
                             </tableViewSection>
                             <tableViewSection id="flF-V4-uzn">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="Oti-Rm-2Hh" rowHeight="67" style="IBUITableViewCellStyleDefault" id="jWy-lP-UAM">
-                                        <rect key="frame" x="0.0" y="409.33333206176758" width="414" height="67"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="87" id="jWy-lP-UAM">
+                                        <rect key="frame" x="0.0" y="493.33333206176758" width="414" height="87"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="jWy-lP-UAM" id="9kh-pF-Lzz">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="67"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="87"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Oti-Rm-2Hh">
-                                                    <rect key="frame" x="20" y="0.0" width="374" height="67"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <string key="text">By proceeding, I agree to platform’s Terms of use and acknowledge that I have 
-read the Privacy policy</string>
-                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="16"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="By proceeding, I agree to platform’s Terms of use and acknowledge that I have read the Privacy policy" textAlignment="natural" adjustsFontForContentSizeCategory="YES" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hWT-97-Rbl">
+                                                    <rect key="frame" x="60" y="11" width="325" height="64"/>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                    <color key="textColor" red="0.57045853140000002" green="0.57047235969999999" blue="0.57046490910000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                </textView>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zi2-mu-N0O">
+                                                    <rect key="frame" x="12" y="23" width="40" height="40"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="40" id="aWC-Gg-u7d"/>
+                                                        <constraint firstAttribute="height" constant="40" id="xzX-TZ-GAR"/>
+                                                    </constraints>
+                                                    <state key="normal" image="unchecked_checkbox"/>
+                                                    <connections>
+                                                        <action selector="checkBoxAction:" destination="QKT-UU-Hmn" eventType="touchUpInside" id="fh4-0h-Nbl"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstAttribute="trailingMargin" secondItem="hWT-97-Rbl" secondAttribute="trailing" constant="9" id="HaR-5K-7rS"/>
+                                                <constraint firstItem="zi2-mu-N0O" firstAttribute="top" secondItem="9kh-pF-Lzz" secondAttribute="top" constant="23" id="M8k-b8-rvx"/>
+                                                <constraint firstAttribute="bottom" secondItem="zi2-mu-N0O" secondAttribute="bottom" constant="23" id="YMY-NO-p3a"/>
+                                                <constraint firstItem="hWT-97-Rbl" firstAttribute="centerY" secondItem="zi2-mu-N0O" secondAttribute="centerY" id="hyO-YK-2hE"/>
+                                                <constraint firstItem="zi2-mu-N0O" firstAttribute="leading" secondItem="9kh-pF-Lzz" secondAttribute="leading" constant="12" id="jaP-XZ-kni"/>
+                                                <constraint firstItem="hWT-97-Rbl" firstAttribute="top" secondItem="9kh-pF-Lzz" secondAttribute="topMargin" id="pJe-Co-EIG"/>
+                                                <constraint firstItem="hWT-97-Rbl" firstAttribute="bottom" secondItem="9kh-pF-Lzz" secondAttribute="bottomMargin" id="sIB-ar-maJ"/>
+                                                <constraint firstItem="hWT-97-Rbl" firstAttribute="leading" secondItem="zi2-mu-N0O" secondAttribute="trailing" constant="8" id="xCX-LM-wcQ"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </cells>
@@ -4956,6 +5010,10 @@ read the Privacy policy</string>
                     </tableView>
                     <navigationItem key="navigationItem" title="Apply to become a partner" largeTitleDisplayMode="always" id="yrR-BD-X3a"/>
                     <connections>
+                        <outlet property="addressOfProofImageView" destination="d5q-W4-Hii" id="VJa-lB-jGm"/>
+                        <outlet property="backIdPhotoImageView" destination="JOy-RY-agq" id="tHt-U8-DJa"/>
+                        <outlet property="checkBoxOutlet" destination="zi2-mu-N0O" id="Tfa-7b-NPt"/>
+                        <outlet property="frontOfIdImageView" destination="f2v-Iy-mEc" id="KuU-pK-4X4"/>
                         <outlet property="uploadBackProofId" destination="o8m-ch-QvL" id="31I-iO-EqS"/>
                         <outlet property="uploadProofID" destination="Gu6-5G-DSh" id="i8k-FA-sfn"/>
                         <outlet property="uploadproofAddess" destination="6LH-zA-IDx" id="Bt0-5h-MbL"/>
@@ -4963,7 +5021,7 @@ read the Privacy policy</string>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zNW-tB-lii" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1041" y="1502"/>
+            <point key="canvasLocation" x="1039.1304347826087" y="1501.3392857142856"/>
         </scene>
     </scenes>
     <color key="tintColor" red="0.070588235289999995" green="0.82352941180000006" blue="0.70196078429999997" alpha="1" colorSpace="calibratedRGB"/>
@@ -4986,6 +5044,7 @@ read the Privacy policy</string>
         <image name="questionmark.circle" catalog="system" width="128" height="121"/>
         <image name="recenter" width="24" height="24"/>
         <image name="sheqelsign.square" catalog="system" width="128" height="114"/>
+        <image name="unchecked_checkbox" width="128" height="128"/>
         <namedColor name="BGC">
             <color red="0.98000001907348633" green="0.98000001907348633" blue="0.98000001907348633" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

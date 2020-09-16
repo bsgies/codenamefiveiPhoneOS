@@ -58,6 +58,8 @@
 		4F69930024FE7D48008D43B9 /* Endpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F6992FF24FE7D48008D43B9 /* Endpoints.swift */; };
 		4F6EDA0924AF686000C058AA /* RegisterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F6EDA0824AF686000C058AA /* RegisterVC.swift */; };
 		4F6EDA0D24AF6D7200C058AA /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F6EDA0C24AF6D7200C058AA /* WebKit.framework */; };
+		4F6F10532510F2C5001DED27 /* HttpEmailPhoneValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F6F10522510F2C5001DED27 /* HttpEmailPhoneValidation.swift */; };
+		4F6F10552510F6C6001DED27 /* EmailPhoneExitsValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F6F10542510F6C6001DED27 /* EmailPhoneExitsValidation.swift */; };
 		4F785A4C2500E06E002D192D /* ScreenBottombutton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F785A4B2500E06E002D192D /* ScreenBottombutton.swift */; };
 		4F785A4E25018C21002D192D /* Data.gif in Resources */ = {isa = PBXBuildFile; fileRef = 4F785A4D25018C21002D192D /* Data.gif */; };
 		4F7CBD2624B1257E00672010 /* ChatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F7CBD2524B1257E00672010 /* ChatCell.swift */; };
@@ -206,6 +208,8 @@
 		4F6992FF24FE7D48008D43B9 /* Endpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoints.swift; sourceTree = "<group>"; };
 		4F6EDA0824AF686000C058AA /* RegisterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterVC.swift; sourceTree = "<group>"; };
 		4F6EDA0C24AF6D7200C058AA /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
+		4F6F10522510F2C5001DED27 /* HttpEmailPhoneValidation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpEmailPhoneValidation.swift; sourceTree = "<group>"; };
+		4F6F10542510F6C6001DED27 /* EmailPhoneExitsValidation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailPhoneExitsValidation.swift; sourceTree = "<group>"; };
 		4F739B8724EABE4E00DB2BDC /* ur-PK */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "ur-PK"; path = "ur-PK.lproj/Main.strings"; sourceTree = "<group>"; };
 		4F739B8824EABE4F00DB2BDC /* ur-PK */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "ur-PK"; path = "ur-PK.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		4F785A4B2500E06E002D192D /* ScreenBottombutton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenBottombutton.swift; sourceTree = "<group>"; };
@@ -577,6 +581,7 @@
 				4F6992FF24FE7D48008D43B9 /* Endpoints.swift */,
 				4F7DE75A25025F6A0046A158 /* HTTPImageUpload.swift */,
 				4F8374AD250F9F1D00009659 /* HttpLogin.swift */,
+				4F6F10522510F2C5001DED27 /* HttpEmailPhoneValidation.swift */,
 			);
 			path = HTTP;
 			sourceTree = "<group>";
@@ -627,6 +632,7 @@
 				4F085A0B24FD398C005EA82E /* VehicalTypeModel.swift */,
 				4F7DE75E25027F3C0046A158 /* ImageResponse.swift */,
 				4FEB2E8A2507BEEF00917715 /* Media.swift */,
+				4F6F10542510F6C6001DED27 /* EmailPhoneExitsValidation.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -954,6 +960,7 @@
 			files = (
 				4FB978EE24A4D83F0093C10F /* OrderDetailCell.swift in Sources */,
 				4F08878624B5EE5D00CD5554 /* GoToCustomerVC.swift in Sources */,
+				4F6F10532510F2C5001DED27 /* HttpEmailPhoneValidation.swift in Sources */,
 				4F2E5683249B684400D28462 /* ButtonRounded.swift in Sources */,
 				4F14A5F624A8DAC80095CA9B /* PreviousPaymentVC.swift in Sources */,
 				4FB978E824A4A8E90093C10F /* TripWeeklyData.swift in Sources */,
@@ -961,6 +968,7 @@
 				4F61D991249BEFC300B9FE89 /* MainMenuTableViewController.swift in Sources */,
 				4F14A5F224A8AD250095CA9B /* EditPhoneTVC.swift in Sources */,
 				4F7DE75B25025F6A0046A158 /* HTTPImageUpload.swift in Sources */,
+				4F6F10552510F6C6001DED27 /* EmailPhoneExitsValidation.swift in Sources */,
 				4F2E563A249B4FA800D28462 /* ViewController.swift in Sources */,
 				4F7DE759250259F50046A158 /* ImageManager.swift in Sources */,
 				4FB978EA24A4BF6A0093C10F /* TripDayDataCell.swift in Sources */,

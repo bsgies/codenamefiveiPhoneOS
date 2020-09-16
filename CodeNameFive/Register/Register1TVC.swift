@@ -26,6 +26,8 @@ class Register1TVC: UITableViewController , UITextFieldDelegate, UINavigationCon
     let customErrorView = UIView(frame: CGRect(x: 0, y: 0, width: 300, height: 30))
     let lable = UILabel(frame: CGRect(x: 0, y: 0, width: 300, height: 30))
     
+  
+    
     //MARK:- variables
     let picker = UIPickerView()
     var pickerData: [String] = [String]()
@@ -35,6 +37,9 @@ class Register1TVC: UITableViewController , UITextFieldDelegate, UINavigationCon
     let ImageUploadObj = HTTPImageUpload()
     var vehicalId :  [Int]?
     var selectedVehicalId : String?
+    let headerLabel = UILabel()
+    private var successEmail : Bool = false
+    private var succesPhone : Bool = false
     //MARK:- LifeCyles
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -109,18 +114,17 @@ class Register1TVC: UITableViewController , UITextFieldDelegate, UINavigationCon
                                 navigationController?.pushViewController(newViewController, animated: false)
                             }
                             else{
-                                //self.erroView(message: "Invalid Phone")
-                                self.snackBar(errorMessage: "invalid Phone Number")
+                                 MyshowAlertWith(title: "Error", message: "invalid Phone Number")
                             }
                         }
                         else{
-                            self.snackBar(errorMessage: "password Not Strong")
+                             MyshowAlertWith(title: "Error", message: "password Not Strong Must atlease One Capital Letter 1 Small Letter and 1 Digit and Minimum 8 Chracters")
                         }
                         
                     }
                 }
                 else{
-                    self.snackBar(errorMessage: "invalid Email Address")
+                     MyshowAlertWith(title: "Error", message: "invalid Email Address")
                 }
             }   
         }
@@ -144,18 +148,56 @@ class Register1TVC: UITableViewController , UITextFieldDelegate, UINavigationCon
     
     @IBAction func textFieldVehicalType(_ sender: Any) {
         ShowVehicalTypes()
-        
     }
-    
-    @IBAction func uploadprofileImage(_ sender: UIButton) {
-        showActionSheet()
-    }
-    
-    
     @IBAction func updateProfileImage(_ sender: UIButton) {
         showActionSheet()
-        
     }
+    @IBAction func emailValidateAction(_ sender: UITextField) {
+        guard let email = sender.text else {return}
+                if email.isEmail(){
+                    DispatchQueue.main.async {
+                  HttpEmailPhoneValidation.emailPhoneValidation(key: "email", value: sender.text!) { (result, error) in
+                      if let result = result{
+                          if result.success{
+                            self.successEmail  = true
+                             }
+                             else{
+                            DispatchQueue.main.async {
+                                self.MyshowAlertWith(title: "error", message: "email Address Alrady Exit")
+                                self.successEmail = false
+                            }
+                            
+
+                             }
+                         }
+                  }
+                    }
+                }else{
+                    self.MyshowAlertWith(title: "error", message: "Please Check Email format")
+                }
+    }
+
+    
+    @IBAction func phoneValidationAction(_ sender: UITextField) {
+        guard let phoneNumber = sender.text else {return}
+        HttpEmailPhoneValidation.emailPhoneValidation(key: "phoneNumber", value: phoneNumber) { (result, error) in
+            if let result = result{
+                if result.success{
+                  self.succesPhone  = true
+                   }
+                  else{
+                    DispatchQueue.main.async {
+                           self.MyshowAlertWith(title: "error", message: "phone Number Alrady Exit")
+                                       self.succesPhone = false
+                    }
+                 
+
+                   }
+                   
+               }
+        }
+    }
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
@@ -343,34 +385,49 @@ extension Register1TVC : UIImagePickerControllerDelegate{
 
 extension Register1TVC{
     func isEmptyorNot() -> Bool{
+        
         if profileImage.isHidden {
-            snackBar(errorMessage: "select Profile Photo")
+             MyshowAlertWith(title: "Error", message: "select Yuor Profile Photo")
             return false
         }
             
         else if firstName.text!.isEmpty
         {
-            snackBar(errorMessage: "fill first Name")
+            MyshowAlertWith(title: "Error", message: "fill first Name")
             return false
         }
         else if lastName.text!.isEmpty
-        {   snackBar(errorMessage: "fill last Name")
+            
+        {   MyshowAlertWith(title: "Error", message: "fill last Name")
+          
             return false
         }
         else if emailAddress.text!.isEmpty
-        {   snackBar(errorMessage: "fill Email Address")
+            
+        {
+            MyshowAlertWith(title: "Error", message: "fill Email Address")
             return false
         }
+        else if !successEmail{
+            MyshowAlertWith(title: "Error", message: "Email Already Exits")
+            return false
+            
+        }
+            
         else if passwordTextfield.text!.isEmpty{
-            snackBar(errorMessage: "fill Password")
+            MyshowAlertWith(title: "Error", message: "fill Password")
             return false
         }
         else if phoneNumber.text!.isEmpty
-        {   snackBar(errorMessage: "fill Phone Number")
+        {  MyshowAlertWith(title: "Error", message: "fill Phone Number")
+            return false
+        }
+        if !succesPhone{
+            MyshowAlertWith(title: "Error", message: "Phone Already Exits")
             return false
         }
         else if vechialType.text!.isEmpty
-        {    snackBar(errorMessage: "select Vehical Type")
+        {    MyshowAlertWith(title: "Error", message: "select Vehical Type")
             return false
         }
             
@@ -379,7 +436,7 @@ extension Register1TVC{
                 return true
             }
             else {
-                snackBar(errorMessage: "fill Registeration Number")
+                MyshowAlertWith(title: "Error", message: "fill Registeration Number")
                 return false
             }
         }
@@ -390,6 +447,8 @@ extension Register1TVC{
     }
     
     
+   
+    
     
     enum vehicals : String {
         case Bicycle = "Bicycle"
@@ -397,6 +456,12 @@ extension Register1TVC{
         case Car   = "Car"
     }
     
+    
+    func MyshowAlertWith(title: String, message: String){
+         let ac = UIAlertController(title: title, message: message, preferredStyle: .alert)
+         ac.addAction(UIAlertAction(title: "OK", style: .default))
+         present(ac, animated: true)
+     }
     
     
 }

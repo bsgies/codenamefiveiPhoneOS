@@ -14,11 +14,17 @@ import Alamofire
 class Register3TVC: UITableViewController {
     
     var vSpinner : UIView?
+    
+   
+    @IBOutlet weak var checkBoxOutlet: UIButton!
     let queue = DispatchQueue(label: "que" , attributes: .concurrent)
     @IBOutlet weak var uploadProofID: UITextField!
     @IBOutlet weak var uploadproofAddess: UITextField!
     @IBOutlet weak var uploadBackProofId: UITextField!
     let lock = NSLock()
+    @IBOutlet weak var frontOfIdImageView: UIImageView!
+    @IBOutlet weak var backIdPhotoImageView: UIImageView!
+    @IBOutlet weak var addressOfProofImageView: UIImageView!
     let ImageUploadObj = HTTPImageUpload()
     var fileData : Data?
     let button = UIButton(type: .system)
@@ -28,15 +34,37 @@ class Register3TVC: UITableViewController {
     var backImage : UIImage?
     var addresProofImage : UIImage?
     var docTag : String?
-    
+    var unchecked : Bool = false
     var indicator =  UIActivityIndicatorView()
     let alert = UIAlertController(title: nil, message: "Please wait...", preferredStyle: .alert)
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setBackButton()
-        
+        frontOfIdImageView.isHidden = true
+        backIdPhotoImageView.isHidden = true
+        addressOfProofImageView.isHidden = true
+       let image = #imageLiteral(resourceName: "unchecked_checkbox")
+       image.withTintColor(#colorLiteral(red: 0, green: 0.8465872407, blue: 0.7545004487, alpha: 1))
+       checkBoxOutlet.setImage(image, for: .normal)
     }
+    
+    @IBAction func checkBoxAction(_ sender: UIButton) {
+          
+           if unchecked {
+                    let image = #imageLiteral(resourceName: "unchecked_checkbox")
+                    image.withTintColor(#colorLiteral(red: 0, green: 0.8465872407, blue: 0.7545004487, alpha: 1))
+                    sender.setImage(image, for: .normal)
+                    unchecked = false
+                }
+                else {
+                    let image = #imageLiteral(resourceName: "checked_checkbox")
+                    image.withTintColor(#colorLiteral(red: 0, green: 0.8465872407, blue: 0.7545004487, alpha: 1))
+                    sender.setImage(image, for: .normal)
+                    unchecked = true
+                }
+           
+       }
     
     func loadindIndicator(){
         
@@ -205,8 +233,13 @@ extension Register3TVC : UIImagePickerControllerDelegate{
             
             if docTag == docs.front.rawValue{
                 if Double(imageSize) / 1000.0 < 8000{
-                    uploadProofID.text = "front of ID Seleced"
-                frontImage = image
+                    frontOfIdImageView.isHidden = false
+                    frontOfIdImageView.maskCircle(inputImage: image)
+                    uploadProofID.text = "change front of ID Photo"
+                    frontImage = image
+                    frontOfIdImageView.contentMode = .scaleAspectFill
+                    frontOfIdImageView.image = image
+                    
                 }
                 else{
                     MyshowAlertWith(title: "Image Size" , message: "image Size Should Not Larger Than 8MB")
@@ -214,8 +247,13 @@ extension Register3TVC : UIImagePickerControllerDelegate{
             }
             else if docTag == docs.back.rawValue {
                 if Double(imageSize) / 1000.0 < 8000{
-                    uploadBackProofId.text = "back of ID Seleced"
-                backImage = image
+                    backIdPhotoImageView.isHidden = false
+                    backIdPhotoImageView.maskCircle(inputImage: image)
+                    
+                    uploadBackProofId.text = "change back of ID Photo"
+                    backImage = image
+                    backIdPhotoImageView.contentMode = .scaleAspectFill
+                    backIdPhotoImageView.image = image
                 }
                 else{
                     MyshowAlertWith(title: "Image Size" , message: "image Size Should Not Larger Than 8MB")
@@ -223,8 +261,12 @@ extension Register3TVC : UIImagePickerControllerDelegate{
             }
             else if docTag == docs.address.rawValue {
                 if Double(imageSize) / 1000.0 < 8000{
-                uploadproofAddess.text = "proof of Address Seleced"
-                addresProofImage  = image
+                    addressOfProofImageView.isHidden = false
+                    addressOfProofImageView.maskCircle(inputImage: image)
+                    uploadproofAddess.text = "proof of Address Seleced"
+                    addresProofImage  = image
+                    addressOfProofImageView.contentMode = .scaleAspectFill
+                    addressOfProofImageView.image = image
                 }
                 else{
                     MyshowAlertWith(title: "Image Size" , message: "image Size Should Not Larger Than 8MB")
@@ -244,21 +286,21 @@ extension Register3TVC : UIImagePickerControllerDelegate{
         }
     }
     func uploadsecond() {
-         print("Task 2 started")
+        print("Task 2 started")
         if let backImage = self.backImage{
             self.uploadBackImage(image: backImage)
         }
     }
     
     func uploadThird() {
-         print("Task 3 started")
+        print("Task 3 started")
         if let addresProofImage = self.addresProofImage{
             self.uploadAddressVerification(image: addresProofImage)
         }
     }
     
     func uploadFourth() {
-         print("Task 4 started")
+        print("Task 4 started")
         if let profileImage = ProfileImage.profileImage{
             self.profileImage(image: profileImage)
         }
@@ -268,13 +310,13 @@ extension Register3TVC : UIImagePickerControllerDelegate{
     
     func RegisterUser(){
         if Registration.InfoIsEmpty(){
-        queue.sync {
-            uploadfirst()
-            uploadsecond()
-            uploadThird()
-            uploadFourth()
-        }
-        
+            queue.sync {
+                uploadfirst()
+                uploadsecond()
+                uploadThird()
+                uploadFourth()
+            }
+            
         }
         else{
             print("Some Data is Missing")
@@ -282,26 +324,26 @@ extension Register3TVC : UIImagePickerControllerDelegate{
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 50, execute: {
             if Registration.isDocumentUploaded(){
-             print("Task 5 started")
-            self.httpregister.registerUser()
-                            if myRegisterationResponse.sucsess == true {
-                                DispatchQueue.main.async {
-                                    self.dismissAlert()
-                                }
-                                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                                    self.successAlert(title: "Succeses", message: "Registered")
-                                }
-                            }
-                            else{
-                                DispatchQueue.main.async {
-                                    self.dismissAlert()
-                                }
-                                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                                self.MyshowAlertWith(title: "Error", message: (myRegisterationResponse.error as! String) ?? "Some Error Occur")
-                                    
-                                }
-                            }
+                print("Task 5 started")
+                self.httpregister.registerUser()
+                if myRegisterationResponse.sucsess == true {
+                    DispatchQueue.main.async {
+                        self.dismissAlert()
+                    }
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                        self.successAlert(title: "Succeses", message: "Registered")
+                    }
                 }
+                else{
+                    DispatchQueue.main.async {
+                        self.dismissAlert()
+                    }
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                        self.MyshowAlertWith(title: "Error", message: (myRegisterationResponse.error as! String) ?? "Some Error Occur")
+                        
+                    }
+                }
+            }
             else{
                 DispatchQueue.main.async {
                     self.dismissAlert()
@@ -312,13 +354,14 @@ extension Register3TVC : UIImagePickerControllerDelegate{
                 
             }
         })
-       
-    }
         
+    }
+    
     func uploadFrontImage(image : UIImage) {
         
         ImageUploadObj.uploadIDPhotoFirst(image: image) { (result, error) in
             if error == nil{
+                
                 Registration.frontDocument = result!.data.fileName.path
             }
         }
@@ -361,20 +404,20 @@ extension Register3TVC : UIImagePickerControllerDelegate{
     
     func successAlert(title: String, message: String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-
+        
         
         alert.addAction(UIAlertAction(title:  "Ok", style: UIAlertAction.Style.default, handler: { action in
-          
+            
             let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-                       let vc = storyBoard.instantiateViewController(withIdentifier: "LoginVC") as! LoginVC
+            let vc = storyBoard.instantiateViewController(withIdentifier: "LoginVC") as! LoginVC
             self.navigationController?.pushViewController(vc, animated: true)
-
+            
         }))
-            // show the alert
-            self.present(alert, animated: true, completion: nil)
-        }
+        // show the alert
+        self.present(alert, animated: true, completion: nil)
     }
-    
+}
+
 
 
 
