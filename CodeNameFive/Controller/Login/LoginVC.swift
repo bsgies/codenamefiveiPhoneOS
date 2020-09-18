@@ -51,23 +51,27 @@ class LoginVC: UIViewController {
     @IBAction func contniueForPassword(_ sender: UIButton) {
         if let validate = EmailorPhone.text{
             if validate.isEmail(){
+                Login.emailorPhone = validate
                 checkemail = "email"
                 GoToSecurityScreen()
             }
             else if validate.isValidPhone(phone: validate)
             {
+                Login.emailorPhone = validate
                 checkemail = "phone"
                 GoToSecurityScreen()
             }
                 
             else{
-                self.snackBar(errorMessage: "enter A Valid Email Or Phone")
-           
+                
+                //self.snackBar(errorMessage: "enter A Valid Email Or Phone")
+                self.MyshowAlertWith(title: "Error", message: "enter A Valid Email Or Phone")
             }
             
         }
         else{
-            self.snackBar(errorMessage: "fill Your Email Or Password")
+            self.MyshowAlertWith(title: "Error", message: "fill Your Email Or Password")
+           
         }
     }
     
@@ -79,38 +83,10 @@ class LoginVC: UIViewController {
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
         super.viewWillDisappear(animated)
     }
-    func snackBar(errorMessage : String) {
-        let message = MDCSnackbarMessage()
-        message.text = errorMessage
-        MDCSnackbarManager.messageTextColor = .white
-        MDCSnackbarManager.snackbarMessageViewBackgroundColor = #colorLiteral(red: 0, green: 0.8465872407, blue: 0.7545004487, alpha: 1)
-        MDCSnackbarManager.show(message)
-    }
 }
 
 extension LoginVC{
-    func showToastFaded(message : String) {
-        
-        
-        let toastLabel = UILabel(frame: CGRect(x: 10 , y: 0, width: 250, height: 35))
-        toastLabel.numberOfLines = 0
-        toastLabel.backgroundColor = UIColor.black.withAlphaComponent(0.6)
-        toastLabel.textColor = UIColor.white
-        toastLabel.textAlignment = .center;
-        toastLabel.text = message
-        toastLabel.alpha = 1.0
-        toastLabel.layer.cornerRadius = 10;
-        toastLabel.clipsToBounds  =  true
-        toastLabel.sizeToFit()
-        toastLabel.frame = CGRect( x: toastLabel.frame.minX, y: toastLabel.frame.minY,width:   toastLabel.frame.width + 20, height: toastLabel.frame.height + 8)
-        
-        self.view.addSubview(toastLabel)
-        UIView.animate(withDuration: 4.0, delay: 0.1, options: .curveEaseOut, animations: {
-            toastLabel.alpha = 0.0
-        }, completion: {(isCompleted) in
-            toastLabel.removeFromSuperview()
-        })
-    }
+
     @objc func taped(){
         self.view.endEditing(true)
     }
@@ -168,6 +144,11 @@ extension LoginVC{
         self.present(navigationController, animated: false, completion: nil)
         
     }
+    func MyshowAlertWith(title: String, message: String){
+            let ac = UIAlertController(title: title, message: message, preferredStyle: .alert)
+            ac.addAction(UIAlertAction(title: "OK", style: .default))
+            present(ac, animated: true)
+        }
 }
 extension UIButton {
 
@@ -181,5 +162,5 @@ extension UIButton {
 
         self.setBackgroundImage(colorImage, for: forState)
     }
-
+   
 }

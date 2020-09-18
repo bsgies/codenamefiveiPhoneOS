@@ -156,12 +156,12 @@ extension Register3TVC : UIDocumentMenuDelegate,UIDocumentPickerDelegate,UINavig
     
     func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentAt url: URL){
         myURL = url.lastPathComponent
-        //        if currentlySelectedField == "id"{
-        //            uploadProofID.text = myURL
-        //        }
-        //        else if currentlySelectedField == "address"{
-        //            uploadproofAddess.text = myURL
-        //        }
+//                if currentlySelectedField == "id"{
+//                    uploadProofID.text = myURL
+//                }
+//                else if currentlySelectedField == "address"{
+//                    uploadproofAddess.text = myURL
+//                }
     }
     
     

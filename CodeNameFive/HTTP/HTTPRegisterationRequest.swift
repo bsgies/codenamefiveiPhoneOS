@@ -76,7 +76,7 @@ class HTTPRegisterationRequest {
                         {
                             myRegisterationResponse.sucsess = (result as! Bool)
                         }
-                        if let Responseerror = json["error"]{
+                        if let Responseerror = json["message"]{
                             myRegisterationResponse.error = Responseerror as Any
                         }
                         semaphore.signal()

@@ -56,6 +56,7 @@
 		4F64ADA4249E5AAF0047E9D5 /* Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F64ADA3249E5AAF0047E9D5 /* Validation.swift */; };
 		4F6992FE24FE7D20008D43B9 /* HTTPLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F6992FD24FE7D20008D43B9 /* HTTPLocation.swift */; };
 		4F69930024FE7D48008D43B9 /* Endpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F6992FF24FE7D48008D43B9 /* Endpoints.swift */; };
+		4F6D80872514A4C1006B1133 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F6D80862514A4C1006B1133 /* Login.swift */; };
 		4F6EDA0924AF686000C058AA /* RegisterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F6EDA0824AF686000C058AA /* RegisterVC.swift */; };
 		4F6EDA0D24AF6D7200C058AA /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F6EDA0C24AF6D7200C058AA /* WebKit.framework */; };
 		4F6F10532510F2C5001DED27 /* HttpEmailPhoneValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F6F10522510F2C5001DED27 /* HttpEmailPhoneValidation.swift */; };
@@ -206,6 +207,7 @@
 		4F64ADA3249E5AAF0047E9D5 /* Validation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validation.swift; sourceTree = "<group>"; };
 		4F6992FD24FE7D20008D43B9 /* HTTPLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPLocation.swift; sourceTree = "<group>"; };
 		4F6992FF24FE7D48008D43B9 /* Endpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoints.swift; sourceTree = "<group>"; };
+		4F6D80862514A4C1006B1133 /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
 		4F6EDA0824AF686000C058AA /* RegisterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterVC.swift; sourceTree = "<group>"; };
 		4F6EDA0C24AF6D7200C058AA /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		4F6F10522510F2C5001DED27 /* HttpEmailPhoneValidation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpEmailPhoneValidation.swift; sourceTree = "<group>"; };
@@ -633,6 +635,7 @@
 				4F7DE75E25027F3C0046A158 /* ImageResponse.swift */,
 				4FEB2E8A2507BEEF00917715 /* Media.swift */,
 				4F6F10542510F6C6001DED27 /* EmailPhoneExitsValidation.swift */,
+				4F6D80862514A4C1006B1133 /* Login.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -965,6 +968,7 @@
 				4F14A5F624A8DAC80095CA9B /* PreviousPaymentVC.swift in Sources */,
 				4FB978E824A4A8E90093C10F /* TripWeeklyData.swift in Sources */,
 				4F393B2424AB4F88009D08AB /* PromotionVC.swift in Sources */,
+				4F6D80872514A4C1006B1133 /* Login.swift in Sources */,
 				4F61D991249BEFC300B9FE89 /* MainMenuTableViewController.swift in Sources */,
 				4F14A5F224A8AD250095CA9B /* EditPhoneTVC.swift in Sources */,
 				4F7DE75B25025F6A0046A158 /* HTTPImageUpload.swift in Sources */,

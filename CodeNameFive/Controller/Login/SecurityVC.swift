@@ -14,19 +14,20 @@ class SecurityVC: UIViewController {
     @IBOutlet weak var pathnerImage: UIImageView!
     @IBOutlet weak var topLbl: UILabel!
     @IBOutlet weak var disLbl: UILabel!
-    @IBOutlet weak var securityCodeOrPasswordField: UITextField!
+    @IBOutlet weak var securityCodeOrPasswordField: UITextField?
+    let alert = UIAlertController(title: nil, message: "Please wait...", preferredStyle: .alert)
     var checkEmailOrPassword : String = "email"
     override func viewDidLoad() {
         super.viewDidLoad()
         if checkEmailOrPassword == "email"{
-            securityCodeOrPasswordField.keyboardType = UIKeyboardType.default
+            securityCodeOrPasswordField!.keyboardType = UIKeyboardType.default
             topLbl.text = "Enter your password"
             disLbl.isHidden = true
-            securityCodeOrPasswordField.placeholder = "Password"
+            securityCodeOrPasswordField!.placeholder = "Password"
             CodeNotReceived.text = "Forgot password?"
         }
         else{
-            securityCodeOrPasswordField.keyboardType = UIKeyboardType.numberPad
+            securityCodeOrPasswordField!.keyboardType = UIKeyboardType.numberPad
             disLbl.isHidden = false
         }
         CodeNotReceived.isUserInteractionEnabled = true
@@ -49,46 +50,81 @@ class SecurityVC: UIViewController {
     }
     
     @IBAction func LoginButton(_ sender: Any) {
-        
-        if securityCodeOrPasswordField.text != nil{
-            
-            GoToDashboard()
-        }
-        else{
-            if checkEmailOrPassword == "email"{
-                showToastFaded(message: "Incorrect code")
+        if checkEmailOrPassword == "email"{
+            if let validate = securityCodeOrPasswordField!.text {
+                Login.password = validate
+                self.loadindIndicator()
+                LoginApiWithEmail()
+                
+                
+            }
+                
+            else{
+                self.MyshowAlertWith(title: "Error", message: "Check your Password")
+                
+            }}
+    }
+    func LoginApiWithEmail() {
+        let httplogin =   HttpLogin()
+        if let email = Login.emailorPhone{
+            if let pass = Login.password{
+                httplogin.LoginwithEmail(email: email, password: pass) { (result, error) in
+                    if let success = result?.success{
+                        if success{
+                            DispatchQueue.main.async {
+                                self.dismissAlert()
+                                self.GoToDashboard()
+                            }
+                            
+                        }
+                        else{
+                            DispatchQueue.main.async {
+                                self.dismissAlert()
+                            }
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                                self.MyshowAlertWith(title: "Error", message: (result?.message)!)
+                            }
+                            
+                        }
+                    }
+                    else{
+                        DispatchQueue.main.async {
+                            self.dismissAlert()
+                        }
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                            self.MyshowAlertWith(title: "Error", message: "Connection error")
+                        }
+                        
+                    }
+                }
+                
+                
+                
             }
             else{
-                showToastFaded(message: "Incorrect password")
+                DispatchQueue.main.async {
+                    self.dismissAlert()
+                }
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                    self.MyshowAlertWith(title: "Error", message: "Please fil the Password")
+                    
+                }
             }
         }
-        
+        else{
+            DispatchQueue.main.async {
+                self.dismissAlert()
+            }
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                self.MyshowAlertWith(title: "Error", message: "Email Requierd")
+                
+            }
+        }
     }
-    
+
 }
 
 extension SecurityVC{
-    func showToastFaded(message : String) {
-        
-        let toastLabel = UILabel(frame: CGRect(x: 10 , y: 0, width: 250, height: 35))
-        toastLabel.numberOfLines = 0
-        toastLabel.backgroundColor = UIColor.black.withAlphaComponent(0.6)
-        toastLabel.textColor = UIColor.white
-        toastLabel.textAlignment = .center;
-        toastLabel.text = message
-        toastLabel.alpha = 1.0
-        toastLabel.layer.cornerRadius = 10;
-        toastLabel.clipsToBounds  =  true
-        toastLabel.sizeToFit()
-        toastLabel.frame = CGRect( x: toastLabel.frame.minX, y: toastLabel.frame.minY,width:   toastLabel.frame.width + 20, height: toastLabel.frame.height + 8)
-        
-        self.view.addSubview(toastLabel)
-        UIView.animate(withDuration: 4.0, delay: 0.1, options: .curveEaseOut, animations: {
-            toastLabel.alpha = 0.0
-        }, completion: {(isCompleted) in
-            toastLabel.removeFromSuperview()
-        })
-    }
     @objc func taped(){
         self.view.endEditing(true)
     }
@@ -99,7 +135,7 @@ extension SecurityVC{
             self.view.frame.origin.y -= keyboardSize.height
         }
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
             UIView.transition(with: self.view, duration: 1, options: .transitionCrossDissolve, animations: {
                 self.pathnerImage.isHidden = true
             })
@@ -124,29 +160,29 @@ extension SecurityVC{
         
     }
     
-     @objc func showAlert(){
-
-         let alertController = UIAlertController(title: "Code not received?", message: "Resend security code (it can take up to a minute to arrive)", preferredStyle: .alert)
-              alertController.view.tintColor = UIColor(#colorLiteral(red: 0, green: 0.8465872407, blue: 0.7545004487, alpha: 1))
-
-                // Create resend button
-                let OKAction = UIAlertAction(title: "Resend", style: .default) { (action:UIAlertAction!) in
-
-                }
-                alertController.addAction(OKAction)
-
-                // Create cancel button
-                let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (action:UIAlertAction!) in
-
+    @objc func showAlert(){
+        
+        let alertController = UIAlertController(title: "Code not received?", message: "Resend security code (it can take up to a minute to arrive)", preferredStyle: .alert)
+        alertController.view.tintColor = UIColor(#colorLiteral(red: 0, green: 0.8465872407, blue: 0.7545004487, alpha: 1))
+        
+        // Create resend button
+        let OKAction = UIAlertAction(title: "Resend", style: .default) { (action:UIAlertAction!) in
+            
         }
-                // Change cancel title color
-                cancelAction.setValue(UIColor(named: "danger"), forKey: "titleTextColor")
-
-                alertController.addAction(cancelAction)
-
-                // Present Dialog message
-                self.present(alertController, animated: true, completion:nil)
-     }
+        alertController.addAction(OKAction)
+        
+        // Create cancel button
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (action:UIAlertAction!) in
+            
+        }
+        // Change cancel title color
+        cancelAction.setValue(UIColor(named: "danger"), forKey: "titleTextColor")
+        
+        alertController.addAction(cancelAction)
+        
+        // Present Dialog message
+        self.present(alertController, animated: true, completion:nil)
+    }
     
     
     func  GoToDashboard(){
@@ -154,4 +190,28 @@ extension SecurityVC{
         let newViewController = storyBoard.instantiateViewController(withIdentifier: "DashboardVC")
         navigationController?.pushViewController(newViewController, animated: false)
     }
+    func MyshowAlertWith(title: String, message: String){
+        let ac = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        ac.addAction(UIAlertAction(title: "OK", style: .default))
+        present(ac, animated: true)
+    }
+    func loadindIndicator(){
+        
+        let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
+        loadingIndicator.hidesWhenStopped = true
+        loadingIndicator.style = UIActivityIndicatorView.Style.large
+        loadingIndicator.startAnimating()
+        alert.view.addSubview(loadingIndicator)
+        present(alert, animated: true, completion: nil)
+    }
+    
+    
+    internal func dismissAlert() {
+        if let vc = self.presentedViewController, vc is UIAlertController {
+            dismiss(animated: false, completion: nil)
+            
+        }
+    }
+    
+    
 }

@@ -19,7 +19,7 @@ class Register2TVC: UITableViewController,UITextFieldDelegate {
     var stateId : Int?
     var cityId  :Int?
      var vSpinner : UIView?
-    
+    var dic : [String : Any] = [:]
     //MARK:- OUTLETS
     @IBOutlet weak var country: UITextField!
     @IBOutlet weak var stateTextField: UITextField!
@@ -43,8 +43,6 @@ class Register2TVC: UITableViewController,UITextFieldDelegate {
         self.picker.delegate = self
         self.picker.dataSource = self
         loadCountries()
-        
-        
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(true)
