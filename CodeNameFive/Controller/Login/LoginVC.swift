@@ -7,7 +7,8 @@
 //
 
 import UIKit
-import MaterialComponents.MaterialSnackbar
+import CoreTelephony
+
 class LoginVC: UIViewController {
     
     // Declaring variables
@@ -26,6 +27,18 @@ class LoginVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let networkInformation = CTTelephonyNetworkInfo()
+
+        if let carrier = networkInformation.subscriberCellularProvider {
+            print("phone code:" + carrier.mobileNetworkCode!)
+
+            print("ISO country code: " + carrier.isoCountryCode!)
+
+            // Convert ISO country code to full country name
+            let currentLocale = NSLocale.init(localeIdentifier:  NSLocale.current.identifier)
+            let fullCountryName = currentLocale.displayName(forKey: NSLocale.Key.countryCode, value: carrier.isoCountryCode!)
+            print(fullCountryName)
+        }
         EmailorPhone.layer.borderColor = #colorLiteral(red: 0.9294117647, green: 0.9294117647, blue: 0.9294117647, alpha: 1)
         EmailorPhone.layer.backgroundColor = #colorLiteral(red: 0.968627451, green: 0.968627451, blue: 0.968627451, alpha: 1)
         EmailorPhone.layer.borderWidth = 1
@@ -51,27 +64,43 @@ class LoginVC: UIViewController {
     @IBAction func contniueForPassword(_ sender: UIButton) {
         if let validate = EmailorPhone.text{
             if validate.isEmail(){
-                Login.emailorPhone = validate
+                
                 checkemail = "email"
                 GoToSecurityScreen()
             }
             else if validate.isValidPhone(phone: validate)
             {
-                Login.emailorPhone = validate
                 checkemail = "phone"
-                GoToSecurityScreen()
+                PhoneNumberOTP(phone: validate)
             }
-                
             else{
-                
-                //self.snackBar(errorMessage: "enter A Valid Email Or Phone")
-                self.MyshowAlertWith(title: "Error", message: "enter A Valid Email Or Phone")
+              self.MyshowAlertWith(title: "Error", message: "enter A Valid Email Or Phone")
             }
             
         }
         else{
             self.MyshowAlertWith(title: "Error", message: "fill Your Email Or Password")
            
+        }
+    }
+    
+    func PhoneNumberOTP(phone : String) {
+        let http = HttpLogin()
+        http.PhoneNumberVAlidateForOTP(phoneNumber: phone) { (result, error) in
+            if let success =  result?.success {
+                if success{
+                    DispatchQueue.main.async {
+                        self.GoToSecurityScreen()
+                    }
+                    
+                }
+            }
+            else{
+                DispatchQueue.main.async {
+                     self.MyshowAlertWith(title: "number not Exist", message: "check your number")
+                }
+               
+            }
         }
     }
     
@@ -124,18 +153,17 @@ extension LoginVC{
     
     @objc func openRegisterPage(){
         
-        
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let newViewController = storyBoard.instantiateViewController(withIdentifier: "Register1TVC") as! Register1TVC
         navigationController?.pushViewController(newViewController, animated: false)
         
     }
 
-    
     func GoToSecurityScreen() {
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let newViewController = storyBoard.instantiateViewController(withIdentifier: "SecurityVC") as! SecurityVC
         newViewController.checkEmailOrPassword = checkemail!
+        newViewController.emailOrPhone = EmailorPhone.text
         navigationController?.pushViewController(newViewController, animated: false)
     }
     func presentOnRoot(viewController : UIViewController){
@@ -159,7 +187,6 @@ extension UIButton {
         UIGraphicsGetCurrentContext()!.fill(CGRect(x: 0, y: 0, width: 1, height: 1))
         let colorImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
-
         self.setBackgroundImage(colorImage, for: forState)
     }
    

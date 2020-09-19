@@ -8,24 +8,15 @@
 
 import Foundation
 
-struct Login {
-    static var emailorPhone : String?
-    static var password : String?
-}
 
-struct myLoginResponse {
-    static var sucsess : Bool?
-    static var message : String?
-}
-
-// MARK: - Welcome
+// MARK: - LoginResponse
 struct LoginResponse: Codable {
     let success: Bool?
     let data: LoginData?
     let message: String?
 }
 
-// MARK: - DataClass
+// MARK: - LoginData
 struct LoginData: Codable {
     let results: Results?
     let token: String?
@@ -48,3 +39,16 @@ struct Results: Codable {
         case status
     }
 }
+
+// MARK: - Welcome
+struct PhoneNumberValidate: Codable {
+    let success: Bool
+    let data: [NumberData]
+    let message: String
+}
+
+// MARK: - Datum
+struct NumberData: Codable {
+    let id: Int
+}
+

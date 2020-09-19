@@ -76,7 +76,8 @@ class Register2TVC: UITableViewController,UITextFieldDelegate {
     @IBAction func stateSelectionforPicker(_ sender: UITextField) {
         if country.text!.isEmpty{
              self.view.endEditing(true)
-            snackBar(errorMessage: "select Country First")
+            MyshowAlertWith(title: "Error", message: "select Country First")
+
         }
         else{
             currentSelectedField = address.state.rawValue
@@ -88,7 +89,7 @@ class Register2TVC: UITableViewController,UITextFieldDelegate {
     @IBAction func citySelectionforPicker(_ sender: UITextField) {
         if stateTextField.text!.isEmpty{
             self.view.endEditing(true)
-            snackBar(errorMessage: "select State First")
+            MyshowAlertWith(title: "Error", message: "select State First")
         }
         else{
             currentSelectedField = address.city.rawValue
@@ -299,14 +300,8 @@ extension Register2TVC{
         toolbar.setItems([doneButton,spaceButton,cancelButton], animated: false)
         dateOfBirth.inputAccessoryView = toolbar
         dateOfBirth.inputView = datePicker
+        datePicker.addTarget(self, action: #selector(donedatePicker), for: UIControl.Event.valueChanged)
         
-    }
-    func snackBar(errorMessage : String) {
-        let message = MDCSnackbarMessage()
-        message.text = errorMessage
-        MDCSnackbarManager.messageTextColor = .white
-        MDCSnackbarManager.snackbarMessageViewBackgroundColor = #colorLiteral(red: 0, green: 0.8465872407, blue: 0.7545004487, alpha: 1)
-        MDCSnackbarManager.show(message)
     }
     @objc func donedatePicker(){
         if checkDateofBirth(){
@@ -317,7 +312,8 @@ extension Register2TVC{
         }
         else{
             self.view.endEditing(true)
-            snackBar(errorMessage: "you Are Under 18")
+            MyshowAlertWith(title: "sorry Can't Registered", message: "you Are Under 18")
+            
         }
     }
     @objc func Done(){
@@ -330,7 +326,6 @@ extension Register2TVC{
         country.text = nil
     }
     func checkDateofBirth() -> Bool {
-        
         let dateOfBirth = datePicker.date
         let today = Date()
         let gregorian = NSCalendar(calendarIdentifier: NSCalendar.Identifier.gregorian)!
@@ -346,32 +341,37 @@ extension Register2TVC{
     }
     func isEmptyOrNot() -> Bool {
         if dateOfBirth.text!.isEmpty{
-            snackBar(errorMessage: "select Your Date of Birth")
+
+            MyshowAlertWith(title: "Error", message: "select Your Date of Birth")
             return false
         }
             
         else if addressLine1.text!.isEmpty{
-            snackBar(errorMessage: "fill Address Line 1")
+            MyshowAlertWith(title: "Error", message:  "fill Address Line 1")
+           
             return false
         }
         else if country.text!.isEmpty{
-            snackBar(errorMessage: "select Your Country")
+            MyshowAlertWith(title: "Error", message: "select Your Country")
+            
             return false
         }
             
         else if stateTextField.text!.isEmpty{
-            snackBar(errorMessage: "select Your State")
+            MyshowAlertWith(title: "Error", message: "select Your State")
+           
             return false
         }
             
         else if city.text!.isEmpty{
-            
-            snackBar(errorMessage: "select Your City")
+            MyshowAlertWith(title: "Error", message: "select Your City")
+           
             return false
             
         }
         else if zipCode.text!.isEmpty{
-            snackBar(errorMessage: "fill Zip Code")
+            MyshowAlertWith(title: "Error", message: "fill Zip Code")
+           
             return false
         }
             
@@ -379,6 +379,12 @@ extension Register2TVC{
             return true
         }
     }
+    func MyshowAlertWith(title: String, message: String){
+          let ac = UIAlertController(title: title, message: message, preferredStyle: .alert)
+          ac.addAction(UIAlertAction(title: "OK", style: .default))
+          present(ac, animated: true)
+      }
+      
 }
 extension Register2TVC : MDCSnackbarManagerDelegate{
     func willPresentSnackbar(with messageView: MDCSnackbarMessageView?) {
@@ -388,6 +394,7 @@ extension Register2TVC : MDCSnackbarManagerDelegate{
     func snackbarDidDisappear() {
         ScreenBottombutton.goToNextScreen(button: button , view: self.view)
     }
+    
     
 }
 

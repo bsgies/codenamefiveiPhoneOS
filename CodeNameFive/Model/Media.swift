@@ -18,7 +18,7 @@ struct Media {
     init?(withImage image: UIImage, forKey key: String) {
         self.key = key
         self.mimeType = "image/jpeg"
-        self.filename = "kyleleeheadiconimage234567.jpg"
+        self.filename = "docs"
         
         guard let data = image.jpegData(compressionQuality: 0.7) else { return nil }
         self.data = data

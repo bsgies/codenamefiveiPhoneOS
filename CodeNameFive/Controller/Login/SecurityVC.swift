@@ -15,8 +15,10 @@ class SecurityVC: UIViewController {
     @IBOutlet weak var topLbl: UILabel!
     @IBOutlet weak var disLbl: UILabel!
     @IBOutlet weak var securityCodeOrPasswordField: UITextField?
+     let httplogin =   HttpLogin()
     let alert = UIAlertController(title: nil, message: "Please wait...", preferredStyle: .alert)
     var checkEmailOrPassword : String = "email"
+    var emailOrPhone : String?
     override func viewDidLoad() {
         super.viewDidLoad()
         if checkEmailOrPassword == "email"{
@@ -52,22 +54,78 @@ class SecurityVC: UIViewController {
     @IBAction func LoginButton(_ sender: Any) {
         if checkEmailOrPassword == "email"{
             if let validate = securityCodeOrPasswordField!.text {
-                Login.password = validate
                 self.loadindIndicator()
-                LoginApiWithEmail()
-                
-                
+                LoginApiWithEmail(pass: validate)
             }
-                
             else{
                 self.MyshowAlertWith(title: "Error", message: "Check your Password")
                 
             }}
+        else {
+                
+            if let validate = securityCodeOrPasswordField!.text {
+                self.loadindIndicator()
+                loginWithPhone(otp : validate)
+            }
+            else{
+                self.MyshowAlertWith(title: "Error", message: "Check your Password")
+                
+            }
+        }
+        
+        
     }
-    func LoginApiWithEmail() {
-        let httplogin =   HttpLogin()
-        if let email = Login.emailorPhone{
-            if let pass = Login.password{
+    func loginWithPhone(otp : String) {
+        if let phone = emailOrPhone{
+                httplogin.LoginwithPhone(phoneNumber: phone, otp: otp) { (result, error) in
+                    if error == nil{
+                        if let success = result?.success{
+                            if success{
+                            DispatchQueue.main.async {
+                                self.dismissAlert()
+                                self.GoToDashboard()
+                            }
+                            }
+                        }//success if
+                        else{
+                            //guard let errorMessage = result?.message else {return}
+                            DispatchQueue.main.async {
+                                self.dismissAlert()
+                            }
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                                self.MyshowAlertWith(title: "Error", message: (result?.message)!)
+                            }
+                        }
+                    }//error if
+                    else{
+                        
+                        DispatchQueue.main.async {
+                            self.dismissAlert()
+                        }
+                        
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                            self.MyshowAlertWith(title: "Error", message: "Server Error")
+                        }
+                    }
+                    
+                    
+                }
+        }//phone number if
+        else{
+            DispatchQueue.main.async {
+                self.dismissAlert()
+            }
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                self.MyshowAlertWith(title: "Error", message: "Phone Number Required")
+            }
+          
+        }
+    }
+    
+    func LoginApiWithEmail(pass : String) {
+       
+        if let email = emailOrPhone{
                 httplogin.LoginwithEmail(email: email, password: pass) { (result, error) in
                     if let success = result?.success{
                         if success{
@@ -75,7 +133,6 @@ class SecurityVC: UIViewController {
                                 self.dismissAlert()
                                 self.GoToDashboard()
                             }
-                            
                         }
                         else{
                             DispatchQueue.main.async {
@@ -97,20 +154,7 @@ class SecurityVC: UIViewController {
                         
                     }
                 }
-                
-                
-                
             }
-            else{
-                DispatchQueue.main.async {
-                    self.dismissAlert()
-                }
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                    self.MyshowAlertWith(title: "Error", message: "Please fil the Password")
-                    
-                }
-            }
-        }
         else{
             DispatchQueue.main.async {
                 self.dismissAlert()
