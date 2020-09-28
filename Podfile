@@ -12,10 +12,9 @@ target 'CodeNameFive' do
    pod 'ZendeskSupportSDK'
    pod 'MTSlideToOpen'
    pod 'ReachabilitySwift'
-   pod 'LanguageKit'
-   pod 'SwiftyGif'
    pod 'MaterialComponents/Snackbar'
    pod 'IQKeyboardManagerSwift'
+   pod "FlagPhoneNumber"
   # Pods for CodeNameFive
 
   target 'CodeNameFiveTests'  do

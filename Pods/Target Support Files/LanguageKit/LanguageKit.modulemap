@@ -1,6 +1,0 @@
-framework module LanguageKit {
-  umbrella header "LanguageKit-umbrella.h"
-
-  export *
-  module * { export * }
-}

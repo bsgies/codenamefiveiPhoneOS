@@ -292,6 +292,9 @@ extension Register2TVC{
     
     func showDatePicker(){
         datePicker.datePickerMode = .date
+        datePicker.frame = CGRect(x: 0, y: 0, width: self.view.bounds.width, height: 250.0)
+        datePicker.frame = CGRect(x: 0, y: 0, width: self.view.bounds.width, height: 250.0)
+        datePicker.preferredDatePickerStyle = .wheels
         let toolbar = UIToolbar();
         toolbar.sizeToFit()
         let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(donedatePicker));

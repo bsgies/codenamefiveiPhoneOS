@@ -20,3 +20,4 @@ class hit: UIView{
            return false
        }
 }
+
