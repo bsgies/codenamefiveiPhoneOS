@@ -40,6 +40,7 @@ class Register2TVC: UITableViewController,UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         setBackButton()
+        print(Registration.phoneNumber as Any)
         self.picker.delegate = self
         self.picker.dataSource = self
         loadCountries()

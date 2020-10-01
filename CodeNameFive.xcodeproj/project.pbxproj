@@ -70,7 +70,7 @@
 		4F827CB724F12B530061F3BF /* Registration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F827CB624F12B530061F3BF /* Registration.swift */; };
 		4F8374AE250F9F1D00009659 /* HttpLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F8374AD250F9F1D00009659 /* HttpLogin.swift */; };
 		4F8ED08824CC30F500F658DA /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F8ED08724CC30F500F658DA /* Device.swift */; };
-		4F8ED08E24CC55BB00F658DA /* style.json in Resources */ = {isa = PBXBuildFile; fileRef = 4F8ED08D24CC55BB00F658DA /* style.json */; };
+		4F8ED08E24CC55BB00F658DA /* country.json in Resources */ = {isa = PBXBuildFile; fileRef = 4F8ED08D24CC55BB00F658DA /* country.json */; };
 		4F8ED09024CC567900F658DA /* darkstyle.json in Resources */ = {isa = PBXBuildFile; fileRef = 4F8ED08F24CC567900F658DA /* darkstyle.json */; };
 		4F8ED09224CC575E00F658DA /* Sliver.json in Resources */ = {isa = PBXBuildFile; fileRef = 4F8ED09124CC575E00F658DA /* Sliver.json */; };
 		4F8ED09424CC57A000F658DA /* DarkModeMap.json in Resources */ = {isa = PBXBuildFile; fileRef = 4F8ED09324CC57A000F658DA /* DarkModeMap.json */; };
@@ -93,6 +93,8 @@
 		4FD8E15B24AE713A00482106 /* GoToPickupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FD8E15A24AE713A00482106 /* GoToPickupVC.swift */; };
 		4FDC63DE24F00EE000B990AB /* Helping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FDC63DD24F00EE000B990AB /* Helping.swift */; };
 		4FE12A1A24E54F78006F55E1 /* MMSlidingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FE12A1924E54F78006F55E1 /* MMSlidingButton.swift */; };
+		4FE1F9F9252665B80075D695 /* CountryCallingCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FE1F9F8252665B80075D695 /* CountryCallingCode.swift */; };
+		4FE1F9FE252671800075D695 /* CallingCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FE1F9FD2526717F0075D695 /* CallingCodeViewController.swift */; };
 		4FE4A400249FF93300CFFC3B /* EditProfileTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FE4A3FF249FF93300CFFC3B /* EditProfileTVC.swift */; };
 		4FEB2E8B2507BEEF00917715 /* Media.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FEB2E8A2507BEEF00917715 /* Media.swift */; };
 		4FEB2E8E2507DCB700917715 /* ImageAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FEB2E8D2507DCB700917715 /* ImageAlert.swift */; };
@@ -223,7 +225,7 @@
 		4F827CB624F12B530061F3BF /* Registration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Registration.swift; sourceTree = "<group>"; };
 		4F8374AD250F9F1D00009659 /* HttpLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpLogin.swift; sourceTree = "<group>"; };
 		4F8ED08724CC30F500F658DA /* Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
-		4F8ED08D24CC55BB00F658DA /* style.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = style.json; sourceTree = "<group>"; };
+		4F8ED08D24CC55BB00F658DA /* country.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = country.json; sourceTree = "<group>"; };
 		4F8ED08F24CC567900F658DA /* darkstyle.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = darkstyle.json; sourceTree = "<group>"; };
 		4F8ED09124CC575E00F658DA /* Sliver.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Sliver.json; sourceTree = "<group>"; };
 		4F8ED09324CC57A000F658DA /* DarkModeMap.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = DarkModeMap.json; sourceTree = "<group>"; };
@@ -248,6 +250,8 @@
 		4FD8E15A24AE713A00482106 /* GoToPickupVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoToPickupVC.swift; sourceTree = "<group>"; };
 		4FDC63DD24F00EE000B990AB /* Helping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helping.swift; sourceTree = "<group>"; };
 		4FE12A1924E54F78006F55E1 /* MMSlidingButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MMSlidingButton.swift; sourceTree = "<group>"; };
+		4FE1F9F8252665B80075D695 /* CountryCallingCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryCallingCode.swift; sourceTree = "<group>"; };
+		4FE1F9FD2526717F0075D695 /* CallingCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallingCodeViewController.swift; sourceTree = "<group>"; };
 		4FE4A3FF249FF93300CFFC3B /* EditProfileTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileTVC.swift; sourceTree = "<group>"; };
 		4FEB2E8A2507BEEF00917715 /* Media.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Media.swift; sourceTree = "<group>"; };
 		4FEB2E8D2507DCB700917715 /* ImageAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageAlert.swift; sourceTree = "<group>"; };
@@ -535,6 +539,7 @@
 				4F5C99FB24BA6D5500DC4A27 /* Register1TVC.swift */,
 				4F5C99FD24BA6D6500DC4A27 /* Register2TVC.swift */,
 				4F5C99FF24BA6D7400DC4A27 /* Register3TVC.swift */,
+				4FE1F9FD2526717F0075D695 /* CallingCodeViewController.swift */,
 			);
 			path = Register;
 			sourceTree = "<group>";
@@ -591,7 +596,7 @@
 		4F8ED08924CC53AD00F658DA /* JSON */ = {
 			isa = PBXGroup;
 			children = (
-				4F8ED08D24CC55BB00F658DA /* style.json */,
+				4F8ED08D24CC55BB00F658DA /* country.json */,
 				4F8ED08F24CC567900F658DA /* darkstyle.json */,
 				4F8ED09124CC575E00F658DA /* Sliver.json */,
 				4F8ED09324CC57A000F658DA /* DarkModeMap.json */,
@@ -636,6 +641,7 @@
 				4FEB2E8A2507BEEF00917715 /* Media.swift */,
 				4F6F10542510F6C6001DED27 /* EmailPhoneExitsValidation.swift */,
 				4F6D80862514A4C1006B1133 /* Login.swift */,
+				4FE1F9F8252665B80075D695 /* CountryCallingCode.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -732,7 +738,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1140;
-				LastUpgradeCheck = 1140;
+				LastUpgradeCheck = 1220;
 				ORGANIZATIONNAME = "ITRID TECHNOLOGIES LTD.";
 				TargetAttributes = {
 					4F2E5631249B4FA800D28462 = {
@@ -782,7 +788,7 @@
 				4F785A4E25018C21002D192D /* Data.gif in Resources */,
 				4F8ED09024CC567900F658DA /* darkstyle.json in Resources */,
 				4F8ED09224CC575E00F658DA /* Sliver.json in Resources */,
-				4F8ED08E24CC55BB00F658DA /* style.json in Resources */,
+				4F8ED08E24CC55BB00F658DA /* country.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -991,6 +997,7 @@
 				4F64AD9F249E40B80047E9D5 /* hit.swift in Sources */,
 				4FF8997024EDBFA50050A57E /* GifFileLoader.swift in Sources */,
 				4FB978E524A4A8990093C10F /* TripHistoryCell.swift in Sources */,
+				4FE1F9FE252671800075D695 /* CallingCodeViewController.swift in Sources */,
 				4FEB2E8E2507DCB700917715 /* ImageAlert.swift in Sources */,
 				4F92BDB624B290FC00DEDDF3 /* ChatVC.swift in Sources */,
 				4F393B1E24AB47F6009D08AB /* InvoiceDetailCell.swift in Sources */,
@@ -1026,6 +1033,7 @@
 				4F43BC2224A3EE40006CF40F /* WeeklyTripsDataViewController.swift in Sources */,
 				4FE4A400249FF93300CFFC3B /* EditProfileTVC.swift in Sources */,
 				4F5C9A0024BA6D7400DC4A27 /* Register3TVC.swift in Sources */,
+				4FE1F9F9252665B80075D695 /* CountryCallingCode.swift in Sources */,
 				4F2E5640249B4FA800D28462 /* CodeNameFive.xcdatamodeld in Sources */,
 				4F5AE8B824A77D0B00567D05 /* AppFont.swift in Sources */,
 				4FDC63DE24F00EE000B990AB /* Helping.swift in Sources */,
@@ -1128,6 +1136,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -1152,7 +1161,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1189,6 +1198,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -1207,7 +1217,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;

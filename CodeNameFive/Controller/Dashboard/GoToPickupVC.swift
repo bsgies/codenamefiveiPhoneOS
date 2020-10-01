@@ -306,9 +306,9 @@ class GoToPickupVC: UIViewController,CLLocationManagerDelegate, GMSMapViewDelega
         createPoly(index: pathIndex)
         for i in 0..<path.count(){
             let pathLat = path.coordinate(at: i).latitude.rounded(toPlaces: 4)
-            let pathLong = path.coordinate(at: i).longitude.rounded(toPlaces: 4)
-            let currentLat = currentLoc.latitude.rounded(toPlaces: 4)
-            let currentLong = currentLoc.longitude.rounded(toPlaces: 4)
+            _ = path.coordinate(at: i).longitude.rounded(toPlaces: 4)
+            _ = currentLoc.latitude.rounded(toPlaces: 4)
+            _ = currentLoc.longitude.rounded(toPlaces: 4)
             if currentLoc.latitude == pathLat{
                 pathIndex = Int(i)
                 break

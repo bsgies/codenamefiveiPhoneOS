@@ -7,14 +7,10 @@ target 'CodeNameFive' do
    pod 'GoogleMaps'
    pod 'MessageKit'
    pod 'MaterialComponents/ActivityIndicator', '~> 107.4'
-   pod 'CVCalendar', '~> 1.7.0'
    pod 'GoogleMapDirectionLib'
    pod 'ZendeskSupportSDK'
    pod 'MTSlideToOpen'
    pod 'ReachabilitySwift'
-   pod 'MaterialComponents/Snackbar'
-   pod 'IQKeyboardManagerSwift'
-   pod "FlagPhoneNumber"
   # Pods for CodeNameFive
 
   target 'CodeNameFiveTests'  do

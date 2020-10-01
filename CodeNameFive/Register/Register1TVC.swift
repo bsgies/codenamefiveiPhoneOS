@@ -8,11 +8,15 @@
 
 import UIKit
 import MaterialComponents.MaterialSnackbar
-class Register1TVC: UITableViewController , UITextFieldDelegate, UINavigationControllerDelegate {
+class Register1TVC: UITableViewController , UITextFieldDelegate, UINavigationControllerDelegate , returnDataProtocol {
+    func returnStringData(myData: String) {
+        callingCodeButtonOutlet.setTitle(myData, for: .normal)
+    }
     
     //MARK:- Outlets
     @IBOutlet weak var firstName: UITextField!
     @IBOutlet weak var vehcicalRegisterationCell: UITableViewCell!
+    @IBOutlet weak var callingCodeButtonOutlet: UIButton!
     @IBOutlet weak var changePhotoButton: UIButton!
     @IBOutlet weak var lastName: UITextField!
     @IBOutlet weak var emailAddress: UITextField!
@@ -22,11 +26,12 @@ class Register1TVC: UITableViewController , UITextFieldDelegate, UINavigationCon
     @IBOutlet weak var vechicalType: UITextField!
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var passwordTextfield: UITextField!
+    var isCalingCodeSelected : Bool = false
     
     let customErrorView = UIView(frame: CGRect(x: 0, y: 0, width: 300, height: 30))
     let lable = UILabel(frame: CGRect(x: 0, y: 0, width: 300, height: 30))
     
-  
+    
     
     //MARK:- variables
     let picker = UIPickerView()
@@ -40,21 +45,23 @@ class Register1TVC: UITableViewController , UITextFieldDelegate, UINavigationCon
     let headerLabel = UILabel()
     private var successEmail : Bool = false
     private var succesPhone : Bool = false
+    var callingCode : [String]?
+    
+    
     //MARK:- LifeCyles
     override func viewDidLoad() {
         super.viewDidLoad()
         setBackButton()
         self.picker.delegate = self
         self.picker.dataSource = self
-        LoadVehical()
         profileImage.isHidden = true
-        //setupErrorView()
+ 
+        
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidDisappear(true)
         ScreenBottombutton.goToNextScreen(button: button, view: self.view)
         button.addTarget(self, action: #selector(Next), for: .touchUpInside)
-        MDCSnackbarManager.delegate = self
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(true)
@@ -63,8 +70,11 @@ class Register1TVC: UITableViewController , UITextFieldDelegate, UINavigationCon
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
+        LoadVehical()
         navigationController?.setNavigationBarHidden(false, animated: animated)
     }
+    
+    
     //MARK:- Light and Dark Mode Delegate
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
@@ -82,53 +92,7 @@ class Register1TVC: UITableViewController , UITextFieldDelegate, UINavigationCon
             // Fallback on earlier versions
         }
     }
-    @objc func Next(){
-        if isEmptyorNot(){
-            if let email = emailAddress.text{
-                let validateemail =  email.removingWhitespaces()
-                if validateemail.isEmail() {
-                    if let validPassword = passwordTextfield.text{
-                        if validPassword.isPassword(){
-                            if (phoneNumber.text?.isValidPhone(phone: phoneNumber.text!))!{
-                                ProfileImage.profileImage = profileImage.image
-                                Registration.firstName = firstName.text
-                                Registration.lastName = lastName.text
-                                Registration.email = emailAddress.text
-                                Registration.phoneNumber = phoneNumber.text
-                                Registration.password = passwordTextfield.text
-                                if vechialType.text == vehicals.Bicycle.rawValue{
-                                    Registration.vehicle = "1"
-                                }
-                                else if vechialType.text == vehicals.Moped.rawValue{
-                                    Registration.vehicle = "2"
-                                }
-                                else if vechialType.text == vehicals.Car.rawValue{
-                                    Registration.vehicle =  "3"
-                                }
-                                else {
-                                    Registration.vehicle =  "4"
-                                }
-                                Registration.vehicleReg = vehicleRegisterationNumber.text
-                                let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-                                let newViewController = storyBoard.instantiateViewController(withIdentifier: "Register2TVC") as! Register2TVC
-                                navigationController?.pushViewController(newViewController, animated: false)
-                            }
-                            else{
-                                 MyshowAlertWith(title: "Error", message: "invalid Phone Number")
-                            }
-                        }
-                        else{
-                             MyshowAlertWith(title: "Error", message: "password Not Strong Must atlease One Capital Letter 1 Small Letter and 1 Digit and Minimum 8 Chracters")
-                        }
-                        
-                    }
-                }
-                else{
-                     MyshowAlertWith(title: "Error", message: "invalid Email Address")
-                }
-            }   
-        }
-    }
+    
     override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         
         if section == 0{
@@ -145,6 +109,19 @@ class Register1TVC: UITableViewController , UITextFieldDelegate, UINavigationCon
         }
     }
     
+    @IBAction func callingCodeAction(_ sender: UIButton) {
+       
+        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let newViewController = storyBoard.instantiateViewController(withIdentifier: "CallingCodeViewController") as! CallingCodeViewController
+        newViewController.delegate = self
+        present(newViewController, animated: true, completion: nil)
+
+        
+        
+        
+    }
+    
+
     
     @IBAction func textFieldVehicalType(_ sender: Any) {
         ShowVehicalTypes()
@@ -154,47 +131,47 @@ class Register1TVC: UITableViewController , UITextFieldDelegate, UINavigationCon
     }
     @IBAction func emailValidateAction(_ sender: UITextField) {
         guard let email = sender.text else {return}
-                if email.isEmail(){
-                    DispatchQueue.main.async {
-                  HttpEmailPhoneValidation.emailPhoneValidation(key: "email", value: sender.text!) { (result, error) in
-                      if let result = result{
-                          if result.success{
+        if email.isEmail(){
+            DispatchQueue.main.async {
+                HttpEmailPhoneValidation.emailPhoneValidation(key: "email", value: sender.text!) { (result, error) in
+                    if let result = result{
+                        if result.success{
                             self.successEmail  = true
-                             }
-                             else{
+                        }
+                        else{
                             DispatchQueue.main.async {
                                 self.MyshowAlertWith(title: "error", message: "email Address Alrady Exit")
                                 self.successEmail = false
                             }
                             
-
-                             }
-                         }
-                  }
+                            
+                        }
                     }
-                }else{
-                    self.MyshowAlertWith(title: "error", message: "Please Check Email format")
                 }
+            }
+        }else{
+            self.MyshowAlertWith(title: "error", message: "Please Check Email format")
+        }
     }
-
+    
     
     @IBAction func phoneValidationAction(_ sender: UITextField) {
         guard let phoneNumber = sender.text else {return}
-        HttpEmailPhoneValidation.emailPhoneValidation(key: "phoneNumber", value: phoneNumber) { (result, error) in
+        let number = (callingCodeButtonOutlet.titleLabel?.text!)! + phoneNumber
+        print(number)
+        HttpEmailPhoneValidation.emailPhoneValidation(key: "phoneNumber", value: number) { (result, error) in
             if let result = result{
                 if result.success{
-                  self.succesPhone  = true
-                   }
-                  else{
+                    self.succesPhone  = true
+                }
+                else{
                     DispatchQueue.main.async {
-                           self.MyshowAlertWith(title: "error", message: "phone Number Alrady Exit")
-                                       self.succesPhone = false
+                        self.MyshowAlertWith(title: "error", message: "phone Number Alrady Exit")
+                        self.succesPhone = false
                     }
-                 
-
-                   }
-                   
-               }
+                }
+                
+            }
         }
     }
     
@@ -216,6 +193,7 @@ class Register1TVC: UITableViewController , UITextFieldDelegate, UINavigationCon
         }
     }
 }
+
 extension Register1TVC{
     func setBackButton(){
         navigationController?.navigationBar.backItem?.titleView?.tintColor = UIColor(hex: "#12D2B3")
@@ -287,26 +265,7 @@ extension Register1TVC: UIPickerViewDataSource,UIPickerViewDelegate{
         
     }
     
-    func snackBar(errorMessage : String) {
-        let message = MDCSnackbarMessage()
-        message.text = errorMessage
-        MDCSnackbarManager.messageTextColor = .white
-        MDCSnackbarManager.snackbarMessageViewBackgroundColor = #colorLiteral(red: 0, green: 0.8465872407, blue: 0.7545004487, alpha: 1)
-        MDCSnackbarManager.show(message)
-    }
 }
-
-extension Register1TVC : MDCSnackbarManagerDelegate{
-    func willPresentSnackbar(with messageView: MDCSnackbarMessageView?) {
-        guard let window = UIApplication.shared.windows.filter({$0.isKeyWindow}).first else { return }
-        window.viewWithTag(200)?.removeFromSuperview()
-    }
-    func snackbarDidDisappear() {
-        ScreenBottombutton.goToNextScreen(button: button, view: self.view)
-    }
-    
-}
-
 extension Register1TVC : UIImagePickerControllerDelegate{
     func camera()
     {
@@ -325,7 +284,6 @@ extension Register1TVC : UIImagePickerControllerDelegate{
         self.present(myPickerController, animated: true, completion: nil)
         
     }
-    
     func showActionSheet() {
         
         let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertController.Style.actionSheet)
@@ -341,7 +299,6 @@ extension Register1TVC : UIImagePickerControllerDelegate{
         actionSheet.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
         
         self.present(actionSheet, animated: true, completion: nil)
-        
         
     }
     
@@ -365,21 +322,6 @@ extension Register1TVC : UIImagePickerControllerDelegate{
         }
         self.dismiss(animated: true, completion: nil)
     }
-    
-    
-    func erroView(message : String) {
-        lable.text = message
-        lable.textColor = .red
-    }
-    
-    func setupErrorView() {
-        customErrorView.backgroundColor = .blue
-        customErrorView.addSubview(lable)
-        lable.font = UIFont.systemFont(ofSize: 15)
-        lable.textAlignment = .right
-        tableView.tableFooterView = customErrorView
-    }
-    
 }
 
 
@@ -387,23 +329,23 @@ extension Register1TVC{
     func isEmptyorNot() -> Bool{
         
         if profileImage.isHidden {
-             MyshowAlertWith(title: "Error", message: "select Yuor Profile Photo")
+            MyshowAlertWith(title: "Error", message: "select Yuor Profile Photo")
             return false
         }
-            
+        
         else if firstName.text!.isEmpty
         {
             MyshowAlertWith(title: "Error", message: "fill first Name")
             return false
         }
         else if lastName.text!.isEmpty
-            
+        
         {   MyshowAlertWith(title: "Error", message: "fill last Name")
-          
+            
             return false
         }
         else if emailAddress.text!.isEmpty
-            
+        
         {
             MyshowAlertWith(title: "Error", message: "fill Email Address")
             return false
@@ -413,7 +355,7 @@ extension Register1TVC{
             return false
             
         }
-            
+        
         else if passwordTextfield.text!.isEmpty{
             MyshowAlertWith(title: "Error", message: "fill Password")
             return false
@@ -430,7 +372,7 @@ extension Register1TVC{
         {    MyshowAlertWith(title: "Error", message: "select Vehical Type")
             return false
         }
-            
+        
         else if vehicleRegisterationNumber.text!.isEmpty{
             if vechialType.text! == "Bicycle"{
                 return true
@@ -440,16 +382,12 @@ extension Register1TVC{
                 return false
             }
         }
-            
+        
         else{
             return true
         }
     }
-    
-    
-   
-    
-    
+
     enum vehicals : String {
         case Bicycle = "Bicycle"
         case Moped   = "Moped"
@@ -458,13 +396,65 @@ extension Register1TVC{
     
     
     func MyshowAlertWith(title: String, message: String){
-         let ac = UIAlertController(title: title, message: message, preferredStyle: .alert)
-         ac.addAction(UIAlertAction(title: "OK", style: .default))
-         present(ac, animated: true)
-     }
-    
+        let ac = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        ac.addAction(UIAlertAction(title: "OK", style: .default))
+        present(ac, animated: true)
+    }
     
 }
 
 
-
+//Validation
+extension Register1TVC{
+    
+    @objc func Next(){
+        if isEmptyorNot(){
+            if let email = emailAddress.text{
+                let validateemail =  email.removingWhitespaces()
+                if validateemail.isEmail() {
+                    if let validPassword = passwordTextfield.text{
+                        if validPassword.isPassword(){
+                            if (phoneNumber.text?.isValidPhone(phone: phoneNumber.text!))!{
+                                ProfileImage.profileImage = profileImage.image
+                                Registration.firstName = firstName.text
+                                Registration.lastName = lastName.text
+                                Registration.email = emailAddress.text
+                                Registration.phoneNumber = "\(String(describing: phoneNumber.text))\(String(describing: callingCodeButtonOutlet.titleLabel?.text))"
+                                Registration.password = passwordTextfield.text
+                                if vechialType.text == vehicals.Bicycle.rawValue{
+                                    Registration.vehicle = "1"
+                                }
+                                else if vechialType.text == vehicals.Moped.rawValue{
+                                    Registration.vehicle = "2"
+                                }
+                                else if vechialType.text == vehicals.Car.rawValue{
+                                    Registration.vehicle =  "3"
+                                }
+                                else {
+                                    Registration.vehicle =  "4"
+                                }
+                                Registration.vehicleReg = vehicleRegisterationNumber.text
+                                let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                                let newViewController = storyBoard.instantiateViewController(withIdentifier: "Register2TVC") as! Register2TVC
+                                navigationController?.pushViewController(newViewController, animated: false)
+                            }
+                            else{
+                                MyshowAlertWith(title: "Error", message: "invalid Phone Number")
+                            }
+                        }
+                        else{
+                            MyshowAlertWith(title: "Error", message: "password Not Strong Must atlease One Capital Letter 1 Small Letter and 1 Digit and Minimum 8 Chracters")
+                        }
+                        
+                    }
+                }
+                else{
+                    MyshowAlertWith(title: "Error", message: "invalid Email Address")
+                }
+            }
+        }
+    }
+    
+    
+    
+}

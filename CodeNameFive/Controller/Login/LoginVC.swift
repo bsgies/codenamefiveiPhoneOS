@@ -29,16 +29,6 @@ class LoginVC: UIViewController {
         super.viewDidLoad()
         let networkInformation = CTTelephonyNetworkInfo()
 
-        if let carrier = networkInformation.subscriberCellularProvider {
-            print("phone code:" + carrier.mobileNetworkCode!)
-
-            print("ISO country code: " + carrier.isoCountryCode!)
-
-            // Convert ISO country code to full country name
-            let currentLocale = NSLocale.init(localeIdentifier:  NSLocale.current.identifier)
-            let fullCountryName = currentLocale.displayName(forKey: NSLocale.Key.countryCode, value: carrier.isoCountryCode!)
-            print(fullCountryName)
-        }
         EmailorPhone.layer.borderColor = #colorLiteral(red: 0.9294117647, green: 0.9294117647, blue: 0.9294117647, alpha: 1)
         EmailorPhone.layer.backgroundColor = #colorLiteral(red: 0.968627451, green: 0.968627451, blue: 0.968627451, alpha: 1)
         EmailorPhone.layer.borderWidth = 1
