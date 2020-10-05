@@ -7,16 +7,32 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "68697F40-4B5D-481C-929A-B84B8163B130"
+            uuid = "C8F24F8D-1430-4BA4-A8EE-BFB85B0383AA"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "CodeNameFive/Register/Register1TVC.swift"
+            filePath = "CodeNameFive/Register/Register3TVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "161"
-            endingLineNumber = "161"
-            landmarkName = "phoneValidationAction(_:)"
+            startingLineNumber = "293"
+            endingLineNumber = "293"
+            landmarkName = "postData()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "2C1A7708-4C12-424A-AFFC-E1EBFF405815"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CodeNameFive/HTTP/HTTPRegisterationRequest.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "21"
+            endingLineNumber = "21"
+            landmarkName = "registerUser()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

@@ -1,5 +1,5 @@
 import UIKit
-import MaterialComponents.MaterialSnackbar
+
 class Register2TVC: UITableViewController,UITextFieldDelegate {
     
     //MARK:- Variables
@@ -54,7 +54,6 @@ class Register2TVC: UITableViewController,UITextFieldDelegate {
         super.viewDidAppear(true)
         ScreenBottombutton.goToNextScreen(button: button , view: self.view)
         button.addTarget(self, action: #selector(submit), for: .touchUpInside)
-        MDCSnackbarManager.delegate = self
     }
     
     // MARK:- Textefield Delegate
@@ -389,17 +388,6 @@ extension Register2TVC{
           present(ac, animated: true)
       }
       
-}
-extension Register2TVC : MDCSnackbarManagerDelegate{
-    func willPresentSnackbar(with messageView: MDCSnackbarMessageView?) {
-        guard let window = UIApplication.shared.windows.filter({$0.isKeyWindow}).first else { return }
-        window.viewWithTag(200)?.removeFromSuperview()
-    }
-    func snackbarDidDisappear() {
-        ScreenBottombutton.goToNextScreen(button: button , view: self.view)
-    }
-    
-    
 }
 
 extension Register2TVC {

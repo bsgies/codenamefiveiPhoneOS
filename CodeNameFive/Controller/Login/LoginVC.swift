@@ -54,7 +54,6 @@ class LoginVC: UIViewController {
     @IBAction func contniueForPassword(_ sender: UIButton) {
         if let validate = EmailorPhone.text{
             if validate.isEmail(){
-                
                 checkemail = "email"
                 GoToSecurityScreen()
             }
@@ -96,8 +95,6 @@ class LoginVC: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(true)
-    
-        
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
         super.viewWillDisappear(animated)

@@ -10,7 +10,6 @@ import UIKit
 import CoreData
 import GoogleMaps
 import Reachability
-import IQKeyboardManagerSwift
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
    var reachability: Reachability!

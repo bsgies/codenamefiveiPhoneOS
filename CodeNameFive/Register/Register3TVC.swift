@@ -37,7 +37,6 @@ class Register3TVC: UITableViewController {
     var unchecked : Bool = false
     var indicator =  UIActivityIndicatorView()
     let alert = UIAlertController(title: nil, message: "Please wait...", preferredStyle: .alert)
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         setBackButton()
@@ -277,12 +276,114 @@ extension Register3TVC : UIImagePickerControllerDelegate{
             print("Image not Loaded")
         }
     }
+
+    func RegisterUser(){
+        if Registration.InfoIsEmpty(){
+        uploadfirst()
+        }
+        else{
+            MyshowAlertWith(title: "Error", message: "SomeData is Empty")
+        }
+    }
     
+    
+    func postData() {
+        if Registration.isDocumentUploaded(){
+            print("Task 5 started")
+            self.httpregister.registerUser()
+            if myRegisterationResponse.sucsess == true {
+                DispatchQueue.main.async {
+                    self.dismissAlert()
+                }
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [self] in
+                    successAlert(title: "Succeses", message: "Registered")
+                }
+            }
+            else{
+                DispatchQueue.main.async {
+                    self.dismissAlert()
+                }
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [self] in
+                    MyshowAlertWith(title: "Error", message: (myRegisterationResponse.error as! String) )
+                    
+                }
+            }
+        }
+        else{
+            DispatchQueue.main.async {
+                self.dismissAlert()
+            }
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [self] in
+               MyshowAlertWith(title: "Error", message: "connection Error")
+            }
+            
+        }
+    }
+    
+    func uploadFrontImage(image : UIImage) {
+
+        ImageUploadObj.UploadImage(image: frontImage!) { (result, error) in
+            if result != nil{
+                Registration.frontDocument = result!.data.fileName.path
+                self.uploadsecond()
+            }
+            else{
+                DispatchQueue.main.async {
+                    self.dismissAlert()
+                    print(error!.localizedDescription)
+                }
+            }
+        }
+    }
+    func uploadBackImage(image : UIImage) {
+        ImageUploadObj.UploadImage(image: image) { [self] (result, error) in
+            if result != nil{
+                Registration.backDocument = result!.data.fileName.path
+                uploadThird()
+            }
+            else{
+                DispatchQueue.main.async {
+                    self.dismissAlert()
+                    print(error!.localizedDescription)
+                }
+            }
+        }
+    }
+    func uploadAddressVerification(image : UIImage) {
+
+        ImageUploadObj.UploadImage(image: image) { [self] (result, error) in
+            if result != nil{
+                Registration.addressProof = result!.data.fileName.path
+                uploadFourth()
+            }
+            else{
+                DispatchQueue.main.async {
+                    self.dismissAlert()
+                    print(error!.localizedDescription)
+                }
+            }
+        }
+    }
+    func profileImage(image : UIImage) {
+        ImageUploadObj.UploadImage(image: image) { [self] (result, error) in
+            if result != nil{
+                Registration.profilePhoto = result!.data.fileName.path
+                postData()
+            }
+            else{
+                DispatchQueue.main.async {
+                    self.dismissAlert()
+                    print(error!.localizedDescription)
+                }
+            }
+        }
+    }
     func uploadfirst(){
         self.loadindIndicator()
         print("Task 1 started")
         if let frontimage = self.frontImage{
             self.uploadFrontImage(image: frontimage)
+            
         }
     }
     func uploadsecond() {
@@ -303,90 +404,7 @@ extension Register3TVC : UIImagePickerControllerDelegate{
         print("Task 4 started")
         if let profileImage = ProfileImage.profileImage{
             self.profileImage(image: profileImage)
-        }
-    }
-    
-    
-    
-    func RegisterUser(){
-        if Registration.InfoIsEmpty(){
-            queue.sync {
-                uploadfirst()
-                uploadsecond()
-                uploadThird()
-                uploadFourth()
-            }
             
-        }
-        else{
-            print("Some Data is Missing")
-        }
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 50, execute: {
-            if Registration.isDocumentUploaded(){
-                print("Task 5 started")
-                self.httpregister.registerUser()
-                if myRegisterationResponse.sucsess == true {
-                    DispatchQueue.main.async {
-                        self.dismissAlert()
-                    }
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                        self.successAlert(title: "Succeses", message: "Registered")
-                    }
-                }
-                else{
-                    DispatchQueue.main.async {
-                        self.dismissAlert()
-                    }
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                        self.MyshowAlertWith(title: "Error", message: (myRegisterationResponse.error as! String) ?? "Some Error Occur")
-                        
-                    }
-                }
-            }
-            else{
-                DispatchQueue.main.async {
-                    self.dismissAlert()
-                }
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                    self.MyshowAlertWith(title: "Error", message: "connection Error")
-                }
-                
-            }
-        })
-        
-    }
-    
-    func uploadFrontImage(image : UIImage) {
-        
-        ImageUploadObj.uploadIDPhotoFirst(image: image) { (result, error) in
-            if error == nil{
-                
-                Registration.frontDocument = result!.data.fileName.path
-            }
-        }
-    }
-    func uploadBackImage(image : UIImage) {
-        ImageUploadObj.uploadIdPhoto2(image: image) { (result, error) in
-            if error == nil{
-                Registration.backDocument = result!.data.fileName.path
-                
-            }
-        }
-    }
-    func uploadAddressVerification(image : UIImage) {
-        
-        ImageUploadObj.uploadAddressDocs(image: image) { (result, error) in
-            if error == nil{
-                Registration.addressProof = result!.data.fileName.path
-            }
-        }
-    }
-    func profileImage(image : UIImage) {
-        ImageUploadObj.uploadProflePhoto(image: image) { (result, error) in
-            if error == nil{
-                Registration.profilePhoto = result!.data.fileName.path
-            }
         }
     }
     enum docs : String {
@@ -446,4 +464,3 @@ extension Register3TVC {
         }
     }
 }
-
