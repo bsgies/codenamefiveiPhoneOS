@@ -7,7 +7,7 @@
 //
 
 import Foundation
-
+import SystemConfiguration
 
 class HTTPVehicalType {
     
@@ -42,4 +42,6 @@ class HTTPVehicalType {
 
 
     }
+    
+   
 }

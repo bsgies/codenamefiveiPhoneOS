@@ -15,6 +15,6 @@ struct Endpoints {
     static let cities = "http://ec2-18-222-200-202.us-east-2.compute.amazonaws.com:3000/api/v1/city"
     static let imageUpload = "http://ec2-18-222-200-202.us-east-2.compute.amazonaws.com:3000/api/v1/partner/image"
     static let registeration = "http://ec2-18-222-200-202.us-east-2.compute.amazonaws.com:3000/api/v1/partner"
-    static let login = "http://ec2-18-222-200-202.us-east-2.compute.amazonaws.com:3000/api/v1/partner"
-
+    static let login = "http://ec2-18-222-200-202.us-east-2.compute.amazonaws.com:3000/api/v1/partner/login"
+    static let loginWithPhone = "http://ec2-18-222-200-202.us-east-2.compute.amazonaws.com:3000/api/v1/partner/login/phone/verify"
 }

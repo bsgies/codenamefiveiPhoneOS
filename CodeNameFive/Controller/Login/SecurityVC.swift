@@ -9,171 +9,111 @@
 import UIKit
 
 class SecurityVC: UIViewController {
+    
+    //MARK:- OUTLETS
     @IBOutlet weak var CodeNotReceived: UILabel!
     @IBOutlet weak var backgroundView: UIView!
     @IBOutlet weak var pathnerImage: UIImageView!
     @IBOutlet weak var topLbl: UILabel!
     @IBOutlet weak var disLbl: UILabel!
     @IBOutlet weak var securityCodeOrPasswordField: UITextField?
-     let httplogin =   HttpLogin()
-    let alert = UIAlertController(title: nil, message: "Please wait...", preferredStyle: .alert)
+    @IBOutlet weak var errorLbl : UILabel!
+    
+    //MARK:- Variables
+    let httplogin =   HttpLogin()
     var checkEmailOrPassword : String = "email"
     var emailOrPhone : String?
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        if checkEmailOrPassword == "email"{
-            securityCodeOrPasswordField!.keyboardType = UIKeyboardType.default
-            topLbl.text = "Enter your password"
-            disLbl.isHidden = true
-            securityCodeOrPasswordField!.placeholder = "Password"
-            CodeNotReceived.text = "Forgot password?"
-        }
-        else{
-            securityCodeOrPasswordField!.keyboardType = UIKeyboardType.numberPad
-            disLbl.isHidden = false
-        }
-        CodeNotReceived.isUserInteractionEnabled = true
-        let tap = UITapGestureRecognizer(target: self, action: #selector(taped))
-        pathnerImage.addGestureRecognizer(tap)
-        backgroundView.addGestureRecognizer(tap)
-        NotificationCenter.default.addObserver(self, selector: #selector(KeyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(KeyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
-        let codenotReceived = UITapGestureRecognizer(target: self, action: #selector(showAlert))
-        CodeNotReceived.addGestureRecognizer(codenotReceived)
-        
-    }
     
+    //MARK:- LifeCycles
+    override func viewDidLoad(){
+        super.viewDidLoad()
+        CheckEmailOrPhone()
+        SetupTapGestuersAndKeyboardObservers()
+    }
     override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(true)
-        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
         super.viewWillDisappear(animated)
+        RemoveObserver()
         navigationController?.setNavigationBarHidden(false, animated: animated)
     }
     
-    @IBAction func LoginButton(_ sender: Any) {
-        if checkEmailOrPassword == "email"{
-            if let validate = securityCodeOrPasswordField!.text {
-                self.loadindIndicator()
-                LoginApiWithEmail(pass: validate)
+    enum loginWith {
+        case email
+        case phone
+    }
+    //MARK:- Actions
+    @IBAction func LoginButton(_ sender: UIButton) {
+        guard let password = securityCodeOrPasswordField?.text else { return }
+        guard let email = emailOrPhone else { return }
+        if !password.isEmpty{
+            if checkEmailOrPassword == "email"{
+                LoginApiWithEmail(parm: ["email": email , "password": password], type: .email)
             }
-            else{
-                self.MyshowAlertWith(title: "Error", message: "Check your Password")
-                
-            }}
-        else {
-                
-            if let validate = securityCodeOrPasswordField!.text {
-                self.loadindIndicator()
-                loginWithPhone(otp : validate)
-            }
-            else{
-                self.MyshowAlertWith(title: "Error", message: "Check your Password")
-                
+            else {
+                LoginApiWithEmail(parm: ["phone": email , "otp": password], type: .phone)
             }
         }
-        
-        
-    }
-    func loginWithPhone(otp : String) {
-        if let phone = emailOrPhone{
-                httplogin.LoginwithPhone(phoneNumber: phone, otp: otp) { (result, error) in
-                    if error == nil{
-                        if let success = result?.success{
-                            if success{
-                            DispatchQueue.main.async {
-                                self.dismissAlert()
-                                self.GoToDashboard()
-                            }
-                            }
-                        }//success if
-                        else{
-                            //guard let errorMessage = result?.message else {return}
-                            DispatchQueue.main.async {
-                                self.dismissAlert()
-                            }
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                                self.MyshowAlertWith(title: "Error", message: (result?.message)!)
-                            }
-                        }
-                    }//error if
-                    else{
-                        
-                        DispatchQueue.main.async {
-                            self.dismissAlert()
-                        }
-                        
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                            self.MyshowAlertWith(title: "Error", message: "Server Error")
-                        }
-                    }
-                    
-                    
-                }
-        }//phone number if
         else{
-            DispatchQueue.main.async {
-                self.dismissAlert()
+            errorLbl.isHidden = false
+            errorLbl.text = "incorrect Security Code"
+        }
+    }
+    @IBAction func hideLbl(_ sender: UITextField) {
+        errorLbl.isHidden = true
+    }
+    func LoginApiWithEmail(parm : [String:Any] ,type :  loginWith) {
+        switch type{
+        case .email :
+            HttpService.sharedInstance.postRequest(urlString: Endpoints.login, bodyData: parm) { [self](responseData) in
+                            do{
+                    let jsonData = responseData?.toJSONString1().data(using: .utf8)!
+                    let decoder = JSONDecoder()
+                    let obj = try decoder.decode(LoginResponse.self, from: jsonData!)
+                    saveValuesInKeyChain(obj: obj)
+                }
+                catch{
+                    errorLbl.text = "incorrect Security Code"
+                }
             }
-            
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                self.MyshowAlertWith(title: "Error", message: "Phone Number Required")
-            }
-          
+        case .phone :
+            HttpService.sharedInstance.postRequest(urlString: Endpoints.loginWithPhone, bodyData: parm) { [self](responseData) in
+                            do{
+                    let jsonData = responseData?.toJSONString1().data(using: .utf8)!
+                    let decoder = JSONDecoder()
+                    let obj = try decoder.decode(LoginResponse.self, from: jsonData!)
+                    saveValuesInKeyChain(obj: obj)
+                }
+                catch{
+                    errorLbl.text = "some Error Occour During Prosessing"
+                }}}}
+    
+    func saveValuesInKeyChain(obj : LoginResponse){
+        if obj.success == true{
+            guard let result = obj.data?.results else { return }
+            guard let token = obj.data?.token else { return }
+            KeychainWrapper.standard.set(token, forKey: "token")
+            KeychainWrapper.standard.set(result.status!, forKey: "online_status")
+            KeychainWrapper.standard.set(result.lastName ?? "", forKey: "last_name")
+            KeychainWrapper.standard.set(result.firstName ?? "", forKey: "first_name")
+            KeychainWrapper.standard.set(result.email ?? "" , forKey: "email")
+            KeychainWrapper.standard.set(result.id!, forKey: "id" )
+            KeychainWrapper.standard.set(result.profilePhoto!, forKey: "profile_photo")
+            KeychainWrapper.standard.set(result.phoneNumber!, forKey: "phone_number")
+            KeychainWrapper.standard.set(result.status!, forKey: "status")
+            saveInDefault(value: true, key: "isUserLogIn")
+            self.GoToDashboard()
+        }
+        else{
+            errorLbl.isHidden = false
+            errorLbl.text = obj.message
         }
     }
     
-    func LoginApiWithEmail(pass : String) {
-       
-        if let email = emailOrPhone{
-                httplogin.LoginwithEmail(email: email, password: pass) { (result, error) in
-                    if let success = result?.success{
-                        if success{
-                            DispatchQueue.main.async {
-                                self.dismissAlert()
-                                self.GoToDashboard()
-                            }
-                        }
-                        else{
-                            DispatchQueue.main.async {
-                                self.dismissAlert()
-                            }
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                                self.MyshowAlertWith(title: "Error", message: (result?.message)!)
-                            }
-                            
-                        }
-                    }
-                    else{
-                        DispatchQueue.main.async {
-                            self.dismissAlert()
-                        }
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                            self.MyshowAlertWith(title: "Error", message: "Connection error")
-                        }
-                        
-                    }
-                }
-            }
-        else{
-            DispatchQueue.main.async {
-                self.dismissAlert()
-            }
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                self.MyshowAlertWith(title: "Error", message: "Email Requierd")
-                
-            }
-        }
-    }
-
 }
-
 extension SecurityVC{
     @objc func taped(){
         self.view.endEditing(true)
     }
     @objc func KeyboardWillShow(sender: NSNotification){
-        
         let keyboardSize : CGSize = ((sender.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue.size)!
         if self.view.frame.origin.y == 0{
             self.view.frame.origin.y -= keyboardSize.height
@@ -184,12 +124,8 @@ extension SecurityVC{
                 self.pathnerImage.isHidden = true
             })
         }
-        
-        
     }
-    
     @objc func KeyboardWillHide(sender : NSNotification){
-        
         
         let keyboardSize : CGSize = ((sender.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue.size)!
         if self.view.frame.origin.y != 0{
@@ -200,10 +136,7 @@ extension SecurityVC{
                 self.pathnerImage.isHidden = false
             })
         }
-        
-        
     }
-    
     @objc func showAlert(){
         
         let alertController = UIAlertController(title: "Code not received?", message: "Resend security code (it can take up to a minute to arrive)", preferredStyle: .alert)
@@ -229,33 +162,33 @@ extension SecurityVC{
     }
     
     
-    func  GoToDashboard(){
-        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let newViewController = storyBoard.instantiateViewController(withIdentifier: "DashboardVC")
-        navigationController?.pushViewController(newViewController, animated: false)
-    }
-    func MyshowAlertWith(title: String, message: String){
-        let ac = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        ac.addAction(UIAlertAction(title: "OK", style: .default))
-        present(ac, animated: true)
-    }
-    func loadindIndicator(){
-        
-        let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
-        loadingIndicator.hidesWhenStopped = true
-        loadingIndicator.style = UIActivityIndicatorView.Style.large
-        loadingIndicator.startAnimating()
-        alert.view.addSubview(loadingIndicator)
-        present(alert, animated: true, completion: nil)
-    }
-    
-    
-    internal func dismissAlert() {
-        if let vc = self.presentedViewController, vc is UIAlertController {
-            dismiss(animated: false, completion: nil)
-            
+}
+extension SecurityVC{
+    func CheckEmailOrPhone(){
+        if checkEmailOrPassword == "email"{
+            securityCodeOrPasswordField!.keyboardType = UIKeyboardType.default
+            topLbl.text = "Enter your password"
+            disLbl.isHidden = true
+            securityCodeOrPasswordField!.placeholder = "Password"
+            CodeNotReceived.text = "Forgot password?"
+        }
+        else{
+            securityCodeOrPasswordField!.keyboardType = UIKeyboardType.numberPad
+            disLbl.isHidden = false
         }
     }
-    
-    
+    func SetupTapGestuersAndKeyboardObservers(){
+        CodeNotReceived.isUserInteractionEnabled = true
+        let tap = UITapGestureRecognizer(target: self, action: #selector(taped))
+        pathnerImage.addGestureRecognizer(tap)
+        backgroundView.addGestureRecognizer(tap)
+        NotificationCenter.default.addObserver(self, selector: #selector(KeyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(KeyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+        let codenotReceived = UITapGestureRecognizer(target: self, action: #selector(showAlert))
+        CodeNotReceived.addGestureRecognizer(codenotReceived)
+    }
+    func RemoveObserver() {
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
 }

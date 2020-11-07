@@ -25,7 +25,7 @@ class CollectcashVC: UIViewController {
     @IBOutlet weak var due: UIButton!
     @IBOutlet weak var received: UILabel!
     @IBAction func deliveryComplete(_ sender: UIButton) {
-       GoToDashBoard()
+        self.GoToDashboard()
     }
     @IBAction func otheAmount(_ sender: UIButton) {
         
@@ -46,12 +46,6 @@ class CollectcashVC: UIViewController {
         self.present(alertController, animated: true, completion: nil)
         
     }
-    func GoToDashBoard(){
-               let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-               let newViewController = storyBoard.instantiateViewController(withIdentifier: "DashboardVC")
-               navigationController?.pushViewController(newViewController, animated: true)
-           }
-
     func setChangePayments() {
         
     }

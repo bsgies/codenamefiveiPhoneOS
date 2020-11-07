@@ -10,7 +10,6 @@ target 'CodeNameFive' do
    pod 'GoogleMapDirectionLib'
    pod 'ZendeskSupportSDK'
    pod 'MTSlideToOpen'
-   pod 'ReachabilitySwift'
   # Pods for CodeNameFive
 
   target 'CodeNameFiveTests'  do

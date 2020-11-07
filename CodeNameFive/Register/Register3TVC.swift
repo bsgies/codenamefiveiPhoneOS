@@ -14,8 +14,7 @@ import Alamofire
 class Register3TVC: UITableViewController {
     
     var vSpinner : UIView?
-    
-   
+    var ai = UIActivityIndicatorView()
     @IBOutlet weak var checkBoxOutlet: UIButton!
     let queue = DispatchQueue(label: "que" , attributes: .concurrent)
     @IBOutlet weak var uploadProofID: UITextField!
@@ -44,7 +43,11 @@ class Register3TVC: UITableViewController {
         backIdPhotoImageView.isHidden = true
         addressOfProofImageView.isHidden = true
        let image = #imageLiteral(resourceName: "unchecked_checkbox")
-       image.withTintColor(#colorLiteral(red: 0, green: 0.8465872407, blue: 0.7545004487, alpha: 1))
+        if #available(iOS 13.0, *) {
+            image.withTintColor(#colorLiteral(red: 0, green: 0.8465872407, blue: 0.7545004487, alpha: 1))
+        } else {
+            // Fallback on earlier versions
+        }
        checkBoxOutlet.setImage(image, for: .normal)
     }
     
@@ -52,37 +55,27 @@ class Register3TVC: UITableViewController {
           
            if unchecked {
                     let image = #imageLiteral(resourceName: "unchecked_checkbox")
-                    image.withTintColor(#colorLiteral(red: 0, green: 0.8465872407, blue: 0.7545004487, alpha: 1))
+            if #available(iOS 13.0, *) {
+                image.withTintColor(#colorLiteral(red: 0, green: 0.8465872407, blue: 0.7545004487, alpha: 1))
+            } else {
+                // Fallback on earlier versions
+            }
                     sender.setImage(image, for: .normal)
                     unchecked = false
                 }
                 else {
                     let image = #imageLiteral(resourceName: "checked_checkbox")
-                    image.withTintColor(#colorLiteral(red: 0, green: 0.8465872407, blue: 0.7545004487, alpha: 1))
+                    if #available(iOS 13.0, *) {
+                        image.withTintColor(#colorLiteral(red: 0, green: 0.8465872407, blue: 0.7545004487, alpha: 1))
+                    } else {
+                        // Fallback on earlier versions
+                    }
                     sender.setImage(image, for: .normal)
                     unchecked = true
                 }
            
        }
-    
-    func loadindIndicator(){
-        
-        let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
-        loadingIndicator.hidesWhenStopped = true
-        loadingIndicator.style = UIActivityIndicatorView.Style.large
-        loadingIndicator.startAnimating()
-        alert.view.addSubview(loadingIndicator)
-        present(alert, animated: true, completion: nil)
-    }
-    
-    
-    internal func dismissAlert() {
-        if let vc = self.presentedViewController, vc is UIAlertController {
-            dismiss(animated: false, completion: nil)
-            
-        }
-    }
-    
+
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
         ScreenBottombutton.goToNextScreen(button: button , view: self.view)
@@ -414,12 +407,6 @@ extension Register3TVC : UIImagePickerControllerDelegate{
     }
     
     
-    func MyshowAlertWith(title: String, message: String){
-        let ac = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        ac.addAction(UIAlertAction(title: "OK", style: .default))
-        present(ac, animated: true)
-    }
-    
     func successAlert(title: String, message: String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         
@@ -445,11 +432,15 @@ extension Register3TVC {
     func showSpinner(onView : UIView) {
         let spinnerView = UIView.init(frame: onView.bounds)
         spinnerView.backgroundColor = UIColor.init(red: 0.5, green: 0.5, blue: 0.5, alpha: 0.5)
-        let ai = UIActivityIndicatorView.init(style: .large)
+        if #available(iOS 13.0, *) {
+            ai = UIActivityIndicatorView.init(style: .large)
+        } else if #available(iOS 12.0, *) {
+            ai = UIActivityIndicatorView.init(style: .whiteLarge)
+        }
         ai.startAnimating()
         ai.center = spinnerView.center
         
-        DispatchQueue.main.async {
+        DispatchQueue.main.async { [self] in
             spinnerView.addSubview(ai)
             onView.addSubview(spinnerView)
         }

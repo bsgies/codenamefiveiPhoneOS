@@ -28,7 +28,11 @@ class DeliverOrderTVC: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         let image = #imageLiteral(resourceName: "unchecked_checkbox")
-        image.withTintColor(#colorLiteral(red: 0, green: 0.8465872407, blue: 0.7545004487, alpha: 1))
+        if #available(iOS 13.0, *) {
+            image.withTintColor(#colorLiteral(red: 0, green: 0.8465872407, blue: 0.7545004487, alpha: 1))
+        } else {
+            // Fallback on earlier versions
+        }
         checkboxOutlet.setImage(image, for: .normal)
         setCrossButton()
         
@@ -62,14 +66,22 @@ class DeliverOrderTVC: UITableViewController {
         if unchecked {
             button.isEnabled = false
             let image = #imageLiteral(resourceName: "unchecked_checkbox")
-            image.withTintColor(#colorLiteral(red: 0, green: 0.8465872407, blue: 0.7545004487, alpha: 1))
+            if #available(iOS 13.0, *) {
+                image.withTintColor(#colorLiteral(red: 0, green: 0.8465872407, blue: 0.7545004487, alpha: 1))
+            } else {
+                // Fallback on earlier versions
+            }
             sender.setImage(image, for: .normal)
             unchecked = false
         }
         else {
             button.isEnabled = true
             let image = #imageLiteral(resourceName: "checked_checkbox")
-            image.withTintColor(#colorLiteral(red: 0, green: 0.8465872407, blue: 0.7545004487, alpha: 1))
+            if #available(iOS 13.0, *) {
+                image.withTintColor(#colorLiteral(red: 0, green: 0.8465872407, blue: 0.7545004487, alpha: 1))
+            } else {
+                // Fallback on earlier versions
+            }
             sender.setImage(image, for: .normal)
             unchecked = true
         }

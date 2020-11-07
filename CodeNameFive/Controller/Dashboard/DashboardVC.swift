@@ -5,13 +5,13 @@
 //  Created by Muhammad Imran on 19/06/2020.
 //  Copyright © 2020 ITRID TECHNOLOGIES LTD. All rights reserved.
 //
-//// online buton disable and map show but location off
 
 import UIKit
 import GoogleMaps
 import CoreLocation
 import CoreHaptics
 import MaterialComponents.MaterialActivityIndicator
+
 class DashboardVC: UIViewController ,  CLLocationManagerDelegate, GMSMapViewDelegate, UIGestureRecognizerDelegate {
     
     //MARK:- outlets
@@ -35,7 +35,7 @@ class DashboardVC: UIViewController ,  CLLocationManagerDelegate, GMSMapViewDele
     var currentLocation: CLLocation?
     var zoomLevel: Float = 15.0
     let path = GMSMutablePath()
-    var engine: CHHapticEngine?
+    
     var i = 0
     let serverResponseActivityIndicator = MDCActivityIndicator()
     var locValue = CLLocationCoordinate2D(latitude: 0, longitude: 0)
@@ -92,6 +92,10 @@ class DashboardVC: UIViewController ,  CLLocationManagerDelegate, GMSMapViewDele
     //MARK:- Life Cycles
     override func viewDidLoad() {
         super.viewDidLoad()
+        let r = KeychainWrapper.standard.string(forKey: "token")
+        let b  = UserDefaults.standard.bool(forKey: "isUserLogIn")
+        print(r as Any)
+        print(b)
         googleMapView.delegate = self
         if !checkOnlineOrOffline{
             Autrize()
@@ -205,9 +209,9 @@ class DashboardVC: UIViewController ,  CLLocationManagerDelegate, GMSMapViewDele
         Autrize()
     }
     //GMSx_QTMButton
-    
+    @available(iOS 13.0, *)
     func Haptic()  {
-        
+        var engine: CHHapticEngine?
         guard CHHapticEngine.capabilitiesForHardware().supportsHaptics else { return }
         
         do {

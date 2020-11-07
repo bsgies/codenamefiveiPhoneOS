@@ -16,11 +16,7 @@ class HelpOrCancelVC: UIViewController,UITableViewDataSource,UITableViewDelegate
     let  rejection = ["Unable to find pickup","Too far away","Pickup wait time","Vehicle problems","Unexpected delay","Pickup is closed","I don’t want to deliver this order","Other"]
     
     @IBAction func rejectTrip(_ sender: Any) {
-        func GoToDashBoard(){
-            let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-            let newViewController = storyBoard.instantiateViewController(withIdentifier: "DashboardVC")
-            navigationController?.pushViewController(newViewController, animated: true)
-        }
+        self.GoToDashboard()
         
     }
     @IBAction func GoBack(_ sender: Any) {

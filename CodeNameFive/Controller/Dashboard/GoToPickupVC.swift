@@ -364,11 +364,6 @@ Direction(from: locValue!, to: toLoc!)
 
 extension GoToPickupVC{
     
-    func GoToDashBoard(){
-        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let newViewController = storyBoard.instantiateViewController(withIdentifier: "DashboardVC")
-        navigationController?.pushViewController(newViewController, animated: true)
-    }
     func GoToPickup(){
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let newViewController = storyBoard.instantiateViewController(withIdentifier: "GoToPickupVC")

@@ -3,6 +3,7 @@ import UIKit
 class Register2TVC: UITableViewController,UITextFieldDelegate {
     
     //MARK:- Variables
+    var vSpinner : UIView?
     let httplocationobj = HTTPLocation()
     var countries: [String] = []
     var countriesID: [Int] = []
@@ -18,8 +19,8 @@ class Register2TVC: UITableViewController,UITextFieldDelegate {
     var countryId  : Int?
     var stateId : Int?
     var cityId  :Int?
-     var vSpinner : UIView?
     var dic : [String : Any] = [:]
+    var ai = UIActivityIndicatorView()
     //MARK:- OUTLETS
     @IBOutlet weak var country: UITextField!
     @IBOutlet weak var stateTextField: UITextField!
@@ -76,7 +77,7 @@ class Register2TVC: UITableViewController,UITextFieldDelegate {
     @IBAction func stateSelectionforPicker(_ sender: UITextField) {
         if country.text!.isEmpty{
              self.view.endEditing(true)
-            MyshowAlertWith(title: "Error", message: "select Country First")
+            self.MyshowAlertWith(title: "Error", message: "select Country First")
 
         }
         else{
@@ -294,7 +295,11 @@ extension Register2TVC{
         datePicker.datePickerMode = .date
         datePicker.frame = CGRect(x: 0, y: 0, width: self.view.bounds.width, height: 250.0)
         datePicker.frame = CGRect(x: 0, y: 0, width: self.view.bounds.width, height: 250.0)
-        datePicker.preferredDatePickerStyle = .wheels
+        if #available(iOS 13.4, *) {
+            datePicker.preferredDatePickerStyle = .wheels
+        } else {
+            // Fallback on earlier versions
+        }
         let toolbar = UIToolbar();
         toolbar.sizeToFit()
         let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(donedatePicker));
@@ -382,11 +387,6 @@ extension Register2TVC{
             return true
         }
     }
-    func MyshowAlertWith(title: String, message: String){
-          let ac = UIAlertController(title: title, message: message, preferredStyle: .alert)
-          ac.addAction(UIAlertAction(title: "OK", style: .default))
-          present(ac, animated: true)
-      }
       
 }
 
@@ -394,11 +394,15 @@ extension Register2TVC {
     func showSpinner(onView : UIView) {
         let spinnerView = UIView.init(frame: onView.bounds)
         spinnerView.backgroundColor = UIColor.init(red: 0.5, green: 0.5, blue: 0.5, alpha: 0.5)
-        let ai = UIActivityIndicatorView.init(style: .large)
+        if #available(iOS 13.0, *) {
+            ai = UIActivityIndicatorView.init(style: .large)
+        } else if #available(iOS 12.0, *) {
+            ai = UIActivityIndicatorView.init(style: .whiteLarge)
+        }
         ai.startAnimating()
         ai.center = spinnerView.center
         
-        DispatchQueue.main.async {
+        DispatchQueue.main.async { [self] in
             spinnerView.addSubview(ai)
             onView.addSubview(spinnerView)
         }

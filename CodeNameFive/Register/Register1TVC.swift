@@ -392,13 +392,7 @@ extension Register1TVC{
         case Moped   = "Moped"
         case Car   = "Car"
     }
-    
-    
-    func MyshowAlertWith(title: String, message: String){
-        let ac = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        ac.addAction(UIAlertAction(title: "OK", style: .default))
-        present(ac, animated: true)
-    }
+
     
 }
 
