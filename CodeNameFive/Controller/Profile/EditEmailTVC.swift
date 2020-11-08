@@ -12,28 +12,47 @@ import UIKit
 
 class EditEmailTVC: UITableViewController {
 
-    
+    @IBOutlet weak var emailAddress : UITextField?{
+        didSet{
+            emailAddress?.text = email
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
-        
        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(Cancel(btn:)))
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(Save(btn:)))
         self.navigationController?.navigationBar.tintColor = UIColor(#colorLiteral(red: 0, green: 0.8465872407, blue: 0.7545004487, alpha: 1))
-        
-            self.clearsSelectionOnViewWillAppear = false
-
-        
+        self.clearsSelectionOnViewWillAppear = false
     }
-    
-
-    
     @objc func Cancel(btn : UIButton) {
         self.dismiss(animated: true, completion: nil)
        }
-    
     @objc func Save(btn : UIButton) {
-        print("Number Saved")
+        guard let email = emailAddress?.text else { return }
+        emailEdit(email: email)
     }
+    //MARK:- API Calling
+
+func emailEdit(email : String) {
+    HttpService.sharedInstance.patchRequestWithParam(urlString: Endpoints.updatePhone , bodyData: ["email" : email]) { (responseData) in
+        do{
+            let jsonData = responseData?.toJSONString1().data(using: .utf8)!
+            let decoder = JSONDecoder()
+            let obj = try decoder.decode(commonResult.self, from: jsonData!)
+            if obj.success == true {
+                self.MyshowAlertWith(title: "Successfully", message: obj.message)
+                KeychainWrapper.standard.set(email, forKey: "email")
+            }
+            else
+            {
+                self.MyshowAlertWith(title: "Error", message: obj.message)
+            }
+        }
+        catch{
+            
+        }
+    }
+}
     // MARK: - Table view data source
 
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {

@@ -15,8 +15,30 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-      
         guard let _ = (scene as? UIWindowScene) else { return }
+        if UserDefaults.standard.bool(forKey: "isUserLogIn") == true {
+            
+//            guard let winScene = (scene as? UIWindowScene) else { return }
+//                window = UIWindow(windowScene: winScene)
+//            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//            guard let rootVC = storyboard.instantiateViewController(identifier: "DashboardVC") as? DashboardVC else {
+//                print("ViewController not found")
+//                return
+//            }
+//                window?.rootViewController = rootVC
+//                window?.makeKeyAndVisible()
+                 let windowScene = UIWindowScene(session: session, connectionOptions: connectionOptions)
+                 self.window = UIWindow(windowScene: windowScene)
+                 let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                 guard let rootVC = storyboard.instantiateViewController(identifier: "DashboardVC") as? DashboardVC else {
+                     print("ViewController not found")
+                     return
+                 }
+                 let rootNC = UINavigationController(rootViewController: rootVC)
+                 self.window?.rootViewController = rootNC
+                 self.window?.makeKeyAndVisible()
+                 
+             }
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

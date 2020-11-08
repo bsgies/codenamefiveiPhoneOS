@@ -10,18 +10,60 @@ import UIKit
 
 class MainMenuTableViewController: UITableViewController {
     
-    
     @IBOutlet weak var historyIcon: UIImageView!
-    
+    @IBOutlet weak var autoAcceptswitch: UISwitch!{
+        didSet{
+            autoAcceptswitch.isOn = UserDefaults.standard.bool(forKey: "autoAccept")
+        }
+    }
+    @IBOutlet weak var fullName : UILabel!{
+        didSet{
+            fullName.text = "\(first_name ?? "") \(last_name ?? "")"
+        }
+    }
+    @IBOutlet weak var pId : UILabel!{
+        didSet{
+            pId.text = "#\(id ?? 0)"
+        }
+    }
+    @IBOutlet weak var lastOrder : UISwitch!{
+        didSet{
+            lastOrder.isOn = UserDefaults.standard.bool(forKey: "lastOrder")
+        }
+    }
+    @IBOutlet weak var profileImage : UIImageView!
     public static let sharedInstance = MainMenuTableViewController()
     
-    @IBOutlet weak var autoAcceptswitch: UISwitch!
-    
-    @IBAction func autoAccept(_ sender: Any) {
-        //autoAcceptswitch.isOn = true
+    @IBAction func autoAccept(_ sender: UISwitch) {
+        //autoAccept(status: sender.isOn)
+        UserDefaults.standard.setValue(sender.isOn, forKey: "autoAccept")
     }
     
-    
+    @IBAction func lastOrder(sender : UISwitch){
+        UserDefaults.standard.setValue(true, forKey: "lastOrder")
+    }
+  
+      override  func viewDidLoad() {
+        super.viewDidLoad()
+        self.tableView.tableFooterView = UIView()
+        setBackButton()
+        let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(BackviewController))
+        swipeRight.direction = UISwipeGestureRecognizer.Direction.right
+        self.view.addGestureRecognizer(swipeRight)
+        
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        if traitCollection.userInterfaceStyle == .dark {
+               historyIcon.tintColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+           }
+           else {
+               historyIcon.tintColor = #colorLiteral(red: 0.05882352963, green: 0.180392161, blue: 0.2470588237, alpha: 1)
+           }
+    }
+    @objc func BackviewController(gesture: UIGestureRecognizer) {
+        self.navigationController?.popViewController(animated: true)
+    }
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
 
@@ -39,84 +81,33 @@ class MainMenuTableViewController: UITableViewController {
         }
     }
     
-      override  func viewDidLoad() {
-        super.viewDidLoad()
-        self.tableView.tableFooterView = UIView()
-        
-        setBackButton()
-
-        let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(BackviewController))
-        swipeRight.direction = UISwipeGestureRecognizer.Direction.right
-        self.view.addGestureRecognizer(swipeRight)
-        
-    }
-    
-    @objc func BackviewController(gesture: UIGestureRecognizer) {
-        self.navigationController?.popViewController(animated: true)
+    //API Calling
+    func autoAccept(status : Bool) {
+        HttpService.sharedInstance.postRequest(urlString: Endpoints.cities, bodyData: ["autoAcceptStatus" : status])  { [self](responseData) in
+            do{
+                let jsonData = responseData?.toJSONString1().data(using: .utf8)!
+                let decoder = JSONDecoder()
+                let obj = try decoder.decode(EmailPhoneExitsValidationModel.self, from: jsonData!)
+                if obj.success == true{
+                    autoAcceptswitch.isOn = true
+                }
+                else{
+                    autoAcceptswitch.isOn = false
+                }
+                
+            }
+            catch{
+                
+            }
+        }
     }
     
 }
+
+
+
+
 extension MainMenuTableViewController{
-    
-//    // MARK: - Table view Delegate
-//    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-//        if section == 0{
-//            return CGFloat.leastNormalMagnitude
-//        }
-//        else{
-//            return 60
-//        }
-//    }
-    //        override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    //            let currentSection = indexPath.section
-    //            if currentSection == 0{
-    //                let cell = tableView.dequeueReusableCell(withIdentifier: "profileCell")
-    //                return cell!
-    //            }
-    //            else if currentSection == 1{
-    //                let cell = tableView.dequeueReusableCell(withIdentifier: "historyCell")
-    //                return cell!
-    //            }
-    //            else if currentSection == 1{
-    //                let cell = tableView.dequeueReusableCell(withIdentifier: "earningCell")
-    //                return cell!
-    //            }
-    //            else if currentSection == 1{
-    //                let cell = tableView.dequeueReusableCell(withIdentifier: "promotionCell")
-    //                return cell!
-    //            }
-    //            else if currentSection == 1{
-    //                let cell = tableView.dequeueReusableCell(withIdentifier: "inboxCell")
-    //                return cell!
-    //            }
-    //            else if currentSection == 1{
-    //                let cell = tableView.dequeueReusableCell(withIdentifier: "helpCell")
-    //                return cell!
-    //            }
-    //            else if currentSection == 1{
-    //                let cell = tableView.dequeueReusableCell(withIdentifier: "historyCell")
-    //                return cell!
-    //            }
-    //            else if currentSection == 1{
-    //                let cell = tableView.dequeueReusableCell(withIdentifier: "historyCell")
-    //                return cell!
-    //            }
-    //
-    //            else {
-    //                let cell = tableView.dequeueReusableCell(withIdentifier: "promotionCell")
-    //                return cell!
-    //            }
-    //
-    //        }
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
-        if traitCollection.userInterfaceStyle == .dark {
-               historyIcon.tintColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-           }
-           else {
-               historyIcon.tintColor = #colorLiteral(red: 0.05882352963, green: 0.180392161, blue: 0.2470588237, alpha: 1)
-           }
-    }
     
     override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         let headerView: UITableViewHeaderFooterView = view as! UITableViewHeaderFooterView

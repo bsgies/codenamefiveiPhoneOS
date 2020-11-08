@@ -66,11 +66,24 @@ struct EmailPhoneExitsValidationModel: Codable {
     let data: myData?
     let message: String
 }
-
+struct commonResult : Codable {
+    let success: Bool
+    let data: myData?
+    let message: String
+}
 // MARK: - DataClass
 struct myData: Codable {
 }
 
+// MARK:- MagicLink
+
+struct forgetPassword : Codable{
+    let success: Bool
+    let data: forgetPasword_Data?
+    let message: String
+}
+struct forgetPasword_Data: Codable {
+}
 
 // MARK: - ImageResponse
 struct ImageResponse: Codable {

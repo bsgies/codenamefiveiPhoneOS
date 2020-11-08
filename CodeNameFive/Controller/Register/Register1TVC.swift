@@ -130,48 +130,48 @@ class Register1TVC: UITableViewController , UITextFieldDelegate, UINavigationCon
     }
     @IBAction func emailValidateAction(_ sender: UITextField) {
         guard let email = sender.text else {return}
-        if email.isEmail(){
-            DispatchQueue.main.async {
-                HttpEmailPhoneValidation.emailPhoneValidation(key: "email", value: sender.text!) { (result, error) in
-                    if let result = result{
-                        if result.success{
-                            self.successEmail  = true
-                        }
-                        else{
-                            DispatchQueue.main.async {
-                                self.MyshowAlertWith(title: "error", message: "email Address Alrady Exit")
-                                self.successEmail = false
-                            }
-                            
-                            
-                        }
-                    }
-                }
-            }
-        }else{
-            self.MyshowAlertWith(title: "error", message: "Please Check Email format")
-        }
+//        if email.isEmail(){
+//            DispatchQueue.main.async {
+//                HttpEmailPhoneValidation.emailPhoneValidation(key: "email", value: sender.text!) { (result, error) in
+//                    if let result = result{
+//                        if result.success{
+//                            self.successEmail  = true
+//                        }
+//                        else{
+//                            DispatchQueue.main.async {
+//                                self.MyshowAlertWith(title: "error", message: "email Address Alrady Exit")
+//                                self.successEmail = false
+//                            }
+//                            
+//                            
+//                        }
+//                    }
+//                }
+//            }
+//        }else{
+//            self.MyshowAlertWith(title: "error", message: "Please Check Email format")
+//        }
     }
     
     
     @IBAction func phoneValidationAction(_ sender: UITextField) {
-        guard let phoneNumber = sender.text else {return}
-        let number = (callingCodeButtonOutlet.titleLabel?.text!)! + phoneNumber
-        print(number)
-        HttpEmailPhoneValidation.emailPhoneValidation(key: "phoneNumber", value: number) { (result, error) in
-            if let result = result{
-                if result.success{
-                    self.succesPhone  = true
-                }
-                else{
-                    DispatchQueue.main.async {
-                        self.MyshowAlertWith(title: "error", message: "phone Number Alrady Exit")
-                        self.succesPhone = false
-                    }
-                }
-                
-            }
-        }
+//        guard let phoneNumber = sender.text else {return}
+//        let number = (callingCodeButtonOutlet.titleLabel?.text!)! + phoneNumber
+//        print(number)
+//        HttpEmailPhoneValidation.emailPhoneValidation(key: "phoneNumber", value: number) { (result, error) in
+//            if let result = result{
+//                if result.success{
+//                    self.succesPhone  = true
+//                }
+//                else{
+//                    DispatchQueue.main.async {
+//                        self.MyshowAlertWith(title: "error", message: "phone Number Alrady Exit")
+//                        self.succesPhone = false
+//                    }
+//                }
+//
+//            }
+//        }
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -407,7 +407,7 @@ extension Register1TVC{
                 if validateemail.isEmail() {
                     if let validPassword = passwordTextfield.text{
                         if validPassword.isPassword(){
-                            if (phoneNumber.text?.isValidPhone(phone: phoneNumber.text!))!{
+                            if (phoneNumber.text?.isValidPhone())!{
                                 ProfileImage.profileImage = profileImage.image
                                 Registration.firstName = firstName.text
                                 Registration.lastName = lastName.text

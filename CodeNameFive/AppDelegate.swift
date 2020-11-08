@@ -17,6 +17,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var alert = UIAlertController()
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         GMSServices.provideAPIKey("AIzaSyBXfR7Zu7mvhxO4aydatsUY-VUH-_NG15g")
+         if UserDefaults.standard.bool(forKey: "isUserLogIn") == true {
+    
+                
+              }
         return true
     }
 

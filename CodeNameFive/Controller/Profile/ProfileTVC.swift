@@ -10,7 +10,27 @@ import UIKit
 
 class ProfileTVC: UITableViewController {
     
-    
+    @IBOutlet weak var fullName : UILabel!{
+        didSet{
+            fullName.text = "\(first_name ?? "") \(last_name ?? "")"
+        }
+    }
+    @IBOutlet weak var emailLbl : UILabel! {
+        didSet{
+            emailLbl.text = email
+        }
+    }
+    @IBOutlet weak var profileImageView : UIImageView!{
+        didSet{
+//            profileImageView.sd_setImage(with: URL(string: "http://ec2-18-222-200-202.us-east-2.compute.amazonaws.com:3000/uploads/partner/86b241822cb19ecbd85416daed7b2912.jpg"), placeholderImage: UIImage(named: ""))
+       
+        }
+    }
+    @IBOutlet weak var phoneNumber : UILabel!{
+        didSet{
+            phoneNumber.text = phone_number
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,13 +50,6 @@ class ProfileTVC: UITableViewController {
     }
     
     @objc func closeView(){
-//        let transition = CATransition()
-//        transition.duration = 0.5
-//        transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.linear)
-//        transition.type = CATransitionType.reveal
-//        transition.subtype = CATransitionSubtype.fromBottom
-//        navigationController?.view.layer.add(transition, forKey: nil)
-//        _ = navigationController?.popViewController(animated: false)
         self.dismiss(animated: true, completion: nil)
     }
 }
@@ -47,55 +60,8 @@ extension ProfileTVC{
         cell.preservesSuperviewLayoutMargins = false
         cell.separatorInset = UIEdgeInsets.zero
         cell.layoutMargins = UIEdgeInsets.zero
-        cell.selectionStyle = .none
-//        if indexPath.section != 0{
-//            cell.accessoryView = UIImageView(image: UIImage(named: "chevron-right"))
-//        }
-         }
-//    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        if indexPath.section == 0 {
-//            return 110
-//        }
-//        else{
-//            return 90
-//
-//        }
-//    }
-//    override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-//        return 10
-//    }
-//    override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
-//
-//        let headerView: UITableViewHeaderFooterView = view as! UITableViewHeaderFooterView
-//        if traitCollection.userInterfaceStyle == .light {
-//
-//            headerView.textLabel!.textColor = UIColor.darkGray
-//            headerView.textLabel!.font = UIFont(name: "Poppins-Regular", size: 15)
-//
-//            headerView.backgroundView = UIView()
-//            headerView.backgroundColor = .clear
-//
-//        }
-//        else{
-//
-//            headerView.textLabel!.textColor = UIColor(#colorLiteral(red: 0.4705882353, green: 0.4705882353, blue: 0.4705882353, alpha: 1))
-//            headerView.textLabel!.font = UIFont(name: "Poppins-Regular", size: 15)
-//
-//
-//            headerView.backgroundView = UIView()
-//            headerView.backgroundColor = .clear
-//
-//            // For Header Text Color
-//            let header = view as! UITableViewHeaderFooterView
-//            header.textLabel?.textColor = .white
-//
-//        }
-//
-//    }
-    
-//    override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-//        return UIView()
-//    }
+        cell.selectionStyle = .none}
+
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let currentSection = indexPath.section

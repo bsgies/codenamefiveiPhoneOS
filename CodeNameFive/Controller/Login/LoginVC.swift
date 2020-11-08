@@ -10,19 +10,78 @@ import UIKit
 import CoreTelephony
 
 class LoginVC: UIViewController {
+    
+    
+    //MARK:- OUTLETS
     @IBOutlet weak var continueOutlet:  UIButton!
     @IBOutlet weak var topView: UIView!
     @IBOutlet weak var register: UILabel!
     @IBOutlet weak var EmailorPhone: UITextField!
     @IBOutlet weak var pathnerImage: UIImageView!
     @IBOutlet weak var bottomView: UIView!
+    @IBOutlet weak var errorLbl : UILabel!
+    
+    //MARK:- variables
     var checkemail: String?
-    let http = HttpService()
+    
+    //MARK:- LifeCycles
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setupUIAndGestures()
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        keyBoardObserver()
+        navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(true)
+        removeObserver()
+    }
+
+    //MARK:- Actions
+    @IBAction func contniueForPassword(_ sender: UIButton) {
+        guard let email = EmailorPhone.text else { return }
+            if email.isEmail(){
+                checkemail = "email"
+                GoToSecurityScreen()
+            }
+            else if email.isValidPhone(){
+                checkemail = "phone"
+                PhoneNumberOTP(param: ["key": "phoneNumber" , "value" : email])
+            }
+            else{
+                errorLbl.isHidden = false
+                errorLbl.text = "incorrect email or Phone"
+            }
+       
+    }
     @IBAction func touchdown(_ sender: UIButton) {
         sender.setBackgroundColor(color: UIColor(named: "hover")!, forState: .highlighted)
     }
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    
+    func PhoneNumberOTP(param : [String : Any]){
+        HttpService.sharedInstance.postRequest(urlString: Endpoints.phoneOEmailExits, bodyData: param) { [self] (responseData) in
+            do{
+                let jsonData = responseData?.toJSONString1().data(using: .utf8)!
+                let decoder = JSONDecoder()
+                let obj = try decoder.decode(EmailPhoneExitsValidationModel.self, from: jsonData!)
+                if obj.success == false{
+                    GoToSecurityScreen()
+                }
+                else{
+                    errorLbl.text = "incorrect Phone Number"
+                }
+            }
+            catch{
+                errorLbl.text = "some Error Occur"
+            }
+        }
+    }
+}
+
+extension LoginVC{
+    func setupUIAndGestures() {
         EmailorPhone.layer.borderColor = #colorLiteral(red: 0.9294117647, green: 0.9294117647, blue: 0.9294117647, alpha: 1)
         EmailorPhone.layer.backgroundColor = #colorLiteral(red: 0.968627451, green: 0.968627451, blue: 0.968627451, alpha: 1)
         EmailorPhone.layer.borderWidth = 1
@@ -35,69 +94,17 @@ class LoginVC: UIViewController {
         topView.addGestureRecognizer(tap)
         let registerationPage = UITapGestureRecognizer(target: self, action: #selector(openRegisterPage))
         register.addGestureRecognizer(registerationPage)
-        
     }
-    override func viewWillAppear(_ animated: Bool) {
-        //securityCenterAlign.constant -= self.view.bounds.width
+    
+    func keyBoardObserver() {
         NotificationCenter.default.addObserver(self, selector: #selector(KeyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(KeyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
-        super.viewWillAppear(animated)
-        navigationController?.setNavigationBarHidden(true, animated: animated)
     }
-
-    
-    @IBAction func contniueForPassword(_ sender: UIButton) {
-        if let validate = EmailorPhone.text{
-            if validate.isEmail(){
-                checkemail = "email"
-                GoToSecurityScreen()
-            }
-            else if validate.isValidPhone(phone: validate)
-            {
-                checkemail = "phone"
-                PhoneNumberOTP(phone: validate)
-            }
-            else{
-              self.MyshowAlertWith(title: "Error", message: "enter A Valid Email Or Phone")
-            }
-            
-        }
-        else{
-            self.MyshowAlertWith(title: "Error", message: "fill Your Email Or Password")
-           
-        }
-    }
-    
-    func PhoneNumberOTP(phone : String) {
-        let http = HttpLogin()
-        http.PhoneNumberVAlidateForOTP(phoneNumber: phone) { (result, error) in
-            if let success =  result?.success {
-                if success{
-                    DispatchQueue.main.async {
-                        self.GoToSecurityScreen()
-                    }
-                    
-                }
-            }
-            else{
-                DispatchQueue.main.async {
-                     self.MyshowAlertWith(title: "number not Exist", message: "check your number")
-                }
-               
-            }
-        }
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(true)
+    func removeObserver() {
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
-        super.viewWillDisappear(animated)
     }
-}
-
-extension LoginVC{
-
+    
     @objc func taped(){
         self.view.endEditing(true)
     }
@@ -137,22 +144,6 @@ extension LoginVC{
         newViewController.emailOrPhone = EmailorPhone.text
         navigationController?.pushViewController(newViewController, animated: false)
     }
-    func presentOnRoot(viewController : UIViewController){
-        let navigationController = UINavigationController(rootViewController: viewController)
-        navigationController.modalPresentationStyle = UIModalPresentationStyle.formSheet
-        self.present(navigationController, animated: false, completion: nil)
-        
-    }
-}
-extension UIButton {
-
-    func setBackgroundColor(color: UIColor, forState: UIControl.State) {
-        UIGraphicsBeginImageContext(CGSize(width: 1, height: 1))
-        UIGraphicsGetCurrentContext()!.setFillColor(color.cgColor)
-        UIGraphicsGetCurrentContext()!.fill(CGRect(x: 0, y: 0, width: 1, height: 1))
-        let colorImage = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        self.setBackgroundImage(colorImage, for: forState)
-    }
-   
+    
+    
 }

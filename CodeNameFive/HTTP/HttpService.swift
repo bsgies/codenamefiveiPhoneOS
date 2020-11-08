@@ -10,6 +10,7 @@ import Foundation
 import SystemConfiguration
 
 class HttpService : URLSession{
+    
     typealias WSCompletionBlock = (_ data: NSDictionary?) ->()
     typealias WSCompletionStringBlock = (_ data: String?) ->()
     static var sharedInstance = HttpService()
@@ -98,6 +99,56 @@ class HttpService : URLSession{
         task.resume()
         
     }
+    
+    func patchRequestWithParam(urlString:String, bodyData:[String : Any],completionBlock:@escaping WSCompletionBlock) -> () {
+        appDelegate.loadindIndicator()
+        if !(isInternetAvailable()) {
+            appDelegate.removeLoadIndIndicator()
+            appDelegate.Alert()
+            completionBlock([:])
+            return
+        }
+        print("Hitting URL with Post Request : \n \(urlString) \n\n params : \n \(bodyData)")
+        _ = try? JSONSerialization.data(withJSONObject: bodyData)
+        guard let requestUrl = URL(string:urlString) else { return }
+        let session = URLSession.shared
+        var request = URLRequest(url: requestUrl as URL, cachePolicy: .useProtocolCachePolicy, timeoutInterval: 90)
+        request.httpMethod = "PATCH"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.setValue(token!, forHTTPHeaderField: "x-access-token")
+        let postString = self.getPostString(params: bodyData)
+        request.httpBody = postString.data(using: .utf8)
+        let task = session.dataTask(with: request) { [self]
+            (data, response, error) in
+            if let responseError = error{
+                completionBlock([:])
+                appDelegate.removeLoadIndIndicator()
+                print("Response error: \(responseError)")
+            }
+            else
+            {
+                do {
+                    let dictionary = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.mutableContainers) as! NSDictionary
+                    print(dictionary)
+                    DispatchQueue.main.async(execute: {
+                        appDelegate.removeLoadIndIndicator()
+                        completionBlock(dictionary)
+                    })
+                }
+                catch let jsonError as NSError{
+                    print("JSON error: \(jsonError.localizedDescription)")
+                    
+                    DispatchQueue.main.async(execute: {
+                        appDelegate.removeLoadIndIndicator()
+                        completionBlock([:])
+                    })
+                }
+            }
+        }
+        task.resume()
+        
+    }
+    
     func getPostString(params:[String:Any]) -> String
     {
         var data = [String]()

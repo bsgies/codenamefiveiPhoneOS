@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SecurityVC: UIViewController {
+class SecurityVC: UIViewController, UITextFieldDelegate {
     
     //MARK:- OUTLETS
     @IBOutlet weak var CodeNotReceived: UILabel!
@@ -20,9 +20,9 @@ class SecurityVC: UIViewController {
     @IBOutlet weak var errorLbl : UILabel!
     
     //MARK:- Variables
-    let httplogin =   HttpLogin()
     var checkEmailOrPassword : String = "email"
     var emailOrPhone : String?
+    private var myTextField : UITextField?
     
     //MARK:- LifeCycles
     override func viewDidLoad(){
@@ -60,56 +60,11 @@ class SecurityVC: UIViewController {
     @IBAction func hideLbl(_ sender: UITextField) {
         errorLbl.isHidden = true
     }
-    func LoginApiWithEmail(parm : [String:Any] ,type :  loginWith) {
-        switch type{
-        case .email :
-            HttpService.sharedInstance.postRequest(urlString: Endpoints.login, bodyData: parm) { [self](responseData) in
-                            do{
-                    let jsonData = responseData?.toJSONString1().data(using: .utf8)!
-                    let decoder = JSONDecoder()
-                    let obj = try decoder.decode(LoginResponse.self, from: jsonData!)
-                    saveValuesInKeyChain(obj: obj)
-                }
-                catch{
-                    errorLbl.text = "incorrect Security Code"
-                }
-            }
-        case .phone :
-            HttpService.sharedInstance.postRequest(urlString: Endpoints.loginWithPhone, bodyData: parm) { [self](responseData) in
-                            do{
-                    let jsonData = responseData?.toJSONString1().data(using: .utf8)!
-                    let decoder = JSONDecoder()
-                    let obj = try decoder.decode(LoginResponse.self, from: jsonData!)
-                    saveValuesInKeyChain(obj: obj)
-                }
-                catch{
-                    errorLbl.text = "some Error Occour During Prosessing"
-                }}}}
     
-    func saveValuesInKeyChain(obj : LoginResponse){
-        if obj.success == true{
-            guard let result = obj.data?.results else { return }
-            guard let token = obj.data?.token else { return }
-            KeychainWrapper.standard.set(token, forKey: "token")
-            KeychainWrapper.standard.set(result.status!, forKey: "online_status")
-            KeychainWrapper.standard.set(result.lastName ?? "", forKey: "last_name")
-            KeychainWrapper.standard.set(result.firstName ?? "", forKey: "first_name")
-            KeychainWrapper.standard.set(result.email ?? "" , forKey: "email")
-            KeychainWrapper.standard.set(result.id!, forKey: "id" )
-            KeychainWrapper.standard.set(result.profilePhoto!, forKey: "profile_photo")
-            KeychainWrapper.standard.set(result.phoneNumber!, forKey: "phone_number")
-            KeychainWrapper.standard.set(result.status!, forKey: "status")
-            saveInDefault(value: true, key: "isUserLogIn")
-            self.GoToDashboard()
-        }
-        else{
-            errorLbl.isHidden = false
-            errorLbl.text = obj.message
-        }
-    }
     
 }
 extension SecurityVC{
+    
     @objc func taped(){
         self.view.endEditing(true)
     }
@@ -137,7 +92,16 @@ extension SecurityVC{
             })
         }
     }
-    @objc func showAlert(){
+    
+    @objc func resendAlert(){
+        if checkEmailOrPassword == "email"{
+            showForgetPasswordAlert()
+        }
+        else{
+            showAlert()
+        }
+    }
+    func showAlert(){
         
         let alertController = UIAlertController(title: "Code not received?", message: "Resend security code (it can take up to a minute to arrive)", preferredStyle: .alert)
         alertController.view.tintColor = UIColor(#colorLiteral(red: 0, green: 0.8465872407, blue: 0.7545004487, alpha: 1))
@@ -184,11 +148,115 @@ extension SecurityVC{
         backgroundView.addGestureRecognizer(tap)
         NotificationCenter.default.addObserver(self, selector: #selector(KeyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(KeyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
-        let codenotReceived = UITapGestureRecognizer(target: self, action: #selector(showAlert))
+        let codenotReceived = UITapGestureRecognizer(target: self, action: #selector(resendAlert))
         CodeNotReceived.addGestureRecognizer(codenotReceived)
     }
     func RemoveObserver() {
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
     }
+    private func showForgetPasswordAlert() {
+        
+        let alertContoller = UIAlertController.init(title: "Forgotten your password?", message: "Enter your email address and we will send you a magic link to reset your password", preferredStyle: .alert)
+        alertContoller.addTextField { (textField) in
+            self.myTextField = textField
+            self.myTextField?.delegate = self
+            self.myTextField?.placeholder = "Enter email address"
+        }
+        let sendAction = UIAlertAction.init(title: "Send", style: .default) { action in
+            print("Send tapped")
+        }
+        let cancelAction = UIAlertAction.init(title: "Cancel", style: .default) { action in
+            print("cancel tapped")
+        }
+        alertContoller.addAction(cancelAction)
+        alertContoller.addAction(sendAction)
+        present(alertContoller, animated: true, completion:nil)
+    }
+    
+    
+    //MARK:- API Calling
+    
+    func LoginApiWithEmail(parm : [String:Any] ,type :  loginWith) {
+        switch type{
+        case .email :
+            HttpService.sharedInstance.postRequest(urlString: Endpoints.login, bodyData: parm) { [self](responseData) in
+                do{
+                    let jsonData = responseData?.toJSONString1().data(using: .utf8)!
+                    let decoder = JSONDecoder()
+                    let obj = try decoder.decode(LoginResponse.self, from: jsonData!)
+                    if obj.success == true{
+                        saveValuesInKeyChain(obj: obj)
+                    }
+                    else{
+                        errorLbl.text = obj.message
+                    }
+                    
+                }
+                catch{
+                    errorLbl.text = "incorrect Security Code"
+                }
+            }
+        case .phone :
+            HttpService.sharedInstance.postRequest(urlString: Endpoints.loginWithPhone, bodyData: parm) { [self](responseData) in
+                do{
+                    let jsonData = responseData?.toJSONString1().data(using: .utf8)!
+                    let decoder = JSONDecoder()
+                    let obj = try decoder.decode(LoginResponse.self, from: jsonData!)
+                    if obj.success == true{
+                        saveValuesInKeyChain(obj: obj)
+                    }
+                    else{
+                        errorLbl.text = obj.message
+                    }
+                    
+                }
+                catch{
+                    errorLbl.text = "some Error Occour During Prosessing"
+                }}}}
+    func sendMagicLink(email : String) {
+        HttpService.sharedInstance.postRequest(urlString: Endpoints.forget_password, bodyData: ["email" : email]){ [self](responseData) in
+            do{
+                let jsonData = responseData?.toJSONString1().data(using: .utf8)!
+                let decoder = JSONDecoder()
+                let obj = try decoder.decode(forgetPassword.self, from: jsonData!)
+                if obj.success == true {
+                    self.MyshowAlertWith(title: "Successfully", message: obj.message)
+                }
+                else
+                {
+                    errorLbl.isHidden = false
+                    errorLbl.text = obj.message
+                }
+            }
+            catch{
+                errorLbl.isHidden = false
+                errorLbl.text = "incorrect Security Code"
+            }
+        }
+    }
+    
+    func saveValuesInKeyChain(obj : LoginResponse){
+        if obj.success == true{
+            guard let result = obj.data?.results else { return }
+            guard let token = obj.data?.token else { return }
+            KeychainWrapper.standard.set(token, forKey: "token")
+            KeychainWrapper.standard.set(result.status!, forKey: "online_status")
+            KeychainWrapper.standard.set(result.lastName ?? "", forKey: "last_name")
+            KeychainWrapper.standard.set(result.firstName ?? "", forKey: "first_name")
+            KeychainWrapper.standard.set(result.email ?? "" , forKey: "email")
+            KeychainWrapper.standard.set(result.id!, forKey: "id" )
+            KeychainWrapper.standard.set(result.profilePhoto!, forKey: "profile_photo")
+            KeychainWrapper.standard.set(result.phoneNumber!, forKey: "phone_number")
+            KeychainWrapper.standard.set(result.status!, forKey: "status")
+            saveInDefault(value: true, key: "isUserLogIn")
+            self.GoToDashboard()
+        }
+        else{
+            errorLbl.isHidden = false
+            errorLbl.text = obj.message
+        }
+    }
+    
+    
 }

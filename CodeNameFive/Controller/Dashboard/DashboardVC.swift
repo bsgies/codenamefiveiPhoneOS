@@ -35,67 +35,16 @@ class DashboardVC: UIViewController ,  CLLocationManagerDelegate, GMSMapViewDele
     var currentLocation: CLLocation?
     var zoomLevel: Float = 15.0
     let path = GMSMutablePath()
-    
     var i = 0
     let serverResponseActivityIndicator = MDCActivityIndicator()
     var locValue = CLLocationCoordinate2D(latitude: 0, longitude: 0)
     var isUserTouch = false
-    
     var counter = 0
     
-    func tapped(caseRun : Int) {
-        
-        switch caseRun {
-        case 1:
-            let generator = UINotificationFeedbackGenerator()
-            generator.notificationOccurred(.error)
-            
-        case 2:
-            let generator = UINotificationFeedbackGenerator()
-            generator.notificationOccurred(.success)
-            
-        case 3:
-            let generator = UINotificationFeedbackGenerator()
-            generator.notificationOccurred(.warning)
-            
-        case 4:
-            let generator = UIImpactFeedbackGenerator(style: .light)
-            generator.impactOccurred()
-            
-        case 5:
-            let generator = UIImpactFeedbackGenerator(style: .medium)
-            generator.impactOccurred()
-            
-        case 6:
-            let generator = UIImpactFeedbackGenerator(style: .heavy)
-            generator.impactOccurred()
-            
-        default:
-            let generator = UISelectionFeedbackGenerator()
-            generator.selectionChanged()
-            i = 0
-        }
-    }
-    
-    func setBarAnimation() {
-        UIView.animate(withDuration: 1, animations: {
-            self.findingRoutesLoadingBarView.frame.origin.x = +self.dashboardBottomView.frame.width
-        }) { (_) in
-            UIView.animate(withDuration: 1, delay: 0.5
-                , options: [.repeat, .autoreverse], animations: {
-                    self.findingRoutesLoadingBarView.frame.origin.x -= self.dashboardBottomView.frame.width
-            })
-        }
-        
-    }
     
     //MARK:- Life Cycles
     override func viewDidLoad() {
         super.viewDidLoad()
-        let r = KeychainWrapper.standard.string(forKey: "token")
-        let b  = UserDefaults.standard.bool(forKey: "isUserLogIn")
-        print(r as Any)
-        print(b)
         googleMapView.delegate = self
         if !checkOnlineOrOffline{
             Autrize()
@@ -113,63 +62,17 @@ class DashboardVC: UIViewController ,  CLLocationManagerDelegate, GMSMapViewDele
         LocationManger()
         Autrize()
         SetupMap()
-    }
-    
-    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
-        return true
-    }
-    
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        self.googleMapView.bringSubviewToFront(self.hamburger)
-        self.googleMapView.bringSubviewToFront(self.currentEarning)
-        self.googleMapView.bringSubviewToFront(self.recenterView)
-        self.googleMapView.bringSubviewToFront(self.recenter)
-       
-        
-        if traitCollection.userInterfaceStyle == .light {
-            mapstyleSilver()
-            recenterView.tintColor = .white
-        }
-        else {
-            mapstyleDark()
-            recenterView.tintColor = .black
-        }
-        recenterView.isHidden = true
-        navigationController?.setNavigationBarHidden(true, animated: animated)
-        Autrize()
-        dashboardBottomView.addTopBorder(with: UIColor(named: "borderColor")!, andWidth: 1.0)
-        dashboardBottomView.addBottomBorder(with: UIColor(named: "borderColor")!, andWidth: 1.0)
-        NotificationCenter.default.addObserver(self, selector:#selector(DashboardVC.comefrombackground), name: UIApplication.willEnterForegroundNotification, object: UIApplication.shared)
         hamburgerImage.isUserInteractionEnabled = true
         hamburger.isUserInteractionEnabled = true
         let tap = UITapGestureRecognizer(target: self, action: #selector(menuopen(gesture:)))
         tap.delegate = self
         hamburger.addGestureRecognizer(tap)
-        hamburgerImage.addGestureRecognizer(tap)
-        recenterView.isUserInteractionEnabled = true
-        recenter.isUserInteractionEnabled = true
-        let tapOnRecenter = UITapGestureRecognizer(target: self, action: #selector(recenterTheMap(gesture:)))
-        tapOnRecenter.delegate = self
-        recenter.addGestureRecognizer(tapOnRecenter)
-        recenterView.addGestureRecognizer(tapOnRecenter)
-        recenterView.layer.shadowColor  = UIColor(ciColor: .gray).cgColor
-        recenterView.layer.shadowRadius = 12
-       
-        
     }
-    
-    @objc func recenterTheMap(gesture: UITapGestureRecognizer){
-         guard let lat = self.googleMapView.myLocation?.coordinate.latitude,
-               let lng = self.googleMapView.myLocation?.coordinate.longitude else { return }
-         let camera = GMSCameraPosition.camera(withLatitude: lat ,longitude: lng , zoom: 15)
-         self.googleMapView.animate(to: camera)
-         recenterView.isHidden = true
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        setupViewAndTapGestuers()
+        navigationController?.setNavigationBarHidden(true, animated: animated)
     }
-    
-    
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
@@ -180,6 +83,46 @@ class DashboardVC: UIViewController ,  CLLocationManagerDelegate, GMSMapViewDele
         super.viewDidAppear(true)
         currentEarning.backgroundColor = #colorLiteral(red: 0, green: 0.8465872407, blue: 0.7545004487, alpha: 1)
     }
+    
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        return true
+    }
+    func setupViewAndTapGestuers() {
+        self.googleMapView.bringSubviewToFront(self.hamburger)
+        self.googleMapView.bringSubviewToFront(self.currentEarning)
+        self.googleMapView.bringSubviewToFront(self.recenterView)
+        self.googleMapView.bringSubviewToFront(self.recenter)
+        if traitCollection.userInterfaceStyle == .light {
+            mapstyleSilver()
+            recenterView.tintColor = .white
+        }
+        else {
+            mapstyleDark()
+            recenterView.tintColor = .white
+        }
+        recenterView.isHidden = true
+        
+        Autrize()
+        dashboardBottomView.addTopBorder(with: UIColor(named: "borderColor")!, andWidth: 1.0)
+        dashboardBottomView.addBottomBorder(with: UIColor(named: "borderColor")!, andWidth: 1.0)
+        NotificationCenter.default.addObserver(self, selector:#selector(DashboardVC.comefrombackground), name: UIApplication.willEnterForegroundNotification, object: UIApplication.shared)
+        recenterView.isUserInteractionEnabled = true
+        recenter.isUserInteractionEnabled = true
+        let tapOnRecenter = UITapGestureRecognizer(target: self, action: #selector(recenterTheMap(gesture:)))
+        tapOnRecenter.delegate = self
+        recenter.addGestureRecognizer(tapOnRecenter)
+        recenterView.addGestureRecognizer(tapOnRecenter)
+        recenterView.layer.shadowColor  = UIColor(ciColor: .gray).cgColor
+        recenterView.layer.shadowRadius = 12
+    }
+    @objc func recenterTheMap(gesture: UITapGestureRecognizer){
+         guard let lat = self.googleMapView.myLocation?.coordinate.latitude,
+               let lng = self.googleMapView.myLocation?.coordinate.longitude else { return }
+         let camera = GMSCameraPosition.camera(withLatitude: lat ,longitude: lng , zoom: 15)
+         self.googleMapView.animate(to: camera)
+         recenterView.isHidden = true
+    }
+
     
     
     //MARK:- Light and Dark Mode Delegate
@@ -250,6 +193,53 @@ class DashboardVC: UIViewController ,  CLLocationManagerDelegate, GMSMapViewDele
     
 }
 extension DashboardVC{
+    
+    
+    func tapped(caseRun : Int) {
+        switch caseRun {
+        case 1:
+            let generator = UINotificationFeedbackGenerator()
+            generator.notificationOccurred(.error)
+            
+        case 2:
+            let generator = UINotificationFeedbackGenerator()
+            generator.notificationOccurred(.success)
+            
+        case 3:
+            let generator = UINotificationFeedbackGenerator()
+            generator.notificationOccurred(.warning)
+            
+        case 4:
+            let generator = UIImpactFeedbackGenerator(style: .light)
+            generator.impactOccurred()
+            
+        case 5:
+            let generator = UIImpactFeedbackGenerator(style: .medium)
+            generator.impactOccurred()
+            
+        case 6:
+            let generator = UIImpactFeedbackGenerator(style: .heavy)
+            generator.impactOccurred()
+            
+        default:
+            let generator = UISelectionFeedbackGenerator()
+            generator.selectionChanged()
+            i = 0
+        }
+    }
+    
+    func setBarAnimation() {
+        UIView.animate(withDuration: 1, animations: {
+            self.findingRoutesLoadingBarView.frame.origin.x = +self.dashboardBottomView.frame.width
+        }) { (_) in
+            UIView.animate(withDuration: 1, delay: 0.5
+                , options: [.repeat, .autoreverse], animations: {
+                    self.findingRoutesLoadingBarView.frame.origin.x -= self.dashboardBottomView.frame.width
+            })
+        }
+        
+    }
+    
     
     //MARK:- Buttons Actions
     

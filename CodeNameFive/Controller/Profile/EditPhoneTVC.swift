@@ -9,7 +9,14 @@
 import UIKit
 
 class EditPhoneTVC: UITableViewController {
-
+     
+    @IBOutlet weak var phoneNumber : UITextField?{
+        didSet{
+            phoneNumber?.text = phone_number
+        }
+    }
+    
+    
      override func viewDidLoad() {
             super.viewDidLoad()
            self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(Cancel(btn:)))
@@ -25,8 +32,31 @@ class EditPhoneTVC: UITableViewController {
            }
         
         @objc func Save(btn : UIButton) {
-            print("Number Saved")
+           
         }
+    
+        //MARK:- API Calling
+    
+    func phonenumberEdit(phone : String) {
+        HttpService.sharedInstance.patchRequestWithParam(urlString: Endpoints.updatePhone , bodyData: ["phone" : phone]) { (responseData) in
+            do{
+                let jsonData = responseData?.toJSONString1().data(using: .utf8)!
+                let decoder = JSONDecoder()
+                let obj = try decoder.decode(commonResult.self, from: jsonData!)
+                if obj.success == true {
+                    self.MyshowAlertWith(title: "Successfully", message: obj.message)
+                }
+                else
+                {
+                    self.MyshowAlertWith(title: "Error", message: obj.message)
+                    KeychainWrapper.standard.set(phone, forKey: "phone_number")
+                }
+            }
+            catch{
+                
+            }
+        }
+    }
         // MARK: - Table view data source
 
         override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
