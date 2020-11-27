@@ -186,15 +186,15 @@ extension SecurityVC{
                     let decoder = JSONDecoder()
                     let obj = try decoder.decode(LoginResponse.self, from: jsonData!)
                     if obj.success == true{
-                        saveValuesInKeyChain(obj: obj)
+                        self.saveValuesInKeyChain(obj: obj)
                     }
                     else{
-                        errorLbl.text = obj.message
+                        self.errorLbl.text = obj.message
                     }
                     
                 }
                 catch{
-                    errorLbl.text = "incorrect Security Code"
+                    self.errorLbl.text = "incorrect Security Code"
                 }
             }
         case .phone :
@@ -204,15 +204,15 @@ extension SecurityVC{
                     let decoder = JSONDecoder()
                     let obj = try decoder.decode(LoginResponse.self, from: jsonData!)
                     if obj.success == true{
-                        saveValuesInKeyChain(obj: obj)
+                        self.saveValuesInKeyChain(obj: obj)
                     }
                     else{
-                        errorLbl.text = obj.message
+                        self.errorLbl.text = obj.message
                     }
                     
                 }
                 catch{
-                    errorLbl.text = "some Error Occour During Prosessing"
+                    self.errorLbl.text = "some Error Occour During Prosessing"
                 }}}}
     func sendMagicLink(email : String) {
         HttpService.sharedInstance.postRequest(urlString: Endpoints.forget_password, bodyData: ["email" : email]){ [self](responseData) in
@@ -225,13 +225,13 @@ extension SecurityVC{
                 }
                 else
                 {
-                    errorLbl.isHidden = false
-                    errorLbl.text = obj.message
+                    self.errorLbl.isHidden = false
+                    self.errorLbl.text = obj.message
                 }
             }
             catch{
-                errorLbl.isHidden = false
-                errorLbl.text = "incorrect Security Code"
+                self.errorLbl.isHidden = false
+                self.errorLbl.text = "incorrect Security Code"
             }
         }
     }

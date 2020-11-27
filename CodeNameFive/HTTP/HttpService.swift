@@ -32,7 +32,7 @@ class HttpService : URLSession{
             
             if let responseError = error{
                 completionBlock([:])
-                appDelegate.removeLoadIndIndicator()
+                self.appDelegate.removeLoadIndIndicator()
                 print("Response error: \(responseError)")
             }
             else
@@ -73,7 +73,7 @@ class HttpService : URLSession{
             (data, response, error) in
             if let responseError = error{
                 completionBlock([:])
-                appDelegate.removeLoadIndIndicator()
+                self.appDelegate.removeLoadIndIndicator()
                 print("Response error: \(responseError)")
             }
             else
@@ -82,7 +82,7 @@ class HttpService : URLSession{
                     let dictionary = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.mutableContainers) as! NSDictionary
                     print(dictionary)
                     DispatchQueue.main.async(execute: {
-                        appDelegate.removeLoadIndIndicator()
+                        self.appDelegate.removeLoadIndIndicator()
                         completionBlock(dictionary)
                     })
                 }
@@ -90,7 +90,7 @@ class HttpService : URLSession{
                     print("JSON error: \(jsonError.localizedDescription)")
                     
                     DispatchQueue.main.async(execute: {
-                        appDelegate.removeLoadIndIndicator()
+                        self.appDelegate.removeLoadIndIndicator()
                         completionBlock([:])
                     })
                 }
@@ -122,7 +122,7 @@ class HttpService : URLSession{
             (data, response, error) in
             if let responseError = error{
                 completionBlock([:])
-                appDelegate.removeLoadIndIndicator()
+                self.appDelegate.removeLoadIndIndicator()
                 print("Response error: \(responseError)")
             }
             else
@@ -131,7 +131,7 @@ class HttpService : URLSession{
                     let dictionary = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.mutableContainers) as! NSDictionary
                     print(dictionary)
                     DispatchQueue.main.async(execute: {
-                        appDelegate.removeLoadIndIndicator()
+                        self.appDelegate.removeLoadIndIndicator()
                         completionBlock(dictionary)
                     })
                 }
@@ -139,7 +139,7 @@ class HttpService : URLSession{
                     print("JSON error: \(jsonError.localizedDescription)")
                     
                     DispatchQueue.main.async(execute: {
-                        appDelegate.removeLoadIndIndicator()
+                        self.appDelegate.removeLoadIndIndicator()
                         completionBlock([:])
                     })
                 }

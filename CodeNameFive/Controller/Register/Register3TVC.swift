@@ -289,7 +289,7 @@ extension Register3TVC : UIImagePickerControllerDelegate{
                     self.dismissAlert()
                 }
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [self] in
-                    successAlert(title: "Succeses", message: "Registered")
+                    self.successAlert(title: "Succeses", message: "Registered")
                 }
             }
             else{
@@ -297,7 +297,7 @@ extension Register3TVC : UIImagePickerControllerDelegate{
                     self.dismissAlert()
                 }
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [self] in
-                    MyshowAlertWith(title: "Error", message: (myRegisterationResponse.error as! String) )
+                    self.MyshowAlertWith(title: "Error", message: (myRegisterationResponse.error as! String) )
                     
                 }
             }
@@ -307,7 +307,7 @@ extension Register3TVC : UIImagePickerControllerDelegate{
                 self.dismissAlert()
             }
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [self] in
-               MyshowAlertWith(title: "Error", message: "connection Error")
+                self.MyshowAlertWith(title: "Error", message: "connection Error")
             }
             
         }
@@ -332,7 +332,7 @@ extension Register3TVC : UIImagePickerControllerDelegate{
         ImageUploadObj.UploadImage(image: image) { [self] (result, error) in
             if result != nil{
                 Registration.backDocument = result!.data.fileName.path
-                uploadThird()
+                self.uploadThird()
             }
             else{
                 DispatchQueue.main.async {
@@ -347,7 +347,7 @@ extension Register3TVC : UIImagePickerControllerDelegate{
         ImageUploadObj.UploadImage(image: image) { [self] (result, error) in
             if result != nil{
                 Registration.addressProof = result!.data.fileName.path
-                uploadFourth()
+                self.uploadFourth()
             }
             else{
                 DispatchQueue.main.async {
@@ -361,7 +361,7 @@ extension Register3TVC : UIImagePickerControllerDelegate{
         ImageUploadObj.UploadImage(image: image) { [self] (result, error) in
             if result != nil{
                 Registration.profilePhoto = result!.data.fileName.path
-                postData()
+                self.postData()
             }
             else{
                 DispatchQueue.main.async {
@@ -441,7 +441,7 @@ extension Register3TVC {
         ai.center = spinnerView.center
         
         DispatchQueue.main.async { [self] in
-            spinnerView.addSubview(ai)
+            spinnerView.addSubview(self.ai)
             onView.addSubview(spinnerView)
         }
         

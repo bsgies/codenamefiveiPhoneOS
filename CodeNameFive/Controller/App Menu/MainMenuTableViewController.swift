@@ -9,6 +9,18 @@
 import UIKit
 
 class MainMenuTableViewController: UITableViewController {
+    //font Outlets
+    @IBOutlet weak var liveSupportLbl: UILabel!
+    @IBOutlet weak var lastOrderLbl: UILabel!
+    @IBOutlet weak var historyLbl: UILabel!
+    @IBOutlet weak var earningsLbl: UILabel!
+    @IBOutlet weak var upcommingProLbl: UILabel!
+    @IBOutlet weak var inboxLbl: UILabel!
+    @IBOutlet weak var helpCenterLbl: UILabel!
+    @IBOutlet weak var autoAcceptLbl: UILabel!
+    @IBOutlet weak var mapSettingLbl: UILabel!
+    @IBOutlet weak var signoutLbl: UILabel!
+    //end labels
     
     @IBOutlet weak var historyIcon: UIImageView!
     @IBOutlet weak var autoAcceptswitch: UISwitch!{
@@ -24,11 +36,13 @@ class MainMenuTableViewController: UITableViewController {
     @IBOutlet weak var pId : UILabel!{
         didSet{
             pId.text = "#\(id ?? 0)"
+//            pId.font = UIFont(name: "AvenirNext-DemiBold", size: 20.0)
         }
     }
     @IBOutlet weak var lastOrder : UISwitch!{
         didSet{
             lastOrder.isOn = UserDefaults.standard.bool(forKey: "lastOrder")
+            
         }
     }
     @IBOutlet weak var profileImage : UIImageView!
@@ -45,6 +59,7 @@ class MainMenuTableViewController: UITableViewController {
   
       override  func viewDidLoad() {
         super.viewDidLoad()
+        fontStyle()
         self.tableView.tableFooterView = UIView()
         setBackButton()
         let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(BackviewController))
@@ -54,6 +69,7 @@ class MainMenuTableViewController: UITableViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
+        
         if traitCollection.userInterfaceStyle == .dark {
                historyIcon.tintColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
            }
@@ -89,10 +105,10 @@ class MainMenuTableViewController: UITableViewController {
                 let decoder = JSONDecoder()
                 let obj = try decoder.decode(EmailPhoneExitsValidationModel.self, from: jsonData!)
                 if obj.success == true{
-                    autoAcceptswitch.isOn = true
+                    self.autoAcceptswitch.isOn = true
                 }
                 else{
-                    autoAcceptswitch.isOn = false
+                    self.autoAcceptswitch.isOn = false
                 }
                 
             }
@@ -113,6 +129,7 @@ extension MainMenuTableViewController{
         let headerView: UITableViewHeaderFooterView = view as! UITableViewHeaderFooterView
         headerView.backgroundView = UIView()
         headerView.backgroundColor = .clear
+        headerView.textLabel?.font = UIFont(name: K.fontStyle, size: K.fontSizeHeaders)
         
     }
     
@@ -210,17 +227,33 @@ extension MainMenuTableViewController{
             
         }
     }
-    
-    
 }
-
 func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
     cell.selectionStyle = .none
     cell.preservesSuperviewLayoutMargins = false
     cell.separatorInset = UIEdgeInsets.zero
     cell.layoutMargins = UIEdgeInsets.zero
 }
-
-
-
-
+// Font setup
+extension MainMenuTableViewController {
+    func fontStyle() {
+        fontWithSize(labelName: fullName, size: 25)
+        fontWithSize(labelName: pId, size: 17)
+        font(labelName: liveSupportLbl)
+        font(labelName: lastOrderLbl)
+        font(labelName: historyLbl)
+        font(labelName: earningsLbl)
+        font(labelName: upcommingProLbl)
+        font(labelName: inboxLbl)
+        font(labelName: helpCenterLbl)
+        font(labelName: autoAcceptLbl)
+        font(labelName: mapSettingLbl)
+        font(labelName: signoutLbl)
+    }
+    func font(labelName : UILabel) {
+        labelName.font = UIFont(name:  K.fontStyle, size: 20.0)
+    }
+    func fontWithSize(labelName: UILabel , size: CGFloat){
+        labelName.font = UIFont(name: K.fontStyle, size: size)
+    }
+}

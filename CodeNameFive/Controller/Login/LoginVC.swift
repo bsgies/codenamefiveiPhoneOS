@@ -67,14 +67,14 @@ class LoginVC: UIViewController {
                 let decoder = JSONDecoder()
                 let obj = try decoder.decode(EmailPhoneExitsValidationModel.self, from: jsonData!)
                 if obj.success == false{
-                    GoToSecurityScreen()
+                    self.GoToSecurityScreen()
                 }
                 else{
-                    errorLbl.text = "incorrect Phone Number"
+                    self.errorLbl.text = "incorrect Phone Number"
                 }
             }
             catch{
-                errorLbl.text = "some Error Occur"
+                self.errorLbl.text = "some Error Occur"
             }
         }
     }

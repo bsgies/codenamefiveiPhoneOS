@@ -86,6 +86,7 @@
 		4FF1F72624AFCDAA0035A9A5 /* CollectOrderTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF1F72524AFCDAA0035A9A5 /* CollectOrderTVC.swift */; };
 		4FF1F72824AFD2180035A9A5 /* DeliverOrderTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF1F72724AFD2180035A9A5 /* DeliverOrderTVC.swift */; };
 		4FF1F72A24AFD92C0035A9A5 /* CollectcashVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF1F72924AFD92C0035A9A5 /* CollectcashVC.swift */; };
+		903F63D82571630500C0D86F /* K.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903F63D72571630500C0D86F /* K.swift */; };
 		9256B97C24BDC61600FF7CA0 /* ViewEXT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9256B97B24BDC61500FF7CA0 /* ViewEXT.swift */; };
 		A4A2248AA1190068345DCFCD /* Pods_CodeNameFive_CodeNameFiveUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D3A47F8A169D0CA79DC7B9B /* Pods_CodeNameFive_CodeNameFiveUITests.framework */; };
 		B6B7C4BFB57BAFA43E3D0E05 /* Pods_CodeNameFiveTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C7DB2144377852017506D20 /* Pods_CodeNameFiveTests.framework */; };
@@ -224,6 +225,7 @@
 		4FF1F72724AFD2180035A9A5 /* DeliverOrderTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliverOrderTVC.swift; sourceTree = "<group>"; };
 		4FF1F72924AFD92C0035A9A5 /* CollectcashVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectcashVC.swift; sourceTree = "<group>"; };
 		6B8B3A440900B17F3B9995FB /* Pods-CodeNameFive.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CodeNameFive.debug.xcconfig"; path = "Target Support Files/Pods-CodeNameFive/Pods-CodeNameFive.debug.xcconfig"; sourceTree = "<group>"; };
+		903F63D72571630500C0D86F /* K.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = K.swift; sourceTree = "<group>"; };
 		9256B97B24BDC61500FF7CA0 /* ViewEXT.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewEXT.swift; sourceTree = "<group>"; };
 		9D76C45A4FE63B9F1E6FA948 /* Pods_CodeNameFive.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CodeNameFive.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4CE2E3AFE00A8868FAE67EE /* Pods-CodeNameFiveTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CodeNameFiveTests.debug.xcconfig"; path = "Target Support Files/Pods-CodeNameFiveTests/Pods-CodeNameFiveTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -346,6 +348,7 @@
 				4F58477F24BB415500B42CB8 /* HelveticaNeueBlackItalic 1.otf */,
 				4F58478424BB415600B42CB8 /* HelveticaNeueBold.otf */,
 				4F58478024BB415500B42CB8 /* HelveticaNeueMediumItalic.otf */,
+				903F63D72571630500C0D86F /* K.swift */,
 			);
 			path = Fonts;
 			sourceTree = "<group>";
@@ -899,6 +902,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4FB978EE24A4D83F0093C10F /* OrderDetailCell.swift in Sources */,
+				903F63D82571630500C0D86F /* K.swift in Sources */,
 				4F08878624B5EE5D00CD5554 /* GoToCustomerVC.swift in Sources */,
 				4F2E5683249B684400D28462 /* ButtonRounded.swift in Sources */,
 				4FCA0C8C255740B100F41367 /* KeychainItemAccessibility.swift in Sources */,

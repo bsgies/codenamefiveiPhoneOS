@@ -403,7 +403,7 @@ extension Register2TVC {
         ai.center = spinnerView.center
         
         DispatchQueue.main.async { [self] in
-            spinnerView.addSubview(ai)
+            spinnerView.addSubview(self.ai)
             onView.addSubview(spinnerView)
         }
         
