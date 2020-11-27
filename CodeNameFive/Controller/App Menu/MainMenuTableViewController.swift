@@ -59,6 +59,12 @@ class MainMenuTableViewController: UITableViewController {
   
       override  func viewDidLoad() {
         super.viewDidLoad()
+        //
+//        UIFont.familyNames.forEach({ familyName in
+//            let fontNames = UIFont.fontNames(forFamilyName: familyName)
+//            print(familyName, fontNames)
+//        })
+        //
         fontStyle()
         self.tableView.tableFooterView = UIView()
         setBackButton()
@@ -129,7 +135,7 @@ extension MainMenuTableViewController{
         let headerView: UITableViewHeaderFooterView = view as! UITableViewHeaderFooterView
         headerView.backgroundView = UIView()
         headerView.backgroundColor = .clear
-        headerView.textLabel?.font = UIFont(name: K.fontStyle, size: K.fontSizeHeaders)
+        headerView.textLabel?.font = UIFont(name: K.SFProDisplaySemiBold, size: K.fontSizeHeaders)
         
     }
     
@@ -250,10 +256,12 @@ extension MainMenuTableViewController {
         font(labelName: mapSettingLbl)
         font(labelName: signoutLbl)
     }
+    // change font Style only
     func font(labelName : UILabel) {
-        labelName.font = UIFont(name:  K.fontStyle, size: 20.0)
+        labelName.font = UIFont(name:  K.SFProTextSemiBold, size: K.fontSize)
     }
+    // change font style as well as size 
     func fontWithSize(labelName: UILabel , size: CGFloat){
-        labelName.font = UIFont(name: K.fontStyle, size: size)
+        labelName.font = UIFont(name: K.SFProTextSemiBold, size: size)
     }
 }

@@ -9,6 +9,13 @@
 import Foundation
 import UIKit
 struct K {
-   static var fontStyle = ".SFUIText-Medium"
+    // for all fonts
+    static var SFProTextRegular = "SFProText-Regular"
+    static var SFProTextSemiBold =  "SFProText-Semibold"
+    static var fontSize: CGFloat = 20
+    // for header fonts and size
+    static var SFProDisplayRegular = "SFProDisplay-Regular"
+    static var SFProDisplaySemiBold = "SFProDisplay-Semibold"
     static var fontSizeHeaders: CGFloat = 13.0
+    
 }
