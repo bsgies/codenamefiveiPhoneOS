@@ -135,7 +135,7 @@ extension MainMenuTableViewController{
         let headerView: UITableViewHeaderFooterView = view as! UITableViewHeaderFooterView
         headerView.backgroundView = UIView()
         headerView.backgroundColor = .clear
-        headerView.textLabel?.font = UIFont(name: K.SFProDisplaySemiBold, size: K.fontSizeHeaders)
+        headerView.textLabel?.font = UIFont(name: K.SFProDisplay, size: K.fontSizeHeaders)
         
     }
     
@@ -258,10 +258,10 @@ extension MainMenuTableViewController {
     }
     // change font Style only
     func font(labelName : UILabel) {
-        labelName.font = UIFont(name:  K.SFProTextSemiBold, size: K.fontSize)
+        labelName.font = UIFont(name:  K.SFProText, size: K.fontSize)
     }
     // change font style as well as size 
     func fontWithSize(labelName: UILabel , size: CGFloat){
-        labelName.font = UIFont(name: K.SFProTextSemiBold, size: size)
+        labelName.font = UIFont(name: K.SFProText, size: size)
     }
 }

@@ -6,8 +6,15 @@
 	<array>
 		<string>SFProDisplay-Regular.ttf</string>
 		<string>SFProDisplay-Semibold.ttf</string>
+		<string>SFProDisplay-Bold.ttf</string>
+		<string>SFProDisplay-Medium-1.ttf</string>
+		<string>SFProDisplay-Black.ttf</string>
 		<string>SFProText-Regular.ttf</string>
 		<string>SFProText-Semibold.ttf</string>
+		<string>SFProText-Bold.ttf</string>
+		<string>SFProText-Heavy.ttf</string>
+		<string>SFProText-Medium.ttf</string>
+		<string>SFProText-Light.ttf</string>
 	</array>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
