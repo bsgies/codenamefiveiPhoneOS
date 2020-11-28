@@ -135,7 +135,7 @@ extension MainMenuTableViewController{
         let headerView: UITableViewHeaderFooterView = view as! UITableViewHeaderFooterView
         headerView.backgroundView = UIView()
         headerView.backgroundColor = .clear
-        headerView.textLabel?.font = UIFont(name: K.SFProDisplay, size: K.fontSizeHeaders)
+        headerView.textLabel?.font = UIFont(name: K.SFProDisplayRegular, size: K.fontSizeHeaders)
         
     }
     
@@ -243,7 +243,7 @@ func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forR
 // Font setup
 extension MainMenuTableViewController {
     func fontStyle() {
-        fontWithSize(labelName: fullName, size: 25)
+        fontWithSizeAndFontStyle(labelName: fullName, font: K.SFProTextBold, size: 25)
         fontWithSize(labelName: pId, size: 17)
         font(labelName: liveSupportLbl)
         font(labelName: lastOrderLbl)
@@ -256,12 +256,16 @@ extension MainMenuTableViewController {
         font(labelName: mapSettingLbl)
         font(labelName: signoutLbl)
     }
-    // change font Style only
+    // where we can customise label's font with standard font style
     func font(labelName : UILabel) {
-        labelName.font = UIFont(name:  K.SFProText, size: K.fontSize)
+        labelName.font = UIFont(name:  K.SFProTextRegular, size: K.fontSize)
     }
-    // change font style as well as size 
+    // where we can customise label's size with standard font style
     func fontWithSize(labelName: UILabel , size: CGFloat){
-        labelName.font = UIFont(name: K.SFProText, size: size)
+        labelName.font = UIFont(name: K.SFProTextRegular, size: size)
+    }
+    // where we can customise label's sizs as well as font style
+    func fontWithSizeAndFontStyle(labelName: UILabel,font: String, size: CGFloat ){
+        labelName.font = UIFont(name: font, size: size)
     }
 }

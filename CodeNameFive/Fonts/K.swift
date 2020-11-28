@@ -8,28 +8,21 @@
 
 import Foundation
 import UIKit
-// SFProText Font Style
-var SFProTextRegular = "SFProText-Regular"
-var SFProTextLight = "SFProText-Light"
-var SFProTextMedium = "SFProText-Medium"
-var SFProTextHeavy = "SFProText-Heavy"
-var SFProTextSemibold = "SFProText-Semibold"
-var SFProTextBold = "SFProText-Bold"
-
-// SFProDisplay Font Style
-var SFProDisplayRegular = "SFProDisplay-Regular"
-var SFProDisplayMedium = "SFProDisplay-Medium"
-var SFProDisplaySemibold = "SFProDisplay-Semibold"
-var SFProDisplayBold = "SFProDisplay-Bold"
-var SFProDisplayBlack = "SFProDisplay-Black"
-
 struct K {
     // for all fonts
-    static var SFProText = SFProTextRegular
+    static var SFProTextRegular = "SFProText-Regular"
+    static var SFProTextLight = "SFProText-Light"
+    static var SFProTextMedium = "SFProText-Medium"
+    static var SFProTextHeavy = "SFProText-Heavy"
+    static var SFProTextSemibold = "SFProText-Semibold"
+    static var SFProTextBold = "SFProText-Bold"
     static var fontSize: CGFloat = 20
     // for header fonts and size
-    static var SFProDisplay = SFProDisplayRegular
+    static var SFProDisplayRegular = "SFProDisplay-Regular"
+    static var SFProDisplayMedium = "SFProDisplay-Medium"
+    static var SFProDisplaySemibold = "SFProDisplay-Semibold"
+    static var SFProDisplayBold = "SFProDisplay-Bold"
+    static var SFProDisplayBlack = "SFProDisplay-Black"
     static var fontSizeHeaders: CGFloat = 13.0
-    
 }
 
