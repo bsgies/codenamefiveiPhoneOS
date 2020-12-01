@@ -5,7 +5,7 @@
 //  Created by Muhammad Imran on 19/06/2020.
 //  Copyright © 2020 ITRID TECHNOLOGIES LTD. All rights reserved.
 //
-
+import SideMenu
 import UIKit
 import GoogleMaps
 import CoreLocation
@@ -15,6 +15,8 @@ import MaterialComponents.MaterialActivityIndicator
 class DashboardVC: UIViewController ,  CLLocationManagerDelegate, GMSMapViewDelegate, UIGestureRecognizerDelegate {
     
     //MARK:- outlets
+    
+    @IBOutlet weak var menuBackground: UIView!
     @IBOutlet weak var recenterView: UIView!
     @IBOutlet weak var hamburgerImage: UIImageView!
     @IBOutlet weak var recenter: UIImageView!
@@ -64,7 +66,8 @@ class DashboardVC: UIViewController ,  CLLocationManagerDelegate, GMSMapViewDele
         SetupMap()
         hamburgerImage.isUserInteractionEnabled = true
         hamburger.isUserInteractionEnabled = true
-        let tap = UITapGestureRecognizer(target: self, action: #selector(menuopen(gesture:)))
+//        let tap = UITapGestureRecognizer(target: self, action: #selector(menuopen(gesture:)))
+        let tap = UITapGestureRecognizer(target: self, action: #selector(menuOpen))
         tap.delegate = self
         hamburger.addGestureRecognizer(tap)
     }
@@ -339,12 +342,27 @@ extension DashboardVC{
     }
     @objc func menuopen(gesture: UITapGestureRecognizer){
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let newViewController = storyBoard.instantiateViewController(withIdentifier: "AppMenu")
+        let newViewController = storyBoard.instantiateViewController(withIdentifier: "Checking")
         navigationController?.pushViewController(newViewController, animated: true)
     }
+    // new way to open new controller
+    @objc func menuOpen () {
+        menuBackground.isHidden = false
+               let storyboard = UIStoryboard(name: "Main", bundle: nil)
+               if let theController = storyboard.instantiateViewController(withIdentifier: "MenuHere") as? SideMenuNavigationController {
+
+                           SideMenuPresentationStyle.menuSlideIn.backgroundColor = UIColor.clear
+                           theController.presentationStyle = .menuSlideIn
+                        theController.presentationStyle.backgroundColor = UIColor.clear
+                           
+                present(theController, animated: true, completion: nil)
+               }
+    }
+    
     @objc func runTimedCode()  {
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let newViewController = storyBoard.instantiateViewController(withIdentifier: "NewTripRequestVC") as! NewTripRequestVC
+        newViewController.modalPresentationStyle = .overCurrentContext
         navigationController?.pushViewController(newViewController, animated: true)
     }
     
@@ -626,4 +644,20 @@ extension UIProgressView{
         completeLoading = true
         isHidden = true
     }
+}
+extension CATransition {
+     //New viewController will appear from left side of screen.
+    func segueFromLeft() -> CATransition {
+        self.duration = 2 //set the duration to whatever you'd like.
+        self.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
+        self.type = CATransitionType.moveIn
+        self.subtype = CATransitionSubtype.fromLeft
+        return self
+    }
+}
+extension DashboardVC : SideMenuNavigationControllerDelegate {
+    func sideMenuDidDisappear(menu: SideMenuNavigationController, animated: Bool) {
+           print("dis apear")
+           menuBackground.isHidden = true
+       }
 }

@@ -134,7 +134,7 @@ extension MainMenuTableViewController{
     override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         let headerView: UITableViewHeaderFooterView = view as! UITableViewHeaderFooterView
         headerView.backgroundView = UIView()
-        headerView.backgroundColor = .clear
+        headerView.backgroundColor = .black
         headerView.textLabel?.font = UIFont(name: K.SFProDisplayRegular, size: K.fontSizeHeaders)
         
     }
