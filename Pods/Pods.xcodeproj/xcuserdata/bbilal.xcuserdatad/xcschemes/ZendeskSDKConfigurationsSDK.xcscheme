@@ -14,9 +14,9 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "14A5FF5028DD371AD924F186F583FAED"
-               BuildableName = "CVCalendar.framework"
-               BlueprintName = "CVCalendar"
+               BlueprintIdentifier = "0F43F9AE813A5C024E5F9B8766CD7BD7"
+               BuildableName = "ZendeskSDKConfigurationsSDK"
+               BlueprintName = "ZendeskSDKConfigurationsSDK"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
