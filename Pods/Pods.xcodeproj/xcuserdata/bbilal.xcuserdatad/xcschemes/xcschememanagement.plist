@@ -18,85 +18,75 @@
 			<key>orderHint</key>
 			<integer>1</integer>
 		</dict>
-		<key>CVCalendar.xcscheme</key>
+		<key>GoogleMapDirectionLib.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
 			<integer>2</integer>
 		</dict>
-		<key>GoogleMapDirectionLib.xcscheme</key>
+		<key>GoogleMaps.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
 			<integer>3</integer>
 		</dict>
-		<key>GoogleMaps.xcscheme</key>
+		<key>InputBarAccessoryView.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
 			<integer>4</integer>
 		</dict>
-		<key>InputBarAccessoryView.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-			<key>orderHint</key>
-			<integer>5</integer>
-		</dict>
-		<key>LanguageKit.xcscheme_^#shared#^_</key>
-		<dict>
-			<key>orderHint</key>
-			<integer>18</integer>
-		</dict>
 		<key>MDFInternationalization.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-			<key>orderHint</key>
-			<integer>7</integer>
-		</dict>
-		<key>MTSlideToOpen.xcscheme_^#shared#^_</key>
-		<dict>
-			<key>orderHint</key>
-			<integer>24</integer>
-		</dict>
-		<key>MaterialComponents.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
 			<integer>6</integer>
 		</dict>
-		<key>MessageKit-MessageKitAssets.xcscheme</key>
+		<key>MTSlideToOpen.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
-			<integer>9</integer>
+			<integer>11</integer>
 		</dict>
-		<key>MessageKit.xcscheme</key>
+		<key>MaterialComponents.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+			<key>orderHint</key>
+			<integer>5</integer>
+		</dict>
+		<key>MessageKit-MessageKitAssets.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
 			<integer>8</integer>
 		</dict>
+		<key>MessageKit.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+			<key>orderHint</key>
+			<integer>7</integer>
+		</dict>
 		<key>MotionAnimator.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
-			<integer>10</integer>
+			<integer>9</integer>
 		</dict>
 		<key>MotionInterchange.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
-			<integer>11</integer>
+			<integer>10</integer>
 		</dict>
 		<key>ObjectMapper.xcscheme</key>
 		<dict>
@@ -140,40 +130,61 @@
 			<key>orderHint</key>
 			<integer>17</integer>
 		</dict>
-		<key>ZendeskCommonUISDK.xcscheme_^#shared#^_</key>
+		<key>SideMenu.xcscheme</key>
 		<dict>
+			<key>isShown</key>
+			<false/>
 			<key>orderHint</key>
-			<integer>22</integer>
+			<integer>18</integer>
 		</dict>
-		<key>ZendeskCoreSDK.xcscheme_^#shared#^_</key>
+		<key>ZendeskCommonUISDK.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>23</integer>
-		</dict>
-		<key>ZendeskMessagingAPISDK.xcscheme_^#shared#^_</key>
-		<dict>
-			<key>orderHint</key>
-			<integer>21</integer>
-		</dict>
-		<key>ZendeskMessagingSDK.xcscheme_^#shared#^_</key>
-		<dict>
-			<key>orderHint</key>
-			<integer>25</integer>
-		</dict>
-		<key>ZendeskSDKConfigurationsSDK.xcscheme_^#shared#^_</key>
-		<dict>
+			<key>isShown</key>
+			<false/>
 			<key>orderHint</key>
 			<integer>19</integer>
 		</dict>
-		<key>ZendeskSupportProvidersSDK.xcscheme_^#shared#^_</key>
+		<key>ZendeskCoreSDK.xcscheme</key>
 		<dict>
+			<key>isShown</key>
+			<false/>
 			<key>orderHint</key>
 			<integer>20</integer>
 		</dict>
-		<key>ZendeskSupportSDK.xcscheme_^#shared#^_</key>
+		<key>ZendeskMessagingAPISDK.xcscheme</key>
 		<dict>
+			<key>isShown</key>
+			<false/>
 			<key>orderHint</key>
-			<integer>26</integer>
+			<integer>21</integer>
+		</dict>
+		<key>ZendeskMessagingSDK.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+			<key>orderHint</key>
+			<integer>22</integer>
+		</dict>
+		<key>ZendeskSDKConfigurationsSDK.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+			<key>orderHint</key>
+			<integer>23</integer>
+		</dict>
+		<key>ZendeskSupportProvidersSDK.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+			<key>orderHint</key>
+			<integer>24</integer>
+		</dict>
+		<key>ZendeskSupportSDK.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+			<key>orderHint</key>
+			<integer>25</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>

@@ -35,8 +35,6 @@ class ProfileTVC: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setCrossButton()
-
-        
     }
     
     func setCrossButton(){
@@ -98,5 +96,8 @@ extension ProfileTVC{
 //            return 30
 //        }
 //    }
+    
+    
+  
     
 }

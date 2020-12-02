@@ -9,7 +9,7 @@
 import UIKit
 class PromotionVC: UIViewController {
 
-    //@IBOutlet weak var calender: CVCalendarWeekView!
+  //  @IBOutlet weak var calender: CVCalendarWeekView!
     
     let time = ["00:00 - 03:00","18:00 - 21:00"]
     let boost = ["1.3x","1.5x"]
