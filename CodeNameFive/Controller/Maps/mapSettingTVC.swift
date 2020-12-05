@@ -77,7 +77,7 @@ extension mapSettingTVC{
     
     func setBackButton(){
         let button: UIButton = UIButton (type: UIButton.ButtonType.custom)
-        button.setImage(UIImage(named: "back"), for: UIControl.State.normal)
+        button.setImage(UIImage(named: "close"), for: UIControl.State.normal)
         button.addTarget(self, action: #selector(backButtonPressed(btn:)), for: UIControl.Event.touchUpInside)
         button.frame = CGRect(x: 0 , y: 0, width: 30, height: 30)
         
@@ -86,8 +86,8 @@ extension mapSettingTVC{
         self.navigationItem.leftBarButtonItem = barButton
     }
     @objc func backButtonPressed(btn : UIButton) {
-        
-        self.navigationController?.popViewController(animated: true)
+//        self.navigationController?.popViewController(animated: true)
+        dismiss(animated: true, completion: nil)
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

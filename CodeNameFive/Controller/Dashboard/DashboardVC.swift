@@ -5,6 +5,7 @@
 //  Created by Muhammad Imran on 19/06/2020.
 //  Copyright © 2020 ITRID TECHNOLOGIES LTD. All rights reserved.
 //
+
 import SideMenu
 import UIKit
 import GoogleMaps
@@ -42,11 +43,12 @@ class DashboardVC: UIViewController ,  CLLocationManagerDelegate, GMSMapViewDele
     var locValue = CLLocationCoordinate2D(latitude: 0, longitude: 0)
     var isUserTouch = false
     var counter = 0
-    
-    
+    var menu : SideMenuNavigationController?
+    var mainMenuController = MainMenuViewController()
     //MARK:- Life Cycles
     override func viewDidLoad() {
         super.viewDidLoad()
+
         googleMapView.delegate = self
         if !checkOnlineOrOffline{
             Autrize()
@@ -70,6 +72,9 @@ class DashboardVC: UIViewController ,  CLLocationManagerDelegate, GMSMapViewDele
         let tap = UITapGestureRecognizer(target: self, action: #selector(menuOpen))
         tap.delegate = self
         hamburger.addGestureRecognizer(tap)
+      setupSideMenu()
+    
+        
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -85,6 +90,7 @@ class DashboardVC: UIViewController ,  CLLocationManagerDelegate, GMSMapViewDele
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
         currentEarning.backgroundColor = #colorLiteral(red: 0, green: 0.8465872407, blue: 0.7545004487, alpha: 1)
+        
     }
     
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
@@ -337,26 +343,29 @@ extension DashboardVC{
     func presentOnRoot(viewController : UIViewController){
         let navigationController = UINavigationController(rootViewController: viewController)
         navigationController.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
-        self.present(navigationController, animated: false, completion: nil)
+        self.present(navigationController, animated: true, completion: nil)
         
     }
     @objc func menuopen(gesture: UITapGestureRecognizer){
+        
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let newViewController = storyBoard.instantiateViewController(withIdentifier: "Checking")
         navigationController?.pushViewController(newViewController, animated: true)
     }
     // new way to open new controller
     @objc func menuOpen () {
+        
         menuBackground.isHidden = false
-               let storyboard = UIStoryboard(name: "Main", bundle: nil)
-               if let theController = storyboard.instantiateViewController(withIdentifier: "MenuHere") as? SideMenuNavigationController {
-
-                           SideMenuPresentationStyle.menuSlideIn.backgroundColor = UIColor.clear
-                           theController.presentationStyle = .menuSlideIn
-                        theController.presentationStyle.backgroundColor = UIColor.clear
-                           
-                present(theController, animated: true, completion: nil)
-               }
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        if let theController = storyboard.instantiateViewController(withIdentifier: "MenuHere") as? SideMenuNavigationController {
+            
+            SideMenuPresentationStyle.menuSlideIn.backgroundColor = UIColor.clear
+            theController.presentationStyle = .menuSlideIn
+            theController.presentationStyle.backgroundColor = UIColor.clear
+           
+            present(theController, animated: true, completion: nil)
+        }
     }
     
     @objc func runTimedCode()  {
@@ -655,9 +664,38 @@ extension CATransition {
         return self
     }
 }
+//MARK: - side menu controller and swipe animation
 extension DashboardVC : SideMenuNavigationControllerDelegate {
-    func sideMenuDidDisappear(menu: SideMenuNavigationController, animated: Bool) {
-           print("dis apear")
-           menuBackground.isHidden = true
+
+    
+    func sideMenuWillAppear(menu: SideMenuNavigationController, animated: Bool) {
+          // print("SideMenu Appearing! (animated: \(animated))")
+        menuBackground.isHidden = false
+         
        }
+
+       func sideMenuDidAppear(menu: SideMenuNavigationController, animated: Bool) {
+         //  print("SideMenu Appeared! (animated: \(animated))")
+        //menuBackground.isHidden = false
+       }
+
+       func sideMenuWillDisappear(menu: SideMenuNavigationController, animated: Bool) {
+         //  print("SideMenu Disappearing! (animated: \(animated))")
+//         menuBackground.isHidden = true
+       }
+
+       func sideMenuDidDisappear(menu: SideMenuNavigationController, animated: Bool) {
+           print("SideMenu Disappeared! (animated: \(animated))")
+         menuBackground.isHidden = true
+       }
+    private func setupSideMenu() {
+              // Define the menus
+        menu?.presentationStyle = .menuSlideIn
+              SideMenuManager.default.leftMenuNavigationController = storyboard?.instantiateViewController(withIdentifier: "MenuHere") as? SideMenuNavigationController
+          
+              SideMenuManager.default.addPanGestureToPresent(toView: navigationController!.navigationBar)
+              SideMenuManager.default.addScreenEdgePanGesturesToPresent(toView: view)
+          }
+
 }
+

@@ -9,9 +9,12 @@
 import UIKit
 import CoreData
 import GoogleMaps
+import SideMenu
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
+    var menu : SideMenuNavigationController?
+    let navCon = UINavigationController()
     var window: UIWindow?
     static var appdelegate = AppDelegate()
     var alert = UIAlertController()
@@ -24,8 +27,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
                 
               }
+//        SideMenuManager.default.leftMenuNavigationController = menu
+//        SideMenuManager.default.addPanGestureToPresent(toView: navCon.navigationBar)
+        
         return true
+        
     }
+  
+   
 
     // MARK: UISceneSession Lifecycle
 
