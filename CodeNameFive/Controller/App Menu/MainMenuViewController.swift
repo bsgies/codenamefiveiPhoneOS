@@ -62,8 +62,12 @@ class MainMenuViewController: UIViewController {
     // partner support button
     @IBAction func partnerSupport(_ sender: UIButton) {
         viewBlink(viewIs: partnerSupportView)
+     //dismiss(animated: true, completion: nil)
+        
         let editemail = (storyboard?.instantiateViewController(withIdentifier: "ParnterSupport"))!
-        present(editemail, animated: true, completion: nil)
+        //openController(viewIs: editemail)
+       present(editemail, animated: true, completion: nil)
+       // presentOnRoot(viewController: editemail)
         
     }
     @IBOutlet weak var lastOrder : UISwitch!{
@@ -159,6 +163,19 @@ extension MainMenuViewController {
             if timer.timeInterval == 0 {
                 // print("interval == 0 ")
                 viewIs.backgroundColor = UIColor.white
+            }
+        })
+    }
+}
+//MARK: - view on click
+extension MainMenuViewController {
+    func openController (viewIs: UIViewController) {
+        timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: false, block: { (timer) in
+            if timer.timeInterval == 0 {
+                 print("interval == 0 for controller ")
+               self.present(viewIs, animated: true, completion: nil)
+               // self.presentOnRoot(viewController: viewIs)
+                
             }
         })
     }

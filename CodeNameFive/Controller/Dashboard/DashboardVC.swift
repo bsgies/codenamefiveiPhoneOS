@@ -16,7 +16,7 @@ import MaterialComponents.MaterialActivityIndicator
 class DashboardVC: UIViewController ,  CLLocationManagerDelegate, GMSMapViewDelegate, UIGestureRecognizerDelegate {
     
     //MARK:- outlets
-    
+    var mainMenuController = MainMenuViewController()
     @IBOutlet weak var menuBackground: UIView!
     @IBOutlet weak var recenterView: UIView!
     @IBOutlet weak var hamburgerImage: UIImageView!
@@ -44,11 +44,10 @@ class DashboardVC: UIViewController ,  CLLocationManagerDelegate, GMSMapViewDele
     var isUserTouch = false
     var counter = 0
     var menu : SideMenuNavigationController?
-    var mainMenuController = MainMenuViewController()
+   
     //MARK:- Life Cycles
     override func viewDidLoad() {
         super.viewDidLoad()
-
         googleMapView.delegate = self
         if !checkOnlineOrOffline{
             Autrize()
@@ -365,6 +364,7 @@ extension DashboardVC{
             theController.presentationStyle.backgroundColor = UIColor.clear
            
             present(theController, animated: true, completion: nil)
+            
         }
     }
     
@@ -687,6 +687,8 @@ extension DashboardVC : SideMenuNavigationControllerDelegate {
        func sideMenuDidDisappear(menu: SideMenuNavigationController, animated: Bool) {
            print("SideMenu Disappeared! (animated: \(animated))")
          menuBackground.isHidden = true
+        let editemail = (storyboard?.instantiateViewController(withIdentifier: "ParnterSupport"))!
+        //present(editemail, animated: true, completion: nil)
        }
     private func setupSideMenu() {
               // Define the menus
@@ -696,6 +698,6 @@ extension DashboardVC : SideMenuNavigationControllerDelegate {
               SideMenuManager.default.addPanGestureToPresent(toView: navigationController!.navigationBar)
               SideMenuManager.default.addScreenEdgePanGesturesToPresent(toView: view)
           }
-
+    
 }
 
