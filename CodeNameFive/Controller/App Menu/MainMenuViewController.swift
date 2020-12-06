@@ -159,7 +159,7 @@ extension MainMenuViewController {
 extension MainMenuViewController {
     func viewBlink (viewIs: UIView) {
         viewIs.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
-        timer = Timer.scheduledTimer(withTimeInterval: 0.2, repeats: false, block: { (timer) in
+        timer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: false, block: { (timer) in
             if timer.timeInterval == 0 {
                 // print("interval == 0 ")
                 viewIs.backgroundColor = UIColor.white
