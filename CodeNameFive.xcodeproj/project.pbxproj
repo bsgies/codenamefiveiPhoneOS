@@ -86,6 +86,7 @@
 		4FF1F72624AFCDAA0035A9A5 /* CollectOrderTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF1F72524AFCDAA0035A9A5 /* CollectOrderTVC.swift */; };
 		4FF1F72824AFD2180035A9A5 /* DeliverOrderTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF1F72724AFD2180035A9A5 /* DeliverOrderTVC.swift */; };
 		4FF1F72A24AFD92C0035A9A5 /* CollectcashVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF1F72924AFD92C0035A9A5 /* CollectcashVC.swift */; };
+		903D5873257E586300521DCD /* MainMenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903D5872257E586200521DCD /* MainMenuTableViewCell.swift */; };
 		903F63D82571630500C0D86F /* K.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903F63D72571630500C0D86F /* K.swift */; };
 		903F63DA257176CD00C0D86F /* SFProDisplay-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 903F63D9257176CD00C0D86F /* SFProDisplay-Regular.ttf */; };
 		903F63DB257176CD00C0D86F /* SFProDisplay-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 903F63D9257176CD00C0D86F /* SFProDisplay-Regular.ttf */; };
@@ -260,6 +261,7 @@
 		4FF1F72724AFD2180035A9A5 /* DeliverOrderTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliverOrderTVC.swift; sourceTree = "<group>"; };
 		4FF1F72924AFD92C0035A9A5 /* CollectcashVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectcashVC.swift; sourceTree = "<group>"; };
 		6B8B3A440900B17F3B9995FB /* Pods-CodeNameFive.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CodeNameFive.debug.xcconfig"; path = "Target Support Files/Pods-CodeNameFive/Pods-CodeNameFive.debug.xcconfig"; sourceTree = "<group>"; };
+		903D5872257E586200521DCD /* MainMenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuTableViewCell.swift; sourceTree = "<group>"; };
 		903F63D72571630500C0D86F /* K.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = K.swift; sourceTree = "<group>"; };
 		903F63D9257176CD00C0D86F /* SFProDisplay-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProDisplay-Regular.ttf"; sourceTree = "<group>"; };
 		903F63DD257178E500C0D86F /* SFProDisplay-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProDisplay-Semibold.ttf"; sourceTree = "<group>"; };
@@ -437,6 +439,7 @@
 			children = (
 				4F61D990249BEFC300B9FE89 /* MainMenuTableViewController.swift */,
 				9041B3722573F38300C4DA3A /* MainMenuViewController.swift */,
+				903D5872257E586200521DCD /* MainMenuTableViewCell.swift */,
 			);
 			path = "App Menu";
 			sourceTree = "<group>";
@@ -1057,6 +1060,7 @@
 				4F43BC2024A3ED22006CF40F /* TripHistoryVC.swift in Sources */,
 				4F393B2024AB48CD009D08AB /* InvoiceDetailVC.swift in Sources */,
 				4F43BC1824A3D971006CF40F /* VehicleinformationTVC.swift in Sources */,
+				903D5873257E586300521DCD /* MainMenuTableViewCell.swift in Sources */,
 				90494040257C35B800224131 /* LiveSupportViewController.swift in Sources */,
 				4FE12A1A24E54F78006F55E1 /* MMSlidingButton.swift in Sources */,
 				4FF1F72424AFBB2D0035A9A5 /* HelpOrCancelCell.swift in Sources */,

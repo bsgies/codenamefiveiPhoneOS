@@ -11,14 +11,6 @@ import SideMenu
 class MainMenuViewController: UIViewController {
     //Views
     @IBOutlet weak var profileBackView: UIView!
-    @IBOutlet weak var partnerSupportView: UIView!
-    @IBOutlet weak var tripHistoryView: UIView!
-    @IBOutlet weak var earningsView: UIView!
-    @IBOutlet weak var promotionsView: UIView!
-    @IBOutlet weak var inboxView: UIView!
-    @IBOutlet weak var mapSettingsView: UIView!
-    @IBOutlet weak var helpCenterView: UIView!
-    
     @IBOutlet weak var profileImage : UIImageView!
     @IBOutlet weak var fullName : UILabel!{
         didSet{
@@ -31,15 +23,19 @@ class MainMenuViewController: UIViewController {
             //           pId.font = UIFont(name: "AvenirNext-DemiBold", size: 20.0)
         }
     }
-    @IBOutlet weak var line: UIView!
-    @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
-    @IBOutlet weak var partnerAndLastOrder: UIView!
+
     var timer = Timer()
+    
+    @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.delegate = self
+        tableView.dataSource = self
+       tableView.separatorStyle = .none
+        
         navigationController?.navigationBar.isHidden = true
         viewsAction()
-        //         uiSetup()
+       
     }
     
     //MARK: - Actions
@@ -59,52 +55,13 @@ class MainMenuViewController: UIViewController {
         viewBlink(viewIs: profileBackView)
         presentOnRoot(viewController: profile)
     }
-    // partner support button
-    @IBAction func partnerSupport(_ sender: UIButton) {
-        viewBlink(viewIs: partnerSupportView)
-     //dismiss(animated: true, completion: nil)
-        
-        let editemail = (storyboard?.instantiateViewController(withIdentifier: "ParnterSupport"))!
-        //openController(viewIs: editemail)
-       present(editemail, animated: true, completion: nil)
-       // presentOnRoot(viewController: editemail)
-        
-    }
+ 
     @IBOutlet weak var lastOrder : UISwitch!{
         didSet{
             lastOrder.isOn = UserDefaults.standard.bool(forKey: "lastOrder")
         }
     }
-    @IBAction func tripHistory(_ sender: UIButton) {
-        viewBlink(viewIs: tripHistoryView)
-        let trip : TripHistoryVC = self.storyboard?.instantiateViewController(withIdentifier: "TripHistoryVC") as! TripHistoryVC
-        self.presentOnRoot(viewController: trip)
-    }
-    
-    @IBAction func earnings(_ sender: UIButton) {
-        viewBlink(viewIs: earningsView)
-        let earning : EarningsVC = self.storyboard?.instantiateViewController(withIdentifier: "EarningsVC") as! EarningsVC
-        self.presentOnRoot(viewController: earning)
-    }
-    @IBAction func promotions(_ sender: UIButton) {
-        viewBlink(viewIs: promotionsView)
-        let pro : PromotionVC = self.storyboard?.instantiateViewController(withIdentifier: "PromotionVC") as! PromotionVC
-        self.presentOnRoot(viewController: pro)
-    }
-    
-    @IBAction func inbox(_ sender: UIButton) {
-        viewBlink(viewIs: inboxView)
-        let inbox : InboxVC = self.storyboard?.instantiateViewController(withIdentifier: "InboxVC") as! InboxVC
-        self.presentOnRoot(viewController: inbox)
-    }
-    
-    @IBAction func mapSettings(_ sender: UIButton) {
-        viewBlink(viewIs: mapSettingsView)
-        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = storyBoard.instantiateViewController(withIdentifier: "mapSettingTVC") as! mapSettingTVC
-        // navigationController?.pushViewController(vc, animated: true)
-        presentOnRoot(viewController: vc)
-    }
+
     @IBOutlet weak var autoAcceptswitch: UISwitch!{
         didSet{
             autoAcceptswitch.isOn = UserDefaults.standard.bool(forKey: "autoAccept")
@@ -115,23 +72,6 @@ class MainMenuViewController: UIViewController {
         UserDefaults.standard.setValue(sender.isOn, forKey: "autoAccept")
     }
     
-    @IBAction func helpCenter(_ sender: UIButton) {
-        viewBlink(viewIs: helpCenterView)
-        let help : HelpCenterVC = self.storyboard?.instantiateViewController(withIdentifier: "HelpCenterVC") as! HelpCenterVC
-        self.presentOnRoot(viewController: help)
-    }
-    
-    @IBAction func signOut(_ sender: UIButton) {
-        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = storyBoard.instantiateViewController(withIdentifier: "LoginVC") as! LoginVC
-        navigationController?.pushViewController(vc, animated: false)
-    }
-    // hide partner support and last order buttons
-    func uiSetup() {
-        line.isHidden = true
-        partnerAndLastOrder.isHidden = true
-        bottomConstraint.constant = -100
-    }
 }
 extension MainMenuViewController {
     //API Calling
@@ -167,18 +107,149 @@ extension MainMenuViewController {
         })
     }
 }
-//MARK: - view on click
-extension MainMenuViewController {
-    func openController (viewIs: UIViewController) {
-        timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: false, block: { (timer) in
-            if timer.timeInterval == 0 {
-                 print("interval == 0 for controller ")
-               self.present(viewIs, animated: true, completion: nil)
-               // self.presentOnRoot(viewController: viewIs)
-                
-            }
-        })
+//MARK: - TableView Delegate
+extension MainMenuViewController : UITableViewDelegate , UITableViewDataSource{
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 10
     }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+       
+        if (indexPath.row == 0) {
+            return 50
+        }else if (indexPath.row == 1) {
+            return 50
+        }else {
+            return 50
+        }
+       
+    }
+ 
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if indexPath.row == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! MainMenuTableViewCell
+            // setup here
+            cell.imageCell.image = UIImage(named: "comment")
+            cell.labelCell.text = "Live support"
+           // cell.switchCell.isHidden = true
+            cell.viewCell.isHidden = true
+            return cell
+        }else if indexPath.row == 1 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "cell1") as! MainMenuTableViewCell
+            // setup here
+            cell.imageCell.image = UIImage(named: "comment")
+            cell.labelCell.text = "Last Order"
+            return cell
+        }else if indexPath.row == 2 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "cell2") as! MainMenuTableViewCell
+            // setup here
+            cell.labelCell.text = "Trip histroy"
+            //cell.switchCell.isHidden = true
+            cell.viewCell.isHidden = true
+            return cell
+        }else if indexPath.row == 3 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "cell3") as! MainMenuTableViewCell
+            // setup here
+            cell.labelCell.text = "Earnings"
+           // cell.switchCell.isHidden = true
+            cell.viewCell.isHidden = true
+            return cell
+        }else if indexPath.row == 4 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "cell4") as! MainMenuTableViewCell
+            // setup here
+            cell.labelCell.text = "Upcoming promotions"
+           // cell.switchCell.isHidden = true
+            cell.viewCell.isHidden = true
+            return cell
+        }else if indexPath.row == 5 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "cell5") as! MainMenuTableViewCell
+            // setup here
+            cell.labelCell.text = "Inbox"
+           // cell.switchCell.isHidden = true
+            return cell
+        }else if indexPath.row == 6 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "cell6") as! MainMenuTableViewCell
+            // setup here
+            cell.labelCell.text = "Map settings"
+           // cell.switchCell.isHidden = true
+            cell.viewCell.isHidden = true
+            return cell
+        }else if indexPath.row == 7 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "cell7") as! MainMenuTableViewCell
+            // setup here
+            cell.labelCell.text = "Auto Accept"
+            cell.viewCell.isHidden = true
+            return cell
+        }else if indexPath.row == 8 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "cell8") as! MainMenuTableViewCell
+            // setup here
+            cell.labelCell.text = "Help center"
+           // cell.switchCell.isHidden = true
+            return cell
+        }
+        else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "cell9") as! MainMenuTableViewCell
+            // setup here
+           
+            cell.labelCell.text = "Sign out"
+            cell.labelCell.textColor = UIColor.red
+           // cell.switchCell.isHidden = true
+            cell.viewCell.isHidden = true
+            cell.viewCell.isHidden = true
+            //cell.imageCell.isHidden = true
+           // cell.widthConstraint.constant = 0
+            return cell
+        }
+        
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        let currentSection = indexPath.section
+        if currentSection == 0 {
+            if indexPath.row == 0 {
+
+                let editliveSupport = (storyboard?.instantiateViewController(withIdentifier: "ParnterSupport"))!
+                       //openController(viewIs: editemail)
+                      present(editliveSupport, animated: true, completion: nil)
+                      // presentOnRoot(viewController: editemail)
+
+            }else if indexPath.row == 2 {
+                
+               let trip : TripHistoryVC = self.storyboard?.instantiateViewController(withIdentifier: "TripHistoryVC") as! TripHistoryVC
+                self.presentOnRoot(viewController: trip)
+                
+            }else if indexPath.row == 3 {
+                
+               let earning : EarningsVC = self.storyboard?.instantiateViewController(withIdentifier: "EarningsVC") as! EarningsVC
+                      self.presentOnRoot(viewController: earning)
+                
+            }else if indexPath.row == 4 {
+                
+              let pro : PromotionVC = self.storyboard?.instantiateViewController(withIdentifier: "PromotionVC") as! PromotionVC
+               self.presentOnRoot(viewController: pro)
+                
+            }else if indexPath.row == 5 {
+                
+             let inbox : InboxVC = self.storyboard?.instantiateViewController(withIdentifier: "InboxVC") as! InboxVC
+                    self.presentOnRoot(viewController: inbox)
+            }else if indexPath.row == 6 {
+                let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                       let vc = storyBoard.instantiateViewController(withIdentifier: "mapSettingTVC") as! mapSettingTVC
+                
+                       presentOnRoot(viewController: vc)
+            }else if indexPath.row == 8 {
+                let help : HelpCenterVC = self.storyboard?.instantiateViewController(withIdentifier: "HelpCenterVC") as! HelpCenterVC
+                       self.presentOnRoot(viewController: help)
+            }else if indexPath.row == 9 {
+                let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                       let vc = storyBoard.instantiateViewController(withIdentifier: "LoginVC") as! LoginVC
+                       navigationController?.pushViewController(vc, animated: false)
+            }
+        }//end current section
+        
+   }
+    
 }
 
 
