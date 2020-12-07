@@ -112,7 +112,6 @@ extension MainMenuViewController : UITableViewDelegate , UITableViewDataSource{
         }
        
     }
- 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.row == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! MainMenuTableViewCell
@@ -235,6 +234,7 @@ extension MainMenuViewController : UITableViewDelegate , UITableViewDataSource{
                        navigationController?.pushViewController(vc, animated: false)
             }
         }//end current section
+        
         
    }
     
