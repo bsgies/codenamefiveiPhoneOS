@@ -2291,7 +2291,7 @@
                                                         </constraints>
                                                     </imageView>
                                                 </subviews>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                 <constraints>
                                                     <constraint firstItem="cJh-x7-PXY" firstAttribute="leading" secondItem="H2D-H0-O2J" secondAttribute="leading" constant="15" id="1Cq-vF-Dnj"/>
                                                     <constraint firstItem="GqH-dn-N61" firstAttribute="leading" secondItem="cJh-x7-PXY" secondAttribute="trailing" constant="10" id="4Ib-mw-FXc"/>
@@ -2929,7 +2929,7 @@
                                 </constraints>
                             </scrollView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="AuY-Bc-3hG" secondAttribute="bottom" id="HWS-YT-7Z7"/>
                             <constraint firstItem="AuY-Bc-3hG" firstAttribute="top" secondItem="YN2-AG-es3" secondAttribute="top" id="Upe-rn-zcQ"/>
