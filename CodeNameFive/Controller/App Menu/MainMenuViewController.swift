@@ -52,7 +52,6 @@ class MainMenuViewController: UIViewController {
     @objc
     func ViewProfile() {
         let profile : ProfileTVC = storyboard?.instantiateViewController(withIdentifier: "Profile") as! ProfileTVC
-        viewBlink(viewIs: profileBackView)
         presentOnRoot(viewController: profile)
     }
  
@@ -95,18 +94,7 @@ extension MainMenuViewController {
         }
     }
 }
-//MARK: - view Blink on click
-extension MainMenuViewController {
-    func viewBlink (viewIs: UIView) {
-        viewIs.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
-        timer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: false, block: { (timer) in
-            if timer.timeInterval == 0 {
-                // print("interval == 0 ")
-                viewIs.backgroundColor = UIColor.white
-            }
-        })
-    }
-}
+
 //MARK: - TableView Delegate
 extension MainMenuViewController : UITableViewDelegate , UITableViewDataSource{
     
