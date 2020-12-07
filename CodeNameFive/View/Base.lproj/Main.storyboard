@@ -2375,7 +2375,7 @@
                                                             <outlet property="viewCell" destination="TNJ-B2-Qeg" id="kcu-TV-HDm"/>
                                                         </connections>
                                                     </tableViewCell>
-                                                    <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell1" rowHeight="45" id="dO4-62-B5F" customClass="MainMenuTableViewCell" customModule="CNF" customModuleProvider="target">
+                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell1" rowHeight="45" id="dO4-62-B5F" customClass="MainMenuTableViewCell" customModule="CNF" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="73" width="414" height="45"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="dO4-62-B5F" id="uN7-Sc-VKE">
@@ -2409,6 +2409,7 @@
                                                                             <rect key="frame" x="350" y="7" width="51" height="31"/>
                                                                         </switch>
                                                                     </subviews>
+                                                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                                     <constraints>
                                                                         <constraint firstItem="fBh-QX-cHS" firstAttribute="leading" secondItem="duH-y0-pp0" secondAttribute="trailing" constant="10" id="0mN-WC-Sh9"/>
                                                                         <constraint firstItem="duH-y0-pp0" firstAttribute="centerY" secondItem="csc-NH-RtW" secondAttribute="centerY" id="5RM-EW-JAG"/>
@@ -2729,7 +2730,7 @@
                                                             <outlet property="viewCell" destination="WZH-dw-tEp" id="UJj-6h-SrV"/>
                                                         </connections>
                                                     </tableViewCell>
-                                                    <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell7" rowHeight="45" id="jOZ-Ek-V8W" customClass="MainMenuTableViewCell" customModule="CNF" customModuleProvider="target">
+                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell7" rowHeight="45" id="jOZ-Ek-V8W" customClass="MainMenuTableViewCell" customModule="CNF" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="343" width="414" height="45"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="jOZ-Ek-V8W" id="fo2-R9-4O5">
@@ -2763,6 +2764,7 @@
                                                                             <rect key="frame" x="350" y="7" width="51" height="31"/>
                                                                         </switch>
                                                                     </subviews>
+                                                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                                     <constraints>
                                                                         <constraint firstItem="Hah-12-Tbn" firstAttribute="top" secondItem="sEf-wd-9Hs" secondAttribute="bottom" constant="5" id="8MK-T6-5T1"/>
                                                                         <constraint firstItem="pcQ-qc-Lfp" firstAttribute="centerY" secondItem="X5n-lS-bBy" secondAttribute="centerY" id="DDp-ZR-cmZ"/>
