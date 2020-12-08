@@ -29,6 +29,7 @@ class MainMenuViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        fontStyle()
         tableView.delegate = self
         tableView.dataSource = self
        tableView.separatorStyle = .none
@@ -118,12 +119,13 @@ extension MainMenuViewController : UITableViewDelegate , UITableViewDataSource{
             // setup here
             cell.imageCell.image = UIImage(named: "comment")
             cell.labelCell.text = "Live support"
-           // cell.switchCell.isHidden = true
+            font(labelName: cell.labelCell)
             cell.viewCell.isHidden = true
             return cell
         }else if indexPath.row == 1 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell1") as! MainMenuTableViewCell
             // setup here
+             font(labelName: cell.labelCell)
             cell.imageCell.image = UIImage(named: "comment")
             cell.labelCell.text = "Last Order"
             return cell
@@ -131,53 +133,55 @@ extension MainMenuViewController : UITableViewDelegate , UITableViewDataSource{
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell2") as! MainMenuTableViewCell
             // setup here
             cell.labelCell.text = "Trip histroy"
-            //cell.switchCell.isHidden = true
+            font(labelName: cell.labelCell)
             cell.viewCell.isHidden = true
             return cell
         }else if indexPath.row == 3 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell3") as! MainMenuTableViewCell
             // setup here
             cell.labelCell.text = "Earnings"
-           // cell.switchCell.isHidden = true
+            font(labelName: cell.labelCell)
             cell.viewCell.isHidden = true
             return cell
         }else if indexPath.row == 4 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell4") as! MainMenuTableViewCell
             // setup here
             cell.labelCell.text = "Upcoming promotions"
-           // cell.switchCell.isHidden = true
+            font(labelName: cell.labelCell)
             cell.viewCell.isHidden = true
             return cell
         }else if indexPath.row == 5 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell5") as! MainMenuTableViewCell
             // setup here
             cell.labelCell.text = "Inbox"
-           // cell.switchCell.isHidden = true
+           font(labelName: cell.labelCell)
             return cell
         }else if indexPath.row == 6 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell6") as! MainMenuTableViewCell
             // setup here
             cell.labelCell.text = "Map settings"
-           // cell.switchCell.isHidden = true
+            font(labelName: cell.labelCell)
             cell.viewCell.isHidden = true
             return cell
         }else if indexPath.row == 7 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell7") as! MainMenuTableViewCell
             // setup here
             cell.labelCell.text = "Auto Accept"
+             font(labelName: cell.labelCell)
             cell.viewCell.isHidden = true
             return cell
         }else if indexPath.row == 8 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell8") as! MainMenuTableViewCell
             // setup here
             cell.labelCell.text = "Help center"
+             font(labelName: cell.labelCell)
            // cell.switchCell.isHidden = true
             return cell
         }
         else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell9") as! MainMenuTableViewCell
             // setup here
-           
+            font(labelName: cell.labelCell)
             cell.labelCell.text = "Sign out"
             cell.labelCell.textColor = UIColor.red
            // cell.switchCell.isHidden = true
@@ -240,4 +244,23 @@ extension MainMenuViewController : UITableViewDelegate , UITableViewDataSource{
     
 }
 
+// Font setup
+extension MainMenuViewController {
+    func fontStyle() {
+        fontWithSizeAndFontStyle(labelName: fullName, font: K.SFProTextBold, size: 25)
+        fontWithSize(labelName: pId, size: 17)
+    }
+    // where we can customise label's font with standard font style
+    func font(labelName : UILabel) {
+        labelName.font = UIFont(name:  K.SFProTextRegular, size: K.fontSize)
+    }
+    // where we can customise label's size with standard font style
+    func fontWithSize(labelName: UILabel , size: CGFloat){
+        labelName.font = UIFont(name: K.SFProTextRegular, size: size)
+    }
+    // where we can customise label's sizs as well as font style
+    func fontWithSizeAndFontStyle(labelName: UILabel,font: String, size: CGFloat ){
+        labelName.font = UIFont(name: font, size: size)
+    }
+}
 

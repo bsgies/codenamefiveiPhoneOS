@@ -16,7 +16,7 @@ struct K {
     static var SFProTextHeavy = "SFProText-Heavy"
     static var SFProTextSemibold = "SFProText-Semibold"
     static var SFProTextBold = "SFProText-Bold"
-    static var fontSize: CGFloat = 20
+    static var fontSize: CGFloat = 18
     // for header fonts and size
     static var SFProDisplayRegular = "SFProDisplay-Regular"
     static var SFProDisplayMedium = "SFProDisplay-Medium"

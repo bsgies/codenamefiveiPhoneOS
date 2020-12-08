@@ -65,7 +65,7 @@ class MainMenuTableViewController: UITableViewController {
 //            print(familyName, fontNames)
 //        })
         //
-        fontStyle()
+       // fontStyle()
         self.tableView.tableFooterView = UIView()
         setBackButton()
         let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(BackviewController))
@@ -241,31 +241,31 @@ func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forR
     cell.layoutMargins = UIEdgeInsets.zero
 }
 // Font setup
-extension MainMenuTableViewController {
-    func fontStyle() {
-        fontWithSizeAndFontStyle(labelName: fullName, font: K.SFProTextBold, size: 25)
-        fontWithSize(labelName: pId, size: 17)
-        font(labelName: liveSupportLbl)
-        font(labelName: lastOrderLbl)
-        font(labelName: historyLbl)
-        font(labelName: earningsLbl)
-        font(labelName: upcommingProLbl)
-        font(labelName: inboxLbl)
-        font(labelName: helpCenterLbl)
-        font(labelName: autoAcceptLbl)
-        font(labelName: mapSettingLbl)
-        font(labelName: signoutLbl)
-    }
-    // where we can customise label's font with standard font style
-    func font(labelName : UILabel) {
-        labelName.font = UIFont(name:  K.SFProTextRegular, size: K.fontSize)
-    }
-    // where we can customise label's size with standard font style
-    func fontWithSize(labelName: UILabel , size: CGFloat){
-        labelName.font = UIFont(name: K.SFProTextRegular, size: size)
-    }
-    // where we can customise label's sizs as well as font style
-    func fontWithSizeAndFontStyle(labelName: UILabel,font: String, size: CGFloat ){
-        labelName.font = UIFont(name: font, size: size)
-    }
-}
+//extension MainMenuTableViewController {
+//    func fontStyle() {
+//        fontWithSizeAndFontStyle(labelName: fullName, font: K.SFProTextBold, size: 25)
+//        fontWithSize(labelName: pId, size: 17)
+//        font(labelName: liveSupportLbl)
+//        font(labelName: lastOrderLbl)
+//        font(labelName: historyLbl)
+//        font(labelName: earningsLbl)
+//        font(labelName: upcommingProLbl)
+//        font(labelName: inboxLbl)
+//        font(labelName: helpCenterLbl)
+//        font(labelName: autoAcceptLbl)
+//        font(labelName: mapSettingLbl)
+//        font(labelName: signoutLbl)
+//    }
+//    // where we can customise label's font with standard font style
+//    func font(labelName : UILabel) {
+//        labelName.font = UIFont(name:  K.SFProTextRegular, size: K.fontSize)
+//    }
+//    // where we can customise label's size with standard font style
+//    func fontWithSize(labelName: UILabel , size: CGFloat){
+//        labelName.font = UIFont(name: K.SFProTextRegular, size: size)
+//    }
+//    // where we can customise label's sizs as well as font style
+//    func fontWithSizeAndFontStyle(labelName: UILabel,font: String, size: CGFloat ){
+//        labelName.font = UIFont(name: font, size: size)
+//    }
+//}
