@@ -28,7 +28,7 @@
             <objects>
                 <viewController storyboardIdentifier="LoginVC" title="Login" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="LoginVC" customModule="CNF" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PS8-g6-vuE">
@@ -293,7 +293,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eCc-qK-z8h">
-                                        <rect key="frame" x="132" y="55" width="150" height="50"/>
+                                        <rect key="frame" x="176.66666666666666" y="55" width="61" height="50"/>
                                         <color key="backgroundColor" red="0.070588235289999995" green="0.82352941180000006" blue="0.70196078429999997" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="H5a-uw-jWB"/>
@@ -366,17 +366,17 @@
                                 <color key="backgroundColor" systemColor="opaqueSeparatorColor" red="0.77647058820000003" green="0.77647058820000003" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="2iQ-MZ-9xF" secondAttribute="bottom" constant="8" id="1tb-oM-o3V"/>
-                                    <constraint firstItem="eCc-qK-z8h" firstAttribute="leading" secondItem="6g9-UM-o8V" secondAttribute="trailing" constant="62" id="9Ou-sQ-hOl"/>
                                     <constraint firstItem="6g9-UM-o8V" firstAttribute="leading" secondItem="TSl-fa-Hbe" secondAttribute="leading" constant="20" id="CMJ-xi-qgw"/>
-                                    <constraint firstItem="eCc-qK-z8h" firstAttribute="centerX" secondItem="TSl-fa-Hbe" secondAttribute="centerX" id="YKf-l4-vLU"/>
+                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="eCc-qK-z8h" secondAttribute="trailing" constant="20" symbolic="YES" id="agO-1h-35P"/>
                                     <constraint firstItem="eCc-qK-z8h" firstAttribute="bottom" secondItem="6g9-UM-o8V" secondAttribute="bottom" id="axe-Go-JNy"/>
                                     <constraint firstItem="6g9-UM-o8V" firstAttribute="top" secondItem="TSl-fa-Hbe" secondAttribute="top" constant="55" id="eIR-jC-OOf"/>
+                                    <constraint firstItem="eCc-qK-z8h" firstAttribute="centerX" secondItem="TSl-fa-Hbe" secondAttribute="centerX" id="f82-Hc-pyL"/>
                                     <constraint firstAttribute="trailing" secondItem="2iQ-MZ-9xF" secondAttribute="trailing" constant="8" id="jA4-q5-Vqv"/>
                                     <constraint firstItem="eCc-qK-z8h" firstAttribute="top" secondItem="6g9-UM-o8V" secondAttribute="top" id="kYJ-nQ-KII"/>
                                 </constraints>
                             </view>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5xh-wA-r6a">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <rect key="frame" x="0.0" y="500" width="414" height="396"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.76680222602739723" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                         </subviews>
@@ -384,7 +384,7 @@
                         <constraints>
                             <constraint firstItem="EX9-NE-RZa" firstAttribute="top" secondItem="TSl-fa-Hbe" secondAttribute="bottom" id="31w-gs-V92"/>
                             <constraint firstItem="TSl-fa-Hbe" firstAttribute="top" secondItem="YTS-Vv-Yd6" secondAttribute="top" id="9Ll-8V-LrT"/>
-                            <constraint firstItem="5xh-wA-r6a" firstAttribute="top" secondItem="YTS-Vv-Yd6" secondAttribute="top" id="F2o-Fj-K8q"/>
+                            <constraint firstItem="5xh-wA-r6a" firstAttribute="top" secondItem="YTS-Vv-Yd6" secondAttribute="top" constant="500" id="F2o-Fj-K8q"/>
                             <constraint firstItem="TSl-fa-Hbe" firstAttribute="height" secondItem="EX9-NE-RZa" secondAttribute="height" multiplier="9.5122" id="L0d-tR-9Yl"/>
                             <constraint firstItem="TSl-fa-Hbe" firstAttribute="width" secondItem="EX9-NE-RZa" secondAttribute="width" id="N8t-7q-M8q"/>
                             <constraint firstItem="TSl-fa-Hbe" firstAttribute="trailing" secondItem="k1i-BL-q68" secondAttribute="trailing" id="NM7-qE-4gJ"/>
