@@ -182,7 +182,7 @@
                                 <rect key="frame" x="0.0" y="780" width="414" height="82"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="WC7-pr-TNN">
-                                        <rect key="frame" x="15" y="10" width="175" height="62"/>
+                                        <rect key="frame" x="119.66666666666669" y="10" width="175" height="62"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Findings trips for you..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="OSd-BX-5cu">
                                                 <rect key="frame" x="0.0" y="0.0" width="175" height="31"/>
@@ -198,32 +198,6 @@
                                             </label>
                                         </subviews>
                                     </stackView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0BL-x8-qsA">
-                                        <rect key="frame" x="210" y="19" width="174" height="44"/>
-                                        <color key="backgroundColor" name="danger"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="150" id="6Hm-gP-wRX"/>
-                                            <constraint firstAttribute="height" constant="44" id="pJe-MD-W2h"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="16"/>
-                                        <state key="normal" title="Go offline">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                <real key="value" value="3"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
-                                                <real key="value" value="0.0"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                                <real key="value" value="0.0"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                        <connections>
-                                            <action selector="OnlineOfflineButton:" destination="SbE-77-hSa" eventType="touchUpInside" id="Tbz-7b-nKg"/>
-                                        </connections>
-                                    </button>
                                     <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HTb-Br-UrC">
                                         <rect key="frame" x="332" y="0.0" width="82" height="4"/>
                                         <color key="backgroundColor" red="0.070588235289999995" green="0.82352941180000006" blue="0.70196078429999997" alpha="1" colorSpace="calibratedRGB"/>
@@ -231,18 +205,37 @@
                                             <constraint firstAttribute="height" constant="4" id="zP8-ih-EAh"/>
                                         </constraints>
                                     </view>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="kGy-8m-HwF">
+                                        <rect key="frame" x="137" y="10" width="140.33333333333337" height="62"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="You're offline" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="ghT-oN-1pf">
+                                                <rect key="frame" x="0.0" y="0.0" width="140.33333333333334" height="31"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="16"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Time connected: 10h 40m" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="EzG-vi-cxb">
+                                                <rect key="frame" x="0.0" y="31" width="140.33333333333334" height="31"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue-Roman" family="Helvetica 55 Roman" pointSize="12"/>
+                                                <color key="textColor" name="secondary color"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
                                 </subviews>
                                 <color key="backgroundColor" name="UIViewCard"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="HTb-Br-UrC" secondAttribute="trailing" id="6vU-hn-LFW"/>
-                                    <constraint firstItem="0BL-x8-qsA" firstAttribute="centerY" secondItem="EX9-NE-RZa" secondAttribute="centerY" id="Nkf-x9-2yB"/>
+                                    <constraint firstAttribute="bottom" secondItem="kGy-8m-HwF" secondAttribute="bottom" constant="10" id="9ux-s4-SUN"/>
+                                    <constraint firstItem="kGy-8m-HwF" firstAttribute="top" secondItem="EX9-NE-RZa" secondAttribute="top" constant="10" id="Jsu-SC-gT8"/>
+                                    <constraint firstItem="WC7-pr-TNN" firstAttribute="centerX" secondItem="EX9-NE-RZa" secondAttribute="centerX" id="Kti-ML-I1b"/>
+                                    <constraint firstItem="WC7-pr-TNN" firstAttribute="centerY" secondItem="EX9-NE-RZa" secondAttribute="centerY" id="MhJ-DJ-XqB"/>
                                     <constraint firstItem="WC7-pr-TNN" firstAttribute="top" secondItem="EX9-NE-RZa" secondAttribute="top" constant="10" id="PFI-pe-ZHh"/>
                                     <constraint firstAttribute="bottom" secondItem="WC7-pr-TNN" secondAttribute="bottom" constant="10" id="RBU-Sq-mHv"/>
                                     <constraint firstItem="HTb-Br-UrC" firstAttribute="width" secondItem="EX9-NE-RZa" secondAttribute="width" constant="-332" id="T3V-ef-9XB"/>
+                                    <constraint firstItem="kGy-8m-HwF" firstAttribute="centerY" secondItem="EX9-NE-RZa" secondAttribute="centerY" id="ZH9-5D-cKz"/>
+                                    <constraint firstItem="kGy-8m-HwF" firstAttribute="centerX" secondItem="EX9-NE-RZa" secondAttribute="centerX" id="c1E-2U-XSP"/>
                                     <constraint firstItem="HTb-Br-UrC" firstAttribute="top" secondItem="EX9-NE-RZa" secondAttribute="top" id="hSw-0Y-AFz"/>
-                                    <constraint firstItem="0BL-x8-qsA" firstAttribute="trailing" secondItem="EX9-NE-RZa" secondAttribute="trailingMargin" constant="-22" id="j77-Ab-Rzf"/>
-                                    <constraint firstItem="0BL-x8-qsA" firstAttribute="leading" secondItem="WC7-pr-TNN" secondAttribute="trailing" constant="20" id="kVf-Cz-4M9"/>
-                                    <constraint firstItem="WC7-pr-TNN" firstAttribute="leading" secondItem="EX9-NE-RZa" secondAttribute="leading" constant="15" id="t4D-tj-eFR"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
@@ -292,7 +285,7 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
-                                    <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eCc-qK-z8h">
+                                    <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eCc-qK-z8h">
                                         <rect key="frame" x="150" y="55" width="114" height="50"/>
                                         <color key="backgroundColor" red="0.070588235289999995" green="0.82352941180000006" blue="0.70196078429999997" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
@@ -362,11 +355,58 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NcH-gp-zMj">
+                                        <rect key="frame" x="107" y="720" width="200" height="50"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0BL-x8-qsA">
+                                                <rect key="frame" x="13" y="3" width="174" height="44"/>
+                                                <color key="backgroundColor" name="danger"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="44" id="XrO-y4-IZb"/>
+                                                    <constraint firstAttribute="width" constant="174" id="uDI-9f-buB"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="16"/>
+                                                <state key="normal" title="Go offline">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="3"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                                        <real key="value" value="0.0"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                        <real key="value" value="0.0"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="OnlineOfflineButton:" destination="SbE-77-hSa" eventType="touchUpInside" id="Tbz-7b-nKg"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="200" id="0Ya-wP-ZzY"/>
+                                            <constraint firstItem="0BL-x8-qsA" firstAttribute="centerY" secondItem="NcH-gp-zMj" secondAttribute="centerY" id="8pZ-Ay-o7o"/>
+                                            <constraint firstAttribute="height" constant="50" id="Yvd-23-HAu"/>
+                                            <constraint firstItem="0BL-x8-qsA" firstAttribute="centerX" secondItem="NcH-gp-zMj" secondAttribute="centerX" id="zqt-9w-bJf"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                                <color key="value" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
+                                                <size key="value" width="0.0" height="0.0"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="opaqueSeparatorColor" red="0.77647058820000003" green="0.77647058820000003" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="NcH-gp-zMj" secondAttribute="bottom" constant="10" id="0Qc-IT-9yP"/>
                                     <constraint firstAttribute="bottom" secondItem="2iQ-MZ-9xF" secondAttribute="bottom" constant="8" id="1tb-oM-o3V"/>
                                     <constraint firstItem="6g9-UM-o8V" firstAttribute="leading" secondItem="TSl-fa-Hbe" secondAttribute="leading" constant="20" id="CMJ-xi-qgw"/>
+                                    <constraint firstItem="NcH-gp-zMj" firstAttribute="centerX" secondItem="TSl-fa-Hbe" secondAttribute="centerX" id="Z6N-wK-DG8"/>
                                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="eCc-qK-z8h" secondAttribute="trailing" constant="20" symbolic="YES" id="agO-1h-35P"/>
                                     <constraint firstItem="eCc-qK-z8h" firstAttribute="bottom" secondItem="6g9-UM-o8V" secondAttribute="bottom" id="axe-Go-JNy"/>
                                     <constraint firstItem="6g9-UM-o8V" firstAttribute="top" secondItem="TSl-fa-Hbe" secondAttribute="top" constant="55" id="eIR-jC-OOf"/>
@@ -404,6 +444,7 @@
                         <barButtonItem key="leftBarButtonItem" id="N8z-Ku-ruR"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="buttonView" destination="NcH-gp-zMj" id="gSg-Nn-Wi1"/>
                         <outlet property="currentEarning" destination="eCc-qK-z8h" id="bu4-n7-06S"/>
                         <outlet property="dashboardBottomView" destination="EX9-NE-RZa" id="Ajq-ro-YTn"/>
                         <outlet property="findingRoutesLoadingBarView" destination="HTb-Br-UrC" id="Bqq-Os-N3O"/>
@@ -415,7 +456,9 @@
                         <outlet property="menuBackground" destination="5xh-wA-r6a" id="d7g-Y5-XrC"/>
                         <outlet property="recenter" destination="HaG-fH-Twf" id="ilE-TV-0gB"/>
                         <outlet property="recenterView" destination="2iQ-MZ-9xF" id="Nu8-dc-kMT"/>
+                        <outlet property="timeToConnectOfflineLbl" destination="EzG-vi-cxb" id="hx6-cU-KUw"/>
                         <outlet property="timetoConectedLbl" destination="Lyl-9M-0t4" id="zHd-kb-dln"/>
+                        <outlet property="youAreOfflineLbl" destination="ghT-oN-1pf" id="k3X-AX-2SS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ogN-DH-8K8" sceneMemberID="firstResponder"/>

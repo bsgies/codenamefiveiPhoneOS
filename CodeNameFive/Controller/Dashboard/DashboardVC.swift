@@ -29,6 +29,9 @@ class DashboardVC: UIViewController ,  CLLocationManagerDelegate, GMSMapViewDele
     @IBOutlet weak var hamburger: UIView!
     @IBOutlet weak var dashboardBottomView: UIView!
     @IBOutlet weak var currentEarning: UIButton!
+    @IBOutlet weak var buttonView: UIView!
+    @IBOutlet weak var youAreOfflineLbl: UILabel!
+    @IBOutlet weak var timeToConnectOfflineLbl: UILabel!
     
     
     //MARK:- variables
@@ -48,7 +51,7 @@ class DashboardVC: UIViewController ,  CLLocationManagerDelegate, GMSMapViewDele
     //MARK:- Life Cycles
     override func viewDidLoad() {
         super.viewDidLoad()
-        currentEarning.contentEdgeInsets = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 5)
+        currentEarning.contentEdgeInsets = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 15)
         googleMapView.delegate = self
         if !checkOnlineOrOffline{
             Autrize()
@@ -101,6 +104,7 @@ class DashboardVC: UIViewController ,  CLLocationManagerDelegate, GMSMapViewDele
         self.googleMapView.bringSubviewToFront(self.currentEarning)
         self.googleMapView.bringSubviewToFront(self.recenterView)
         self.googleMapView.bringSubviewToFront(self.recenter)
+        self.googleMapView.bringSubviewToFront(self.buttonView)
         if traitCollection.userInterfaceStyle == .light {
             mapstyleSilver()
             recenterView.tintColor = .white
@@ -253,6 +257,7 @@ extension DashboardVC{
     //MARK:- Buttons Actions
     
     @IBAction func OnlineOfflineButton(_ sender: UIButton) {
+        
         goOnlineOfflineButton.backgroundColor = #colorLiteral(red: 0, green: 0.8465872407, blue: 0.7545004487, alpha: 1)
         if checkOnlineOrOffline{
             if onlineButtonCheckAuthrizationForLocation() {
@@ -272,6 +277,10 @@ extension DashboardVC{
                     self.goOnlineOfflineButton.setTitle("Go offline", for: .normal)
                     self.timetoConectedLbl.isHidden = false
                     self.findingTripsLbl.text = "Finding trips for you..."
+                    // new addition
+                    self.youAreOfflineLbl.isHidden = true
+                    self.timeToConnectOfflineLbl.isHidden = true
+                    //end
                     self.findingTripsLbl.font = UIFont.boldSystemFont(ofSize: 18.0)
                     self.checkOnlineOrOffline = false
                     self.findingTripsLbl.isHidden = false
@@ -296,6 +305,8 @@ extension DashboardVC{
             goOnlineOfflineButton.setTitle("Go online", for: .normal)
             timetoConectedLbl.isHidden = true
             findingTripsLbl.isHidden = true
+            youAreOfflineLbl.isHidden = false
+            timeToConnectOfflineLbl.isHidden = false
             // findingTripsLbl.text = "You're offline"
             findingTripsLbl.font = UIFont.boldSystemFont(ofSize: 18.0)
             checkOnlineOrOffline = true
@@ -305,6 +316,7 @@ extension DashboardVC{
         
     }
     @IBAction func EarningsButton(_ sender: Any) {
+        
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyBoard.instantiateViewController(withIdentifier: "EarningsVC") as! EarningsVC
         self.presentOnRoot(viewController: vc)
@@ -688,8 +700,6 @@ extension DashboardVC : SideMenuNavigationControllerDelegate {
        func sideMenuDidDisappear(menu: SideMenuNavigationController, animated: Bool) {
            print("SideMenu Disappeared! (animated: \(animated))")
          menuBackground.isHidden = true
-        let editemail = (storyboard?.instantiateViewController(withIdentifier: "ParnterSupport"))!
-        //present(editemail, animated: true, completion: nil)
        }
     private func setupSideMenu() {
               // Define the menus
