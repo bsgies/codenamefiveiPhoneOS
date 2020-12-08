@@ -48,6 +48,7 @@ class DashboardVC: UIViewController ,  CLLocationManagerDelegate, GMSMapViewDele
     //MARK:- Life Cycles
     override func viewDidLoad() {
         super.viewDidLoad()
+        currentEarning.contentEdgeInsets = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 5)
         googleMapView.delegate = self
         if !checkOnlineOrOffline{
             Autrize()
