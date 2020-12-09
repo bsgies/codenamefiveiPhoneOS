@@ -244,6 +244,7 @@ extension DashboardVC{
     func setBarAnimation() {
         UIView.animate(withDuration: 1, animations: {
             self.findingRoutesLoadingBarView.frame.origin.x = +self.dashboardBottomView.frame.width
+           
         }) { (_) in
             UIView.animate(withDuration: 1, delay: 0.5
                 , options: [.repeat, .autoreverse], animations: {
@@ -257,20 +258,22 @@ extension DashboardVC{
     //MARK:- Buttons Actions
     
     @IBAction func OnlineOfflineButton(_ sender: UIButton) {
-        print("btn clicked, enable false")
+        
         goOnlineOfflineButton.isEnabled = false
-        goOnlineOfflineButton.backgroundColor = #colorLiteral(red: 0, green: 0.8465872407, blue: 0.7545004487, alpha: 1)
+        goOnlineOfflineButton.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
+       // goOnlineOfflineButton.backgroundColor = #colorLiteral(red: 0, green: 0.8465872407, blue: 0.7545004487, alpha: 1)
         if checkOnlineOrOffline{
             if onlineButtonCheckAuthrizationForLocation() {
                 tapped(caseRun: 4)
                 goOnlineOfflineButton.showLoading()
                 buttonServerResponse()
                 DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
-                    print("if , enabale true")
+                    
                     self.goOnlineOfflineButton.isEnabled = true
                     self.goOnlineOfflineButton.hideLoading()
                     self.ServerResponseReceived()
                     self.findingRoutesLoadingBarView.isHidden = false
+                   
                     self.setBarAnimation()
                     sender.setBackgroundColor(color: UIColor(named: "dangerHover")!, forState: .highlighted)
                     self.goOnlineOfflineButton.layer.borderWidth = 1
@@ -292,13 +295,13 @@ extension DashboardVC{
                 
             }
             else{
-                print("go to settings")
+               
                 goToSettingAlert()
             }
             
         }
         else{
-            print("else , enable true")
+           
             goOnlineOfflineButton.isEnabled = true
             findingRoutesLoadingBarView.layer.removeAllAnimations()
             self.findingRoutesLoadingBarView.isHidden = true
@@ -615,10 +618,14 @@ extension DashboardVC {
 var originalButtonText: String?
 extension UIButton{
     func showLoading() {
+        print("loading start")
         originalButtonText = self.titleLabel?.text
         self.setTitle("", for: .normal)
+        
+        
     }
     func hideLoading() {
+        print("loading stop")
         self.setTitle(originalButtonText, for: .normal)
         
     }
