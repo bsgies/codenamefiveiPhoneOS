@@ -182,18 +182,18 @@
                                 <rect key="frame" x="0.0" y="780" width="414" height="82"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="WC7-pr-TNN">
-                                        <rect key="frame" x="119.66666666666669" y="23" width="175" height="36"/>
+                                        <rect key="frame" x="119.66666666666669" y="20.666666666666625" width="175" height="40.666666666666657"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Findings trips for you..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="OSd-BX-5cu">
-                                                <rect key="frame" x="0.0" y="0.0" width="175" height="21"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="175" height="23.666666666666668"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="16"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Time connected: 10h 40m" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="Lyl-9M-0t4">
-                                                <rect key="frame" x="0.0" y="21" width="175" height="15"/>
+                                                <rect key="frame" x="0.0" y="23.666666666666742" width="175" height="17"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="15" id="Vih-uj-6eJ"/>
+                                                    <constraint firstAttribute="height" constant="17" id="Vih-uj-6eJ"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue-Roman" family="Helvetica 55 Roman" pointSize="12"/>
                                                 <color key="textColor" name="secondary color"/>
@@ -209,18 +209,18 @@
                                         </constraints>
                                     </view>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="kGy-8m-HwF">
-                                        <rect key="frame" x="137" y="22" width="140.33333333333337" height="38"/>
+                                        <rect key="frame" x="137" y="19.333333333333375" width="140.33333333333337" height="43.333333333333343"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="You're offline" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="ghT-oN-1pf">
-                                                <rect key="frame" x="0.0" y="0.0" width="140.33333333333334" height="23"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="140.33333333333334" height="26.333333333333332"/>
                                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Time connected: 10h 40m" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="EzG-vi-cxb">
-                                                <rect key="frame" x="0.0" y="23" width="140.33333333333334" height="15"/>
+                                                <rect key="frame" x="0.0" y="26.333333333333258" width="140.33333333333334" height="17"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="15" id="eiF-1m-g6y"/>
+                                                    <constraint firstAttribute="height" constant="17" id="eiF-1m-g6y"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue-Roman" family="Helvetica 55 Roman" pointSize="12"/>
                                                 <color key="textColor" name="secondary color"/>
