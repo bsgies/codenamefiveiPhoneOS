@@ -257,7 +257,8 @@ extension DashboardVC{
     //MARK:- Buttons Actions
     
     @IBAction func OnlineOfflineButton(_ sender: UIButton) {
-        
+        print("btn clicked, enable false")
+        goOnlineOfflineButton.isEnabled = false
         goOnlineOfflineButton.backgroundColor = #colorLiteral(red: 0, green: 0.8465872407, blue: 0.7545004487, alpha: 1)
         if checkOnlineOrOffline{
             if onlineButtonCheckAuthrizationForLocation() {
@@ -265,7 +266,8 @@ extension DashboardVC{
                 goOnlineOfflineButton.showLoading()
                 buttonServerResponse()
                 DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
-                    
+                    print("if , enabale true")
+                    self.goOnlineOfflineButton.isEnabled = true
                     self.goOnlineOfflineButton.hideLoading()
                     self.ServerResponseReceived()
                     self.findingRoutesLoadingBarView.isHidden = false
@@ -290,12 +292,14 @@ extension DashboardVC{
                 
             }
             else{
-                
+                print("go to settings")
                 goToSettingAlert()
             }
             
         }
         else{
+            print("else , enable true")
+            goOnlineOfflineButton.isEnabled = true
             findingRoutesLoadingBarView.layer.removeAllAnimations()
             self.findingRoutesLoadingBarView.isHidden = true
             sender.setBackgroundColor(color: UIColor(named: "hover")!, forState: .highlighted)
