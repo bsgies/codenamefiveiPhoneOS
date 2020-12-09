@@ -261,6 +261,7 @@ extension DashboardVC{
         
         goOnlineOfflineButton.isEnabled = false
         goOnlineOfflineButton.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
+        goOnlineOfflineButton.layer.borderColor =  #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
        // goOnlineOfflineButton.backgroundColor = #colorLiteral(red: 0, green: 0.8465872407, blue: 0.7545004487, alpha: 1)
         if checkOnlineOrOffline{
             if onlineButtonCheckAuthrizationForLocation() {
@@ -270,6 +271,7 @@ extension DashboardVC{
                 DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
                     
                     self.goOnlineOfflineButton.isEnabled = true
+                    
                     self.goOnlineOfflineButton.hideLoading()
                     self.ServerResponseReceived()
                     self.findingRoutesLoadingBarView.isHidden = false
@@ -295,7 +297,7 @@ extension DashboardVC{
                 
             }
             else{
-               
+                
                 goToSettingAlert()
             }
             
