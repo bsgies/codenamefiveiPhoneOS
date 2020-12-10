@@ -58,7 +58,7 @@ class DashboardVC: UIViewController ,  CLLocationManagerDelegate, GMSMapViewDele
             recenter.isHidden = true
             goOnlineOfflineButton.backgroundColor = #colorLiteral(red: 0, green: 0.8465872407, blue: 0.7545004487, alpha: 1)
             goOnlineOfflineButton.setTitle("Go online", for: .normal)
-            findingTripsLbl.font = UIFont.boldSystemFont(ofSize: 18.0)
+            findingTripsLbl.font = UIFont.boldSystemFont(ofSize: 20.0)
             timetoConectedLbl.isHidden = true
             findingTripsLbl.isHidden = true
             checkOnlineOrOffline = true
@@ -260,7 +260,7 @@ extension DashboardVC{
     @IBAction func OnlineOfflineButton(_ sender: UIButton) {
         
         goOnlineOfflineButton.isEnabled = false
-        goOnlineOfflineButton.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
+        goOnlineOfflineButton.backgroundColor = #colorLiteral(red: 0.9058823529, green: 0.9215686275, blue: 0.9254901961, alpha: 1)
         goOnlineOfflineButton.layer.borderColor =  #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
        // goOnlineOfflineButton.backgroundColor = #colorLiteral(red: 0, green: 0.8465872407, blue: 0.7545004487, alpha: 1)
         if checkOnlineOrOffline{
@@ -288,7 +288,7 @@ extension DashboardVC{
                     self.youAreOfflineLbl.isHidden = true
                     self.timeToConnectOfflineLbl.isHidden = true
                     //end
-                    self.findingTripsLbl.font = UIFont.boldSystemFont(ofSize: 18.0)
+                    self.findingTripsLbl.font = UIFont.boldSystemFont(ofSize: 20.0)
                     self.checkOnlineOrOffline = false
                     self.findingTripsLbl.isHidden = false
                     self.gotorider =  Timer.scheduledTimer(timeInterval: 10, target: self, selector: #selector(self.runTimedCode), userInfo: nil, repeats: false)
