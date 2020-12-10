@@ -340,7 +340,7 @@ extension DashboardVC{
         
         serverResponseActivityIndicator.sizeToFit()
         serverResponseActivityIndicator.indicatorMode = .indeterminate
-        serverResponseActivityIndicator.cycleColors = [#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1), #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1), #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1), #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)]
+        serverResponseActivityIndicator.cycleColors = [#colorLiteral(red: 0, green: 0.7490196078, blue: 0.662745098, alpha: 1), #colorLiteral(red: 0, green: 0.7490196078, blue: 0.662745098, alpha: 1), #colorLiteral(red: 0, green: 0.7490196078, blue: 0.662745098, alpha: 1), #colorLiteral(red: 0, green: 0.7490196078, blue: 0.662745098, alpha: 1)]
         serverResponseActivityIndicator.translatesAutoresizingMaskIntoConstraints = false
         goOnlineOfflineButton.addSubview(serverResponseActivityIndicator)
         
