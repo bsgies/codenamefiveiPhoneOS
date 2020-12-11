@@ -55,7 +55,7 @@ class DashboardVC: UIViewController ,  CLLocationManagerDelegate, GMSMapViewDele
         googleMapView.delegate = self
         if !checkOnlineOrOffline{
             Autrize()
-            recenter.isHidden = true
+           // recenter.isHidden = true
             goOnlineOfflineButton.backgroundColor = #colorLiteral(red: 0, green: 0.8465872407, blue: 0.7545004487, alpha: 1)
             goOnlineOfflineButton.setTitle("Go online", for: .normal)
             findingTripsLbl.font = UIFont.boldSystemFont(ofSize: 20.0)
@@ -125,8 +125,8 @@ class DashboardVC: UIViewController ,  CLLocationManagerDelegate, GMSMapViewDele
         tapOnRecenter.delegate = self
         recenter.addGestureRecognizer(tapOnRecenter)
         recenterView.addGestureRecognizer(tapOnRecenter)
-        recenterView.layer.shadowColor  = UIColor(ciColor: .gray).cgColor
-        recenterView.layer.shadowRadius = 12
+      //  recenterView.layer.shadowColor  = UIColor(ciColor: .gray).cgColor
+      //  recenterView.layer.shadowRadius = 12
     }
     @objc func recenterTheMap(gesture: UITapGestureRecognizer){
          guard let lat = self.googleMapView.myLocation?.coordinate.latitude,

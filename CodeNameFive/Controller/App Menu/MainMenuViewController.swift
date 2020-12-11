@@ -10,6 +10,8 @@ import UIKit
 import SideMenu
 class MainMenuViewController: UIViewController {
     //Views
+    
+   
     @IBOutlet weak var profileBackView: UIView!
     @IBOutlet weak var profileImage : UIImageView!
     @IBOutlet weak var fullName : UILabel!{
@@ -29,6 +31,8 @@ class MainMenuViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.backgroundColor = UIColor(named: "sideMenu")
+        profileBackView.backgroundColor = UIColor(named: "sideMenu")
         fontStyle()
         tableView.delegate = self
         tableView.dataSource = self
@@ -117,6 +121,8 @@ extension MainMenuViewController : UITableViewDelegate , UITableViewDataSource{
         if indexPath.row == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! MainMenuTableViewCell
             // setup here
+            cell.backgroundColor = UIColor(named: "sideMenu")
+            //cell.viewCell.backgroundColor = UIColor(named: "cellLineColor")
             cell.imageCell.image = UIImage(named: "comment")
             cell.labelCell.text = "Live support"
             font(labelName: cell.labelCell)
@@ -125,6 +131,8 @@ extension MainMenuViewController : UITableViewDelegate , UITableViewDataSource{
         }else if indexPath.row == 1 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell1") as! MainMenuTableViewCell
             // setup here
+            cell.backgroundColor = UIColor(named: "sideMenu")
+            cell.lastOrderView.backgroundColor = UIColor(named: "sideMenu")
              font(labelName: cell.labelCell)
             cell.imageCell.image = UIImage(named: "comment")
             cell.labelCell.text = "Last Order"
@@ -132,6 +140,7 @@ extension MainMenuViewController : UITableViewDelegate , UITableViewDataSource{
         }else if indexPath.row == 2 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell2") as! MainMenuTableViewCell
             // setup here
+            cell.backgroundColor = UIColor(named: "sideMenu")
             cell.labelCell.text = "Trip histroy"
             font(labelName: cell.labelCell)
             cell.viewCell.isHidden = true
@@ -139,6 +148,7 @@ extension MainMenuViewController : UITableViewDelegate , UITableViewDataSource{
         }else if indexPath.row == 3 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell3") as! MainMenuTableViewCell
             // setup here
+            cell.backgroundColor = UIColor(named: "sideMenu")
             cell.labelCell.text = "Earnings"
             font(labelName: cell.labelCell)
             cell.viewCell.isHidden = true
@@ -146,6 +156,7 @@ extension MainMenuViewController : UITableViewDelegate , UITableViewDataSource{
         }else if indexPath.row == 4 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell4") as! MainMenuTableViewCell
             // setup here
+            cell.backgroundColor = UIColor(named: "sideMenu")
             cell.labelCell.text = "Upcoming promotions"
             font(labelName: cell.labelCell)
             cell.viewCell.isHidden = true
@@ -153,12 +164,14 @@ extension MainMenuViewController : UITableViewDelegate , UITableViewDataSource{
         }else if indexPath.row == 5 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell5") as! MainMenuTableViewCell
             // setup here
+            cell.backgroundColor = UIColor(named: "sideMenu")
             cell.labelCell.text = "Inbox"
            font(labelName: cell.labelCell)
             return cell
         }else if indexPath.row == 6 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell6") as! MainMenuTableViewCell
             // setup here
+            cell.backgroundColor = UIColor(named: "sideMenu")
             cell.labelCell.text = "Map settings"
             font(labelName: cell.labelCell)
             cell.viewCell.isHidden = true
@@ -166,13 +179,16 @@ extension MainMenuViewController : UITableViewDelegate , UITableViewDataSource{
         }else if indexPath.row == 7 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell7") as! MainMenuTableViewCell
             // setup here
-            cell.labelCell.text = "Auto Accept"
+            cell.backgroundColor = UIColor(named: "sideMenu")
+            cell.autoAcceptView.backgroundColor = UIColor(named: "sideMenu")
+            cell.labelCell.text = "Auto accept"
              font(labelName: cell.labelCell)
             cell.viewCell.isHidden = true
             return cell
         }else if indexPath.row == 8 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell8") as! MainMenuTableViewCell
             // setup here
+            cell.backgroundColor = UIColor(named: "sideMenu")
             cell.labelCell.text = "Help center"
              font(labelName: cell.labelCell)
            // cell.switchCell.isHidden = true
@@ -181,6 +197,7 @@ extension MainMenuViewController : UITableViewDelegate , UITableViewDataSource{
         else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell9") as! MainMenuTableViewCell
             // setup here
+            cell.backgroundColor = UIColor(named: "sideMenu")
             font(labelName: cell.labelCell)
             cell.labelCell.text = "Sign out"
             cell.labelCell.textColor = UIColor.red

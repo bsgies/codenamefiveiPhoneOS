@@ -11,6 +11,9 @@ import UIKit
 class MainMenuTableViewCell: UITableViewCell {
 
     @IBOutlet weak var widthConstraint: NSLayoutConstraint!
+    
+    @IBOutlet weak var lastOrderView: UIView!
+    @IBOutlet weak var autoAcceptView: UIView!
     @IBOutlet weak var backView: UIView!
     @IBOutlet weak var imageCell: UIImageView!
     @IBOutlet weak var labelCell: UILabel!
@@ -31,15 +34,4 @@ class MainMenuTableViewCell: UITableViewCell {
     }
 
 }
-//MARK: - view Blink on click
-extension MainMenuTableViewCell {
-    func viewBlink (viewIs: UIView) {
-        viewIs.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
-        timer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: false, block: { (timer) in
-            if timer.timeInterval == 0 {
-                // print("interval == 0 ")
-                viewIs.backgroundColor = UIColor.white
-            }
-        })
-    }
-}
+
