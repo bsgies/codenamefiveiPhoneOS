@@ -29,7 +29,7 @@
             <objects>
                 <viewController storyboardIdentifier="LoginVC" title="Login" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="LoginVC" customModule="CNF" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PS8-g6-vuE">
@@ -186,18 +186,18 @@
                                         <rect key="frame" x="119.66666666666669" y="20.666666666666625" width="175" height="40.666666666666657"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Findings trips for you..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="OSd-BX-5cu">
-                                                <rect key="frame" x="0.0" y="0.0" width="175" height="23.666666666666668"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="175" height="22.666666666666668"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="16"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Time connected: 10h 40m" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="Lyl-9M-0t4">
-                                                <rect key="frame" x="0.0" y="23.666666666666742" width="175" height="17"/>
+                                                <rect key="frame" x="0.0" y="22.666666666666742" width="175" height="18"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="17" id="Vih-uj-6eJ"/>
+                                                    <constraint firstAttribute="height" constant="18" id="Vih-uj-6eJ"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" name="HelveticaNeue-Roman" family="Helvetica 55 Roman" pointSize="12"/>
-                                                <color key="textColor" name="secondary color"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="13"/>
+                                                <color key="textColor" name="secondaryCustom"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
@@ -210,21 +210,21 @@
                                         </constraints>
                                     </view>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="kGy-8m-HwF">
-                                        <rect key="frame" x="137" y="18" width="140.33333333333337" height="46"/>
+                                        <rect key="frame" x="131" y="18" width="152" height="46"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="You're offline" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="ghT-oN-1pf">
-                                                <rect key="frame" x="0.0" y="0.0" width="140.33333333333334" height="29"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="152" height="28"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Time connected: 10h 40m" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="EzG-vi-cxb">
-                                                <rect key="frame" x="0.0" y="29" width="140.33333333333334" height="17"/>
+                                                <rect key="frame" x="0.0" y="28" width="152" height="18"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="17" id="eiF-1m-g6y"/>
+                                                    <constraint firstAttribute="height" constant="18" id="eiF-1m-g6y"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" name="HelveticaNeue-Roman" family="Helvetica 55 Roman" pointSize="12"/>
-                                                <color key="textColor" name="secondary color"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="13"/>
+                                                <color key="textColor" name="secondaryCustom"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
@@ -359,19 +359,17 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NcH-gp-zMj">
-                                        <rect key="frame" x="107" y="720" width="200" height="50"/>
+                                        <rect key="frame" x="142" y="720" width="130" height="50"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0BL-x8-qsA">
-                                                <rect key="frame" x="13" y="3" width="174" height="44"/>
+                                                <rect key="frame" x="5" y="3" width="120" height="44"/>
                                                 <color key="backgroundColor" name="danger"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="44" id="XrO-y4-IZb"/>
-                                                    <constraint firstAttribute="width" constant="174" id="uDI-9f-buB"/>
+                                                    <constraint firstAttribute="width" constant="120" id="uDI-9f-buB"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="16"/>
-                                                <state key="normal" title="Go offline">
-                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                </state>
+                                                <state key="normal" title="Go offline"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                         <real key="value" value="3"/>
@@ -389,7 +387,7 @@
                                             </button>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="200" id="0Ya-wP-ZzY"/>
+                                            <constraint firstAttribute="width" constant="130" id="0Ya-wP-ZzY"/>
                                             <constraint firstItem="0BL-x8-qsA" firstAttribute="centerY" secondItem="NcH-gp-zMj" secondAttribute="centerY" id="8pZ-Ay-o7o"/>
                                             <constraint firstAttribute="height" constant="50" id="Yvd-23-HAu"/>
                                             <constraint firstItem="0BL-x8-qsA" firstAttribute="centerX" secondItem="NcH-gp-zMj" secondAttribute="centerX" id="zqt-9w-bJf"/>
@@ -2302,7 +2300,7 @@
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                     </imageView>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rukhsar ali channa hyderabad sindh" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GqH-dn-N61">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CNF" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GqH-dn-N61">
                                                         <rect key="frame" x="65" y="20" width="280" height="24"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="24" id="J1D-b1-1iw"/>
@@ -6111,7 +6109,7 @@
             <color red="0.98000001907348633" green="0.98000001907348633" blue="0.98000001907348633" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="Background">
-            <color red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.98000001907348633" green="0.98000001907348633" blue="0.98000001907348633" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="CardColor">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -6145,6 +6143,9 @@
         </namedColor>
         <namedColor name="secondary color">
             <color red="0.56470588235294117" green="0.58039215686274503" blue="0.61176470588235299" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="secondaryCustom">
+            <color red="0.50999999046325684" green="0.5220000147819519" blue="0.5220000147819519" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="sideMenu">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

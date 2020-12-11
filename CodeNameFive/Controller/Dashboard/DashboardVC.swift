@@ -260,8 +260,8 @@ extension DashboardVC{
     @IBAction func OnlineOfflineButton(_ sender: UIButton) {
         
         goOnlineOfflineButton.isEnabled = false
-        goOnlineOfflineButton.backgroundColor = #colorLiteral(red: 0.9058823529, green: 0.9215686275, blue: 0.9254901961, alpha: 1)
-        goOnlineOfflineButton.layer.borderColor =  #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
+        goOnlineOfflineButton.backgroundColor = UIColor(named: "mapDisabledButton")
+        goOnlineOfflineButton.layer.borderColor =  #colorLiteral(red: 0.7725490196, green: 0.7921568627, blue: 0.7960784314, alpha: 1)
        // goOnlineOfflineButton.backgroundColor = #colorLiteral(red: 0, green: 0.8465872407, blue: 0.7545004487, alpha: 1)
         if checkOnlineOrOffline{
             if onlineButtonCheckAuthrizationForLocation() {
@@ -341,6 +341,7 @@ extension DashboardVC{
         serverResponseActivityIndicator.sizeToFit()
         serverResponseActivityIndicator.indicatorMode = .indeterminate
         serverResponseActivityIndicator.cycleColors = [#colorLiteral(red: 0, green: 0.7490196078, blue: 0.662745098, alpha: 1), #colorLiteral(red: 0, green: 0.7490196078, blue: 0.662745098, alpha: 1), #colorLiteral(red: 0, green: 0.7490196078, blue: 0.662745098, alpha: 1), #colorLiteral(red: 0, green: 0.7490196078, blue: 0.662745098, alpha: 1)]
+        serverResponseActivityIndicator.radius = 10
         serverResponseActivityIndicator.translatesAutoresizingMaskIntoConstraints = false
         goOnlineOfflineButton.addSubview(serverResponseActivityIndicator)
         
