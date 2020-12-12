@@ -268,14 +268,15 @@ extension DashboardVC{
                 tapped(caseRun: 4)
                 goOnlineOfflineButton.showLoading()
                 buttonServerResponse()
+                
                 DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
                     
-                    self.goOnlineOfflineButton.isEnabled = true
+//                    self.goOnlineOfflineButton.isEnabled = true
                     
                     self.goOnlineOfflineButton.hideLoading()
                     self.ServerResponseReceived()
                     self.findingRoutesLoadingBarView.isHidden = false
-                   
+                    self.goOnlineOfflineButton.isEnabled = true
                     self.setBarAnimation()
                     sender.setBackgroundColor(color: UIColor(named: "dangerHover")!, forState: .highlighted)
                     self.goOnlineOfflineButton.layer.borderWidth = 1
@@ -293,7 +294,6 @@ extension DashboardVC{
                     self.findingTripsLbl.isHidden = false
                     self.gotorider =  Timer.scheduledTimer(timeInterval: 10, target: self, selector: #selector(self.runTimedCode), userInfo: nil, repeats: false)
                 }
-                
                 
             }
             else{

@@ -28,7 +28,7 @@
             <objects>
                 <viewController storyboardIdentifier="LoginVC" title="Login" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="LoginVC" customModule="CNF" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PS8-g6-vuE">
@@ -318,7 +318,7 @@
                                     <view contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2iQ-MZ-9xF" userLabel="Hamburger">
                                         <rect key="frame" x="349" y="715" width="55" height="55"/>
                                         <subviews>
-                                            <imageView contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="recenter" translatesAutoresizingMaskIntoConstraints="NO" id="HaG-fH-Twf">
+                                            <imageView contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="GPS" translatesAutoresizingMaskIntoConstraints="NO" id="HaG-fH-Twf">
                                                 <rect key="frame" x="0.0" y="0.0" width="55" height="55"/>
                                             </imageView>
                                         </subviews>
@@ -6097,6 +6097,7 @@
     <color key="tintColor" red="0.070588235289999995" green="0.82352941180000006" blue="0.70196078429999997" alpha="1" colorSpace="calibratedRGB"/>
     <resources>
         <image name="Ellipse" width="44" height="44"/>
+        <image name="GPS" width="20" height="20"/>
         <image name="Partner" width="270" height="470.66665649414062"/>
         <image name="back" width="19" height="18"/>
         <image name="call" width="21" height="21"/>
@@ -6132,7 +6133,7 @@
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="cellLineColor">
-            <color white="0.90855699777603149" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <color white="0.9089999794960022" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </namedColor>
         <namedColor name="controlsCustom">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
