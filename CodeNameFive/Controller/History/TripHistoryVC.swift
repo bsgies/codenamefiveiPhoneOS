@@ -9,6 +9,7 @@
 import UIKit
 
 class TripHistoryVC: UIViewController {
+    @IBOutlet weak var tableView: UITableView!
     let button = UIButton(type: .custom)
 
     var days = ["8 Jun - 14 Jun","1 Jun - 7 Jun","25 May - 31 May","18 May - 27 May"]
@@ -17,6 +18,7 @@ class TripHistoryVC: UIViewController {
         super.viewDidLoad()
         setImage()
         setCrossButton()
+        tableView.separatorStyle = .none
     }
     
     func setImage() {
@@ -74,8 +76,9 @@ extension TripHistoryVC : UITableViewDelegate,UITableViewDataSource{
      func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         cell.selectionStyle = .none
         cell.preservesSuperviewLayoutMargins = false
-        cell.separatorInset = UIEdgeInsets.zero
-        cell.layoutMargins = UIEdgeInsets.zero
+        
+       // cell.separatorInset = UIEdgeInsets.zero
+       // cell.layoutMargins = UIEdgeInsets.zero
        }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -86,4 +89,8 @@ extension TripHistoryVC : UITableViewDelegate,UITableViewDataSource{
         navigationController?.pushViewController(vc, animated: false)
         
     }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 43.67
+    }
+    
 }
