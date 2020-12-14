@@ -1113,8 +1113,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="7ik-3c-Llt">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                                <color key="backgroundColor" name="TableViewBackGround"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="852"/>
+                                <color key="backgroundColor" name="Background"/>
+                                <inset key="separatorInset" minX="17" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="default" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="tripHistory" rowHeight="65" id="kVl-qS-NwV" customClass="TripHistoryCell" customModule="CNF" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="55.333332061767578" width="414" height="65"/>
@@ -1165,7 +1166,7 @@
                             <constraint firstItem="7ik-3c-Llt" firstAttribute="trailing" secondItem="BLD-jl-jIt" secondAttribute="trailing" id="9kV-KF-UZR"/>
                             <constraint firstAttribute="bottom" secondItem="7ik-3c-Llt" secondAttribute="bottom" id="EoP-W3-wfk"/>
                             <constraint firstItem="7ik-3c-Llt" firstAttribute="leading" secondItem="BLD-jl-jIt" secondAttribute="leading" id="JSI-75-NhF"/>
-                            <constraint firstItem="7ik-3c-Llt" firstAttribute="top" secondItem="YOt-Xj-l9Q" secondAttribute="top" id="SSD-Eb-UKG"/>
+                            <constraint firstItem="7ik-3c-Llt" firstAttribute="top" secondItem="BLD-jl-jIt" secondAttribute="top" id="Nrx-hN-NXn"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="BLD-jl-jIt"/>
                     </view>

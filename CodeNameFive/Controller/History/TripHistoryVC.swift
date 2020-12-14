@@ -26,6 +26,7 @@ class TripHistoryVC: UIViewController {
         let tintedImage = origImage?.withRenderingMode(.alwaysTemplate)
         button.setImage(tintedImage, for: .normal)
         button.tintColor = #colorLiteral(red: 0, green: 0.8465872407, blue: 0.7545004487, alpha: 1)
+
     }
     
 
@@ -35,6 +36,7 @@ class TripHistoryVC: UIViewController {
         button.addTarget(self, action: #selector(closeView), for: .touchUpInside)
         button.frame = CGRect(x: 0, y: 0, width: 16, height: 16)
         let barButton = UIBarButtonItem(customView: button)
+        button.contentEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 20)
         navigationItem.leftBarButtonItem = barButton
      }
      
@@ -67,7 +69,17 @@ extension TripHistoryVC : UITableViewDelegate,UITableViewDataSource{
          let headerView: UITableViewHeaderFooterView = view as! UITableViewHeaderFooterView
          headerView.backgroundView = UIView()
          headerView.backgroundColor = .clear
-       
+        
+       //changing
+        let header:UITableViewHeaderFooterView = view as! UITableViewHeaderFooterView
+        header.textLabel?.text = "hEaDeR"
+        header.textLabel?.textColor = UIColor.gray
+        header.textLabel?.font = UIFont.systemFont(ofSize: 14) //UIFont.boldSystemFont(ofSize: 16)
+        
+        //header.textLabel?.frame = header.frame
+       // header.textLabel?.textAlignment = NSTextAlignment.left
+        
+        // end
      }
      func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         return UIView()
@@ -96,5 +108,14 @@ extension TripHistoryVC : UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
     }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 40
+    }
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return ""
+    }
+    
+    
     
 }
