@@ -18,7 +18,7 @@ class TripHistoryVC: UIViewController {
         super.viewDidLoad()
         setImage()
         setCrossButton()
-      
+       
     }
     
     func setImage() {
@@ -59,6 +59,7 @@ extension TripHistoryVC : UITableViewDelegate,UITableViewDataSource{
         let cell = tableView.dequeueReusableCell(withIdentifier: "tripHistory", for: indexPath) as! TripHistoryCell
         cell.dateCell.text = days[indexPath.row]
         cell.earnLbl.text = earning[indexPath.row]
+        
          return cell
        }
     
@@ -74,7 +75,7 @@ extension TripHistoryVC : UITableViewDelegate,UITableViewDataSource{
 
 
      func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        cell.selectionStyle = .none
+       // cell.selectionStyle = .none
         cell.preservesSuperviewLayoutMargins = false
         cell.separatorInset = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 0)
        // cell.separatorInset = UIEdgeInsets.zero
@@ -82,14 +83,16 @@ extension TripHistoryVC : UITableViewDelegate,UITableViewDataSource{
         
        }
     
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-       
+       tableView.deselectRow(at: indexPath, animated: true)
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
                          let vc = storyBoard.instantiateViewController(withIdentifier: "WeeklyTripsDataViewController") as! WeeklyTripsDataViewController
         vc.navigationBartitle = days[indexPath.row]
         navigationController?.pushViewController(vc, animated: false)
         
     }
+
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 43.67
     }
