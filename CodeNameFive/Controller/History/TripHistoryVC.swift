@@ -18,7 +18,7 @@ class TripHistoryVC: UIViewController {
         super.viewDidLoad()
         setImage()
         setCrossButton()
-       
+        
     }
     
     func setImage() {
@@ -94,7 +94,7 @@ extension TripHistoryVC : UITableViewDelegate,UITableViewDataSource{
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 43.67
+        return UITableView.automaticDimension
     }
     
 }
