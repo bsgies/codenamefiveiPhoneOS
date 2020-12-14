@@ -1116,11 +1116,11 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <color key="backgroundColor" name="TableViewBackGround"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="default" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="tripHistory" rowHeight="65" id="kVl-qS-NwV" customClass="TripHistoryCell" customModule="CNF" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="default" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="tripHistory" rowHeight="65" id="kVl-qS-NwV" customClass="TripHistoryCell" customModule="CNF" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="55.333332061767578" width="414" height="65"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="kVl-qS-NwV" id="kHh-cS-TJi">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="65"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="383" height="65"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="3232" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="MgF-jF-v6A">
@@ -1130,28 +1130,19 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1000000000" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="PqX-EO-xvQ">
-                                                    <rect key="frame" x="275" y="11" width="89" height="43"/>
+                                                    <rect key="frame" x="286" y="11" width="89" height="43"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrowRight" translatesAutoresizingMaskIntoConstraints="NO" id="uoy-tr-fyL">
-                                                    <rect key="frame" x="379" y="17.666666666666671" width="30" height="30"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="30" id="30P-lB-gD7"/>
-                                                        <constraint firstAttribute="height" constant="30" id="7E0-nl-Qtr"/>
-                                                    </constraints>
-                                                </imageView>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="MgF-jF-v6A" firstAttribute="top" secondItem="kHh-cS-TJi" secondAttribute="topMargin" id="7lq-Ft-Qte"/>
-                                                <constraint firstItem="uoy-tr-fyL" firstAttribute="centerY" secondItem="kHh-cS-TJi" secondAttribute="centerY" id="ARm-Yb-dPU"/>
-                                                <constraint firstAttribute="trailing" secondItem="PqX-EO-xvQ" secondAttribute="trailing" constant="50" id="JSm-Jr-fPg"/>
+                                                <constraint firstAttribute="trailing" secondItem="PqX-EO-xvQ" secondAttribute="trailing" constant="8" id="JSm-Jr-fPg"/>
                                                 <constraint firstItem="MgF-jF-v6A" firstAttribute="baseline" secondItem="PqX-EO-xvQ" secondAttribute="baseline" id="LYd-5Y-7zT"/>
                                                 <constraint firstItem="MgF-jF-v6A" firstAttribute="bottom" secondItem="kHh-cS-TJi" secondAttribute="bottomMargin" id="PVZ-aj-fgk"/>
-                                                <constraint firstAttribute="trailing" secondItem="PqX-EO-xvQ" secondAttribute="trailing" constant="50" id="S1g-9Z-ki3"/>
+                                                <constraint firstAttribute="trailing" secondItem="PqX-EO-xvQ" secondAttribute="trailing" constant="8" id="S1g-9Z-ki3"/>
                                                 <constraint firstItem="MgF-jF-v6A" firstAttribute="leading" secondItem="kHh-cS-TJi" secondAttribute="leadingMargin" constant="10" id="YI1-4p-xnm"/>
-                                                <constraint firstAttribute="trailing" secondItem="uoy-tr-fyL" secondAttribute="trailing" constant="5" id="a9f-bG-Riu"/>
                                                 <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="MgF-jF-v6A" secondAttribute="trailing" id="hRK-R8-t28"/>
                                                 <constraint firstItem="PqX-EO-xvQ" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="MgF-jF-v6A" secondAttribute="trailing" constant="8" symbolic="YES" id="hnB-Es-c9s"/>
                                                 <constraint firstItem="MgF-jF-v6A" firstAttribute="firstBaseline" secondItem="PqX-EO-xvQ" secondAttribute="firstBaseline" id="v20-MY-PGq"/>
@@ -6111,7 +6102,6 @@
         <image name="Ellipse" width="44" height="44"/>
         <image name="GPS" width="20" height="20"/>
         <image name="Partner" width="270" height="470.66665649414062"/>
-        <image name="arrowRight" width="9.5" height="22"/>
         <image name="back" width="19" height="18"/>
         <image name="call" width="21" height="21"/>
         <image name="case" width="24" height="24"/>
