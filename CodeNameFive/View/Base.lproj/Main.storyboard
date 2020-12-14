@@ -1142,28 +1142,18 @@
                                                         <constraint firstAttribute="height" constant="30" id="7E0-nl-Qtr"/>
                                                     </constraints>
                                                 </imageView>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fI1-Ck-jTQ">
-                                                    <rect key="frame" x="15" y="64" width="399" height="1"/>
-                                                    <color key="backgroundColor" systemColor="systemGray5Color" red="0.8980392157" green="0.8980392157" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="1" id="AXe-dy-8Kq"/>
-                                                    </constraints>
-                                                </view>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="MgF-jF-v6A" firstAttribute="top" secondItem="kHh-cS-TJi" secondAttribute="topMargin" id="7lq-Ft-Qte"/>
-                                                <constraint firstAttribute="trailing" secondItem="fI1-Ck-jTQ" secondAttribute="trailing" id="976-JG-AVH"/>
                                                 <constraint firstItem="uoy-tr-fyL" firstAttribute="centerY" secondItem="kHh-cS-TJi" secondAttribute="centerY" id="ARm-Yb-dPU"/>
                                                 <constraint firstAttribute="trailing" secondItem="PqX-EO-xvQ" secondAttribute="trailing" constant="50" id="JSm-Jr-fPg"/>
                                                 <constraint firstItem="MgF-jF-v6A" firstAttribute="baseline" secondItem="PqX-EO-xvQ" secondAttribute="baseline" id="LYd-5Y-7zT"/>
                                                 <constraint firstItem="MgF-jF-v6A" firstAttribute="bottom" secondItem="kHh-cS-TJi" secondAttribute="bottomMargin" id="PVZ-aj-fgk"/>
-                                                <constraint firstAttribute="bottom" secondItem="fI1-Ck-jTQ" secondAttribute="bottom" id="R2a-ze-UlM"/>
                                                 <constraint firstAttribute="trailing" secondItem="PqX-EO-xvQ" secondAttribute="trailing" constant="50" id="S1g-9Z-ki3"/>
                                                 <constraint firstItem="MgF-jF-v6A" firstAttribute="leading" secondItem="kHh-cS-TJi" secondAttribute="leadingMargin" constant="10" id="YI1-4p-xnm"/>
                                                 <constraint firstAttribute="trailing" secondItem="uoy-tr-fyL" secondAttribute="trailing" constant="5" id="a9f-bG-Riu"/>
                                                 <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="MgF-jF-v6A" secondAttribute="trailing" id="hRK-R8-t28"/>
                                                 <constraint firstItem="PqX-EO-xvQ" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="MgF-jF-v6A" secondAttribute="trailing" constant="8" symbolic="YES" id="hnB-Es-c9s"/>
-                                                <constraint firstItem="fI1-Ck-jTQ" firstAttribute="leading" secondItem="kHh-cS-TJi" secondAttribute="leading" constant="15" id="kGp-PP-5PB"/>
                                                 <constraint firstItem="MgF-jF-v6A" firstAttribute="firstBaseline" secondItem="PqX-EO-xvQ" secondAttribute="firstBaseline" id="v20-MY-PGq"/>
                                             </constraints>
                                         </tableViewCellContentView>
