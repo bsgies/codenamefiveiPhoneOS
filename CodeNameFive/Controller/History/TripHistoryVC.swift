@@ -18,18 +18,15 @@ class TripHistoryVC: UIViewController {
         super.viewDidLoad()
         setImage()
         setCrossButton()
-        
     }
     
     func setImage() {
         let origImage = UIImage(named: "close")
         let tintedImage = origImage?.withRenderingMode(.alwaysTemplate)
         button.setImage(tintedImage, for: .normal)
-        button.tintColor = #colorLiteral(red: 0, green: 0.8465872407, blue: 0.7545004487, alpha: 1)
-
+        //button.tintColor = UIColor(named: "primaryColor")
     }
     
-
     func setCrossButton(){
         let button = UIButton(type: .custom)
         button.setImage(UIImage(named: "close"), for: .normal)
@@ -43,8 +40,6 @@ class TripHistoryVC: UIViewController {
      @objc func closeView(){
         self.dismiss(animated: true, completion: nil)
      }
-    
-
 }
 
 extension TripHistoryVC : UITableViewDelegate,UITableViewDataSource{
@@ -70,39 +65,34 @@ extension TripHistoryVC : UITableViewDelegate,UITableViewDataSource{
          headerView.backgroundView = UIView()
          headerView.backgroundColor = .clear
         
-       //changing
+        // changing
         let header:UITableViewHeaderFooterView = view as! UITableViewHeaderFooterView
-        header.textLabel?.text = "hEaDeR"
-        header.textLabel?.textColor = UIColor.gray
-        header.textLabel?.font = UIFont.systemFont(ofSize: 14) //UIFont.boldSystemFont(ofSize: 16)
-        
-        //header.textLabel?.frame = header.frame
-       // header.textLabel?.textAlignment = NSTextAlignment.left
-        
+        header.textLabel?.text = "Weekly view"
+        header.textLabel?.textColor = UIColor(named: "secondaryColor")
+        header.textLabel?.font = UIFont.boldSystemFont(ofSize: 16)
+        // header.textLabel?.font = UIFont.systemFont(ofSize: 14)
+        // header.textLabel?.frame = header.frame
+        // header.textLabel?.textAlignment = NSTextAlignment.left
         // end
      }
      func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         return UIView()
     }
 
-
      func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-       // cell.selectionStyle = .none
+        // cell.selectionStyle = .none
         cell.preservesSuperviewLayoutMargins = false
         cell.separatorInset = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 0)
-       // cell.separatorInset = UIEdgeInsets.zero
+        // cell.separatorInset = UIEdgeInsets.zero
         cell.layoutMargins = UIEdgeInsets.zero
-        
        }
-    
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
        tableView.deselectRow(at: indexPath, animated: true)
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-                         let vc = storyBoard.instantiateViewController(withIdentifier: "WeeklyTripsDataViewController") as! WeeklyTripsDataViewController
+        let vc = storyBoard.instantiateViewController(withIdentifier: "WeeklyTripsDataViewController") as! WeeklyTripsDataViewController
         vc.navigationBartitle = days[indexPath.row]
         navigationController?.pushViewController(vc, animated: false)
-        
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -110,12 +100,10 @@ extension TripHistoryVC : UITableViewDelegate,UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 40
+        return 50
     }
+    
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return ""
     }
-    
-    
-    
 }
