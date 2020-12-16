@@ -229,7 +229,7 @@ extension MainMenuViewController : UITableViewDelegate , UITableViewDataSource{
                 
             }else if indexPath.row == 3 {
                 
-               let earning : EarningsVC = self.storyboard?.instantiateViewController(withIdentifier: "EarningsVC") as! EarningsVC
+               let earning : EarningsTableViewController = self.storyboard?.instantiateViewController(withIdentifier: "earningsTableController") as! EarningsTableViewController
                       self.presentOnRoot(viewController: earning)
                 
             }else if indexPath.row == 4 {
