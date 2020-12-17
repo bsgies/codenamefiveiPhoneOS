@@ -13,6 +13,7 @@ class EarningsTableViewController: UITableViewController {
             let disOfCell = ["1000",""]
    
     
+    @IBOutlet var tableVieww: UITableView!
     @IBOutlet weak var balance: UILabel!{
         didSet{
             balance.text = "$305.00"
@@ -31,6 +32,9 @@ class EarningsTableViewController: UITableViewController {
         super.viewDidLoad()
 
         setCrossButton()
+       // tableView.rowHeight = UITableView.automaticDimension
+       // tableView.estimatedRowHeight = UITableView.automaticDimension
+       
     }
     
     func setCrossButton(){
@@ -53,13 +57,16 @@ class EarningsTableViewController: UITableViewController {
 //        // #warning Incomplete implementation, return the number of sections
 //        return 2
 //    }
+    
+    
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        return UITableView.automaticDimension
-        return 42
+        return UITableView.automaticDimension
+
     }
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
                return 50
            }
+  
     override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
          // changing
                let header:UITableViewHeaderFooterView = view as! UITableViewHeaderFooterView

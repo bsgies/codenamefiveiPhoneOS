@@ -1117,20 +1117,20 @@
                                 <color key="backgroundColor" name="Background"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="default" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="tripHistory" id="kVl-qS-NwV" customClass="TripHistoryCell" customModule="CNF" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="55.333332061767578" width="414" height="41"/>
+                                        <rect key="frame" x="0.0" y="55.333332061767578" width="414" height="41.666667938232422"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="kVl-qS-NwV" id="kHh-cS-TJi">
-                                            <rect key="frame" x="0.0" y="0.0" width="383" height="41"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="383" height="41.666667938232422"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="3232" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="MgF-jF-v6A">
-                                                    <rect key="frame" x="30" y="11" width="36" height="19"/>
+                                                    <rect key="frame" x="30" y="11.000000000000002" width="36" height="19.666666666666671"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1000000000" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="PqX-EO-xvQ">
-                                                    <rect key="frame" x="284" y="11" width="89" height="19"/>
+                                                    <rect key="frame" x="284" y="11.000000000000002" width="89" height="19.666666666666671"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -1525,36 +1525,32 @@
                         <sections>
                             <tableViewSection headerTitle="Statements" id="cvl-Bk-kPr">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell1" id="tQC-ZG-HEl" customClass="PaymentInfoCell" customModule="CNF" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="tQC-ZG-HEl" customClass="PaymentInfoCell" customModule="CNF" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="55.333332061767578" width="414" height="43.666667938232422"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="tQC-ZG-HEl" id="wI7-lP-73r">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.666667938232422"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uGd-w9-uTg">
-                                                    <rect key="frame" x="20" y="0.0" width="374" height="43.666666666666664"/>
-                                                    <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Current balance" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gzJ-HI-srT">
-                                                            <rect key="frame" x="0.0" y="0.0" width="285" height="43.666666666666664"/>
-                                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="1000000000" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="PKq-gY-9UG">
-                                                            <rect key="frame" x="285" y="0.0" width="89" height="43.666666666666664"/>
-                                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                    </subviews>
-                                                </stackView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Current balance" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gzJ-HI-srT">
+                                                    <rect key="frame" x="19.999999999999993" y="12.666666666666666" width="114.33333333333331" height="18.666666666666671"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="1000000000" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="PKq-gY-9UG">
+                                                    <rect key="frame" x="305" y="12.666666666666666" width="89" height="18.666666666666671"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="uGd-w9-uTg" secondAttribute="trailing" constant="20" id="32H-OQ-93U"/>
-                                                <constraint firstItem="uGd-w9-uTg" firstAttribute="leading" secondItem="wI7-lP-73r" secondAttribute="leading" constant="20" id="7WI-6p-tsv"/>
-                                                <constraint firstAttribute="bottom" secondItem="uGd-w9-uTg" secondAttribute="bottom" id="BcU-OD-xRx"/>
-                                                <constraint firstItem="uGd-w9-uTg" firstAttribute="top" secondItem="wI7-lP-73r" secondAttribute="top" id="QeA-Is-xEJ"/>
+                                                <constraint firstItem="PKq-gY-9UG" firstAttribute="centerY" secondItem="wI7-lP-73r" secondAttribute="centerY" id="D1g-OU-xKj"/>
+                                                <constraint firstItem="PKq-gY-9UG" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="gzJ-HI-srT" secondAttribute="trailing" constant="8" symbolic="YES" id="Fzt-bi-9pp"/>
+                                                <constraint firstItem="gzJ-HI-srT" firstAttribute="leading" secondItem="wI7-lP-73r" secondAttribute="leadingMargin" id="hL2-S2-MKG"/>
+                                                <constraint firstAttribute="trailing" secondItem="PKq-gY-9UG" secondAttribute="trailing" constant="20" id="oDG-T6-OWy"/>
+                                                <constraint firstItem="gzJ-HI-srT" firstAttribute="centerY" secondItem="wI7-lP-73r" secondAttribute="centerY" id="uiX-aG-aEY"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -1562,36 +1558,33 @@
                                             <outlet property="title" destination="gzJ-HI-srT" id="EIi-B6-oMC"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="cell2" id="fPf-cI-JoF" customClass="PaymentInfoCell" customModule="CNF" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="cell" id="fPf-cI-JoF" customClass="PaymentInfoCell" customModule="CNF" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="99" width="414" height="43.666667938232422"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="fPf-cI-JoF" id="pNK-cG-D3v">
                                             <rect key="frame" x="0.0" y="0.0" width="383" height="43.666667938232422"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="v6M-tk-d6K">
-                                                    <rect key="frame" x="20" y="0.0" width="353" height="43.666666666666664"/>
-                                                    <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Previous payments" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Keo-3D-UB2">
-                                                            <rect key="frame" x="0.0" y="0.0" width="264" height="43.666666666666664"/>
-                                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="0bl-0r-EsB">
-                                                            <rect key="frame" x="264" y="0.0" width="89" height="43.666666666666664"/>
-                                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                    </subviews>
-                                                </stackView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Previous payments" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Keo-3D-UB2">
+                                                    <rect key="frame" x="20" y="12.666666666666666" width="136.66666666666666" height="18.666666666666671"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="0bl-0r-EsB">
+                                                    <rect key="frame" x="363" y="22" width="0.0" height="0.0"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="v6M-tk-d6K" secondAttribute="trailing" constant="10" id="fU4-GF-14O"/>
-                                                <constraint firstItem="v6M-tk-d6K" firstAttribute="leading" secondItem="pNK-cG-D3v" secondAttribute="leading" constant="20" id="k6z-Jy-XUj"/>
-                                                <constraint firstItem="v6M-tk-d6K" firstAttribute="top" secondItem="pNK-cG-D3v" secondAttribute="top" id="p2n-Lz-UQo"/>
-                                                <constraint firstAttribute="bottom" secondItem="v6M-tk-d6K" secondAttribute="bottom" id="sqp-7h-6rP"/>
+                                                <constraint firstAttribute="trailing" secondItem="0bl-0r-EsB" secondAttribute="trailing" constant="20" id="8wm-FS-B9w"/>
+                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Keo-3D-UB2" secondAttribute="trailing" constant="20" symbolic="YES" id="JVx-9v-g1P"/>
+                                                <constraint firstItem="0bl-0r-EsB" firstAttribute="centerY" secondItem="pNK-cG-D3v" secondAttribute="centerY" id="Mzn-ek-0QK"/>
+                                                <constraint firstItem="Keo-3D-UB2" firstAttribute="leading" secondItem="pNK-cG-D3v" secondAttribute="leadingMargin" id="OFR-U5-09e"/>
+                                                <constraint firstItem="Keo-3D-UB2" firstAttribute="centerY" secondItem="pNK-cG-D3v" secondAttribute="centerY" id="rhD-R5-CfB"/>
+                                                <constraint firstItem="0bl-0r-EsB" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="pNK-cG-D3v" secondAttribute="leading" constant="20" symbolic="YES" id="wzm-2e-vpv"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -1603,36 +1596,32 @@
                             </tableViewSection>
                             <tableViewSection headerTitle="Cash balance" id="LUh-3z-cfm">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell3" id="mKZ-TS-6ad" customClass="PaymentInfoCell" customModule="CNF" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="mKZ-TS-6ad" customClass="PaymentInfoCell" customModule="CNF" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="198.00000190734863" width="414" height="43.666667938232422"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="mKZ-TS-6ad" id="FDK-2h-hkW">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.666667938232422"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F5e-0n-Rnq">
-                                                    <rect key="frame" x="20" y="0.0" width="374" height="43.666666666666664"/>
-                                                    <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Current balance" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XIZ-98-c9V">
-                                                            <rect key="frame" x="0.0" y="0.0" width="285" height="43.666666666666664"/>
-                                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="1000000000" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="ili-r2-dYg">
-                                                            <rect key="frame" x="285" y="0.0" width="89" height="43.666666666666664"/>
-                                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                    </subviews>
-                                                </stackView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Current balance" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XIZ-98-c9V">
+                                                    <rect key="frame" x="19.999999999999993" y="12.666666666666666" width="114.33333333333331" height="18.666666666666671"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="1000000000" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="ili-r2-dYg">
+                                                    <rect key="frame" x="305" y="12.666666666666666" width="89" height="18.666666666666671"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="F5e-0n-Rnq" secondAttribute="trailing" constant="20" id="E3O-uY-HrI"/>
-                                                <constraint firstItem="F5e-0n-Rnq" firstAttribute="top" secondItem="FDK-2h-hkW" secondAttribute="top" id="HJa-mb-Etp"/>
-                                                <constraint firstAttribute="bottom" secondItem="F5e-0n-Rnq" secondAttribute="bottom" id="U1o-F1-LwN"/>
-                                                <constraint firstItem="F5e-0n-Rnq" firstAttribute="leading" secondItem="FDK-2h-hkW" secondAttribute="leading" constant="20" id="ihQ-xx-bLa"/>
+                                                <constraint firstItem="XIZ-98-c9V" firstAttribute="centerY" secondItem="FDK-2h-hkW" secondAttribute="centerY" id="6J9-9C-1Kj"/>
+                                                <constraint firstItem="ili-r2-dYg" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="XIZ-98-c9V" secondAttribute="trailing" constant="8" symbolic="YES" id="H1y-4S-lEk"/>
+                                                <constraint firstItem="XIZ-98-c9V" firstAttribute="leading" secondItem="FDK-2h-hkW" secondAttribute="leading" constant="20" id="ICU-35-XeS"/>
+                                                <constraint firstItem="ili-r2-dYg" firstAttribute="centerY" secondItem="FDK-2h-hkW" secondAttribute="centerY" id="cGG-F9-MUu"/>
+                                                <constraint firstAttribute="trailing" secondItem="ili-r2-dYg" secondAttribute="trailing" constant="20" id="nMf-l3-VlV"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -1651,11 +1640,12 @@
                     <connections>
                         <outlet property="balance" destination="PKq-gY-9UG" id="sXO-jA-d7m"/>
                         <outlet property="currentBalance" destination="ili-r2-dYg" id="KE5-zl-eoR"/>
+                        <outlet property="tableVieww" destination="lTu-R4-NW6" id="pfD-nA-eyb"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VXl-cj-vO5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="14568" y="-706"/>
+            <point key="canvasLocation" x="14566.666666666668" y="-706.47321428571422"/>
         </scene>
         <!--Order detail-->
         <scene sceneID="APO-ul-X6v">
