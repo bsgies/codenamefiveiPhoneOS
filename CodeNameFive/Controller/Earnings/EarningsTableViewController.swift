@@ -32,8 +32,8 @@ class EarningsTableViewController: UITableViewController {
         super.viewDidLoad()
 
         setCrossButton()
-       // tableView.rowHeight = UITableView.automaticDimension
-       // tableView.estimatedRowHeight = UITableView.automaticDimension
+//        self.tableView.sectionHeaderHeight = UITableView.automaticDimension
+//       self.tableView.estimatedSectionHeaderHeight = 25
        
     }
     
@@ -64,19 +64,28 @@ class EarningsTableViewController: UITableViewController {
 
     }
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-               return 50
+               return 40
            }
+    override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 1
+    }
   
     override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
          // changing
                let header:UITableViewHeaderFooterView = view as! UITableViewHeaderFooterView
-               header.textLabel?.text = "Weekly view"
                header.textLabel?.textColor = UIColor(named: "secondaryColor")
                header.textLabel?.font = UIFont.boldSystemFont(ofSize: 16)
                // header.textLabel?.font = UIFont.systemFont(ofSize: 14)
                // header.textLabel?.frame = header.frame
                // header.textLabel?.textAlignment = NSTextAlignment.left
                // end
+        if section == 0 {
+            header.textLabel?.text = "Statements"
+        }else {
+               header.textLabel?.text = "Cash balance"
+        }
+        
+        
     }
    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -100,7 +109,6 @@ class EarningsTableViewController: UITableViewController {
                }
            } // end here
     }
-
 }
     
 
