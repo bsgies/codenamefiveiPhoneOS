@@ -60,6 +60,7 @@ extension PreviousPaymentVC : UITableViewDelegate,UITableViewDataSource{
         
         headerView.backgroundView = UIView()
         headerView.backgroundColor = .clear
+        
     }
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         return UIView()
@@ -70,6 +71,7 @@ extension PreviousPaymentVC : UITableViewDelegate,UITableViewDataSource{
         cell.preservesSuperviewLayoutMargins = false
         cell.separatorInset = UIEdgeInsets.zero
         cell.layoutMargins = UIEdgeInsets.zero
+        cell.separatorInset = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 0)
         }
     
      func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
