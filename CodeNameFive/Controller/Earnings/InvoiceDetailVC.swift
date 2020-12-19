@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import SafariServices
 class InvoiceDetailVC: UIViewController {
     
    let titleOfCell = ["Total amount","Service render","View invoice PDF"]
@@ -45,12 +45,16 @@ extension InvoiceDetailVC : UITableViewDelegate,UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "InvoiceDetailCell", for: indexPath) as! InvoiceDetailCell
         cell.titleLbl.text = titleOfCell[indexPath.row]
         cell.disLbl.text = detail[indexPath.row]
+        cell.selectionStyle = .none
         if indexPath.row == 2{
             cell.titleLbl.textColor = UIColor(#colorLiteral(red: 0, green: 0.8465872407, blue: 0.7545004487, alpha: 1))
             cell.disLbl.textColor = UIColor(#colorLiteral(red: 0, green: 0.8465872407, blue: 0.7545004487, alpha: 1))
+            cell.selectionStyle = .default
+            
         }
         return cell
     }
@@ -62,14 +66,23 @@ extension InvoiceDetailVC : UITableViewDelegate,UITableViewDataSource{
     }
     
      func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        cell.selectionStyle = .none
+       // cell.selectionStyle = .none
         cell.preservesSuperviewLayoutMargins = false
         cell.separatorInset = UIEdgeInsets.zero
         cell.layoutMargins = UIEdgeInsets.zero
         cell.separatorInset = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 0)
         }
         
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        if indexPath.row == 2 {
+            let url = URL(string: "https://www.google.com")!
+            let safariVC: SFSafariViewController = SFSafariViewController(url: url)
+            safariVC.modalPresentationStyle = .formSheet
+            self.present(safariVC, animated: true, completion: nil)
+
+        }
+    }
 }
 
 

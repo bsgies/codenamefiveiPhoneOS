@@ -67,20 +67,22 @@ extension PreviousPaymentVC : UITableViewDelegate,UITableViewDataSource{
     }
     
      func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        cell.selectionStyle = .none
-        cell.preservesSuperviewLayoutMargins = false
-        cell.separatorInset = UIEdgeInsets.zero
-        cell.layoutMargins = UIEdgeInsets.zero
+       // cell.selectionStyle = .none
+//        cell.preservesSuperviewLayoutMargins = false
+//        cell.separatorInset = UIEdgeInsets.zero
+//        cell.layoutMargins = UIEdgeInsets.zero
         cell.separatorInset = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 0)
         }
     
      func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-       
+        tableView.deselectRow(at: indexPath, animated: true)
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
                          let vc = storyBoard.instantiateViewController(withIdentifier: "InvoiceDetailVC") as! InvoiceDetailVC
         navigationController?.pushViewController(vc, animated: true)
         
+        
     }
+    
         
     
 }
