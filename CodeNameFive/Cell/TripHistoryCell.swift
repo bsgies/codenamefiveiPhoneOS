@@ -12,6 +12,7 @@ class TripHistoryCell: UITableViewCell {
 
     @IBOutlet weak var dateCell: UILabel!
     @IBOutlet weak var earnLbl: UILabel!
+   
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

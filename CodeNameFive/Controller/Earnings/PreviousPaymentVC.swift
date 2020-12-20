@@ -35,6 +35,7 @@ class PreviousPaymentVC: UIViewController {
         let barButton = UIBarButtonItem(customView: button)
         
         self.navigationItem.leftBarButtonItem = barButton
+        button.contentEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 20)
     }
     @objc func backButtonPressed(btn : UIButton) {
         
@@ -71,7 +72,8 @@ extension PreviousPaymentVC : UITableViewDelegate,UITableViewDataSource{
 //        cell.preservesSuperviewLayoutMargins = false
 //        cell.separatorInset = UIEdgeInsets.zero
 //        cell.layoutMargins = UIEdgeInsets.zero
-        cell.separatorInset = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 0)
+        cell.separatorInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 0)
+        
         }
     
      func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
