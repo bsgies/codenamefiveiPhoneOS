@@ -10,7 +10,7 @@ import UIKit
 import SafariServices
 class InvoiceDetailVC: UIViewController {
     
-   let titleOfCell = ["Total amount","Service render","View invoice PDF"]
+   let titleOfCell = ["Total amount","Service render","View invoice"]
    let detail = ["$305.00","2 Jun - 7 Jun","Paid"]
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -80,9 +80,6 @@ extension InvoiceDetailVC : UITableViewDelegate,UITableViewDataSource{
             let safariVC: SFSafariViewController = SFSafariViewController(url: url)
             safariVC.modalPresentationStyle = .formSheet
             self.present(safariVC, animated: true, completion: nil)
-
         }
     }
 }
-
-
