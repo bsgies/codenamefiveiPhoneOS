@@ -56,6 +56,11 @@ extension TripHistoryVC : UITableViewDelegate,UITableViewDataSource{
         let cell = tableView.dequeueReusableCell(withIdentifier: "tripHistory", for: indexPath) as! TripHistoryCell
         cell.dateCell.text = days[indexPath.row]
         cell.earnLbl.text = earning[indexPath.row]
+       
+        
+        let bgColorView = UIView()
+        bgColorView.backgroundColor = #colorLiteral(red: 0.9450980392, green: 0.9450980392, blue: 0.9450980392, alpha: 1)
+        cell.selectedBackgroundView = bgColorView
         
          return cell
        }
