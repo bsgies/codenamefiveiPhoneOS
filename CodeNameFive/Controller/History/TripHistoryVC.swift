@@ -59,7 +59,7 @@ extension TripHistoryVC : UITableViewDelegate,UITableViewDataSource{
        
         
         let bgColorView = UIView()
-        bgColorView.backgroundColor = #colorLiteral(red: 0.9450980392, green: 0.9450980392, blue: 0.9450980392, alpha: 1)
+        bgColorView.backgroundColor = UIColor(named: "cellFadedColor")
         cell.selectedBackgroundView = bgColorView
         
          return cell
