@@ -2072,8 +2072,12 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hHB-vU-tgO">
-                                        <rect key="frame" x="20" y="14" width="16" height="22"/>
-                                        <state key="normal" image="close"/>
+                                        <rect key="frame" x="20" y="17.666666666666668" width="15" height="15.000000000000004"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="15" id="s9g-9H-WQN"/>
+                                            <constraint firstAttribute="height" constant="15" id="wHg-cw-MIC"/>
+                                        </constraints>
+                                        <state key="normal" backgroundImage="x"/>
                                         <connections>
                                             <action selector="dismissBtn:" destination="8Lj-Zl-9Xg" eventType="touchUpInside" id="Djt-jg-JnC"/>
                                         </connections>
@@ -2086,12 +2090,12 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Invoice details" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cIK-hv-5cw">
-                                        <rect key="frame" x="152.66666666666666" y="14.666666666666664" width="108.66666666666666" height="21"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
+                                        <rect key="frame" x="150.33333333333334" y="15" width="113.33333333333334" height="20"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="17"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
+                                <color key="backgroundColor" name="Background"/>
                                 <constraints>
                                     <constraint firstItem="cIK-hv-5cw" firstAttribute="centerX" secondItem="Jpv-3c-acM" secondAttribute="centerX" id="36a-jA-icX"/>
                                     <constraint firstAttribute="height" constant="50" id="GPw-2Z-4hp"/>
@@ -2103,7 +2107,7 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" name="navigation"/>
                         <constraints>
                             <constraint firstItem="Ye8-iE-jUq" firstAttribute="leading" secondItem="wSm-Qh-lKu" secondAttribute="leading" id="AUR-ns-Jpc"/>
                             <constraint firstItem="wSm-Qh-lKu" firstAttribute="trailing" secondItem="Jpv-3c-acM" secondAttribute="trailing" id="GTY-7t-aD5"/>
@@ -2117,6 +2121,7 @@
                     </view>
                     <connections>
                         <outlet property="shareButtonOutLet" destination="AlQ-Vb-Njc" id="JcS-7u-kJh"/>
+                        <outlet property="titleName" destination="cIK-hv-5cw" id="e9h-kB-hEz"/>
                         <outlet property="webview" destination="Ye8-iE-jUq" id="2AJ-9D-g69"/>
                     </connections>
                 </viewController>
@@ -6301,7 +6306,6 @@
         <image name="back" width="19" height="18"/>
         <image name="call" width="21" height="21"/>
         <image name="case" width="24" height="24"/>
-        <image name="close" width="16" height="16"/>
         <image name="comment" width="24" height="24"/>
         <image name="dollarsign.circle.fill" catalog="system" width="128" height="121"/>
         <image name="hamburgerbars" width="24" height="24"/>
@@ -6318,6 +6322,7 @@
         <image name="sheqelsign.square" catalog="system" width="128" height="114"/>
         <image name="square.and.arrow.up" catalog="system" width="115" height="128"/>
         <image name="unchecked_checkbox" width="128" height="128"/>
+        <image name="x" width="12" height="12"/>
         <namedColor name="BGC">
             <color red="0.98000001907348633" green="0.98000001907348633" blue="0.98000001907348633" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

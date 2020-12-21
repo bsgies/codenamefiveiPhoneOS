@@ -88,6 +88,8 @@ extension InvoiceDetailVC : UITableViewDelegate,UITableViewDataSource{
             let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
             let vc = storyBoard.instantiateViewController(withIdentifier: "pdfView") as! PDFViewController
             present(vc, animated: true, completion: nil)
+           // navigationController?.pushViewController(vc, animated: true)
+            
             
 //            print("share button clicked")
 //                guard let url = Bundle.main.url(forResource: "pdfFileShare", withExtension: "pdf") else {return}

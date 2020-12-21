@@ -10,6 +10,7 @@ import UIKit
 import WebKit
 class PDFViewController: UIViewController, UIDocumentInteractionControllerDelegate {
 
+    @IBOutlet weak var titleName: UILabel!
     @IBOutlet weak var shareButtonOutLet: UIButton!
     @IBOutlet weak var webview: WKWebView!
     override func viewDidLoad() {
@@ -17,11 +18,11 @@ class PDFViewController: UIViewController, UIDocumentInteractionControllerDelega
 
         // Do any additional setup after loading the view.
         webview.load(URLRequest(url: URL(string: "https://www.printfriendly.com/p/g/sD36Y8")!))
-        
+    
     shareButtonOutLet.adjustsImageWhenHighlighted = false
+       // titleName.textColor = #colorLiteral(red: 0, green: 0.8465872407, blue: 0.7545004487, alpha: 1)
         
     }
-    
 
     @IBAction func dismissBtn(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)
