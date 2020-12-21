@@ -2079,7 +2079,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AlQ-Vb-Njc">
-                                        <rect key="frame" x="375" y="13.666666666666664" width="19" height="23"/>
+                                        <rect key="frame" x="375" y="13.999999999999998" width="19" height="22.333333333333329"/>
                                         <state key="normal" image="square.and.arrow.up" catalog="system"/>
                                         <connections>
                                             <action selector="shareBtn:" destination="8Lj-Zl-9Xg" eventType="touchUpInside" id="yUn-BO-l54"/>
@@ -2116,6 +2116,7 @@
                         <viewLayoutGuide key="safeArea" id="wSm-Qh-lKu"/>
                     </view>
                     <connections>
+                        <outlet property="shareButtonOutLet" destination="AlQ-Vb-Njc" id="JcS-7u-kJh"/>
                         <outlet property="webview" destination="Ye8-iE-jUq" id="2AJ-9D-g69"/>
                     </connections>
                 </viewController>

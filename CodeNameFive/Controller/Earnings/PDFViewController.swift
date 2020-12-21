@@ -10,12 +10,15 @@ import UIKit
 import WebKit
 class PDFViewController: UIViewController, UIDocumentInteractionControllerDelegate {
 
+    @IBOutlet weak var shareButtonOutLet: UIButton!
     @IBOutlet weak var webview: WKWebView!
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         webview.load(URLRequest(url: URL(string: "https://www.printfriendly.com/p/g/sD36Y8")!))
+        
+    shareButtonOutLet.adjustsImageWhenHighlighted = false
         
     }
     
@@ -26,7 +29,8 @@ class PDFViewController: UIViewController, UIDocumentInteractionControllerDelega
     
     @IBAction func shareBtn(_ sender: UIButton) {
         print("share button clicked")
-     
+        
+        
              let pdfFilePath = URL(string: "https://www.printfriendly.com/p/g/sD36Y8")
              let pdfData = NSData(contentsOf: pdfFilePath!)
              let activityVC = UIActivityViewController(activityItems: [pdfData!], applicationActivities: nil)
