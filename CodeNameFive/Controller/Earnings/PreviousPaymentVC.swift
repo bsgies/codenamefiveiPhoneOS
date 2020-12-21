@@ -73,7 +73,9 @@ extension PreviousPaymentVC : UITableViewDelegate,UITableViewDataSource{
 //        cell.separatorInset = UIEdgeInsets.zero
 //        cell.layoutMargins = UIEdgeInsets.zero
         cell.separatorInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 0)
-        
+        let bgColorView = UIView()
+                       bgColorView.backgroundColor = UIColor(named: "highlights")
+                       cell.selectedBackgroundView = bgColorView
         }
     
      func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

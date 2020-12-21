@@ -58,17 +58,25 @@ extension ProfileTVC{
         cell.preservesSuperviewLayoutMargins = false
         cell.separatorInset = UIEdgeInsets.zero
         cell.layoutMargins = UIEdgeInsets.zero
-        cell.selectionStyle = .none}
+       // cell.selectionStyle = .none
+        let bgColorView = UIView()
+                       bgColorView.backgroundColor = UIColor(named: "highlights")
+                       cell.selectedBackgroundView = bgColorView
+        
+    }
 
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let currentSection = indexPath.section
+        
         if currentSection == 0{
             if indexPath.row == 0 {
+                
                 let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
                 let newViewController = storyBoard.instantiateViewController(withIdentifier: "EditProfileVC")
                 navigationController?.pushViewController(newViewController, animated: true)
             }
+            
         }
         if currentSection == 1{
             if indexPath.row == 0 {
@@ -97,7 +105,7 @@ extension ProfileTVC{
 //        }
 //    }
     
-    
+ 
   
     
 }

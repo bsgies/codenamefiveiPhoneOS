@@ -63,6 +63,11 @@ class EarningsTableViewController: UITableViewController {
         return UITableView.automaticDimension
 
     }
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let bgColorView = UIView()
+                       bgColorView.backgroundColor = UIColor(named: "highlights")
+                       cell.selectedBackgroundView = bgColorView
+    }
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
                return 40
            }

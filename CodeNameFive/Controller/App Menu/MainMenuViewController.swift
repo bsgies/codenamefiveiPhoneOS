@@ -258,6 +258,11 @@ extension MainMenuViewController : UITableViewDelegate , UITableViewDataSource{
         
         
    }
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let bgColorView = UIView()
+                       bgColorView.backgroundColor = UIColor(named: "highlights")
+                       cell.selectedBackgroundView = bgColorView
+    }
     
 }
 
