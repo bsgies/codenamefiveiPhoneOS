@@ -8,6 +8,8 @@
 
 import UIKit
 import SideMenu
+import ChatSDK
+import ChatProvidersSDK
 class MainMenuViewController: UIViewController {
     //Views
     
@@ -28,6 +30,8 @@ class MainMenuViewController: UIViewController {
 
     var timer = Timer()
     
+   
+    
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,9 +41,13 @@ class MainMenuViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
        tableView.separatorStyle = .none
-        
         navigationController?.navigationBar.isHidden = true
         viewsAction()
+        
+        
+        
+        
+       
        
     }
     
@@ -219,8 +227,8 @@ extension MainMenuViewController : UITableViewDelegate , UITableViewDataSource{
 
                 let editliveSupport = (storyboard?.instantiateViewController(withIdentifier: "ParnterSupport"))!
                        //openController(viewIs: editemail)
-                      present(editliveSupport, animated: true, completion: nil)
-                      // presentOnRoot(viewController: editemail)
+                     // present(editliveSupport, animated: true, completion: nil)
+                self.presentOnRoot(viewController: editliveSupport)
 
             }else if indexPath.row == 2 {
                 
@@ -285,4 +293,7 @@ extension MainMenuViewController {
         labelName.font = UIFont(name: font, size: size)
     }
 }
-
+//MARK: - chatbot
+extension MainMenuViewController{
+    
+}

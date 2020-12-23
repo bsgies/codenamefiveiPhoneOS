@@ -26,6 +26,7 @@ class PDFViewController: UIViewController, UIDocumentInteractionControllerDelega
 
     @IBAction func dismissBtn(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)
+      
     }
     
     @IBAction func shareBtn(_ sender: UIButton) {

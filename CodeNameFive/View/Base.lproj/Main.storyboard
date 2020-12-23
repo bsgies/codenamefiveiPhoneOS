@@ -3673,7 +3673,24 @@
                     <view key="view" contentMode="scaleToFill" id="Hci-rU-sFM">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uLh-LP-JtD">
+                                <rect key="frame" x="40" y="74" width="80" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="80" id="07n-ZF-R7b"/>
+                                    <constraint firstAttribute="height" constant="40" id="Tsm-Me-4rj"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="buttonClicked:" destination="p83-MT-zWU" eventType="touchUpInside" id="9e1-pp-kB0"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" name="Background"/>
+                        <constraints>
+                            <constraint firstItem="uLh-LP-JtD" firstAttribute="top" secondItem="cZD-Cz-T1y" secondAttribute="top" constant="30" id="Af8-nk-EzA"/>
+                            <constraint firstItem="uLh-LP-JtD" firstAttribute="leading" secondItem="cZD-Cz-T1y" secondAttribute="leading" constant="40" id="Ezq-wf-B3V"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="cZD-Cz-T1y"/>
                     </view>
                 </viewController>

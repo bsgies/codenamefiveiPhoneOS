@@ -11,6 +11,8 @@ target 'CodeNameFive' do
    pod 'ZendeskSupportSDK'
    pod 'MTSlideToOpen'
    pod 'SideMenu'
+   pod 'ZendeskChatSDK'
+   pod 'ZendeskChatProvidersSDK'
   # Pods for CodeNameFive
 
   target 'CodeNameFiveTests'  do

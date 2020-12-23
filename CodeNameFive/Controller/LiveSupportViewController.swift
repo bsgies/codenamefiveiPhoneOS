@@ -7,21 +7,55 @@
 //
 
 import UIKit
-
+import ChatSDK
+import ChatProvidersSDK
+import MessagingSDK
 class LiveSupportViewController: UIViewController {
-
+   
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+     Chat.initialize(accountKey: "mTktMnbpKjdIbzOarTMopgtF2VfKI0qZ", appId: "")
         // Do any additional setup after loading the view.
+        let chatConfiguration = ChatConfiguration()
+       // chatConfiguration.isAgentAvailabilityEnabled = false
+         chatConfiguration.isPreChatFormEnabled = false
+       
+        
+        let chatAPIConfiguration = ChatAPIConfiguration()
+        chatAPIConfiguration.department = "Blah"
+        chatAPIConfiguration.visitorInfo = VisitorInfo(name: "BlahUser", email: "test@test.com", phoneNumber: "")
+        Chat.instance?.configuration = chatAPIConfiguration;
+       
+       
     }
     
 
-    override func viewWillAppear(_ animated: Bool) {
-        print("will appear")
+    @IBAction func buttonClicked(_ sender: UIButton) {
+        do {
+            try  startChat()
+        } catch  {
+            print("error do try")
+        }
+        
+   
+        
     }
-    override func viewDidAppear(_ animated: Bool) {
-        print("did appear")
+    func startChat() throws {
+      // Name for Bot messages
+      let messagingConfiguration = MessagingConfiguration()
+      messagingConfiguration.name = "Bilal"
+        
+      let chatConfiguration = ChatConfiguration()
+      chatConfiguration.isPreChatFormEnabled = true
+
+      // Build view controller
+      let chatEngine = try ChatEngine.engine()
+      let viewController = try Messaging.instance.buildUI(engines: [chatEngine], configs: [messagingConfiguration, chatConfiguration])
+
+      // Present view controller
+      self.navigationController?.pushViewController(viewController, animated: true)
+        //self.present(viewController, animated: true)
     }
     
 }
