@@ -1550,6 +1550,7 @@
                                                 <constraint firstItem="gzJ-HI-srT" firstAttribute="centerY" secondItem="wI7-lP-73r" secondAttribute="centerY" id="uiX-aG-aEY"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
                                         <connections>
                                             <outlet property="dis" destination="PKq-gY-9UG" id="cbd-qn-8E8"/>
                                             <outlet property="title" destination="gzJ-HI-srT" id="EIi-B6-oMC"/>
@@ -1584,6 +1585,7 @@
                                                 <constraint firstItem="0bl-0r-EsB" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="pNK-cG-D3v" secondAttribute="leading" constant="20" symbolic="YES" id="wzm-2e-vpv"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
                                         <connections>
                                             <outlet property="dis" destination="0bl-0r-EsB" id="i8c-CA-2Tm"/>
                                             <outlet property="title" destination="Keo-3D-UB2" id="GM8-zf-mht"/>
@@ -1621,6 +1623,7 @@
                                                 <constraint firstAttribute="trailing" secondItem="ili-r2-dYg" secondAttribute="trailing" constant="20" id="nMf-l3-VlV"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
                                         <connections>
                                             <outlet property="dis" destination="ili-r2-dYg" id="Yia-MM-Ulu"/>
                                             <outlet property="title" destination="XIZ-98-c9V" id="eBE-vy-cIW"/>
@@ -1977,27 +1980,27 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Earn 1.2x surge fees on all orders completed beetween 18:00-20:00 in NRT" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZO4-vQ-8jY">
-                                                    <rect key="frame" x="20" y="16.666666666666664" width="374" height="66.666666666666686"/>
+                                                    <rect key="frame" x="25" y="16" width="364" height="68"/>
                                                     <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 </textView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Support  13 Jun 2020 at 14:30" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M5y-SA-rLA">
-                                                    <rect key="frame" x="27" y="71" width="367" height="19"/>
+                                                    <rect key="frame" x="30" y="51" width="364" height="39"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
                                                     <color key="textColor" name="secondary color"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="ZO4-vQ-8jY" firstAttribute="leading" secondItem="KyF-YY-te2" secondAttribute="leadingMargin" id="6c0-9o-oUW"/>
-                                                <constraint firstItem="M5y-SA-rLA" firstAttribute="trailing" secondItem="ZO4-vQ-8jY" secondAttribute="trailing" id="BS3-Ze-6rp"/>
+                                                <constraint firstItem="ZO4-vQ-8jY" firstAttribute="leading" secondItem="KyF-YY-te2" secondAttribute="leadingMargin" constant="5" id="6c0-9o-oUW"/>
+                                                <constraint firstItem="M5y-SA-rLA" firstAttribute="trailing" secondItem="ZO4-vQ-8jY" secondAttribute="trailing" constant="5" id="BS3-Ze-6rp"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="M5y-SA-rLA" secondAttribute="bottom" constant="-1" id="Vqh-rp-4cX"/>
                                                 <constraint firstItem="ZO4-vQ-8jY" firstAttribute="centerY" secondItem="KyF-YY-te2" secondAttribute="centerY" id="XLZ-yo-Nrw"/>
-                                                <constraint firstItem="M5y-SA-rLA" firstAttribute="leading" secondItem="KyF-YY-te2" secondAttribute="leadingMargin" constant="7" id="bUk-cJ-8Kd"/>
-                                                <constraint firstItem="ZO4-vQ-8jY" firstAttribute="top" secondItem="KyF-YY-te2" secondAttribute="topMargin" constant="5.6666679382324219" id="hrA-Dl-QyQ"/>
+                                                <constraint firstItem="M5y-SA-rLA" firstAttribute="leading" secondItem="KyF-YY-te2" secondAttribute="leadingMargin" constant="10" id="bUk-cJ-8Kd"/>
+                                                <constraint firstItem="ZO4-vQ-8jY" firstAttribute="top" secondItem="KyF-YY-te2" secondAttribute="topMargin" constant="5" id="hrA-Dl-QyQ"/>
                                                 <constraint firstItem="M5y-SA-rLA" firstAttribute="trailing" secondItem="KyF-YY-te2" secondAttribute="trailingMargin" id="u2Z-7x-z2H"/>
-                                                <constraint firstItem="M5y-SA-rLA" firstAttribute="top" secondItem="KyF-YY-te2" secondAttribute="topMargin" constant="60" id="uyl-SJ-elR"/>
+                                                <constraint firstItem="M5y-SA-rLA" firstAttribute="top" secondItem="KyF-YY-te2" secondAttribute="topMargin" constant="40" id="uyl-SJ-elR"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
@@ -2016,17 +2019,15 @@
                                 <rect key="frame" x="0.0" y="822.66666666666663" width="414" height="73.333333333333371"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Messages are automatically deleted after 7 days." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mkc-3y-NfP">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="53.333333333333336"/>
+                                        <rect key="frame" x="32" y="27.333333333333371" width="350" height="18.666666666666671"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                                         <color key="textColor" name="secondary"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="Mkc-3y-NfP" secondAttribute="bottom" constant="20" id="5VS-rN-fXg"/>
-                                    <constraint firstItem="Mkc-3y-NfP" firstAttribute="top" secondItem="izn-Oc-WrK" secondAttribute="top" id="5yV-nP-tzl"/>
-                                    <constraint firstItem="Mkc-3y-NfP" firstAttribute="leading" secondItem="izn-Oc-WrK" secondAttribute="leading" id="MLX-Do-xkz"/>
-                                    <constraint firstAttribute="trailing" secondItem="Mkc-3y-NfP" secondAttribute="trailing" id="X1J-1i-MRI"/>
+                                    <constraint firstItem="Mkc-3y-NfP" firstAttribute="centerX" secondItem="izn-Oc-WrK" secondAttribute="centerX" id="0eo-DX-ddL"/>
+                                    <constraint firstItem="Mkc-3y-NfP" firstAttribute="centerY" secondItem="izn-Oc-WrK" secondAttribute="centerY" id="Js8-Fd-uaM"/>
                                 </constraints>
                             </view>
                         </subviews>

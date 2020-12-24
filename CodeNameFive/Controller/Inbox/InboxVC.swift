@@ -25,7 +25,9 @@ class InboxVC: UIViewController {
             button.setImage(UIImage(named: "close"), for: .normal)
             button.addTarget(self, action: #selector(closeView), for: .touchUpInside)
             button.frame = CGRect(x: 0, y: 0, width: 16, height: 16)
+           button.contentEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 20)
             let barButton = UIBarButtonItem(customView: button)
+            
             navigationItem.leftBarButtonItem = barButton
         }
         
@@ -80,6 +82,7 @@ extension InboxVC : UITableViewDelegate,UITableViewDataSource{
         cell.separatorInset = UIEdgeInsets.zero
         cell.layoutMargins = UIEdgeInsets.zero
         cell.selectionStyle = .none
+         cell.separatorInset = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 0)
     }
     
 }

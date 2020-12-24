@@ -35,11 +35,12 @@ extension mapSettingTVC{
     }
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-            return 30
+            return 40
     }
     override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         
         let headerView: UITableViewHeaderFooterView = view as! UITableViewHeaderFooterView
+        
         if traitCollection.userInterfaceStyle == .light {
             headerView.textLabel!.textColor = UIColor(#colorLiteral(red: 0.4705882353, green: 0.4705882353, blue: 0.4705882353, alpha: 1))
             headerView.textLabel!.font = UIFont(name: "Poppins-Regular", size: 15)
@@ -61,7 +62,9 @@ extension mapSettingTVC{
             header.textLabel?.textColor = .white
             
         }
-        
+        headerView.textLabel?.textColor = UIColor(named: "secondaryColor")
+        headerView.textLabel?.font = UIFont.boldSystemFont(ofSize: 16)
+        headerView.textLabel?.text = "Open In"
         
     }
     override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
@@ -73,6 +76,7 @@ extension mapSettingTVC{
         cell.preservesSuperviewLayoutMargins = false
         cell.separatorInset = UIEdgeInsets.zero
         cell.layoutMargins = UIEdgeInsets.zero
+        cell.separatorInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 0)
     }
     
     func setBackButton(){
@@ -80,7 +84,7 @@ extension mapSettingTVC{
         button.setImage(UIImage(named: "close"), for: UIControl.State.normal)
         button.addTarget(self, action: #selector(backButtonPressed(btn:)), for: UIControl.Event.touchUpInside)
         button.frame = CGRect(x: 0 , y: 0, width: 30, height: 30)
-        
+        button.contentEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 20)
         let barButton = UIBarButtonItem(customView: button)
         
         self.navigationItem.leftBarButtonItem = barButton
