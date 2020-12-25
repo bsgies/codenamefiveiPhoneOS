@@ -12,12 +12,14 @@ class InboxVC: UIViewController {
 
     
     let Supportdate = ["Support  13 Jun 2020 at 14:30","Support  13 Jun 2020 at 14:30","Support  13 Jun 2020 at 14:30","Support  13 Jun 2020 at 14:30","Support  13 Jun 2020 at 14:30","Support  13 Jun 2020 at 14:30"]
-    let notification = ["Earn 1.2x surge fees on all orders completed beetween 18:00-20:00 in NRT","COVID-19: Keep 2m distance from customers and restaurant owners at all time","Earn 1.2x surge fees on all orders completed beetween 18:00-20:00 in NRT","COVID-19: Keep 2m distance from customers and restaurant owners at all time","Earn 1.2x surge fees on all orders completed beetween 18:00-20:00 in NRT","COVID-19: Keep 2m distance from customers and restaurant owners at all time"]
+    let notification = ["Earn 1.2x surge fees on all orders completed beetween 18:00-20:00 in NRT18:00-20:00 in NRTEarn 1.2x surge fees on all orders completed beetween 18:00-20:00 in NRT","COVID-19: Keep 2m distance from customers and restaurant owners at all time","Earn 1.2x surge fees on all orders completed beetween 18:00-20:00 in NRT","COVID-19: Keep 2m distance from customers and restaurant owners at all time","Earn 1.2x surge fees on all orders completed beetween 18:00-20:00 in NRT","COVID-19: Keep 2m distance from customers and restaurant owners at all time"]
     @IBOutlet weak var inboxTableView: UITableView!
+    
+    @IBOutlet weak var bottomView: UIView!
     override func viewDidLoad() {
         super.viewDidLoad()
          setCrossButton()
-            
+        bottomView.addTopBorder(with: UIColor(named: "borderColor")!, andWidth: 1.0)
         }
         
         func setCrossButton(){

@@ -1635,7 +1635,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VXl-cj-vO5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="14568" y="-784"/>
+            <point key="canvasLocation" x="14568" y="-677"/>
         </scene>
         <!--Order detail-->
         <scene sceneID="APO-ul-X6v">
@@ -1960,37 +1960,37 @@
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="84M-5j-Bbw">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="814.66666666666663"/>
-                                <color key="backgroundColor" name="TableViewBackGround"/>
+                                <color key="backgroundColor" name="Background"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="InboxCell" rowHeight="100" id="smV-Bo-fYw" customClass="InboxCell" customModule="CNF" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="55.333332061767578" width="414" height="100"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="InboxCell" rowHeight="145" id="smV-Bo-fYw" customClass="InboxCell" customModule="CNF" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="55.333332061767578" width="414" height="145"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="smV-Bo-fYw" id="KyF-YY-te2">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="145"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Earn 1.2x surge fees on all orders completed beetween 18:00-20:00 in NRT" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZO4-vQ-8jY">
-                                                    <rect key="frame" x="25" y="16" width="364" height="68"/>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZO4-vQ-8jY">
+                                                    <rect key="frame" x="25" y="16" width="369" height="94"/>
+                                                    <string key="text">Earn 1.2x surge fees on all orders completed beetween 18:00-20:00 in NRTEarn 1.2x surge fees on all orders completed beetween 18:00-20:00 in NRT</string>
                                                     <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 </textView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Support  13 Jun 2020 at 14:30" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M5y-SA-rLA">
-                                                    <rect key="frame" x="30" y="51" width="364" height="39"/>
+                                                    <rect key="frame" x="30" y="115" width="354" height="14"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
-                                                    <color key="textColor" name="secondary color"/>
+                                                    <color key="textColor" name="secondaryColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="ZO4-vQ-8jY" firstAttribute="leading" secondItem="KyF-YY-te2" secondAttribute="leadingMargin" constant="5" id="6c0-9o-oUW"/>
-                                                <constraint firstItem="M5y-SA-rLA" firstAttribute="trailing" secondItem="ZO4-vQ-8jY" secondAttribute="trailing" constant="5" id="BS3-Ze-6rp"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="M5y-SA-rLA" secondAttribute="bottom" constant="-1" id="Vqh-rp-4cX"/>
-                                                <constraint firstItem="ZO4-vQ-8jY" firstAttribute="centerY" secondItem="KyF-YY-te2" secondAttribute="centerY" id="XLZ-yo-Nrw"/>
-                                                <constraint firstItem="M5y-SA-rLA" firstAttribute="leading" secondItem="KyF-YY-te2" secondAttribute="leadingMargin" constant="10" id="bUk-cJ-8Kd"/>
-                                                <constraint firstItem="ZO4-vQ-8jY" firstAttribute="top" secondItem="KyF-YY-te2" secondAttribute="topMargin" constant="5" id="hrA-Dl-QyQ"/>
-                                                <constraint firstItem="M5y-SA-rLA" firstAttribute="trailing" secondItem="KyF-YY-te2" secondAttribute="trailingMargin" id="u2Z-7x-z2H"/>
-                                                <constraint firstItem="M5y-SA-rLA" firstAttribute="top" secondItem="KyF-YY-te2" secondAttribute="topMargin" constant="40" id="uyl-SJ-elR"/>
+                                                <constraint firstItem="ZO4-vQ-8jY" firstAttribute="top" secondItem="KyF-YY-te2" secondAttribute="topMargin" constant="5" id="0dl-zM-ln4"/>
+                                                <constraint firstItem="M5y-SA-rLA" firstAttribute="top" secondItem="ZO4-vQ-8jY" secondAttribute="bottom" constant="5" id="cBk-GV-aqt"/>
+                                                <constraint firstItem="ZO4-vQ-8jY" firstAttribute="leading" secondItem="KyF-YY-te2" secondAttribute="leadingMargin" constant="5" id="gHW-iT-Ylp"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="M5y-SA-rLA" secondAttribute="trailing" constant="10" id="k7S-pE-dm6"/>
+                                                <constraint firstItem="ZO4-vQ-8jY" firstAttribute="trailing" secondItem="KyF-YY-te2" secondAttribute="trailingMargin" id="kzJ-5i-OCt"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="M5y-SA-rLA" secondAttribute="bottom" constant="5" id="lgt-g2-nWX"/>
+                                                <constraint firstItem="M5y-SA-rLA" firstAttribute="leading" secondItem="KyF-YY-te2" secondAttribute="leadingMargin" constant="10" id="ucU-LQ-fDc"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
@@ -2011,10 +2011,11 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Messages are automatically deleted after 7 days." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mkc-3y-NfP">
                                         <rect key="frame" x="32" y="27.333333333333371" width="350" height="18.666666666666671"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
-                                        <color key="textColor" name="secondary"/>
+                                        <color key="textColor" name="secondaryColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
+                                <color key="backgroundColor" name="UIViewCard"/>
                                 <constraints>
                                     <constraint firstItem="Mkc-3y-NfP" firstAttribute="centerX" secondItem="izn-Oc-WrK" secondAttribute="centerX" id="0eo-DX-ddL"/>
                                     <constraint firstItem="Mkc-3y-NfP" firstAttribute="centerY" secondItem="izn-Oc-WrK" secondAttribute="centerY" id="Js8-Fd-uaM"/>
@@ -2036,6 +2037,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Inbox" id="rla-6R-7fR"/>
                     <connections>
+                        <outlet property="bottomView" destination="izn-Oc-WrK" id="EPx-Di-V0A"/>
                         <outlet property="inboxTableView" destination="84M-5j-Bbw" id="gf7-Lr-yv4"/>
                     </connections>
                 </viewController>
@@ -6367,11 +6369,11 @@
         <namedColor name="primaryButtonBorder">
             <color red="0.0" green="0.74900001287460327" blue="0.66299998760223389" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <namedColor name="secondary">
-            <color red="0.56499999761581421" green="0.57999998331069946" blue="0.6119999885559082" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
         <namedColor name="secondary color">
             <color red="0.56470588235294117" green="0.58039215686274503" blue="0.61176470588235299" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="secondaryColor">
+            <color red="0.50999999046325684" green="0.5220000147819519" blue="0.5220000147819519" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="secondaryCustom">
             <color red="0.50999999046325684" green="0.5220000147819519" blue="0.5220000147819519" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
