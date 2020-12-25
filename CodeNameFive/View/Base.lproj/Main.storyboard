@@ -908,15 +908,14 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Apple maps" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MRl-mk-ahA">
-                                                    <rect key="frame" x="20" y="10" width="394" height="24"/>
+                                                    <rect key="frame" x="20" y="12.666666666666666" width="394" height="18.666666666666671"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="bottom" secondItem="MRl-mk-ahA" secondAttribute="bottom" constant="10" id="QNB-is-W66"/>
-                                                <constraint firstItem="MRl-mk-ahA" firstAttribute="top" secondItem="zC3-zI-KfB" secondAttribute="top" constant="10" id="Whn-nN-LTk"/>
+                                                <constraint firstItem="MRl-mk-ahA" firstAttribute="centerY" secondItem="zC3-zI-KfB" secondAttribute="centerY" id="Og4-Oa-hrz"/>
                                                 <constraint firstItem="MRl-mk-ahA" firstAttribute="leading" secondItem="zC3-zI-KfB" secondAttribute="leading" constant="20" id="hEd-Cf-Eof"/>
                                                 <constraint firstAttribute="trailing" secondItem="MRl-mk-ahA" secondAttribute="trailing" id="x5A-Ne-7qu"/>
                                             </constraints>
@@ -931,16 +930,15 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Google maps" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vc0-1a-u4Y">
-                                                    <rect key="frame" x="20" y="10" width="394" height="24"/>
+                                                    <rect key="frame" x="20" y="12.666666666666666" width="394" height="18.666666666666671"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="Vc0-1a-u4Y" firstAttribute="top" secondItem="g2t-Zj-F3M" secondAttribute="top" constant="10" id="AWc-ir-PDi"/>
                                                 <constraint firstAttribute="trailing" secondItem="Vc0-1a-u4Y" secondAttribute="trailing" id="NiU-4E-arH"/>
-                                                <constraint firstAttribute="bottom" secondItem="Vc0-1a-u4Y" secondAttribute="bottom" constant="10" id="Xly-AD-4dC"/>
+                                                <constraint firstItem="Vc0-1a-u4Y" firstAttribute="centerY" secondItem="g2t-Zj-F3M" secondAttribute="centerY" id="T27-qg-XIc"/>
                                                 <constraint firstItem="Vc0-1a-u4Y" firstAttribute="leading" secondItem="g2t-Zj-F3M" secondAttribute="leading" constant="20" id="epd-57-xQD"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -954,17 +952,16 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Waze" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X7R-4S-rYf">
-                                                    <rect key="frame" x="20" y="10" width="394" height="24"/>
+                                                    <rect key="frame" x="20" y="12.666666666666666" width="394" height="18.666666666666671"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="X7R-4S-rYf" firstAttribute="top" secondItem="AHW-em-581" secondAttribute="top" constant="10" id="67p-dg-mBB"/>
+                                                <constraint firstItem="X7R-4S-rYf" firstAttribute="centerY" secondItem="AHW-em-581" secondAttribute="centerY" id="LZj-hy-6Qr"/>
                                                 <constraint firstAttribute="trailing" secondItem="X7R-4S-rYf" secondAttribute="trailing" id="cJA-wr-UEe"/>
                                                 <constraint firstItem="X7R-4S-rYf" firstAttribute="leading" secondItem="AHW-em-581" secondAttribute="leading" constant="20" id="mha-df-mZK"/>
-                                                <constraint firstAttribute="bottom" secondItem="X7R-4S-rYf" secondAttribute="bottom" constant="10" id="n8Q-tK-edz"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
@@ -977,16 +974,15 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ask every time" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yxg-Ac-zyp">
-                                                    <rect key="frame" x="20" y="10" width="394" height="24"/>
+                                                    <rect key="frame" x="20" y="12.666666666666666" width="394" height="18.666666666666671"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="Yxg-Ac-zyp" firstAttribute="top" secondItem="vrS-Sa-t85" secondAttribute="top" constant="10" id="6AA-WB-1Nk"/>
-                                                <constraint firstAttribute="bottom" secondItem="Yxg-Ac-zyp" secondAttribute="bottom" constant="10" id="J75-SL-qaX"/>
                                                 <constraint firstAttribute="trailing" secondItem="Yxg-Ac-zyp" secondAttribute="trailing" id="lM9-ox-BPf"/>
+                                                <constraint firstItem="Yxg-Ac-zyp" firstAttribute="centerY" secondItem="vrS-Sa-t85" secondAttribute="centerY" id="t6o-K3-NjW"/>
                                                 <constraint firstItem="Yxg-Ac-zyp" firstAttribute="leading" secondItem="vrS-Sa-t85" secondAttribute="leading" constant="20" id="vJE-2C-5zN"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -1004,23 +1000,21 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Show traffic" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="65D-D3-7Ki">
-                                                    <rect key="frame" x="20" y="10" width="315" height="24"/>
+                                                    <rect key="frame" x="20" y="12.666666666666666" width="315" height="18.666666666666671"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="b45-5o-apG">
-                                                    <rect key="frame" x="345" y="7" width="51" height="30"/>
+                                                    <rect key="frame" x="345" y="6.6666666666666679" width="51" height="31.000000000000004"/>
                                                     <color key="onTintColor" red="0.070588235289999995" green="0.82352941180000006" blue="0.70196078429999997" alpha="1" colorSpace="calibratedRGB"/>
                                                 </switch>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="65D-D3-7Ki" firstAttribute="centerY" secondItem="LXu-ct-Ndu" secondAttribute="centerY" id="2eI-9n-GD2"/>
                                                 <constraint firstItem="b45-5o-apG" firstAttribute="trailing" secondItem="LXu-ct-Ndu" secondAttribute="trailingMargin" id="7it-eB-SR5"/>
-                                                <constraint firstAttribute="bottom" secondItem="65D-D3-7Ki" secondAttribute="bottom" constant="10" id="Akv-aa-iBx"/>
-                                                <constraint firstItem="b45-5o-apG" firstAttribute="top" secondItem="LXu-ct-Ndu" secondAttribute="topMargin" constant="-4" id="Z3S-Cg-kZa"/>
                                                 <constraint firstItem="65D-D3-7Ki" firstAttribute="leading" relation="lessThanOrEqual" secondItem="LXu-ct-Ndu" secondAttribute="leading" constant="20" symbolic="YES" id="Z8Z-Fg-mQ5"/>
-                                                <constraint firstItem="b45-5o-apG" firstAttribute="centerY" secondItem="65D-D3-7Ki" secondAttribute="centerY" id="Zuv-J8-y0R"/>
-                                                <constraint firstItem="65D-D3-7Ki" firstAttribute="top" secondItem="LXu-ct-Ndu" secondAttribute="top" constant="10" id="jRa-J8-iMc"/>
+                                                <constraint firstItem="b45-5o-apG" firstAttribute="centerY" secondItem="LXu-ct-Ndu" secondAttribute="centerY" id="bFj-bI-nqS"/>
                                                 <constraint firstItem="b45-5o-apG" firstAttribute="leading" secondItem="65D-D3-7Ki" secondAttribute="trailing" constant="10" id="y2i-Wa-BXo"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -1038,24 +1032,22 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Avoid routes with tolls" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1I2-1s-5Js">
-                                                    <rect key="frame" x="20" y="10" width="315" height="24"/>
+                                                    <rect key="frame" x="20" y="12.666666666666666" width="315" height="18.666666666666671"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="UTR-cH-VT7">
-                                                    <rect key="frame" x="345" y="7" width="51" height="30"/>
+                                                    <rect key="frame" x="345" y="6.6666666666666679" width="51" height="31.000000000000004"/>
                                                     <color key="onTintColor" red="0.070588235289999995" green="0.82352941180000006" blue="0.70196078429999997" alpha="1" colorSpace="calibratedRGB"/>
                                                 </switch>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="UTR-cH-VT7" firstAttribute="trailing" secondItem="3Kc-K0-YSH" secondAttribute="trailingMargin" id="63F-gZ-i4h"/>
-                                                <constraint firstItem="UTR-cH-VT7" firstAttribute="top" secondItem="3Kc-K0-YSH" secondAttribute="topMargin" constant="-4" id="6RS-ty-PwH"/>
                                                 <constraint firstItem="1I2-1s-5Js" firstAttribute="leading" relation="lessThanOrEqual" secondItem="3Kc-K0-YSH" secondAttribute="leading" constant="20" symbolic="YES" id="FUd-Sc-QA2"/>
-                                                <constraint firstItem="1I2-1s-5Js" firstAttribute="top" secondItem="3Kc-K0-YSH" secondAttribute="top" constant="10" id="RPf-PI-oqo"/>
+                                                <constraint firstItem="1I2-1s-5Js" firstAttribute="centerY" secondItem="3Kc-K0-YSH" secondAttribute="centerY" id="Y6D-DQ-eV1"/>
                                                 <constraint firstItem="UTR-cH-VT7" firstAttribute="leading" secondItem="1I2-1s-5Js" secondAttribute="trailing" constant="10" id="YiZ-pW-m0D"/>
                                                 <constraint firstItem="UTR-cH-VT7" firstAttribute="centerY" secondItem="1I2-1s-5Js" secondAttribute="centerY" id="eua-hV-KRI"/>
-                                                <constraint firstAttribute="bottom" secondItem="1I2-1s-5Js" secondAttribute="bottom" constant="10" id="qnT-Hw-jhD"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
@@ -1068,23 +1060,21 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Avoid routes with motorways" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DUB-rP-pBn">
-                                                    <rect key="frame" x="22" y="10" width="315" height="24"/>
+                                                    <rect key="frame" x="22" y="12.666666666666666" width="315" height="18.666666666666671"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="MfN-SE-Cbt">
-                                                    <rect key="frame" x="345" y="7" width="51" height="30"/>
+                                                    <rect key="frame" x="345" y="6.6666666666666679" width="51" height="31.000000000000004"/>
                                                     <color key="onTintColor" red="0.070588235289999995" green="0.82352941180000006" blue="0.70196078429999997" alpha="1" colorSpace="calibratedRGB"/>
                                                 </switch>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="bottom" secondItem="DUB-rP-pBn" secondAttribute="bottom" constant="10" id="Bfp-Ng-PEF"/>
-                                                <constraint firstItem="DUB-rP-pBn" firstAttribute="top" secondItem="ctg-rl-NBg" secondAttribute="top" constant="10" id="cbU-l5-Abt"/>
-                                                <constraint firstItem="MfN-SE-Cbt" firstAttribute="centerY" secondItem="DUB-rP-pBn" secondAttribute="centerY" id="dbW-Bn-sH9"/>
+                                                <constraint firstItem="DUB-rP-pBn" firstAttribute="centerY" secondItem="ctg-rl-NBg" secondAttribute="centerY" id="IVE-Kn-IJo"/>
+                                                <constraint firstItem="MfN-SE-Cbt" firstAttribute="centerY" secondItem="ctg-rl-NBg" secondAttribute="centerY" id="frT-f2-3GS"/>
                                                 <constraint firstItem="DUB-rP-pBn" firstAttribute="leadingMargin" relation="lessThanOrEqual" secondItem="ctg-rl-NBg" secondAttribute="leading" constant="30" id="jYg-nB-9sd"/>
                                                 <constraint firstItem="MfN-SE-Cbt" firstAttribute="leading" secondItem="DUB-rP-pBn" secondAttribute="trailing" constant="8" id="k8c-qt-Cya"/>
-                                                <constraint firstItem="MfN-SE-Cbt" firstAttribute="top" secondItem="ctg-rl-NBg" secondAttribute="topMargin" constant="-4" id="luM-i0-JUg"/>
                                                 <constraint firstItem="MfN-SE-Cbt" firstAttribute="trailing" secondItem="ctg-rl-NBg" secondAttribute="trailingMargin" id="zcf-1e-5J3"/>
                                             </constraints>
                                         </tableViewCellContentView>
