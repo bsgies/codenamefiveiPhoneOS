@@ -3,6 +3,7 @@ PODS:
   - AlamofireObjectMapper (5.2.1):
     - Alamofire (~> 4.7)
     - ObjectMapper (~> 3.4)
+  - FSCalendar (2.8.2)
   - GoogleMapDirectionLib (0.0.4):
     - Alamofire
     - AlamofireObjectMapper
@@ -57,6 +58,7 @@ PODS:
     - ZendeskSupportProvidersSDK (~> 5.1.0)
 
 DEPENDENCIES:
+  - FSCalendar
   - GoogleMapDirectionLib
   - GoogleMaps
   - MaterialComponents/ActivityIndicator (~> 107.4)
@@ -71,6 +73,7 @@ SPEC REPOS:
   trunk:
     - Alamofire
     - AlamofireObjectMapper
+    - FSCalendar
     - GoogleMapDirectionLib
     - GoogleMaps
     - InputBarAccessoryView
@@ -97,6 +100,7 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
   AlamofireObjectMapper: 1989f690e982b71921b9253f53a4f33a9bc00d88
+  FSCalendar: e6a2eb9c571bf0719ed797ef807e08426753c241
   GoogleMapDirectionLib: 573468c6d3b26443c5a919abc766871bddb94b83
   GoogleMaps: 4b5346bddfe6911bb89155d43c903020170523ac
   InputBarAccessoryView: 7985d418040a05fe894bd4b8328dd43ab35517c3
@@ -120,6 +124,6 @@ SPEC CHECKSUMS:
   ZendeskSupportProvidersSDK: 209011ffad4cbd256839444571defad1b83006f2
   ZendeskSupportSDK: 95aea2ab473768d8b01fa837002415fb93f8c3e0
 
-PODFILE CHECKSUM: 449b593401a8ba9ba27fd19a929c27fdddfc8dc8
+PODFILE CHECKSUM: dde675df8a8e55f3401af1b5bd84d24c7f5a33c7
 
-COCOAPODS: 1.9.3
+COCOAPODS: 1.10.0

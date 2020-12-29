@@ -7,17 +7,18 @@
 //
 
 import UIKit
+import FSCalendar
 class PromotionVC: UIViewController {
-
-  //  @IBOutlet weak var calender: CVCalendarWeekView!
+      var formatter = DateFormatter()
+      var calendar: FSCalendar!
     
-    let time = ["00:00 - 03:00","18:00 - 21:00"]
-    let boost = ["1.3x","1.5x"]
+    let time = ["00:00 - 03:00","18:00 - 21:00", "18:00 - 21:00" ]
+    let boost = ["1.3x","1.5x","1.5x"]
     
     @IBOutlet weak var promotionsTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-
+    setupUI()
     setCrossButton()
     }
     
@@ -38,6 +39,7 @@ class PromotionVC: UIViewController {
         button.setImage(UIImage(named: "close"), for: .normal)
         button.addTarget(self, action: #selector(closeView), for: .touchUpInside)
         button.frame = CGRect(x: 0, y: 0, width: 16, height: 16)
+        button.contentEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 20)
         let barButton = UIBarButtonItem(customView: button)
         navigationItem.leftBarButtonItem = barButton
     }
@@ -77,6 +79,7 @@ extension PromotionVC : UITableViewDelegate,UITableViewDataSource{
         cell.preservesSuperviewLayoutMargins = false
         cell.separatorInset = UIEdgeInsets.zero
         cell.layoutMargins = UIEdgeInsets.zero
+        cell.separatorInset = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 0)
         }
         
     
@@ -98,4 +101,32 @@ extension UILabel {
 
     self.attributedText = mutableAttributedString
   }
+}
+//MARK: - calendar settings
+
+extension PromotionVC : FSCalendarDelegate, FSCalendarDataSource{
+    func setupUI() {
+        calendar = FSCalendar(frame: CGRect(x: 0.0, y: 40.0, width: self.view.frame.size.width, height: 400.0))
+               calendar.scrollDirection = .vertical
+               calendar.scope = .week
+               self.view.addSubview(calendar)
+        calendar.appearance.todayColor = UIColor(named: "primaryColor")
+        calendar.appearance.titleDefaultColor = UIColor(named: "blackWhite")
+        calendar.appearance.weekdayTextColor = UIColor(named: "blackWhite")
+        calendar.appearance.selectionColor = UIColor(named: "primaryColor")
+        calendar.dataSource = self
+        calendar.delegate = self
+    }
+     
+    func minimumDate(for calendar: FSCalendar) -> Date {
+        return Date()
+    }
+    func maximumDate(for calendar: FSCalendar) -> Date {
+        return Date().addingTimeInterval((24*24*60)*8)
+    }
+    
+    func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
+        formatter.dateFormat = "dd-MMM-yyyy"
+        print("date selected = \(formatter.string(from: date))")
+    }
 }

@@ -13,6 +13,7 @@ target 'CodeNameFive' do
    pod 'SideMenu'
    pod 'ZendeskChatSDK'
    pod 'ZendeskChatProvidersSDK'
+   pod 'FSCalendar'
   # Pods for CodeNameFive
 
   target 'CodeNameFiveTests'  do
