@@ -12,8 +12,9 @@ class PromotionVC: UIViewController {
       var formatter = DateFormatter()
       var calendar: FSCalendar!
     
-    let time = ["00:00 - 03:00","18:00 - 21:00", "18:00 - 21:00" ]
+    let time = ["00:00 - 03:00","08:00 - 21:00", "08:00 - 21:00" ]
     let boost = ["1.3x","1.5x","1.5x"]
+    let timeDetail = ["MNN","MnM","mnn"]
     
     @IBOutlet weak var promotionsTableView: UITableView!
     override func viewDidLoad() {
@@ -56,17 +57,26 @@ extension PromotionVC : UITableViewDelegate,UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "PromotionCell", for: indexPath)
-        cell.textLabel?.text = time[indexPath.row]
-        cell.detailTextLabel?.set(image: #imageLiteral(resourceName: "lightning"), with: boost[indexPath.row])
-        cell.textLabel?.textAlignment = .right
-        cell.detailTextLabel?.textAlignment = .left
+        let cell = tableView.dequeueReusableCell(withIdentifier: "PromotionCell", for: indexPath) as! PromotionViewCell
+//        cell.textLabel?.text = time[indexPath.row]
+//        cell.detailTextLabel?.set(image: #imageLiteral(resourceName: "lightning"), with: boost[indexPath.row])
+//        cell.textLabel?.textAlignment = .right
+//        cell.detailTextLabel?.textAlignment = .left
+        
+        cell.titleCell.text = time[indexPath.row]
+        cell.subtitleCell.text = timeDetail[indexPath.row]
+        cell.detailCell.set(image: #imageLiteral(resourceName: "lightning"), with: boost[indexPath.row])
+       
+        
 //        cell.layoutMargins = UIEdgeInsets.zero
 //        cell.textLabel?.layoutMargins.left = 30
 //        cell.detailTextLabel?.layoutMargins.right = -30
         
         return cell
     }
+//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        return 50
+//    }
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 30
     }
@@ -122,10 +132,12 @@ extension PromotionVC : FSCalendarDelegate, FSCalendarDataSource{
         return Date()
     }
     func maximumDate(for calendar: FSCalendar) -> Date {
-        return Date().addingTimeInterval((24*24*60)*8)
+        return Date().addingTimeInterval(518400)
     }
     
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
+        calendar.appearance.todayColor = .none
+        calendar.appearance.titleTodayColor = UIColor(named: "blackWhite")
         formatter.dateFormat = "dd-MMM-yyyy"
         print("date selected = \(formatter.string(from: date))")
     }
