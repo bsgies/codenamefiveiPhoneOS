@@ -129,7 +129,7 @@ extension PromotionVC : FSCalendarDelegate, FSCalendarDataSource{
         calendar.appearance.titleDefaultColor = UIColor(named: "blackWhite")
         calendar.appearance.weekdayTextColor = UIColor(named: "blackWhite")
         calendar.appearance.selectionColor = UIColor(named: "primaryColor")
-        
+        calendar.calendarHeaderView.isHidden = true
     }
      
     func minimumDate(for calendar: FSCalendar) -> Date {
