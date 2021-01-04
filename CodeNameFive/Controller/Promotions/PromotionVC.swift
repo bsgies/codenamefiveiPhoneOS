@@ -14,13 +14,18 @@ class PromotionVC: UIViewController {
     
     let time = ["00:00 - 03:00","08:00 - 21:00", "08:00 - 21:00" ]
     let boost = ["1.3x","1.5x","1.5x"]
-    let timeDetail = ["MNN","MnM","mnn"]
+    let timeDetail = ["MNN","MnM","MMnn"]
     
+    @IBOutlet weak var calendarView: UIView!
     @IBOutlet weak var promotionsTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-    setupUI()
+    
+        setupUI()
     setCrossButton()
+        //calendarView.addTopBorder(with: UIColor(named: "borderColor")!, andWidth: 1.0)
+        calendarView.addBottomBorder(with: UIColor(named: "borderColor")!, andWidth: 1.0)
+        
     }
     
     
@@ -91,8 +96,6 @@ extension PromotionVC : UITableViewDelegate,UITableViewDataSource{
         cell.layoutMargins = UIEdgeInsets.zero
         cell.separatorInset = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 0)
         }
-        
-    
 }
 
 
@@ -117,23 +120,29 @@ extension UILabel {
 extension PromotionVC : FSCalendarDelegate, FSCalendarDataSource{
     func setupUI() {
         calendar = FSCalendar(frame: CGRect(x: 0.0, y: 40.0, width: self.view.frame.size.width, height: 400.0))
-               calendar.scrollDirection = .vertical
+               calendar.dataSource = self
+               calendar.delegate = self
+        calendar.scrollDirection = .vertical
                calendar.scope = .week
                self.view.addSubview(calendar)
         calendar.appearance.todayColor = UIColor(named: "primaryColor")
         calendar.appearance.titleDefaultColor = UIColor(named: "blackWhite")
         calendar.appearance.weekdayTextColor = UIColor(named: "blackWhite")
         calendar.appearance.selectionColor = UIColor(named: "primaryColor")
-        calendar.dataSource = self
-        calendar.delegate = self
+        
     }
      
     func minimumDate(for calendar: FSCalendar) -> Date {
         return Date()
     }
     func maximumDate(for calendar: FSCalendar) -> Date {
-        return Date().addingTimeInterval(518400)
+        return Date().addingTimeInterval((86400)*6)
     }
+    func calendarCurrentPageDidChange(_ calendar: FSCalendar) {
+        print( "yes here")
+        
+    }
+    
     
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         calendar.appearance.todayColor = .none
