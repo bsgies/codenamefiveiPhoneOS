@@ -10,22 +10,26 @@ import UIKit
 import FSCalendar
 class PromotionVC: UIViewController {
       var formatter = DateFormatter()
-      var calendar: FSCalendar!
+     // var calendar: FSCalendar!
     
-    let time = ["00:00 - 03:00","08:00 - 21:00", "08:00 - 21:00" ]
-    let boost = ["1.3x","1.5x","1.5x"]
-    let timeDetail = ["MNN","MnM","MMnn"]
+    let time = ["00:00 - 03:00","08:00 - 21:00", "08:00 - 21:00","08:00 - 21:00" ]
+    let boost = ["1.3x","1.5x","1.5x","1.5x"]
+    let timeDetail = ["MNN","MnM","MMnn","MMnn"]
     
-    @IBOutlet weak var calendarView: UIView!
+    @IBOutlet weak var calendar: FSCalendar!
+    
     @IBOutlet weak var promotionsTableView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-    
+        promotionsTableView.delegate = self
+        promotionsTableView.dataSource = self
+        
         setupUI()
     setCrossButton()
-        //calendarView.addTopBorder(with: UIColor(named: "borderColor")!, andWidth: 1.0)
-        calendarView.addBottomBorder(with: UIColor(named: "borderColor")!, andWidth: 1.0)
         
+       calendar.addBottomBorder(with: UIColor(named: "borderColor")!, andWidth: 1.0)
+       
     }
     
     
@@ -36,7 +40,7 @@ class PromotionVC: UIViewController {
     
     override func viewDidLayoutSubviews() {
          super.viewDidLayoutSubviews()
-        
+
     }
 
     
@@ -79,9 +83,9 @@ extension PromotionVC : UITableViewDelegate,UITableViewDataSource{
         
         return cell
     }
-//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        return 50
-//    }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 60
+    }
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 30
     }
@@ -96,6 +100,9 @@ extension PromotionVC : UITableViewDelegate,UITableViewDataSource{
         cell.layoutMargins = UIEdgeInsets.zero
         cell.separatorInset = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 0)
         }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("selected cell")
+    }
 }
 
 
@@ -119,17 +126,18 @@ extension UILabel {
 
 extension PromotionVC : FSCalendarDelegate, FSCalendarDataSource{
     func setupUI() {
-        calendar = FSCalendar(frame: CGRect(x: 0.0, y: 40.0, width: self.view.frame.size.width, height: 400.0))
                calendar.dataSource = self
                calendar.delegate = self
-        calendar.scrollDirection = .vertical
-               calendar.scope = .week
-               self.view.addSubview(calendar)
+        calendar.scope = .week
         calendar.appearance.todayColor = UIColor(named: "primaryColor")
-        calendar.appearance.titleDefaultColor = UIColor(named: "blackWhite")
+        calendar.appearance.titleDefaultColor =  UIColor(named: "blackWhite")
         calendar.appearance.weekdayTextColor = UIColor(named: "blackWhite")
         calendar.appearance.selectionColor = UIColor(named: "primaryColor")
-        calendar.calendarHeaderView.isHidden = true
+       calendar.calendarHeaderView.isHidden = true
+     
+       
+        
+        
     }
      
     func minimumDate(for calendar: FSCalendar) -> Date {

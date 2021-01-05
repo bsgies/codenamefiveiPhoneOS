@@ -28,7 +28,7 @@
             <objects>
                 <viewController storyboardIdentifier="LoginVC" title="Login" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="LoginVC" customModule="CNF" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PS8-g6-vuE">
@@ -2213,11 +2213,31 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Gq-VH-dtT" customClass="FSCalendar">
+                                <rect key="frame" x="0.0" y="44" width="414" height="400"/>
+                                <color key="backgroundColor" name="UIViewCard"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="400" id="9yT-s7-pSJ"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="scrollEnabled" value="NO"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="firstWeekday">
+                                        <integer key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="fakeEventDots" value="NO"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="headerHeight">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="aJb-og-9pQ">
-                                <rect key="frame" x="0.0" y="134" width="414" height="762"/>
+                                <rect key="frame" x="0.0" y="184" width="414" height="712"/>
                                 <color key="backgroundColor" name="TableViewBackGround"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="712" id="X8J-6K-L3H"/>
+                                </constraints>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PromotionCell" rowHeight="62" id="okd-MI-0Er" customClass="PromotionViewCell" customModule="CNF" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="default" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PromotionCell" rowHeight="62" id="okd-MI-0Er" customClass="PromotionViewCell" customModule="CNF" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="55.333332061767578" width="414" height="62"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="okd-MI-0Er" id="h9Q-k1-aSX">
@@ -2225,16 +2245,16 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="zud-ZU-JXc">
-                                                    <rect key="frame" x="30.000000000000004" y="13.666666666666668" width="39.333333333333343" height="34.666666666666657"/>
+                                                    <rect key="frame" x="30.000000000000004" y="16" width="39.333333333333343" height="30"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uLs-ye-DJj">
-                                                            <rect key="frame" x="0.0" y="0.0" width="39.333333333333336" height="18.666666666666668"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="39.333333333333336" height="16"/>
                                                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W8F-aU-Ehx">
-                                                            <rect key="frame" x="0.0" y="20.666666666666671" width="39.333333333333336" height="14"/>
+                                                            <rect key="frame" x="0.0" y="18" width="39.333333333333336" height="12"/>
                                                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
                                                             <color key="textColor" name="secondaryColor"/>
                                                             <nil key="highlightedColor"/>
@@ -2249,10 +2269,12 @@
                                                 </label>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="TdZ-3a-quv" firstAttribute="top" secondItem="h9Q-k1-aSX" secondAttribute="topMargin" constant="10.67" id="0Yq-Zm-UlO"/>
+                                                <constraint firstItem="zud-ZU-JXc" firstAttribute="top" secondItem="h9Q-k1-aSX" secondAttribute="topMargin" constant="5" id="41X-jl-ix9"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="zud-ZU-JXc" secondAttribute="bottom" constant="5" id="9tX-gr-aCL"/>
                                                 <constraint firstItem="zud-ZU-JXc" firstAttribute="leading" secondItem="h9Q-k1-aSX" secondAttribute="leadingMargin" constant="10" id="A4K-ja-YQ3"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="TdZ-3a-quv" secondAttribute="trailing" constant="10" id="Y63-8e-6QE"/>
-                                                <constraint firstItem="zud-ZU-JXc" firstAttribute="centerY" secondItem="h9Q-k1-aSX" secondAttribute="centerY" id="elH-cl-UKk"/>
-                                                <constraint firstItem="TdZ-3a-quv" firstAttribute="centerY" secondItem="h9Q-k1-aSX" secondAttribute="centerY" id="xGy-Zr-efs"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="TdZ-3a-quv" secondAttribute="bottom" constant="10.67" id="t09-oS-rdB"/>
                                                 <constraint firstItem="TdZ-3a-quv" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="zud-ZU-JXc" secondAttribute="trailing" constant="8" symbolic="YES" id="y3z-Gm-imb"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -2269,13 +2291,6 @@
                                     <outlet property="delegate" destination="HCl-Pa-EZF" id="tcV-Sf-sQs"/>
                                 </connections>
                             </tableView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Gq-VH-dtT">
-                                <rect key="frame" x="0.0" y="44" width="414" height="90"/>
-                                <color key="backgroundColor" name="UIViewCard"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="90" id="5Km-Ww-XhS"/>
-                                </constraints>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" name="Background"/>
                         <constraints>
@@ -2283,7 +2298,6 @@
                             <constraint firstItem="aJb-og-9pQ" firstAttribute="trailing" secondItem="CUQ-kN-q2X" secondAttribute="trailing" id="JnM-fe-ejP"/>
                             <constraint firstAttribute="bottom" secondItem="aJb-og-9pQ" secondAttribute="bottom" id="Ylh-ua-RnJ"/>
                             <constraint firstItem="3Gq-VH-dtT" firstAttribute="trailing" secondItem="CUQ-kN-q2X" secondAttribute="trailing" id="c29-59-SeA"/>
-                            <constraint firstItem="aJb-og-9pQ" firstAttribute="top" secondItem="3Gq-VH-dtT" secondAttribute="bottom" id="gR2-fh-ZPU"/>
                             <constraint firstItem="aJb-og-9pQ" firstAttribute="trailing" secondItem="CUQ-kN-q2X" secondAttribute="trailing" id="iBr-cu-C1v"/>
                             <constraint firstItem="aJb-og-9pQ" firstAttribute="leading" secondItem="CUQ-kN-q2X" secondAttribute="leading" id="oHx-xp-nxU"/>
                             <constraint firstAttribute="bottom" secondItem="aJb-og-9pQ" secondAttribute="bottom" id="pKI-om-SqI"/>
@@ -2294,7 +2308,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Promotions" id="ibg-GV-UNS"/>
                     <connections>
-                        <outlet property="calendarView" destination="3Gq-VH-dtT" id="R7l-lc-XIp"/>
+                        <outlet property="calendar" destination="3Gq-VH-dtT" id="0bo-cE-hVg"/>
                         <outlet property="promotionsTableView" destination="aJb-og-9pQ" id="bcD-YR-3F5"/>
                     </connections>
                 </viewController>
