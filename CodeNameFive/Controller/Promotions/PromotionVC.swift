@@ -28,7 +28,6 @@ class PromotionVC: UIViewController {
         setupUI()
     setCrossButton()
         
-       calendar.addBottomBorder(with: UIColor(named: "borderColor")!, andWidth: 1.0)
        
     }
     
@@ -83,9 +82,9 @@ extension PromotionVC : UITableViewDelegate,UITableViewDataSource{
         
         return cell
     }
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 60
-    }
+//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        return 70
+//    }
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 30
     }
