@@ -10,16 +10,21 @@ import UIKit
 
 class WeeklyTripsDataViewController: UIViewController {
     
-    @IBOutlet weak var weeklyDataEarningView: UIView!
+    @IBOutlet weak var topTableView: UITableView!
+    
+    @IBOutlet weak var downTableView: UITableView!
+    //  @IBOutlet weak var weeklyDataEarningView: UIView!
     let date = ["14 Jun","13 Jun ","12 Jun ","11 Jun","10 Jun","9 Jun","8 Jun","7 Jun"]
     let trips = ["10 trips","132 trips","2 trips","2 trips","1 trips","10 trips","119 trips","7 trips"]
     let earn = ["$100","$100","$100","$100","$100","$100","$100","$100"]
+    
     var navigationBartitle : String?
-    @IBOutlet weak var totalEranThisWeek: UILabel!
-    @IBOutlet weak var totalNumberOfTrips: UILabel!
+    let status = ["Online", "Trips" , "Promotions" , "Tips" , "Earnings" ]
+    let statusDetails = ["44hr24m28s","666","Rs. 1150.77","Rs. 33.90","RS. 88.0909",]
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        topTableView.delegate = self
+        topTableView.dataSource = self
         self.navigationItem.title =   navigationBartitle
         setBackButton()
         //weeklyDataEarningView.layer.shadowColor = UIColor.gray.cgColor
@@ -53,24 +58,45 @@ class WeeklyTripsDataViewController: UIViewController {
     }
     
 }
-extension WeeklyTripsDataViewController : UITableViewDataSource,UITableViewDelegate{
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return date.count
-    }
-    
+extension WeeklyTripsDataViewController : UITableViewDataSource,UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "weekly", for: indexPath) as! TripWeeklyData
-        cell.dateLbl.text = date[indexPath.row]
-        cell.numberOfTrips.text = trips[indexPath.row]
-        cell.earnLbl.text = earn[indexPath.row]
-        return cell
+        let cell = UITableViewCell()
+        switch tableView {
+        case downTableView:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "weekly", for: indexPath) as! TripWeeklyData
+            cell.dateLbl.text = date[indexPath.row]
+            cell.numberOfTrips.text = trips[indexPath.row]
+            cell.earnLbl.text = earn[indexPath.row]
+            return cell
+            
+        case topTableView:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "topCell", for: indexPath)
+            cell.textLabel?.text = status[indexPath.row]
+            cell.detailTextLabel?.text = statusDetails[indexPath.row]
+            return cell
+            
+        default:
+            return cell
+        }
     }
     
-     func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        switch tableView {
+        case topTableView:
+            return 5
+        case downTableView:
+            return date.count
+        default:
+            return 0
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         let headerView: UITableViewHeaderFooterView = view as! UITableViewHeaderFooterView
         headerView.backgroundView = UIView()
         headerView.backgroundColor = .clear
-      
+        
     }
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
@@ -83,17 +109,39 @@ extension WeeklyTripsDataViewController : UITableViewDataSource,UITableViewDeleg
         cell.preservesSuperviewLayoutMargins = false
         cell.separatorInset = UIEdgeInsets.zero
         cell.layoutMargins = UIEdgeInsets.zero
+        cell.separatorInset = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 0)
         // cell.accessoryView = UIImageView(image: UIImage(named: "chevron-right"))
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = storyBoard.instantiateViewController(withIdentifier: "TripDayDataVC") as! TripDayDataVC
-        vc.navigationBarTitle =  date[indexPath.row]
-        navigationController?.pushViewController(vc, animated: false)
-        
+        switch tableView {
+        case topTableView: break
+            
+        case downTableView:
+            let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let vc = storyBoard.instantiateViewController(withIdentifier: "TripDayDataVC") as! TripDayDataVC
+            vc.navigationBarTitle =  date[indexPath.row]
+            navigationController?.pushViewController(vc, animated: true)
+        default:
+            return
+        }
+    }
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        switch tableView {
+        case topTableView:
+            return "top table View"
+        case downTableView:
+            return "down table view"
+        default:
+            return ""
+        }
+    }
+
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        40
     }
     
-    
 }
+

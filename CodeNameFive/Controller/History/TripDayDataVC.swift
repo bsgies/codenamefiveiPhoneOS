@@ -96,7 +96,7 @@ extension TripDayDataVC : UITableViewDelegate,UITableViewDataSource{
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyBoard.instantiateViewController(withIdentifier: "OrderDetailVC") as! OrderDetailVC
         vc.orderedResturantName = resturantName[indexPath.row]
-        navigationController?.pushViewController(vc, animated: false)
+        navigationController?.pushViewController(vc, animated: true)
         
     }
 }
