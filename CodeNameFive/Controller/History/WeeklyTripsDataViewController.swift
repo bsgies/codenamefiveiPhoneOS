@@ -70,9 +70,9 @@ extension WeeklyTripsDataViewController : UITableViewDataSource,UITableViewDeleg
             return cell
             
         case topTableView:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "topCell", for: indexPath)
-            cell.textLabel?.text = status[indexPath.row]
-            cell.detailTextLabel?.text = statusDetails[indexPath.row]
+            let cell = tableView.dequeueReusableCell(withIdentifier: "topCell", for: indexPath) as! TripWeekDataTableViewCell
+            cell.status.text = status[indexPath.row]
+            cell.statusDetail.text = statusDetails[indexPath.row]
             return cell
             
         default:
@@ -96,6 +96,9 @@ extension WeeklyTripsDataViewController : UITableViewDataSource,UITableViewDeleg
         let headerView: UITableViewHeaderFooterView = view as! UITableViewHeaderFooterView
         headerView.backgroundView = UIView()
         headerView.backgroundColor = .clear
+        let header:UITableViewHeaderFooterView = view as! UITableViewHeaderFooterView
+        header.textLabel?.textColor = UIColor(named: "blackWhite")
+        header.textLabel?.font = UIFont.boldSystemFont(ofSize: 16)
         
     }
     
@@ -130,9 +133,9 @@ extension WeeklyTripsDataViewController : UITableViewDataSource,UITableViewDeleg
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         switch tableView {
         case topTableView:
-            return "top table View"
+            return "Status"
         case downTableView:
-            return "down table view"
+            return "Breakdown"
         default:
             return ""
         }
@@ -142,6 +145,8 @@ extension WeeklyTripsDataViewController : UITableViewDataSource,UITableViewDeleg
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         40
     }
+    
+    
     
 }
 
