@@ -93,6 +93,7 @@ extension WeeklyTripsDataViewController : UITableViewDataSource,UITableViewDeleg
     }
     
     func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+       
         let headerView: UITableViewHeaderFooterView = view as! UITableViewHeaderFooterView
         headerView.backgroundView = UIView()
         headerView.backgroundColor = .clear
