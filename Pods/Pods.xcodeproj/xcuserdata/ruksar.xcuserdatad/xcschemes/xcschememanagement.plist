@@ -28,7 +28,7 @@
 		<key>FSCalendar.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>26</integer>
+			<integer>29</integer>
 		</dict>
 		<key>GoogleMapDirectionLib.xcscheme</key>
 		<dict>
@@ -159,7 +159,7 @@
 		<key>ZendeskChatProvidersSDK.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>27</integer>
+			<integer>26</integer>
 		</dict>
 		<key>ZendeskChatSDK.xcscheme</key>
 		<dict>
@@ -171,7 +171,7 @@
 		<key>ZendeskChatSDK.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>29</integer>
+			<integer>27</integer>
 		</dict>
 		<key>ZendeskCommonUISDK.xcscheme</key>
 		<dict>
