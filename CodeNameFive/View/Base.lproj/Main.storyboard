@@ -1223,16 +1223,16 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="be8-RX-4Sj">
-                                                    <rect key="frame" x="19.999999999999996" y="5" width="48.666666666666657" height="40"/>
+                                                    <rect key="frame" x="19.999999999999996" y="8.6666666666666679" width="48.666666666666657" height="32.666666666666657"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="13 Jun" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6xo-yY-nem">
-                                                            <rect key="frame" x="0.0" y="0.0" width="48.666666666666664" height="23"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="48.666666666666664" height="18.666666666666668"/>
                                                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="42 trips" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PoD-90-IPr">
-                                                            <rect key="frame" x="0.0" y="23" width="48.666666666666664" height="17"/>
+                                                            <rect key="frame" x="0.0" y="18.666666666666664" width="48.666666666666664" height="14"/>
                                                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
                                                             <color key="textColor" name="secondary color"/>
                                                             <nil key="highlightedColor"/>
@@ -1248,11 +1248,10 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="hgU-BK-P9n" firstAttribute="centerY" secondItem="0jA-vO-GCF" secondAttribute="centerY" id="0Oh-Ef-ve5"/>
+                                                <constraint firstItem="be8-RX-4Sj" firstAttribute="centerY" secondItem="0jA-vO-GCF" secondAttribute="centerY" id="6Co-oR-uEA"/>
                                                 <constraint firstItem="hgU-BK-P9n" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="be8-RX-4Sj" secondAttribute="trailing" constant="8" symbolic="YES" id="7Y2-lX-OB2"/>
                                                 <constraint firstItem="be8-RX-4Sj" firstAttribute="leading" secondItem="0jA-vO-GCF" secondAttribute="leading" constant="20" id="Ay5-Sj-Uvi"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="hgU-BK-P9n" secondAttribute="trailing" id="Xcp-4i-wD4"/>
-                                                <constraint firstItem="be8-RX-4Sj" firstAttribute="top" secondItem="0jA-vO-GCF" secondAttribute="top" constant="5" id="cHr-Sx-RIu"/>
-                                                <constraint firstAttribute="bottom" secondItem="be8-RX-4Sj" secondAttribute="bottom" constant="5" id="mVc-0M-dej"/>
+                                                <constraint firstItem="hgU-BK-P9n" firstAttribute="trailing" secondItem="0jA-vO-GCF" secondAttribute="trailingMargin" id="oNK-te-Z4B"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
