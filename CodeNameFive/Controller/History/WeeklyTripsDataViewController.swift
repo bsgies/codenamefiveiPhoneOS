@@ -23,6 +23,7 @@ class WeeklyTripsDataViewController: UIViewController {
     let statusDetails = ["44hr24m28s","666","Rs. 1150.77","Rs. 33.90","RS. 88.0909",]
     override func viewDidLoad() {
         super.viewDidLoad()
+        topTableView.backgroundColor = .clear
         topTableView.delegate = self
         topTableView.dataSource = self
         self.navigationItem.title =   navigationBartitle
@@ -96,11 +97,22 @@ extension WeeklyTripsDataViewController : UITableViewDataSource,UITableViewDeleg
        
         let headerView: UITableViewHeaderFooterView = view as! UITableViewHeaderFooterView
         headerView.backgroundView = UIView()
-        headerView.backgroundColor = .clear
-        let header:UITableViewHeaderFooterView = view as! UITableViewHeaderFooterView
-        header.textLabel?.textColor = UIColor(named: "blackWhite")
-        header.textLabel?.font = UIFont.boldSystemFont(ofSize: 16)
+       headerView.backgroundColor = .clear
+       // let header:UITableViewHeaderFooterView = view as! UITableViewHeaderFooterView
+        headerView.textLabel?.textColor = UIColor(named: "blackWhite")
+        headerView.textLabel?.font = UIFont.boldSystemFont(ofSize: 16)
         
+        switch tableView {
+               case topTableView:
+                let header:UITableViewHeaderFooterView = view as! UITableViewHeaderFooterView
+                
+                header.textLabel?.text = "stats"
+               case downTableView:
+                let header:UITableViewHeaderFooterView = view as! UITableViewHeaderFooterView
+                header.textLabel?.text = "Breakdown"
+               default:
+                   return
+               }
     }
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
@@ -132,19 +144,28 @@ extension WeeklyTripsDataViewController : UITableViewDataSource,UITableViewDeleg
         }
     }
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        switch tableView {
-        case topTableView:
-            return "Status"
-        case downTableView:
-            return "Breakdown"
-        default:
-            return ""
-        }
+                return ""
     }
-
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        switch tableView {
+               case topTableView:
+                   return 44
+               case downTableView:
+                   return 44
+               default:
+                   return 0
+               }
+    }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        40
+         switch tableView {
+               case topTableView:
+                   return 40
+               case downTableView:
+                   return 40
+               default:
+                   return 0
+               }
     }
     
     
