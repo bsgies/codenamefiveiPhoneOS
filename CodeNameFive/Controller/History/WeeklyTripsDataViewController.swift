@@ -149,9 +149,9 @@ extension WeeklyTripsDataViewController : UITableViewDataSource,UITableViewDeleg
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch tableView {
                case topTableView:
-                   return 44
+                   return 40
                case downTableView:
-                   return 44
+                   return 50
                default:
                    return 0
                }
