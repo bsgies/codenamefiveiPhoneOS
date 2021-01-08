@@ -10,8 +10,6 @@ import UIKit
 
 class WeeklyTripsDataViewController: UIViewController {
     
-    @IBOutlet weak var topTableView: UITableView!
-    
     @IBOutlet weak var downTableView: UITableView!
     //  @IBOutlet weak var weeklyDataEarningView: UIView!
     let date = ["14 Jun","13 Jun ","12 Jun ","11 Jun","10 Jun","9 Jun","8 Jun","7 Jun"]
@@ -20,29 +18,30 @@ class WeeklyTripsDataViewController: UIViewController {
     
     var navigationBartitle : String?
     let status = ["Online", "Trips" , "Promotions" , "Tips" , "Earnings" ]
-    let statusDetails = ["44hr24m28s","666","Rs. 1150.77","Rs. 33.90","RS. 88.0909",]
+    let statusDetails = ["44hr 24m 28s","666","Rs. 1150.77","Rs. 33.90","RS. 88.0909",]
+    //MARK:- LIFE cycel
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        topTableView.backgroundColor = .clear
-        topTableView.delegate = self
-        topTableView.dataSource = self
+        
         self.navigationItem.title =   navigationBartitle
         setBackButton()
-        //weeklyDataEarningView.layer.shadowColor = UIColor.gray.cgColor
-        //weeklyDataEarningView.layer.shadowOpacity = 0.5
-        //weeklyDataEarningView.layer.shadowOffset = .zero
-        //weeklyDataEarningView.layer.shadowRadius = 4
-        //weeklyDataEarningView.layer.masksToBounds = false
-        //weeklyDataEarningView.fadeIn()
         let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(MainMenuTableViewController.BackviewController(gesture:)))
         swipeRight.direction = UISwipeGestureRecognizer.Direction.right
         self.view.addGestureRecognizer(swipeRight)
+        registersNibs()
+    }
+    
+    func registersNibs() {
         
+        downTableView.register(UINib(nibName: "TripDataTopCell", bundle: nil), forCellReuseIdentifier: "TripDataTopCell")
+        downTableView.register(UINib(nibName: "TripData", bundle: nil), forCellReuseIdentifier: "TripData")
     }
     
     @objc func BackviewController(gesture: UIGestureRecognizer) {
         self.navigationController?.popViewController(animated: true)
     }
+    
     func setBackButton(){
         let button: UIButton = UIButton (type: UIButton.ButtonType.custom)
         button.setImage(UIImage(named: "back"), for: UIControl.State.normal)
@@ -60,65 +59,58 @@ class WeeklyTripsDataViewController: UIViewController {
     
 }
 extension WeeklyTripsDataViewController : UITableViewDataSource,UITableViewDelegate {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 2
+    }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell()
-        switch tableView {
-        case downTableView:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "weekly", for: indexPath) as! TripWeeklyData
-            cell.dateLbl.text = date[indexPath.row]
-            cell.numberOfTrips.text = trips[indexPath.row]
-            cell.earnLbl.text = earn[indexPath.row]
+        
+        if indexPath.section == 0{
+            let cell = tableView.dequeueReusableCell(withIdentifier: "TripDataTopCell", for: indexPath) as! TripDataTopCell
+            cell.primaryLabel.text = status[indexPath.row]
+            cell.secondaryLabel.text = statusDetails[indexPath.row]
+            if indexPath.row == 4 {
+                cell.secondaryLabel.font = UIFont(name: "HelveticaNeue-Bold", size: 16)
+                cell.primaryLabel.font = UIFont(name: "HelveticaNeue-Bold", size: 16)
+            }
             return cell
-            
-        case topTableView:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "topCell", for: indexPath) as! TripWeekDataTableViewCell
-            cell.status.text = status[indexPath.row]
-            cell.statusDetail.text = statusDetails[indexPath.row]
-            return cell
-            
-        default:
+        }
+        else
+        {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "TripData", for: indexPath) as! TripData
+            cell.dateLabel.text = date[indexPath.row]
+            cell.totalTripsLabel.text = trips[indexPath.row]
+            cell.earningsLabel.text = earn[indexPath.row]
             return cell
         }
     }
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        switch tableView {
-        case topTableView:
-            return 5
-        case downTableView:
+        if section == 0{
+            return status.count
+        }else{
             return date.count
-        default:
-            return 0
         }
     }
     
     func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
-       
+        
         let headerView: UITableViewHeaderFooterView = view as! UITableViewHeaderFooterView
         headerView.backgroundView = UIView()
-       headerView.backgroundColor = .clear
-       // let header:UITableViewHeaderFooterView = view as! UITableViewHeaderFooterView
+        headerView.backgroundColor = .clear
+        let header:UITableViewHeaderFooterView = view as! UITableViewHeaderFooterView
         headerView.textLabel?.textColor = UIColor(named: "blackWhite")
         headerView.textLabel?.font = UIFont.boldSystemFont(ofSize: 16)
-        
-        switch tableView {
-               case topTableView:
-                let header:UITableViewHeaderFooterView = view as! UITableViewHeaderFooterView
-                
-                header.textLabel?.text = "stats"
-               case downTableView:
-                let header:UITableViewHeaderFooterView = view as! UITableViewHeaderFooterView
-                header.textLabel?.text = "Breakdown"
-               default:
-                   return
-               }
+        if section == 0  {
+            header.textLabel?.text = "Stats"
+        }else{
+            header.textLabel?.text = "Breakdown"
+        }
     }
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         return UIView()
     }
-    
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         cell.selectionStyle = .none
@@ -126,49 +118,35 @@ extension WeeklyTripsDataViewController : UITableViewDataSource,UITableViewDeleg
         cell.separatorInset = UIEdgeInsets.zero
         cell.layoutMargins = UIEdgeInsets.zero
         cell.separatorInset = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 0)
-        // cell.accessoryView = UIImageView(image: UIImage(named: "chevron-right"))
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        switch tableView {
-        case topTableView: break
-            
-        case downTableView:
-            let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-            let vc = storyBoard.instantiateViewController(withIdentifier: "TripDayDataVC") as! TripDayDataVC
-            vc.navigationBarTitle =  date[indexPath.row]
-            navigationController?.pushViewController(vc, animated: true)
-        default:
-            return
-        }
+        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyBoard.instantiateViewController(withIdentifier: "TripDayDataVC") as! TripDayDataVC
+        vc.navigationBarTitle =  date[indexPath.row]
+        navigationController?.pushViewController(vc, animated: true)
+        
     }
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-                return ""
+        return ""
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        switch tableView {
-               case topTableView:
-                   return 40
-               case downTableView:
-                   return 50
-               default:
-                   return 0
-               }
+        if indexPath.section == 1{
+            return 60
+        }
+        else{
+            return 44
+        }
+
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-         switch tableView {
-               case topTableView:
-                   return 40
-               case downTableView:
-                   return 40
-               default:
-                   return 0
-               }
+        if section == 0 {
+            return 40
+        }else{
+            return 40
+        }
+        
     }
-    
-    
-    
 }
-

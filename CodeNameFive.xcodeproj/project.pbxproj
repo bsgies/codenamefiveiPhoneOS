@@ -129,6 +129,10 @@
 		904A404F259F789E005914ED /* PromotionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 904A404E259F789E005914ED /* PromotionViewCell.swift */; };
 		90B28F8D25A652C80096E24B /* TripWeekDataTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B28F8C25A652C80096E24B /* TripWeekDataTableViewCell.swift */; };
 		9256B97C24BDC61600FF7CA0 /* ViewEXT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9256B97B24BDC61500FF7CA0 /* ViewEXT.swift */; };
+		925DB3DE25A7B52800FCD3DE /* TripData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 925DB3DC25A7B52800FCD3DE /* TripData.swift */; };
+		925DB3DF25A7B52800FCD3DE /* TripData.xib in Resources */ = {isa = PBXBuildFile; fileRef = 925DB3DD25A7B52800FCD3DE /* TripData.xib */; };
+		925DB3E725A7B5A300FCD3DE /* TripDataTopCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 925DB3E525A7B5A300FCD3DE /* TripDataTopCell.swift */; };
+		925DB3E825A7B5A300FCD3DE /* TripDataTopCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 925DB3E625A7B5A300FCD3DE /* TripDataTopCell.xib */; };
 		A4A2248AA1190068345DCFCD /* Pods_CodeNameFive_CodeNameFiveUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D3A47F8A169D0CA79DC7B9B /* Pods_CodeNameFive_CodeNameFiveUITests.framework */; };
 		B6B7C4BFB57BAFA43E3D0E05 /* Pods_CodeNameFiveTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C7DB2144377852017506D20 /* Pods_CodeNameFiveTests.framework */; };
 		C8D888E203199710BE2C9381 /* Pods_CodeNameFive.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D76C45A4FE63B9F1E6FA948 /* Pods_CodeNameFive.framework */; };
@@ -287,6 +291,10 @@
 		904A404E259F789E005914ED /* PromotionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromotionViewCell.swift; sourceTree = "<group>"; };
 		90B28F8C25A652C80096E24B /* TripWeekDataTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripWeekDataTableViewCell.swift; sourceTree = "<group>"; };
 		9256B97B24BDC61500FF7CA0 /* ViewEXT.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewEXT.swift; sourceTree = "<group>"; };
+		925DB3DC25A7B52800FCD3DE /* TripData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripData.swift; sourceTree = "<group>"; };
+		925DB3DD25A7B52800FCD3DE /* TripData.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TripData.xib; sourceTree = "<group>"; };
+		925DB3E525A7B5A300FCD3DE /* TripDataTopCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripDataTopCell.swift; sourceTree = "<group>"; };
+		925DB3E625A7B5A300FCD3DE /* TripDataTopCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TripDataTopCell.xib; sourceTree = "<group>"; };
 		9D76C45A4FE63B9F1E6FA948 /* Pods_CodeNameFive.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CodeNameFive.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4CE2E3AFE00A8868FAE67EE /* Pods-CodeNameFiveTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CodeNameFiveTests.debug.xcconfig"; path = "Target Support Files/Pods-CodeNameFiveTests/Pods-CodeNameFiveTests.debug.xcconfig"; sourceTree = "<group>"; };
 		D5C8FE33E55067A7BAD7DA73 /* Pods-CodeNameFiveTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CodeNameFiveTests.release.xcconfig"; path = "Target Support Files/Pods-CodeNameFiveTests/Pods-CodeNameFiveTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -623,6 +631,7 @@
 		4FB978E624A4A8A70093C10F /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				925DB3E325A7B53200FCD3DE /* Trip history */,
 				4FB978E424A4A8990093C10F /* TripHistoryCell.swift */,
 				4FB978E724A4A8E90093C10F /* TripWeeklyData.swift */,
 				4FB978E924A4BF6A0093C10F /* TripDayDataCell.swift */,
@@ -695,6 +704,33 @@
 				903F63FB2572B2E500C0D86F /* SFProDisplay-Black.ttf */,
 			);
 			path = SFProDisplay;
+			sourceTree = "<group>";
+		};
+		925DB3E325A7B53200FCD3DE /* Trip history */ = {
+			isa = PBXGroup;
+			children = (
+				925DB3EC25A7B67400FCD3DE /* tripBottomCell */,
+				925DB3E425A7B56F00FCD3DE /* tripTopCell */,
+			);
+			path = "Trip history";
+			sourceTree = "<group>";
+		};
+		925DB3E425A7B56F00FCD3DE /* tripTopCell */ = {
+			isa = PBXGroup;
+			children = (
+				925DB3E525A7B5A300FCD3DE /* TripDataTopCell.swift */,
+				925DB3E625A7B5A300FCD3DE /* TripDataTopCell.xib */,
+			);
+			path = tripTopCell;
+			sourceTree = "<group>";
+		};
+		925DB3EC25A7B67400FCD3DE /* tripBottomCell */ = {
+			isa = PBXGroup;
+			children = (
+				925DB3DD25A7B52800FCD3DE /* TripData.xib */,
+				925DB3DC25A7B52800FCD3DE /* TripData.swift */,
+			);
+			path = tripBottomCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -818,7 +854,9 @@
 				9040F87A258FD56900C390DA /* pdfFileShare.pdf in Resources */,
 				4F2E5642249B4FAA00D28462 /* Assets.xcassets in Resources */,
 				903F63E625717C8B00C0D86F /* SFProText-Semibold.ttf in Resources */,
+				925DB3E825A7B5A300FCD3DE /* TripDataTopCell.xib in Resources */,
 				903F63F42572B27300C0D86F /* SFProText-Bold.ttf in Resources */,
+				925DB3DF25A7B52800FCD3DE /* TripData.xib in Resources */,
 				903F63F82572B29500C0D86F /* SFProText-Heavy.ttf in Resources */,
 				903F64042572B4F600C0D86F /* SFProDisplay-Bold.ttf in Resources */,
 				4F2E563D249B4FA800D28462 /* Main.storyboard in Resources */,
@@ -1039,6 +1077,7 @@
 				4FB5125C2556D18200D0C131 /* Model.swift in Sources */,
 				4F14A5F624A8DAC80095CA9B /* PreviousPaymentVC.swift in Sources */,
 				4FB978E824A4A8E90093C10F /* TripWeeklyData.swift in Sources */,
+				925DB3E725A7B5A300FCD3DE /* TripDataTopCell.swift in Sources */,
 				4F393B2424AB4F88009D08AB /* PromotionVC.swift in Sources */,
 				4F61D991249BEFC300B9FE89 /* MainMenuTableViewController.swift in Sources */,
 				4F14A5F224A8AD250095CA9B /* EditPhoneTVC.swift in Sources */,
@@ -1068,6 +1107,7 @@
 				4F085A0E24FD39EB005EA82E /* HTTPVehicalType.swift in Sources */,
 				4FD32D8324AA72060086766C /* InboxVC.swift in Sources */,
 				4F6992FE24FE7D20008D43B9 /* HTTPLocation.swift in Sources */,
+				925DB3DE25A7B52800FCD3DE /* TripData.swift in Sources */,
 				4F7CBD2624B1257E00672010 /* ChatCell.swift in Sources */,
 				4F69930024FE7D48008D43B9 /* Endpoints.swift in Sources */,
 				4F43BC1A24A3DC39006CF40F /* PaymentInformationTVC.swift in Sources */,
@@ -1287,7 +1327,7 @@
 				CODE_SIGN_ENTITLEMENTS = CodeNameFive/CNF.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 93SU3LG259;
+				DEVELOPMENT_TEAM = AJV7J8S8ZJ;
 				INFOPLIST_FILE = CodeNameFive/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1310,7 +1350,7 @@
 				CODE_SIGN_ENTITLEMENTS = CodeNameFive/CNF.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 93SU3LG259;
+				DEVELOPMENT_TEAM = AJV7J8S8ZJ;
 				INFOPLIST_FILE = CodeNameFive/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
