@@ -30,12 +30,14 @@ class WeeklyTripsDataViewController: UIViewController {
         swipeRight.direction = UISwipeGestureRecognizer.Direction.right
         self.view.addGestureRecognizer(swipeRight)
         registersNibs()
+        
     }
     
     func registersNibs() {
         
         downTableView.register(UINib(nibName: "TripDataTopCell", bundle: nil), forCellReuseIdentifier: "TripDataTopCell")
         downTableView.register(UINib(nibName: "TripData", bundle: nil), forCellReuseIdentifier: "TripData")
+
     }
     
     @objc func BackviewController(gesture: UIGestureRecognizer) {
@@ -121,11 +123,13 @@ extension WeeklyTripsDataViewController : UITableViewDataSource,UITableViewDeleg
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = storyBoard.instantiateViewController(withIdentifier: "TripDayDataVC") as! TripDayDataVC
-        vc.navigationBarTitle =  date[indexPath.row]
-        navigationController?.pushViewController(vc, animated: true)
+        if indexPath.section == 1 {
+            let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let vc = storyBoard.instantiateViewController(withIdentifier: "TripDayDataVC") as! TripDayDataVC
+            vc.navigationBarTitle =  date[indexPath.row]
+            navigationController?.pushViewController(vc, animated: true)
+        }
+       
         
     }
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -133,10 +137,10 @@ extension WeeklyTripsDataViewController : UITableViewDataSource,UITableViewDeleg
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.section == 1{
-            return 60
+            return 50
         }
         else{
-            return 44
+            return UITableView.automaticDimension
         }
 
     }
@@ -147,6 +151,5 @@ extension WeeklyTripsDataViewController : UITableViewDataSource,UITableViewDeleg
         }else{
             return 40
         }
-        
     }
 }
