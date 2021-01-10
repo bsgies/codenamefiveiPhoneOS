@@ -57,6 +57,8 @@ extension TripHistoryVC : UITableViewDelegate,UITableViewDataSource{
         cell.dateCell.text = days[indexPath.row]
         cell.earnLbl.text = earning[indexPath.row]
        
+       let h = cell.bounds.height
+       print("ttttt\(h)")
         
         let bgColorView = UIView()
         bgColorView.backgroundColor = UIColor(named: "highlights")
@@ -109,6 +111,6 @@ extension TripHistoryVC : UITableViewDelegate,UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return ""
+        return "kk"
     }
 }

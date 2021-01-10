@@ -125,6 +125,8 @@
 		9040F87A258FD56900C390DA /* pdfFileShare.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 9040F879258FD56900C390DA /* pdfFileShare.pdf */; };
 		9041B3732573F38300C4DA3A /* MainMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9041B3722573F38300C4DA3A /* MainMenuViewController.swift */; };
 		9041CDA2258F68F400CE010A /* PDFViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9041CDA1258F68F400CE010A /* PDFViewController.swift */; };
+		9048158F25AB38CE00D9C2EC /* TripDayData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9048158D25AB38CE00D9C2EC /* TripDayData.swift */; };
+		9048159025AB38CE00D9C2EC /* TripDayData.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9048158E25AB38CE00D9C2EC /* TripDayData.xib */; };
 		90494040257C35B800224131 /* LiveSupportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9049403F257C35B800224131 /* LiveSupportViewController.swift */; };
 		904A404F259F789E005914ED /* PromotionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 904A404E259F789E005914ED /* PromotionViewCell.swift */; };
 		90B28F8D25A652C80096E24B /* TripWeekDataTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B28F8C25A652C80096E24B /* TripWeekDataTableViewCell.swift */; };
@@ -287,6 +289,8 @@
 		9040F879258FD56900C390DA /* pdfFileShare.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = pdfFileShare.pdf; sourceTree = "<group>"; };
 		9041B3722573F38300C4DA3A /* MainMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuViewController.swift; sourceTree = "<group>"; };
 		9041CDA1258F68F400CE010A /* PDFViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFViewController.swift; sourceTree = "<group>"; };
+		9048158D25AB38CE00D9C2EC /* TripDayData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripDayData.swift; sourceTree = "<group>"; };
+		9048158E25AB38CE00D9C2EC /* TripDayData.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TripDayData.xib; sourceTree = "<group>"; };
 		9049403F257C35B800224131 /* LiveSupportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveSupportViewController.swift; sourceTree = "<group>"; };
 		904A404E259F789E005914ED /* PromotionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromotionViewCell.swift; sourceTree = "<group>"; };
 		90B28F8C25A652C80096E24B /* TripWeekDataTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripWeekDataTableViewCell.swift; sourceTree = "<group>"; };
@@ -706,9 +710,19 @@
 			path = SFProDisplay;
 			sourceTree = "<group>";
 		};
+		9048158625AB380E00D9C2EC /* tripDayDataCell */ = {
+			isa = PBXGroup;
+			children = (
+				9048158D25AB38CE00D9C2EC /* TripDayData.swift */,
+				9048158E25AB38CE00D9C2EC /* TripDayData.xib */,
+			);
+			path = tripDayDataCell;
+			sourceTree = "<group>";
+		};
 		925DB3E325A7B53200FCD3DE /* Trip history */ = {
 			isa = PBXGroup;
 			children = (
+				9048158625AB380E00D9C2EC /* tripDayDataCell */,
 				925DB3EC25A7B67400FCD3DE /* tripBottomCell */,
 				925DB3E425A7B56F00FCD3DE /* tripTopCell */,
 			);
@@ -858,6 +872,7 @@
 				903F63F42572B27300C0D86F /* SFProText-Bold.ttf in Resources */,
 				925DB3DF25A7B52800FCD3DE /* TripData.xib in Resources */,
 				903F63F82572B29500C0D86F /* SFProText-Heavy.ttf in Resources */,
+				9048159025AB38CE00D9C2EC /* TripDayData.xib in Resources */,
 				903F64042572B4F600C0D86F /* SFProDisplay-Bold.ttf in Resources */,
 				4F2E563D249B4FA800D28462 /* Main.storyboard in Resources */,
 				903F63E325717C8B00C0D86F /* SFProText-Regular.ttf in Resources */,
@@ -1119,6 +1134,7 @@
 				4F43BC2024A3ED22006CF40F /* TripHistoryVC.swift in Sources */,
 				4F393B2024AB48CD009D08AB /* InvoiceDetailVC.swift in Sources */,
 				4F43BC1824A3D971006CF40F /* VehicleinformationTVC.swift in Sources */,
+				9048158F25AB38CE00D9C2EC /* TripDayData.swift in Sources */,
 				903D5873257E586300521DCD /* MainMenuTableViewCell.swift in Sources */,
 				90494040257C35B800224131 /* LiveSupportViewController.swift in Sources */,
 				4FE12A1A24E54F78006F55E1 /* MMSlidingButton.swift in Sources */,

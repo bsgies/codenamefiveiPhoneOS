@@ -17,8 +17,8 @@ class WeeklyTripsDataViewController: UIViewController {
     let earn = ["$100","$100","$100","$100","$100","$100","$100","$100"]
     
     var navigationBartitle : String?
-    let status = ["Online", "Trips" , "Promotions" , "Tips" , "Earnings" ]
-    let statusDetails = ["44hr 24m 28s","666","Rs. 1150.77","Rs. 33.90","RS. 88.0909",]
+    let status = ["Cash" , "Online", "Trips" , "Promotions" , "Tips" , "Earnings" ]
+    let statusDetails = ["Rs. 11,655.45","44hr 24m 28s","666","Rs. 1150.77","Rs. 33.90","RS. 88.0909",]
     //MARK:- LIFE cycel
     
     override func viewDidLoad() {
@@ -67,6 +67,8 @@ extension WeeklyTripsDataViewController : UITableViewDataSource,UITableViewDeleg
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         if indexPath.section == 0{
+            
+            
             let cell = tableView.dequeueReusableCell(withIdentifier: "TripDataTopCell", for: indexPath) as! TripDataTopCell
             cell.primaryLabel.text = status[indexPath.row]
             cell.secondaryLabel.text = statusDetails[indexPath.row]
@@ -74,6 +76,8 @@ extension WeeklyTripsDataViewController : UITableViewDataSource,UITableViewDeleg
                 cell.secondaryLabel.font = UIFont(name: "HelveticaNeue-Bold", size: 16)
                 cell.primaryLabel.font = UIFont(name: "HelveticaNeue-Bold", size: 16)
             }
+            let h = cell.bounds.height
+            print("hhhh\(h)")
             return cell
         }
         else
@@ -82,6 +86,7 @@ extension WeeklyTripsDataViewController : UITableViewDataSource,UITableViewDeleg
             cell.dateLabel.text = date[indexPath.row]
             cell.totalTripsLabel.text = trips[indexPath.row]
             cell.earningsLabel.text = earn[indexPath.row]
+            cell.cashLabel.text = "Rs. 6,6787.9 cash"
             return cell
         }
     }
@@ -137,12 +142,11 @@ extension WeeklyTripsDataViewController : UITableViewDataSource,UITableViewDeleg
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.section == 1{
-            return 50
+            return 60
         }
         else{
             return UITableView.automaticDimension
         }
-
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
