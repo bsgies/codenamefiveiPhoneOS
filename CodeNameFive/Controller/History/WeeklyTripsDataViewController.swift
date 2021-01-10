@@ -142,7 +142,7 @@ extension WeeklyTripsDataViewController : UITableViewDataSource,UITableViewDeleg
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.section == 1{
-            return 60
+            return 75
         }
         else{
             return UITableView.automaticDimension
