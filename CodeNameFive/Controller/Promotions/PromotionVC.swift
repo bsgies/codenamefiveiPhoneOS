@@ -27,8 +27,6 @@ class PromotionVC: UIViewController {
         
         setupUI()
     setCrossButton()
-        
-       
     }
     
     
@@ -39,10 +37,8 @@ class PromotionVC: UIViewController {
     
     override func viewDidLayoutSubviews() {
          super.viewDidLayoutSubviews()
-
     }
 
-    
     func setCrossButton(){
         let button = UIButton(type: .custom)
         button.setImage(UIImage(named: "close"), for: .normal)
@@ -83,7 +79,7 @@ extension PromotionVC : UITableViewDelegate,UITableViewDataSource{
         return cell
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 50
+        return 75
     }
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 30
@@ -125,18 +121,14 @@ extension UILabel {
 
 extension PromotionVC : FSCalendarDelegate, FSCalendarDataSource{
     func setupUI() {
-               calendar.dataSource = self
-               calendar.delegate = self
+        calendar.dataSource = self
+        calendar.delegate = self
         calendar.scope = .week
         calendar.appearance.todayColor = UIColor(named: "primaryColor")
         calendar.appearance.titleDefaultColor =  UIColor(named: "blackWhite")
         calendar.appearance.weekdayTextColor = UIColor(named: "blackWhite")
         calendar.appearance.selectionColor = UIColor(named: "primaryColor")
-       calendar.calendarHeaderView.isHidden = true
-     
-       
-        
-        
+        calendar.calendarHeaderView.isHidden = true
     }
      
     func minimumDate(for calendar: FSCalendar) -> Date {

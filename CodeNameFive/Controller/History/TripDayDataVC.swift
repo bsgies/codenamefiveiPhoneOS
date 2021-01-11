@@ -56,8 +56,6 @@ class TripDayDataVC: UIViewController {
         
         self.navigationController?.popViewController(animated: true)
     }
-    
-    
 }
 
 extension TripDayDataVC : UITableViewDelegate,UITableViewDataSource{
@@ -87,7 +85,7 @@ extension TripDayDataVC : UITableViewDelegate,UITableViewDataSource{
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
            if indexPath.section == 1{
-               return 50
+               return 75
            }
            else{
                return UITableView.automaticDimension
@@ -158,8 +156,6 @@ extension TripDayDataVC : UITableViewDelegate,UITableViewDataSource{
                    vc.orderedResturantName = resturantName[indexPath.row]
                    navigationController?.pushViewController(vc, animated: true)
         }
-       
-        
     }
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return ""
