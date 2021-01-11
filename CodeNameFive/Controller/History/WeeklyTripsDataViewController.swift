@@ -72,7 +72,7 @@ extension WeeklyTripsDataViewController : UITableViewDataSource,UITableViewDeleg
             let cell = tableView.dequeueReusableCell(withIdentifier: "TripDataTopCell", for: indexPath) as! TripDataTopCell
             cell.primaryLabel.text = status[indexPath.row]
             cell.secondaryLabel.text = statusDetails[indexPath.row]
-            if indexPath.row == 4 {
+            if indexPath.row == 5 {
                 cell.secondaryLabel.font = UIFont(name: "HelveticaNeue-Bold", size: 16)
                 cell.primaryLabel.font = UIFont(name: "HelveticaNeue-Bold", size: 16)
             }

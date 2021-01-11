@@ -11,8 +11,9 @@ import UIKit
 class OrderDetailVC: UIViewController {
     
     
-    let detail = ["Trip fee","Surge fee","Tip","Adjustment"]
-    let earntDetail = ["$3.00","$4.00","$0.55","$0.33"]
+    let tripDetailsL = ["Trip fee","Promotion","Tip","Adjustment","Total earnings"]
+    let tripDetailsR = ["$3.00","$4.00","$0.55","$0.33","$8.09"]
+
     var orderedResturantName : String?
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,38 +50,43 @@ extension OrderDetailVC : UITableViewDelegate,UITableViewDataSource{
 
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 3
+        return 2
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == 1{
-            return detail.count
+        if section == 0{
+            return 3
         }
         else{
-            return 1
+            return 5
         }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "orderdetail", for: indexPath) as! OrderDetailCell
         if indexPath.section == 0{
-            let cell = tableView.dequeueReusableCell(withIdentifier: "orderdetail", for: indexPath) as! OrderDetailCell
-            cell.ResturantName.text = orderedResturantName
-            cell.travelDistance.text = "2.2 mi"
-            cell.timeandTip.text = "21:21 - 21:40 - 50m"
+            if indexPath.row == 0 {
+                cell.labelText.text = orderedResturantName
+                cell.labelDetail.text = "21:21 - 21:40"
+               
+            }else if indexPath.row == 1 {
+                cell.labelText.text = "Duration"
+                cell.labelDetail.text = "7 minutes"
+                
+            }else{
+                cell.labelText.text = "Distance"
+                cell.labelDetail.text = "2.7 km"
+            }
             return cell
-        }
-        else if indexPath.section == 1{
-            let cell = tableView.dequeueReusableCell(withIdentifier: "detail", for: indexPath) as! OrderDetailCell
-            cell.detail.text = detail[indexPath.row]
-            cell.earnLbl.text = earntDetail[indexPath.row]
-            return cell
-            
         }
         else{
-            let cell = tableView.dequeueReusableCell(withIdentifier: "total", for: indexPath) as! OrderDetailCell
-            cell.Total.text = "Total"
-            cell.totalEarnLbl.text = "$7.88"
+            cell.labelText.text = tripDetailsL[indexPath.row]
+            cell.labelDetail.text = tripDetailsR[indexPath.row]
+            if indexPath.row == 4 {
+                           cell.labelDetail.font = UIFont(name: "HelveticaNeue-Bold", size: 16)
+                           cell.labelText.font = UIFont(name: "HelveticaNeue-Bold", size: 16)
+                       }
             return cell
+            
         }
     }
     
@@ -88,6 +94,14 @@ extension OrderDetailVC : UITableViewDelegate,UITableViewDataSource{
         let headerView: UITableViewHeaderFooterView = view as! UITableViewHeaderFooterView
         headerView.backgroundView = UIView()
         headerView.backgroundColor = .clear
+        headerView.textLabel?.textColor = UIColor(named: "blackWhite")
+        headerView.textLabel?.font = UIFont.boldSystemFont(ofSize: 16)
+        let header : UITableViewHeaderFooterView = view as! UITableViewHeaderFooterView
+        if section == 0  {
+            header.textLabel?.text = "Trip details"
+        }else{
+            header.textLabel?.text = "Earnings breakdown"
+        }
       
     }
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
@@ -99,22 +113,22 @@ extension OrderDetailVC : UITableViewDelegate,UITableViewDataSource{
         cell.preservesSuperviewLayoutMargins = false
         cell.separatorInset = UIEdgeInsets.zero
         cell.layoutMargins = UIEdgeInsets.zero
-        if indexPath.section == 2{
-            if indexPath.row == 0{
-                cell.backgroundColor = .clear
-            }
-        }
+        cell.separatorInset = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 0)
+//        if indexPath.section == 2{
+//            if indexPath.row == 0{
+//                cell.backgroundColor = .clear
+//            }
+//        }
+        
         cell.selectionStyle = .none
         
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        if section == 2{
-            return CGFloat.leastNormalMagnitude
-        }
-        else{
-            return 20
-        }
+        return 40
+    }
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return ""
     }
 }
 //    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
