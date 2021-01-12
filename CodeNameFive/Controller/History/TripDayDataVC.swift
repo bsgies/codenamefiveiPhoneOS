@@ -13,7 +13,7 @@ class TripDayDataVC: UIViewController {
     let resturantName = ["Golden Chicken","Hardess","Monal","Second Cup","Gloria Jeans","Khrachi Prhata Roll","What a Prhata","Cafe lanto"]
     let time = ["10:21","10:21","10:21","10:21","10:21","10:21","10:21","10:21" ]
     
-    let earn = ["$100","$100","$100","$100","$100","$100","$100","$100"]
+    let earn = ["Rs. 38.00","Rs. 94.48","Rs. 43.00","Rs. 27.48","Rs. 49.34","Rs. 85.88","Rs. 34.35","23.49"]
    
     let status = ["Cash","Online", "Trips" , "Promotions" , "Tips" , "Earnings" ]
     let statusDetails = ["12,33.55","44hr 24m 28s","666","Rs. 1150.77","Rs. 33.90","RS. 88.0909",]
