@@ -9,8 +9,12 @@
 import UIKit
 import CoreTelephony
 
-class LoginVC: UIViewController {
+class LoginVC: UIViewController , UITextFieldDelegate {
     
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        print("OK")
+    }
     
     //MARK:- OUTLETS
     @IBOutlet weak var continueOutlet:  UIButton!
@@ -28,15 +32,16 @@ class LoginVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUIAndGestures()
+        EmailorPhone.delegate = self
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        keyBoardObserver()
+       // keyBoardObserver()
         navigationController?.setNavigationBarHidden(true, animated: animated)
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(true)
-        removeObserver()
+       // removeObserver()
     }
 
     //MARK:- Actions
@@ -96,42 +101,44 @@ extension LoginVC{
         register.addGestureRecognizer(registerationPage)
     }
     
-    func keyBoardObserver() {
-        NotificationCenter.default.addObserver(self, selector: #selector(KeyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(KeyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
-    }
-    func removeObserver() {
-        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
-    }
+    
+    
+//    func keyBoardObserver() {
+//        NotificationCenter.default.addObserver(self, selector: #selector(KeyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+//        NotificationCenter.default.addObserver(self, selector: #selector(KeyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+//    }
+//    func removeObserver() {
+//        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+//        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+//    }
     
     @objc func taped(){
         self.view.endEditing(true)
     }
-    @objc func KeyboardWillShow(sender: NSNotification){
-        
-        let keyboardSize : CGSize = ((sender.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue.size)!
-        if self.view.frame.origin.y == 0{
-            self.view.frame.origin.y -= keyboardSize.height
-        }
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-            UIView.transition(with: self.view, duration: 1, options: .transitionCrossDissolve, animations: {
-                self.pathnerImage.isHidden = true
-            })
-        }
-    }
-    @objc func KeyboardWillHide(sender : NSNotification){
-        let keyboardSize : CGSize = ((sender.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue.size)!
-        if self.view.frame.origin.y != 0{
-            self.view.frame.origin.y += keyboardSize.height
-        }
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-            UIView.transition(with: self.view, duration: 1, options: .transitionCrossDissolve, animations: {
-                self.pathnerImage.isHidden = false
-            })
-        }
-    }
+//    @objc func KeyboardWillShow(sender: NSNotification){
+//
+//        let keyboardSize : CGSize = ((sender.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue.size)!
+//        if self.view.frame.origin.y == 0{
+//            self.view.frame.origin.y -= keyboardSize.height
+//        }
+//
+//        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+//            UIView.transition(with: self.view, duration: 1, options: .transitionCrossDissolve, animations: {
+//                self.pathnerImage.isHidden = true
+//            })
+//        }
+//    }
+//    @objc func KeyboardWillHide(sender : NSNotification){
+//        let keyboardSize : CGSize = ((sender.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue.size)!
+//        if self.view.frame.origin.y != 0{
+//            self.view.frame.origin.y += keyboardSize.height
+//        }
+//        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+//            UIView.transition(with: self.view, duration: 1, options: .transitionCrossDissolve, animations: {
+//                self.pathnerImage.isHidden = false
+//            })
+//        }
+//    }
     @objc func openRegisterPage(){
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let newViewController = storyBoard.instantiateViewController(withIdentifier: "Register1TVC") as! Register1TVC

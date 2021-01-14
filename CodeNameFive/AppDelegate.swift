@@ -9,11 +9,10 @@
 import UIKit
 import CoreData
 import GoogleMaps
-import SideMenu
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-    var menu : SideMenuNavigationController?
+    // var menu : SideMenuNavigationController?
     let navCon = UINavigationController()
     var window: UIWindow?
     static var appdelegate = AppDelegate()

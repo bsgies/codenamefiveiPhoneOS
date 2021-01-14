@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import SideMenu
 import ChatSDK
 import ChatProvidersSDK
 class MainMenuViewController: UIViewController {

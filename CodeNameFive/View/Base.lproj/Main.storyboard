@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="rtz-zU-JNu">
     <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -29,7 +28,7 @@
             <objects>
                 <viewController storyboardIdentifier="LoginVC" title="Login" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="LoginVC" customModule="CNF" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PS8-g6-vuE">
@@ -416,27 +415,19 @@
                                     <constraint firstItem="eCc-qK-z8h" firstAttribute="top" secondItem="6g9-UM-o8V" secondAttribute="top" id="kYJ-nQ-KII"/>
                                 </constraints>
                             </view>
-                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dWa-v2-Ydz">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.69592786815068497" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="k1i-BL-q68"/>
                         <color key="backgroundColor" name="Background"/>
                         <constraints>
                             <constraint firstItem="EX9-NE-RZa" firstAttribute="top" secondItem="TSl-fa-Hbe" secondAttribute="bottom" id="31w-gs-V92"/>
                             <constraint firstItem="TSl-fa-Hbe" firstAttribute="top" secondItem="YTS-Vv-Yd6" secondAttribute="top" id="9Ll-8V-LrT"/>
-                            <constraint firstItem="dWa-v2-Ydz" firstAttribute="trailing" secondItem="k1i-BL-q68" secondAttribute="trailing" id="DSd-Ou-VGw"/>
                             <constraint firstItem="TSl-fa-Hbe" firstAttribute="height" secondItem="EX9-NE-RZa" secondAttribute="height" multiplier="9.5122" id="L0d-tR-9Yl"/>
                             <constraint firstItem="TSl-fa-Hbe" firstAttribute="width" secondItem="EX9-NE-RZa" secondAttribute="width" id="N8t-7q-M8q"/>
                             <constraint firstItem="TSl-fa-Hbe" firstAttribute="trailing" secondItem="k1i-BL-q68" secondAttribute="trailing" id="NM7-qE-4gJ"/>
                             <constraint firstItem="EX9-NE-RZa" firstAttribute="leading" secondItem="k1i-BL-q68" secondAttribute="leading" id="PD5-Q8-us9"/>
                             <constraint firstItem="EX9-NE-RZa" firstAttribute="leading" secondItem="k1i-BL-q68" secondAttribute="leading" id="S07-yX-1xh"/>
                             <constraint firstItem="EX9-NE-RZa" firstAttribute="bottom" secondItem="k1i-BL-q68" secondAttribute="bottom" id="SDZ-ba-BGj"/>
-                            <constraint firstItem="dWa-v2-Ydz" firstAttribute="leading" secondItem="k1i-BL-q68" secondAttribute="leading" id="h4o-3J-Lhn"/>
-                            <constraint firstAttribute="bottom" secondItem="dWa-v2-Ydz" secondAttribute="bottom" id="inB-aY-wqU"/>
                             <constraint firstItem="EX9-NE-RZa" firstAttribute="bottom" secondItem="k1i-BL-q68" secondAttribute="bottom" id="kyO-RO-glb"/>
-                            <constraint firstItem="dWa-v2-Ydz" firstAttribute="top" secondItem="YTS-Vv-Yd6" secondAttribute="top" id="tKC-mu-xyQ"/>
                             <constraint firstItem="EX9-NE-RZa" firstAttribute="trailing" secondItem="k1i-BL-q68" secondAttribute="trailing" id="uf7-Mg-KH8"/>
                             <constraint firstItem="TSl-fa-Hbe" firstAttribute="leading" secondItem="k1i-BL-q68" secondAttribute="leading" id="xNP-C1-JCc"/>
                         </constraints>
@@ -454,7 +445,6 @@
                         <outlet property="googleMapView" destination="TSl-fa-Hbe" id="6EN-vg-YXS"/>
                         <outlet property="hamburger" destination="6g9-UM-o8V" id="RXl-Dg-9aA"/>
                         <outlet property="hamburgerImage" destination="omh-Oo-ONQ" id="gQD-Ku-8Uw"/>
-                        <outlet property="menuBackground" destination="dWa-v2-Ydz" id="Fhf-KF-U76"/>
                         <outlet property="recenter" destination="HaG-fH-Twf" id="ilE-TV-0gB"/>
                         <outlet property="recenterView" destination="2iQ-MZ-9xF" id="Nu8-dc-kMT"/>
                         <outlet property="timeToConnectOfflineLbl" destination="EzG-vi-cxb" id="hx6-cU-KUw"/>

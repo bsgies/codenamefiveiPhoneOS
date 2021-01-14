@@ -37,7 +37,6 @@ PODS:
     - Alamofire (~> 4.8)
     - RxSwift (~> 5.0)
   - RxSwift (5.1.1)
-  - SideMenu (6.4.9)
   - ZendeskChatProvidersSDK (2.8.0)
   - ZendeskChatSDK (2.8.0):
     - ZendeskChatProvidersSDK (~> 2.8.0)
@@ -64,7 +63,6 @@ DEPENDENCIES:
   - MaterialComponents/ActivityIndicator (~> 107.4)
   - MessageKit
   - MTSlideToOpen
-  - SideMenu
   - ZendeskChatProvidersSDK
   - ZendeskChatSDK
   - ZendeskSupportSDK
@@ -86,7 +84,6 @@ SPEC REPOS:
     - ObjectMapper
     - RxAlamofire
     - RxSwift
-    - SideMenu
     - ZendeskChatProvidersSDK
     - ZendeskChatSDK
     - ZendeskCommonUISDK
@@ -113,7 +110,6 @@ SPEC CHECKSUMS:
   ObjectMapper: 97111c97e054a6ee25917662106689f0b4127b37
   RxAlamofire: a2d7621de4c23a0c6e7b476b504acc32838ee341
   RxSwift: 81470a2074fa8780320ea5fe4102807cb7118178
-  SideMenu: 8ef57a3cfc024a2d3fc1c036c7fe98537baec9e0
   ZendeskChatProvidersSDK: 69642e44186cda671bf6a93a98f0db45525bc033
   ZendeskChatSDK: 207f63e262fa52c82d326b70cc88439b7b48c6da
   ZendeskCommonUISDK: fff44133c8bf74ef6407c31c7cab56084c58dbf4
@@ -124,6 +120,6 @@ SPEC CHECKSUMS:
   ZendeskSupportProvidersSDK: 209011ffad4cbd256839444571defad1b83006f2
   ZendeskSupportSDK: 95aea2ab473768d8b01fa837002415fb93f8c3e0
 
-PODFILE CHECKSUM: dde675df8a8e55f3401af1b5bd84d24c7f5a33c7
+PODFILE CHECKSUM: 2f6becdc14ead322198789605b6ae496e640182f
 
 COCOAPODS: 1.9.3
