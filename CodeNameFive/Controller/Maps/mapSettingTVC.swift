@@ -18,14 +18,11 @@ class mapSettingTVC: UITableViewController {
         let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(MainMenuTableViewController.BackviewController(gesture:)))
         swipeRight.direction = UISwipeGestureRecognizer.Direction.right
         self.view.addGestureRecognizer(swipeRight)
-        
-        
     }
     
     @objc func BackviewController(gesture: UIGestureRecognizer) {
         self.navigationController?.popViewController(animated: true)
     }
-    
 }
 
 extension mapSettingTVC{
@@ -44,17 +41,12 @@ extension mapSettingTVC{
         if traitCollection.userInterfaceStyle == .light {
             headerView.textLabel!.textColor = UIColor(#colorLiteral(red: 0.4705882353, green: 0.4705882353, blue: 0.4705882353, alpha: 1))
             headerView.textLabel!.font = UIFont(name: "Poppins-Regular", size: 15)
-            
             headerView.backgroundView = UIView()
             headerView.backgroundColor = .clear
             
         } else {
-            
-            
             headerView.textLabel!.textColor = UIColor.darkGray
             headerView.textLabel!.font = UIFont(name: "Poppins-Regular", size: 15)
-            
-            
             headerView.backgroundView = UIView()
             headerView.backgroundColor = .clear
             
@@ -90,7 +82,7 @@ extension mapSettingTVC{
         self.navigationItem.leftBarButtonItem = barButton
     }
     @objc func backButtonPressed(btn : UIButton) {
-//        self.navigationController?.popViewController(animated: true)
+        // self.navigationController?.popViewController(animated: true)
         dismiss(animated: true, completion: nil)
     }
     
@@ -105,6 +97,5 @@ extension mapSettingTVC{
             tableView.cellForRow(at: indexPath as IndexPath)?.accessoryType = .none
             
         }
-       }
-    
+    }
 }

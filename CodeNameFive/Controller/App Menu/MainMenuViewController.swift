@@ -11,9 +11,7 @@ import SideMenu
 import ChatSDK
 import ChatProvidersSDK
 class MainMenuViewController: UIViewController {
-    //Views
-    
-   
+
     @IBOutlet weak var profileBackView: UIView!
     @IBOutlet weak var profileImage : UIImageView!
     @IBOutlet weak var fullName : UILabel!{
@@ -23,15 +21,13 @@ class MainMenuViewController: UIViewController {
     }
     @IBOutlet weak var pId : UILabel!{
         didSet{
-            pId.text = "#\(id ?? 0)"
-            //           pId.font = UIFont(name: "AvenirNext-DemiBold", size: 20.0)
+            pId.text = "Partner ID #\(id ?? 0)"
+            // pId.font = UIFont(name: "AvenirNext-DemiBold", size: 20.0)
         }
     }
 
     var timer = Timer()
-    
-   
-    
+
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,15 +36,9 @@ class MainMenuViewController: UIViewController {
         fontStyle()
         tableView.delegate = self
         tableView.dataSource = self
-       tableView.separatorStyle = .none
+        tableView.separatorStyle = .none
         navigationController?.navigationBar.isHidden = true
         viewsAction()
-        
-        
-        
-        
-       
-       
     }
     
     //MARK: - Actions
@@ -99,7 +89,6 @@ extension MainMenuViewController {
                 else{
                     self.autoAcceptswitch.isOn = false
                 }
-                
             }
             catch{
                 
@@ -123,7 +112,6 @@ extension MainMenuViewController : UITableViewDelegate , UITableViewDataSource{
         }else {
             return 50
         }
-       
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.row == 0 {
@@ -263,15 +251,12 @@ extension MainMenuViewController : UITableViewDelegate , UITableViewDataSource{
                        navigationController?.pushViewController(vc, animated: false)
             }
         }//end current section
-        
-        
    }
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         let bgColorView = UIView()
-                       bgColorView.backgroundColor = UIColor(named: "highlights")
-                       cell.selectedBackgroundView = bgColorView
+            bgColorView.backgroundColor = UIColor(named: "highlights")
+            cell.selectedBackgroundView = bgColorView
     }
-    
 }
 
 // Font setup

@@ -6,8 +6,6 @@
 //  Copyright © 2020 ITRID TECHNOLOGIES LTD. All rights reserved.
 //
 
-
-
 import UIKit
 
 class EditEmailTVC: UITableViewController {
@@ -54,42 +52,32 @@ func emailEdit(email : String) {
     }
 }
     // MARK: - Table view data source
-
-    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
             return 40
-             }
+        }
     
-       
        override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
            return 20
        }
-          override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+    
+       override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
              
             let headerView: UITableViewHeaderFooterView = view as! UITableViewHeaderFooterView
             if traitCollection.userInterfaceStyle == .light {
-            
                 headerView.textLabel!.textColor = UIColor(#colorLiteral(red: 0.4705882353, green: 0.4705882353, blue: 0.4705882353, alpha: 1))
                 headerView.textLabel!.font = UIFont(name: "Poppins-Regular", size: 15)
-                
                 headerView.backgroundView = UIView()
                 headerView.backgroundColor = .clear
                 
             } else {
-                
-          
                 headerView.textLabel!.textColor = UIColor.darkGray
                 headerView.textLabel!.font = UIFont(name: "Poppins-Regular", size: 15)
-                
-                
                 headerView.backgroundView = UIView()
                 headerView.backgroundColor = .clear
                 
                 let header = view as! UITableViewHeaderFooterView
                 header.textLabel?.textColor = .white
-                
             }
-                         
-              
           }
            override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
                 return UIView()
@@ -100,5 +88,4 @@ func emailEdit(email : String) {
         cell.separatorInset = UIEdgeInsets.zero
         cell.layoutMargins = UIEdgeInsets.zero
     }
-
 }

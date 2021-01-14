@@ -87,7 +87,7 @@ extension InboxVC : UITableViewDelegate,UITableViewDataSource{
         cell.separatorInset = UIEdgeInsets.zero
         cell.layoutMargins = UIEdgeInsets.zero
         cell.selectionStyle = .none
-        cell.separatorInset = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 0)
+        cell.separatorInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 0)
     }
     
     func size(forWidth width: CGFloat, i:Int) -> CGSize {

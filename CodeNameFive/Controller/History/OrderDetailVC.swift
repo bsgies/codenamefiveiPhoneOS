@@ -113,7 +113,7 @@ extension OrderDetailVC : UITableViewDelegate,UITableViewDataSource{
         cell.preservesSuperviewLayoutMargins = false
         cell.separatorInset = UIEdgeInsets.zero
         cell.layoutMargins = UIEdgeInsets.zero
-        cell.separatorInset = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 0)
+        cell.separatorInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 0)
 //        if indexPath.section == 2{
 //            if indexPath.row == 0{
 //                cell.backgroundColor = .clear

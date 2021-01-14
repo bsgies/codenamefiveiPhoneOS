@@ -35,7 +35,14 @@ extension VehicleinformationTVC{
     override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         return UIView()
     }
-
+        
+    override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 70
+    }
+    
+    override func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
+        return "Bilal"
+    }
     
     func setBackButton(){
         let button: UIButton = UIButton (type: UIButton.ButtonType.custom)

@@ -16,13 +16,8 @@ class EmmergencycontactTVC: UITableViewController {
            self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(Cancel(btn:)))
             self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(Save(btn:)))
             self.navigationController?.navigationBar.tintColor = UIColor(#colorLiteral(red: 0, green: 0.8465872407, blue: 0.7545004487, alpha: 1))
-            
                 self.clearsSelectionOnViewWillAppear = false
-
-            
         }
-        
-
         
         @objc func Cancel(btn : UIButton) {
             self.dismiss(animated: true, completion: nil)
@@ -55,19 +50,14 @@ class EmmergencycontactTVC: UITableViewController {
                 } else {
                     
                  
-                    headerView.textLabel!.textColor = UIColor.darkGray
-                    headerView.textLabel!.font = UIFont(name: "Poppins-Regular", size: 15)
-                    
-                    
+                    //headerView.textLabel!.textColor = UIColor.darkGray
+                   // headerView.textLabel!.font = UIFont(name: "Poppins-Regular", size: 15)
                     headerView.backgroundView = UIView()
                     headerView.backgroundColor = .clear
                     
                     let header = view as! UITableViewHeaderFooterView
                     header.textLabel?.textColor = .white
-                    
                 }
-                             
-                  
               }
                override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
                     return UIView()
@@ -77,5 +67,6 @@ class EmmergencycontactTVC: UITableViewController {
             cell.preservesSuperviewLayoutMargins = false
             cell.separatorInset = UIEdgeInsets.zero
             cell.layoutMargins = UIEdgeInsets.zero
+            cell.separatorInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 0)
         }
 }

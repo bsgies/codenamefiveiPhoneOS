@@ -10,9 +10,8 @@ import UIKit
 
 class EarningsTableViewController: UITableViewController {
     let titleofCell = ["Current balance", "Previous payments"]
-            let disOfCell = ["1000",""]
+    let disOfCell = ["1000",""]
    
-    
     @IBOutlet var tableVieww: UITableView!
     @IBOutlet weak var balance: UILabel!{
         didSet{
@@ -26,55 +25,39 @@ class EarningsTableViewController: UITableViewController {
         }
     }
     
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-
         setCrossButton()
-//        self.tableView.sectionHeaderHeight = UITableView.automaticDimension
-//       self.tableView.estimatedSectionHeaderHeight = 25
-       
     }
     
     func setCrossButton(){
-               let button = UIButton(type: .custom)
-               button.setImage(UIImage(named: "close"), for: .normal)
-               button.addTarget(self, action: #selector(closeView), for: .touchUpInside)
-               button.frame = CGRect(x: 0, y: 0, width: 16, height: 16)
-        button.contentEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 20)
-               let barButton = UIBarButtonItem(customView: button)
-               navigationItem.leftBarButtonItem = barButton
-           }
+        let button = UIButton(type: .custom)
+            button.setImage(UIImage(named: "close"), for: .normal)
+            button.addTarget(self, action: #selector(closeView), for: .touchUpInside)
+            button.frame = CGRect(x: 0, y: 0, width: 16, height: 16)
+            button.contentEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 20)
+        let barButton = UIBarButtonItem(customView: button)
+            navigationItem.leftBarButtonItem = barButton
+        }
            
-           @objc func closeView(){
-               self.dismiss(animated: true, completion: nil)
-           }
+       @objc func closeView(){
+           self.dismiss(animated: true, completion: nil)
+       }
 
     // MARK: - Table view data source
-
-//    override func numberOfSections(in tableView: UITableView) -> Int {
-//        // #warning Incomplete implementation, return the number of sections
-//        return 2
-//    }
-    
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
-
     }
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         let bgColorView = UIView()
-                       bgColorView.backgroundColor = UIColor(named: "highlights")
-                       cell.selectedBackgroundView = bgColorView
+           bgColorView.backgroundColor = UIColor(named: "highlights")
+           cell.selectedBackgroundView = bgColorView
     }
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-               return 40
-           }
-//    override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-//        return 0
-//    }
-  
+        return 40
+    }
+
     override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
          // changing
                let header:UITableViewHeaderFooterView = view as! UITableViewHeaderFooterView
@@ -89,8 +72,6 @@ class EarningsTableViewController: UITableViewController {
         }else {
                header.textLabel?.text = "Cash balance"
         }
-        
-        
     }
    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -115,10 +96,3 @@ class EarningsTableViewController: UITableViewController {
            } // end here
     }
 }
-    
-
-
-
-
-
-
