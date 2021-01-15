@@ -58,6 +58,7 @@ class LoginVC: UIViewController {
     }
     @IBAction func touchdown(_ sender: UIButton) {
         sender.setBackgroundColor(color: UIColor(named: "hover")!, forState: .highlighted)
+        
     }
     
     func PhoneNumberOTP(param : [String : Any]){
@@ -136,6 +137,7 @@ extension LoginVC{
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let newViewController = storyBoard.instantiateViewController(withIdentifier: "Register1TVC") as! Register1TVC
         navigationController?.pushViewController(newViewController, animated: false)
+        
     }
     func GoToSecurityScreen() {
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)

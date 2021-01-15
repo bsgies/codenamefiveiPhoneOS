@@ -326,11 +326,15 @@ extension DashboardVC{
     }
     @IBAction func EarningsButton(_ sender: Any) {
         
+//        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+//        let vc = storyBoard.instantiateViewController(withIdentifier: "EarningsVC") as! EarningsVC
+//        self.presentOnRoot(viewController: vc)
+        ////nn
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = storyBoard.instantiateViewController(withIdentifier: "EarningsVC") as! EarningsVC
-        self.presentOnRoot(viewController: vc)
-        
-        
+                      let newViewController = storyBoard.instantiateViewController(withIdentifier: "LoginTVC") as! LoginTVC
+    navigationController?.pushViewController(newViewController, animated: false)
+//        newViewController.modalPresentationStyle = .fullScreen
+//        present(newViewController, animated: true, completion: nil)
         
     }
     
