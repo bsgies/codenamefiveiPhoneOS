@@ -247,7 +247,7 @@ extension MainMenuViewController : UITableViewDelegate , UITableViewDataSource{
                        self.presentOnRoot(viewController: help)
             }else if indexPath.row == 9 {
                 let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-                       let vc = storyBoard.instantiateViewController(withIdentifier: "LoginVC") as! LoginVC
+                       let vc = storyBoard.instantiateViewController(withIdentifier: "LoginTVC") as! LoginTVC
                        navigationController?.pushViewController(vc, animated: false)
             }
         }//end current section

@@ -28,14 +28,14 @@
             <objects>
                 <viewController storyboardIdentifier="LoginVC" title="Login" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="LoginVC" customModule="CNF" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PS8-g6-vuE">
-                                <rect key="frame" x="0.0" y="-88" width="414" height="611"/>
+                                <rect key="frame" x="0.0" y="-44" width="414" height="655"/>
                                 <subviews>
                                     <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Partner" translatesAutoresizingMaskIntoConstraints="NO" id="rqT-0p-Boc">
-                                        <rect key="frame" x="70" y="120" width="284" height="382"/>
+                                        <rect key="frame" x="70" y="120" width="284" height="426"/>
                                     </imageView>
                                 </subviews>
                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -47,7 +47,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KJJ-KF-5D8" customClass="hit" customModule="CNF" customModuleProvider="target">
-                                <rect key="frame" x="20" y="554" width="374" height="200"/>
+                                <rect key="frame" x="20" y="642" width="374" height="200"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Login to your partner account" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MEE-Gt-AeF">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="17.666666666666668"/>
@@ -168,7 +168,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1620" y="96"/>
+            <point key="canvasLocation" x="1694" y="96"/>
         </scene>
         <!--Login-->
         <scene sceneID="03G-6b-Is9">
@@ -179,7 +179,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" name="Background"/>
                         <view key="tableFooterView" contentMode="scaleToFill" id="Hav-kA-Of2">
-                            <rect key="frame" x="0.0" y="135.33333206176758" width="414" height="44"/>
+                            <rect key="frame" x="0.0" y="123.33333206176758" width="414" height="44"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AEK-HR-8Hx">
@@ -188,8 +188,8 @@
                                     <color key="textColor" red="0.86274509799999999" green="0.20784313730000001" blue="0.27058823529999998" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="not parnter yet?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QEP-M0-4Zq">
-                                    <rect key="frame" x="146.33333333333334" y="24" width="121.66666666666666" height="20"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Not parnter yet?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QEP-M0-4Zq">
+                                    <rect key="frame" x="145" y="24" width="124.33333333333331" height="20"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="20" id="ws9-Vg-zj6"/>
                                     </constraints>
@@ -206,7 +206,7 @@
                             </constraints>
                         </view>
                         <sections>
-                            <tableViewSection headerTitle="login to partner account" footerTitle="enter you address line" id="Ktk-ho-YPS">
+                            <tableViewSection headerTitle="login to partner account" id="Ktk-ho-YPS">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="50" id="qZn-pC-uhg">
                                         <rect key="frame" x="0.0" y="55.333332061767578" width="414" height="50"/>
@@ -237,6 +237,7 @@
                             <outlet property="delegate" destination="mV8-Ac-mQC" id="7A3-m5-EyU"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" id="aN0-C6-AYH"/>
                     <connections>
                         <outlet property="EmailorPhone" destination="q8a-vA-nfn" id="CP6-ce-pKX"/>
                         <outlet property="errorLbl" destination="AEK-HR-8Hx" id="hhE-jg-CRH"/>
@@ -558,7 +559,7 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="7H5-Vh-J5G"/>
+                        <segue destination="mV8-Ac-mQC" kind="relationship" relationship="rootViewController" id="SEg-f4-Jqc"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="N9Z-6g-yo2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

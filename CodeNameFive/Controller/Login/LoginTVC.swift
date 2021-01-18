@@ -34,9 +34,17 @@ class LoginTVC: UITableViewController {
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillAppear(animated)
+       // removeObserver()
         guard let window = UIApplication.shared.windows.filter({$0.isKeyWindow}).first else { return }
         window.viewWithTag(200)?.removeFromSuperview()
     }
+    override func viewWillAppear(_ animated: Bool) {
+         super.viewWillAppear(animated)
+      //   keyBoardObserver()
+         navigationController?.setNavigationBarHidden(true, animated: animated)
+     }
+
+    //
     @objc func bottomBtnTapped() {
         //clickCode
         print("btn tapped")
@@ -98,12 +106,6 @@ class LoginTVC: UITableViewController {
        }
 
     // MARK: - Table view data source
-
-//    override func numberOfSections(in tableView: UITableView) -> Int {
-//        // #warning Incomplete implementation, return the number of sections
-//        return 0
-//    }
-//
 //    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 //        // #warning Incomplete implementation, return the number of rows
 //        return 0
@@ -119,24 +121,6 @@ class LoginTVC: UITableViewController {
     }
     */
 
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }*/
  
 
     override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
@@ -206,24 +190,61 @@ class ScreenBottomView {
         window.addSubview(bottomView)
     
         bottomView.tag = 200
+        bottomView.addTopBorder(with:UIColor(named: "borderColor")!, andWidth: 1.0)
         bottomView.translatesAutoresizingMaskIntoConstraints = false
         bottomView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0).isActive = true
         bottomView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0).isActive = true
         bottomView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0).isActive = true
-        bottomView.heightAnchor.constraint(equalToConstant: 70).isActive = true
-        bottomView.backgroundColor = UIColor(named: "bottomButtonView")
-        
+        bottomView.heightAnchor.constraint(equalToConstant: 80).isActive = true
+       bottomView.backgroundColor = UIColor(named: "UIViewCard")
+       // bottomView.backgroundColor = UIColor.black
         bottomView.addSubview(button)
         button.setTitle(btnText, for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.leadingAnchor.constraint(equalTo: bottomView.leadingAnchor, constant: 20).isActive = true
         button.trailingAnchor.constraint(equalTo: bottomView.trailingAnchor, constant: -20).isActive = true
-        button.topAnchor.constraint(equalTo: bottomView.topAnchor, constant: 0).isActive = true
+        button.topAnchor.constraint(equalTo: bottomView.topAnchor, constant: 10).isActive = true
         button.bottomAnchor.constraint(equalTo: bottomView.bottomAnchor, constant: -25).isActive = true
         button.heightAnchor.constraint(equalToConstant: 40).isActive = true
         button.backgroundColor = UIColor(named: "primaryColor")
         button.setTitleColor(.white, for: .normal)
         button.layer.cornerRadius = 4
         
+    }
+}
+
+extension LoginTVC {
+    func keyBoardObserver() {
+        NotificationCenter.default.addObserver(self, selector: #selector(KeyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(KeyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    func removeObserver() {
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    @objc func KeyboardWillShow(sender: NSNotification){
+        
+        let keyboardSize : CGSize = ((sender.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue.size)!
+        if self.view.frame.origin.y == 0{
+            self.view.frame.origin.y -= keyboardSize.height
+        }
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+            UIView.transition(with: self.view, duration: 1, options: .transitionCrossDissolve, animations: {
+               // self.pathnerImage.isHidden = true
+            })
+        }
+    }
+    @objc func KeyboardWillHide(sender : NSNotification){
+        let keyboardSize : CGSize = ((sender.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue.size)!
+        if self.view.frame.origin.y != 0{
+            self.view.frame.origin.y += keyboardSize.height
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+            UIView.transition(with: self.view, duration: 1, options: .transitionCrossDissolve, animations: {
+               // self.pathnerImage.isHidden = false
+            })
+        }
     }
 }
