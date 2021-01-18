@@ -25,6 +25,8 @@ class LoginTVC: UITableViewController {
        // setCrossButton()
         setupUIAndGestures()
         self.title = "Login"
+        self.navigationController!.navigationBar.titleTextAttributes = [.font: UIFont(name: "Helvetica Neue", size: 20)!]
+        //
         barButton = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
         self.navigationItem.leftBarButtonItem = barButton
         barButton.isEnabled = false
