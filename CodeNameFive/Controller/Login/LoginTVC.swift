@@ -145,13 +145,6 @@ class LoginTVC: UITableViewController {
         footer.textLabel?.text = "Enter your address line 1"
         
     }
-    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-           let bgColorView = UIView()
-            //  bgColorView.backgroundColor = UIColor(named: "highlights")
-        bgColorView.backgroundColor = UIColor.red
-        
-              cell.selectedBackgroundView = bgColorView
-       }
 
 }
 extension LoginTVC {
