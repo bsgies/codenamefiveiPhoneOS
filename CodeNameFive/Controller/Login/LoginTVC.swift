@@ -14,18 +14,21 @@ class LoginTVC: UITableViewController {
     @IBOutlet weak var EmailorPhone: UITextField!
     @IBOutlet weak var errorLbl: UILabel!
     @IBOutlet weak var register: UILabel!
-    
+    var barButton: UIBarButtonItem!
     //MARK:- variables
     var redView = UIView()
        let bottomBtn = UIButton(type: .system)
     var checkemail: String?
     override func viewDidLoad() {
         super.viewDidLoad()
-        setCrossButton()
+        
+       // setCrossButton()
         setupUIAndGestures()
+        self.title = "Login"
+        barButton = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
+        self.navigationItem.leftBarButtonItem = barButton
+        barButton.isEnabled = false
       
-        
-        
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -41,7 +44,7 @@ class LoginTVC: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
          super.viewWillAppear(animated)
       //   keyBoardObserver()
-         navigationController?.setNavigationBarHidden(true, animated: animated)
+
      }
 
     //
@@ -92,11 +95,12 @@ class LoginTVC: UITableViewController {
     func setCrossButton(){
            let button = UIButton(type: .custom)
            button.setImage(UIImage(named: "close"), for: .normal)
+           
            button.addTarget(self, action: #selector(closeView), for: .touchUpInside)
            button.frame = CGRect(x: 0, y: 0, width: 16, height: 16)
            let barButton = UIBarButtonItem(customView: button)
            self.navigationItem.leftBarButtonItem = barButton
-           
+      //  navigationItem.backBarButtonItem?.isEnabled = false
        }
        
        @objc func closeView(){

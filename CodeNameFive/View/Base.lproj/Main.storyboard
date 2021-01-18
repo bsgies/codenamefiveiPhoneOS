@@ -170,10 +170,10 @@
             </objects>
             <point key="canvasLocation" x="1694" y="96"/>
         </scene>
-        <!--Login-->
+        <!--LoginTVC-->
         <scene sceneID="03G-6b-Is9">
             <objects>
-                <tableViewController storyboardIdentifier="LoginTVC" title="Login" id="mV8-Ac-mQC" customClass="LoginTVC" customModule="CNF" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="LoginTVC" title="LoginTVC" id="mV8-Ac-mQC" customClass="LoginTVC" customModule="CNF" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="lOV-Dp-ByT">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
