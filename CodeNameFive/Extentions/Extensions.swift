@@ -1,9 +1,10 @@
+
 //
 //  Extensions.swift
 //  CodeNameFive
 //
 //  Created by Muhammad Imran on 08/11/2020.
-//  Copyright © 2020 ITRID TECHNOLOGIES LTD. All rights reserved.
+//  Copyright ©️ 2020 ITRID TECHNOLOGIES LTD. All rights reserved.
 //
 
 import Foundation
@@ -25,29 +26,29 @@ extension String
         return components(separatedBy: .whitespaces).joined()
     }
     func isPassword() -> Bool{
-        let passwordRegex = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d]{8,}$"
+        let passwordRegex = "^(?=.[a-z])(?=.[A-Z])(?=.*\\d)[a-zA-Z\\d]{8,}$"
         return  NSPredicate(format: "SELF MATCHES %@", passwordRegex).evaluate(with: self)
         
        // Minimum 8 characters at least 1 Alphabet and 1 Number:
 
-       // "^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,}$"
+       // "^(?=.[A-Za-z])(?=.\\d)[A-Za-z\\d]{8,}$"
        
         //Minimum 8 characters at least 1 Alphabet, 1 Number and 1 Special Character:
 
-       // "^(?=.*[A-Za-z])(?=.*\\d)(?=.*[$@$!%*#?&])[A-Za-z\\d$@$!%*#?&]{8,}$"
+       // "^(?=.[A-Za-z])(?=.\\d)(?=.[$@$!%#?&])[A-Za-z\\d$@$!%*#?&]{8,}$"
         
         
 //        Minimum 8 characters at least 1 Uppercase Alphabet, 1 Lowercase Alphabet and 1 Number:
 //
-//        "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d]{8,}$"
+//        "^(?=.[a-z])(?=.[A-Z])(?=.*\\d)[a-zA-Z\\d]{8,}$"
         
         //Minimum 8 characters at least 1 Uppercase Alphabet, 1 Lowercase Alphabet, 1 Number and 1 Special Character:
 
-       // "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[d$@$!%*?&#])[A-Za-z\\dd$@$!%*?&#]{8,}"
+       // "^(?=.[a-z])(?=.[A-Z])(?=.\\d)(?=.[d$@$!%?&#])[A-Za-z\\dd$@$!%?&#]{8,}"
         
         //Minimum 8 and Maximum 10 characters at least 1 Uppercase Alphabet, 1 Lowercase Alphabet, 1 Number and 1 Special Character:
 
-        //"^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[$@$!%*?&#])[A-Za-z\\d$@$!%*?&#]{8,10}"
+        //"^(?=.[a-z])(?=.[A-Z])(?=.\\d)(?=.[$@$!%?&#])[A-Za-z\\d$@$!%?&#]{8,10}"
         
         
     }
@@ -234,7 +235,7 @@ extension UIViewController{
             
         }
     }
-    func  GoToDashboard(){
+    func GoToDashboard(){
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let newViewController = storyBoard.instantiateViewController(withIdentifier: "DashboardVC")
         navigationController?.pushViewController(newViewController, animated: false)
@@ -287,7 +288,6 @@ func isInternetAvailable() -> Bool
     return (isReachable && !needsConnection)
 }
 extension UIButton {
-
     func setBackgroundColor(color: UIColor, forState: UIControl.State) {
         UIGraphicsBeginImageContext(CGSize(width: 1, height: 1))
         UIGraphicsGetCurrentContext()!.setFillColor(color.cgColor)
@@ -296,6 +296,16 @@ extension UIButton {
         UIGraphicsEndImageContext()
         self.setBackgroundImage(colorImage, for: forState)
     }
-   
 }
 
+extension UINavigationController {
+    func setBackButton(){
+        self.navigationBar.backItem?.titleView?.tintColor = UIColor(hex: "#12D2B3")
+        let button: UIButton = UIButton (type: UIButton.ButtonType.custom)
+        button.setImage(UIImage(named: "back"), for: UIControl.State.normal)
+        // button.addTarget(self, action: #selector(backButtonPressed(btn:)), for: UIControl.Event.touchUpInside)
+        button.frame = CGRect(x: 0 , y: 0, width: 30, height: 30)
+        let barButton = UIBarButtonItem(customView: button)
+        self.navigationItem.leftBarButtonItem = barButton
+    }
+}

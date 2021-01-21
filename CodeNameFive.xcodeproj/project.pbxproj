@@ -125,7 +125,9 @@
 		9040F87A258FD56900C390DA /* pdfFileShare.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 9040F879258FD56900C390DA /* pdfFileShare.pdf */; };
 		9041B3732573F38300C4DA3A /* MainMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9041B3722573F38300C4DA3A /* MainMenuViewController.swift */; };
 		9041CDA2258F68F400CE010A /* PDFViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9041CDA1258F68F400CE010A /* PDFViewController.swift */; };
+		9042659825B75ED600D2B885 /* SecurityTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9042659725B75ED600D2B885 /* SecurityTVC.swift */; };
 		9043ED7B25B0DCEA00C120B9 /* LoginTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9043ED7A25B0DCEA00C120B9 /* LoginTVC.swift */; };
+		9043F28025B9D78700A2B2B2 /* BottomFixedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9043F27F25B9D78700A2B2B2 /* BottomFixedView.swift */; };
 		9048158F25AB38CE00D9C2EC /* TripDayData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9048158D25AB38CE00D9C2EC /* TripDayData.swift */; };
 		9048159025AB38CE00D9C2EC /* TripDayData.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9048158E25AB38CE00D9C2EC /* TripDayData.xib */; };
 		90494040257C35B800224131 /* LiveSupportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9049403F257C35B800224131 /* LiveSupportViewController.swift */; };
@@ -293,7 +295,9 @@
 		9040F879258FD56900C390DA /* pdfFileShare.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = pdfFileShare.pdf; sourceTree = "<group>"; };
 		9041B3722573F38300C4DA3A /* MainMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuViewController.swift; sourceTree = "<group>"; };
 		9041CDA1258F68F400CE010A /* PDFViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFViewController.swift; sourceTree = "<group>"; };
+		9042659725B75ED600D2B885 /* SecurityTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecurityTVC.swift; sourceTree = "<group>"; };
 		9043ED7A25B0DCEA00C120B9 /* LoginTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginTVC.swift; sourceTree = "<group>"; };
+		9043F27F25B9D78700A2B2B2 /* BottomFixedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomFixedView.swift; sourceTree = "<group>"; };
 		9048158D25AB38CE00D9C2EC /* TripDayData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripDayData.swift; sourceTree = "<group>"; };
 		9048158E25AB38CE00D9C2EC /* TripDayData.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TripDayData.xib; sourceTree = "<group>"; };
 		9049403F257C35B800224131 /* LiveSupportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveSupportViewController.swift; sourceTree = "<group>"; };
@@ -442,6 +446,7 @@
 				4F2E5682249B684400D28462 /* ButtonRounded.swift */,
 				9256B97B24BDC61500FF7CA0 /* ViewEXT.swift */,
 				4FCA0C7F25573AC800F41367 /* Extensions.swift */,
+				9043F27F25B9D78700A2B2B2 /* BottomFixedView.swift */,
 			);
 			path = Extentions;
 			sourceTree = "<group>";
@@ -569,6 +574,7 @@
 				4F2E561E24AF403700C591EC /* LoginVC.swift */,
 				4F2E562024AF405900C591EC /* SecurityVC.swift */,
 				9043ED7A25B0DCEA00C120B9 /* LoginTVC.swift */,
+				9042659725B75ED600D2B885 /* SecurityTVC.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -1155,12 +1161,14 @@
 				4F64166F24B0970E00B2700F /* MessagesCell.swift in Sources */,
 				4F5AE8BC24A7D49A00567D05 /* EditEmailTVC.swift in Sources */,
 				4F43BC2024A3ED22006CF40F /* TripHistoryVC.swift in Sources */,
+				9043F28025B9D78700A2B2B2 /* BottomFixedView.swift in Sources */,
 				4F393B2024AB48CD009D08AB /* InvoiceDetailVC.swift in Sources */,
 				4F43BC1824A3D971006CF40F /* VehicleinformationTVC.swift in Sources */,
 				9043ED7B25B0DCEA00C120B9 /* LoginTVC.swift in Sources */,
 				9048158F25AB38CE00D9C2EC /* TripDayData.swift in Sources */,
 				903D5873257E586300521DCD /* MainMenuTableViewCell.swift in Sources */,
 				90494040257C35B800224131 /* LiveSupportViewController.swift in Sources */,
+				9042659825B75ED600D2B885 /* SecurityTVC.swift in Sources */,
 				4FE12A1A24E54F78006F55E1 /* MMSlidingButton.swift in Sources */,
 				4FF1F72424AFBB2D0035A9A5 /* HelpOrCancelCell.swift in Sources */,
 				4FB978F724A4DB3A0093C10F /* EarningsTVC.swift in Sources */,
