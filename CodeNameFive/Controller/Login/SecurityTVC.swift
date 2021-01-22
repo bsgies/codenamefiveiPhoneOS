@@ -27,7 +27,7 @@ class SecurityTVC: UITableViewController, UITextFieldDelegate {
     var checkEmailOrPassword : String = "email"
     var emailOrPhone : String?
     
-    //MARK:- Lifecycle
+    //MARK:- Lifecycles
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         ScreenBottomView.goToNextScreen(button: bottomBtn, view: self.view, btnText: "Login")
@@ -48,7 +48,7 @@ class SecurityTVC: UITableViewController, UITextFieldDelegate {
         navigationController?.setBackButton()
     }
     
-    //MARK:- Helper function
+    //MARK:- Helper functions
     @objc func bottomBtnTapped() {
         guard let password = passwordTextField?.text else { return }
         guard let email = emailOrPhone else { return }

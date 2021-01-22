@@ -10,83 +10,89 @@ import UIKit
 
 class LoginTVC: UITableViewController {
     
- 
+    //MARK:- Outlets
     @IBOutlet weak var EmailorPhone: UITextField!
     @IBOutlet weak var errorLbl: UILabel!
     @IBOutlet weak var register: UILabel!
     var barButton: UIBarButtonItem!
-    //MARK:- variables
+    
+    //MARK:- Variables
     var redView = UIView()
     let bottomBtn = UIButton(type: .system)
     var checkemail: String?
+    
+    //MARK:- Lifecycles
     override func viewDidLoad() {
         super.viewDidLoad()
         
-       // setCrossButton()
+        // setCrossButton()
         setupUIAndGestures()
         self.title = "Login"
         self.navigationController!.navigationBar.titleTextAttributes = [.font: UIFont(name: "Helvetica Neue", size: 20)!]
-        //
         barButton = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
         self.navigationItem.leftBarButtonItem = barButton
         barButton.isEnabled = false
-      
     }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         ScreenBottomView.goToNextScreen(button: bottomBtn, view: self.view, btnText: "Continue")
         bottomBtn.addTarget(self, action: #selector(bottomBtnTapped), for: .touchUpInside)
     }
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillAppear(animated)
        // removeObserver()
-        guard let window = UIApplication.shared.windows.filter({$0.isKeyWindow}).first else { return }
+        guard let window = UIApplication.shared.windows.filter({$0.isKeyWindow}).first else {
+            return
+        }
         window.viewWithTag(200)?.removeFromSuperview()
     }
+    
     override func viewWillAppear(_ animated: Bool) {
          super.viewWillAppear(animated)
       //   keyBoardObserver()
-
      }
 
-    //
+    //MARK:- Helper functions
     @objc func bottomBtnTapped() {
         //clickCode
         print("btn tapped")
         guard let email = EmailorPhone.text else { return }
-                   if email.isEmail(){
-                       checkemail = "email"
-                       GoToSecurityScreen()
-                   }
-                   else if email.isValidPhone(){
-                       checkemail = "phone"
-                       // PhoneNumberOTP(param: ["key": "phoneNumber" , "value" : email])
-                       GoToSecurityScreen()
-                   }
-                   else{
-                       errorLbl.isHidden = false
-                       errorLbl.text = "incorrect email or Phone"
-                   }
-        
+           if email.isEmail(){
+               checkemail = "email"
+               GoToSecurityScreen()
+           }
+           else if email.isValidPhone(){
+               checkemail = "phone"
+               // PhoneNumberOTP(param: ["key": "phoneNumber" , "value" : email])
+               GoToSecurityScreen()
+           }
+           else{
+               errorLbl.isHidden = false
+               errorLbl.text = "Enter your phone number or email address"
+           }
     }
+    
     func PhoneNumberOTP(param : [String : Any]){
-           HttpService.sharedInstance.postRequest(urlString: Endpoints.phoneOEmailExits, bodyData: param) { [self] (responseData) in
-               do{
-                   let jsonData = responseData?.toJSONString1().data(using: .utf8)!
-                   let decoder = JSONDecoder()
-                   let obj = try decoder.decode(EmailPhoneExitsValidationModel.self, from: jsonData!)
-                   if obj.success == false{
-                       self.GoToSecurityScreen()
-                   }
-                   else{
-                       self.errorLbl.text = "incorrect Phone Number"
-                   }
+       HttpService.sharedInstance.postRequest(urlString: Endpoints.phoneOEmailExits, bodyData: param) { [self] (responseData) in
+           do{
+               let jsonData = responseData?.toJSONString1().data(using: .utf8)!
+               let decoder = JSONDecoder()
+               let obj = try decoder.decode(EmailPhoneExitsValidationModel.self, from: jsonData!)
+               if obj.success == false{
+                   self.GoToSecurityScreen()
                }
-               catch{
-                   self.errorLbl.text = "some Error Occur"
+               else{
+                   self.errorLbl.text = "incorrect Phone Number"
                }
            }
+           catch{
+               self.errorLbl.text = "some Error Occur"
+           }
        }
+    }
+    
     func GoToSecurityScreen() {
          let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
          let newViewController = storyBoard.instantiateViewController(withIdentifier: "SecurityTVC") as! SecurityTVC
@@ -98,12 +104,11 @@ class LoginTVC: UITableViewController {
     func setCrossButton(){
            let button = UIButton(type: .custom)
            button.setImage(UIImage(named: "close"), for: .normal)
-           
            button.addTarget(self, action: #selector(closeView), for: .touchUpInside)
            button.frame = CGRect(x: 0, y: 0, width: 16, height: 16)
            let barButton = UIBarButtonItem(customView: button)
            self.navigationItem.leftBarButtonItem = barButton
-      //  navigationItem.backBarButtonItem?.isEnabled = false
+            // navigationItem.backBarButtonItem?.isEnabled = false
        }
        
        @objc func closeView(){
@@ -128,8 +133,6 @@ class LoginTVC: UITableViewController {
     }
     */
 
- 
-
     override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
            // changing
                  let header:UITableViewHeaderFooterView = view as! UITableViewHeaderFooterView
@@ -140,7 +143,7 @@ class LoginTVC: UITableViewController {
                  // header.textLabel?.textAlignment = NSTextAlignment.left
                  // end
          // if section == 0 {
-              header.textLabel?.text = "Login to partner account"
+              header.textLabel?.text = "Login to your partner account"
         //  }else {
                 
         //  }
