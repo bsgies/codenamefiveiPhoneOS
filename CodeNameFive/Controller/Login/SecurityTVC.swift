@@ -54,7 +54,7 @@ class SecurityTVC: UITableViewController, UITextFieldDelegate {
     }
  func setCrossButton(){
         let button = UIButton(type: .custom)
-            button.setImage(UIImage(named: "backImage"), for: .normal)
+            button.setImage(UIImage(named: "back"), for: .normal)
             button.addTarget(self, action: #selector(closeView), for: .touchUpInside)
             button.frame = CGRect(x: 0, y: 0, width: 16, height: 16)
             button.contentEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 20)
@@ -239,5 +239,21 @@ extension SecurityTVC {
         else {
         return "Security code"
         }
+    }
+    
+    override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+         // changing
+               let header:UITableViewHeaderFooterView = view as! UITableViewHeaderFooterView
+               header.textLabel?.textColor = UIColor(named: "secondaryColor")
+               header.textLabel?.font = UIFont.boldSystemFont(ofSize: 16)
+               // header.textLabel?.font = UIFont.systemFont(ofSize: 14)
+               // header.textLabel?.frame = header.frame
+               // header.textLabel?.textAlignment = NSTextAlignment.left
+               // end
+       // if section == 0 {
+            header.textLabel?.text = "Enter your security code"
+      //  }else {
+              
+      //  }
     }
 }
