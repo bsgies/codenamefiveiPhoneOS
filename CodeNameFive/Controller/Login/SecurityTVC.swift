@@ -20,13 +20,14 @@ class SecurityTVC: UITableViewController, UITextFieldDelegate {
     @IBOutlet weak var passwordTextField: UITextField?
     @IBOutlet weak var errorLbl: UILabel!
     @IBOutlet weak var forget: UILabel!
-
+    @IBOutlet weak var forgetYConstraint: NSLayoutConstraint!
+    
     //MARK:- Variables
     private var myTextField : UITextField?
     let bottomBtn = UIButton(type: .system)
     var checkEmailOrPassword : String = "email"
     var emailOrPhone : String?
-    
+    var barButton: UIBarButtonItem!
     //MARK:- Lifecycle
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -46,8 +47,24 @@ class SecurityTVC: UITableViewController, UITextFieldDelegate {
         setupTapGestures()
         CheckEmailOrPhone()
         navigationController?.setBackButton()
+//        barButton = UIBarButtonItem(title: "<", style: .plain, target: self, action: #selector(actionBack))
+//        self.navigationItem.leftBarButtonItem = barButton
+        //barButton.isEnabled = false
+        setCrossButton()
     }
-    
+ func setCrossButton(){
+        let button = UIButton(type: .custom)
+            button.setImage(UIImage(named: "backImage"), for: .normal)
+            button.addTarget(self, action: #selector(closeView), for: .touchUpInside)
+            button.frame = CGRect(x: 0, y: 0, width: 16, height: 16)
+            button.contentEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 20)
+        let barButton = UIBarButtonItem(customView: button)
+            navigationItem.leftBarButtonItem = barButton
+        }
+           
+       @objc func closeView(){
+        navigationController?.popViewController(animated: true)
+       }
     //MARK:- Helper function
     @objc func bottomBtnTapped() {
         guard let password = passwordTextField?.text else { return }
@@ -62,6 +79,7 @@ class SecurityTVC: UITableViewController, UITextFieldDelegate {
         }
         else {
             errorLbl.isHidden = false
+            forgetYConstraint.constant = 20
             if checkEmailOrPassword == conditionalLogin.email.rawValue {
                 errorLbl.text = "Enter your password"
             }

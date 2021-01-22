@@ -14,6 +14,8 @@ class LoginTVC: UITableViewController {
     @IBOutlet weak var EmailorPhone: UITextField!
     @IBOutlet weak var errorLbl: UILabel!
     @IBOutlet weak var register: UILabel!
+    @IBOutlet weak var registerYConstraint: NSLayoutConstraint!
+    
     var barButton: UIBarButtonItem!
     //MARK:- variables
     var redView = UIView()
@@ -25,7 +27,7 @@ class LoginTVC: UITableViewController {
        // setCrossButton()
         setupUIAndGestures()
         self.title = "Login"
-        self.navigationController!.navigationBar.titleTextAttributes = [.font: UIFont(name: "Helvetica Neue", size: 20)!]
+      
         //
         barButton = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
         self.navigationItem.leftBarButtonItem = barButton
@@ -65,6 +67,7 @@ class LoginTVC: UITableViewController {
                    }
                    else{
                        errorLbl.isHidden = false
+                    registerYConstraint.constant = 20
                        errorLbl.text = "incorrect email or Phone"
                    }
         

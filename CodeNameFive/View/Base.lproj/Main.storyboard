@@ -242,6 +242,7 @@
                         <outlet property="EmailorPhone" destination="q8a-vA-nfn" id="CP6-ce-pKX"/>
                         <outlet property="errorLbl" destination="AEK-HR-8Hx" id="hhE-jg-CRH"/>
                         <outlet property="register" destination="QEP-M0-4Zq" id="BCj-Ji-9Of"/>
+                        <outlet property="registerYConstraint" destination="8p2-VC-geg" id="DGL-ax-jvl"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2b6-V9-SNG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -6160,6 +6161,7 @@
                     <connections>
                         <outlet property="errorLbl" destination="dI8-hx-U5Q" id="mnS-Qn-cNI"/>
                         <outlet property="forget" destination="bEh-io-1fJ" id="B4M-Xp-lIg"/>
+                        <outlet property="forgetYConstraint" destination="8lV-C7-82Y" id="B3f-qz-QHG"/>
                         <outlet property="passwordTextField" destination="gIH-3y-3O8" id="F3a-nk-PGH"/>
                     </connections>
                 </tableViewController>
