@@ -48,7 +48,7 @@ class LoginTVC: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
          super.viewWillAppear(animated)
       //   keyBoardObserver()
-
+      self.title = "Login"
      }
 
     //
@@ -95,7 +95,7 @@ class LoginTVC: UITableViewController {
          let newViewController = storyBoard.instantiateViewController(withIdentifier: "SecurityTVC") as! SecurityTVC
          newViewController.checkEmailOrPassword = checkemail!
          newViewController.emailOrPhone = EmailorPhone.text
-         navigationController?.pushViewController(newViewController, animated: false)
+         navigationController?.pushViewController(newViewController, animated: true)
      }
 
     func setCrossButton(){

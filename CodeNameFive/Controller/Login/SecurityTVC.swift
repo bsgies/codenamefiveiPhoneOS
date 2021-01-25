@@ -47,11 +47,21 @@ class SecurityTVC: UITableViewController, UITextFieldDelegate {
         setupTapGestures()
         CheckEmailOrPhone()
         navigationController?.setBackButton()
+          self.title = "Login"
+       
+        let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(backReturn))
+               swipeRight.direction = UISwipeGestureRecognizer.Direction.right
+               self.view.addGestureRecognizer(swipeRight)
+         
 //        barButton = UIBarButtonItem(title: "<", style: .plain, target: self, action: #selector(actionBack))
 //        self.navigationItem.leftBarButtonItem = barButton
         //barButton.isEnabled = false
         setCrossButton()
     }
+    @objc func backReturn(){
+         navigationController?.popViewController(animated: true)
+    }
+    
  func setCrossButton(){
         let button = UIButton(type: .custom)
             button.setImage(UIImage(named: "back"), for: .normal)
