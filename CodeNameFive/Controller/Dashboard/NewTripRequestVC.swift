@@ -32,7 +32,7 @@ class NewTripRequestVC: UIViewController,GMSMapViewDelegate,CLLocationManagerDel
     @IBOutlet weak var googleMaps: GMSMapView!
     @IBOutlet weak var resturanName: UILabel!
     @IBOutlet weak var resturanAddress: UILabel!
-    @IBOutlet weak var deliverAddress: UILabel!
+    //@IBOutlet weak var deliverAddress: UILabel!
     @IBOutlet weak var remaningTiemForAccepOrder: UIProgressView!
     @IBOutlet weak var cardView: UIView!
     

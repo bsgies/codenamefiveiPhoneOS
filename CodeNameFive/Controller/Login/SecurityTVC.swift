@@ -216,7 +216,7 @@ class SecurityTVC: UITableViewController, UITextFieldDelegate {
                    self.errorLbl.text = "Something went wrong"
                 }
                 } else {
-                    bottomBtn.loadingIndicator(false, title: "Login")
+                    self.bottomBtn.loadingIndicator(false, title: "Login")
                 }
         }
         case .phone :
@@ -240,7 +240,7 @@ class SecurityTVC: UITableViewController, UITextFieldDelegate {
                 }
                     
                 } else {
-                    bottomBtn.loadingIndicator(false, title: "Login")
+                    self.bottomBtn.loadingIndicator(false, title: "Login")
                 }
             }
         }
