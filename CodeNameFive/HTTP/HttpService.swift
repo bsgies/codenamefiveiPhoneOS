@@ -58,6 +58,7 @@ class HttpService : URLSession{
         if !(isInternetAvailable()) {
             appDelegate.removeLoadIndIndicator()
             appDelegate.Alert()
+           // print("Internet not working")
             completionBlock([:])
             return
         }

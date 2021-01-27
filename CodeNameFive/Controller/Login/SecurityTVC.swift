@@ -24,7 +24,7 @@ class SecurityTVC: UITableViewController, UITextFieldDelegate {
     
     //MARK:- Variables
     private var myTextField : UITextField?
-    let bottomBtn = UIButton(type: .system)
+    let bottomBtn = UIButton(type: .custom)
     var checkEmailOrPassword : String = "email"
     var emailOrPhone : String?
     var barButton: UIBarButtonItem!
@@ -33,10 +33,27 @@ class SecurityTVC: UITableViewController, UITextFieldDelegate {
         super.viewDidAppear(animated)
         ScreenBottomView.goToNextScreen(button: bottomBtn, view: self.view, btnText: "Login")
         bottomBtn.addTarget(self, action: #selector(bottomBtnTapped), for: .touchUpInside)
+        bottomBtn.titleLabel?.font = UIFont(name: "HelveticaNeue-Bold", size: 16)
+        bottomBtn.addTarget(self, action: #selector(heldDown), for: .touchDown)
+        bottomBtn.addTarget(self, action: #selector(buttonHeldAndReleased), for: .touchDragExit)
+    }
+    // Target functions
+    @objc func heldDown()
+    {
+        bottomBtn.backgroundColor = UIColor(named: "secondaryButton")
+    }
+
+    @objc func holdRelease()
+    {
+        bottomBtn.backgroundColor = UIColor(named: "primaryButton")
+    }
+
+    @objc func buttonHeldAndReleased(){
+        bottomBtn.backgroundColor = UIColor(named: "primaryButton")
     }
 
     override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+        super.viewWillDisappear(animated)
         guard let window = UIApplication.shared.windows.filter({$0.isKeyWindow}).first else { return }
         window.viewWithTag(200)?.removeFromSuperview()
     }
@@ -47,15 +64,15 @@ class SecurityTVC: UITableViewController, UITextFieldDelegate {
         setupTapGestures()
         CheckEmailOrPhone()
         navigationController?.setBackButton()
-          self.title = "Login"
+        // self.title = "Login"
        
         let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(backReturn))
                swipeRight.direction = UISwipeGestureRecognizer.Direction.right
                self.view.addGestureRecognizer(swipeRight)
          
-//        barButton = UIBarButtonItem(title: "<", style: .plain, target: self, action: #selector(actionBack))
-//        self.navigationItem.leftBarButtonItem = barButton
-        //barButton.isEnabled = false
+        // barButton = UIBarButtonItem(title: "<", style: .plain, target: self, action: #selector(actionBack))
+        // self.navigationItem.leftBarButtonItem = barButton
+        // barButton.isEnabled = false
         setCrossButton()
     }
     @objc func backReturn(){
@@ -176,13 +193,16 @@ class SecurityTVC: UITableViewController, UITextFieldDelegate {
     
     //MARK:- API calling
     func LoginApiWithEmail(parm : [String:Any] ,type : loginWith) {
+        bottomBtn.loadingIndicator(true, title: "")
         switch type{
         case .email :
-            HttpService.sharedInstance.postRequest(urlString: Endpoints.login, bodyData: parm) { [self](responseData) in
+            HttpService.sharedInstance.postRequest(urlString: Endpoints.login, bodyData: parm) {
+                [self](responseData) in
+                if let responseData = responseData {
                 do{
-                    let jsonData = responseData?.toJSONString1().data(using: .utf8)!
+                    let jsonData = responseData.toJSONString1().data(using: .utf8)!
                     let decoder = JSONDecoder()
-                    let obj = try decoder.decode(LoginResponse.self, from: jsonData!)
+                    let obj = try decoder.decode(LoginResponse.self, from: jsonData)
                     if obj.success == true{
                         self.saveValuesInKeyChain(obj: obj)
                     }
@@ -195,13 +215,17 @@ class SecurityTVC: UITableViewController, UITextFieldDelegate {
                    self.errorLbl.isHidden = false
                    self.errorLbl.text = "Something went wrong"
                 }
-            }
+                } else {
+                    bottomBtn.loadingIndicator(false, title: "Login")
+                }
+        }
         case .phone :
             HttpService.sharedInstance.postRequest(urlString: Endpoints.loginWithPhone, bodyData: parm) { [self](responseData) in
+                if let responseData = responseData {
                 do{
-                    let jsonData = responseData?.toJSONString1().data(using: .utf8)!
+                    let jsonData = responseData.toJSONString1().data(using: .utf8)!
                     let decoder = JSONDecoder()
-                    let obj = try decoder.decode(LoginResponse.self, from: jsonData!)
+                    let obj = try decoder.decode(LoginResponse.self, from: jsonData)
                     if obj.success == true{
                         self.saveValuesInKeyChain(obj: obj)
                     }
@@ -209,12 +233,18 @@ class SecurityTVC: UITableViewController, UITextFieldDelegate {
                      self.errorLbl.isHidden = false
                      self.errorLbl.text = obj.message
                     }
-                    
                 }
                 catch{
                     self.errorLbl.isHidden = false
                     self.errorLbl.text = "some Error Occour During Prosessing"
-                }}}}
+                }
+                    
+                } else {
+                    bottomBtn.loadingIndicator(false, title: "Login")
+                }
+            }
+        }
+    }
     
     //MARK:- Save to keychain
     func saveValuesInKeyChain(obj : LoginResponse){
@@ -231,9 +261,11 @@ class SecurityTVC: UITableViewController, UITextFieldDelegate {
             KeychainWrapper.standard.set(result.phoneNumber!, forKey: "phone_number")
             KeychainWrapper.standard.set(result.status!, forKey: "status")
             saveInDefault(value: true, key: "isUserLogIn")
+            bottomBtn.loadingIndicator(false, title: "Login")
             self.GoToDashboard()
         }
-        else{
+        else {
+          bottomBtn.loadingIndicator(false, title: "Login")
           errorLbl.isHidden = false
           errorLbl.text = obj.message
         }

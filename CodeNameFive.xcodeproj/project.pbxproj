@@ -1375,14 +1375,14 @@
 				CODE_SIGN_ENTITLEMENTS = CodeNameFive/CNF.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = AJV7J8S8ZJ;
+				DEVELOPMENT_TEAM = 27S98BE552;
 				INFOPLIST_FILE = CodeNameFive/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.itridtechnologies.CodeNameFive;
+				PRODUCT_BUNDLE_IDENTIFIER = com.CNF;
 				PRODUCT_NAME = CNF;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
@@ -1398,14 +1398,14 @@
 				CODE_SIGN_ENTITLEMENTS = CodeNameFive/CNF.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = AJV7J8S8ZJ;
+				DEVELOPMENT_TEAM = 27S98BE552;
 				INFOPLIST_FILE = CodeNameFive/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.itridtechnologies.CodeNameFive;
+				PRODUCT_BUNDLE_IDENTIFIER = com.CNF;
 				PRODUCT_NAME = CNF;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;

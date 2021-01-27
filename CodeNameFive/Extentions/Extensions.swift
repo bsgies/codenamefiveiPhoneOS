@@ -26,12 +26,13 @@ extension String
         return components(separatedBy: .whitespaces).joined()
     }
     func isPassword() -> Bool{
-        let passwordRegex = "^(?=.[a-z])(?=.[A-Z])(?=.*\\d)[a-zA-Z\\d]{8,}$"
-        return  NSPredicate(format: "SELF MATCHES %@", passwordRegex).evaluate(with: self)
+        //let passwordRegex = "^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$"
+       // return NSPredicate(format: "SELF MATCHES %@", passwordRegex).evaluate(with: self)
+        return true
         
        // Minimum 8 characters at least 1 Alphabet and 1 Number:
 
-       // "^(?=.[A-Za-z])(?=.\\d)[A-Za-z\\d]{8,}$"
+       // ^(?=.[A-Za-z])(?=.\\d)[A-Za-z\\d]{8,}$
        
         //Minimum 8 characters at least 1 Alphabet, 1 Number and 1 Special Character:
 
@@ -146,6 +147,7 @@ extension UITextField {
     }
 }
 extension UIView {
+    
     func fadeIn(duration: TimeInterval = 1, delay: TimeInterval = 1.0, completion: @escaping ((Bool) -> Void) = {(finished: Bool) -> Void in}) {
         UIView.animate(withDuration: duration, delay: delay, options: .curveEaseIn, animations: {
             self.alpha = 1.0
@@ -296,6 +298,31 @@ extension UIButton {
         UIGraphicsEndImageContext()
         self.setBackgroundImage(colorImage, for: forState)
     }
+    func loadingIndicator(_ show: Bool, title: String) {
+            let tag = 808404
+            if show {
+                self.setTitle("", for: .normal)
+                self.isEnabled = false
+                // self.alpha = 0.5
+                self.setBackgroundColor(color: UIColor(named: "disabledButton") ?? .black, forState: .normal)
+                let indicator = UIActivityIndicatorView()
+                let buttonHeight = self.bounds.size.height
+                let buttonWidth = self.bounds.size.width
+                indicator.center = CGPoint(x: buttonWidth/2, y: buttonHeight/2)
+                indicator.tag = tag
+                self.addSubview(indicator)
+                indicator.startAnimating()
+            } else {
+                self.setTitle(title, for: .normal)
+                self.isEnabled = true
+                self.setBackgroundColor(color: UIColor(named: "primaryButton") ?? .green, forState: .normal)
+                //self.alpha = 1.0
+                if let indicator = self.viewWithTag(tag) as? UIActivityIndicatorView {
+                    indicator.stopAnimating()
+                    indicator.removeFromSuperview()
+                }
+            }
+        }
 }
 
 extension UINavigationController {

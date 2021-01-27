@@ -16,7 +16,7 @@ class Register3TVC: UITableViewController {
     var vSpinner : UIView?
     var ai = UIActivityIndicatorView()
     @IBOutlet weak var checkBoxOutlet: UIButton!
-    let queue = DispatchQueue(label: "que" , attributes: .concurrent)
+    let queue = DispatchQueue(label: "queue" , attributes: .concurrent)
     @IBOutlet weak var uploadProofID: UITextField!
     @IBOutlet weak var uploadproofAddess: UITextField!
     @IBOutlet weak var uploadBackProofId: UITextField!
@@ -26,7 +26,7 @@ class Register3TVC: UITableViewController {
     @IBOutlet weak var addressOfProofImageView: UIImageView!
     let ImageUploadObj = HTTPImageUpload()
     var fileData : Data?
-    let button = UIButton(type: .system)
+    let button = UIButton(type: .custom)
     var myURL : String?
     let httpregister = HTTPRegisterationRequest()
     var frontImage  : UIImage?
@@ -44,19 +44,25 @@ class Register3TVC: UITableViewController {
         addressOfProofImageView.isHidden = true
        let image = #imageLiteral(resourceName: "unchecked_checkbox")
         if #available(iOS 13.0, *) {
-            image.withTintColor(#colorLiteral(red: 0, green: 0.8465872407, blue: 0.7545004487, alpha: 1))
+            image.withTintColor(UIColor(named: "primaryColor") ?? .black)
         } else {
             // Fallback on earlier versions
         }
        checkBoxOutlet.setImage(image, for: .normal)
+        let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(backReturn))
+        swipeRight.direction = UISwipeGestureRecognizer.Direction.right
+        self.view.addGestureRecognizer(swipeRight)
+    }
+    @objc func backReturn(){
+         navigationController?.popViewController(animated: true)
     }
     
     @IBAction func checkBoxAction(_ sender: UIButton) {
           
            if unchecked {
-                    let image = #imageLiteral(resourceName: "unchecked_checkbox")
+            let image = #imageLiteral(resourceName: "unchecked_checkbox")
             if #available(iOS 13.0, *) {
-                image.withTintColor(#colorLiteral(red: 0, green: 0.8465872407, blue: 0.7545004487, alpha: 1))
+                image.withTintColor(UIColor(named: "primaryColor") ?? .black)
             } else {
                 // Fallback on earlier versions
             }
@@ -66,14 +72,13 @@ class Register3TVC: UITableViewController {
                 else {
                     let image = #imageLiteral(resourceName: "checked_checkbox")
                     if #available(iOS 13.0, *) {
-                        image.withTintColor(#colorLiteral(red: 0, green: 0.8465872407, blue: 0.7545004487, alpha: 1))
+                        image.withTintColor(UIColor(named: "primaryColor") ?? .black)
                     } else {
                         // Fallback on earlier versions
                     }
                     sender.setImage(image, for: .normal)
                     unchecked = true
                 }
-           
        }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -82,7 +87,7 @@ class Register3TVC: UITableViewController {
         button.addTarget(self, action: #selector(submit), for: UIControl.Event.touchUpInside)
     }
     override func viewWillDisappear(_ animated: Bool) {
-        super.viewDidDisappear(true)
+        super.viewWillDisappear(true)
         guard let window = UIApplication.shared.windows.filter({$0.isKeyWindow}).first else { return }
         window.viewWithTag(200)?.removeFromSuperview()
     }
@@ -108,6 +113,14 @@ class Register3TVC: UITableViewController {
             header.textLabel?.text = "provide Your Supporting Document To Complete Your Application"
         }
     }
+    
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        cell.preservesSuperviewLayoutMargins = false
+        cell.separatorInset = UIEdgeInsets.zero
+        cell.layoutMargins = UIEdgeInsets.zero
+        cell.separatorInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 0)
+    }
+    
     @IBAction func frontProof(_ sender: UITextField) {
         view.endEditing(true)
         docTag = docs.front.rawValue
@@ -234,7 +247,7 @@ extension Register3TVC : UIImagePickerControllerDelegate{
                     
                 }
                 else{
-                    MyshowAlertWith(title: "Image Size" , message: "image Size Should Not Larger Than 8MB")
+                    MyshowAlertWith(title: "Error" , message: "File is too large. Select a file under 8MB")
                 }
             }
             else if docTag == docs.back.rawValue {
@@ -248,7 +261,7 @@ extension Register3TVC : UIImagePickerControllerDelegate{
                     backIdPhotoImageView.image = image
                 }
                 else{
-                    MyshowAlertWith(title: "Image Size" , message: "image Size Should Not Larger Than 8MB")
+                    MyshowAlertWith(title: "Image Size" , message: "File is too large. Select a file under 8MB")
                 }
             }
             else if docTag == docs.address.rawValue {
@@ -261,12 +274,12 @@ extension Register3TVC : UIImagePickerControllerDelegate{
                     addressOfProofImageView.image = image
                 }
                 else{
-                    MyshowAlertWith(title: "Image Size" , message: "image Size Should Not Larger Than 8MB")
+                    MyshowAlertWith(title: "Image Size" , message: "File is too large. Select a file under 8MB")
                 }
             }
         }
         else{
-            print("Image not Loaded")
+            print("File not uploaded")
         }
     }
 
@@ -275,10 +288,9 @@ extension Register3TVC : UIImagePickerControllerDelegate{
         uploadfirst()
         }
         else{
-            MyshowAlertWith(title: "Error", message: "SomeData is Empty")
+            MyshowAlertWith(title: "Error", message: "Something went wrong")
         }
     }
-    
     
     func postData() {
         if Registration.isDocumentUploaded(){
@@ -307,7 +319,7 @@ extension Register3TVC : UIImagePickerControllerDelegate{
                 self.dismissAlert()
             }
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [self] in
-                self.MyshowAlertWith(title: "Error", message: "connection Error")
+                self.MyshowAlertWith(title: "Error", message: "Connection error")
             }
             
         }
@@ -411,7 +423,7 @@ extension Register3TVC : UIImagePickerControllerDelegate{
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         
         
-        alert.addAction(UIAlertAction(title:  "Ok", style: UIAlertAction.Style.default, handler: { action in
+        alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: { action in
             
             let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
             let vc = storyBoard.instantiateViewController(withIdentifier: "LoginVC") as! LoginVC
@@ -422,11 +434,6 @@ extension Register3TVC : UIImagePickerControllerDelegate{
         self.present(alert, animated: true, completion: nil)
     }
 }
-
-
-
-
-
 
 extension Register3TVC {
     func showSpinner(onView : UIView) {

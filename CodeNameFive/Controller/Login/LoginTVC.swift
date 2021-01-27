@@ -10,7 +10,6 @@ import UIKit
 
 class LoginTVC: UITableViewController {
     
- 
     @IBOutlet weak var EmailorPhone: UITextField!
     @IBOutlet weak var errorLbl: UILabel!
     @IBOutlet weak var register: UILabel!
@@ -19,12 +18,12 @@ class LoginTVC: UITableViewController {
     var barButton: UIBarButtonItem!
     //MARK:- variables
     var redView = UIView()
-    let bottomBtn = UIButton(type: .system)
+    let bottomBtn = UIButton(type: .custom)
     var checkemail: String?
     override func viewDidLoad() {
         super.viewDidLoad()
         
-       // setCrossButton()
+        //setCrossButton()
         setupUIAndGestures()
         self.title = "Login"
       
@@ -38,39 +37,58 @@ class LoginTVC: UITableViewController {
         super.viewDidAppear(animated)
         ScreenBottomView.goToNextScreen(button: bottomBtn, view: self.view, btnText: "Continue")
         bottomBtn.addTarget(self, action: #selector(bottomBtnTapped), for: .touchUpInside)
+        bottomBtn.titleLabel?.font = UIFont(name: "HelveticaNeue-Bold", size: 16)
+        // bottomBtn.setTitleColor(UIColor(named: ""), for: .normal)
+        // bottomBtn.addTarget(self, action: #selector(holdRelease), for: .touchUpInside);
+        bottomBtn.addTarget(self, action: #selector(heldDown), for: .touchDown)
+        bottomBtn.addTarget(self, action: #selector(buttonHeldAndReleased), for: .touchDragExit)
     }
+    // Target functions
+    @objc func heldDown()
+    {
+        bottomBtn.backgroundColor = UIColor(named: "secondaryButton")
+    }
+
+    @objc func holdRelease()
+    {
+        bottomBtn.backgroundColor = UIColor(named: "primaryButton")
+    }
+
+    @objc func buttonHeldAndReleased(){
+        bottomBtn.backgroundColor = UIColor(named: "primaryButton")
+    }
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillAppear(animated)
        // removeObserver()
         guard let window = UIApplication.shared.windows.filter({$0.isKeyWindow}).first else { return }
         window.viewWithTag(200)?.removeFromSuperview()
     }
-    override func viewWillAppear(_ animated: Bool) {
-         super.viewWillAppear(animated)
-      //   keyBoardObserver()
-      self.title = "Login"
-     }
-
+//    override func viewWillAppear(_ animated: Bool) {
+//         super.viewWillAppear(animated)
+//      //   keyBoardObserver()
+//      //self.title = "Login"
+//     }
     //
     @objc func bottomBtnTapped() {
+       // bottomBtn.blink(duration: 1, delay: 0.1, alpha: 0.2)
         //clickCode
-        print("btn tapped")
+        // print("btn tapped")
         guard let email = EmailorPhone.text else { return }
-                   if email.isEmail(){
-                       checkemail = "email"
-                       GoToSecurityScreen()
-                   }
-                   else if email.isValidPhone(){
-                       checkemail = "phone"
-                       // PhoneNumberOTP(param: ["key": "phoneNumber" , "value" : email])
-                       GoToSecurityScreen()
-                   }
-                   else{
-                       errorLbl.isHidden = false
-                    registerYConstraint.constant = 20
-                       errorLbl.text = "incorrect email or Phone"
-                   }
-        
+       if email.isEmail(){
+           checkemail = "email"
+           GoToSecurityScreen()
+       }
+       else if email.isValidPhone(){
+           checkemail = "phone"
+           // PhoneNumberOTP(param: ["key": "phoneNumber" , "value" : email])
+           GoToSecurityScreen()
+       }
+       else{
+           errorLbl.isHidden = false
+        registerYConstraint.constant = 20
+           errorLbl.text = "You must enter your phone number or email address"
+       }
     }
     func PhoneNumberOTP(param : [String : Any]){
            HttpService.sharedInstance.postRequest(urlString: Endpoints.phoneOEmailExits, bodyData: param) { [self] (responseData) in
@@ -106,20 +124,20 @@ class LoginTVC: UITableViewController {
            button.frame = CGRect(x: 0, y: 0, width: 16, height: 16)
            let barButton = UIBarButtonItem(customView: button)
            self.navigationItem.leftBarButtonItem = barButton
-      //  navigationItem.backBarButtonItem?.isEnabled = false
+           // navigationItem.backBarButtonItem?.isEnabled = false
        }
        
        @objc func closeView(){
-        print("hhhhhhh")
+       // print("hhhhhhh")
            //self.dismiss(animated: true, completion: nil)
         self.navigationController?.popViewController(animated: true)
        }
 
     // MARK: - Table view data source
-//    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        // #warning Incomplete implementation, return the number of rows
-//        return 0
-//    }
+    //    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    //        // #warning Incomplete implementation, return the number of rows
+    //        return 0
+    //    }
 
     /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -130,9 +148,7 @@ class LoginTVC: UITableViewController {
         return cell
     }
     */
-
- 
-
+    
     override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
            // changing
                  let header:UITableViewHeaderFooterView = view as! UITableViewHeaderFooterView
@@ -143,9 +159,8 @@ class LoginTVC: UITableViewController {
                  // header.textLabel?.textAlignment = NSTextAlignment.left
                  // end
          // if section == 0 {
-              header.textLabel?.text = "Login to partner account"
+              header.textLabel?.text = "Login to your partner account"
         //  }else {
-                
         //  }
       }
     override func tableView(_ tableView: UITableView, willDisplayFooterView view: UIView, forSection section: Int) {
@@ -153,9 +168,7 @@ class LoginTVC: UITableViewController {
         footer.textLabel?.textColor = UIColor(named: "secondaryColor")
         footer.textLabel?.font = UIFont.systemFont(ofSize: 13)
         footer.textLabel?.text = "Enter your address line 1"
-        
     }
-
 }
 extension LoginTVC {
     func setupUIAndGestures() {
@@ -166,18 +179,17 @@ extension LoginTVC {
          // EmailorPhone.clearButtonMode = .always
          // EmailorPhone.clearButtonMode = .whileEditing
           register.isUserInteractionEnabled = true
-          //let tap = UITapGestureRecognizer(target: self, action: #selector(taped))
-//          pathnerImage.addGestureRecognizer(tap)
-//          topView.addGestureRecognizer(tap)
+         // let tap = UITapGestureRecognizer(target: self, action: #selector(taped))
+         // pathnerImage.addGestureRecognizer(tap)
+         // topView.addGestureRecognizer(tap)
           let registerationPage = UITapGestureRecognizer(target: self, action: #selector(openRegisterPage))
           register.addGestureRecognizer(registerationPage)
       }
     @objc func openRegisterPage(){
-        print("something wrong")
+        print("Something went wrong")
           let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
           let newViewController = storyBoard.instantiateViewController(withIdentifier: "Register1TVC") as! Register1TVC
           navigationController?.pushViewController(newViewController, animated: false)
-          
       }
 }
 

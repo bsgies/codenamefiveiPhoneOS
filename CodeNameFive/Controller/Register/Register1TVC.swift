@@ -29,23 +29,20 @@ class Register1TVC: UITableViewController , UITextFieldDelegate, UINavigationCon
     
     let customErrorView = UIView(frame: CGRect(x: 0, y: 0, width: 300, height: 30))
     let lable = UILabel(frame: CGRect(x: 0, y: 0, width: 300, height: 30))
-    
-    
-    
-    //MARK:- variables
+
+    //MARK:- Variables
     let picker = UIPickerView()
     var pickerData: [String] = [String]()
     var overlayView = UIView()
-    let button = UIButton(type: .system)
+    let button = UIButton(type: .custom)
     let vehicalObj  = HTTPVehicalType()
     let ImageUploadObj = HTTPImageUpload()
     var vehicalId :  [Int]?
     var selectedVehicalId : String?
     let headerLabel = UILabel()
-    private var successEmail : Bool = false
-    private var succesPhone : Bool = false
+    private var successEmail : Bool = true
+    private var succesPhone : Bool = true
     var callingCode : [String]?
-    
     
     //MARK:- LifeCyles
     override func viewDidLoad() {
@@ -54,8 +51,12 @@ class Register1TVC: UITableViewController , UITextFieldDelegate, UINavigationCon
         self.picker.delegate = self
         self.picker.dataSource = self
         profileImage.isHidden = true
- 
-        
+        let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(backReturn))
+        swipeRight.direction = UISwipeGestureRecognizer.Direction.right
+        self.view.addGestureRecognizer(swipeRight)
+    }
+    @objc func backReturn(){
+         navigationController?.popViewController(animated: true)
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidDisappear(true)
@@ -72,7 +73,6 @@ class Register1TVC: UITableViewController , UITextFieldDelegate, UINavigationCon
         LoadVehical()
         navigationController?.setNavigationBarHidden(false, animated: animated)
     }
-    
     
     //MARK:- Light and Dark Mode Delegate
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
@@ -93,34 +93,18 @@ class Register1TVC: UITableViewController , UITextFieldDelegate, UINavigationCon
     }
     
     override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
-        
-        if section == 0{
             let header = view as! UITableViewHeaderFooterView
-            header.textLabel?.font = UIFont(name: "HelveticaNeue-Bold", size: 20)
+            header.textLabel?.font = UIFont(name: "HelveticaNeue-Medium", size: 16)
             header.textLabel?.textColor = UIColor(named: "RegisterationLblColors")
-            header.textLabel?.text = "apply To Become A Partner"
-        }
-        if section == 1{
-            let header = view as! UITableViewHeaderFooterView
-            header.textLabel?.font = UIFont(name: "HelveticaNeue-Light", size: 16)
-            header.textLabel?.textColor = UIColor(named: "RegisterationLblColors")
-            header.textLabel?.text = "enter Your Personal Information"
-        }
+            header.textLabel?.text = "Enter your personal information"
     }
     
     @IBAction func callingCodeAction(_ sender: UIButton) {
-       
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let newViewController = storyBoard.instantiateViewController(withIdentifier: "CallingCodeViewController") as! CallingCodeViewController
         newViewController.delegate = self
         present(newViewController, animated: true, completion: nil)
-
-        
-        
-        
     }
-    
-
     
     @IBAction func textFieldVehicalType(_ sender: Any) {
         ShowVehicalTypes()
@@ -129,7 +113,7 @@ class Register1TVC: UITableViewController , UITextFieldDelegate, UINavigationCon
         showActionSheet()
     }
     @IBAction func emailValidateAction(_ sender: UITextField) {
-        guard let email = sender.text else {return}
+    //    guard let email = sender.text else {return}
 //        if email.isEmail(){
 //            DispatchQueue.main.async {
 //                HttpEmailPhoneValidation.emailPhoneValidation(key: "email", value: sender.text!) { (result, error) in
@@ -186,7 +170,6 @@ class Register1TVC: UITableViewController , UITextFieldDelegate, UINavigationCon
                     self.pickerData.append(vehicals.vehicleName)
                     print(vehicals.id)
                     print(vehicals.vehicleName)
-                    
                 }
             }
         }
@@ -213,6 +196,7 @@ extension Register1TVC{
         cell.preservesSuperviewLayoutMargins = false
         cell.separatorInset = UIEdgeInsets.zero
         cell.layoutMargins = UIEdgeInsets.zero
+        cell.separatorInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 0)
     }
 }
 extension Register1TVC: UIPickerViewDataSource,UIPickerViewDelegate{
@@ -262,7 +246,6 @@ extension Register1TVC: UIPickerViewDataSource,UIPickerViewDelegate{
     @objc func CancelVehicalTypePicker(){
         vechialType.text = nil
         self.view.endEditing(true)
-        
     }
     
 }
@@ -273,7 +256,6 @@ extension Register1TVC : UIImagePickerControllerDelegate{
         myPickerController.delegate = self
         myPickerController.sourceType = UIImagePickerController.SourceType.camera
         self.present(myPickerController, animated: true, completion: nil)
-        
     }
     
     func photoLibrary()
@@ -282,7 +264,6 @@ extension Register1TVC : UIImagePickerControllerDelegate{
         myPickerController.delegate = self
         myPickerController.sourceType = UIImagePickerController.SourceType.photoLibrary
         self.present(myPickerController, animated: true, completion: nil)
-        
     }
     func showActionSheet() {
         
@@ -299,7 +280,6 @@ extension Register1TVC : UIImagePickerControllerDelegate{
         actionSheet.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
         
         self.present(actionSheet, animated: true, completion: nil)
-        
     }
     
     func imagePickerController(_ picker: UIImagePickerController,didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
@@ -311,65 +291,56 @@ extension Register1TVC : UIImagePickerControllerDelegate{
             let imgData = NSData(data: image.jpegData(compressionQuality: 1)!)
             let imageSize: Int = imgData.count
             print("actual size of image in KB: %f ", Double(imageSize) / 1000.0)
-            changePhotoButton.setTitle("chnage Profile Photo", for: .normal)
+            changePhotoButton.setTitle("Change profile photo", for: .normal)
             profileImage.isHidden = false
             profileImage.contentMode = .scaleAspectFill
             profileImage.image = image
-            
         }
         else{
-            print("Image Size Is not 5MB")
+            print("Image is too large. Select an image under 5MB")
         }
         self.dismiss(animated: true, completion: nil)
     }
 }
 
-
 extension Register1TVC{
     func isEmptyorNot() -> Bool{
-        
         if profileImage.isHidden {
-            MyshowAlertWith(title: "Error", message: "select Yuor Profile Photo")
+            MyshowAlertWith(title: "Profile photo required", message: "You must upload a profile photo")
             return false
         }
-        
         else if firstName.text!.isEmpty
         {
-            MyshowAlertWith(title: "Error", message: "fill first Name")
+            MyshowAlertWith(title: "First name required", message: "Enter your first name")
             return false
         }
         else if lastName.text!.isEmpty
-        
-        {   MyshowAlertWith(title: "Error", message: "fill last Name")
-            
+        {   MyshowAlertWith(title: "Error", message: "Enter your last name")
             return false
         }
         else if emailAddress.text!.isEmpty
-        
         {
-            MyshowAlertWith(title: "Error", message: "fill Email Address")
+            MyshowAlertWith(title: "Error", message: "Enter a valid email address")
             return false
         }
         else if !successEmail{
-            MyshowAlertWith(title: "Error", message: "Email Already Exits")
+            MyshowAlertWith(title: "Error", message: "Email address is already in use")
             return false
-            
         }
-        
         else if passwordTextfield.text!.isEmpty{
-            MyshowAlertWith(title: "Error", message: "fill Password")
+            MyshowAlertWith(title: "Error", message: "Enter the password")
             return false
         }
         else if phoneNumber.text!.isEmpty
-        {  MyshowAlertWith(title: "Error", message: "fill Phone Number")
+        {  MyshowAlertWith(title: "Error", message: "Enter your phone number")
             return false
         }
         if !succesPhone{
-            MyshowAlertWith(title: "Error", message: "Phone Already Exits")
+            MyshowAlertWith(title: "Error", message: "Phone number is already in use")
             return false
         }
         else if vechialType.text!.isEmpty
-        {    MyshowAlertWith(title: "Error", message: "select Vehical Type")
+        {    MyshowAlertWith(title: "Error", message: "Select your vehicle type")
             return false
         }
         
@@ -378,7 +349,7 @@ extension Register1TVC{
                 return true
             }
             else {
-                MyshowAlertWith(title: "Error", message: "fill Registeration Number")
+                MyshowAlertWith(title: "Error", message: "Enter your vehicle registration number")
                 return false
             }
         }
@@ -390,15 +361,12 @@ extension Register1TVC{
 
     enum vehicals : String {
         case Bicycle = "Bicycle"
-        case Moped   = "Moped"
+        case Moped   = "Motorcycle"
         case Car   = "Car"
     }
-
-    
 }
 
-
-//Validation
+// Validation
 extension Register1TVC{
     
     @objc func Next(){
@@ -433,22 +401,18 @@ extension Register1TVC{
                                 navigationController?.pushViewController(newViewController, animated: false)
                             }
                             else{
-                                MyshowAlertWith(title: "Error", message: "invalid Phone Number")
+                                MyshowAlertWith(title: "Error", message: "Invalid phone number")
                             }
                         }
                         else{
-                            MyshowAlertWith(title: "Error", message: "password Not Strong Must atlease One Capital Letter 1 Small Letter and 1 Digit and Minimum 8 Chracters")
+                            MyshowAlertWith(title: "Error", message: "Password must be at least 8 characters long, contain a lower case letter, an upper case letter, and a number")
                         }
-                        
                     }
                 }
                 else{
-                    MyshowAlertWith(title: "Error", message: "invalid Email Address")
+                    MyshowAlertWith(title: "Error", message: "Invalid email address")
                 }
             }
         }
     }
-    
-    
-    
 }

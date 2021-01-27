@@ -15,7 +15,7 @@ class Register2TVC: UITableViewController,UITextFieldDelegate {
     var overlayView = UIView()
     let datePicker = UIDatePicker()
     var currentSelectedField : String?
-    let button = UIButton(type: .system)
+    let button = UIButton(type: .custom)
     var countryId  : Int?
     var stateId : Int?
     var cityId  :Int?
@@ -45,6 +45,12 @@ class Register2TVC: UITableViewController,UITextFieldDelegate {
         self.picker.delegate = self
         self.picker.dataSource = self
         loadCountries()
+        let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(backReturn))
+        swipeRight.direction = UISwipeGestureRecognizer.Direction.right
+        self.view.addGestureRecognizer(swipeRight)
+    }
+    @objc func backReturn(){
+         navigationController?.popViewController(animated: true)
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(true)
@@ -77,20 +83,18 @@ class Register2TVC: UITableViewController,UITextFieldDelegate {
     @IBAction func stateSelectionforPicker(_ sender: UITextField) {
         if country.text!.isEmpty{
              self.view.endEditing(true)
-            self.MyshowAlertWith(title: "Error", message: "select Country First")
-
+            self.MyshowAlertWith(title: "Error", message: "You must select the country first")
         }
         else{
             currentSelectedField = address.state.rawValue
             ShowStatePicker()
-            
         }
     }
     
     @IBAction func citySelectionforPicker(_ sender: UITextField) {
         if stateTextField.text!.isEmpty{
             self.view.endEditing(true)
-            MyshowAlertWith(title: "Error", message: "select State First")
+            MyshowAlertWith(title: "Error", message: "You must select the state first")
         }
         else{
             currentSelectedField = address.city.rawValue
@@ -158,19 +162,16 @@ class Register2TVC: UITableViewController,UITextFieldDelegate {
         }
     }
     override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
-        if section == 0{
-            let header = view as! UITableViewHeaderFooterView
-            header.textLabel?.font = UIFont(name: "HelveticaNeue-Bold", size: 20)
-            header.textLabel?.textColor = UIColor(named: "RegisterationLblColors")
-            header.textLabel?.text = "things We Need To Check"
-        }
-        if section == 1{
             let header = view as! UITableViewHeaderFooterView
             header.textLabel?.font = UIFont(name: "HelveticaNeue-Light", size: 16)
             header.textLabel?.textColor = UIColor(named: "RegisterationLblColors")
-            header.textLabel?.text = "enter Your Date Of Birth And Address To Verify Your Identity"
-        }
-        
+            header.textLabel?.text = "Enter your date of birth and address to verify your identity"
+    }
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        cell.preservesSuperviewLayoutMargins = false
+        cell.separatorInset = UIEdgeInsets.zero
+        cell.layoutMargins = UIEdgeInsets.zero
+        cell.separatorInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 0)
     }
 }
 extension Register2TVC: UIPickerViewDataSource,UIPickerViewDelegate{
@@ -189,7 +190,6 @@ extension Register2TVC: UIPickerViewDataSource,UIPickerViewDelegate{
         else{
             return cities.count
         }
-        
     }
     
     
@@ -238,22 +238,17 @@ extension Register2TVC: UIPickerViewDataSource,UIPickerViewDelegate{
         button.setImage(UIImage(named: "back"), for: UIControl.State.normal)
         button.addTarget(self, action: #selector(backButtonPressed(btn:)), for: UIControl.Event.touchUpInside)
         button.frame = CGRect(x: 0 , y: 0, width: 30, height: 30)
-        
         let barButton = UIBarButtonItem(customView: button)
-        
         self.navigationItem.leftBarButtonItem = barButton
-        
     }
     
     @objc func backButtonPressed(btn : UIButton) {
         
         self.navigationController?.popViewController(animated: true)
     }
-    
 }
 
 extension Register2TVC{
-    
     
     func ShowCountryPicker(){
         let toolbar = UIToolbar();
@@ -276,10 +271,9 @@ extension Register2TVC{
         toolbar.setItems([doneButton,spaceButton,cancelButton], animated: false)
         stateTextField.inputAccessoryView = toolbar
         stateTextField.inputView = picker
-        
     }
+    
     func ShowCityPicker(){
-        
         let toolbar = UIToolbar();
         toolbar.sizeToFit()
         let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(Done));
@@ -288,7 +282,6 @@ extension Register2TVC{
         toolbar.setItems([doneButton,spaceButton,cancelButton], animated: false)
         city.inputAccessoryView = toolbar
         city.inputView = picker
-        
     }
     
     func showDatePicker(){
@@ -320,8 +313,7 @@ extension Register2TVC{
         }
         else{
             self.view.endEditing(true)
-            MyshowAlertWith(title: "sorry Can't Registered", message: "you Are Under 18")
-            
+            MyshowAlertWith(title: "Error", message: "You must be 18 or older to register as a partner")
         }
     }
     @objc func Done(){
@@ -350,35 +342,35 @@ extension Register2TVC{
     func isEmptyOrNot() -> Bool {
         if dateOfBirth.text!.isEmpty{
 
-            MyshowAlertWith(title: "Error", message: "select Your Date of Birth")
+            MyshowAlertWith(title: "Error", message: "Select your date of birth")
             return false
         }
             
         else if addressLine1.text!.isEmpty{
-            MyshowAlertWith(title: "Error", message:  "fill Address Line 1")
+            MyshowAlertWith(title: "Error", message:  "Enter your address line 1")
            
             return false
         }
         else if country.text!.isEmpty{
-            MyshowAlertWith(title: "Error", message: "select Your Country")
+            MyshowAlertWith(title: "Error", message: "Select your country")
             
             return false
         }
             
         else if stateTextField.text!.isEmpty{
-            MyshowAlertWith(title: "Error", message: "select Your State")
+            MyshowAlertWith(title: "Error", message: "Select your state")
            
             return false
         }
             
         else if city.text!.isEmpty{
-            MyshowAlertWith(title: "Error", message: "select Your City")
+            MyshowAlertWith(title: "Error", message: "Select your city")
            
             return false
             
         }
         else if zipCode.text!.isEmpty{
-            MyshowAlertWith(title: "Error", message: "fill Zip Code")
+            MyshowAlertWith(title: "Error", message: "Enter your zip code")
            
             return false
         }
