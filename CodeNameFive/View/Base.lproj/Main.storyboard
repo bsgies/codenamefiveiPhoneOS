@@ -3456,21 +3456,21 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QdS-WH-Pvp" customClass="GMSMapView">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="520.33333333333337"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="483.33333333333331"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </view>
                             <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progressViewStyle="bar" translatesAutoresizingMaskIntoConstraints="NO" id="Fk6-fo-gE1">
-                                <rect key="frame" x="0.0" y="520.33333333333337" width="414" height="7"/>
+                                <rect key="frame" x="0.0" y="483.33333333333331" width="414" height="7"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="6" id="UNM-NP-pJM"/>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="6" id="q1W-vv-3cA"/>
                                 </constraints>
                             </progressView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KOa-aQ-uNt">
-                                <rect key="frame" x="0.0" y="526.33333333333337" width="414" height="335.66666666666663"/>
+                                <rect key="frame" x="0.0" y="489.33333333333326" width="414" height="372.66666666666674"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="X5J-Bm-8lm">
-                                        <rect key="frame" x="20" y="0.0" width="374" height="272.66666666666669"/>
+                                        <rect key="frame" x="20" y="0.0" width="374" height="309.66666666666669"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nXe-wX-ya3">
                                                 <rect key="frame" x="0.0" y="0.0" width="374" height="0.0"/>
@@ -3480,16 +3480,22 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ccs-6k-Z3D">
-                                                <rect key="frame" x="0.0" y="8" width="374" height="50"/>
+                                                <rect key="frame" x="0.0" y="8.0000000000000036" width="374" height="57.333333333333343"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hardees" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5bm-ge-rGt">
-                                                        <rect key="frame" x="50" y="0.0" width="274" height="50"/>
-                                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="16"/>
-                                                        <nil key="textColor"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5bm-ge-rGt">
+                                                        <rect key="frame" x="50" y="0.0" width="274" height="57.333333333333336"/>
+                                                        <attributedString key="attributedText">
+                                                            <fragment content="Hardees">
+                                                                <attributes>
+                                                                    <font key="NSFont" size="20" name="HelveticaNeue-Bold"/>
+                                                                    <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineHeightMultiple="1.3" tighteningFactorForTruncation="0.0"/>
+                                                                </attributes>
+                                                            </fragment>
+                                                        </attributedString>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                <color key="backgroundColor" name="UIViewCard"/>
                                                 <constraints>
                                                     <constraint firstItem="5bm-ge-rGt" firstAttribute="leading" secondItem="ccs-6k-Z3D" secondAttribute="leading" constant="50" id="9fx-xM-9Wv"/>
                                                     <constraint firstItem="5bm-ge-rGt" firstAttribute="top" secondItem="ccs-6k-Z3D" secondAttribute="top" id="MeT-w1-GIy"/>
@@ -3499,16 +3505,23 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iqS-5Y-2Wk">
-                                                <rect key="frame" x="0.0" y="65.999999999999986" width="374" height="130.66666666666663"/>
+                                                <rect key="frame" x="0.0" y="73.333333333333329" width="374" height="160.33333333333337"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="A-55 Block A, North Nazimabad Karachi" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="13" translatesAutoresizingMaskIntoConstraints="NO" id="gcQ-6h-Cnj">
-                                                        <rect key="frame" x="60" y="0.0" width="254" height="130.66666666666666"/>
-                                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
-                                                        <nil key="textColor"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="13" translatesAutoresizingMaskIntoConstraints="NO" id="gcQ-6h-Cnj">
+                                                        <rect key="frame" x="60" y="0.0" width="254" height="160.33333333333334"/>
+                                                        <attributedString key="attributedText">
+                                                            <fragment content="A-55 Block A, North Nazimabad Karachi">
+                                                                <attributes>
+                                                                    <color key="NSColor" red="0.56470588235294117" green="0.58039215686274503" blue="0.61176470588235299" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                    <font key="NSFont" size="16" name="HelveticaNeue"/>
+                                                                    <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="truncatingTail" baseWritingDirection="natural" lineHeightMultiple="1.3" tighteningFactorForTruncation="0.0"/>
+                                                                </attributes>
+                                                            </fragment>
+                                                        </attributedString>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                <color key="backgroundColor" name="UIViewCard"/>
                                                 <constraints>
                                                     <constraint firstAttribute="bottom" secondItem="gcQ-6h-Cnj" secondAttribute="bottom" id="40i-b6-VYq"/>
                                                     <constraint firstAttribute="trailing" secondItem="gcQ-6h-Cnj" secondAttribute="trailing" constant="60" id="GaA-kS-zC6"/>
@@ -3518,14 +3531,14 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JlH-oy-Uvk">
-                                                <rect key="frame" x="0.0" y="204.66666666666663" width="374" height="30"/>
+                                                <rect key="frame" x="0.0" y="241.66666666666669" width="374" height="30"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y1X-AN-HG8">
-                                                        <rect key="frame" x="143" y="0.0" width="88" height="30"/>
+                                                        <rect key="frame" x="138" y="0.0" width="98" height="30"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rs. 33.87" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pGf-n6-LJg">
-                                                                <rect key="frame" x="10" y="0.0" width="68" height="30"/>
-                                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                                                                <rect key="frame" x="10" y="0.0" width="78" height="30"/>
+                                                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="18"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
@@ -3554,10 +3567,10 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PFN-pX-f6c">
-                                                <rect key="frame" x="0.0" y="242.66666666666663" width="374" height="30"/>
+                                                <rect key="frame" x="0.0" y="279.66666666666669" width="374" height="30"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NBg-ay-Q6v">
-                                                        <rect key="frame" x="163.66666666666666" y="5.6666666666666288" width="46.666666666666657" height="19"/>
+                                                        <rect key="frame" x="165.66666666666666" y="5.6666666666666288" width="43" height="19"/>
                                                         <subviews>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="xTimes" translatesAutoresizingMaskIntoConstraints="NO" id="INM-o7-nF6">
                                                                 <rect key="frame" x="0.0" y="0.0" width="16" height="19"/>
@@ -3566,12 +3579,12 @@
                                                                 </constraints>
                                                             </imageView>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1.3x" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xQS-mh-3Yq">
-                                                                <rect key="frame" x="16" y="0.0" width="30.666666666666671" height="19"/>
+                                                                <rect key="frame" x="16" y="0.0" width="27" height="19"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="19" id="SOI-6z-gcO"/>
                                                                 </constraints>
-                                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
-                                                                <nil key="textColor"/>
+                                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                                                                <color key="textColor" name="secondary color"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                         </subviews>
@@ -3588,7 +3601,7 @@
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JYU-dK-oja">
-                                        <rect key="frame" x="20" y="284.66666666666663" width="374" height="50"/>
+                                        <rect key="frame" x="20" y="321.66666666666669" width="374" height="50"/>
                                         <color key="backgroundColor" name="primaryButton"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="Iaq-pc-hef"/>
