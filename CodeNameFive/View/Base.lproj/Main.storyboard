@@ -24,6 +24,33 @@
         </array>
     </customFonts>
     <scenes>
+        <!--PickupVC-->
+        <scene sceneID="KKK-ZA-ktM">
+            <objects>
+                <viewController id="udN-iD-dSv" customClass="PickupVC" customModule="CNF" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Ro8-Pj-s4q">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="K3H-4g-Q4P" customClass="GMSMapView">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="pmt-11-Vss"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="K3H-4g-Q4P" firstAttribute="leading" secondItem="pmt-11-Vss" secondAttribute="leading" id="Fdw-ZJ-zgt"/>
+                            <constraint firstItem="K3H-4g-Q4P" firstAttribute="top" secondItem="pmt-11-Vss" secondAttribute="top" id="Inf-Tb-0of"/>
+                            <constraint firstItem="pmt-11-Vss" firstAttribute="trailing" secondItem="K3H-4g-Q4P" secondAttribute="trailing" id="RPp-Z2-X32"/>
+                            <constraint firstItem="pmt-11-Vss" firstAttribute="bottom" secondItem="K3H-4g-Q4P" secondAttribute="bottom" id="l8O-fG-Yat"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dF1-Wb-btD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-961" y="76"/>
+        </scene>
         <!--Login-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -3515,7 +3542,7 @@
                                                             <fragment content="A-55 Block A, North Nazimabad Karachi">
                                                                 <attributes>
                                                                     <color key="NSColor" red="0.56470588235294117" green="0.58039215686274503" blue="0.61176470588235299" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                    <font key="NSFont" size="16" name="HelveticaNeue"/>
+                                                                    <font key="NSFont" size="16" name="HelveticaNeue-Medium"/>
                                                                     <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="truncatingTail" baseWritingDirection="natural" lineHeightMultiple="1.3" tighteningFactorForTruncation="0.0"/>
                                                                 </attributes>
                                                             </fragment>
@@ -3536,22 +3563,22 @@
                                                 <rect key="frame" x="0.0" y="348.66666666666669" width="374" height="30"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y1X-AN-HG8">
-                                                        <rect key="frame" x="123.66666666666666" y="0.0" width="126.66666666666666" height="30"/>
+                                                        <rect key="frame" x="138" y="0.0" width="98" height="30"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rs. 33.87" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pGf-n6-LJg">
-                                                                <rect key="frame" x="20" y="0.0" width="86.666666666666671" height="30"/>
-                                                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
+                                                                <rect key="frame" x="10" y="10" width="78" height="10"/>
+                                                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="18"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                         </subviews>
-                                                        <color key="backgroundColor" name="primary button border"/>
+                                                        <color key="backgroundColor" name="primaryButton"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="bottom" secondItem="pGf-n6-LJg" secondAttribute="bottom" id="52Q-WA-DS9"/>
-                                                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="pGf-n6-LJg" secondAttribute="trailing" constant="20" id="BH3-s1-YCx"/>
+                                                            <constraint firstAttribute="bottom" secondItem="pGf-n6-LJg" secondAttribute="bottom" constant="10" id="52Q-WA-DS9"/>
+                                                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="pGf-n6-LJg" secondAttribute="trailing" constant="10" id="BH3-s1-YCx"/>
                                                             <constraint firstItem="pGf-n6-LJg" firstAttribute="centerX" secondItem="y1X-AN-HG8" secondAttribute="centerX" id="Wed-Pm-zbk"/>
-                                                            <constraint firstItem="pGf-n6-LJg" firstAttribute="leading" secondItem="y1X-AN-HG8" secondAttribute="leading" constant="20" id="azs-er-sZ3"/>
-                                                            <constraint firstItem="pGf-n6-LJg" firstAttribute="top" secondItem="y1X-AN-HG8" secondAttribute="top" id="nYq-fF-8Td"/>
+                                                            <constraint firstItem="pGf-n6-LJg" firstAttribute="leading" secondItem="y1X-AN-HG8" secondAttribute="leading" constant="10" id="azs-er-sZ3"/>
+                                                            <constraint firstItem="pGf-n6-LJg" firstAttribute="top" secondItem="y1X-AN-HG8" secondAttribute="top" constant="10" id="nYq-fF-8Td"/>
                                                         </constraints>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -3572,7 +3599,7 @@
                                                 <rect key="frame" x="0.0" y="388.66666666666669" width="374" height="30"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NBg-ay-Q6v">
-                                                        <rect key="frame" x="165.66666666666666" y="5.6666666666666288" width="43" height="19"/>
+                                                        <rect key="frame" x="164.66666666666666" y="5.6666666666666288" width="44.666666666666657" height="19"/>
                                                         <subviews>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="xTimes" translatesAutoresizingMaskIntoConstraints="NO" id="INM-o7-nF6">
                                                                 <rect key="frame" x="0.0" y="0.0" width="16" height="19"/>
@@ -3581,11 +3608,11 @@
                                                                 </constraints>
                                                             </imageView>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1.3x" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xQS-mh-3Yq">
-                                                                <rect key="frame" x="16" y="0.0" width="27" height="19"/>
+                                                                <rect key="frame" x="16" y="0.0" width="28.666666666666671" height="19"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="19" id="SOI-6z-gcO"/>
                                                                 </constraints>
-                                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
                                                                 <color key="textColor" name="secondary color"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
