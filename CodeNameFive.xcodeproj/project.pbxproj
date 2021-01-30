@@ -38,6 +38,7 @@
 		4F43BC1C24A3DF4A006CF40F /* mapSettingTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F43BC1B24A3DF4A006CF40F /* mapSettingTVC.swift */; };
 		4F43BC2024A3ED22006CF40F /* TripHistoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F43BC1F24A3ED22006CF40F /* TripHistoryVC.swift */; };
 		4F43BC2224A3EE40006CF40F /* WeeklyTripsDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F43BC2124A3EE40006CF40F /* WeeklyTripsDataViewController.swift */; };
+		4F4B7C7A25C4903000F31A1F /* SlideInTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4B7C7925C4903000F31A1F /* SlideInTransition.swift */; };
 		4F58477D24BB2F9300B42CB8 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F58477C24BB2F9300B42CB8 /* CloudKit.framework */; };
 		4F5AE8BC24A7D49A00567D05 /* EditEmailTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5AE8BB24A7D49A00567D05 /* EditEmailTVC.swift */; };
 		4F5C99FC24BA6D5500DC4A27 /* Register1TVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5C99FB24BA6D5500DC4A27 /* Register1TVC.swift */; };
@@ -211,6 +212,7 @@
 		4F43BC1B24A3DF4A006CF40F /* mapSettingTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mapSettingTVC.swift; sourceTree = "<group>"; };
 		4F43BC1F24A3ED22006CF40F /* TripHistoryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripHistoryVC.swift; sourceTree = "<group>"; };
 		4F43BC2124A3EE40006CF40F /* WeeklyTripsDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyTripsDataViewController.swift; sourceTree = "<group>"; };
+		4F4B7C7925C4903000F31A1F /* SlideInTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideInTransition.swift; sourceTree = "<group>"; };
 		4F58477B24BB2F8100B42CB8 /* CNF.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CNF.entitlements; sourceTree = "<group>"; };
 		4F58477C24BB2F9300B42CB8 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		4F58477E24BB415500B42CB8 /* Helvetica86HeavyItalic_22450.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Helvetica86HeavyItalic_22450.ttf; sourceTree = "<group>"; };
@@ -649,6 +651,7 @@
 		4FB11F12249FED9F00EC629B /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				4F4B7C7925C4903000F31A1F /* SlideInTransition.swift */,
 				4F92BDB524B290FC00DEDDF3 /* ChatVC.swift */,
 				4FB11F13249FEDB000EC629B /* Constant.swift */,
 			);
@@ -743,13 +746,6 @@
 			path = tripDayDataCell;
 			sourceTree = "<group>";
 		};
-		9232B7CE25C3801D00F3D497 /* Cell */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Cell;
-			sourceTree = "<group>";
-		};
 		925DB3E325A7B53200FCD3DE /* Trip history */ = {
 			isa = PBXGroup;
 			children = (
@@ -790,7 +786,6 @@
 		929B34FC25C3684C004809AB /* Pickup */ = {
 			isa = PBXGroup;
 			children = (
-				9232B7CE25C3801D00F3D497 /* Cell */,
 				929B350025C36A67004809AB /* CardViewController.xib */,
 				9232B7CF25C380C200F3D497 /* PickupVC.swift */,
 				9232B7D725C3816F00F3D497 /* CardViewController.swift */,
@@ -1197,6 +1192,7 @@
 				9042659825B75ED600D2B885 /* SecurityTVC.swift in Sources */,
 				4FE12A1A24E54F78006F55E1 /* MMSlidingButton.swift in Sources */,
 				4FF1F72424AFBB2D0035A9A5 /* HelpOrCancelCell.swift in Sources */,
+				4F4B7C7A25C4903000F31A1F /* SlideInTransition.swift in Sources */,
 				4FB978F724A4DB3A0093C10F /* EarningsTVC.swift in Sources */,
 				9041B3732573F38300C4DA3A /* MainMenuViewController.swift in Sources */,
 				4F785A4C2500E06E002D192D /* ScreenBottombutton.swift in Sources */,
@@ -1403,7 +1399,7 @@
 				CODE_SIGN_ENTITLEMENTS = CodeNameFive/CNF.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 27S98BE552;
+				DEVELOPMENT_TEAM = HGQ936794K;
 				INFOPLIST_FILE = CodeNameFive/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1426,7 +1422,7 @@
 				CODE_SIGN_ENTITLEMENTS = CodeNameFive/CNF.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 27S98BE552;
+				DEVELOPMENT_TEAM = HGQ936794K;
 				INFOPLIST_FILE = CodeNameFive/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (

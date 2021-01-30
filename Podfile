@@ -10,7 +10,6 @@ target 'CodeNameFive' do
    pod 'GoogleMapDirectionLib'
    pod 'ZendeskSupportSDK'
    pod 'MTSlideToOpen'
-   pod 'SideMenu'
    pod 'ZendeskChatSDK'
    pod 'ZendeskChatProvidersSDK'
    pod 'FSCalendar'

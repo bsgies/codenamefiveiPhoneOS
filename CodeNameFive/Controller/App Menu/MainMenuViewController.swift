@@ -7,10 +7,9 @@
 //
 
 import UIKit
-import SideMenu
 import ChatSDK
 import ChatProvidersSDK
-class MainMenuViewController: UIViewController {
+class MainMenuViewController: UIViewController, UIGestureRecognizerDelegate {
 
     @IBOutlet weak var profileBackView: UIView!
     @IBOutlet weak var profileImage : UIImageView!
@@ -39,6 +38,18 @@ class MainMenuViewController: UIViewController {
         tableView.separatorStyle = .none
         navigationController?.navigationBar.isHidden = true
         viewsAction()
+        let swipe = UISwipeGestureRecognizer(target: self, action: #selector(dissmissVC))
+        swipe.delegate = self
+        swipe.direction = .left
+        self.view.addGestureRecognizer(swipe)
+        
+        let tap = UISwipeGestureRecognizer(target: self, action: #selector(dissmissVC))
+        self.view.addGestureRecognizer(tap)
+        
+    }
+    
+    @objc func dissmissVC() {
+        self.dismiss(animated: true, completion: nil)
     }
     
     //MARK: - Actions
@@ -52,8 +63,7 @@ class MainMenuViewController: UIViewController {
     func viewsAction() {
         profileBackView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(ViewProfile)))
     }
-    @objc
-    func ViewProfile() {
+    @objc func ViewProfile() {
         let profile : ProfileTVC = storyboard?.instantiateViewController(withIdentifier: "Profile") as! ProfileTVC
         presentOnRoot(viewController: profile)
     }
