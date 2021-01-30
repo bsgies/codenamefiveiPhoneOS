@@ -11,6 +11,7 @@ import CoreData
 import GoogleMaps
 import IQKeyboardManagerSwift
 
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     let navCon = UINavigationController()
@@ -24,6 +25,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         IQKeyboardManager.shared.shouldResignOnTouchOutside = true
         
        //worked  UILabel.appearance().font = UIFont.preferredFont(forTextStyle: UIFont.TextStyle.title1)
+        
+        UINavigationBar.appearance().backIndicatorImage = #imageLiteral(resourceName: "back")
+        UINavigationBar.appearance().backIndicatorTransitionMaskImage = #imageLiteral(resourceName: "back")
+        UINavigationBar.appearance().tintColor = #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1)
+        let BarButtonItemAppearance = UIBarButtonItem.appearance()
+        BarButtonItemAppearance.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.clear], for: .normal)
         GMSServices.provideAPIKey("AIzaSyBXfR7Zu7mvhxO4aydatsUY-VUH-_NG15g")
          if UserDefaults.standard.bool(forKey: "isUserLogIn") == true {
     

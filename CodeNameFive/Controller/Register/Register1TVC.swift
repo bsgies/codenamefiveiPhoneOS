@@ -47,17 +47,12 @@ class Register1TVC: UITableViewController , UITextFieldDelegate, UINavigationCon
     //MARK:- LifeCyles
     override func viewDidLoad() {
         super.viewDidLoad()
-        setBackButton()
         self.picker.delegate = self
         self.picker.dataSource = self
         profileImage.isHidden = true
-        let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(backReturn))
-        swipeRight.direction = UISwipeGestureRecognizer.Direction.right
-        self.view.addGestureRecognizer(swipeRight)
+
     }
-    @objc func backReturn(){
-         navigationController?.popViewController(animated: true)
-    }
+
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidDisappear(true)
         ScreenBottombutton.goToNextScreen(button: button, view: self.view)
@@ -113,49 +108,12 @@ class Register1TVC: UITableViewController , UITextFieldDelegate, UINavigationCon
         showActionSheet()
     }
     @IBAction func emailValidateAction(_ sender: UITextField) {
-    //    guard let email = sender.text else {return}
-//        if email.isEmail(){
-//            DispatchQueue.main.async {
-//                HttpEmailPhoneValidation.emailPhoneValidation(key: "email", value: sender.text!) { (result, error) in
-//                    if let result = result{
-//                        if result.success{
-//                            self.successEmail  = true
-//                        }
-//                        else{
-//                            DispatchQueue.main.async {
-//                                self.MyshowAlertWith(title: "error", message: "email Address Alrady Exit")
-//                                self.successEmail = false
-//                            }
-//                            
-//                            
-//                        }
-//                    }
-//                }
-//            }
-//        }else{
-//            self.MyshowAlertWith(title: "error", message: "Please Check Email format")
-//        }
+
     }
     
     
     @IBAction func phoneValidationAction(_ sender: UITextField) {
-//        guard let phoneNumber = sender.text else {return}
-//        let number = (callingCodeButtonOutlet.titleLabel?.text!)! + phoneNumber
-//        print(number)
-//        HttpEmailPhoneValidation.emailPhoneValidation(key: "phoneNumber", value: number) { (result, error) in
-//            if let result = result{
-//                if result.success{
-//                    self.succesPhone  = true
-//                }
-//                else{
-//                    DispatchQueue.main.async {
-//                        self.MyshowAlertWith(title: "error", message: "phone Number Alrady Exit")
-//                        self.succesPhone = false
-//                    }
-//                }
-//
-//            }
-//        }
+
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -176,22 +134,7 @@ class Register1TVC: UITableViewController , UITextFieldDelegate, UINavigationCon
     }
 }
 
-extension Register1TVC{
-    func setBackButton(){
-        navigationController?.navigationBar.backItem?.titleView?.tintColor = UIColor(hex: "#12D2B3")
-        let button: UIButton = UIButton (type: UIButton.ButtonType.custom)
-        button.setImage(UIImage(named: "back"), for: UIControl.State.normal)
-        button.addTarget(self, action: #selector(backButtonPressed(btn:)), for: UIControl.Event.touchUpInside)
-        button.frame = CGRect(x: 0 , y: 0, width: 30, height: 30)
-        button.contentEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 20)
-        let barButton = UIBarButtonItem(customView: button)
-        self.navigationItem.leftBarButtonItem = barButton
-    }
-    
-    @objc func backButtonPressed(btn : UIButton) {
-        self.navigationController?.popViewController(animated: true)
-    }
-    
+extension Register1TVC{    
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         cell.preservesSuperviewLayoutMargins = false
         cell.separatorInset = UIEdgeInsets.zero

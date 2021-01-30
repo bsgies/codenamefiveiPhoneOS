@@ -21,3 +21,6 @@ let phone_number = KeychainWrapper.standard.string(forKey: "phone_number")
 let status = KeychainWrapper.standard.string(forKey: "status")
 
 
+var emailOrPhoneString : String?
+var checkEmailOrPhone = "email"
+

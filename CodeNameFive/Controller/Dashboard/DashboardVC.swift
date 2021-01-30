@@ -9,14 +9,12 @@
 import UIKit
 import GoogleMaps
 import CoreLocation
-import CoreHaptics
 import MaterialComponents.MaterialActivityIndicator
 
 class DashboardVC: UIViewController ,  CLLocationManagerDelegate, GMSMapViewDelegate, UIGestureRecognizerDelegate {
     
     //MARK:- outlets
     var mainMenuController = MainMenuViewController()
-    @IBOutlet weak var menuBackground: UIView!
     @IBOutlet weak var recenterView: UIView!
     @IBOutlet weak var hamburgerImage: UIImageView!
     @IBOutlet weak var recenter: UIImageView!
@@ -52,37 +50,11 @@ class DashboardVC: UIViewController ,  CLLocationManagerDelegate, GMSMapViewDele
         super.viewDidLoad()
         currentEarning.contentEdgeInsets = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 15)
         googleMapView.delegate = self
-        if !checkOnlineOrOffline{
-            Autrize()
-           // recenter.isHidden = true
-            goOnlineOfflineButton.backgroundColor = #colorLiteral(red: 0, green: 0.8465872407, blue: 0.7545004487, alpha: 1)
-            goOnlineOfflineButton.setTitle("Go online", for: .normal)
-            findingTripsLbl.font = UIFont.boldSystemFont(ofSize: 20.0)
-            timetoConectedLbl.isHidden = true
-            findingTripsLbl.isHidden = true
-            checkOnlineOrOffline = true
-        }
-        else{
-            gotorider =  Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(runTimedCode), userInfo: nil, repeats: false)
-        }
+        CheckOfflineOrOnline()
         LocationManger()
         Autrize()
         SetupMap()
-        hamburgerImage.isUserInteractionEnabled = true
-        hamburger.isUserInteractionEnabled = true
-//        let tap = UITapGestureRecognizer(target: self, action: #selector(menuopen(gesture:)))
-        let tap = UITapGestureRecognizer(target: self, action: #selector(menuOpen))
-        tap.delegate = self
-        hamburger.addGestureRecognizer(tap)
-       // setupSideMenu()
-    
-        let swipe = UISwipeGestureRecognizer(target: self, action: #selector(dissmissVC))
-        self.view.addGestureRecognizer(swipe)
         
-    }
-    
-    @objc func dissmissVC() {
-        self.dismiss(animated: true, completion: nil)
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -101,25 +73,46 @@ class DashboardVC: UIViewController ,  CLLocationManagerDelegate, GMSMapViewDele
         
     }
     
-    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
-        return true
+    
+    //MARK:- Functions & Selectors
+    
+    func CheckOfflineOrOnline() {
+        if !checkOnlineOrOffline{
+            Autrize()
+           // recenter.isHidden = true
+            goOnlineOfflineButton.backgroundColor = #colorLiteral(red: 0, green: 0.8465872407, blue: 0.7545004487, alpha: 1)
+            goOnlineOfflineButton.setTitle("Go online", for: .normal)
+            findingTripsLbl.font = UIFont.boldSystemFont(ofSize: 20.0)
+            timetoConectedLbl.isHidden = true
+            findingTripsLbl.isHidden = true
+            checkOnlineOrOffline = true
+        }
+        else{
+            gotorider =  Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(runTimedCode), userInfo: nil, repeats: false)
+        }
     }
+ 
     func setupViewAndTapGestuers() {
+        recenterView.tintColor = .white
+        if traitCollection.userInterfaceStyle == .light {
+            mapstyleSilver(googleMapView: googleMapView)
+        }
+        else {
+            mapstyleDark(googleMapView: googleMapView)
+        }
         self.googleMapView.bringSubviewToFront(self.hamburger)
         self.googleMapView.bringSubviewToFront(self.currentEarning)
         self.googleMapView.bringSubviewToFront(self.recenterView)
         self.googleMapView.bringSubviewToFront(self.recenter)
         self.googleMapView.bringSubviewToFront(self.buttonView)
-        if traitCollection.userInterfaceStyle == .light {
-            mapstyleSilver()
-            recenterView.tintColor = .white
-        }
-        else {
-            mapstyleDark()
-            recenterView.tintColor = .white
-        }
+        hamburgerImage.isUserInteractionEnabled = true
+        hamburger.isUserInteractionEnabled = true
+        let tap = UITapGestureRecognizer(target: self, action: #selector(menuOpen))
+        tap.delegate = self
+        hamburger.addGestureRecognizer(tap)
+        let swipe = UISwipeGestureRecognizer(target: self, action: #selector(dissmissVC))
+        self.view.addGestureRecognizer(swipe)
         recenterView.isHidden = true
-        
         Autrize()
         dashboardBottomView.addTopBorder(with: UIColor(named: "borderColor")!, andWidth: 1.0)
         dashboardBottomView.addBottomBorder(with: UIColor(named: "borderColor")!, andWidth: 1.0)
@@ -130,9 +123,33 @@ class DashboardVC: UIViewController ,  CLLocationManagerDelegate, GMSMapViewDele
         tapOnRecenter.delegate = self
         recenter.addGestureRecognizer(tapOnRecenter)
         recenterView.addGestureRecognizer(tapOnRecenter)
-      //  recenterView.layer.shadowColor  = UIColor(ciColor: .gray).cgColor
-      //  recenterView.layer.shadowRadius = 12
     }
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        return true
+    }
+    
+    func buttonServerResponse() {
+        
+        serverResponseActivityIndicator.sizeToFit()
+        serverResponseActivityIndicator.indicatorMode = .indeterminate
+        serverResponseActivityIndicator.cycleColors = [#colorLiteral(red: 0, green: 0.7490196078, blue: 0.662745098, alpha: 1), #colorLiteral(red: 0, green: 0.7490196078, blue: 0.662745098, alpha: 1), #colorLiteral(red: 0, green: 0.7490196078, blue: 0.662745098, alpha: 1), #colorLiteral(red: 0, green: 0.7490196078, blue: 0.662745098, alpha: 1)]
+        serverResponseActivityIndicator.radius = 10
+        serverResponseActivityIndicator.translatesAutoresizingMaskIntoConstraints = false
+        goOnlineOfflineButton.addSubview(serverResponseActivityIndicator)
+        
+        NSLayoutConstraint.activate([
+            serverResponseActivityIndicator.centerXAnchor.constraint(equalTo: goOnlineOfflineButton.centerXAnchor, constant: 0.0),
+            serverResponseActivityIndicator.centerYAnchor.constraint(equalTo: goOnlineOfflineButton.centerYAnchor, constant: 0.0)
+        ])
+        serverResponseActivityIndicator.startAnimating()
+        
+    }
+    
+    func ServerResponseReceived() {
+        //tapped(caseRun: 1)
+        serverResponseActivityIndicator.stopAnimating()
+    }
+    
     @objc func recenterTheMap(gesture: UITapGestureRecognizer){
          guard let lat = self.googleMapView.myLocation?.coordinate.latitude,
                let lng = self.googleMapView.myLocation?.coordinate.longitude else { return }
@@ -140,111 +157,14 @@ class DashboardVC: UIViewController ,  CLLocationManagerDelegate, GMSMapViewDele
          self.googleMapView.animate(to: camera)
          recenterView.isHidden = true
     }
-
-    
-    
-    //MARK:- Light and Dark Mode Delegate
-    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
-        super.traitCollectionDidChange(previousTraitCollection)
-        
-        if #available(iOS 13.0, *) {
-            if self.traitCollection.hasDifferentColorAppearance(comparedTo: previousTraitCollection) {
-                if traitCollection.userInterfaceStyle == .light {
-                    
-                    mapstyleSilver()
-                    recenterView.tintColor = .white
-                
-                }
-                else {
-                    mapstyleDark()
-                    recenterView.tintColor = .black
-                }
-            }
-        } else {
-            // Fallback on earlier versions
-        }
-    }
-    
- 
     @objc func comefrombackground() {
         Autrize()
     }
-    //GMSx_QTMButton
-    @available(iOS 13.0, *)
-    func Haptic()  {
-        var engine: CHHapticEngine?
-        guard CHHapticEngine.capabilitiesForHardware().supportsHaptics else { return }
-        
-        do {
-            engine = try CHHapticEngine()
-            try engine?.start()
-        } catch {
-            print("There was an error creating the engine: \(error.localizedDescription)")
-        }
-        // create a dull, strong haptic
-        let sharpness = CHHapticEventParameter(parameterID: .hapticSharpness, value: 0)
-        let intensity = CHHapticEventParameter(parameterID: .hapticIntensity, value: 1)
-        
-        // create a curve that fades from 1 to 0 over one second
-        let start = CHHapticParameterCurve.ControlPoint(relativeTime: 0, value: 1)
-        let end = CHHapticParameterCurve.ControlPoint(relativeTime: 1, value: 0)
-        
-        // use that curve to control the haptic strength
-        let parameter = CHHapticParameterCurve(parameterID: .hapticIntensityControl, controlPoints: [start, end], relativeTime: 0)
-        
-        // create a continuous haptic event starting immediately and lasting one second
-        let event = CHHapticEvent(eventType: .hapticContinuous, parameters: [sharpness, intensity], relativeTime: 0, duration: 1)
-        
-        // now attempt to play the haptic, with our fading parameter
-        do {
-            let pattern = try CHHapticPattern(events: [event], parameterCurves: [parameter])
-            
-            let player = try engine?.makePlayer(with: pattern)
-            try player?.start(atTime: 0)
-        } catch {
-            // add your own meaningful error handling here!
-            print(error.localizedDescription)
-        }
-        
-        
+    @objc func dissmissVC() {
+        self.dismiss(animated: true, completion: nil)
     }
-    
 }
 extension DashboardVC{
-    
-    
-    func tapped(caseRun : Int) {
-        switch caseRun {
-        case 1:
-            let generator = UINotificationFeedbackGenerator()
-            generator.notificationOccurred(.error)
-            
-        case 2:
-            let generator = UINotificationFeedbackGenerator()
-            generator.notificationOccurred(.success)
-            
-        case 3:
-            let generator = UINotificationFeedbackGenerator()
-            generator.notificationOccurred(.warning)
-            
-        case 4:
-            let generator = UIImpactFeedbackGenerator(style: .light)
-            generator.impactOccurred()
-            
-        case 5:
-            let generator = UIImpactFeedbackGenerator(style: .medium)
-            generator.impactOccurred()
-            
-        case 6:
-            let generator = UIImpactFeedbackGenerator(style: .heavy)
-            generator.impactOccurred()
-            
-        default:
-            let generator = UISelectionFeedbackGenerator()
-            generator.selectionChanged()
-            i = 0
-        }
-    }
     
     func setBarAnimation() {
         UIView.animate(withDuration: 1, animations: {
@@ -259,7 +179,6 @@ extension DashboardVC{
         
     }
     
-    
     //MARK:- Buttons Actions
     
     @IBAction func OnlineOfflineButton(_ sender: UIButton) {
@@ -267,17 +186,14 @@ extension DashboardVC{
         goOnlineOfflineButton.isEnabled = false
         goOnlineOfflineButton.backgroundColor = UIColor(named: "mapDisabledButton")
         goOnlineOfflineButton.layer.borderColor =  #colorLiteral(red: 0.7725490196, green: 0.7921568627, blue: 0.7960784314, alpha: 1)
-       // goOnlineOfflineButton.backgroundColor = #colorLiteral(red: 0, green: 0.8465872407, blue: 0.7545004487, alpha: 1)
         if checkOnlineOrOffline{
             if onlineButtonCheckAuthrizationForLocation() {
-                tapped(caseRun: 4)
+                //tapped(caseRun: 4)
                 goOnlineOfflineButton.showLoading()
                 buttonServerResponse()
                 
                 DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
-                    
-//                    self.goOnlineOfflineButton.isEnabled = true
-                    
+
                     self.goOnlineOfflineButton.hideLoading()
                     self.ServerResponseReceived()
                     self.findingRoutesLoadingBarView.isHidden = false
@@ -303,7 +219,7 @@ extension DashboardVC{
             }
             else{
                 
-                goToSettingAlert()
+                self.goToSettingAlert()
             }
             
         }
@@ -334,33 +250,9 @@ extension DashboardVC{
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyBoard.instantiateViewController(withIdentifier: "earningsTableController") as! EarningsTableViewController
         self.presentOnRoot(viewController: vc)
-      
-        
+            
     }
-    
-    //MARK:- Server Response Loading
-    
-    func buttonServerResponse() {
-        
-        serverResponseActivityIndicator.sizeToFit()
-        serverResponseActivityIndicator.indicatorMode = .indeterminate
-        serverResponseActivityIndicator.cycleColors = [#colorLiteral(red: 0, green: 0.7490196078, blue: 0.662745098, alpha: 1), #colorLiteral(red: 0, green: 0.7490196078, blue: 0.662745098, alpha: 1), #colorLiteral(red: 0, green: 0.7490196078, blue: 0.662745098, alpha: 1), #colorLiteral(red: 0, green: 0.7490196078, blue: 0.662745098, alpha: 1)]
-        serverResponseActivityIndicator.radius = 10
-        serverResponseActivityIndicator.translatesAutoresizingMaskIntoConstraints = false
-        goOnlineOfflineButton.addSubview(serverResponseActivityIndicator)
-        
-        NSLayoutConstraint.activate([
-            serverResponseActivityIndicator.centerXAnchor.constraint(equalTo: goOnlineOfflineButton.centerXAnchor, constant: 0.0),
-            serverResponseActivityIndicator.centerYAnchor.constraint(equalTo: goOnlineOfflineButton.centerYAnchor, constant: 0.0)
-        ])
-        serverResponseActivityIndicator.startAnimating()
-        
-    }
-    
-    func ServerResponseReceived() {
-        tapped(caseRun: 1)
-        serverResponseActivityIndicator.stopAnimating()
-    }
+
     
     
     
@@ -372,31 +264,14 @@ extension DashboardVC{
         self.present(navigationController, animated: true, completion: nil)
         
     }
-    @objc func menuopen(gesture: UITapGestureRecognizer){
-        
-        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let newViewController = storyBoard.instantiateViewController(withIdentifier: "Checking")
-        navigationController?.pushViewController(newViewController, animated: true)
-    }
     // new way to open new controller
     @objc func menuOpen () {
-        
-        guard let menuViewController = storyboard?.instantiateViewController(withIdentifier: "MenuViewController") as? MainMenuViewController else { return }
+        let storyboard = UIStoryboard(name: "AppMenu", bundle: nil)
+        guard let menuViewController = storyboard.instantiateViewController(withIdentifier: "MenuViewController") as? MainMenuViewController else { return }
         menuViewController.modalPresentationStyle = .overCurrentContext
         menuViewController.transitioningDelegate = self
         present(menuViewController, animated: true)
-//        menuBackground.isHidden = false
-//
-//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//        if let theController = storyboard.instantiateViewController(withIdentifier: "MenuHere") as? SideMenuNavigationController {
-//
-//            SideMenuPresentationStyle.menuSlideIn.backgroundColor = UIColor.clear
-//            theController.presentationStyle = .menuSlideIn
-//            theController.presentationStyle.backgroundColor = UIColor.clear
-//
-//            present(theController, animated: true, completion: nil)
-//
-//        }
+
     }
     
     @objc func runTimedCode()  {
@@ -428,26 +303,8 @@ extension DashboardVC{
     
     //MARK:- Alert Controller
     
-    func goToSettingAlert() {
-        
-        let alertController = UIAlertController(title: "location are disabled", message: "please enable Location Services in your Settings", preferredStyle: .alert)
-        
-        
-        let okAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default) {
-            UIAlertAction in
-            UIApplication.shared.open(URL(string:UIApplication.openSettingsURLString)!)
-        }
-        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel) {
-            UIAlertAction in
-            NSLog("Cancel Pressed")
-        }
-        
-        alertController.addAction(okAction)
-        alertController.addAction(cancelAction)
-        
-        self.present(alertController, animated: true, completion: nil)
-    }
 }
+
 
 // MARK: - Extension LocationManager
 extension DashboardVC {
@@ -509,6 +366,27 @@ extension DashboardVC {
         @unknown default:
             fatalError()
         }
+        //MARK:- Light and Dark Mode Delegate
+        func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+            super.traitCollectionDidChange(previousTraitCollection)
+            
+            if #available(iOS 13.0, *) {
+                if self.traitCollection.hasDifferentColorAppearance(comparedTo: previousTraitCollection) {
+                    if traitCollection.userInterfaceStyle == .light {
+                        
+                        mapstyleSilver(googleMapView: googleMapView)
+                        recenterView.tintColor = .white
+                    
+                    }
+                    else {
+                        mapstyleDark(googleMapView: googleMapView)
+                        recenterView.tintColor = .black
+                    }
+                }
+            } else {
+                // Fallback on earlier versions
+            }
+        }
     }
     
     
@@ -569,62 +447,6 @@ extension DashboardVC {
     
 }
 
-// MARK: - Extension Map Styling
-extension DashboardVC {
-    func mapstyle() {
-        do {
-            
-            if let styleURL = Bundle.main.url(forResource: "style", withExtension: "json") {
-                googleMapView.mapStyle = try GMSMapStyle(contentsOfFileURL: styleURL)
-                
-            } else {
-                NSLog("Unable to find style.json")
-            }
-        } catch {
-            NSLog("One or more of the map styles failed to load. \(error)")
-        }
-    }
-    
-    func mapstyleDark() {
-        do {
-            
-            if let styleURL = Bundle.main.url(forResource: "darkstyle", withExtension: "json") {
-                googleMapView.mapStyle = try GMSMapStyle(contentsOfFileURL: styleURL)
-                
-            } else {
-                NSLog("Unable to find style.json")
-            }
-        } catch {
-            NSLog("One or more of the map styles failed to load. \(error)")
-        }
-    }
-    func mapstyleSilver() {
-        do {
-            
-            if let styleURL = Bundle.main.url(forResource: "Sliver", withExtension: "json") {
-                googleMapView.mapStyle = try GMSMapStyle(contentsOfFileURL: styleURL)
-                
-            } else {
-                NSLog("Unable to find style.json")
-            }
-        } catch {
-            NSLog("One or more of the map styles failed to load. \(error)")
-        }
-    }
-    func mapstyleDarkMode() {
-        do {
-            
-            if let styleURL = Bundle.main.url(forResource: "DarkModeMap", withExtension: "json") {
-                googleMapView.mapStyle = try GMSMapStyle(contentsOfFileURL: styleURL)
-                
-            } else {
-                NSLog("Unable to find style.json")
-            }
-        } catch {
-            NSLog("One or more of the map styles failed to load. \(error)")
-        }
-    }
-}
 //MARK:- Durring Server Response Hide Tittel of Button Extension
 var originalButtonText: String?
 extension UIButton{

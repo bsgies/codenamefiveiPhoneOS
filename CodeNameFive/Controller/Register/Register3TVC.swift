@@ -38,7 +38,6 @@ class Register3TVC: UITableViewController {
     let alert = UIAlertController(title: nil, message: "Please wait...", preferredStyle: .alert)
     override func viewDidLoad() {
         super.viewDidLoad()
-        setBackButton()
         frontOfIdImageView.isHidden = true
         backIdPhotoImageView.isHidden = true
         addressOfProofImageView.isHidden = true
@@ -49,14 +48,8 @@ class Register3TVC: UITableViewController {
             // Fallback on earlier versions
         }
        checkBoxOutlet.setImage(image, for: .normal)
-        let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(backReturn))
-        swipeRight.direction = UISwipeGestureRecognizer.Direction.right
-        self.view.addGestureRecognizer(swipeRight)
     }
-    @objc func backReturn(){
-         navigationController?.popViewController(animated: true)
-    }
-    
+
     @IBAction func checkBoxAction(_ sender: UIButton) {
           
            if unchecked {
@@ -138,24 +131,7 @@ class Register3TVC: UITableViewController {
     }
     
 }
-extension Register3TVC{
-    func setBackButton(){
-        navigationController?.navigationBar.backItem?.titleView?.tintColor = UIColor(hex: "#12D2B3")
-        let button: UIButton = UIButton (type: UIButton.ButtonType.custom)
-        button.setImage(UIImage(named: "back"), for: UIControl.State.normal)
-        button.addTarget(self, action: #selector(backButtonPressed(btn:)), for: UIControl.Event.touchUpInside)
-        button.frame = CGRect(x: 0 , y: 0, width: 30, height: 30)
-        
-        let barButton = UIBarButtonItem(customView: button)
-        
-        self.navigationItem.leftBarButtonItem = barButton
-        
-    }
-    
-    @objc func backButtonPressed(btn : UIButton) {
-        self.navigationController?.popViewController(animated: true)
-    }
-}
+
 extension Register3TVC : UIDocumentMenuDelegate,UIDocumentPickerDelegate,UINavigationControllerDelegate{
     
     

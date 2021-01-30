@@ -247,6 +247,9 @@ extension UIViewController{
         ac.addAction(UIAlertAction(title: "OK", style: .default))
         present(ac, animated: true)
     }
+    func popViewController() {
+        navigationController?.popViewController(animated: true)
+    }
 }
 extension UITableViewController{
     func loadindIndicatorInTable(){
@@ -324,15 +327,27 @@ extension UIButton {
             }
         }
 }
-
-extension UINavigationController {
-    func setBackButton(){
-        self.navigationBar.backItem?.titleView?.tintColor = UIColor(hex: "#12D2B3")
-        let button: UIButton = UIButton (type: UIButton.ButtonType.custom)
-        button.setImage(UIImage(named: "back"), for: UIControl.State.normal)
-        // button.addTarget(self, action: #selector(backButtonPressed(btn:)), for: UIControl.Event.touchUpInside)
-        button.frame = CGRect(x: 0 , y: 0, width: 30, height: 30)
-        let barButton = UIBarButtonItem(customView: button)
-        self.navigationItem.leftBarButtonItem = barButton
+class QFNavigationController:UINavigationController, UIGestureRecognizerDelegate, UINavigationControllerDelegate{
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        interactivePopGestureRecognizer?.delegate = self
+        delegate = self
     }
+
+    override func pushViewController(_ viewController: UIViewController, animated: Bool) {
+        super.pushViewController(viewController, animated: animated)
+        interactivePopGestureRecognizer?.isEnabled = false
+    }
+
+    func navigationController(_ navigationController: UINavigationController, didShow viewController: UIViewController, animated: Bool) {
+        interactivePopGestureRecognizer?.isEnabled = true
+    }
+
+    // IMPORTANT: without this if you attempt swipe on
+    // first view controller you may be unable to push the next one
+    func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+        return viewControllers.count > 1
+    }
+
 }
+

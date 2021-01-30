@@ -59,18 +59,8 @@ class MainMenuTableViewController: UITableViewController {
   
       override  func viewDidLoad() {
         super.viewDidLoad()
-        //
-//        UIFont.familyNames.forEach({ familyName in
-//            let fontNames = UIFont.fontNames(forFamilyName: familyName)
-//            print(familyName, fontNames)
-//        })
-        //
-       // fontStyle()
         self.tableView.tableFooterView = UIView()
-        setBackButton()
-        let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(BackviewController))
-        swipeRight.direction = UISwipeGestureRecognizer.Direction.right
-        self.view.addGestureRecognizer(swipeRight)
+       
         
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -82,9 +72,6 @@ class MainMenuTableViewController: UITableViewController {
            else {
                historyIcon.tintColor = #colorLiteral(red: 0.05882352963, green: 0.180392161, blue: 0.2470588237, alpha: 1)
            }
-    }
-    @objc func BackviewController(gesture: UIGestureRecognizer) {
-        self.navigationController?.popViewController(animated: true)
     }
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
@@ -145,26 +132,6 @@ extension MainMenuTableViewController{
     
     override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return 10
-    }
-    
-    // Navigation back button
-    func setBackButton(){
-        navigationController?.navigationBar.backItem?.titleView?.tintColor = UIColor(hex: "#12D2B3")
-        
-        let button: UIButton = UIButton (type: UIButton.ButtonType.custom)
-        button.setImage(UIImage(named: "back"), for: UIControl.State.normal)
-        button.addTarget(self, action: #selector(backButtonPressed(btn:)), for: UIControl.Event.touchUpInside)
-        button.frame = CGRect(x: 0 , y: 0, width: 30, height: 30)
-        
-        let barButton = UIBarButtonItem(customView: button)
-        
-        self.navigationItem.leftBarButtonItem = barButton
-        
-    }
-    
-    @objc func backButtonPressed(btn : UIButton) {
-        
-        self.navigationController?.popViewController(animated: true)
     }
     
     func presentOnRoot(viewController : UIViewController){

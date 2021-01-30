@@ -23,23 +23,8 @@ class EditProfileTVC: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setBackButton()
-        let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(BackviewController(gesture:)))
-        swipeRight.direction = UISwipeGestureRecognizer.Direction.right
-        self.view.addGestureRecognizer(swipeRight)
-        
     }
-    @objc func BackviewController(gesture: UIGestureRecognizer) {
-        self.navigationController?.popViewController(animated: true)
-    }
-    func setBackButton(){
-        let button: UIButton = UIButton (type: UIButton.ButtonType.custom)
-        button.setImage(UIImage(named: "back"), for: UIControl.State.normal)
-        button.addTarget(self, action: #selector(backButtonPressed(btn:)), for: UIControl.Event.touchUpInside)
-        button.frame = CGRect(x: 0 , y: 0, width: 30, height: 30)
-        let barButton = UIBarButtonItem(customView: button)
-        self.navigationItem.leftBarButtonItem = barButton
-    }
+ 
 }
 
 extension EditProfileTVC{

@@ -23,12 +23,7 @@ class WeeklyTripsDataViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.navigationItem.title =   navigationBartitle
-        setBackButton()
-        let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(MainMenuTableViewController.BackviewController(gesture:)))
-        swipeRight.direction = UISwipeGestureRecognizer.Direction.right
-        self.view.addGestureRecognizer(swipeRight)
+        self.navigationItem.title =  navigationBartitle
         registersNibs()
         
     }
@@ -39,26 +34,6 @@ class WeeklyTripsDataViewController: UIViewController {
         downTableView.register(UINib(nibName: "TripData", bundle: nil), forCellReuseIdentifier: "TripData")
 
     }
-    
-    @objc func BackviewController(gesture: UIGestureRecognizer) {
-        self.navigationController?.popViewController(animated: true)
-    }
-    
-    func setBackButton(){
-        let button: UIButton = UIButton (type: UIButton.ButtonType.custom)
-        button.setImage(UIImage(named: "back"), for: UIControl.State.normal)
-        button.addTarget(self, action: #selector(backButtonPressed(btn:)), for: UIControl.Event.touchUpInside)
-        button.frame = CGRect(x: 0 , y: 0, width: 30, height: 30)
-        
-        let barButton = UIBarButtonItem(customView: button)
-        
-        self.navigationItem.leftBarButtonItem = barButton
-    }
-    @objc func backButtonPressed(btn : UIButton) {
-        
-        self.navigationController?.popViewController(animated: true)
-    }
-    
 }
 extension WeeklyTripsDataViewController : UITableViewDataSource,UITableViewDelegate {
     func numberOfSections(in tableView: UITableView) -> Int {

@@ -1,10 +1,4 @@
-//
-//  SecurityTVC.swift
-//  CodeNameFive
-//
-//  Created by Rukhsar on 19/01/2021.
-//  Copyright © 2021 ITRID TECHNOLOGIES LTD. All rights reserved.
-//
+
 //  SecurityTVC.swift
 //  CodeNameFive
 //
@@ -25,8 +19,6 @@ class SecurityTVC: UITableViewController, UITextFieldDelegate {
     //MARK:- Variables
     private var myTextField : UITextField?
     let bottomBtn = UIButton(type: .custom)
-    var checkEmailOrPassword : String = "email"
-    var emailOrPhone : String?
     var barButton: UIBarButtonItem!
     //MARK:- Lifecycle
     override func viewDidAppear(_ animated: Bool) {
@@ -37,6 +29,45 @@ class SecurityTVC: UITableViewController, UITextFieldDelegate {
         bottomBtn.addTarget(self, action: #selector(heldDown), for: .touchDown)
         bottomBtn.addTarget(self, action: #selector(buttonHeldAndReleased), for: .touchDragExit)
     }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        guard let window = UIApplication.shared.windows.filter({$0.isKeyWindow}).first else { return }
+        window.viewWithTag(200)?.removeFromSuperview()
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        configureUI()
+        setupTapGestures()
+        CheckEmailOrPhone()
+
+    }
+    //MARK:- Helper function
+    @objc func bottomBtnTapped() {
+        guard let password = passwordTextField?.text else { return }
+        guard let email = emailOrPhoneString else { return }
+        if !password.isEmpty{
+            if checkEmailOrPhone == "email"{
+                LoginApiWithEmail(parm: ["email": email , "password": password], type: .email)
+                
+            }
+            else {
+                LoginApiWithEmail(parm: ["phone": email , "otp": password], type: .phone)
+            }
+        }
+        else {
+            errorLbl.isHidden = false
+            forgetYConstraint.constant = 20
+            if checkEmailOrPhone == conditionalLogin.email.rawValue {
+                errorLbl.text = "Enter your password"
+            }
+            else if checkEmailOrPhone == conditionalLogin.phone.rawValue {
+                errorLbl.text = "Enter your security code"
+            }
+        }
+    }
+    
     // Target functions
     @objc func heldDown()
     {
@@ -51,76 +82,12 @@ class SecurityTVC: UITableViewController, UITextFieldDelegate {
     @objc func buttonHeldAndReleased(){
         bottomBtn.backgroundColor = UIColor(named: "primaryButton")
     }
-
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        guard let window = UIApplication.shared.windows.filter({$0.isKeyWindow}).first else { return }
-        window.viewWithTag(200)?.removeFromSuperview()
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        configureUI()
-        setupTapGestures()
-        CheckEmailOrPhone()
-        navigationController?.setBackButton()
-        // self.title = "Login"
-       
-        let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(backReturn))
-               swipeRight.direction = UISwipeGestureRecognizer.Direction.right
-               self.view.addGestureRecognizer(swipeRight)
-         
-        // barButton = UIBarButtonItem(title: "<", style: .plain, target: self, action: #selector(actionBack))
-        // self.navigationItem.leftBarButtonItem = barButton
-        // barButton.isEnabled = false
-        setCrossButton()
-    }
-    @objc func backReturn(){
-         navigationController?.popViewController(animated: true)
-    }
-    
- func setCrossButton(){
-        let button = UIButton(type: .custom)
-            button.setImage(UIImage(named: "back"), for: .normal)
-            button.addTarget(self, action: #selector(closeView), for: .touchUpInside)
-            button.frame = CGRect(x: 0, y: 0, width: 16, height: 16)
-            button.contentEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 20)
-        let barButton = UIBarButtonItem(customView: button)
-            navigationItem.leftBarButtonItem = barButton
-        }
-           
-       @objc func closeView(){
-        navigationController?.popViewController(animated: true)
-       }
-    //MARK:- Helper function
-    @objc func bottomBtnTapped() {
-        guard let password = passwordTextField?.text else { return }
-        guard let email = emailOrPhone else { return }
-        if !password.isEmpty{
-            if checkEmailOrPassword == "email"{
-                LoginApiWithEmail(parm: ["email": email , "password": password], type: .email)
-            }
-            else {
-                LoginApiWithEmail(parm: ["phone": email , "otp": password], type: .phone)
-            }
-        }
-        else {
-            errorLbl.isHidden = false
-            forgetYConstraint.constant = 20
-            if checkEmailOrPassword == conditionalLogin.email.rawValue {
-                errorLbl.text = "Enter your password"
-            }
-            else if checkEmailOrPassword == conditionalLogin.phone.rawValue {
-                errorLbl.text = "Enter your security code"
-            }
-        }
-    }
     
     @objc func forgetCode(){
-        if checkEmailOrPassword == conditionalLogin.email.rawValue {
+        if checkEmailOrPhone == conditionalLogin.email.rawValue {
             showForgetPasswordAlert()
         }
-        else if checkEmailOrPassword == conditionalLogin.phone.rawValue {
+        else if checkEmailOrPhone == conditionalLogin.phone.rawValue {
             // HIT API FOR RESEND TEXT CODE
         }
     }
@@ -130,11 +97,11 @@ class SecurityTVC: UITableViewController, UITextFieldDelegate {
     }
     
     func configureUI(){
-        if checkEmailOrPassword == conditionalLogin.email.rawValue {
+        if checkEmailOrPhone == conditionalLogin.email.rawValue {
             forget.text = "Forget password?"
             self.navigationController!.navigationBar.topItem!.title = "Login with email"
         }
-        else if checkEmailOrPassword == conditionalLogin.phone.rawValue {
+        else if checkEmailOrPhone == conditionalLogin.phone.rawValue {
             forget.text = "Code not recieved?"
             self.navigationController!.navigationBar.topItem!.title = "Login with phone"
         }
@@ -146,7 +113,7 @@ class SecurityTVC: UITableViewController, UITextFieldDelegate {
     }
     
     func CheckEmailOrPhone(){
-        if checkEmailOrPassword == "email"{
+        if checkEmailOrPhone == "email"{
             passwordTextField!.keyboardType = UIKeyboardType.default
             //topLbl.text = "Enter your password"
             //disLbl.isHidden = true
@@ -262,7 +229,7 @@ class SecurityTVC: UITableViewController, UITextFieldDelegate {
             KeychainWrapper.standard.set(result.status!, forKey: "status")
             saveInDefault(value: true, key: "isUserLogIn")
             bottomBtn.loadingIndicator(false, title: "Login")
-            self.GoToDashboard()
+            self.pushToController(from: .main, identifier: .DashboardVC)
         }
         else {
           bottomBtn.loadingIndicator(false, title: "Login")
@@ -275,7 +242,7 @@ class SecurityTVC: UITableViewController, UITextFieldDelegate {
 //MARK:- TableView delegate
 extension SecurityTVC {
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        if checkEmailOrPassword == conditionalLogin.email.rawValue {
+        if checkEmailOrPhone == conditionalLogin.email.rawValue {
         return "Enter your password"
         }
         else {
@@ -299,3 +266,4 @@ extension SecurityTVC {
       //  }
     }
 }
+

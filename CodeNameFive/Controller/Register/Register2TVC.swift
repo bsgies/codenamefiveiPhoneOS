@@ -40,18 +40,13 @@ class Register2TVC: UITableViewController,UITextFieldDelegate {
     //MARK:- LifeCyles
     override func viewDidLoad() {
         super.viewDidLoad()
-        setBackButton()
         print(Registration.phoneNumber as Any)
         self.picker.delegate = self
         self.picker.dataSource = self
         loadCountries()
-        let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(backReturn))
-        swipeRight.direction = UISwipeGestureRecognizer.Direction.right
-        self.view.addGestureRecognizer(swipeRight)
+    
     }
-    @objc func backReturn(){
-         navigationController?.popViewController(animated: true)
-    }
+ 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(true)
         guard let window = UIApplication.shared.windows.filter({$0.isKeyWindow}).first else { return }
@@ -230,21 +225,6 @@ extension Register2TVC: UIPickerViewDataSource,UIPickerViewDelegate{
         else{
             city.text = cities[row]
         }
-    }
-    func setBackButton(){
-        navigationController?.navigationBar.backItem?.titleView?.tintColor = UIColor(hex: "#12D2B3")
-        
-        let button: UIButton = UIButton (type: UIButton.ButtonType.custom)
-        button.setImage(UIImage(named: "back"), for: UIControl.State.normal)
-        button.addTarget(self, action: #selector(backButtonPressed(btn:)), for: UIControl.Event.touchUpInside)
-        button.frame = CGRect(x: 0 , y: 0, width: 30, height: 30)
-        let barButton = UIBarButtonItem(customView: button)
-        self.navigationItem.leftBarButtonItem = barButton
-    }
-    
-    @objc func backButtonPressed(btn : UIButton) {
-        
-        self.navigationController?.popViewController(animated: true)
     }
 }
 

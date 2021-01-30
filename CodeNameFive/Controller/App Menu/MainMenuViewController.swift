@@ -10,7 +10,7 @@ import UIKit
 import ChatSDK
 import ChatProvidersSDK
 class MainMenuViewController: UIViewController, UIGestureRecognizerDelegate {
-
+    
     @IBOutlet weak var profileBackView: UIView!
     @IBOutlet weak var profileImage : UIImageView!
     @IBOutlet weak var fullName : UILabel!{
@@ -24,9 +24,9 @@ class MainMenuViewController: UIViewController, UIGestureRecognizerDelegate {
             // pId.font = UIFont(name: "AvenirNext-DemiBold", size: 20.0)
         }
     }
-
+    
     var timer = Timer()
-
+    
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -67,13 +67,13 @@ class MainMenuViewController: UIViewController, UIGestureRecognizerDelegate {
         let profile : ProfileTVC = storyboard?.instantiateViewController(withIdentifier: "Profile") as! ProfileTVC
         presentOnRoot(viewController: profile)
     }
- 
+    
     @IBOutlet weak var lastOrder : UISwitch!{
         didSet{
             lastOrder.isOn = UserDefaults.standard.bool(forKey: "lastOrder")
         }
     }
-
+    
     @IBOutlet weak var autoAcceptswitch: UISwitch!{
         didSet{
             autoAcceptswitch.isOn = UserDefaults.standard.bool(forKey: "autoAccept")
@@ -114,7 +114,7 @@ extension MainMenuViewController : UITableViewDelegate , UITableViewDataSource{
         return 10
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-       
+        
         if (indexPath.row == 0) {
             return 50
         }else if (indexPath.row == 1) {
@@ -139,7 +139,7 @@ extension MainMenuViewController : UITableViewDelegate , UITableViewDataSource{
             // setup here
             cell.backgroundColor = UIColor(named: "sideMenu")
             cell.lastOrderView.backgroundColor = UIColor(named: "sideMenu")
-             font(labelName: cell.labelCell)
+            font(labelName: cell.labelCell)
             cell.imageCell.image = UIImage(named: "comment")
             cell.labelCell.text = "Last Order"
             return cell
@@ -172,7 +172,7 @@ extension MainMenuViewController : UITableViewDelegate , UITableViewDataSource{
             // setup here
             cell.backgroundColor = UIColor(named: "sideMenu")
             cell.labelCell.text = "Inbox"
-           font(labelName: cell.labelCell)
+            font(labelName: cell.labelCell)
             return cell
         }else if indexPath.row == 6 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell6") as! MainMenuTableViewCell
@@ -184,34 +184,29 @@ extension MainMenuViewController : UITableViewDelegate , UITableViewDataSource{
             return cell
         }else if indexPath.row == 7 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell7") as! MainMenuTableViewCell
-            // setup here
             cell.backgroundColor = UIColor(named: "sideMenu")
             cell.autoAcceptView.backgroundColor = UIColor(named: "sideMenu")
             cell.labelCell.text = "Auto accept"
-             font(labelName: cell.labelCell)
+            font(labelName: cell.labelCell)
             cell.viewCell.isHidden = true
             return cell
         }else if indexPath.row == 8 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell8") as! MainMenuTableViewCell
-            // setup here
+
             cell.backgroundColor = UIColor(named: "sideMenu")
             cell.labelCell.text = "Help center"
-             font(labelName: cell.labelCell)
-           // cell.switchCell.isHidden = true
+            font(labelName: cell.labelCell)
             return cell
         }
         else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell9") as! MainMenuTableViewCell
-            // setup here
             cell.backgroundColor = UIColor(named: "sideMenu")
             font(labelName: cell.labelCell)
             cell.labelCell.text = "Sign out"
             cell.labelCell.textColor = UIColor.red
-           // cell.switchCell.isHidden = true
             cell.viewCell.isHidden = true
             cell.viewCell.isHidden = true
-            //cell.imageCell.isHidden = true
-           // cell.widthConstraint.constant = 0
+
             return cell
         }
         
@@ -222,50 +217,48 @@ extension MainMenuViewController : UITableViewDelegate , UITableViewDataSource{
         let currentSection = indexPath.section
         if currentSection == 0 {
             if indexPath.row == 0 {
-
+                
                 let editliveSupport = (storyboard?.instantiateViewController(withIdentifier: "ParnterSupport"))!
-                       //openController(viewIs: editemail)
-                     // present(editliveSupport, animated: true, completion: nil)
                 self.presentOnRoot(viewController: editliveSupport)
-
+                
             }else if indexPath.row == 2 {
                 
-               let trip : TripHistoryVC = self.storyboard?.instantiateViewController(withIdentifier: "TripHistoryVC") as! TripHistoryVC
+                let trip : TripHistoryVC = self.storyboard?.instantiateViewController(withIdentifier: "TripHistoryVC") as! TripHistoryVC
                 self.presentOnRoot(viewController: trip)
                 
             }else if indexPath.row == 3 {
                 
-               let earning : EarningsTableViewController = self.storyboard?.instantiateViewController(withIdentifier: "earningsTableController") as! EarningsTableViewController
-                      self.presentOnRoot(viewController: earning)
+                let earning : EarningsTableViewController = self.storyboard?.instantiateViewController(withIdentifier: "earningsTableController") as! EarningsTableViewController
+                self.presentOnRoot(viewController: earning)
                 
             }else if indexPath.row == 4 {
                 
-              let pro : PromotionVC = self.storyboard?.instantiateViewController(withIdentifier: "PromotionVC") as! PromotionVC
-               self.presentOnRoot(viewController: pro)
+                let pro : PromotionVC = self.storyboard?.instantiateViewController(withIdentifier: "PromotionVC") as! PromotionVC
+                self.presentOnRoot(viewController: pro)
                 
             }else if indexPath.row == 5 {
                 
-             let inbox : InboxVC = self.storyboard?.instantiateViewController(withIdentifier: "InboxVC") as! InboxVC
-                    self.presentOnRoot(viewController: inbox)
+                let inbox : InboxVC = self.storyboard?.instantiateViewController(withIdentifier: "InboxVC") as! InboxVC
+                self.presentOnRoot(viewController: inbox)
             }else if indexPath.row == 6 {
-                let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-                       let vc = storyBoard.instantiateViewController(withIdentifier: "mapSettingTVC") as! mapSettingTVC
+                let storyBoard: UIStoryboard = UIStoryboard(name: "AppMenu", bundle: nil)
+                let vc = storyBoard.instantiateViewController(withIdentifier: "mapSettingTVC") as! mapSettingTVC
                 
-                       presentOnRoot(viewController: vc)
+                presentOnRoot(viewController: vc)
             }else if indexPath.row == 8 {
                 let help : HelpCenterVC = self.storyboard?.instantiateViewController(withIdentifier: "HelpCenterVC") as! HelpCenterVC
-                       self.presentOnRoot(viewController: help)
+                self.presentOnRoot(viewController: help)
             }else if indexPath.row == 9 {
-                let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-                       let vc = storyBoard.instantiateViewController(withIdentifier: "LoginTVC") as! LoginTVC
-                       navigationController?.pushViewController(vc, animated: false)
+                let storyBoard: UIStoryboard = UIStoryboard(name: "Accounts", bundle: nil)
+                let vc = storyBoard.instantiateViewController(withIdentifier: "LoginTVC") as! LoginTVC
+                navigationController?.pushViewController(vc, animated: false)
             }
         }//end current section
-   }
+    }
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         let bgColorView = UIView()
-            bgColorView.backgroundColor = UIColor(named: "highlights")
-            cell.selectedBackgroundView = bgColorView
+        bgColorView.backgroundColor = UIColor(named: "highlights")
+        cell.selectedBackgroundView = bgColorView
     }
 }
 
@@ -287,8 +280,4 @@ extension MainMenuViewController {
     func fontWithSizeAndFontStyle(labelName: UILabel,font: String, size: CGFloat ){
         labelName.font = UIFont(name: font, size: size)
     }
-}
-//MARK: - chatbot
-extension MainMenuViewController{
-    
 }

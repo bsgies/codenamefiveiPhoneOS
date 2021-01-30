@@ -12,16 +12,8 @@ class mapSettingTVC: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setBackButton()
         tableView.allowsSelection = true
         tableView.allowsMultipleSelection = false
-        let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(MainMenuTableViewController.BackviewController(gesture:)))
-        swipeRight.direction = UISwipeGestureRecognizer.Direction.right
-        self.view.addGestureRecognizer(swipeRight)
-    }
-    
-    @objc func BackviewController(gesture: UIGestureRecognizer) {
-        self.navigationController?.popViewController(animated: true)
     }
 }
 
@@ -70,22 +62,7 @@ extension mapSettingTVC{
         cell.layoutMargins = UIEdgeInsets.zero
         cell.separatorInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 0)
     }
-    
-    func setBackButton(){
-        let button: UIButton = UIButton (type: UIButton.ButtonType.custom)
-        button.setImage(UIImage(named: "close"), for: UIControl.State.normal)
-        button.addTarget(self, action: #selector(backButtonPressed(btn:)), for: UIControl.Event.touchUpInside)
-        button.frame = CGRect(x: 0 , y: 0, width: 30, height: 30)
-        button.contentEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 20)
-        let barButton = UIBarButtonItem(customView: button)
-        
-        self.navigationItem.leftBarButtonItem = barButton
-    }
-    @objc func backButtonPressed(btn : UIButton) {
-        // self.navigationController?.popViewController(animated: true)
-        dismiss(animated: true, completion: nil)
-    }
-    
+
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 0{
         tableView.cellForRow(at: indexPath as IndexPath)?.accessoryType = .checkmark
