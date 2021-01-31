@@ -35,12 +35,16 @@ class SlideInTransition: NSObject, UIViewControllerAnimatedTransitioning {
             dimmingView.frame = containerView.bounds
             // Add menu view controller to container
             containerView.addSubview(toViewController.view)
-
             // Init frame off the screen
             toViewController.view.frame = CGRect(x: -finalWidth, y: 0, width: finalWidth, height: finalHeight)
+            let tap = UITapGestureRecognizer(target: self, action: #selector(dissmissVC))
+            let swipe = UISwipeGestureRecognizer(target: self, action: #selector(dissmissVC))
+            swipe.direction = .left
+            dimmingView.addGestureRecognizer(swipe)
+            dimmingView.addGestureRecognizer(tap)
+        
         }
 
-        // Move on screen
         let transform = {
             self.dimmingView.alpha = 0.5
             toViewController.view.transform = CGAffineTransform(translationX: finalWidth, y: 0)
@@ -61,6 +65,10 @@ class SlideInTransition: NSObject, UIViewControllerAnimatedTransitioning {
         }) { (_) in
             transitionContext.completeTransition(!isCancelled)
         }
+    }
+    
+    @objc func dissmissVC() {
+        dimmingView.window?.rootViewController?.dismiss(animated: true, completion: nil)
     }
 
 }

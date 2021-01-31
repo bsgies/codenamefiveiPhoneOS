@@ -88,9 +88,7 @@ class Register3TVC: UITableViewController {
     @objc func submit(){
         RegisterUser()
         navigationController?.setNavigationBarHidden(true, animated: true)
-        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let newViewController = storyBoard.instantiateViewController(withIdentifier: "LoginVC") as! LoginVC
-        navigationController?.pushViewController(newViewController, animated: false)
+        self.pushToController(from: .account, identifier: .LoginTVC)
     }
     override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         if section == 0{
@@ -397,16 +395,10 @@ extension Register3TVC : UIImagePickerControllerDelegate{
     
     func successAlert(title: String, message: String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        
-        
         alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: { action in
-            
-            let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-            let vc = storyBoard.instantiateViewController(withIdentifier: "LoginVC") as! LoginVC
-            self.navigationController?.pushViewController(vc, animated: true)
+            self.pushToController(from: .account, identifier: .LoginTVC)
             
         }))
-        // show the alert
         self.present(alert, animated: true, completion: nil)
     }
 }

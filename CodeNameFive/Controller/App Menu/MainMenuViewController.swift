@@ -11,6 +11,8 @@ import ChatSDK
 import ChatProvidersSDK
 class MainMenuViewController: UIViewController, UIGestureRecognizerDelegate {
     
+    //MARK:- IBIBOutlets
+
     @IBOutlet weak var profileBackView: UIView!
     @IBOutlet weak var profileImage : UIImageView!
     @IBOutlet weak var fullName : UILabel!{
@@ -24,10 +26,13 @@ class MainMenuViewController: UIViewController, UIGestureRecognizerDelegate {
             // pId.font = UIFont(name: "AvenirNext-DemiBold", size: 20.0)
         }
     }
+    @IBOutlet weak var tableView: UITableView!
     
+    //MARK:- variables
     var timer = Timer()
     
-    @IBOutlet weak var tableView: UITableView!
+    //MARK:- LifeCycles
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.backgroundColor = UIColor(named: "sideMenu")
@@ -43,8 +48,9 @@ class MainMenuViewController: UIViewController, UIGestureRecognizerDelegate {
         swipe.direction = .left
         self.view.addGestureRecognizer(swipe)
         
-        let tap = UISwipeGestureRecognizer(target: self, action: #selector(dissmissVC))
-        self.view.addGestureRecognizer(tap)
+//        let tap = UITapGestureRecognizer(target: self, action: #selector(dissmissVC))
+//        self.view.addGestureRecognizer(tap)
+        
         
     }
     
@@ -53,19 +59,13 @@ class MainMenuViewController: UIViewController, UIGestureRecognizerDelegate {
     }
     
     //MARK: - Actions
-    // present Views Action
-    func presentOnRoot(viewController : UIViewController){
-        let navigationController = UINavigationController(rootViewController: viewController)
-        navigationController.modalPresentationStyle = .fullScreen
-        self.present(navigationController, animated: true, completion: nil)
-    }
+  
     //profile button
     func viewsAction() {
         profileBackView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(ViewProfile)))
     }
     @objc func ViewProfile() {
-        let profile : ProfileTVC = storyboard?.instantiateViewController(withIdentifier: "Profile") as! ProfileTVC
-        presentOnRoot(viewController: profile)
+    self.pushToRoot(from: .profile, identifier: .ProfileTVC)
     }
     
     @IBOutlet weak var lastOrder : UISwitch!{
@@ -115,9 +115,9 @@ extension MainMenuViewController : UITableViewDelegate , UITableViewDataSource{
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
-        if (indexPath.row == 0) {
+        if indexPath.row == 0 {
             return 50
-        }else if (indexPath.row == 1) {
+        }else if indexPath.row == 1 {
             return 50
         }else {
             return 50
@@ -205,55 +205,41 @@ extension MainMenuViewController : UITableViewDelegate , UITableViewDataSource{
             cell.labelCell.text = "Sign out"
             cell.labelCell.textColor = UIColor.red
             cell.viewCell.isHidden = true
-            cell.viewCell.isHidden = true
-
             return cell
         }
         
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-        let currentSection = indexPath.section
-        if currentSection == 0 {
-            if indexPath.row == 0 {
-                
-                let editliveSupport = (storyboard?.instantiateViewController(withIdentifier: "ParnterSupport"))!
-                self.presentOnRoot(viewController: editliveSupport)
-                
-            }else if indexPath.row == 2 {
-                
-                let trip : TripHistoryVC = self.storyboard?.instantiateViewController(withIdentifier: "TripHistoryVC") as! TripHistoryVC
-                self.presentOnRoot(viewController: trip)
-                
-            }else if indexPath.row == 3 {
-                
-                let earning : EarningsTableViewController = self.storyboard?.instantiateViewController(withIdentifier: "earningsTableController") as! EarningsTableViewController
-                self.presentOnRoot(viewController: earning)
-                
-            }else if indexPath.row == 4 {
-                
-                let pro : PromotionVC = self.storyboard?.instantiateViewController(withIdentifier: "PromotionVC") as! PromotionVC
-                self.presentOnRoot(viewController: pro)
-                
-            }else if indexPath.row == 5 {
-                
-                let inbox : InboxVC = self.storyboard?.instantiateViewController(withIdentifier: "InboxVC") as! InboxVC
-                self.presentOnRoot(viewController: inbox)
-            }else if indexPath.row == 6 {
-                let storyBoard: UIStoryboard = UIStoryboard(name: "AppMenu", bundle: nil)
-                let vc = storyBoard.instantiateViewController(withIdentifier: "mapSettingTVC") as! mapSettingTVC
-                
-                presentOnRoot(viewController: vc)
-            }else if indexPath.row == 8 {
-                let help : HelpCenterVC = self.storyboard?.instantiateViewController(withIdentifier: "HelpCenterVC") as! HelpCenterVC
-                self.presentOnRoot(viewController: help)
-            }else if indexPath.row == 9 {
-                let storyBoard: UIStoryboard = UIStoryboard(name: "Accounts", bundle: nil)
-                let vc = storyBoard.instantiateViewController(withIdentifier: "LoginTVC") as! LoginTVC
-                navigationController?.pushViewController(vc, animated: false)
+    
+        switch indexPath.section {
+        case 0:
+            switch indexPath.row {
+            case 0:
+                self.pushToRoot(from: .main, identifier: .ParnterSupport)
+            case 2:
+                DispatchQueue.main.async {
+                self.pushToRoot(from: .appMenu, identifier: .TripHistoryVC)
+                }
+            case 3:
+                self.pushToRoot(from: .appMenu, identifier: .EarningsTVC)
+            case 4:
+                self.pushToRoot(from: .appMenu, identifier: .PromotionVC)
+            case 5:
+                self.pushToRoot(from: .appMenu, identifier: .InboxVC)
+            case 6:
+                self.pushToRoot(from: .appMenu, identifier: .mapSettingTVC)
+            case 8:
+                self.pushToRoot(from: .appMenu, identifier: .HelpCenterVC)
+            case 9:
+                self.pushToController(from: .account, identifier: .LoginTVC)
+            default:
+                break
             }
-        }//end current section
+        default:
+            break
+        }
+        
     }
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         let bgColorView = UIView()

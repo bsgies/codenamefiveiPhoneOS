@@ -65,4 +65,13 @@ extension UIViewController{
         let vc = storyboard.instantiateViewController(withIdentifier: identifier.rawValue)
         navigationController?.pushViewController(vc,animated: true)
     }
+    func pushToRoot(from name : Storyboard, identifier: ControllerIdentifier) {
+        
+        let storyboard = UIStoryboard(name: name.rawValue, bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: identifier.rawValue)
+        let navigationController = UINavigationController(rootViewController: vc)
+        navigationController.modalPresentationStyle = .fullScreen
+        self.present(navigationController, animated: true, completion: nil)
+        
+    }
 }

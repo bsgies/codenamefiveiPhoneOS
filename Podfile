@@ -13,7 +13,6 @@ target 'CodeNameFive' do
    pod 'ZendeskChatSDK'
    pod 'ZendeskChatProvidersSDK'
    pod 'FSCalendar'
-   pod 'IQKeyboardManagerSwift'
   # Pods for CodeNameFive
 
   target 'CodeNameFiveTests'  do

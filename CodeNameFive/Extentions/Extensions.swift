@@ -250,6 +250,17 @@ extension UIViewController{
     func popViewController() {
         navigationController?.popViewController(animated: true)
     }
+    // present Views Action
+//    func presentOnRoot(viewController : UIViewController){
+//        let navigationController = UINavigationController(rootViewController: viewController)
+//        navigationController.modalPresentationStyle = .fullScreen
+//        self.present(navigationController, animated: true, completion: nil)
+//    }
+//    func presentOnRootSheet(viewController : UIViewController){
+//        let navigationController = UINavigationController(rootViewController: viewController)
+//        navigationController.modalPresentationStyle = .fullScreen
+//        self.present(navigationController, animated: true, completion: nil)
+//    }
 }
 extension UITableViewController{
     func loadindIndicatorInTable(){
@@ -350,4 +361,31 @@ class QFNavigationController:UINavigationController, UIGestureRecognizerDelegate
     }
 
 }
+extension UIFont {
 
+    public enum HelveticaNeue: String {
+        case extraboldItalic = "-ExtraboldItalic"
+        case semiboldItalic = "-SemiboldItalic"
+        case semibold = "-Semibold"
+        case regular = ""
+        case lightItalic = "Light-Italic"
+        case light = "-Light"
+        case italic = "-Italic"
+        case extraBold = "-Extrabold"
+        case boldItalic = "-BoldItalic"
+        case bold = "-Bold"
+    }
+
+    static func helveticaNeue(_ type: HelveticaNeue = .regular, size: CGFloat = UIFont.systemFontSize) -> UIFont {
+        return UIFont(name: "HelveticaNeue\(type.rawValue)", size: size)!
+    }
+
+    var isBold: Bool {
+        return fontDescriptor.symbolicTraits.contains(.traitBold)
+    }
+
+    var isItalic: Bool {
+        return fontDescriptor.symbolicTraits.contains(.traitItalic)
+    }
+
+}

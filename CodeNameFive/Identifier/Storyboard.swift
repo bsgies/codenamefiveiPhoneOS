@@ -8,16 +8,14 @@
 
 import Foundation
 import UIKit
+
 let mainBundle = Bundle.main
-
-
 enum Storyboard: String {
     case main = "Main"
     case account  = "Accounts"
     case appMenu = "AppMenu"
     case profile = "Profile"
 }
-
 // MARK: Main
 extension Storyboard {
     enum Main: String {
@@ -33,9 +31,7 @@ extension Storyboard {
         case ParnterSupport
         
     }
-    
 }
-
 
 // MARK: Account
 extension Storyboard {
@@ -47,9 +43,7 @@ extension Storyboard {
         case Register2TVC
         case Register3TVC
         case CallingCodeViewController
-
     }
-    
 }
 
 // MARK: AppMenu

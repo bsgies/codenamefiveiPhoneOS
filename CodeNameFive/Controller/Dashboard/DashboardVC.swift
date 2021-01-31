@@ -127,9 +127,7 @@ class DashboardVC: UIViewController ,  CLLocationManagerDelegate, GMSMapViewDele
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
         return true
     }
-    
     func buttonServerResponse() {
-        
         serverResponseActivityIndicator.sizeToFit()
         serverResponseActivityIndicator.indicatorMode = .indeterminate
         serverResponseActivityIndicator.cycleColors = [#colorLiteral(red: 0, green: 0.7490196078, blue: 0.662745098, alpha: 1), #colorLiteral(red: 0, green: 0.7490196078, blue: 0.662745098, alpha: 1), #colorLiteral(red: 0, green: 0.7490196078, blue: 0.662745098, alpha: 1), #colorLiteral(red: 0, green: 0.7490196078, blue: 0.662745098, alpha: 1)]
@@ -246,10 +244,8 @@ extension DashboardVC{
         
     }
     @IBAction func EarningsButton(_ sender: Any) {
-        
-        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = storyBoard.instantiateViewController(withIdentifier: "earningsTableController") as! EarningsTableViewController
-        self.presentOnRoot(viewController: vc)
+
+        self.pushToRoot(from: .appMenu, identifier: .EarningsTVC)
             
     }
 
@@ -527,6 +523,7 @@ extension DashboardVC : UIViewControllerTransitioningDelegate{
         transiton.isPresenting = true
         return transiton
     }
+
 
     func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         transiton.isPresenting = false

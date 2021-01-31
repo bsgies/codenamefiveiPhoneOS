@@ -16,7 +16,6 @@ PODS:
   - InputBarAccessoryView (4.3.2):
     - InputBarAccessoryView/Core (= 4.3.2)
   - InputBarAccessoryView/Core (4.3.2)
-  - IQKeyboardManagerSwift (6.5.6)
   - MaterialComponents/ActivityIndicator (107.4.0):
     - MaterialComponents/Palettes
     - MaterialComponents/private/Application
@@ -61,7 +60,6 @@ DEPENDENCIES:
   - FSCalendar
   - GoogleMapDirectionLib
   - GoogleMaps
-  - IQKeyboardManagerSwift
   - MaterialComponents/ActivityIndicator (~> 107.4)
   - MessageKit
   - MTSlideToOpen
@@ -77,7 +75,6 @@ SPEC REPOS:
     - GoogleMapDirectionLib
     - GoogleMaps
     - InputBarAccessoryView
-    - IQKeyboardManagerSwift
     - MaterialComponents
     - MDFInternationalization
     - MessageKit
@@ -104,7 +101,6 @@ SPEC CHECKSUMS:
   GoogleMapDirectionLib: 573468c6d3b26443c5a919abc766871bddb94b83
   GoogleMaps: 4b5346bddfe6911bb89155d43c903020170523ac
   InputBarAccessoryView: 7985d418040a05fe894bd4b8328dd43ab35517c3
-  IQKeyboardManagerSwift: c7df9d2deb356c04522f5c4b7b6e4ce4d8ed94fe
   MaterialComponents: 52e2ade4684e3017eff7f62587b37522d217ea50
   MDFInternationalization: 010097556d6b09d2c4ea38e0820ea6d37be6a314
   MessageKit: 3beb578737a5aa2bba25cc27c7b6d6faa09af5a7
@@ -124,6 +120,6 @@ SPEC CHECKSUMS:
   ZendeskSupportProvidersSDK: 209011ffad4cbd256839444571defad1b83006f2
   ZendeskSupportSDK: 95aea2ab473768d8b01fa837002415fb93f8c3e0
 
-PODFILE CHECKSUM: 1aecce5c826752b3ae0c5f432795f49228185678
+PODFILE CHECKSUM: 2f6becdc14ead322198789605b6ae496e640182f
 
 COCOAPODS: 1.10.0

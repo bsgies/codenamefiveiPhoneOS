@@ -37,6 +37,11 @@ class ProfileTVC: UITableViewController {
         setCrossButton()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.navigationBar.isTranslucent = true
+    }
+    
     func setCrossButton(){
         let button = UIButton(type: .custom)
         button.setImage(UIImage(named: "close"), for: .normal)
@@ -64,6 +69,7 @@ extension ProfileTVC{
                        cell.selectedBackgroundView = bgColorView
         
     }
+    
 
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -95,17 +101,5 @@ extension ProfileTVC{
         }
         
     }
-    
-//    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-//        if section == 0{
-//            return CGFloat.leastNormalMagnitude
-//        }
-//        else{
-//            return 30
-//        }
-//    }
-    
- 
-  
     
 }
