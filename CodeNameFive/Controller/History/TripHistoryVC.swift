@@ -56,9 +56,7 @@ extension TripHistoryVC : UITableViewDelegate,UITableViewDataSource{
         let cell = tableView.dequeueReusableCell(withIdentifier: "tripHistory", for: indexPath) as! TripHistoryCell
         cell.dateCell.text = days[indexPath.row]
         cell.earnLbl.text = earning[indexPath.row]
-       
-       let h = cell.bounds.height
-       print("ttttt\(h)")
+    
         
         let bgColorView = UIView()
         bgColorView.backgroundColor = UIColor(named: "highlights")
@@ -71,16 +69,12 @@ extension TripHistoryVC : UITableViewDelegate,UITableViewDataSource{
          let headerView: UITableViewHeaderFooterView = view as! UITableViewHeaderFooterView
          headerView.backgroundView = UIView()
          headerView.backgroundColor = .clear
-        
-        // changing
+
         let header:UITableViewHeaderFooterView = view as! UITableViewHeaderFooterView
         header.textLabel?.text = "Weekly view"
         header.textLabel?.textColor = UIColor(named: "secondaryColor")
         header.textLabel?.font = UIFont.boldSystemFont(ofSize: 16)
-        // header.textLabel?.font = UIFont.systemFont(ofSize: 14)
-        // header.textLabel?.frame = header.frame
-        // header.textLabel?.textAlignment = NSTextAlignment.left
-        // end
+
      }
      func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         return UIView()
@@ -96,8 +90,9 @@ extension TripHistoryVC : UITableViewDelegate,UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
        tableView.deselectRow(at: indexPath, animated: true)
-        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = storyBoard.instantiateViewController(withIdentifier: "WeeklyTripsDataViewController") as! WeeklyTripsDataViewController
+    
+        let storyBoard: UIStoryboard = UIStoryboard(name: "AppMenu", bundle: nil)
+        let vc = storyBoard.instantiateViewController(withIdentifier: "WeeklyTripsDataVC") as! WeeklyTripsDataViewController
         vc.navigationBartitle = days[indexPath.row]
         navigationController?.pushViewController(vc, animated: true)
     }

@@ -104,7 +104,7 @@ extension WeeklyTripsDataViewController : UITableViewDataSource,UITableViewDeleg
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 1 {
-            let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let storyBoard: UIStoryboard = UIStoryboard(name: "AppMenu", bundle: nil)
             let vc = storyBoard.instantiateViewController(withIdentifier: "TripDayDataVC") as! TripDayDataVC
             vc.navigationBarTitle =  date[indexPath.row]
             navigationController?.pushViewController(vc, animated: true)

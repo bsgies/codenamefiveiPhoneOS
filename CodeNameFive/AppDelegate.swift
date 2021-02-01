@@ -29,8 +29,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
     }
   
-   
-
     // MARK: UISceneSession Lifecycle
 
     @available(iOS 13.0, *)

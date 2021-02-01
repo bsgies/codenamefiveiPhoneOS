@@ -7,12 +7,10 @@
 //
 
 import UIKit
-import ChatSDK
-import ChatProvidersSDK
 class MainMenuViewController: UIViewController, UIGestureRecognizerDelegate {
     
     //MARK:- IBIBOutlets
-
+    var didTapMenuType: ((Storyboard, ControllerIdentifier) -> Void)?
     @IBOutlet weak var profileBackView: UIView!
     @IBOutlet weak var profileImage : UIImageView!
     @IBOutlet weak var fullName : UILabel!{
@@ -32,7 +30,6 @@ class MainMenuViewController: UIViewController, UIGestureRecognizerDelegate {
     var timer = Timer()
     
     //MARK:- LifeCycles
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.backgroundColor = UIColor(named: "sideMenu")
@@ -47,10 +44,7 @@ class MainMenuViewController: UIViewController, UIGestureRecognizerDelegate {
         swipe.delegate = self
         swipe.direction = .left
         self.view.addGestureRecognizer(swipe)
-        
-//        let tap = UITapGestureRecognizer(target: self, action: #selector(dissmissVC))
-//        self.view.addGestureRecognizer(tap)
-        
+
         
     }
     
@@ -65,8 +59,12 @@ class MainMenuViewController: UIViewController, UIGestureRecognizerDelegate {
         profileBackView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(ViewProfile)))
     }
     @objc func ViewProfile() {
-    self.pushToRoot(from: .profile, identifier: .ProfileTVC)
+        
+        self.didTapMenuType?(.profile , .ProfileTVC)
+        
     }
+        
+       
     
     @IBOutlet weak var lastOrder : UISwitch!{
         didSet{
@@ -123,6 +121,65 @@ extension MainMenuViewController : UITableViewDelegate , UITableViewDataSource{
             return 50
         }
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    
+        switch indexPath.section {
+        case 0:
+            switch indexPath.row {
+            case 0:
+                self.didTapMenuType?(.main , .ParnterSupport)
+            case 2:
+                self.didTapMenuType?(.appMenu , .TripHistoryVC)
+            case 3:
+                self.didTapMenuType?(.appMenu , .EarningsTVC)
+            case 4:
+                self.didTapMenuType?(.appMenu , .PromotionVC)
+            case 5:
+                self.didTapMenuType?(.appMenu , .InboxVC)
+            case 6:
+                self.didTapMenuType?(.appMenu , .mapSettingTVC)
+            case 8:
+                self.didTapMenuType?(.appMenu , .HelpCenterVC)
+            case 9:
+                self.didTapMenuType?(.account , .LoginTVC)
+            default:
+                break
+            }
+        default:
+            break
+        }
+        
+    }
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let bgColorView = UIView()
+        bgColorView.backgroundColor = UIColor(named: "highlights")
+        cell.selectedBackgroundView = bgColorView
+    }
+}
+
+// Font setup
+extension MainMenuViewController {
+    func fontStyle() {
+        fontWithSizeAndFontStyle(labelName: fullName, font: K.SFProTextBold, size: 18)
+        fontWithSize(labelName: pId, size: 17)
+    }
+    // where we can customise label's font with standard font style
+    func font(labelName : UILabel) {
+        labelName.font = UIFont(name:  K.SFProTextRegular, size: K.fontSize)
+    }
+    // where we can customise label's size with standard font style
+    func fontWithSize(labelName: UILabel , size: CGFloat){
+        labelName.font = UIFont(name: K.SFProTextRegular, size: size)
+    }
+    // where we can customise label's sizs as well as font style
+    func fontWithSizeAndFontStyle(labelName: UILabel,font: String, size: CGFloat ){
+        labelName.font = UIFont(name: font, size: size)
+    }
+}
+
+
+extension MainMenuViewController{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.row == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! MainMenuTableViewCell
@@ -210,60 +267,4 @@ extension MainMenuViewController : UITableViewDelegate , UITableViewDataSource{
         
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    
-        switch indexPath.section {
-        case 0:
-            switch indexPath.row {
-            case 0:
-                self.pushToRoot(from: .main, identifier: .ParnterSupport)
-            case 2:
-                DispatchQueue.main.async {
-                self.pushToRoot(from: .appMenu, identifier: .TripHistoryVC)
-                }
-            case 3:
-                self.pushToRoot(from: .appMenu, identifier: .EarningsTVC)
-            case 4:
-                self.pushToRoot(from: .appMenu, identifier: .PromotionVC)
-            case 5:
-                self.pushToRoot(from: .appMenu, identifier: .InboxVC)
-            case 6:
-                self.pushToRoot(from: .appMenu, identifier: .mapSettingTVC)
-            case 8:
-                self.pushToRoot(from: .appMenu, identifier: .HelpCenterVC)
-            case 9:
-                self.pushToController(from: .account, identifier: .LoginTVC)
-            default:
-                break
-            }
-        default:
-            break
-        }
-        
-    }
-    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        let bgColorView = UIView()
-        bgColorView.backgroundColor = UIColor(named: "highlights")
-        cell.selectedBackgroundView = bgColorView
-    }
-}
-
-// Font setup
-extension MainMenuViewController {
-    func fontStyle() {
-        fontWithSizeAndFontStyle(labelName: fullName, font: K.SFProTextBold, size: 25)
-        fontWithSize(labelName: pId, size: 17)
-    }
-    // where we can customise label's font with standard font style
-    func font(labelName : UILabel) {
-        labelName.font = UIFont(name:  K.SFProTextRegular, size: K.fontSize)
-    }
-    // where we can customise label's size with standard font style
-    func fontWithSize(labelName: UILabel , size: CGFloat){
-        labelName.font = UIFont(name: K.SFProTextRegular, size: size)
-    }
-    // where we can customise label's sizs as well as font style
-    func fontWithSizeAndFontStyle(labelName: UILabel,font: String, size: CGFloat ){
-        labelName.font = UIFont(name: font, size: size)
-    }
 }

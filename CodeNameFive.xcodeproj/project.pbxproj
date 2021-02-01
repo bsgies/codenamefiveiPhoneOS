@@ -29,7 +29,6 @@
 		4F393B2224AB4EA3009D08AB /* HelpCenterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F393B2124AB4EA3009D08AB /* HelpCenterVC.swift */; };
 		4F393B2424AB4F88009D08AB /* PromotionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F393B2324AB4F88009D08AB /* PromotionVC.swift */; };
 		4F393B2624AB717C009D08AB /* PaymentInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F393B2524AB717C009D08AB /* PaymentInfoCell.swift */; };
-		4F393B2824AB7C07009D08AB /* EarningsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F393B2724AB7C06009D08AB /* EarningsVC.swift */; };
 		4F43BC1824A3D971006CF40F /* VehicleinformationTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F43BC1724A3D971006CF40F /* VehicleinformationTVC.swift */; };
 		4F43BC1A24A3DC39006CF40F /* PaymentInformationTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F43BC1924A3DC39006CF40F /* PaymentInformationTVC.swift */; };
 		4F43BC1C24A3DF4A006CF40F /* mapSettingTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F43BC1B24A3DF4A006CF40F /* mapSettingTVC.swift */; };
@@ -206,7 +205,6 @@
 		4F393B2124AB4EA3009D08AB /* HelpCenterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpCenterVC.swift; sourceTree = "<group>"; };
 		4F393B2324AB4F88009D08AB /* PromotionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromotionVC.swift; sourceTree = "<group>"; };
 		4F393B2524AB717C009D08AB /* PaymentInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentInfoCell.swift; sourceTree = "<group>"; };
-		4F393B2724AB7C06009D08AB /* EarningsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarningsVC.swift; sourceTree = "<group>"; };
 		4F43BC1724A3D971006CF40F /* VehicleinformationTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleinformationTVC.swift; sourceTree = "<group>"; };
 		4F43BC1924A3DC39006CF40F /* PaymentInformationTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentInformationTVC.swift; sourceTree = "<group>"; };
 		4F43BC1B24A3DF4A006CF40F /* mapSettingTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mapSettingTVC.swift; sourceTree = "<group>"; };
@@ -498,7 +496,6 @@
 			isa = PBXGroup;
 			children = (
 				4F393B1F24AB48CD009D08AB /* InvoiceDetailVC.swift */,
-				4F393B2724AB7C06009D08AB /* EarningsVC.swift */,
 				4F14A5F524A8DAC80095CA9B /* PreviousPaymentVC.swift */,
 				904025E5258A687500126883 /* EarningsTableViewController.swift */,
 				9041CDA1258F68F400CE010A /* PDFViewController.swift */,
@@ -1206,7 +1203,6 @@
 				4F43BC1C24A3DF4A006CF40F /* mapSettingTVC.swift in Sources */,
 				4FB512792556D25900D0C131 /* HttpService.swift in Sources */,
 				4FDA5E4025C5C83E00097333 /* MapStyling.swift in Sources */,
-				4F393B2824AB7C07009D08AB /* EarningsVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

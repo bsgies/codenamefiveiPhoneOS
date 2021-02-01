@@ -14,7 +14,21 @@ class mapSettingTVC: UITableViewController {
         super.viewDidLoad()
         tableView.allowsSelection = true
         tableView.allowsMultipleSelection = false
+        setCrossButton()
     }
+    func setCrossButton(){
+        let button = UIButton(type: .custom)
+        button.setImage(UIImage(named: "close"), for: .normal)
+        button.addTarget(self, action: #selector(closeView), for: .touchUpInside)
+        button.frame = CGRect(x: 0, y: 0, width: 16, height: 16)
+        let barButton = UIBarButtonItem(customView: button)
+        button.contentEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 20)
+        navigationItem.leftBarButtonItem = barButton
+     }
+     
+     @objc func closeView(){
+        self.dismiss(animated: true, completion: nil)
+     }
 }
 
 extension mapSettingTVC{

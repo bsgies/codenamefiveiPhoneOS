@@ -84,8 +84,8 @@ class EarningsTableViewController: UITableViewController {
                } else
                if indexPath.row == 1 {
                   
-                let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-                let vc = storyBoard.instantiateViewController(withIdentifier: "PreviousPaymentVC") as! PreviousPaymentVC
+                let storyBoard: UIStoryboard = UIStoryboard(name: "AppMenu", bundle: nil)
+                let vc = storyBoard.instantiateViewController(withIdentifier: "PreviousPayment") as! PreviousPaymentVC
                 navigationController?.pushViewController(vc, animated: true)
                }
            }

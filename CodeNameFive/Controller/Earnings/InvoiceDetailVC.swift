@@ -46,7 +46,6 @@ extension InvoiceDetailVC : UITableViewDelegate,UITableViewDataSource{
     }
     
      func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-       // cell.selectionStyle = .none
         cell.preservesSuperviewLayoutMargins = false
         cell.separatorInset = UIEdgeInsets.zero
         cell.layoutMargins = UIEdgeInsets.zero
@@ -55,32 +54,10 @@ extension InvoiceDetailVC : UITableViewDelegate,UITableViewDataSource{
         
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row == 2 {
-            //safari browser
-//            let url = URL(string: "https://www.google.com")!
-//            let safariVC: SFSafariViewController = SFSafariViewController(url: url)
-//
-//            safariVC.modalPresentationStyle = .formSheet
-//            self.present(safariVC, animated: true, completion: nil)
-            
-            
-            
-            //customise view
-            let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-            let vc = storyBoard.instantiateViewController(withIdentifier: "pdfView") as! PDFViewController
-            present(vc, animated: true, completion: nil)
-           // navigationController?.pushViewController(vc, animated: true)
-            
-            
-//            print("share button clicked")
-//                guard let url = Bundle.main.url(forResource: "pdfFileShare", withExtension: "pdf") else {return}
-//                let controller = UIDocumentInteractionController(url: url)
-//                controller.delegate = self
-//               controller.presentPreview(animated: true)
-        
+
+            self.pushToController(from: .main, identifier: .pdfView)
+
         }
     }
-//    func documentInteractionControllerViewControllerForPreview(_ controller: UIDocumentInteractionController) -> UIViewController {
-//        return self
-//               }
-   
+
 }

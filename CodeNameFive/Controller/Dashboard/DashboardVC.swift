@@ -44,7 +44,7 @@ class DashboardVC: UIViewController ,  CLLocationManagerDelegate, GMSMapViewDele
     var isUserTouch = false
     var counter = 0
     let transiton = SlideInTransition()
-   
+    let obj = MainMenuViewController()
     //MARK:- Life Cycles
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -144,7 +144,6 @@ class DashboardVC: UIViewController ,  CLLocationManagerDelegate, GMSMapViewDele
     }
     
     func ServerResponseReceived() {
-        //tapped(caseRun: 1)
         serverResponseActivityIndicator.stopAnimating()
     }
     
@@ -161,6 +160,9 @@ class DashboardVC: UIViewController ,  CLLocationManagerDelegate, GMSMapViewDele
     @objc func dissmissVC() {
         self.dismiss(animated: true, completion: nil)
     }
+    
+    
+
 }
 extension DashboardVC{
     
@@ -260,10 +262,15 @@ extension DashboardVC{
         self.present(navigationController, animated: true, completion: nil)
         
     }
-    // new way to open new controller
+    
     @objc func menuOpen () {
         let storyboard = UIStoryboard(name: "AppMenu", bundle: nil)
         guard let menuViewController = storyboard.instantiateViewController(withIdentifier: "MenuViewController") as? MainMenuViewController else { return }
+        
+        menuViewController.didTapMenuType = {[self]  (storyboar , VC) in
+            self.dissmissVC()
+            self.pushToRoot(from: storyboar, identifier: VC)
+        }
         menuViewController.modalPresentationStyle = .overCurrentContext
         menuViewController.transitioningDelegate = self
         present(menuViewController, animated: true)

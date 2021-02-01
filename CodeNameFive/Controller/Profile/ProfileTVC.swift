@@ -49,9 +49,9 @@ class ProfileTVC: UITableViewController {
         button.frame = CGRect(x: 0, y: 0, width: 16, height: 16)
         let barButton = UIBarButtonItem(customView: button)
         self.navigationItem.leftBarButtonItem = barButton
-        
+
     }
-    
+
     @objc func closeView(){
         self.dismiss(animated: true, completion: nil)
     }
@@ -63,7 +63,6 @@ extension ProfileTVC{
         cell.preservesSuperviewLayoutMargins = false
         cell.separatorInset = UIEdgeInsets.zero
         cell.layoutMargins = UIEdgeInsets.zero
-       // cell.selectionStyle = .none
         let bgColorView = UIView()
                        bgColorView.backgroundColor = UIColor(named: "highlights")
                        cell.selectedBackgroundView = bgColorView
@@ -77,26 +76,16 @@ extension ProfileTVC{
         
         if currentSection == 0{
             if indexPath.row == 0 {
-                
-                let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-                let newViewController = storyBoard.instantiateViewController(withIdentifier: "EditProfileVC")
-                navigationController?.pushViewController(newViewController, animated: true)
+                self.pushToController(from: .profile, identifier: .EditProfileVC)
             }
-            
         }
         if currentSection == 1{
-            if indexPath.row == 0 {
-                let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-                let newViewController = storyBoard.instantiateViewController(withIdentifier: "VehicleinformationTVC")
-                navigationController?.pushViewController(newViewController, animated: true)
-            }
+            self.pushToController(from: .profile, identifier: .VehicleinformationTVC)
         }
         
         if currentSection == 2{
             if indexPath.row == 0 {
-                let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-                let newViewController = storyBoard.instantiateViewController(withIdentifier: "PaymentInformationTVC")
-                navigationController?.pushViewController(newViewController, animated: true)
+                self.pushToController(from: .profile, identifier: .PaymentInformationTVC)
             }
         }
         

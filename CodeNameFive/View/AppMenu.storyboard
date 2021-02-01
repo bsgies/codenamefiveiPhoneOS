@@ -50,12 +50,12 @@
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                     </imageView>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CNF" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y7u-cn-jK9">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CNF" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y7u-cn-jK9">
                                                         <rect key="frame" x="65" y="20" width="280" height="24"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="24" id="CiK-4Q-Auj"/>
                                                         </constraints>
-                                                        <fontDescription key="fontDescription" name="SFProDisplay-Bold" family="SF Pro Display" pointSize="17"/>
+                                                        <fontDescription key="fontDescription" name="SFProDisplay-Bold" family="SF Pro Display" pointSize="15"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
@@ -1283,7 +1283,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lta-Sg-Vgy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4726" y="-673"/>
+            <point key="canvasLocation" x="5452" y="-674"/>
         </scene>
         <!--Earnings-->
         <scene sceneID="otn-5D-lwP">
@@ -1357,7 +1357,7 @@
         <!--Previous payments-->
         <scene sceneID="Vwg-JJ-6A6">
             <objects>
-                <viewController storyboardIdentifier="PreviousPaymentVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="kd1-I6-FdA" customClass="PreviousPaymentVC" customModule="CNF" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PreviousPayment" useStoryboardIdentifierAsRestorationIdentifier="YES" id="kd1-I6-FdA" customClass="PreviousPaymentVC" customModule="CNF" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="wmQ-yp-XLj">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1436,7 +1436,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gXc-Du-quu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5633" y="-673"/>
+            <point key="canvasLocation" x="4668" y="-674"/>
         </scene>
         <!--Inbox-->
         <scene sceneID="P3R-D4-R5X">
@@ -1473,9 +1473,12 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="QSV-qW-eAV" firstAttribute="trailing" secondItem="Hb2-cM-6tQ" secondAttribute="trailingMargin" id="2XV-LY-bMF"/>
+                                                <constraint firstItem="i5y-ey-cwu" firstAttribute="top" secondItem="QSV-qW-eAV" secondAttribute="bottom" constant="5" id="Ctc-rl-fla"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="i5y-ey-cwu" secondAttribute="trailing" constant="10" id="HTc-wx-bdW"/>
                                                 <constraint firstItem="QSV-qW-eAV" firstAttribute="top" secondItem="Hb2-cM-6tQ" secondAttribute="topMargin" constant="5" id="U8t-F8-m7z"/>
                                                 <constraint firstItem="QSV-qW-eAV" firstAttribute="leading" secondItem="Hb2-cM-6tQ" secondAttribute="leadingMargin" constant="5" id="Y5f-2Q-k6T"/>
+                                                <constraint firstAttribute="trailing" secondItem="i5y-ey-cwu" secondAttribute="trailing" constant="30" id="cgT-uC-dXm"/>
+                                                <constraint firstItem="i5y-ey-cwu" firstAttribute="leading" secondItem="Hb2-cM-6tQ" secondAttribute="leading" constant="30" id="fwn-1j-YTI"/>
                                                 <constraint firstItem="i5y-ey-cwu" firstAttribute="leading" secondItem="Hb2-cM-6tQ" secondAttribute="leadingMargin" constant="10" id="iZG-lm-w7V"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="i5y-ey-cwu" secondAttribute="bottom" constant="5" id="kd4-y7-GsT"/>
                                                 <constraint firstItem="i5y-ey-cwu" firstAttribute="top" secondItem="QSV-qW-eAV" secondAttribute="bottom" constant="5" id="xlS-TK-YJJ"/>
