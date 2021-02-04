@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="T1J-IK-eqS">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="T1J-IK-eqS">
     <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -53,26 +53,6 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EX9-NE-RZa">
                                 <rect key="frame" x="0.0" y="780" width="414" height="82"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="WC7-pr-TNN">
-                                        <rect key="frame" x="119.66666666666669" y="20.666666666666625" width="175" height="40.666666666666657"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Findings trips for you..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="OSd-BX-5cu">
-                                                <rect key="frame" x="0.0" y="0.0" width="175" height="22.666666666666668"/>
-                                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="16"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Time connected: 10h 40m" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="Lyl-9M-0t4">
-                                                <rect key="frame" x="0.0" y="22.666666666666742" width="175" height="18"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="18" id="Vih-uj-6eJ"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="13"/>
-                                                <color key="textColor" name="secondaryCustom"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                        </subviews>
-                                    </stackView>
                                     <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HTb-Br-UrC">
                                         <rect key="frame" x="332" y="0.0" width="82" height="4"/>
                                         <color key="backgroundColor" red="0.070588235289999995" green="0.82352941180000006" blue="0.70196078429999997" alpha="1" colorSpace="calibratedRGB"/>
@@ -80,22 +60,19 @@
                                             <constraint firstAttribute="height" constant="4" id="zP8-ih-EAh"/>
                                         </constraints>
                                     </view>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="kGy-8m-HwF">
-                                        <rect key="frame" x="131" y="18" width="152" height="46"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="kGy-8m-HwF">
+                                        <rect key="frame" x="131" y="16" width="152" height="50"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="You're offline" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="ghT-oN-1pf">
-                                                <rect key="frame" x="0.0" y="0.0" width="152" height="28"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="ghT-oN-1pf">
+                                                <rect key="frame" x="0.0" y="0.0" width="152" height="24"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Time connected: 10h 40m" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="EzG-vi-cxb">
-                                                <rect key="frame" x="0.0" y="28" width="152" height="18"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="18" id="eiF-1m-g6y"/>
-                                                </constraints>
+                                                <rect key="frame" x="0.0" y="26" width="152" height="24"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="13"/>
-                                                <color key="textColor" name="secondaryCustom"/>
+                                                <color key="textColor" name="secondaryColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
@@ -104,8 +81,6 @@
                                 <color key="backgroundColor" name="UIViewCard"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="HTb-Br-UrC" secondAttribute="trailing" id="6vU-hn-LFW"/>
-                                    <constraint firstItem="WC7-pr-TNN" firstAttribute="centerX" secondItem="EX9-NE-RZa" secondAttribute="centerX" id="Kti-ML-I1b"/>
-                                    <constraint firstItem="WC7-pr-TNN" firstAttribute="centerY" secondItem="EX9-NE-RZa" secondAttribute="centerY" id="MhJ-DJ-XqB"/>
                                     <constraint firstItem="HTb-Br-UrC" firstAttribute="width" secondItem="EX9-NE-RZa" secondAttribute="width" constant="-332" id="T3V-ef-9XB"/>
                                     <constraint firstItem="kGy-8m-HwF" firstAttribute="centerY" secondItem="EX9-NE-RZa" secondAttribute="centerY" id="ZH9-5D-cKz"/>
                                     <constraint firstItem="kGy-8m-HwF" firstAttribute="centerX" secondItem="EX9-NE-RZa" secondAttribute="centerX" id="c1E-2U-XSP"/>
@@ -160,13 +135,13 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eCc-qK-z8h">
-                                        <rect key="frame" x="159.66666666666666" y="55" width="95" height="50"/>
+                                        <rect key="frame" x="175.66666666666666" y="55" width="63" height="50"/>
                                         <color key="backgroundColor" red="0.070588235289999995" green="0.82352941180000006" blue="0.70196078429999997" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="H5a-uw-jWB"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="20"/>
-                                        <state key="normal" title="$3.870000">
+                                        <state key="normal" title="Button">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <userDefinedRuntimeAttributes>
@@ -312,15 +287,12 @@
                         <outlet property="currentEarning" destination="eCc-qK-z8h" id="bu4-n7-06S"/>
                         <outlet property="dashboardBottomView" destination="EX9-NE-RZa" id="Ajq-ro-YTn"/>
                         <outlet property="findingRoutesLoadingBarView" destination="HTb-Br-UrC" id="Bqq-Os-N3O"/>
-                        <outlet property="findingTripsLbl" destination="OSd-BX-5cu" id="4uD-cT-qtz"/>
                         <outlet property="goOnlineOfflineButton" destination="0BL-x8-qsA" id="Ehf-8P-VbU"/>
                         <outlet property="googleMapView" destination="TSl-fa-Hbe" id="6EN-vg-YXS"/>
                         <outlet property="hamburger" destination="6g9-UM-o8V" id="RXl-Dg-9aA"/>
                         <outlet property="hamburgerImage" destination="omh-Oo-ONQ" id="gQD-Ku-8Uw"/>
                         <outlet property="recenter" destination="HaG-fH-Twf" id="ilE-TV-0gB"/>
                         <outlet property="recenterView" destination="2iQ-MZ-9xF" id="Nu8-dc-kMT"/>
-                        <outlet property="timeToConnectOfflineLbl" destination="EzG-vi-cxb" id="hx6-cU-KUw"/>
-                        <outlet property="timetoConectedLbl" destination="Lyl-9M-0t4" id="zHd-kb-dln"/>
                         <outlet property="youAreOfflineLbl" destination="ghT-oN-1pf" id="k3X-AX-2SS"/>
                     </connections>
                 </viewController>
@@ -1487,7 +1459,7 @@
         <namedColor name="secondary color">
             <color red="0.56470588235294117" green="0.58039215686274503" blue="0.61176470588235299" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <namedColor name="secondaryCustom">
+        <namedColor name="secondaryColor">
             <color red="0.50999999046325684" green="0.5220000147819519" blue="0.5220000147819519" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="opaqueSeparatorColor">

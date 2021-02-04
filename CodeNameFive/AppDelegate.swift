@@ -18,7 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var alert = UIAlertController()
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
-        UILabel.appearance().font = UIFont(name: "HelveticaNeue", size: 16)
+        // UILabel.appearance().font = UIFont(name: "HelveticaNeue", size: 16)
         UINavigationBar.appearance().backIndicatorImage = #imageLiteral(resourceName: "back")
         UINavigationBar.appearance().backIndicatorTransitionMaskImage = #imageLiteral(resourceName: "back")
         UINavigationBar.appearance().tintColor = #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1)

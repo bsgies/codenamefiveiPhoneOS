@@ -11,7 +11,7 @@ import GoogleMaps
 import CoreLocation
 import MaterialComponents.MaterialActivityIndicator
 
-class DashboardVC: UIViewController ,  CLLocationManagerDelegate, GMSMapViewDelegate, UIGestureRecognizerDelegate {
+class DashboardVC: UIViewController,  CLLocationManagerDelegate, GMSMapViewDelegate, UIGestureRecognizerDelegate {
     
     //MARK:- outlets
     var mainMenuController = MainMenuViewController()
@@ -21,15 +21,11 @@ class DashboardVC: UIViewController ,  CLLocationManagerDelegate, GMSMapViewDele
     @IBOutlet weak var googleMapView: GMSMapView!
     @IBOutlet weak var findingRoutesLoadingBarView: UIView!
     @IBOutlet weak var goOnlineOfflineButton: UIButton!
-    @IBOutlet weak var timetoConectedLbl: UILabel!
-    @IBOutlet weak var findingTripsLbl: UILabel!
     @IBOutlet weak var hamburger: UIView!
     @IBOutlet weak var dashboardBottomView: UIView!
     @IBOutlet weak var currentEarning: UIButton!
     @IBOutlet weak var buttonView: UIView!
     @IBOutlet weak var youAreOfflineLbl: UILabel!
-    @IBOutlet weak var timeToConnectOfflineLbl: UILabel!
-    
     
     //MARK:- variables
     weak var gotorider :  Timer?
@@ -54,7 +50,7 @@ class DashboardVC: UIViewController ,  CLLocationManagerDelegate, GMSMapViewDele
         LocationManger()
         Autrize()
         SetupMap()
-        
+        currentEarning.setTitle("\(currency) 300.00", for: .normal)
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -70,8 +66,7 @@ class DashboardVC: UIViewController ,  CLLocationManagerDelegate, GMSMapViewDele
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
-        currentEarning.backgroundColor = #colorLiteral(red: 0, green: 0.8465872407, blue: 0.7545004487, alpha: 1)
-        
+        currentEarning.backgroundColor = UIColor(named: "primaryColor")
     }
     
     
@@ -80,17 +75,19 @@ class DashboardVC: UIViewController ,  CLLocationManagerDelegate, GMSMapViewDele
     func CheckOfflineOrOnline() {
         if !checkOnlineOrOffline{
             Autrize()
-           // recenter.isHidden = true
-            goOnlineOfflineButton.backgroundColor = #colorLiteral(red: 0, green: 0.8465872407, blue: 0.7545004487, alpha: 1)
+            // recenter.isHidden = true
+            goOnlineOfflineButton.backgroundColor = UIColor(named: "primaryColor")
             goOnlineOfflineButton.setTitle("Go online", for: .normal)
-            findingTripsLbl.font = UIFont.boldSystemFont(ofSize: 20.0)
-            timetoConectedLbl.isHidden = true
-            findingTripsLbl.isHidden = true
             checkOnlineOrOffline = true
+            //
+            youAreOfflineLbl.text = "You're offline"
+            youAreOfflineLbl.font = UIFont(name: "HelveticaNeue-Bold", size: 18)
         }
         else{
-            //gotorider =  Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(runTimedCode), userInfo: nil, repeats: false)
-            self.pushToRoot(from: .main, identifier: .NewTripRequestVC)
+            gotorider =  Timer.scheduledTimer(timeInterval: 0.9, target: self, selector: #selector(runTimedCode), userInfo: nil, repeats: false)
+            // self.pushToRoot(from: .main, identifier: .NewTripRequestVC)
+            youAreOfflineLbl.text = "Finding trips for you..."
+            youAreOfflineLbl.font = UIFont(name: "HelveticaNeue-Bold", size: 20)
         }
     }
  
@@ -162,9 +159,6 @@ class DashboardVC: UIViewController ,  CLLocationManagerDelegate, GMSMapViewDele
     @objc func dissmissVC() {
         self.dismiss(animated: true, completion: nil)
     }
-    
-    
-
 }
 extension DashboardVC{
     
@@ -206,17 +200,10 @@ extension DashboardVC{
                     self.goOnlineOfflineButton.layer.borderColor = #colorLiteral(red: 0.7803921569, green: 0.137254902, blue: 0.1960784314, alpha: 1)
                     self.goOnlineOfflineButton.backgroundColor = #colorLiteral(red: 0.862745098, green: 0.2078431373, blue: 0.2705882353, alpha: 1)
                     self.goOnlineOfflineButton.setTitle("Go offline", for: .normal)
-                    self.timetoConectedLbl.isHidden = false
-                    self.findingTripsLbl.text = "Finding trips for you..."
-                    // new addition
-                    self.youAreOfflineLbl.isHidden = true
-                    self.timeToConnectOfflineLbl.isHidden = true
                     //end
-                    self.findingTripsLbl.font = UIFont.boldSystemFont(ofSize: 20.0)
                     self.checkOnlineOrOffline = false
-                    self.findingTripsLbl.isHidden = false
-//                    self.gotorider =  Timer.scheduledTimer(timeInterval: 10, target: self, selector: #selector(self.runTimedCode), userInfo: nil, repeats: false)
-                    self.pushToRoot(from: .main, identifier: .NewTripRequestVC)
+                    self.gotorider =  Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(self.runTimedCode), userInfo: nil, repeats: false)
+                    // self.pushToRoot(from: .main, identifier: .NewTripRequestVC)
                 }
                 
             }
@@ -236,12 +223,6 @@ extension DashboardVC{
             goOnlineOfflineButton.layer.borderColor = #colorLiteral(red: 0, green: 0.7490196078, blue: 0.662745098, alpha: 1)
             goOnlineOfflineButton.backgroundColor = #colorLiteral(red: 0, green: 0.8470588235, blue: 0.7529411765, alpha: 1)
             goOnlineOfflineButton.setTitle("Go online", for: .normal)
-            timetoConectedLbl.isHidden = true
-            findingTripsLbl.isHidden = true
-            youAreOfflineLbl.isHidden = false
-            timeToConnectOfflineLbl.isHidden = false
-            // findingTripsLbl.text = "You're offline"
-            findingTripsLbl.font = UIFont.boldSystemFont(ofSize: 18.0)
             checkOnlineOrOffline = true
             self.gotorider?.invalidate()
         }
