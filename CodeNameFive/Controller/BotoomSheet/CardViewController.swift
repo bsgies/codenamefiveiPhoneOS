@@ -27,6 +27,7 @@ class CardViewController: UIViewController {
         SetupView()
         setupNibs()
         setupGestures()
+        
     }
     //MARK:-Functions
     func setupGestures(){
@@ -34,7 +35,7 @@ class CardViewController: UIViewController {
           longPressGesture.minimumPressDuration = 0.5
           self.tableView.addGestureRecognizer(longPressGesture)
     }
-    
+ 
     func SetupView() {
         
         button.addTarget(self, action: #selector(action), for: .touchUpInside)
@@ -123,10 +124,12 @@ extension CardViewController : UITableViewDelegate , UITableViewDataSource{
             case 0:
                 let cell = tableView.dequeueReusableCell(withIdentifier: "DetailsCell", for: indexPath) as! DetailsCell
                 addressLbl = cell.address.text
+                cell.selectionStyle = .none
                 return cell
             case 1:
                 let cell = tableView.dequeueReusableCell(withIdentifier: "Notes", for: indexPath) as! Notes
                 lblText = cell.note.text
+                cell.selectionStyle = .none
                 return cell
             default:
                 return UITableViewCell()
@@ -134,6 +137,7 @@ extension CardViewController : UITableViewDelegate , UITableViewDataSource{
             
         case 1:
             let cell = tableView.dequeueReusableCell(withIdentifier: "orderNumber", for: indexPath)
+            cell.selectionStyle = .none
             return cell
             
         default:
@@ -190,13 +194,14 @@ extension CardViewController {
     func OrderNumberView(){
         guard let window = UIApplication.shared.windows.filter({$0.isKeyWindow}).first else { return }
 
-        let orderView = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height))
+        let orderView = UIView(frame: CGRect(x: 0, y: 0, width: window.frame.width, height: window.frame.height))
         orderView.backgroundColor = .black
         let lbl : UILabel = {
             let lbl = UILabel()
             lbl.text = "#7837"
             lbl.font = UIFont.boldSystemFont(ofSize: 25)
             lbl.textColor = .green
+            lbl.translatesAutoresizingMaskIntoConstraints = false
             return lbl
         }()
         window.addSubview(orderView)

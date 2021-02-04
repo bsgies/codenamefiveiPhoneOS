@@ -60,6 +60,7 @@ class DashboardVC: UIViewController ,  CLLocationManagerDelegate, GMSMapViewDele
         super.viewWillAppear(animated)
         setupViewAndTapGestuers()
         navigationController?.setNavigationBarHidden(true, animated: animated)
+        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -449,6 +450,26 @@ extension DashboardVC {
         }
  
     }
+    //MARK:- Light and Dark Mode Delegate
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        
+        if #available(iOS 13.0, *) {
+            if self.traitCollection.hasDifferentColorAppearance(comparedTo: previousTraitCollection) {
+                if traitCollection.userInterfaceStyle == .light {
+                    mapstyleSilver(googleMapView: googleMapView)
+                    recenterView.tintColor = .white
+                
+                }
+                else {
+                    mapstyleDark(googleMapView: googleMapView)
+                    recenterView.tintColor = .black
+                }
+            }
+        } else {
+            // Fallback on earlier versions
+        }
+    }
     
 }
 
@@ -538,14 +559,5 @@ extension DashboardVC : UIViewControllerTransitioningDelegate{
         transiton.isPresenting = false
         return transiton
     }
-    
-//    func addViewBelowInDimView() {
-//        let view = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height))
-//        view.tag = 1001
-//        self.view.addSubview(view)
-//    }
-//    func removeaddViewBelowInDimView() {
-//        guard let window = UIApplication.shared.windows.filter({$0.isKeyWindow}).first else { return }
-//        window.viewWithTag(1001)?.removeFromSuperview()
-//    }
+
 }

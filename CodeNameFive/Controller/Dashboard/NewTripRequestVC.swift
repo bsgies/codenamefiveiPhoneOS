@@ -35,6 +35,7 @@ class NewTripRequestVC: UIViewController,GMSMapViewDelegate,CLLocationManagerDel
     //@IBOutlet weak var deliverAddress: UILabel!
     @IBOutlet weak var remaningTiemForAccepOrder: UIProgressView!
     @IBOutlet weak var cardView: UIView!
+    let transiton = SlideInTransition()
     
     //MARK:- variables Declareation
     var player: AVAudioPlayer?
@@ -211,9 +212,7 @@ class NewTripRequestVC: UIViewController,GMSMapViewDelegate,CLLocationManagerDel
     }
     @IBAction func menuButton(_ sender: UIBarButtonItem) {
         
-        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let newViewController = storyBoard.instantiateViewController(withIdentifier: "AppMenu")
-        navigationController?.pushViewController(newViewController, animated: true)
+     menuOpen()
         
     }
     
@@ -319,4 +318,32 @@ extension NewTripRequestVC{
             NSLog("One or more of the map styles failed to load. \(error)")
         }
     }
+}
+extension NewTripRequestVC : UIViewControllerTransitioningDelegate{
+    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        transiton.isPresenting = true
+        return transiton
+    }
+
+
+    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        transiton.isPresenting = false
+        return transiton
+    }
+    @objc func menuOpen () {
+        let storyboard = UIStoryboard(name: "AppMenu", bundle: nil)
+        guard let menuViewController = storyboard.instantiateViewController(withIdentifier: "MenuViewController") as? MainMenuViewController else { return }
+        
+        menuViewController.didTapMenuType = {[self]  (storyboar , VC) in
+            self.dismiss(animated: true, completion: nil)
+            self.pushToRoot(from: storyboar, identifier: VC)
+        }
+        menuViewController.modalPresentationStyle = .overCurrentContext
+        menuViewController.transitioningDelegate = self
+        present(menuViewController, animated: true)
+
+    }
+    
+    
+
 }

@@ -7,12 +7,12 @@
 //
 
 import UIKit
-
+import GoogleMaps
 class OrderVC: UIViewController, UIViewControllerTransitioningDelegate {
 
     
     //MARK:- Outlest
-    @IBOutlet weak var handleArea: UIView!
+    @IBOutlet weak var handleArea: GMSMapView!
     let transiton = SlideInTransition()
     enum CardState {
         case expanded

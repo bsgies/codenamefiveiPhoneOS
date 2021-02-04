@@ -8,7 +8,10 @@
 
 import UIKit
 
+
 class DetailsCell: UITableViewCell {
+    
+    
     @IBOutlet weak var address : UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -22,6 +25,9 @@ class DetailsCell: UITableViewCell {
     }
     @IBAction func callOnNumberButtonPressed(sender : UIButton){
         callOnNumber(string: "")
+    }
+    @IBAction func Help(sender : UIButton){
+
     }
     func callOnNumber(string : String){
         if let url = URL(string: "tel://\("+923084706656")") {
