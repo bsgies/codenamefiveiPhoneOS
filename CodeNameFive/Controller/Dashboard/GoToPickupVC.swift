@@ -377,8 +377,8 @@ extension GoToPickupVC{
     }
     func GotoDeliveryInformation() {
         
-        let collect : CollectOrderTVC = self.storyboard?.instantiateViewController(withIdentifier: "CollectOrderTVC") as! CollectOrderTVC
-        self.presentOnRoot(viewController: collect)
+//        let collect : CollectOrderTVC = self.storyboard?.instantiateViewController(withIdentifier: "CollectOrderTVC") as! CollectOrderTVC
+//        self.presentOnRoot(viewController: collect)
         
     }
     

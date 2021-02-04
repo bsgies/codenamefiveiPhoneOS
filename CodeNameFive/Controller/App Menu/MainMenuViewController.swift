@@ -59,15 +59,17 @@ class MainMenuViewController: UIViewController, UIGestureRecognizerDelegate {
         profileBackView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(ViewProfile)))
     }
     @objc func ViewProfile() {
-        
+        dissmissVC()
         self.didTapMenuType?(.profile , .ProfileTVC)
         
     }
+    
         
        
     
     @IBOutlet weak var lastOrder : UISwitch!{
         didSet{
+            
             lastOrder.isOn = UserDefaults.standard.bool(forKey: "lastOrder")
         }
     }

@@ -68,7 +68,11 @@ class SlideInTransition: NSObject, UIViewControllerAnimatedTransitioning {
     }
     
     @objc func dissmissVC() {
-        dimmingView.window?.rootViewController?.dismiss(animated: true, completion: nil)
+       
+        dimmingView.window?.rootViewController?.parent?.dismiss(animated: true, completion: nil)
+        
     }
-
+    @objc func goTOVC() {
+        dimmingView.window?.rootViewController?.GoTo()
+    }
 }

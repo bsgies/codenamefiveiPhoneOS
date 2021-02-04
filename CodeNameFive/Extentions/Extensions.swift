@@ -242,6 +242,9 @@ extension UIViewController{
         let newViewController = storyBoard.instantiateViewController(withIdentifier: "DashboardVC")
         navigationController?.pushViewController(newViewController, animated: false)
     }
+    func GoTo(){
+        self.pushToController(from: .main, identifier: .PartnerSupportTVC)
+    }
     func MyshowAlertWith(title: String, message: String){
         let ac = UIAlertController(title: title, message: message, preferredStyle: .alert)
         ac.addAction(UIAlertAction(title: "OK", style: .default))

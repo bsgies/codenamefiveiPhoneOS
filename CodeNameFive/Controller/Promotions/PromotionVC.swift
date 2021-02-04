@@ -9,30 +9,22 @@
 import UIKit
 import FSCalendar
 class PromotionVC: UIViewController {
-      var formatter = DateFormatter()
-     // var calendar: FSCalendar!
-    
+    var formatter = DateFormatter()
+    fileprivate weak var calendar: FSCalendar!
     let time = ["00:00 - 03:00","08:00 - 21:00", "08:00 - 21:00","08:00 - 21:00" ]
     let boost = ["1.3x","1.5x","1.5x","1.5x"]
     let timeDetail = ["MNN","MnM","MMnn","MMnn"]
     
-    @IBOutlet weak var calendar: FSCalendar!
-    
+    @IBOutlet weak var weeklyCalendar: UIView!
     @IBOutlet weak var promotionsTableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         promotionsTableView.delegate = self
         promotionsTableView.dataSource = self
-        
         setupUI()
-    setCrossButton()
-    }
-    
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
-       // prmotionCalender.scope = .week
+        setCrossButton()
+        
     }
     
     override func viewDidLayoutSubviews() {
@@ -62,20 +54,12 @@ extension PromotionVC : UITableViewDelegate,UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "PromotionCell", for: indexPath) as! PromotionViewCell
-//        cell.textLabel?.text = time[indexPath.row]
-//        cell.detailTextLabel?.set(image: #imageLiteral(resourceName: "lightning"), with: boost[indexPath.row])
-//        cell.textLabel?.textAlignment = .right
-//        cell.detailTextLabel?.textAlignment = .left
+
         
         cell.titleCell.text = time[indexPath.row]
         cell.subtitleCell.text = timeDetail[indexPath.row]
         cell.detailCell.set(image: #imageLiteral(resourceName: "lightning"), with: boost[indexPath.row])
        
-        
-//        cell.layoutMargins = UIEdgeInsets.zero
-//        cell.textLabel?.layoutMargins.left = 30
-//        cell.detailTextLabel?.layoutMargins.right = -30
-        
         return cell
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -121,6 +105,23 @@ extension UILabel {
 
 extension PromotionVC : FSCalendarDelegate, FSCalendarDataSource{
     func setupUI() {
+        let calendar = FSCalendar()
+            calendar.dataSource = self
+            calendar.delegate = self
+        self.calendar = calendar
+
+        calendar.scope = .week
+        calendar.locale = Locale(identifier: "en_EN")
+        calendar.calendarHeaderView.calendar.locale =  Locale(identifier: "en_EN")
+        
+        self.weeklyCalendar.addSubview(calendar)
+        
+        calendar.translatesAutoresizingMaskIntoConstraints = false
+        calendar.centerXAnchor.constraint(equalTo: weeklyCalendar.centerXAnchor).isActive = true
+        calendar.topAnchor.constraint(equalTo: weeklyCalendar.safeAreaLayoutGuide.topAnchor).isActive = true
+         calendar.widthAnchor.constraint(equalToConstant: view.bounds.size.width).isActive = true
+//        calendar.heightAnchor.constraint(equalTo: calendar.heightAnchor, multiplier: 1).isActive = true
+        calendar.heightAnchor.constraint(equalTo: weeklyCalendar.heightAnchor).isActive = true
         calendar.dataSource = self
         calendar.delegate = self
         calendar.scope = .week
@@ -129,6 +130,8 @@ extension PromotionVC : FSCalendarDelegate, FSCalendarDataSource{
         calendar.appearance.weekdayTextColor = UIColor(named: "blackWhite")
         calendar.appearance.selectionColor = UIColor(named: "primaryColor")
         calendar.calendarHeaderView.isHidden = true
+        
+        
     }
      
     func minimumDate(for calendar: FSCalendar) -> Date {

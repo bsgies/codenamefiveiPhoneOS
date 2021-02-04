@@ -23,4 +23,14 @@ let status = KeychainWrapper.standard.string(forKey: "status")
 
 var emailOrPhoneString : String?
 var checkEmailOrPhone = "email"
+var currency  = "Rs."
 
+func cellSize(forWidth width: CGFloat, text : String) -> CGSize {
+    let measurmentLabel = UILabel()
+    measurmentLabel.text = text
+    measurmentLabel.numberOfLines = 0
+    measurmentLabel.lineBreakMode = .byWordWrapping
+    measurmentLabel.translatesAutoresizingMaskIntoConstraints = false
+    measurmentLabel.widthAnchor.constraint(equalToConstant: width).isActive = true
+    return measurmentLabel.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize)
+}

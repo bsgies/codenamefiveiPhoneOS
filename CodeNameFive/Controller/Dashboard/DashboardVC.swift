@@ -88,7 +88,8 @@ class DashboardVC: UIViewController ,  CLLocationManagerDelegate, GMSMapViewDele
             checkOnlineOrOffline = true
         }
         else{
-            gotorider =  Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(runTimedCode), userInfo: nil, repeats: false)
+            //gotorider =  Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(runTimedCode), userInfo: nil, repeats: false)
+            self.pushToRoot(from: .main, identifier: .NewTripRequestVC)
         }
     }
  
@@ -213,7 +214,8 @@ extension DashboardVC{
                     self.findingTripsLbl.font = UIFont.boldSystemFont(ofSize: 20.0)
                     self.checkOnlineOrOffline = false
                     self.findingTripsLbl.isHidden = false
-                    self.gotorider =  Timer.scheduledTimer(timeInterval: 10, target: self, selector: #selector(self.runTimedCode), userInfo: nil, repeats: false)
+//                    self.gotorider =  Timer.scheduledTimer(timeInterval: 10, target: self, selector: #selector(self.runTimedCode), userInfo: nil, repeats: false)
+                    self.pushToRoot(from: .main, identifier: .NewTripRequestVC)
                 }
                 
             }
@@ -536,4 +538,14 @@ extension DashboardVC : UIViewControllerTransitioningDelegate{
         transiton.isPresenting = false
         return transiton
     }
+    
+//    func addViewBelowInDimView() {
+//        let view = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height))
+//        view.tag = 1001
+//        self.view.addSubview(view)
+//    }
+//    func removeaddViewBelowInDimView() {
+//        guard let window = UIApplication.shared.windows.filter({$0.isKeyWindow}).first else { return }
+//        window.viewWithTag(1001)?.removeFromSuperview()
+//    }
 }

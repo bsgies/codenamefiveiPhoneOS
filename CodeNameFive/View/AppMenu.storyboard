@@ -1121,7 +1121,7 @@
                                                 <constraint firstItem="xXs-t4-Vi0" firstAttribute="centerY" secondItem="vft-0W-vDB" secondAttribute="centerY" id="tfg-3j-H8O"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" systemColor="tableCellGroupedBackgroundColor"/>
+                                        <color key="backgroundColor" name="cellColor"/>
                                         <connections>
                                             <outlet property="dis" destination="xXs-t4-Vi0" id="zOA-By-PYR"/>
                                             <outlet property="title" destination="PZg-BB-hxG" id="J9C-Z2-7ED"/>
@@ -1156,7 +1156,7 @@
                                                 <constraint firstAttribute="trailing" secondItem="Pj6-uX-DRO" secondAttribute="trailing" constant="20" id="uq6-sr-cqX"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" systemColor="tableCellGroupedBackgroundColor"/>
+                                        <color key="backgroundColor" name="cellColor"/>
                                         <connections>
                                             <outlet property="dis" destination="Pj6-uX-DRO" id="HiW-9c-k9U"/>
                                             <outlet property="title" destination="iVv-t0-uA8" id="g6n-Nz-A8c"/>
@@ -1194,7 +1194,7 @@
                                                 <constraint firstItem="VWX-Dt-2Kt" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="8MH-7p-mcI" secondAttribute="trailing" constant="8" symbolic="YES" id="uXM-cd-uDT"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" systemColor="tableCellGroupedBackgroundColor"/>
+                                        <color key="backgroundColor" name="cellColor"/>
                                         <connections>
                                             <outlet property="dis" destination="VWX-Dt-2Kt" id="HUY-9n-BTj"/>
                                             <outlet property="title" destination="8MH-7p-mcI" id="FSH-ML-eKJ"/>
@@ -1457,7 +1457,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="145"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QSV-qW-eAV">
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QSV-qW-eAV">
                                                     <rect key="frame" x="25" y="16" width="369" height="94"/>
                                                     <string key="text">Earn 1.2x surge fees on all orders completed beetween 18:00-20:00 in NRTEarn 1.2x surge fees on all orders completed beetween 18:00-20:00 in NRT</string>
                                                     <color key="textColor" systemColor="labelColor"/>
@@ -1631,32 +1631,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dkN-R5-jHT" customClass="FSCalendar">
-                                <rect key="frame" x="0.0" y="44" width="414" height="400"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dkN-R5-jHT">
+                                <rect key="frame" x="0.0" y="44" width="414" height="121.5"/>
                                 <color key="backgroundColor" name="UIViewCard"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="400" id="tT6-pe-wYb"/>
-                                </constraints>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="scrollEnabled" value="NO"/>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="firstWeekday">
-                                        <integer key="value" value="2"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="fakeEventDots" value="NO"/>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="headerHeight">
-                                        <real key="value" value="20"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="weekdayHeight">
-                                        <real key="value" value="10"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="a6P-0e-pt4">
-                                <rect key="frame" x="0.0" y="186" width="414" height="710"/>
+                                <rect key="frame" x="0.0" y="165.5" width="414" height="730.5"/>
                                 <color key="backgroundColor" name="TableViewBackGround"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="710" id="ty0-Hz-ULD"/>
-                                </constraints>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="default" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PromotionCell" rowHeight="44" id="7Xn-v9-VMb" customClass="PromotionViewCell" customModule="CNF" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="55.5" width="414" height="44"/>
@@ -1683,7 +1664,7 @@
                                                     </subviews>
                                                 </stackView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="keU-kp-zR2">
-                                                    <rect key="frame" x="344.5" y="12.5" width="39.5" height="19"/>
+                                                    <rect key="frame" x="334.5" y="12.5" width="39.5" height="19"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -1691,13 +1672,13 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="VEi-4c-MuK" firstAttribute="leading" secondItem="Zhp-l4-gAU" secondAttribute="leadingMargin" constant="10" id="Tc1-pH-wbG"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="keU-kp-zR2" secondAttribute="trailing" constant="10" id="Ybj-32-YJD"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="keU-kp-zR2" secondAttribute="trailing" constant="20" id="Ybj-32-YJD"/>
                                                 <constraint firstItem="VEi-4c-MuK" firstAttribute="centerY" secondItem="Zhp-l4-gAU" secondAttribute="centerY" id="aB6-lj-doP"/>
                                                 <constraint firstItem="keU-kp-zR2" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="VEi-4c-MuK" secondAttribute="trailing" constant="8" symbolic="YES" id="ood-dv-z5l"/>
                                                 <constraint firstItem="keU-kp-zR2" firstAttribute="centerY" secondItem="Zhp-l4-gAU" secondAttribute="centerY" id="yvz-YD-beK"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" systemColor="tableCellGroupedBackgroundColor"/>
+                                        <color key="backgroundColor" name="cellColor"/>
                                         <connections>
                                             <outlet property="detailCell" destination="keU-kp-zR2" id="voi-Es-vX7"/>
                                             <outlet property="subtitleCell" destination="xOF-uI-5c3" id="b1q-Ix-VWN"/>
@@ -1710,40 +1691,33 @@
                                     <outlet property="delegate" destination="SZ0-AV-86Q" id="gtP-lc-WI9"/>
                                 </connections>
                             </tableView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DhP-TO-9R7">
-                                <rect key="frame" x="0.0" y="184" width="414" height="2"/>
-                                <color key="backgroundColor" name="borderColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="2" id="R0x-7x-t1W"/>
-                                </constraints>
-                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="ZKo-iS-6g7"/>
                         <color key="backgroundColor" name="Background"/>
                         <constraints>
                             <constraint firstItem="a6P-0e-pt4" firstAttribute="trailing" secondItem="ZKo-iS-6g7" secondAttribute="trailing" id="Axn-T2-mH8"/>
                             <constraint firstItem="a6P-0e-pt4" firstAttribute="trailing" secondItem="ZKo-iS-6g7" secondAttribute="trailing" id="Ptl-5I-Ih7"/>
-                            <constraint firstItem="DhP-TO-9R7" firstAttribute="leading" secondItem="ZKo-iS-6g7" secondAttribute="leading" id="Qkw-U5-eVS"/>
                             <constraint firstItem="a6P-0e-pt4" firstAttribute="leading" secondItem="ZKo-iS-6g7" secondAttribute="leading" id="Sup-qM-mra"/>
+                            <constraint firstItem="a6P-0e-pt4" firstAttribute="height" secondItem="dkN-R5-jHT" secondAttribute="height" multiplier="6" id="WqF-RQ-sx1"/>
                             <constraint firstItem="dkN-R5-jHT" firstAttribute="trailing" secondItem="ZKo-iS-6g7" secondAttribute="trailing" id="X9w-em-wux"/>
+                            <constraint firstAttribute="bottom" secondItem="a6P-0e-pt4" secondAttribute="bottom" id="Ylc-CN-Pc9"/>
                             <constraint firstAttribute="bottom" secondItem="a6P-0e-pt4" secondAttribute="bottom" id="dbR-PQ-2Kt"/>
                             <constraint firstItem="dkN-R5-jHT" firstAttribute="top" secondItem="ZKo-iS-6g7" secondAttribute="top" id="h0K-hR-q4w"/>
                             <constraint firstItem="a6P-0e-pt4" firstAttribute="leading" secondItem="ZKo-iS-6g7" secondAttribute="leading" id="h4D-gz-UcP"/>
                             <constraint firstAttribute="bottom" secondItem="a6P-0e-pt4" secondAttribute="bottom" id="k6i-xi-O8U"/>
                             <constraint firstItem="dkN-R5-jHT" firstAttribute="leading" secondItem="ZKo-iS-6g7" secondAttribute="leading" id="qG5-9x-Kjx"/>
-                            <constraint firstItem="ZKo-iS-6g7" firstAttribute="trailing" secondItem="DhP-TO-9R7" secondAttribute="trailing" id="uSg-mq-Xhl"/>
-                            <constraint firstItem="a6P-0e-pt4" firstAttribute="top" secondItem="DhP-TO-9R7" secondAttribute="bottom" id="xCh-5x-WEd"/>
+                            <constraint firstItem="a6P-0e-pt4" firstAttribute="top" secondItem="dkN-R5-jHT" secondAttribute="bottom" id="soy-7I-u0z"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Promotions" id="cEh-8J-q4O"/>
                     <connections>
-                        <outlet property="calendar" destination="dkN-R5-jHT" id="WY9-Cc-tID"/>
                         <outlet property="promotionsTableView" destination="a6P-0e-pt4" id="XXU-5A-gz8"/>
+                        <outlet property="weeklyCalendar" destination="dkN-R5-jHT" id="sCe-4X-WAS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lni-o5-9Fe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6343" y="15"/>
+            <point key="canvasLocation" x="6342.0289855072469" y="14.732142857142856"/>
         </scene>
     </scenes>
     <resources>
@@ -1765,9 +1739,6 @@
         <namedColor name="UIViewCard">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <namedColor name="borderColor">
-            <color red="0.92900002002716064" green="0.92900002002716064" blue="0.92900002002716064" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
         <namedColor name="cellColor">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
@@ -1787,18 +1758,6 @@
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="tableCellGroupedBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="tableCellGroupedBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="tableCellGroupedBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="tableCellGroupedBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
     </resources>
