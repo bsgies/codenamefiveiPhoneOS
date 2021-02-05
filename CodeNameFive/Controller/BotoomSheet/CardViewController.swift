@@ -60,7 +60,7 @@ class CardViewController: UIViewController {
         
         
         bottomView.addSubview(button)
-        button.setTitle("Go To Customer", for: .normal)
+        button.setTitle("Go to drop off", for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.leadingAnchor.constraint(equalTo: bottomView.leadingAnchor, constant: 20).isActive = true
         button.trailingAnchor.constraint(equalTo: bottomView.trailingAnchor, constant: -20).isActive = true
@@ -185,6 +185,7 @@ extension CardViewController : UITableViewDelegate , UITableViewDataSource{
     func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         let titleView = view as! UITableViewHeaderFooterView
         titleView.textLabel?.text =  "1 order for pickup"
+        titleView.textLabel?.font = UIFont(name: "HelveticaNeue", size: 14)
     }
 }
 
@@ -195,13 +196,14 @@ extension CardViewController {
         guard let window = UIApplication.shared.windows.filter({$0.isKeyWindow}).first else { return }
 
         let orderView = UIView(frame: CGRect(x: 0, y: 0, width: window.frame.width, height: window.frame.height))
-        orderView.backgroundColor = .black
+        orderView.backgroundColor = #colorLiteral(red: 0.1647058824, green: 0.1803921569, blue: 0.1843137255, alpha: 1)
         let lbl : UILabel = {
             let lbl = UILabel()
             lbl.text = "#7837"
-            lbl.font = UIFont.boldSystemFont(ofSize: 25)
-            lbl.textColor = .green
+            lbl.font = UIFont(name: "HelveticaNeue-Bold", size: 200)
+            lbl.textColor = .white
             lbl.translatesAutoresizingMaskIntoConstraints = false
+            lbl.transform = CGAffineTransform(rotationAngle: CGFloat.pi / 2)
             return lbl
         }()
         window.addSubview(orderView)

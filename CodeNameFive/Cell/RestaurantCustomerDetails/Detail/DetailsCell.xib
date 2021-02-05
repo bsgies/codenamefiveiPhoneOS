@@ -1,13 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="HelveticaNeue.ttc">
+            <string>HelveticaNeue</string>
+        </array>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -18,49 +23,80 @@
                 <rect key="frame" x="0.0" y="0.0" width="329" height="61"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Hardees" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vlD-7w-aY3">
-                        <rect key="frame" x="15" y="5" width="64" height="20.5"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Soul Cafe" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vlD-7w-aY3">
+                        <rect key="frame" x="20" y="20" width="171" height="24"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RwC-Bl-lYw">
-                        <rect key="frame" x="296" y="5" width="28" height="28"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="28" id="RRt-Bf-Quy"/>
-                            <constraint firstAttribute="width" constant="28" id="X9D-rp-i9O"/>
-                        </constraints>
-                        <state key="normal" image="helpcenter"/>
-                        <connections>
-                            <action selector="HelpWithSender:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="MPl-83-tyd"/>
-                        </connections>
-                    </button>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="A-44 Block A, North Nazimabad, Karachi" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ebh-XF-wbs">
-                        <rect key="frame" x="15" y="30.5" width="294" height="13.5"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ebh-XF-wbs">
+                        <rect key="frame" x="20" y="54" width="289" height="130.5"/>
+                        <string key="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</string>
+                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                         <color key="textColor" name="secondaryColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RDf-F9-Dlc">
-                        <rect key="frame" x="270" y="5" width="21" height="28"/>
-                        <state key="normal" image="call"/>
-                        <connections>
-                            <action selector="callOnNumberButtonPressedWithSender:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="qhu-PS-aKW"/>
-                        </connections>
-                    </button>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hOd-UU-QQy">
+                        <rect key="frame" x="211" y="10" width="44" height="44"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RDf-F9-Dlc">
+                                <rect key="frame" x="1" y="1" width="42" height="42"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="42" id="1BD-0l-oRH"/>
+                                    <constraint firstAttribute="width" constant="42" id="jXN-HW-1k1"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                                <state key="normal" image="call"/>
+                                <connections>
+                                    <action selector="callOnNumberButtonPressedWithSender:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="qhu-PS-aKW"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" name="bgIcons"/>
+                        <constraints>
+                            <constraint firstItem="RDf-F9-Dlc" firstAttribute="centerY" secondItem="hOd-UU-QQy" secondAttribute="centerY" id="Iop-OB-lbd"/>
+                            <constraint firstAttribute="width" constant="44" id="It3-O0-Yak"/>
+                            <constraint firstAttribute="height" constant="44" id="VvT-gX-OMd"/>
+                            <constraint firstItem="RDf-F9-Dlc" firstAttribute="centerX" secondItem="hOd-UU-QQy" secondAttribute="centerX" id="jsQ-nI-mHe"/>
+                        </constraints>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Re5-Tr-CTa">
+                        <rect key="frame" x="265" y="10" width="44" height="44"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RwC-Bl-lYw">
+                                <rect key="frame" x="1" y="1" width="42" height="42"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="42" id="RRt-Bf-Quy"/>
+                                    <constraint firstAttribute="width" constant="42" id="X9D-rp-i9O"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                                <state key="normal" image="helpcenter"/>
+                                <connections>
+                                    <action selector="HelpWithSender:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="MPl-83-tyd"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" name="bgIcons"/>
+                        <constraints>
+                            <constraint firstItem="RwC-Bl-lYw" firstAttribute="centerX" secondItem="Re5-Tr-CTa" secondAttribute="centerX" id="6oc-QM-IFp"/>
+                            <constraint firstAttribute="width" constant="44" id="bFv-hH-ODg"/>
+                            <constraint firstAttribute="height" constant="44" id="pHt-W8-g9I"/>
+                            <constraint firstItem="RwC-Bl-lYw" firstAttribute="centerY" secondItem="Re5-Tr-CTa" secondAttribute="centerY" id="xhA-6I-oey"/>
+                        </constraints>
+                    </view>
                 </subviews>
                 <color key="backgroundColor" name="cellColor"/>
                 <constraints>
+                    <constraint firstItem="Re5-Tr-CTa" firstAttribute="leading" secondItem="hOd-UU-QQy" secondAttribute="trailing" constant="10" id="9az-mh-Js4"/>
                     <constraint firstAttribute="trailing" secondItem="Ebh-XF-wbs" secondAttribute="trailing" constant="20" id="Ct8-pC-gOy"/>
-                    <constraint firstItem="vlD-7w-aY3" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="ESf-L5-YQh"/>
-                    <constraint firstAttribute="trailing" secondItem="RwC-Bl-lYw" secondAttribute="trailing" constant="5" id="GI8-7c-qAD"/>
-                    <constraint firstItem="RDf-F9-Dlc" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="JK1-hi-P3Y"/>
-                    <constraint firstItem="RwC-Bl-lYw" firstAttribute="leading" secondItem="RDf-F9-Dlc" secondAttribute="trailing" constant="5" id="JrZ-hs-79m"/>
-                    <constraint firstItem="RDf-F9-Dlc" firstAttribute="centerY" secondItem="RwC-Bl-lYw" secondAttribute="centerY" id="P0X-ys-H9C"/>
-                    <constraint firstItem="Ebh-XF-wbs" firstAttribute="top" secondItem="vlD-7w-aY3" secondAttribute="bottom" constant="5" id="TWm-ZU-pOI"/>
-                    <constraint firstItem="Ebh-XF-wbs" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="TqH-kU-dqS"/>
-                    <constraint firstItem="RwC-Bl-lYw" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="r5T-BQ-d0a"/>
-                    <constraint firstItem="vlD-7w-aY3" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="wQt-pc-xu5"/>
+                    <constraint firstItem="vlD-7w-aY3" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="ESf-L5-YQh"/>
+                    <constraint firstAttribute="trailing" secondItem="Re5-Tr-CTa" secondAttribute="trailing" constant="20" id="Kfs-sX-ZIY"/>
+                    <constraint firstItem="Re5-Tr-CTa" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="NQh-Ym-yQ1"/>
+                    <constraint firstItem="Ebh-XF-wbs" firstAttribute="top" secondItem="vlD-7w-aY3" secondAttribute="bottom" constant="10" id="TWm-ZU-pOI"/>
+                    <constraint firstItem="hOd-UU-QQy" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="Uiv-4X-5dc"/>
+                    <constraint firstItem="Ebh-XF-wbs" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="ddb-GE-l5F"/>
+                    <constraint firstItem="hOd-UU-QQy" firstAttribute="leading" secondItem="vlD-7w-aY3" secondAttribute="trailing" constant="20" id="jFo-cY-bsF"/>
+                    <constraint firstItem="vlD-7w-aY3" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="20" id="wQt-pc-xu5"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
@@ -73,6 +109,9 @@
     <resources>
         <image name="call" width="21" height="21"/>
         <image name="helpcenter" width="22" height="22"/>
+        <namedColor name="bgIcons">
+            <color red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="cellColor">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

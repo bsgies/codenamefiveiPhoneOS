@@ -202,9 +202,5 @@ class CollectcashVC: UIViewController, UITextFieldDelegate {
             print("here is convert amount \(amountConverted)")
  
             action.isEnabled = amountConverted > amount
-             
-            
         }
-       
-      
     }//end class

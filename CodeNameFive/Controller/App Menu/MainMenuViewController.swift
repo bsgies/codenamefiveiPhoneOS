@@ -34,7 +34,7 @@ class MainMenuViewController: UIViewController, UIGestureRecognizerDelegate {
         super.viewDidLoad()
         tableView.backgroundColor = UIColor(named: "sideMenu")
         profileBackView.backgroundColor = UIColor(named: "sideMenu")
-        fontStyle()
+        // fontStyle()
         tableView.delegate = self
         tableView.dataSource = self
         tableView.separatorStyle = .none
@@ -161,24 +161,24 @@ extension MainMenuViewController : UITableViewDelegate , UITableViewDataSource{
 }
 
 // Font setup
-extension MainMenuViewController {
-    func fontStyle() {
-        fontWithSizeAndFontStyle(labelName: fullName, font: K.SFProTextBold, size: 18)
-        fontWithSize(labelName: pId, size: 17)
-    }
-    // where we can customise label's font with standard font style
-    func font(labelName : UILabel) {
-        labelName.font = UIFont(name:  K.SFProTextRegular, size: K.fontSize)
-    }
-    // where we can customise label's size with standard font style
-    func fontWithSize(labelName: UILabel , size: CGFloat){
-        labelName.font = UIFont(name: K.SFProTextRegular, size: size)
-    }
-    // where we can customise label's sizs as well as font style
-    func fontWithSizeAndFontStyle(labelName: UILabel,font: String, size: CGFloat ){
-        labelName.font = UIFont(name: font, size: size)
-    }
-}
+//extension MainMenuViewController {
+//    func fontStyle() {
+//        fontWithSizeAndFontStyle(labelName: fullName, font: K.SFProTextBold, size: 18)
+//        fontWithSize(labelName: pId, size: 17)
+//    }
+//    // where we can customise label's font with standard font style
+//    func font(labelName : UILabel) {
+//        labelName.font = UIFont(name:  K.SFProTextRegular, size: K.fontSize)
+//    }
+//    // where we can customise label's size with standard font style
+//    func fontWithSize(labelName: UILabel , size: CGFloat){
+//        labelName.font = UIFont(name: K.SFProTextRegular, size: size)
+//    }
+//    // where we can customise label's sizs as well as font style
+//    func fontWithSizeAndFontStyle(labelName: UILabel,font: String, size: CGFloat ){
+//        labelName.font = UIFont(name: font, size: size)
+//    }
+//}
 
 
 extension MainMenuViewController{
@@ -190,7 +190,7 @@ extension MainMenuViewController{
             //cell.viewCell.backgroundColor = UIColor(named: "cellLineColor")
             cell.imageCell.image = UIImage(named: "comment")
             cell.labelCell.text = "Live support"
-            font(labelName: cell.labelCell)
+            // font(labelName: cell.labelCell)
             cell.viewCell.isHidden = true
             return cell
         }else if indexPath.row == 1 {
@@ -198,7 +198,7 @@ extension MainMenuViewController{
             // setup here
             cell.backgroundColor = UIColor(named: "sideMenu")
             cell.lastOrderView.backgroundColor = UIColor(named: "sideMenu")
-            font(labelName: cell.labelCell)
+            // font(labelName: cell.labelCell)
             cell.imageCell.image = UIImage(named: "comment")
             cell.labelCell.text = "Last Order"
             return cell
@@ -207,7 +207,7 @@ extension MainMenuViewController{
             // setup here
             cell.backgroundColor = UIColor(named: "sideMenu")
             cell.labelCell.text = "Trip histroy"
-            font(labelName: cell.labelCell)
+            // font(labelName: cell.labelCell)
             cell.viewCell.isHidden = true
             return cell
         }else if indexPath.row == 3 {
@@ -215,7 +215,7 @@ extension MainMenuViewController{
             // setup here
             cell.backgroundColor = UIColor(named: "sideMenu")
             cell.labelCell.text = "Earnings"
-            font(labelName: cell.labelCell)
+            // font(labelName: cell.labelCell)
             cell.viewCell.isHidden = true
             return cell
         }else if indexPath.row == 4 {
@@ -223,7 +223,7 @@ extension MainMenuViewController{
             // setup here
             cell.backgroundColor = UIColor(named: "sideMenu")
             cell.labelCell.text = "Upcoming promotions"
-            font(labelName: cell.labelCell)
+            // font(labelName: cell.labelCell)
             cell.viewCell.isHidden = true
             return cell
         }else if indexPath.row == 5 {
@@ -231,14 +231,14 @@ extension MainMenuViewController{
             // setup here
             cell.backgroundColor = UIColor(named: "sideMenu")
             cell.labelCell.text = "Inbox"
-            font(labelName: cell.labelCell)
+            // font(labelName: cell.labelCell)
             return cell
         }else if indexPath.row == 6 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell6") as! MainMenuTableViewCell
             // setup here
             cell.backgroundColor = UIColor(named: "sideMenu")
             cell.labelCell.text = "Map settings"
-            font(labelName: cell.labelCell)
+            // font(labelName: cell.labelCell)
             cell.viewCell.isHidden = true
             return cell
         }else if indexPath.row == 7 {
@@ -246,7 +246,7 @@ extension MainMenuViewController{
             cell.backgroundColor = UIColor(named: "sideMenu")
             cell.autoAcceptView.backgroundColor = UIColor(named: "sideMenu")
             cell.labelCell.text = "Auto accept"
-            font(labelName: cell.labelCell)
+            // font(labelName: cell.labelCell)
             cell.viewCell.isHidden = true
             return cell
         }else if indexPath.row == 8 {
@@ -254,13 +254,13 @@ extension MainMenuViewController{
 
             cell.backgroundColor = UIColor(named: "sideMenu")
             cell.labelCell.text = "Help center"
-            font(labelName: cell.labelCell)
+            // font(labelName: cell.labelCell)
             return cell
         }
         else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell9") as! MainMenuTableViewCell
             cell.backgroundColor = UIColor(named: "sideMenu")
-            font(labelName: cell.labelCell)
+            // font(labelName: cell.labelCell)
             cell.labelCell.text = "Sign out"
             cell.labelCell.textColor = UIColor.red
             cell.viewCell.isHidden = true

@@ -708,5 +708,5 @@
 /* Class = "UILabel"; text = "A-44 Block A, North Nazimabad, Karachi"; ObjectID = "zb6-DZ-cQr"; */
 "zb6-DZ-cQr.text" = "A-44 Block A, North Nazimabad, Karachi";
 
-/* Class = "UINavigationItem"; title = "Go to Customer"; ObjectID = "zzG-ea-dMn"; */
-"zzG-ea-dMn.title" = "Go to Customer";
+/* Class = "UINavigationItem"; title = "Go to drop off"; ObjectID = "zzG-ea-dMn"; */
+"zzG-ea-dMn.title" = "Go to drop off";

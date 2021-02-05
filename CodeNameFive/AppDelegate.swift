@@ -71,7 +71,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     func Alert(){
         if let keyWindow = UIWindow.key {
-            let alert = UIAlertController(title: "no Interent", message:"The Internet connection appears to be offline", preferredStyle: UIAlertController.Style.alert)
+            let alert = UIAlertController(title: "no Interent", message:"The internet connection appears to be offline", preferredStyle: UIAlertController.Style.alert)
             let retry = UIAlertAction(title: "retry", style: UIAlertAction.Style.default) {
                 UIAlertAction in
                 alert.dismiss(animated: true, completion: nil)

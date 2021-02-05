@@ -55,22 +55,22 @@
                                 <subviews>
                                     <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HTb-Br-UrC">
                                         <rect key="frame" x="332" y="0.0" width="82" height="4"/>
-                                        <color key="backgroundColor" red="0.070588235289999995" green="0.82352941180000006" blue="0.70196078429999997" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" name="primaryColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="4" id="zP8-ih-EAh"/>
                                         </constraints>
                                     </view>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="kGy-8m-HwF">
-                                        <rect key="frame" x="131" y="16" width="152" height="50"/>
+                                        <rect key="frame" x="131" y="18.333333333333375" width="152" height="45.333333333333343"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="ghT-oN-1pf">
-                                                <rect key="frame" x="0.0" y="0.0" width="152" height="24"/>
-                                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="152" height="21.666666666666668"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="18"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Time connected: 10h 40m" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="EzG-vi-cxb">
-                                                <rect key="frame" x="0.0" y="26" width="152" height="24"/>
+                                                <rect key="frame" x="0.0" y="23.666666666666629" width="152" height="21.666666666666671"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="13"/>
                                                 <color key="textColor" name="secondaryColor"/>
                                                 <nil key="highlightedColor"/>
@@ -163,10 +163,10 @@
                                         </connections>
                                     </button>
                                     <view contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2iQ-MZ-9xF" userLabel="Hamburger">
-                                        <rect key="frame" x="349" y="715" width="55" height="55"/>
+                                        <rect key="frame" x="354" y="720" width="50" height="50"/>
                                         <subviews>
                                             <imageView contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="GPS" translatesAutoresizingMaskIntoConstraints="NO" id="HaG-fH-Twf">
-                                                <rect key="frame" x="0.0" y="0.0" width="55" height="55"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                             </imageView>
                                         </subviews>
                                         <viewLayoutGuide key="safeArea" id="BaD-k6-caa"/>
@@ -177,12 +177,12 @@
                                             <constraint firstItem="HaG-fH-Twf" firstAttribute="centerY" secondItem="2iQ-MZ-9xF" secondAttribute="centerY" id="9Dj-Ia-iay"/>
                                             <constraint firstItem="HaG-fH-Twf" firstAttribute="top" secondItem="2iQ-MZ-9xF" secondAttribute="top" id="NG5-e5-NAk"/>
                                             <constraint firstItem="HaG-fH-Twf" firstAttribute="centerX" secondItem="2iQ-MZ-9xF" secondAttribute="centerX" id="PdH-aG-4sR"/>
-                                            <constraint firstAttribute="height" constant="55" id="Qly-H8-rnZ"/>
+                                            <constraint firstAttribute="height" constant="50" id="Qly-H8-rnZ"/>
                                             <constraint firstItem="HaG-fH-Twf" firstAttribute="top" secondItem="BaD-k6-caa" secondAttribute="top" id="YnY-47-EYf"/>
                                             <constraint firstItem="HaG-fH-Twf" firstAttribute="centerX" secondItem="2iQ-MZ-9xF" secondAttribute="centerX" id="fa3-4K-Dkf"/>
                                             <constraint firstItem="HaG-fH-Twf" firstAttribute="leading" secondItem="BaD-k6-caa" secondAttribute="leading" id="iS2-gr-eRs"/>
                                             <constraint firstItem="HaG-fH-Twf" firstAttribute="trailing" secondItem="BaD-k6-caa" secondAttribute="trailing" id="mIk-Qo-vTo"/>
-                                            <constraint firstAttribute="width" constant="55" id="rRN-5I-rue"/>
+                                            <constraint firstAttribute="width" constant="50" id="rRN-5I-rue"/>
                                             <constraint firstItem="HaG-fH-Twf" firstAttribute="leading" secondItem="BaD-k6-caa" secondAttribute="leading" id="rqM-eY-mS3"/>
                                             <constraint firstItem="HaG-fH-Twf" firstAttribute="trailing" secondItem="BaD-k6-caa" secondAttribute="trailing" id="vL4-7N-ToH"/>
                                         </constraints>
@@ -215,7 +215,7 @@
                                                     <constraint firstAttribute="width" constant="120" id="uDI-9f-buB"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="16"/>
-                                                <state key="normal" title="Go offline"/>
+                                                <state key="normal" title="Label"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                         <real key="value" value="3"/>
@@ -610,8 +610,8 @@
                                 <action selector="menuButton:" destination="zM2-vo-C3p" id="34l-b7-q2l"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Decline" id="I5p-zA-p0f">
-                            <color key="tintColor" red="0.86274509799999999" green="0.20784313730000001" blue="0.27058823529999998" alpha="1" colorSpace="calibratedRGB"/>
+                        <barButtonItem key="rightBarButtonItem" title="Decline" style="plain" id="I5p-zA-p0f">
+                            <color key="tintColor" name="danger"/>
                             <connections>
                                 <action selector="RejectButton:" destination="zM2-vo-C3p" id="93Q-0o-323"/>
                             </connections>

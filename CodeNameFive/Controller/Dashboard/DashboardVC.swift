@@ -56,9 +56,7 @@ class DashboardVC: UIViewController,  CLLocationManagerDelegate, GMSMapViewDeleg
         super.viewWillAppear(animated)
         setupViewAndTapGestuers()
         navigationController?.setNavigationBarHidden(true, animated: animated)
-        
     }
-    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         navigationController?.setNavigationBarHidden(false, animated: animated)
@@ -66,17 +64,15 @@ class DashboardVC: UIViewController,  CLLocationManagerDelegate, GMSMapViewDeleg
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
-        currentEarning.backgroundColor = UIColor(named: "primaryColor")
+        currentEarning.backgroundColor = UIColor(named: "primaryButton")
     }
-    
-    
+
     //MARK:- Functions & Selectors
-    
     func CheckOfflineOrOnline() {
         if !checkOnlineOrOffline{
             Autrize()
             // recenter.isHidden = true
-            goOnlineOfflineButton.backgroundColor = UIColor(named: "primaryColor")
+            goOnlineOfflineButton.backgroundColor = UIColor(named: "primaryButton")
             goOnlineOfflineButton.setTitle("Go online", for: .normal)
             checkOnlineOrOffline = true
             //
@@ -84,8 +80,8 @@ class DashboardVC: UIViewController,  CLLocationManagerDelegate, GMSMapViewDeleg
             youAreOfflineLbl.font = UIFont(name: "HelveticaNeue-Bold", size: 18)
         }
         else{
-            gotorider =  Timer.scheduledTimer(timeInterval: 0.9, target: self, selector: #selector(runTimedCode), userInfo: nil, repeats: false)
-            // self.pushToRoot(from: .main, identifier: .NewTripRequestVC)
+            //gotorider = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(runTimedCode), userInfo: nil, repeats: false)
+             self.pushToRoot(from: .main, identifier: .NewTripRequestVC)
             youAreOfflineLbl.text = "Finding trips for you..."
             youAreOfflineLbl.font = UIFont(name: "HelveticaNeue-Bold", size: 20)
         }
@@ -139,7 +135,6 @@ class DashboardVC: UIViewController,  CLLocationManagerDelegate, GMSMapViewDeleg
             serverResponseActivityIndicator.centerYAnchor.constraint(equalTo: goOnlineOfflineButton.centerYAnchor, constant: 0.0)
         ])
         serverResponseActivityIndicator.startAnimating()
-        
     }
     
     func ServerResponseReceived() {
@@ -172,11 +167,9 @@ extension DashboardVC{
                     self.findingRoutesLoadingBarView.frame.origin.x -= self.dashboardBottomView.frame.width
             })
         }
-        
     }
     
     //MARK:- Buttons Actions
-    
     @IBAction func OnlineOfflineButton(_ sender: UIButton) {
         
         goOnlineOfflineButton.isEnabled = false
@@ -189,7 +182,6 @@ extension DashboardVC{
                 buttonServerResponse()
                 
                 DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
-
                     self.goOnlineOfflineButton.hideLoading()
                     self.ServerResponseReceived()
                     self.findingRoutesLoadingBarView.isHidden = false
@@ -202,49 +194,36 @@ extension DashboardVC{
                     self.goOnlineOfflineButton.setTitle("Go offline", for: .normal)
                     //end
                     self.checkOnlineOrOffline = false
-                    self.gotorider =  Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(self.runTimedCode), userInfo: nil, repeats: false)
-                    // self.pushToRoot(from: .main, identifier: .NewTripRequestVC)
+                    // self.gotorider = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(self.runTimedCode), userInfo: nil, repeats: false)
+                    self.pushToRoot(from: .main, identifier: .NewTripRequestVC)
                 }
-                
             }
             else{
-                
                 self.goToSettingAlert()
             }
-            
         }
         else{
-           
             goOnlineOfflineButton.isEnabled = true
             findingRoutesLoadingBarView.layer.removeAllAnimations()
             self.findingRoutesLoadingBarView.isHidden = true
             sender.setBackgroundColor(color: UIColor(named: "hover")!, forState: .highlighted)
             goOnlineOfflineButton.layer.borderWidth = 1
             goOnlineOfflineButton.layer.borderColor = #colorLiteral(red: 0, green: 0.7490196078, blue: 0.662745098, alpha: 1)
-            goOnlineOfflineButton.backgroundColor = #colorLiteral(red: 0, green: 0.8470588235, blue: 0.7529411765, alpha: 1)
+            goOnlineOfflineButton.backgroundColor = UIColor(named: "primaryButton")
             goOnlineOfflineButton.setTitle("Go online", for: .normal)
             checkOnlineOrOffline = true
             self.gotorider?.invalidate()
         }
-        
-        
     }
     @IBAction func EarningsButton(_ sender: Any) {
-
         self.pushToRoot(from: .appMenu, identifier: .EarningsTVC)
-            
     }
 
-    
-    
-    
     //MARK:- Navigations
-    
     func presentOnRoot(viewController : UIViewController){
         let navigationController = UINavigationController(rootViewController: viewController)
         navigationController.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
         self.present(navigationController, animated: true, completion: nil)
-        
     }
     
     @objc func menuOpen () {
@@ -258,7 +237,6 @@ extension DashboardVC{
         menuViewController.modalPresentationStyle = .overCurrentContext
         menuViewController.transitioningDelegate = self
         present(menuViewController, animated: true)
-
     }
     
     @objc func runTimedCode()  {
@@ -267,8 +245,6 @@ extension DashboardVC{
         newViewController.modalPresentationStyle = .overCurrentContext
         navigationController?.pushViewController(newViewController, animated: true)
     }
-    
-    
     
     //MARK:- Buttons Actions Location Service Determining
     
@@ -289,9 +265,7 @@ extension DashboardVC{
     }
     
     //MARK:- Alert Controller
-    
 }
-
 
 // MARK: - Extension LocationManager
 extension DashboardVC {
@@ -311,16 +285,13 @@ extension DashboardVC {
         locationManager?.distanceFilter = 50
         locationManager?.startUpdatingLocation()
         locationManager.startMonitoringSignificantLocationChanges()
-        
     }
     
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let location: CLLocation = locations.last!
         locValue = location.coordinate
-        let camera = GMSCameraPosition.camera(withLatitude: location.coordinate.latitude,
-                                              longitude: location.coordinate.longitude,
-                                              zoom: zoomLevel)
+        let camera = GMSCameraPosition.camera(withLatitude: location.coordinate.latitude, longitude: location.coordinate.longitude, zoom: zoomLevel)
         if googleMapView.isHidden {
             googleMapView.isHidden = false
             googleMapView.camera = camera
@@ -331,7 +302,6 @@ extension DashboardVC {
         } else {
             googleMapView.animate(to: camera)
         }
-        
     }
     //MARK:- Handle authorization for the location manager
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
@@ -360,10 +330,8 @@ extension DashboardVC {
             if #available(iOS 13.0, *) {
                 if self.traitCollection.hasDifferentColorAppearance(comparedTo: previousTraitCollection) {
                     if traitCollection.userInterfaceStyle == .light {
-                        
                         mapstyleSilver(googleMapView: googleMapView)
                         recenterView.tintColor = .white
-                    
                     }
                     else {
                         mapstyleDark(googleMapView: googleMapView)
@@ -375,7 +343,6 @@ extension DashboardVC {
             }
         }
     }
-    
     
     func TurnOffLocationService() {
         Autrize()
@@ -411,7 +378,6 @@ extension DashboardVC {
         @unknown default:
             fatalError()
         }
-        
     }
 }
 // MARK: - Extension MapView
@@ -429,7 +395,6 @@ extension DashboardVC {
         if gesture {
             self.isUserTouch = true
         }
- 
     }
     //MARK:- Light and Dark Mode Delegate
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
@@ -440,7 +405,6 @@ extension DashboardVC {
                 if traitCollection.userInterfaceStyle == .light {
                     mapstyleSilver(googleMapView: googleMapView)
                     recenterView.tintColor = .white
-                
                 }
                 else {
                     mapstyleDark(googleMapView: googleMapView)
@@ -451,7 +415,6 @@ extension DashboardVC {
             // Fallback on earlier versions
         }
     }
-    
 }
 
 //MARK:- Durring Server Response Hide Tittel of Button Extension
@@ -461,13 +424,10 @@ extension UIButton{
         print("loading start")
         originalButtonText = self.titleLabel?.text
         self.setTitle("", for: .normal)
-        
-        
     }
     func hideLoading() {
         print("loading stop")
         self.setTitle(originalButtonText, for: .normal)
-        
     }
 }
 extension UIProgressView{
@@ -501,7 +461,6 @@ extension UIProgressView{
         UIView.animate(withDuration: 1, animations: {
             self.setProgress(self.progressFull ? 1.0 : 0.0, animated: true)
         })
-        
         progressFull = !progressFull;
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.9) {
@@ -534,11 +493,8 @@ extension DashboardVC : UIViewControllerTransitioningDelegate{
         transiton.isPresenting = true
         return transiton
     }
-
-
     func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         transiton.isPresenting = false
         return transiton
     }
-
 }
