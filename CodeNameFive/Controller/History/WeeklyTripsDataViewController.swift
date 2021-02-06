@@ -14,11 +14,11 @@ class WeeklyTripsDataViewController: UIViewController {
     //  @IBOutlet weak var weeklyDataEarningView: UIView!
     let date = ["14 Jun","13 Jun ","12 Jun ","11 Jun","10 Jun","9 Jun","8 Jun","7 Jun"]
     let trips = ["10 trips","132 trips","2 trips","2 trips","1 trips","10 trips","119 trips","7 trips"]
-    let earn = ["$100","$100","$100","$100","$100","$100","$100","$100"]
+    let earn = ["\(currency) 100","\(currency) 100","\(currency) 100","\(currency) 100","\(currency) 100","\(currency) 100","\(currency) 100","\(currency) 100"]
     
     var navigationBartitle : String?
     let status = ["Cash" , "Online", "Trips" , "Promotions" , "Tips" , "Earnings" ]
-    let statusDetails = ["Rs. 11,655.45","44hr 24m 28s","666","Rs. 1150.77","Rs. 33.90","RS. 88.0909",]
+    let statusDetails = ["\(currency) 11,655.45","44hr 24m 28s","666","\(currency) 1150.77","\(currency) 33.90","\(currency) 88.09"]
     //MARK:- LIFE cycel
     
     override func viewDidLoad() {
@@ -61,7 +61,7 @@ extension WeeklyTripsDataViewController : UITableViewDataSource,UITableViewDeleg
             cell.dateLabel.text = date[indexPath.row]
             cell.totalTripsLabel.text = trips[indexPath.row]
             cell.earningsLabel.text = earn[indexPath.row]
-            cell.cashLabel.text = "Rs. 6,6787.9 cash"
+            cell.cashLabel.text = "\(currency) 6,6787.9 cash"
             return cell
         }
     }

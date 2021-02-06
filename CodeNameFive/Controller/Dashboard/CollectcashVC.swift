@@ -165,7 +165,6 @@ class CollectcashVC: UIViewController, UITextFieldDelegate {
             textField.keyboardType = .numberPad
               textField.placeholder = "Amount"
               textField.addTarget(self, action: #selector(self.textFieldDidChange(_:)), for: .editingChanged) // <---
-             
         }
 
           action = UIAlertAction(title: "Add", style: .default) { (_) in
@@ -175,27 +174,24 @@ class CollectcashVC: UIViewController, UITextFieldDelegate {
             self.recievedAmount.text = "\(currency) \(recievedAmount.text!).00"
             self.changeDuelbl.text = "Change due"
             
-            
             guard let amountRec = Int(recievedAmount.text ?? "") else {return}
             
-            self.changeDueAmount.text = "Rs. \(amountRec - self.amount).00"
-            self.paymentDue.text = "Rs. \(amountRec - self.amount).00"
+            self.changeDueAmount.text = "\(currency) \(amountRec - self.amount).00"
+            self.paymentDue.text = "\(currency) \(amountRec - self.amount).00"
             self.paymentDueLabel.text = "Change due"
             self.mainView.backgroundColor = #colorLiteral(red: 0.1960784346, green: 0.3411764801, blue: 0.1019607857, alpha: 1)
             self.copleteDeliveryView.backgroundColor = #colorLiteral(red: 0.4745098054, green: 0.8392156959, blue: 0.9764705896, alpha: 1)
             self.calculateView.backgroundColor = #colorLiteral(red: 0.5843137503, green: 0.8235294223, blue: 0.4196078479, alpha: 1)
             self.paymentDueView.backgroundColor = #colorLiteral(red: 0.5843137503, green: 0.8235294223, blue: 0.4196078479, alpha: 1)
-
           }
           action.isEnabled = false
           
-          self.present(alert, animated: true, completion: nil)
+        self.present(alert, animated: true, completion: nil)
           
         let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertAction.Style.default, handler: {
-                          (action : UIAlertAction!) -> Void in })
+        (action : UIAlertAction!) -> Void in })
         alert.addAction(cancelAction)
         alert.addAction(action)
-        
         } // end btn
         @objc private func textFieldDidChange(_ field: UITextField) {
             let amountConverted = Int(field.text!) ?? 0
