@@ -15,6 +15,7 @@ class HttpService : URLSession{
     typealias WSCompletionStringBlock = (_ data: String?) ->()
     static var sharedInstance = HttpService()
     let appDelegate = AppDelegate()
+    
     func getRequest(urlString:String,completionBlock:@escaping WSCompletionBlock) -> () {
         print("Hitting URL with Get Request : \n \(urlString)")
         appDelegate.loadindIndicator()

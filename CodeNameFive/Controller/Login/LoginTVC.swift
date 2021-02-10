@@ -76,7 +76,7 @@ class LoginTVC: UITableViewController {
        }
        else{
            errorLbl.isHidden = false
-        registerYConstraint.constant = 20
+          registerYConstraint.constant = 20
            errorLbl.text = "You must enter your phone number or email address"
        }
     }

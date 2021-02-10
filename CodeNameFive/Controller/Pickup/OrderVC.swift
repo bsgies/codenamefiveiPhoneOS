@@ -8,22 +8,26 @@
 
 import UIKit
 import GoogleMaps
-class OrderVC: UIViewController, UIViewControllerTransitioningDelegate {
+class OrderVC: UIViewController, UIViewControllerTransitioningDelegate, GMSMapViewDelegate {
 
     
     //MARK:- Outlest
     @IBOutlet weak var handleArea: GMSMapView!
-    let transiton = SlideInTransition()
-    enum CardState {
-        case expanded
-        case collapsed
-    }
+    @IBOutlet weak var menuImage : UIImageView!
+    @IBOutlet weak var hamburgerView : UIView!
+    @IBOutlet weak var recenterView : UIView!
+    @IBOutlet weak var openInMapsView  : UIView!
+    @IBOutlet weak var rectenImage : UIImageView!
+    @IBOutlet weak var openInMaps : UIImageView!
+    @IBOutlet weak var recentAndOpenInMapsView : UIView!
+    
     
     //MARK:- Variables
     var cardViewController:CardViewController!
+    let transiton = SlideInTransition()
     var visualEffectView:UIVisualEffectView!
     var cardHeight:CGFloat = 600
-    let cardHandleAreaHeight:CGFloat = 80
+    let cardHandleAreaHeight:CGFloat = 60
     var cardVisible = false
     var nextState:CardState {
         return cardVisible ? .collapsed : .expanded
@@ -31,35 +35,57 @@ class OrderVC: UIViewController, UIViewControllerTransitioningDelegate {
     var runningAnimations = [UIViewPropertyAnimator]()
     var animationProgressWhenInterrupted:CGFloat = 0
     
+    //MARK:-Maps Variables
+    public var locationManager: CLLocationManager!
+    var path = GMSMutablePath()
+    var myGMSPolyline : GMSPolyline!
+    var pathIndex = 0
+    var ponits : String?
+    
+    
     //MARK:- LifeCycles
     override func viewDidLoad() {
         super.viewDidLoad()
         setupCard()
+        AddressView.instance.addressCard(topView: self.view)
+       
     }
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(true)
-        guard let window = UIApplication.shared.windows.filter({$0.isKeyWindow}).first else { return }
-        window.viewWithTag(200)?.removeFromSuperview()
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        setupMap()
+        handleArea.delegate = self
+        handleArea.isMyLocationEnabled = true
+        intlizeLocationManager()
+        if CLLocationManager.authorizationStatus() == .authorizedWhenInUse{
+           let fromLoc = CLLocationCoordinate2DMake((locationManager.location?.coordinate.latitude)!, (locationManager.location?.coordinate.longitude)!)
+           let toLoc = CLLocationCoordinate2DMake(31.584478,74.388419)
+        //let toLoc = CLLocationCoordinate2DMake(51.6173559,-0.020734)
+            Direction(from: fromLoc, to: toLoc)
+            
+            
+        }
     }
+
     //MARK:-Actions
     @IBAction func openMenu(_ sender: UIBarButtonItem) {
-        let storyboard = UIStoryboard(name: "AppMenu", bundle: nil)
-        guard let menuViewController = storyboard.instantiateViewController(withIdentifier: "MenuViewController") as? MainMenuViewController else { return }
         
-        menuViewController.didTapMenuType = {[self]  (storyboar , VC) in
-            self.parent?.dismiss(animated: true, completion: nil)
-            self.pushToRoot(from: storyboar, identifier: VC)
-        }
-        menuViewController.modalPresentationStyle = .overCurrentContext
-        menuViewController.transitioningDelegate = self
-        present(menuViewController, animated: true)
     }
     
     //MARK:- Functions
+    
+    func gestures() {
+        let tapOpenMenu = UITapGestureRecognizer(target: self, action: #selector(openSideMenu))
+        menuImage.addGestureRecognizer(tapOpenMenu)
+        
+        let openMaps = UITapGestureRecognizer(target: self, action: #selector(opeMaps))
+        openInMaps.addGestureRecognizer(openMaps)
+        
+    }
     func setupCard() {
-        visualEffectView = UIVisualEffectView()
-        visualEffectView.frame = self.view.frame
-        self.view.addSubview(visualEffectView)
+//        visualEffectView = UIVisualEffectView()
+//        visualEffectView.frame = self.view.frame
+//        self.view.addSubview(visualEffectView)
         cardHeight = self.view.frame.height - 100
         cardViewController = CardViewController(nibName:"CardViewController", bundle:nil)
         self.addChild(cardViewController)
@@ -68,8 +94,8 @@ class OrderVC: UIViewController, UIViewControllerTransitioningDelegate {
         cardViewController.view.frame = CGRect(x: 0, y: self.view.frame.height - cardHandleAreaHeight, width: self.view.bounds.width, height: cardHeight)
         cardViewController.view.clipsToBounds = true
         
-        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(PickupVC.handleCardTap(recognzier:)))
-        let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(PickupVC.handleCardPan(recognizer:)))
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(OrderVC.handleCardTap(recognzier:)))
+        let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(OrderVC.handleCardPan(recognizer:)))
         cardViewController.handleArea.addGestureRecognizer(tapGestureRecognizer)
         cardViewController.handleArea.addGestureRecognizer(panGestureRecognizer)
     }
@@ -89,6 +115,7 @@ class OrderVC: UIViewController, UIViewControllerTransitioningDelegate {
         switch recognizer.state {
         case .began:
             startInteractiveTransition(state: nextState, duration: 0.9)
+            
         case .changed:
             let translation = recognizer.translation(in: self.cardViewController.handleArea)
             var fractionComplete = translation.y / cardHeight
@@ -96,18 +123,67 @@ class OrderVC: UIViewController, UIViewControllerTransitioningDelegate {
             updateInteractiveTransition(fractionCompleted: fractionComplete)
         case .ended:
             continueInteractiveTransition()
+            
         default:
             break
         }
     }
+    
+    @objc func openSideMenu(){
+        let storyboard = UIStoryboard(name: "AppMenu", bundle: nil)
+        guard let menuViewController = storyboard.instantiateViewController(withIdentifier: "MenuViewController") as? MainMenuViewController else { return }
+        
+        menuViewController.didTapMenuType = {[self]  (storyboar , VC) in
+            self.parent?.dismiss(animated: true, completion: nil)
+            self.pushToRoot(from: storyboar, identifier: VC)
+        }
+        menuViewController.modalPresentationStyle = .overCurrentContext
+        menuViewController.transitioningDelegate = self
+        present(menuViewController, animated: true)
+    }
+    @objc func opeMaps(){
+            let alert = UIAlertController(title: "Maps", message: "Please select a map", preferredStyle: .actionSheet)
+            UIView.appearance(whenContainedInInstancesOf: [UIAlertController.self]).tintColor = #colorLiteral(red: 0, green: 0.8465872407, blue: 0.7545004487, alpha: 1)
+            alert.addAction(UIAlertAction(title: "Google maps", style: .default , handler:{ (UIAlertAction)in
+                openGoogleMap()
+            }))
+            
+            alert.addAction(UIAlertAction(title: "Waze", style: .default , handler:{ (UIAlertAction)in
+                openWaze()
+            }))
+            
+//            alert.addAction(UIAlertAction(title: "Apple maps", style: .default , handler:{ (UIAlertAction)in
+//                let url = "http://maps.apple.com/maps?saddr=\(self.fromLoc!.latitude),\(self.fromLoc!.longitude)&daddr=\(self.toLoc!.latitude),\(self.toLoc!.longitude)"
+//                UIApplication.shared.open(URL(string:url)! , options: [:], completionHandler: nil)
+//            }))
+            
+            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler:{ (UIAlertAction)in
+                
+            }))
+            
+            self.present(alert, animated: true, completion: {
+                print("completion block")
+            })
+        }
+    
+    @objc func recenterMap(){
+        
+    }
+    
+    
+    
+    
+    
     //MARK:- Animations
     func animateTransitionIfNeeded (state:CardState, duration:TimeInterval) {
         if runningAnimations.isEmpty {
             let frameAnimator = UIViewPropertyAnimator(duration: duration, dampingRatio: 1) {
                 switch state {
                 case .expanded:
+                    AddressView.instance.parentView.fadeOut()
                     self.cardViewController.view.frame.origin.y = self.view.frame.height - self.cardHeight
                 case .collapsed:
+                    AddressView.instance.parentView.fadeIn()
                     self.cardViewController.view.frame.origin.y = self.view.frame.height - self.cardHandleAreaHeight
                 }
             }
@@ -133,17 +209,17 @@ class OrderVC: UIViewController, UIViewControllerTransitioningDelegate {
             cornerRadiusAnimator.startAnimation()
             runningAnimations.append(cornerRadiusAnimator)
             
-            let blurAnimator = UIViewPropertyAnimator(duration: duration, dampingRatio: 1) {
-                switch state {
-                case .expanded:
-                    self.visualEffectView.effect = UIBlurEffect(style: .dark)
-                case .collapsed:
-                    self.visualEffectView.effect = nil
-                }
-            }
-            
-            blurAnimator.startAnimation()
-            runningAnimations.append(blurAnimator)
+//            let blurAnimator = UIViewPropertyAnimator(duration: duration, dampingRatio: 1) {
+//                switch state {
+//                case .expanded:
+//                    self.visualEffectView.effect = UIBlurEffect(style: .dark)
+//                case .collapsed:
+//                    self.visualEffectView.effect = nil
+//                }
+//            }
+//            
+//            blurAnimator.startAnimation()
+//            runningAnimations.append(blurAnimator)
             
         }
     }
@@ -182,4 +258,10 @@ extension OrderVC{
         transiton.isPresenting = false
         return transiton
     }
+    enum CardState {
+        case expanded
+        case collapsed
+    }
+    
 }
+

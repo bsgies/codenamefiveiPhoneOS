@@ -25,6 +25,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let BarButtonItemAppearance = UIBarButtonItem.appearance()
         BarButtonItemAppearance.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.clear], for: .normal)
         GMSServices.provideAPIKey("AIzaSyBXfR7Zu7mvhxO4aydatsUY-VUH-_NG15g")
+        
+       
         return true
         
     }
@@ -108,6 +110,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
        
     }
+
 
 }
 extension UIWindow {

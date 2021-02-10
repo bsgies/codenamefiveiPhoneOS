@@ -27,7 +27,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             }
                 window?.rootViewController = rootVC
                 window?.makeKeyAndVisible()
-            
+            //GoToPickupVC
 //                 let windowScene = UIWindowScene(session: session, connectionOptions: connectionOptions)
 //                 self.window = UIWindow(windowScene: windowScene)
 //                 let storyboard = UIStoryboard(name: "Main", bundle: nil)

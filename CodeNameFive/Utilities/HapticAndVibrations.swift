@@ -8,7 +8,6 @@
 
 import Foundation
 import CoreHaptics
-
 @available(iOS 13.0, *)
 func Haptic()  {
     var engine: CHHapticEngine?

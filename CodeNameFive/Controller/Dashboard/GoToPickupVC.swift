@@ -243,8 +243,7 @@ class GoToPickupVC: UIViewController,CLLocationManagerDelegate, GMSMapViewDelega
         locationManager?.requestWhenInUseAuthorization()
         locationManager?.distanceFilter = 50
         locationManager?.startUpdatingLocation()
-        //locationManager.startMonitoringSignificantLocationChanges()
-        
+        locationManager.startMonitoringSignificantLocationChanges()
     }
     
     func SetupMap() {
@@ -314,7 +313,7 @@ class GoToPickupVC: UIViewController,CLLocationManagerDelegate, GMSMapViewDelega
                 break
             }
         }
-        }
+    }
 //currentLat == pathLat &&
         
     }
@@ -569,9 +568,7 @@ extension GoToPickupVC{
                 }
             }
         }
-        func navigate(toLatitude latitude: Double, longitude: Double) {
-            
-        }    }
+    }
     
     @objc func alertSheetForMaps(gesture: UITapGestureRecognizer){
         let alert = UIAlertController(title: "Maps", message: "Please select a map", preferredStyle: .actionSheet)

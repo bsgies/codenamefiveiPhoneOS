@@ -9,13 +9,31 @@
 import UIKit
 
 class AddressView: UIView {
-
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
+    public static let instance = AddressView()
+    @IBOutlet var parentView: UIView!
+    @IBOutlet weak var address: UILabel!
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        Bundle.main.loadNibNamed("AddressView", owner: self, options: nil)
+        commonInit()
     }
-    */
-
+    private func commonInit() {
+        parentView.layer.cornerRadius = 12
+        parentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    func addressCard(topView : UIView) {
+        topView.addSubview(parentView)
+        parentView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            parentView.topAnchor.constraint(equalTo: topView.topAnchor, constant: 100),
+            parentView.leadingAnchor.constraint(equalTo: topView.leadingAnchor, constant: 15),
+            parentView.trailingAnchor.constraint(equalTo: topView.trailingAnchor, constant: -15),
+           parentView.heightAnchor.constraint(equalToConstant: 80)
+        ])
+    }
+    
 }

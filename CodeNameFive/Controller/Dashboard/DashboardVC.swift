@@ -9,7 +9,6 @@
 import UIKit
 import GoogleMaps
 import CoreLocation
-import MaterialComponents.MaterialActivityIndicator
 
 class DashboardVC: UIViewController,  CLLocationManagerDelegate, GMSMapViewDelegate, UIGestureRecognizerDelegate {
     
@@ -35,7 +34,6 @@ class DashboardVC: UIViewController,  CLLocationManagerDelegate, GMSMapViewDeleg
     var zoomLevel: Float = 15.0
     let path = GMSMutablePath()
     var i = 0
-    let serverResponseActivityIndicator = MDCActivityIndicator()
     var locValue = CLLocationCoordinate2D(latitude: 0, longitude: 0)
     var isUserTouch = false
     var counter = 0
@@ -50,7 +48,7 @@ class DashboardVC: UIViewController,  CLLocationManagerDelegate, GMSMapViewDeleg
         LocationManger()
         Autrize()
         SetupMap()
-        currentEarning.setTitle("\(currency) 300.00", for: .normal)
+        currentEarning.setTitle(formatCurrency(balance: 30000), for: .normal)
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -62,6 +60,7 @@ class DashboardVC: UIViewController,  CLLocationManagerDelegate, GMSMapViewDeleg
         navigationController?.setNavigationBarHidden(false, animated: animated)
         NotificationCenter.default.removeObserver(self)
     }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
         currentEarning.backgroundColor = UIColor(named: "primaryButton")
@@ -123,22 +122,11 @@ class DashboardVC: UIViewController,  CLLocationManagerDelegate, GMSMapViewDeleg
         return true
     }
     func buttonServerResponse() {
-        serverResponseActivityIndicator.sizeToFit()
-        serverResponseActivityIndicator.indicatorMode = .indeterminate
-        serverResponseActivityIndicator.cycleColors = [#colorLiteral(red: 0, green: 0.7490196078, blue: 0.662745098, alpha: 1), #colorLiteral(red: 0, green: 0.7490196078, blue: 0.662745098, alpha: 1), #colorLiteral(red: 0, green: 0.7490196078, blue: 0.662745098, alpha: 1), #colorLiteral(red: 0, green: 0.7490196078, blue: 0.662745098, alpha: 1)]
-        serverResponseActivityIndicator.radius = 10
-        serverResponseActivityIndicator.translatesAutoresizingMaskIntoConstraints = false
-        goOnlineOfflineButton.addSubview(serverResponseActivityIndicator)
-        
-        NSLayoutConstraint.activate([
-            serverResponseActivityIndicator.centerXAnchor.constraint(equalTo: goOnlineOfflineButton.centerXAnchor, constant: 0.0),
-            serverResponseActivityIndicator.centerYAnchor.constraint(equalTo: goOnlineOfflineButton.centerYAnchor, constant: 0.0)
-        ])
-        serverResponseActivityIndicator.startAnimating()
+        goOnlineOfflineButton.loadingIndicator(true, title: "")
     }
     
     func ServerResponseReceived() {
-        serverResponseActivityIndicator.stopAnimating()
+        goOnlineOfflineButton.loadingIndicator(false, title: "")
     }
     
     @objc func recenterTheMap(gesture: UITapGestureRecognizer){

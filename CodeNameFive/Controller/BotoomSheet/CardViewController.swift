@@ -21,6 +21,15 @@ class CardViewController: UIViewController {
     var lblText : String?
     var addressLbl : String?
     
+    
+    
+    //MARK:- enum
+    
+    enum status {
+        case pickUp
+        case dropOf
+    }
+    
     //MARK:- lifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,6 +38,10 @@ class CardViewController: UIViewController {
         setupGestures()
         
     }
+    override func viewWillDisappear(_ animated: Bool) {
+        navigationController?.navigationBar.isHidden = false
+    }
+    
     //MARK:-Functions
     func setupGestures(){
         let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress))
@@ -37,7 +50,6 @@ class CardViewController: UIViewController {
     }
  
     func SetupView() {
-        
         button.addTarget(self, action: #selector(action), for: .touchUpInside)
         tableView.delegate = self
         tableView.dataSource = self
@@ -156,20 +168,20 @@ extension CardViewController : UITableViewDelegate , UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        var cellHeight : CGFloat = 60
+        var cellHeight : CGFloat = 70
         switch indexPath.section {
         case 0:
             switch indexPath.row {
             case 0 :
                 if let addressLbl = addressLbl {
                     let height = cellSize(forWidth: view.frame.width, text: addressLbl).height
-                    cellHeight = height+49
+                    cellHeight = height+70
                 }
                
             case 1 :
                 if let lblText = lblText {
                 let height = cellSize(forWidth: view.frame.width, text: lblText).height
-                    cellHeight = height+49
+                    cellHeight = height+60
                     
                 }
             default:
@@ -190,8 +202,9 @@ extension CardViewController : UITableViewDelegate , UITableViewDataSource{
 }
 
 
+//MARK:- Order Number
+
 extension CardViewController {
-   
     func OrderNumberView(){
         guard let window = UIApplication.shared.windows.filter({$0.isKeyWindow}).first else { return }
 

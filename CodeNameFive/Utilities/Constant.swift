@@ -34,3 +34,11 @@ func cellSize(forWidth width: CGFloat, text : String) -> CGSize {
     measurmentLabel.widthAnchor.constraint(equalToConstant: width).isActive = true
     return measurmentLabel.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize)
 }
+func formatCurrency(balance : Int) -> String{
+ 
+    let formatter = NumberFormatter()
+    formatter.numberStyle = .currencyAccounting
+    formatter.maximumFractionDigits = 0
+
+    return formatter.string(from: NSNumber(value: balance))!
+ }

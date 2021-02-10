@@ -148,18 +148,6 @@ extension UITextField {
 }
 extension UIView {
     
-    func fadeIn(duration: TimeInterval = 1, delay: TimeInterval = 1.0, completion: @escaping ((Bool) -> Void) = {(finished: Bool) -> Void in}) {
-        UIView.animate(withDuration: duration, delay: delay, options: .curveEaseIn, animations: {
-            self.alpha = 1.0
-        }, completion: completion)
-    }
-
-    func fadeOut(duration: TimeInterval = 0, delay: TimeInterval = 0.0, completion: @escaping (Bool) -> Void = {(finished: Bool) -> Void in}) {
-        UIView.animate(withDuration: duration, delay: delay, options: .curveEaseIn, animations: {
-            self.alpha = 0.0
-        }, completion: completion)
-    }
-    
     func ViewShadow(){
         self.layer.shadowColor = UIColor.gray.cgColor
         self.layer.shadowOpacity = 0.5
@@ -392,3 +380,23 @@ extension UIFont {
     }
 
 }
+extension UIView {
+    func fadeIn(duration: TimeInterval = 0.9, delay: TimeInterval = 0.0, completion: @escaping ((Bool) -> Void) = {(finished: Bool) -> Void in }) {
+        self.alpha = 0.0
+
+        UIView.animate(withDuration: duration, delay: delay, options: UIView.AnimationOptions.curveEaseIn, animations: {
+            self.isHidden = false
+            self.alpha = 1.0
+        }, completion: completion)
+    }
+
+    func fadeOut(duration: TimeInterval = 0.9, delay: TimeInterval = 0.0, completion: @escaping (Bool) -> Void = {(finished: Bool) -> Void in }) {
+        self.alpha = 1.0
+
+        UIView.animate(withDuration: duration, delay: delay, options: UIView.AnimationOptions.curveEaseOut, animations: {
+            self.isHidden = true
+            self.alpha = 0.0
+        }, completion: completion)
+    }
+}
+
