@@ -339,9 +339,9 @@ class GoToPickupVC: UIViewController,CLLocationManagerDelegate, GMSMapViewDelega
     }
     func driverRouteManage(driverLat: Double, driverLong: Double){
         if !GMSGeometryIsLocationOnPath(locValue!,path, true){
-Direction(from: locValue!, to: toLoc!)
+//Direction(from: locValue!, to: toLoc!)
         }
-//
+        updateTravelledPath(currentLoc: locValue!)
 //        if !isInRoute(posLL: locValue!, path: path){
 //            Direction(from: locValue!, to: toLoc!)
 //        }
@@ -351,10 +351,8 @@ Direction(from: locValue!, to: toLoc!)
         
         let geodesic = true
         let tolerance: CLLocationDistance = 10
-        
         let within10Meters = GMSGeometryIsLocationOnPathTolerance(posLL, path, geodesic, tolerance)
         return within10Meters
-        
     }
     
     

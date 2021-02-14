@@ -14,13 +14,13 @@ class CardViewController: UIViewController {
     @IBOutlet weak var handleArea: UIView!
     @IBOutlet weak var cardView : UIView!
     @IBOutlet weak var tableView : UITableView!
-    
+    @IBOutlet weak var distance : UILabel!
+    @IBOutlet weak var time : UILabel!
    
     //MARK:- variables
     let button = UIButton(type: .custom)
     var lblText : String?
     var addressLbl : String?
-    
     
     
     //MARK:- enum
@@ -50,6 +50,8 @@ class CardViewController: UIViewController {
     }
  
     func SetupView() {
+        self.distance.text = distanceInKm
+        self.time.text = durationInTraffic
         button.addTarget(self, action: #selector(action), for: .touchUpInside)
         tableView.delegate = self
         tableView.dataSource = self

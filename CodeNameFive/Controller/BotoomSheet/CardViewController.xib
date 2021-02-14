@@ -13,8 +13,10 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CardViewController" customModule="CNF" customModuleProvider="target">
             <connections>
                 <outlet property="cardView" destination="qZN-Of-IAe" id="zHH-rl-vuk"/>
+                <outlet property="distance" destination="0il-Yb-myI" id="Hg7-TC-Q9Y"/>
                 <outlet property="handleArea" destination="r6F-YW-eeF" id="1Y4-Bw-5yT"/>
                 <outlet property="tableView" destination="3YU-h6-Mbd" id="cRZ-o4-ncr"/>
+                <outlet property="time" destination="E29-Kt-wzD" id="cKd-52-qqo"/>
                 <outlet property="view" destination="iN0-l3-epB" id="DJP-sT-hnF"/>
             </connections>
         </placeholder>

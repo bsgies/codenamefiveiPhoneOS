@@ -9,6 +9,10 @@
 import Foundation
 import UIKit
 import GoogleMaps
+
+var distanceInKm :  String = "20KM"
+var durationInTraffic : String = "10 min"
+
 func openGoogleMap(){
     
     if (UIApplication.shared.canOpenURL(URL(string:"comgooglemaps://")!)) {

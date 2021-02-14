@@ -18,6 +18,7 @@
         <!--PickupVC-->
         <scene sceneID="KKK-ZA-ktM">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dF1-Wb-btD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <viewController id="udN-iD-dSv" customClass="PickupVC" customModule="CNF" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ro8-Pj-s4q">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -38,7 +39,6 @@
                         </constraints>
                     </view>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dF1-Wb-btD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3012" y="780"/>
         </scene>
@@ -626,7 +626,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pdc-OX-I6s" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3748" y="96"/>
+            <point key="canvasLocation" x="3747.826086956522" y="95.758928571428569"/>
         </scene>
         <!--Delivery Info-->
         <scene sceneID="1K0-ye-G3W">

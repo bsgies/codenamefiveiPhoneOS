@@ -39,6 +39,7 @@ class OrderVC: UIViewController, UIViewControllerTransitioningDelegate, GMSMapVi
     public var locationManager: CLLocationManager!
     var path = GMSMutablePath()
     var myGMSPolyline : GMSPolyline!
+    var polyline : GMSPolyline!
     var pathIndex = 0
     var ponits : String?
     
