@@ -13,9 +13,11 @@ class DetailsCell: UITableViewCell {
     
     
     @IBOutlet weak var address : UILabel!
+    @IBOutlet weak var messageView : UIView!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+    
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -27,8 +29,14 @@ class DetailsCell: UITableViewCell {
         callOnNumber(string: "")
     }
     @IBAction func Help(sender : UIButton){
-
+      
     }
+    @IBAction func messageButton(_ sender: UIButton) {
+        
+        
+        
+    }
+    
     func callOnNumber(string : String){
         if let url = URL(string: "tel://\("+923084706656")") {
             if #available(iOS 10, *) {

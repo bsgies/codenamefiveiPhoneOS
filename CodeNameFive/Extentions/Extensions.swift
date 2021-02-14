@@ -328,6 +328,7 @@ extension UIButton {
                 }
             }
         }
+    
 }
 class QFNavigationController:UINavigationController, UIGestureRecognizerDelegate, UINavigationControllerDelegate{
     override func viewDidLoad() {

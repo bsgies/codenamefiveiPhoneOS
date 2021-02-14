@@ -25,10 +25,12 @@ class CardViewController: UIViewController {
     
     //MARK:- enum
     
-    enum status {
+    enum currentState  : String{
         case pickUp
         case dropOf
     }
+    
+    var currentStatus: currentState?
     
     //MARK:- lifeCycle
     override func viewDidLoad() {
@@ -36,10 +38,22 @@ class CardViewController: UIViewController {
         SetupView()
         setupNibs()
         setupGestures()
-        
     }
     override func viewWillDisappear(_ animated: Bool) {
         navigationController?.navigationBar.isHidden = false
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        
+        if let currentStatus = currentState(rawValue: fetchString(key: "currentStatus") as! String){
+            self.currentStatus = currentStatus
+        }
+        else{
+            self.currentStatus = .pickUp
+        }
+        
     }
     
     //MARK:-Functions
@@ -95,6 +109,30 @@ class CardViewController: UIViewController {
     //MARK:-Selector
     @objc func action(){
         print("okay")
+        switch currentStatus{
+        case .pickUp:
+            print("pickUp")
+            saveInDefault(value: currentState.dropOf.rawValue, key: "currentStatus")
+            if let currentStatus = currentState(rawValue: fetchString(key: "currentStatus") as! String){
+                self.currentStatus = currentStatus
+            }
+            button.setTitle("Complete delivery", for: .normal)
+            DispatchQueue.main.async { [self] in
+                tableView.reloadData()
+            }
+            
+            
+        case .dropOf:
+            print("dropOf")
+            saveInDefault(value: currentState.pickUp.rawValue, key: "currentStatus")
+            if let currentStatus = currentState(rawValue: fetchString(key: "currentStatus") as! String){
+                self.currentStatus = currentStatus
+            }
+        default:
+            break
+        }
+        
+        
     }
     @objc func handleLongPress(longPressGesture: UILongPressGestureRecognizer) {
         let p = longPressGesture.location(in: self.tableView)
@@ -124,7 +162,15 @@ extension CardViewController : UITableViewDelegate , UITableViewDataSource{
         case 0:
             return 2
         case 1:
-            return 1
+            switch currentStatus {
+            case .pickUp:
+                return 1
+            case .dropOf:
+                return 2
+            default:
+                return 1
+            }
+            
         default:
             return 0
         }
@@ -138,6 +184,14 @@ extension CardViewController : UITableViewDelegate , UITableViewDataSource{
             case 0:
                 let cell = tableView.dequeueReusableCell(withIdentifier: "DetailsCell", for: indexPath) as! DetailsCell
                 addressLbl = cell.address.text
+                switch currentStatus {
+                case .pickUp:
+                    cell.messageView.isHidden = true
+                case .dropOf :
+                cell.messageView.isHidden = false
+                default:
+                    break
+                }
                 cell.selectionStyle = .none
                 return cell
             case 1:
@@ -150,9 +204,29 @@ extension CardViewController : UITableViewDelegate , UITableViewDataSource{
             }
             
         case 1:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "orderNumber", for: indexPath)
-            cell.selectionStyle = .none
-            return cell
+            switch currentStatus {
+            case .pickUp:
+                let cell = tableView.dequeueReusableCell(withIdentifier: "orderNumber", for: indexPath)
+                cell.selectionStyle = .none
+                return cell
+            case .dropOf:
+            switch indexPath.row {
+                case 0 :
+                    let cell = tableView.dequeueReusableCell(withIdentifier: "orderNumber", for: indexPath)
+                    cell.selectionStyle = .none
+                    return cell
+                case 1 :
+                    let cell = tableView.dequeueReusableCell(withIdentifier: "CollectCash", for: indexPath)
+                    cell.selectionStyle = .none
+                    return cell
+                default:
+                    return UITableViewCell()
+                }
+                
+            default:
+                return UITableViewCell()
+            }
+           
             
         default:
             return UITableViewCell()
@@ -200,6 +274,18 @@ extension CardViewController : UITableViewDelegate , UITableViewDataSource{
         let titleView = view as! UITableViewHeaderFooterView
         titleView.textLabel?.text =  "1 order for pickup"
         titleView.textLabel?.font = UIFont(name: "HelveticaNeue", size: 14)
+    }
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        return UIView()
+    }
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        switch section {
+        case 1:
+            return 100
+        default:
+            break
+        }
+        return CGFloat()
     }
 }
 

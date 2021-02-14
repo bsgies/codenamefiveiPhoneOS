@@ -56,6 +56,9 @@ extension OrderVC : CLLocationManagerDelegate , DirectionCallback{
                 
                 
                 self.updateTravelledPath(currentLoc: CLLocationCoordinate2DMake ((self.locationManager.location?.coordinate.latitude)! , (self.locationManager.location?.coordinate.longitude)!))
+                
+              
+                
 
             })
         } else {
@@ -126,7 +129,11 @@ extension OrderVC : CLLocationManagerDelegate , DirectionCallback{
         else{
             self.updateTravelledPath(currentLoc: CLLocationCoordinate2DMake ((manager.location?.coordinate.latitude)! , ( manager.location?.coordinate.longitude)!))
         }
-       
+        let userLocation = locations.last
+        let location = GMSCameraPosition.camera(withLatitude: userLocation!.coordinate.latitude, longitude: userLocation!.coordinate.longitude, zoom: 16.0)
+        
+        handleArea.animate(to: location)
+
         
     }
     
@@ -149,40 +156,7 @@ extension OrderVC : CLLocationManagerDelegate , DirectionCallback{
             fatalError()
         }
     }
-    
-    
-//    func createPoly(index :Int){
-//        let newPath = GMSMutablePath()
-//        if Int(path.count()) > index {
-//            for i in index..<Int(path.count()){
-//                newPath.add(path.coordinate(at: UInt(i)))
-//                print(path.coordinate(at: UInt(i)))
-//            }
-//            self.path = newPath
-//            self.myGMSPolyline = GMSPolyline.init(path: self.path)
-//            DispatchQueue.main.async {
-//                self.drawPolyline(mapView: self.handleArea,polyline: self.myGMSPolyline,strokeWidth: 5.0,polylineColor: UIColor(named: "primaryColor")!,isDashed: false)
-//            }
-//
-//        }
-//    }
-//
-//    func drawPolyline(mapView: GMSMapView, polyline: GMSPolyline, strokeWidth: CGFloat, polylineColor: UIColor, isDashed: Bool){
-//        //handleArea.animate(toViewingAngle: 45)
-//        handleArea.clear()
-//        polyline.strokeWidth = strokeWidth
-//        polyline.strokeColor = polylineColor
-//
-//        polyline.map  = mapView
-//        var bounds = GMSCoordinateBounds()
-//        for i in 0 ... path.count() {
-//            bounds = bounds.includingCoordinate((path.coordinate(at: i)))
-//        }
-//
-//       // handleArea.moveCamera(.fit(bounds))
-//        //
-//
-//    }
+
     func addMarker(){
         let customerIcon = self.imageWithImage(image: UIImage(named: "Customer")!, scaledToSize: CGSize(width: 50.0, height: 50.0))
         let dmarker = GMSMarker()
@@ -198,29 +172,14 @@ extension OrderVC : CLLocationManagerDelegate , DirectionCallback{
         UIGraphicsEndImageContext()
         return newImage
     }
-//    func updateTravelledPath(currentLoc: CLLocationCoordinate2D){
-//        if myGMSPolyline != nil{
-//        createPoly(index: pathIndex)
-//        for i in 0..<path.count(){
-//            let pathLat = path.coordinate(at: i).latitude.rounded(toPlaces: 4)
-//            _ = path.coordinate(at: i).longitude.rounded(toPlaces: 4)
-//            _ = currentLoc.latitude.rounded(toPlaces: 4)
-//            _ = currentLoc.longitude.rounded(toPlaces: 4)
-//            if currentLoc.latitude == pathLat{
-//                pathIndex = Int(i)
-//                break
-//            }
-//        }
-//    }
         func updateTravelledPath(currentLoc: CLLocationCoordinate2D){
             var index = 0
-            handleArea.clear()
             for i in 0..<self.path.count(){
-                let pathLat = Double(self.path.coordinate(at: i).latitude).rounded(toPlaces: 2)
-                let pathLong = Double(self.path.coordinate(at: i).longitude).rounded(toPlaces: 2)
+                let pathLat = Double(self.path.coordinate(at: i).latitude).rounded(toPlaces: 3)
+                let pathLong = Double(self.path.coordinate(at: i).longitude).rounded(toPlaces: 3)
 
-                let currentLat = Double(currentLoc.latitude).rounded(toPlaces: 2)
-                let currentLong = Double(currentLoc.longitude).rounded(toPlaces: 2)
+                let currentLat = Double(currentLoc.latitude).rounded(toPlaces: 3)
+                let currentLong = Double(currentLoc.longitude).rounded(toPlaces: 3)
 
                 if currentLat == pathLat && currentLong == pathLong{
                     index = Int(i)
@@ -234,19 +193,26 @@ extension OrderVC : CLLocationManagerDelegate , DirectionCallback{
                 newPath.add(self.path.coordinate(at: UInt(i)))
             }
             self.path = newPath
+            if self.polyline != nil{
+                polyline.map = nil
+            }
+            
             self.polyline = GMSPolyline(path: self.path)
             self.polyline.strokeColor = UIColor(named: "primaryColor")!
-            self.polyline.strokeWidth = 5.0
+            self.polyline.strokeWidth = 4.0
             self.polyline.map = self.handleArea!
         }
         
         func isInRoute(posLL: CLLocationCoordinate2D, path: GMSPath) -> Bool
         {
-            
             let geodesic = true
             let tolerance: CLLocationDistance = 100
             let within100Meters = GMSGeometryIsLocationOnPathTolerance(posLL, path, geodesic, tolerance)
             return within100Meters
         }
+    
+    func mapView(_ mapView: GMSMapView, didChange position: GMSCameraPosition) {
+        print("camer postion change")
+    }
 }
 

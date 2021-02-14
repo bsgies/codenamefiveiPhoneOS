@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -24,7 +24,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Soul Cafe" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vlD-7w-aY3">
-                        <rect key="frame" x="20" y="20" width="171" height="24"/>
+                        <rect key="frame" x="20" y="20" width="92.5" height="24"/>
                         <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -84,30 +84,61 @@
                             <constraint firstItem="RwC-Bl-lYw" firstAttribute="centerY" secondItem="Re5-Tr-CTa" secondAttribute="centerY" id="xhA-6I-oey"/>
                         </constraints>
                     </view>
+                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jgm-Dy-P8A">
+                        <rect key="frame" x="152.5" y="10" width="44" height="44"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="09t-8J-bs3">
+                                <rect key="frame" x="1" y="1" width="42" height="42"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="42" id="MWR-Cy-IRX"/>
+                                    <constraint firstAttribute="height" constant="42" id="WeX-TP-zvm"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                                <state key="normal" image="comment"/>
+                                <connections>
+                                    <action selector="HelpWithSender:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="cDX-H8-VfO"/>
+                                    <action selector="messageButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="7yE-Vn-aBi"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" name="bgIcons"/>
+                        <constraints>
+                            <constraint firstItem="09t-8J-bs3" firstAttribute="centerY" secondItem="Jgm-Dy-P8A" secondAttribute="centerY" id="Qwc-2O-dgA"/>
+                            <constraint firstItem="09t-8J-bs3" firstAttribute="centerX" secondItem="Jgm-Dy-P8A" secondAttribute="centerX" id="f4Z-iI-Eza"/>
+                            <constraint firstAttribute="width" constant="44" id="gSC-iy-X1B"/>
+                            <constraint firstAttribute="height" constant="44" id="sln-c0-Drj"/>
+                        </constraints>
+                    </view>
                 </subviews>
                 <color key="backgroundColor" name="cellColor"/>
                 <constraints>
                     <constraint firstItem="Re5-Tr-CTa" firstAttribute="leading" secondItem="hOd-UU-QQy" secondAttribute="trailing" constant="10" id="9az-mh-Js4"/>
                     <constraint firstAttribute="trailing" secondItem="Ebh-XF-wbs" secondAttribute="trailing" constant="20" id="Ct8-pC-gOy"/>
                     <constraint firstItem="vlD-7w-aY3" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="ESf-L5-YQh"/>
+                    <constraint firstItem="Re5-Tr-CTa" firstAttribute="centerY" secondItem="hOd-UU-QQy" secondAttribute="centerY" id="J2t-FG-8BF"/>
                     <constraint firstAttribute="trailing" secondItem="Re5-Tr-CTa" secondAttribute="trailing" constant="20" id="Kfs-sX-ZIY"/>
                     <constraint firstItem="Re5-Tr-CTa" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="NQh-Ym-yQ1"/>
                     <constraint firstItem="Ebh-XF-wbs" firstAttribute="top" secondItem="vlD-7w-aY3" secondAttribute="bottom" constant="10" id="TWm-ZU-pOI"/>
+                    <constraint firstItem="Jgm-Dy-P8A" firstAttribute="centerY" secondItem="Re5-Tr-CTa" secondAttribute="centerY" id="U2O-A0-oiq"/>
                     <constraint firstItem="hOd-UU-QQy" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="Uiv-4X-5dc"/>
+                    <constraint firstItem="Re5-Tr-CTa" firstAttribute="centerY" secondItem="vlD-7w-aY3" secondAttribute="centerY" id="VhU-UB-ROL"/>
+                    <constraint firstItem="Jgm-Dy-P8A" firstAttribute="top" secondItem="hOd-UU-QQy" secondAttribute="top" id="dbf-9J-deA"/>
                     <constraint firstItem="Ebh-XF-wbs" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="ddb-GE-l5F"/>
-                    <constraint firstItem="hOd-UU-QQy" firstAttribute="leading" secondItem="vlD-7w-aY3" secondAttribute="trailing" constant="20" id="jFo-cY-bsF"/>
+                    <constraint firstItem="Jgm-Dy-P8A" firstAttribute="leading" secondItem="vlD-7w-aY3" secondAttribute="trailing" constant="40" id="ra7-JL-4aw"/>
                     <constraint firstItem="vlD-7w-aY3" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="20" id="wQt-pc-xu5"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="address" destination="Ebh-XF-wbs" id="Qmk-qn-XpZ"/>
+                <outlet property="messageView" destination="Jgm-Dy-P8A" id="ipl-Me-sIw"/>
             </connections>
             <point key="canvasLocation" x="9.4202898550724647" y="43.191964285714285"/>
         </tableViewCell>
     </objects>
     <resources>
         <image name="call" width="21" height="21"/>
+        <image name="comment" width="24" height="24"/>
         <image name="helpcenter" width="22" height="22"/>
         <namedColor name="bgIcons">
             <color red="0.98000001907348633" green="0.98000001907348633" blue="0.98000001907348633" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
