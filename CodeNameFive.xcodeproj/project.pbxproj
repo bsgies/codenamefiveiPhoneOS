@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1FA8D06B3D5CB28E438D8071 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 10AD4C59CDB9282A349BDCD2 /* Localizable.strings */; };
 		4F085A0E24FD39EB005EA82E /* HTTPVehicalType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F085A0D24FD39EB005EA82E /* HTTPVehicalType.swift */; };
 		4F085A1024FD83DD005EA82E /* HTTPRegisterationRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F085A0F24FD83DD005EA82E /* HTTPRegisterationRequest.swift */; };
 		4F08878824B5F13400CD5554 /* CollectOrderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F08878724B5F13400CD5554 /* CollectOrderCell.swift */; };
@@ -183,6 +184,7 @@
 		2C7DB2144377852017506D20 /* Pods_CodeNameFiveTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CodeNameFiveTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A7EF917E3DE529CA6C4C385 /* Pods-CodeNameFive.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CodeNameFive.release.xcconfig"; path = "Target Support Files/Pods-CodeNameFive/Pods-CodeNameFive.release.xcconfig"; sourceTree = "<group>"; };
 		3D3A47F8A169D0CA79DC7B9B /* Pods_CodeNameFive_CodeNameFiveUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CodeNameFive_CodeNameFiveUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		416B55D6F432457FA6359B8B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		4F085A0D24FD39EB005EA82E /* HTTPVehicalType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPVehicalType.swift; sourceTree = "<group>"; };
 		4F085A0F24FD83DD005EA82E /* HTTPRegisterationRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPRegisterationRequest.swift; sourceTree = "<group>"; };
 		4F08878724B5F13400CD5554 /* CollectOrderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectOrderCell.swift; sourceTree = "<group>"; };
@@ -290,6 +292,7 @@
 		4FF1F72324AFBB2D0035A9A5 /* HelpOrCancelCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpOrCancelCell.swift; sourceTree = "<group>"; };
 		4FF1F72924AFD92C0035A9A5 /* CollectcashVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectcashVC.swift; sourceTree = "<group>"; };
 		6B8B3A440900B17F3B9995FB /* Pods-CodeNameFive.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CodeNameFive.debug.xcconfig"; path = "Target Support Files/Pods-CodeNameFive/Pods-CodeNameFive.debug.xcconfig"; sourceTree = "<group>"; };
+		8CC7831BE557A5CBD31D65CB /* ur-PK */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "ur-PK"; path = "ur-PK.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		903D5872257E586200521DCD /* MainMenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuTableViewCell.swift; sourceTree = "<group>"; };
 		903F63D72571630500C0D86F /* K.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = K.swift; sourceTree = "<group>"; };
 		903F63D9257176CD00C0D86F /* SFProDisplay-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProDisplay-Regular.ttf"; sourceTree = "<group>"; };
@@ -360,6 +363,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		430DD305D62735A9DF2A4363 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				10AD4C59CDB9282A349BDCD2 /* Localizable.strings */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		4F1A9F1F25D2B6B0003C50B4 /* Address */ = {
 			isa = PBXGroup;
 			children = (
@@ -415,6 +426,7 @@
 				4F31608A24CE359700347571 /* noti.mp3 */,
 				4F97A20824D46C62006734BF /* CodeNameFive-Bridging-Header.h */,
 				4F58477B24BB2F8100B42CB8 /* CNF.entitlements */,
+				430DD305D62735A9DF2A4363 /* Resources */,
 			);
 			path = CodeNameFive;
 			sourceTree = "<group>";
@@ -1003,6 +1015,7 @@
 				4FDA5E2725C5AA6E00097333 /* AppMenu.storyboard in Resources */,
 				4F965B9D25C5FEF400A01418 /* Profile.storyboard in Resources */,
 				4F8ED08E24CC55BB00F658DA /* country.json in Resources */,
+				1FA8D06B3D5CB28E438D8071 /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1053,9 +1066,13 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-CodeNameFive/Pods-CodeNameFive-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
+			inputPaths = (
+			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-CodeNameFive/Pods-CodeNameFive-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1070,9 +1087,13 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-CodeNameFive-CodeNameFiveUITests/Pods-CodeNameFive-CodeNameFiveUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
+			inputPaths = (
+			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-CodeNameFive-CodeNameFiveUITests/Pods-CodeNameFive-CodeNameFiveUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1087,9 +1108,13 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-CodeNameFive/Pods-CodeNameFive-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
+			inputPaths = (
+			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-CodeNameFive/Pods-CodeNameFive-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1165,9 +1190,13 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-CodeNameFive-CodeNameFiveUITests/Pods-CodeNameFive-CodeNameFiveUITests-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
+			inputPaths = (
+			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-CodeNameFive-CodeNameFiveUITests/Pods-CodeNameFive-CodeNameFiveUITests-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1326,6 +1355,15 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		10AD4C59CDB9282A349BDCD2 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				416B55D6F432457FA6359B8B /* en */,
+				8CC7831BE557A5CBD31D65CB /* ur-PK */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		4F2E563B249B4FA800D28462 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
