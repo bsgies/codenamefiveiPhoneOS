@@ -120,7 +120,7 @@ class CardViewController: UIViewController {
             DispatchQueue.main.async { [self] in
                 tableView.reloadData()
             }
-            
+            pushToRoot(from: .main, identifier: .CollectcashVC)
             
         case .dropOf:
             print("dropOf")
@@ -128,6 +128,7 @@ class CardViewController: UIViewController {
             if let currentStatus = currentState(rawValue: fetchString(key: "currentStatus") as! String){
                 self.currentStatus = currentStatus
             }
+            
         default:
             break
         }
@@ -144,6 +145,10 @@ class CardViewController: UIViewController {
         } else if longPressGesture.state == UIGestureRecognizer.State.began {
             if indexPath?.section == 1 {
                 //print("Long press on row, at \(indexPath!.row)")
+                DispatchQueue.main.async {
+                        tapped(caseRun: 7)
+                    
+                }
                 OrderNumberView()
             }
             
@@ -183,12 +188,16 @@ extension CardViewController : UITableViewDelegate , UITableViewDataSource{
             switch indexPath.row {
             case 0:
                 let cell = tableView.dequeueReusableCell(withIdentifier: "DetailsCell", for: indexPath) as! DetailsCell
-                addressLbl = cell.address.text
+                
                 switch currentStatus {
                 case .pickUp:
-                    cell.messageView.isHidden = true
+                    cell.message.isHidden = true
+                    addressLbl = cell.address.text
+                    cell.address.text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
                 case .dropOf :
-                cell.messageView.isHidden = false
+                cell.message.isHidden = false
+                addressLbl = cell.address.text
+                cell.address.text = "341 Alberton Road Bradford"
                 default:
                     break
                 }
@@ -236,7 +245,15 @@ extension CardViewController : UITableViewDelegate , UITableViewDataSource{
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         switch section {
         case 2:
-            return "1 order for pickup"
+            switch currentStatus {
+            case .pickUp:
+                return "1 order for pickup"
+            case .dropOf:
+            return "1 order for dropOff"
+            default:
+                break
+            }
+           
 
         default:
             return ""

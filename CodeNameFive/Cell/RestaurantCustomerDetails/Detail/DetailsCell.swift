@@ -13,16 +13,23 @@ class DetailsCell: UITableViewCell {
     
     
     @IBOutlet weak var address : UILabel!
-    @IBOutlet weak var messageView : UIView!
+    @IBOutlet weak var phone : UIButton!
+    @IBOutlet weak var message : UIButton!
+    @IBOutlet weak var help : UIButton!
+    @IBOutlet weak var businessName: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
-    
+        
+        phone.round(bordercolor: "borderColor")
+        message.round(bordercolor: "borderColor")
+        help.round(bordercolor: "borderColor")
+        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
     @IBAction func callOnNumberButtonPressed(sender : UIButton){
@@ -45,5 +52,13 @@ class DetailsCell: UITableViewCell {
                 UIApplication.shared.openURL(url)
             }
         }
+    }
+}
+
+extension UIView{
+    func round(bordercolor : String) {
+        self.layer.cornerRadius = self.frame.height / 2
+        self.layer.borderWidth = 1
+        self.layer.borderColor = UIColor(named: bordercolor)?.cgColor
     }
 }

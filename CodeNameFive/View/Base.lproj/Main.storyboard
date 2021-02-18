@@ -953,7 +953,7 @@
         <!--Collect Cash-->
         <scene sceneID="GtS-mo-JZM">
             <objects>
-                <viewController storyboardIdentifier="CollectcashVC" title="Collect Cash" useStoryboardIdentifierAsRestorationIdentifier="YES" id="NPQ-L7-oTi" customClass="CollectcashVC" customModule="CNF" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CollectcashVC1" title="Collect Cash" useStoryboardIdentifierAsRestorationIdentifier="YES" id="NPQ-L7-oTi" customClass="CollectcashVC" customModule="CNF" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="nku-WO-QsT">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1238,22 +1238,6 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Collect cash" id="jZS-Pi-IzY"/>
-                    <connections>
-                        <outlet property="amount" destination="ugy-i7-Blo" id="RB3-dV-muH"/>
-                        <outlet property="centerView" destination="Cu3-FX-9OK" id="bmD-pd-GiD"/>
-                        <outlet property="changeDueLbl" destination="Mu1-eF-IAs" id="pkr-gW-MSJ"/>
-                        <outlet property="due" destination="QhK-Qs-nC7" id="fKy-mT-q89"/>
-                        <outlet property="firstAmount" destination="Dt0-LV-EV4" id="AZj-bH-pmL"/>
-                        <outlet property="firstPaymentLbl" destination="pkk-HZ-iuT" id="0b2-UG-Gf8"/>
-                        <outlet property="fourthAmount" destination="wWX-im-UAu" id="Ptu-1A-9Al"/>
-                        <outlet property="fourthPAymentLbl" destination="Njf-1d-Aib" id="x9H-yW-dqH"/>
-                        <outlet property="paymentDueLbl" destination="R9O-Q7-eX5" id="ZtT-qj-Dph"/>
-                        <outlet property="received" destination="wDq-Ds-Uct" id="YNI-0Q-bHL"/>
-                        <outlet property="secondAmount" destination="Wmj-OP-5X6" id="vmp-9x-d9s"/>
-                        <outlet property="secondPaymentLbl" destination="6Xc-CN-b4M" id="PeW-be-NCE"/>
-                        <outlet property="thirdAmount" destination="ZEZ-SB-1Bs" id="u5Z-0z-ciT"/>
-                        <outlet property="thirdPaymentLbl" destination="Svn-3b-mh7" id="756-Ob-BaR"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GTW-kk-Dzf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

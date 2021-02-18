@@ -9,10 +9,17 @@
 import UIKit
 
 class orderNumber: UITableViewCell {
+    @IBOutlet weak var checkBoxView: UIView!
+    @IBOutlet weak var totalItems: UILabel!
+    @IBOutlet weak var showHideItems: UILabel!
     var unchecked = false
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+    }
+    
+    func setupTapGesuters(){
+        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

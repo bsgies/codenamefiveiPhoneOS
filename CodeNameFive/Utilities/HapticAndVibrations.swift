@@ -8,6 +8,7 @@
 
 import Foundation
 import CoreHaptics
+import NotificationCenter
 @available(iOS 13.0, *)
 func Haptic()  {
     var engine: CHHapticEngine?
@@ -44,34 +45,43 @@ func Haptic()  {
         print(error.localizedDescription)
     }
 }
-//func tapped(caseRun : Int) {
-//    switch caseRun {
-//    case 1:
-//        let generator = UINotificationFeedbackGenerator()
-//        generator.notificationOccurred(.error)
-//        
-//    case 2:
-//        let generator = UINotificationFeedbackGenerator()
-//        generator.notificationOccurred(.success)
-//        
-//    case 3:
-//        let generator = UINotificationFeedbackGenerator()
-//        generator.notificationOccurred(.warning)
-//        
-//    case 4:
-//        let generator = UIImpactFeedbackGenerator(style: .light)
-//        generator.impactOccurred()
-//        
-//    case 5:
-//        let generator = UIImpactFeedbackGenerator(style: .medium)
-//        generator.impactOccurred()
-//        
-//    case 6:
-//        let generator = UIImpactFeedbackGenerator(style: .heavy)
-//        generator.impactOccurred()
-//        
-//    default:
-//        let generator = UISelectionFeedbackGenerator()
-//        generator.selectionChanged()
-//    }
-//}
+
+func tapped(caseRun : Int) {
+    switch caseRun {
+    case 1:
+        let generator = UINotificationFeedbackGenerator()
+        generator.notificationOccurred(.error)
+        
+    case 2:
+        let generator = UINotificationFeedbackGenerator()
+        generator.notificationOccurred(.success)
+        
+    case 3:
+        let generator = UINotificationFeedbackGenerator()
+        generator.notificationOccurred(.warning)
+        
+    case 4:
+        let generator = UIImpactFeedbackGenerator(style: .light)
+        generator.impactOccurred()
+        
+    case 5:
+        let generator = UIImpactFeedbackGenerator(style: .medium)
+        generator.impactOccurred()
+        
+    case 6:
+        let generator = UIImpactFeedbackGenerator(style: .heavy)
+        generator.impactOccurred()
+        
+    case 7:
+        if #available(iOS 13.0, *) {
+            let generator = UIImpactFeedbackGenerator(style: .rigid)
+            generator.impactOccurred()
+        } else {
+            // Fallback on earlier versions
+        }
+       
+    default:
+        let generator = UISelectionFeedbackGenerator()
+        generator.selectionChanged()
+    }
+}
