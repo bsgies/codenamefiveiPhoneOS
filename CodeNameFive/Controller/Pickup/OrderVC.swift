@@ -47,8 +47,8 @@ class OrderVC: UIViewController, UIViewControllerTransitioningDelegate, GMSMapVi
     //MARK:- LifeCycles
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupCard()
-        AddressView.instance.addressCard(topView: self.view)
+        //setupCard()
+        //AddressView.instance.addressCard(topView: self.view)
        
     }
     

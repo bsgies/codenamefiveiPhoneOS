@@ -42,3 +42,5 @@ func formatCurrency(balance : Int) -> String{
 
     return formatter.string(from: NSNumber(value: balance))!
  }
+
+

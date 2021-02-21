@@ -400,4 +400,11 @@ extension UIView {
         }, completion: completion)
     }
 }
-
+extension String {
+    func setColor(_ color: UIColor, ofSubstring substring: String) -> NSMutableAttributedString {
+        let range = (self as NSString).range(of: substring)
+        let attributedString = NSMutableAttributedString(string: self)
+        attributedString.addAttribute(NSAttributedString.Key.foregroundColor, value: color, range: range)
+        return attributedString
+    }
+}

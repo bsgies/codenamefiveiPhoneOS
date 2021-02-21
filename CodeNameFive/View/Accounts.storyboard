@@ -28,13 +28,13 @@
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Ll-Ud-RcS">
-                                    <rect key="frame" x="20" y="0.0" width="34.5" height="16.5"/>
+                                    <rect key="frame" x="20" y="0.0" width="34.5" height="20"/>
                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                     <color key="textColor" red="0.86274509799999999" green="0.20784313730000001" blue="0.27058823529999998" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Code not received?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SRZ-7y-4VA">
-                                    <rect key="frame" x="134.5" y="-3" width="145" height="20"/>
+                                    <rect key="frame" x="134.5" y="0.0" width="145" height="20"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="20" id="cr1-nV-0sr"/>
                                     </constraints>
@@ -45,8 +45,9 @@
                             </subviews>
                             <constraints>
                                 <constraint firstItem="1Ll-Ud-RcS" firstAttribute="top" secondItem="RlN-Y9-v3d" secondAttribute="top" id="PVE-p0-pPU"/>
+                                <constraint firstItem="SRZ-7y-4VA" firstAttribute="top" secondItem="RlN-Y9-v3d" secondAttribute="top" id="Xoh-tE-3Ce"/>
                                 <constraint firstItem="SRZ-7y-4VA" firstAttribute="centerX" secondItem="RlN-Y9-v3d" secondAttribute="centerX" id="anK-1H-BiU"/>
-                                <constraint firstItem="SRZ-7y-4VA" firstAttribute="centerY" secondItem="RlN-Y9-v3d" secondAttribute="centerY" constant="-15" id="gu6-Ki-Pkl"/>
+                                <constraint firstItem="SRZ-7y-4VA" firstAttribute="centerY" secondItem="1Ll-Ud-RcS" secondAttribute="centerY" id="gu6-Ki-Pkl"/>
                                 <constraint firstItem="1Ll-Ud-RcS" firstAttribute="leading" secondItem="RlN-Y9-v3d" secondAttribute="leading" constant="20" id="vPT-XA-aQL"/>
                             </constraints>
                         </view>
@@ -107,12 +108,12 @@
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9K9-6T-9JT">
-                                    <rect key="frame" x="20" y="0.0" width="34.5" height="16.5"/>
+                                    <rect key="frame" x="20" y="2" width="34.5" height="16.5"/>
                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                     <color key="textColor" red="0.86274509799999999" green="0.20784313730000001" blue="0.27058823529999998" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Signup as a partner" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jqh-m9-t55">
+                                <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Signup as a partner" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jqh-m9-t55">
                                     <rect key="frame" x="134.5" y="-3" width="145" height="20"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="20" id="Ued-Pq-Cbt"/>
@@ -125,7 +126,7 @@
                             <constraints>
                                 <constraint firstItem="jqh-m9-t55" firstAttribute="centerX" secondItem="P12-iA-Gyr" secondAttribute="centerX" id="Ik5-oM-VbZ"/>
                                 <constraint firstItem="9K9-6T-9JT" firstAttribute="leading" secondItem="P12-iA-Gyr" secondAttribute="leading" constant="20" id="PIu-gS-P0Q"/>
-                                <constraint firstItem="9K9-6T-9JT" firstAttribute="top" secondItem="P12-iA-Gyr" secondAttribute="top" id="lQD-Py-Y5o"/>
+                                <constraint firstItem="9K9-6T-9JT" firstAttribute="top" secondItem="P12-iA-Gyr" secondAttribute="top" constant="2" id="lQD-Py-Y5o"/>
                                 <constraint firstItem="jqh-m9-t55" firstAttribute="centerY" secondItem="P12-iA-Gyr" secondAttribute="centerY" constant="-15" id="mUb-qt-PI8"/>
                             </constraints>
                         </view>
@@ -171,7 +172,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1vZ-L3-5M1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1055" y="817"/>
+            <point key="canvasLocation" x="1053.6231884057972" y="816.96428571428567"/>
         </scene>
         <!--Register Page 1-->
         <scene sceneID="KxD-Qe-WTw">

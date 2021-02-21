@@ -9,6 +9,8 @@
 import Foundation
 
 struct Endpoints {
+    
+    let baseUrl = "http://ec2-18-222-200-202.us-east-2.compute.amazonaws.com:3000/api/v1/"
     static let vehchicalTypes = "http://ec2-18-222-200-202.us-east-2.compute.amazonaws.com:3000/api/v1/partner/vehicle/type"
     static let countries = "http://ec2-18-222-200-202.us-east-2.compute.amazonaws.com:3000/api/v1/country"
     static let states = "http://ec2-18-222-200-202.us-east-2.compute.amazonaws.com:3000/api/v1/state"

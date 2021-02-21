@@ -50,6 +50,8 @@ class Register1TVC: UITableViewController , UITextFieldDelegate, UINavigationCon
         self.picker.delegate = self
         self.picker.dataSource = self
         profileImage.isHidden = true
+        view.addSubview(button)
+    
 
     }
 
