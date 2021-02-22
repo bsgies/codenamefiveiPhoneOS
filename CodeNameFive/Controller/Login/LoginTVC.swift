@@ -39,7 +39,7 @@ class LoginTVC: UITableViewController {
         bottomBtn.addTarget(self, action: #selector(heldDown), for: .touchDown)
         bottomBtn.addTarget(self, action: #selector(buttonHeldAndReleased), for: .touchDragExit)
         bottomBtn.isEnabled = false
-        bottomBtn.setBackgroundColor(color: .gray, forState: .normal)
+        bottomBtn.setBackgroundColor(color: UIColor(named: "disabledButton")!, forState: .normal)
         EmailorPhone.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
     }
     
@@ -114,14 +114,18 @@ class LoginTVC: UITableViewController {
     
     @objc func textDidChange(textField: UITextField) {
         if(!EmailorPhone.text!.isEmpty){
+            EmailorPhone.clearButtonMode = .always
             bottomBtn.isEnabled = true
             bottomBtn.setBackgroundColor(color: UIColor(named: "primaryButton")!, forState: .normal)
             errorLbl.isHidden = true
             registerYConstraint.constant = 0
+            useEmailorPhone.isHidden = true
         }
         else{
+            EmailorPhone.clearButtonMode = .never
             bottomBtn.isEnabled = false
-            bottomBtn.setBackgroundColor(color: .gray, forState: .normal)
+            bottomBtn.setBackgroundColor(color: UIColor(named: "disabledButton")!, forState: .normal)
+            useEmailorPhone.isHidden = true
         }
     }
     
@@ -189,14 +193,14 @@ extension LoginTVC {
     @objc func changetheTextfieldState(){
         if emailOrPhoneFlag{
             checkemail = "phone"
-            useEmailorPhone.text = "use email instead?"
+            useEmailorPhone.text = "use email?"
             EmailorPhone.placeholder = "Enter Phone"
             emailOrPhoneFlag = false
             isPhone = true
         }
         else{
             checkemail = "email"
-            useEmailorPhone.text = "use phone instead?"
+            useEmailorPhone.text = "use phone?"
             EmailorPhone.placeholder = "Enter Email"
             emailOrPhoneFlag = true
             isPhone = false
