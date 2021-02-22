@@ -19,7 +19,7 @@
         <scene sceneID="ko7-XU-AFe">
             <objects>
                 <tableViewController storyboardIdentifier="SecurityTVC" title="SecurityTVC" id="qTu-PN-evj" customClass="SecurityTVC" customModule="CNF" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="hmW-o6-BSJ">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="hmW-o6-BSJ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" name="Background"/>
@@ -28,13 +28,13 @@
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Ll-Ud-RcS">
-                                    <rect key="frame" x="20" y="0.0" width="34.5" height="20"/>
+                                    <rect key="frame" x="20" y="0.0" width="34.5" height="16.5"/>
                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                     <color key="textColor" red="0.86274509799999999" green="0.20784313730000001" blue="0.27058823529999998" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Code not received?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SRZ-7y-4VA">
-                                    <rect key="frame" x="134.5" y="0.0" width="145" height="20"/>
+                                    <rect key="frame" x="134.5" y="0.0" width="145" height="44"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="20" id="cr1-nV-0sr"/>
                                     </constraints>
@@ -47,7 +47,7 @@
                                 <constraint firstItem="1Ll-Ud-RcS" firstAttribute="top" secondItem="RlN-Y9-v3d" secondAttribute="top" id="PVE-p0-pPU"/>
                                 <constraint firstItem="SRZ-7y-4VA" firstAttribute="top" secondItem="RlN-Y9-v3d" secondAttribute="top" id="Xoh-tE-3Ce"/>
                                 <constraint firstItem="SRZ-7y-4VA" firstAttribute="centerX" secondItem="RlN-Y9-v3d" secondAttribute="centerX" id="anK-1H-BiU"/>
-                                <constraint firstItem="SRZ-7y-4VA" firstAttribute="centerY" secondItem="1Ll-Ud-RcS" secondAttribute="centerY" id="gu6-Ki-Pkl"/>
+                                <constraint firstItem="SRZ-7y-4VA" firstAttribute="centerY" secondItem="RlN-Y9-v3d" secondAttribute="centerY" id="gu6-Ki-Pkl"/>
                                 <constraint firstItem="1Ll-Ud-RcS" firstAttribute="leading" secondItem="RlN-Y9-v3d" secondAttribute="leading" constant="20" id="vPT-XA-aQL"/>
                             </constraints>
                         </view>
@@ -61,9 +61,9 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="1111" placeholder="Enter your email address" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Kdo-YF-jFC">
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter your email address" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Kdo-YF-jFC">
                                                     <rect key="frame" x="20" y="0.0" width="374" height="50"/>
-                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
                                             </subviews>
@@ -99,7 +99,7 @@
         <scene sceneID="xBq-gN-aDv">
             <objects>
                 <tableViewController storyboardIdentifier="LoginTVC" title="LoginTVC" id="pyb-vA-e3x" customClass="LoginTVC" customModule="CNF" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="1bA-As-fZc">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="1bA-As-fZc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" name="Background"/>
@@ -140,15 +140,25 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="03084706656" placeholder="Enter phone or email" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="kLU-Op-9SH">
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter phone" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kLU-Op-9SH">
                                                     <rect key="frame" x="20" y="0.0" width="374" height="50"/>
-                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
+                                                <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="use email instead?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bjy-QW-Z0p">
+                                                    <rect key="frame" x="315" y="10" width="89" height="30"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="10"/>
+                                                    <color key="textColor" name="primaryColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="bjy-QW-Z0p" secondAttribute="trailing" constant="10" id="JOM-e3-CNX"/>
+                                                <constraint firstAttribute="bottom" secondItem="bjy-QW-Z0p" secondAttribute="bottom" constant="10" id="PGl-mr-6Lj"/>
                                                 <constraint firstItem="kLU-Op-9SH" firstAttribute="leading" secondItem="0p4-An-tGH" secondAttribute="leading" constant="20" id="PTs-xD-fDQ"/>
                                                 <constraint firstAttribute="trailing" secondItem="kLU-Op-9SH" secondAttribute="trailing" constant="20" id="YsT-Sf-qHE"/>
+                                                <constraint firstItem="bjy-QW-Z0p" firstAttribute="top" secondItem="0p4-An-tGH" secondAttribute="top" constant="10" id="Zfe-1r-CfE"/>
                                                 <constraint firstItem="kLU-Op-9SH" firstAttribute="top" secondItem="0p4-An-tGH" secondAttribute="top" id="g7C-Dq-Pkv"/>
                                                 <constraint firstAttribute="bottom" secondItem="kLU-Op-9SH" secondAttribute="bottom" id="kmu-Ov-aC9"/>
                                             </constraints>
@@ -168,6 +178,7 @@
                         <outlet property="errorLbl" destination="9K9-6T-9JT" id="QHc-9W-J5j"/>
                         <outlet property="register" destination="jqh-m9-t55" id="wYC-Xq-wFU"/>
                         <outlet property="registerYConstraint" destination="mUb-qt-PI8" id="jA0-ft-03O"/>
+                        <outlet property="useEmailorPhone" destination="bjy-QW-Z0p" id="Ae5-8R-aJO"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1vZ-L3-5M1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

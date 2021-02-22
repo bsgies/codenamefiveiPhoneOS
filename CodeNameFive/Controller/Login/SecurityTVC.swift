@@ -27,6 +27,9 @@ class SecurityTVC: UITableViewController, UITextFieldDelegate {
         super.viewDidLoad()
         configureUI()
         setupTapGestures()
+        bottomBtn.isEnabled = false
+        bottomBtn.setBackgroundColor(color: .gray, forState: .normal)
+        passwordTextField!.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
         forget.isUserInteractionEnabled = true
     }
     
@@ -62,14 +65,30 @@ class SecurityTVC: UITableViewController, UITextFieldDelegate {
             }
         }
         else {
-            errorLbl.isHidden = false
-            forgetYConstraint.constant = 20
+            
             if checkEmailOrPhone == conditionalLogin.email.rawValue {
+                errorLbl.isHidden = false
+                forgetYConstraint.constant = 20
                 errorLbl.text = "Enter your password"
             }
             else if checkEmailOrPhone == conditionalLogin.phone.rawValue {
+                errorLbl.isHidden = false
+                forgetYConstraint.constant = 20
                 errorLbl.text = "Enter your security code"
             }
+        }
+    }
+    
+    @objc func textDidChange(textField: UITextField) {
+        if(!passwordTextField!.text!.isEmpty){
+            bottomBtn.isEnabled = true
+            bottomBtn.setBackgroundColor(color: UIColor(named: "primaryButton")!, forState: .normal)
+            errorLbl.isHidden = true
+            forgetYConstraint.constant = 0
+        }
+        else{
+            bottomBtn.isEnabled = false
+            bottomBtn.setBackgroundColor(color: .gray, forState: .normal)
         }
     }
     

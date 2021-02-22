@@ -15,10 +15,13 @@ class LoginTVC: UITableViewController {
     @IBOutlet weak var errorLbl: UILabel!
     @IBOutlet weak var register: UILabel!
     @IBOutlet weak var registerYConstraint: NSLayoutConstraint!
-    
+    @IBOutlet weak var useEmailorPhone : UILabel!
         //MARK:- variables
     let bottomBtn = UIButton(type: .custom)
-    var checkemail: String?
+    var checkemail: String = "phone"
+    //True for Phone and False for email
+    var emailOrPhoneFlag : Bool = true
+    var isPhone : Bool = true
     
     
     //MARK:- Lifecycle
@@ -26,6 +29,7 @@ class LoginTVC: UITableViewController {
         super.viewDidLoad()
         setupUIAndGestures()
         self.title = "Login"
+        
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -34,6 +38,9 @@ class LoginTVC: UITableViewController {
         bottomBtn.titleLabel?.font = UIFont(name: "HelveticaNeue-Bold", size: 16)
         bottomBtn.addTarget(self, action: #selector(heldDown), for: .touchDown)
         bottomBtn.addTarget(self, action: #selector(buttonHeldAndReleased), for: .touchDragExit)
+        bottomBtn.isEnabled = false
+        bottomBtn.setBackgroundColor(color: .gray, forState: .normal)
+        EmailorPhone.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
     }
     
     
@@ -77,19 +84,44 @@ class LoginTVC: UITableViewController {
     @objc
     func bottomBtnTapped() {
         guard let email = EmailorPhone.text else { return }
-        if email.isEmail(){
-            checkemail = "email"
-            PhoneNumberOTP(param: ["key": "email" , "value" : email])
-        }
-        else if email.isValidPhone(){
-            checkemail = "phone"
-            PhoneNumberOTP(param: ["key": "phoneNumber" , "value" : email])
+        
+        if isPhone{
+            if email.isValidPhone(){
+                checkemail = "phone"
+                PhoneNumberOTP(param: ["key": "phoneNumber" , "value" : email])
+            }
+            else{
+                bottomBtn.loadingIndicator(false, title: "Continue")
+                errorLbl.isHidden = false
+                registerYConstraint.constant = 10
+                errorLbl.text = "Incorect Phone Number"
+            }
         }
         else{
-            bottomBtn.loadingIndicator(true, title: "Continue")
-            errorLbl.isHidden = false
-            registerYConstraint.constant = 20
-            errorLbl.text = "You must enter your phone number or email address"
+            
+            if email.isEmail(){
+                checkemail = "email"
+                PhoneNumberOTP(param: ["key": "email" , "value" : email])
+            }
+            else{
+                bottomBtn.loadingIndicator(false, title: "Continue")
+                errorLbl.isHidden = false
+                registerYConstraint.constant = 10
+                errorLbl.text = "Incorect Email address"
+            }
+        }
+    }
+    
+    @objc func textDidChange(textField: UITextField) {
+        if(!EmailorPhone.text!.isEmpty){
+            bottomBtn.isEnabled = true
+            bottomBtn.setBackgroundColor(color: UIColor(named: "primaryButton")!, forState: .normal)
+            errorLbl.isHidden = true
+            registerYConstraint.constant = 0
+        }
+        else{
+            bottomBtn.isEnabled = false
+            bottomBtn.setBackgroundColor(color: .gray, forState: .normal)
         }
     }
     
@@ -106,14 +138,14 @@ class LoginTVC: UITableViewController {
                 }
                 else{
                     bottomBtn.loadingIndicator(false, title: "Continue")
-                    registerYConstraint.constant = 20
+                    registerYConstraint.constant = 10
                     self.errorLbl.isHidden = false
                     self.errorLbl.text = obj.message
                 }
             }
             catch{
                 bottomBtn.loadingIndicator(false, title: "Continue")
-                registerYConstraint.constant = 20
+                registerYConstraint.constant = 10
                 self.errorLbl.isHidden = false
                 self.errorLbl.text = "some Error Occured"
                 
@@ -142,12 +174,33 @@ extension LoginTVC{
 }
 extension LoginTVC {
     func setupUIAndGestures() {
+        
         register.isUserInteractionEnabled = true
         let registerationPage = UITapGestureRecognizer(target: self, action: #selector(openRegisterPage))
         register.addGestureRecognizer(registerationPage)
         
+        let emailOrPhoneTap = UITapGestureRecognizer(target: self, action: #selector(changetheTextfieldState))
+        useEmailorPhone.addGestureRecognizer(emailOrPhoneTap)
+        
         let dissmisKeyboardGesture = UITapGestureRecognizer(target: self, action: #selector(dissmisKeyboard))
         self.view.addGestureRecognizer(dissmisKeyboardGesture)
+    }
+    
+    @objc func changetheTextfieldState(){
+        if emailOrPhoneFlag{
+            checkemail = "phone"
+            useEmailorPhone.text = "use email instead?"
+            EmailorPhone.placeholder = "Enter Phone"
+            emailOrPhoneFlag = false
+            isPhone = true
+        }
+        else{
+            checkemail = "email"
+            useEmailorPhone.text = "use phone instead?"
+            EmailorPhone.placeholder = "Enter Email"
+            emailOrPhoneFlag = true
+            isPhone = false
+        }
     }
     
     @objc func openRegisterPage(){
@@ -157,7 +210,7 @@ extension LoginTVC {
     func GoToSecurityScreen() {
         bottomBtn.loadingIndicator(false, title: "Continue")
         emailOrPhoneString = EmailorPhone.text!
-        checkEmailOrPhone = checkemail!
+        checkEmailOrPhone = checkemail
         registerYConstraint.constant = 10
         self.errorLbl.isHidden = true
         self.pushToController(from: .account, identifier: .SecurityTVC)
