@@ -8,7 +8,6 @@
 
 import UIKit
 
-
 class LoginTVC: UITableViewController {
     //MARK:- Outlets
     @IBOutlet weak var EmailorPhone: UITextField!
@@ -22,7 +21,6 @@ class LoginTVC: UITableViewController {
     //True for Phone and False for email
     var emailOrPhoneFlag : Bool = true
     var isPhone : Bool = true
-    
     
     //MARK:- Lifecycle
     override func viewDidLoad() {
@@ -42,7 +40,6 @@ class LoginTVC: UITableViewController {
         bottomBtn.setBackgroundColor(color: UIColor(named: "disabledButton")!, forState: .normal)
         EmailorPhone.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
     }
-    
     
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -80,7 +77,6 @@ class LoginTVC: UITableViewController {
         self.navigationController?.popViewController(animated: true)
     }
     
-    
     @objc
     func bottomBtnTapped() {
         guard let email = EmailorPhone.text else { return }
@@ -94,7 +90,7 @@ class LoginTVC: UITableViewController {
                 bottomBtn.loadingIndicator(false, title: "Continue")
                 errorLbl.isHidden = false
                 registerYConstraint.constant = 10
-                errorLbl.text = "Incorect Phone Number"
+                errorLbl.text = "Invalid phone number"
             }
         }
         else{
@@ -107,7 +103,7 @@ class LoginTVC: UITableViewController {
                 bottomBtn.loadingIndicator(false, title: "Continue")
                 errorLbl.isHidden = false
                 registerYConstraint.constant = 10
-                errorLbl.text = "Incorect Email address"
+                errorLbl.text = "Invalid email address"
             }
         }
     }
@@ -151,12 +147,11 @@ class LoginTVC: UITableViewController {
                 bottomBtn.loadingIndicator(false, title: "Continue")
                 registerYConstraint.constant = 10
                 self.errorLbl.isHidden = false
-                self.errorLbl.text = "some Error Occured"
+                self.errorLbl.text = "Something went wrong"
                 
             }
         }
     }
-    
 }
 
 //MARK:- Tablview Delegate
@@ -193,15 +188,15 @@ extension LoginTVC {
     @objc func changetheTextfieldState(){
         if emailOrPhoneFlag{
             checkemail = "phone"
-            useEmailorPhone.text = "use email?"
-            EmailorPhone.placeholder = "Enter Phone"
+            useEmailorPhone.text = "Use email?"
+            EmailorPhone.placeholder = "Enter phone number"
             emailOrPhoneFlag = false
             isPhone = true
         }
         else{
             checkemail = "email"
-            useEmailorPhone.text = "use phone?"
-            EmailorPhone.placeholder = "Enter Email"
+            useEmailorPhone.text = "Use phone?"
+            EmailorPhone.placeholder = "Enter email address"
             emailOrPhoneFlag = true
             isPhone = false
         }
@@ -229,4 +224,3 @@ extension LoginTVC {
         self.navigationItem.leftBarButtonItem = barButton
     }
 }
-

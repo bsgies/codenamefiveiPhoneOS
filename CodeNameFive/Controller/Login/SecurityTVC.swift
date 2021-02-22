@@ -153,7 +153,7 @@ class SecurityTVC: UITableViewController, UITextFieldDelegate {
             
         }
         else if checkEmailOrPhone == conditionalLogin.phone.rawValue {
-            passwordTextField?.placeholder = "OTP"
+            passwordTextField?.placeholder = "Security code"
             self.title = "Login with phone"
         }
     }
