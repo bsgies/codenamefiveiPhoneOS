@@ -408,3 +408,7 @@ extension String {
         return attributedString
     }
 }
+
+extension Notification.Name {
+static let myNotification = Notification.Name("myNotification")
+}

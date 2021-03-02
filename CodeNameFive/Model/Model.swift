@@ -23,12 +23,17 @@ struct LoginData: Codable {
 
 // MARK: - Results
 struct Results: Codable {
-    let onlineStatus: Int?
-    let firstName, lastName, email: String?
-    let id: Int?
-    let profilePhoto, phoneNumber, status: String?
+    let floatCashLimit, floatCashBalance: String
+    let autoAcceptStatus, markAsLastTrip, onlineStatus: Int
+    let firstName, lastName, email: String
+    let id: Int
+    let profilePhoto, phoneNumber, status: String
 
     enum CodingKeys: String, CodingKey {
+        case floatCashLimit = "float_cash_limit"
+        case floatCashBalance = "float_cash_balance"
+        case autoAcceptStatus = "auto_accept_status"
+        case markAsLastTrip = "mark_as_last_trip"
         case onlineStatus = "online_status"
         case firstName = "first_name"
         case lastName = "last_name"
@@ -83,6 +88,17 @@ struct forgetPassword : Codable{
     let message: String
 }
 struct forgetPasword_Data: Codable {
+}
+
+struct OTPModel: Codable {
+    let success: Bool
+    let data: [OTPData]
+    let message: String
+}
+
+// MARK: - Datum
+struct OTPData : Codable{
+    let id: Int
 }
 
 // MARK: - ImageResponse

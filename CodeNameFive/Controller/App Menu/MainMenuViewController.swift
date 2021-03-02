@@ -7,6 +7,7 @@
 //
 
 import UIKit
+
 class MainMenuViewController: UIViewController, UIGestureRecognizerDelegate {
     
     //MARK:- IBIBOutlets
@@ -63,10 +64,6 @@ class MainMenuViewController: UIViewController, UIGestureRecognizerDelegate {
         self.didTapMenuType?(.profile , .ProfileTVC)
         
     }
-    
-        
-       
-    
     @IBOutlet weak var lastOrder : UISwitch!{
         didSet{
             
@@ -88,7 +85,7 @@ class MainMenuViewController: UIViewController, UIGestureRecognizerDelegate {
 extension MainMenuViewController {
     //API Calling
     func autoAccept(status : Bool) {
-        HttpService.sharedInstance.postRequest(urlString: Endpoints.cities, bodyData: ["autoAcceptStatus" : status])  { [self](responseData) in
+        HttpService.sharedInstance.postRequest(loadinIndicator: true, urlString: Endpoints.cities, bodyData: ["autoAcceptStatus" : status])  { [self](responseData) in
             do{
                 let jsonData = responseData?.toJSONString1().data(using: .utf8)!
                 let decoder = JSONDecoder()

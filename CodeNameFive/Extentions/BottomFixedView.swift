@@ -11,14 +11,11 @@ import UIKit
 import Foundation
 
 class ScreenBottomView {
-    static let useCartButton = true
     
     static func goToNextScreen(button: UIButton, view: UIView, btnText: String) {
         guard let window = UIApplication.shared.windows.filter({$0.isKeyWindow}).first else { return }
         let bottomView = UIView()
-        
         window.addSubview(bottomView)
-    
         bottomView.tag = 200
         bottomView.addTopBorder(with:UIColor(named: "borderColor")!, andWidth: 1.0)
         bottomView.translatesAutoresizingMaskIntoConstraints = false
@@ -27,7 +24,6 @@ class ScreenBottomView {
         bottomView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0).isActive = true
         bottomView.heightAnchor.constraint(equalToConstant: 100).isActive = true
         bottomView.backgroundColor = UIColor(named: "UIViewCard")
-        // bottomView.backgroundColor = UIColor.black
         bottomView.addSubview(button)
         button.setTitle(btnText, for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false

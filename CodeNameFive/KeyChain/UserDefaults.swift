@@ -29,3 +29,19 @@ func fetchString(key:String)->AnyObject {
         return "" as AnyObject;
     }
 }
+
+
+let tokenKey = "token"
+let onlineStatusKey = "online_status"
+let lastNameKey = "last_name"
+let firstNameKey = "first_name"
+let emailKey = "email"
+let idKey = "id"
+let profilePhotoKey = "profile_photo"
+let phoneNumberKey = "phone_number"
+let statusKey = "status"
+let isUserLogInKey = "isUserLogIn"
+let floatCashLimitKey = "floatCashLimit"
+let  floatCashBalanceKey = "floatCashBalance"
+let autoAcceptStatusKey = "autoAcceptStatus"
+let markAsLastTripKey = "markAsLastTrip"

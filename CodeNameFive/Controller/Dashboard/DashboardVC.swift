@@ -28,23 +28,19 @@ class DashboardVC: UIViewController,  CLLocationManagerDelegate, GMSMapViewDeleg
     
     //MARK:- variables
     weak var gotorider :  Timer?
-    var checkOnlineOrOffline : Bool = false
     var locationManager: CLLocationManager!
     var currentLocation: CLLocation?
-    var zoomLevel: Float = 15.0
     let path = GMSMutablePath()
-    var i = 0
-    var locValue = CLLocationCoordinate2D(latitude: 0, longitude: 0)
+    var locValue : CLLocationCoordinate2D!
     var isUserTouch = false
-    var counter = 0
     let transiton = SlideInTransition()
-    let obj = MainMenuViewController()
+    
+    
     //MARK:- Life Cycles
     override func viewDidLoad() {
         super.viewDidLoad()
         currentEarning.contentEdgeInsets = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 15)
         googleMapView.delegate = self
-        CheckOfflineOrOnline()
         LocationManger()
         Autrize()
         SetupMap()
@@ -53,6 +49,7 @@ class DashboardVC: UIViewController,  CLLocationManagerDelegate, GMSMapViewDeleg
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setupViewAndTapGestuers()
+        CheckOfflineOrOnline()
         navigationController?.setNavigationBarHidden(true, animated: animated)
     }
     override func viewWillDisappear(_ animated: Bool) {
@@ -64,63 +61,32 @@ class DashboardVC: UIViewController,  CLLocationManagerDelegate, GMSMapViewDeleg
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
         currentEarning.backgroundColor = UIColor(named: "primaryButton")
+        hamburgerImage.isUserInteractionEnabled = true
     }
 
     //MARK:- Functions & Selectors
+
+    func isOnline() -> Bool {
+        return (KeychainWrapper.standard.integer(forKey: onlineStatusKey)! != 0)
+    
+    }
     func CheckOfflineOrOnline() {
-        if !checkOnlineOrOffline{
+        if isOnline(){
             Autrize()
-            // recenter.isHidden = true
-            goOnlineOfflineButton.backgroundColor = UIColor(named: "primaryButton")
-            goOnlineOfflineButton.setTitle("Go online", for: .normal)
-            checkOnlineOrOffline = true
-            //
-            youAreOfflineLbl.text = "You're offline"
-            youAreOfflineLbl.font = UIFont(name: "HelveticaNeue-Bold", size: 18)
-        }
-        else{
-            //gotorider = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(runTimedCode), userInfo: nil, repeats: false)
-             self.pushToRoot(from: .main, identifier: .NewTripRequestVC)
+            goOnlineOfflineButton.backgroundColor = .red
+            goOnlineOfflineButton.setTitle("Go Offline", for: .normal)
             youAreOfflineLbl.text = "Finding trips for you..."
             youAreOfflineLbl.font = UIFont(name: "HelveticaNeue-Bold", size: 20)
         }
-    }
- 
-    func setupViewAndTapGestuers() {
-        recenterView.tintColor = .white
-        if traitCollection.userInterfaceStyle == .light {
-            mapstyleSilver(googleMapView: googleMapView)
+        else{
+            goOnlineOfflineButton.backgroundColor = UIColor(named: "primaryButton")
+            goOnlineOfflineButton.setTitle("Go Online", for: .normal)
+            youAreOfflineLbl.text = "You're offline"
+            youAreOfflineLbl.font = UIFont(name: "HelveticaNeue-Bold", size: 18)
         }
-        else {
-            mapstyleDark(googleMapView: googleMapView)
-        }
-        self.googleMapView.bringSubviewToFront(self.hamburger)
-        self.googleMapView.bringSubviewToFront(self.currentEarning)
-        self.googleMapView.bringSubviewToFront(self.recenterView)
-        self.googleMapView.bringSubviewToFront(self.recenter)
-        self.googleMapView.bringSubviewToFront(self.buttonView)
-        hamburgerImage.isUserInteractionEnabled = true
-        hamburger.isUserInteractionEnabled = true
-        let tap = UITapGestureRecognizer(target: self, action: #selector(menuOpen))
-        tap.delegate = self
-        hamburger.addGestureRecognizer(tap)
-        let swipe = UISwipeGestureRecognizer(target: self, action: #selector(dissmissVC))
-        self.view.addGestureRecognizer(swipe)
-        recenterView.isHidden = true
-        Autrize()
-        dashboardBottomView.addTopBorder(with: UIColor(named: "borderColor")!, andWidth: 1.0)
-        dashboardBottomView.addBottomBorder(with: UIColor(named: "borderColor")!, andWidth: 1.0)
-        NotificationCenter.default.addObserver(self, selector:#selector(DashboardVC.comefrombackground), name: UIApplication.willEnterForegroundNotification, object: UIApplication.shared)
-        recenterView.isUserInteractionEnabled = true
-        recenter.isUserInteractionEnabled = true
-        let tapOnRecenter = UITapGestureRecognizer(target: self, action: #selector(recenterTheMap(gesture:)))
-        tapOnRecenter.delegate = self
-        recenter.addGestureRecognizer(tapOnRecenter)
-        recenterView.addGestureRecognizer(tapOnRecenter)
     }
-    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
-        return true
-    }
+
+    
     func buttonServerResponse() {
         goOnlineOfflineButton.loadingIndicator(true, title: "")
     }
@@ -144,7 +110,6 @@ class DashboardVC: UIViewController,  CLLocationManagerDelegate, GMSMapViewDeleg
     }
 }
 extension DashboardVC{
-    
     func setBarAnimation() {
         UIView.animate(withDuration: 1, animations: {
             self.findingRoutesLoadingBarView.frame.origin.x = +self.dashboardBottomView.frame.width
@@ -159,30 +124,29 @@ extension DashboardVC{
     
     //MARK:- Buttons Actions
     @IBAction func OnlineOfflineButton(_ sender: UIButton) {
-        
-        goOnlineOfflineButton.isEnabled = false
-        goOnlineOfflineButton.backgroundColor = UIColor(named: "mapDisabledButton")
-        goOnlineOfflineButton.layer.borderColor =  #colorLiteral(red: 0.7725490196, green: 0.7921568627, blue: 0.7960784314, alpha: 1)
-        if checkOnlineOrOffline{
-            if onlineButtonCheckAuthrizationForLocation() {
-                //tapped(caseRun: 4)
+
+        if isOnline(){
+            KeychainWrapper.standard.set(1, forKey: onlineStatusKey)
+            self.goOnlineOfflineButton.setTitle("Go Online", for: .normal)
+            self.goOnlineOfflineButton.setBackgroundColor(color: UIColor(named: "primaryColor")!, forState: .normal)
+            findingRoutesLoadingBarView.layer.removeAllAnimations()
+            self.findingRoutesLoadingBarView.isHidden = true
+            self.gotorider?.invalidate()
+        }
+        else{
+            if authrizationForLocation() {
+                KeychainWrapper.standard.set(0, forKey: onlineStatusKey)
+                KeychainWrapper.standard.set(false, forKey: onlineStatusKey)
                 goOnlineOfflineButton.showLoading()
                 buttonServerResponse()
-                
                 DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
                     self.goOnlineOfflineButton.hideLoading()
                     self.ServerResponseReceived()
                     self.findingRoutesLoadingBarView.isHidden = false
-                    self.goOnlineOfflineButton.isEnabled = true
                     self.setBarAnimation()
                     sender.setBackgroundColor(color: UIColor(named: "dangerHover")!, forState: .highlighted)
-                    self.goOnlineOfflineButton.layer.borderWidth = 1
-                    self.goOnlineOfflineButton.layer.borderColor = #colorLiteral(red: 0.7803921569, green: 0.137254902, blue: 0.1960784314, alpha: 1)
-                    self.goOnlineOfflineButton.backgroundColor = #colorLiteral(red: 0.862745098, green: 0.2078431373, blue: 0.2705882353, alpha: 1)
+                    self.goOnlineOfflineButton.setBackgroundColor(color: .red, forState: .normal)
                     self.goOnlineOfflineButton.setTitle("Go offline", for: .normal)
-                    //end
-                    self.checkOnlineOrOffline = false
-                    // self.gotorider = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(self.runTimedCode), userInfo: nil, repeats: false)
                     self.pushToRoot(from: .main, identifier: .NewTripRequestVC)
                 }
             }
@@ -190,21 +154,18 @@ extension DashboardVC{
                 self.goToSettingAlert()
             }
         }
-        else{
-            goOnlineOfflineButton.isEnabled = true
-            findingRoutesLoadingBarView.layer.removeAllAnimations()
-            self.findingRoutesLoadingBarView.isHidden = true
-            sender.setBackgroundColor(color: UIColor(named: "hover")!, forState: .highlighted)
-            goOnlineOfflineButton.layer.borderWidth = 1
-            goOnlineOfflineButton.layer.borderColor = #colorLiteral(red: 0, green: 0.7490196078, blue: 0.662745098, alpha: 1)
-            goOnlineOfflineButton.backgroundColor = UIColor(named: "primaryButton")
-            goOnlineOfflineButton.setTitle("Go online", for: .normal)
-            checkOnlineOrOffline = true
-            self.gotorider?.invalidate()
-        }
     }
+
+    
     @IBAction func EarningsButton(_ sender: Any) {
         self.pushToRoot(from: .appMenu, identifier: .EarningsTVC)
+    }
+    
+    //MARK:-Job Request
+    
+    func startJobRequest() {
+
+         self.gotorider = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(self.runTimedCode), userInfo: nil, repeats: false)
     }
 
     //MARK:- Navigations
@@ -227,16 +188,13 @@ extension DashboardVC{
         present(menuViewController, animated: true)
     }
     
-    @objc func runTimedCode()  {
-        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let newViewController = storyBoard.instantiateViewController(withIdentifier: "NewTripRequestVC") as! NewTripRequestVC
-        newViewController.modalPresentationStyle = .overCurrentContext
-        navigationController?.pushViewController(newViewController, animated: true)
+    @objc func runTimedCode(){
+        self.pushToController(from: .main, identifier: .NewTripRequestVC)
     }
     
     //MARK:- Buttons Actions Location Service Determining
     
-    func onlineButtonCheckAuthrizationForLocation() ->Bool{
+    func authrizationForLocation() ->Bool{
         let locStatus = CLLocationManager.authorizationStatus()
         switch locStatus {
         case .notDetermined:
@@ -262,7 +220,6 @@ extension DashboardVC {
     func SetupMap() {
         googleMapView.settings.myLocationButton = false
         googleMapView.isMyLocationEnabled = true
-        googleMapView.isHidden = true
     }
     
     func LocationManger(){
@@ -279,40 +236,13 @@ extension DashboardVC {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let location: CLLocation = locations.last!
         locValue = location.coordinate
-        let camera = GMSCameraPosition.camera(withLatitude: location.coordinate.latitude, longitude: location.coordinate.longitude, zoom: zoomLevel)
-        if googleMapView.isHidden {
-            googleMapView.isHidden = false
-            googleMapView.camera = camera
-            path.add(CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude))
-            path.add(CLLocationCoordinate2D(latitude: location.coordinate.latitude + 2, longitude: location.coordinate.longitude + 2))
-            let rectangle = GMSPolyline(path: path)
-            rectangle.map = googleMapView
-        } else {
-            googleMapView.animate(to: camera)
-        }
+        let camera = GMSCameraPosition.camera(withLatitude: location.coordinate.latitude, longitude: location.coordinate.longitude, zoom: 16)
+         googleMapView.animate(to: camera)
+        
     }
-    //MARK:- Handle authorization for the location manager
-    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-        switch status {
-        case .restricted:
-            TurnOffLocationService()
-            print("Location access was restricted.")
-        case .denied:
-            print("User denied access to location.")
-            TurnOffLocationService()
-        case .notDetermined:
-            TurnOffLocationService()
-        case .authorizedAlways:
-            TurnOffLocationService()
-        case .authorizedWhenInUse:
-            print("Location status is OK.")
-            googleMapView.isHidden = false
-            googleMapView.isMyLocationEnabled = true
-        @unknown default:
-            fatalError()
-        }
+
         //MARK:- Light and Dark Mode Delegate
-        func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
             super.traitCollectionDidChange(previousTraitCollection)
             
             if #available(iOS 13.0, *) {
@@ -330,11 +260,8 @@ extension DashboardVC {
                 // Fallback on earlier versions
             }
         }
-    }
-    
     func TurnOffLocationService() {
         Autrize()
-        googleMapView.isHidden = true
     }
     
     // Handle location manager errors.
@@ -348,61 +275,20 @@ extension DashboardVC {
             locationManager.requestWhenInUseAuthorization()
         }
     }
-    
-    func Autrize(){
-        let locStatus = CLLocationManager.authorizationStatus()
-        switch locStatus {
-        case .notDetermined:
-            locationManager?.requestWhenInUseAuthorization()
-            return
-        case .denied, .restricted:
-            goToSettingAlert()
-            return
-        case .authorizedWhenInUse:
-            return
-        case .authorizedAlways:
-            goToSettingAlert()
-            break
-        @unknown default:
-            fatalError()
-        }
     }
-}
+    
+  
+
 // MARK: - Extension MapView
 extension DashboardVC {
     
-    func mapView(_ mapView: GMSMapView, idleAt position: GMSCameraPosition) {
-        let dist = position.target.getDistanceMetresBetweenLocationCoordinates(self.locValue)
-        if dist > 5 {
-            if self.isUserTouch {
-            recenterView.isHidden = false
-            }
-        }
-    }
     func mapView(_ mapView: GMSMapView, willMove gesture: Bool) {
         if gesture {
             self.isUserTouch = true
         }
     }
-    //MARK:- Light and Dark Mode Delegate
-    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
-        super.traitCollectionDidChange(previousTraitCollection)
-        
-        if #available(iOS 13.0, *) {
-            if self.traitCollection.hasDifferentColorAppearance(comparedTo: previousTraitCollection) {
-                if traitCollection.userInterfaceStyle == .light {
-                    mapstyleSilver(googleMapView: googleMapView)
-                    recenterView.tintColor = .white
-                }
-                else {
-                    mapstyleDark(googleMapView: googleMapView)
-                    recenterView.tintColor = .black
-                }
-            }
-        } else {
-            // Fallback on earlier versions
-        }
-    }
+
+    
 }
 
 //MARK:- Durring Server Response Hide Tittel of Button Extension
@@ -484,5 +370,85 @@ extension DashboardVC : UIViewControllerTransitioningDelegate{
     func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         transiton.isPresenting = false
         return transiton
+    }
+}
+//MARK:- SetupGestures and Views
+extension DashboardVC {
+    func setupViewAndTapGestuers() {
+        goOnlineOfflineButton.setBackgroundColor(color: UIColor(named: "hover")!, forState: .highlighted)
+        goOnlineOfflineButton.backgroundColor = UIColor(named: "primaryButton")
+        goOnlineOfflineButton.setTitle("Go online", for: .normal)
+        recenterView.tintColor = .white
+        if traitCollection.userInterfaceStyle == .light {
+            mapstyleSilver(googleMapView: googleMapView)
+        }
+        else {
+            mapstyleDark(googleMapView: googleMapView)
+        }
+        self.googleMapView.bringSubviewToFront(self.hamburger)
+        self.googleMapView.bringSubviewToFront(self.currentEarning)
+        self.googleMapView.bringSubviewToFront(self.recenterView)
+        self.googleMapView.bringSubviewToFront(self.recenter)
+        self.googleMapView.bringSubviewToFront(self.buttonView)
+        hamburgerImage.isUserInteractionEnabled = true
+        hamburger.isUserInteractionEnabled = true
+        let tap = UITapGestureRecognizer(target: self, action: #selector(menuOpen))
+        tap.delegate = self
+        hamburger.addGestureRecognizer(tap)
+        let swipe = UISwipeGestureRecognizer(target: self, action: #selector(dissmissVC))
+        self.view.addGestureRecognizer(swipe)
+        recenterView.isHidden = true
+        Autrize()
+        dashboardBottomView.addTopBorder(with: UIColor(named: "borderColor")!, andWidth: 1.0)
+        dashboardBottomView.addBottomBorder(with: UIColor(named: "borderColor")!, andWidth: 1.0)
+        NotificationCenter.default.addObserver(self, selector:#selector(DashboardVC.comefrombackground), name: UIApplication.willEnterForegroundNotification, object: UIApplication.shared)
+        recenterView.isUserInteractionEnabled = true
+        recenter.isUserInteractionEnabled = true
+        let tapOnRecenter = UITapGestureRecognizer(target: self, action: #selector(recenterTheMap(gesture:)))
+        tapOnRecenter.delegate = self
+        recenter.addGestureRecognizer(tapOnRecenter)
+        recenterView.addGestureRecognizer(tapOnRecenter)
+    }
+}
+//Authrization
+extension DashboardVC {
+    //MARK:- Handle authorization for the location manager
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        switch status {
+        case .restricted:
+            TurnOffLocationService()
+            print("Location access was restricted.")
+        case .denied:
+            print("User denied access to location.")
+            TurnOffLocationService()
+        case .notDetermined:
+            TurnOffLocationService()
+        case .authorizedAlways:
+            TurnOffLocationService()
+        case .authorizedWhenInUse:
+            print("Location status is OK.")
+            googleMapView.isMyLocationEnabled = true
+        @unknown default:
+            fatalError()
+        }
+        
+}
+    func Autrize(){
+        let locStatus = CLLocationManager.authorizationStatus()
+        switch locStatus {
+        case .notDetermined:
+            locationManager?.requestWhenInUseAuthorization()
+            return
+        case .denied, .restricted:
+            goToSettingAlert()
+            return
+        case .authorizedWhenInUse:
+            return
+        case .authorizedAlways:
+            goToSettingAlert()
+            break
+        @unknown default:
+            fatalError()
+        }
     }
 }

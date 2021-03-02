@@ -54,8 +54,10 @@ class HttpService : URLSession{
         
     }
     
-    func postRequest(urlString:String, bodyData:[String : Any],completionBlock:@escaping WSCompletionBlock) -> () {
-        appDelegate.loadindIndicator()
+    func postRequest(loadinIndicator :  Bool , urlString:String, bodyData:[String : Any],completionBlock:@escaping WSCompletionBlock) -> () {
+        if loadinIndicator{
+            appDelegate.loadindIndicator()
+        }
         if !(isInternetAvailable()) {
             appDelegate.removeLoadIndIndicator()
             appDelegate.Alert()

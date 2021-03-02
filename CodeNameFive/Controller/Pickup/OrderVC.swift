@@ -15,13 +15,9 @@ class OrderVC: UIViewController, UIViewControllerTransitioningDelegate, GMSMapVi
     @IBOutlet weak var handleArea: GMSMapView!
     @IBOutlet weak var menuImage : UIImageView!
     @IBOutlet weak var hamburgerView : UIView!
-    @IBOutlet weak var recenterView : UIView!
-    @IBOutlet weak var openInMapsView  : UIView!
-    @IBOutlet weak var rectenImage : UIImageView!
-    @IBOutlet weak var openInMaps : UIImageView!
-    @IBOutlet weak var recentAndOpenInMapsView : UIView!
-    
-    
+    @IBOutlet weak var openMapsButton : UIButton!
+    @IBOutlet weak var recenterButtons : UIButton!
+    @IBOutlet weak var stack : UIStackView!
     //MARK:- Variables
     var cardViewController:CardViewController!
     let transiton = SlideInTransition()
@@ -43,50 +39,74 @@ class OrderVC: UIViewController, UIViewControllerTransitioningDelegate, GMSMapVi
     var pathIndex = 0
     var ponits : String?
     
+    let marker = GMSMarker()
+    let destinationLocationLat = 31.584478
+    let destinationLocationLong = 74.388419
+    var moveCamera : Bool = true
+    
+    var distanceandDuration = [String: String]()
+    
     
     //MARK:- LifeCycles
     override func viewDidLoad() {
         super.viewDidLoad()
-        //setupCard()
-        //AddressView.instance.addressCard(topView: self.view)
-       
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        setupMap()
-        handleArea.delegate = self
-        handleArea.isMyLocationEnabled = true
+        setupCard()
         intlizeLocationManager()
-        if CLLocationManager.authorizationStatus() == .authorizedWhenInUse{
-           let fromLoc = CLLocationCoordinate2DMake((locationManager.location?.coordinate.latitude)!, (locationManager.location?.coordinate.longitude)!)
-           let toLoc = CLLocationCoordinate2DMake(31.584478,74.388419)
-        //let toLoc = CLLocationCoordinate2DMake(51.6173559,-0.020734)
-            Direction(from: fromLoc, to: toLoc)
-            
-            
+        if CLLocationManager.authorizationStatus() == .authorizedWhenInUse || CLLocationManager.authorizationStatus() == .authorizedAlways{
+            let fromLoc = CLLocationCoordinate2DMake((locationManager.location?.coordinate.latitude)!, (locationManager.location?.coordinate.longitude)!)
+            let toLoc = CLLocationCoordinate2DMake(destinationLocationLat,destinationLocationLong)
+            Direction(from: fromLoc , to: toLoc)
         }
     }
-
-    //MARK:-Actions
-    @IBAction func openMenu(_ sender: UIBarButtonItem) {
+    
+    override func viewDidAppear(_ animated: Bool) {
         
+        self.handleArea.bringSubviewToFront(recenterButtons)
+        self.handleArea.bringSubviewToFront(openMapsButton)
+        self.handleArea.bringSubviewToFront(stack)
+        menuImage.isUserInteractionEnabled = true
+        gestures()
+        
+    
     }
+    
+    
+    //MARK:-Buttons Actions
+    
+    @IBAction func openMaps(){
+        let alert = UIAlertController(title: "Maps", message: "Please select a map", preferredStyle: .actionSheet)
+        UIView.appearance(whenContainedInInstancesOf: [UIAlertController.self]).tintColor = #colorLiteral(red: 0, green: 0.8465872407, blue: 0.7545004487, alpha: 1)
+        alert.addAction(UIAlertAction(title: "Google maps", style: .default , handler:{ (UIAlertAction)in
+            openGoogleMap()
+        }))
+        
+        alert.addAction(UIAlertAction(title: "Waze", style: .default , handler:{ (UIAlertAction)in
+            openWaze()
+        }))
+        
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler:{ (UIAlertAction)in
+            
+        }))
+        
+        self.present(alert, animated: true, completion: {
+            print("completion block")
+        })
+    }
+    @IBAction func recenterMap(){
+        let userLocation = locationManager.location
+        let camera = GMSCameraPosition.camera(withTarget: CLLocationCoordinate2DMake(userLocation!.coordinate.latitude, userLocation!.coordinate.longitude), zoom: 18, bearing: 30, viewingAngle: 45)
+    handleArea.camera = camera
+        moveCamera = true
+    }
+    
     
     //MARK:- Functions
     
     func gestures() {
         let tapOpenMenu = UITapGestureRecognizer(target: self, action: #selector(openSideMenu))
         menuImage.addGestureRecognizer(tapOpenMenu)
-        
-        let openMaps = UITapGestureRecognizer(target: self, action: #selector(opeMaps))
-        openInMaps.addGestureRecognizer(openMaps)
-        
     }
     func setupCard() {
-//        visualEffectView = UIVisualEffectView()
-//        visualEffectView.frame = self.view.frame
-//        self.view.addSubview(visualEffectView)
         cardHeight = self.view.frame.height - 100
         cardViewController = CardViewController(nibName:"CardViewController", bundle:nil)
         self.addChild(cardViewController)
@@ -142,39 +162,9 @@ class OrderVC: UIViewController, UIViewControllerTransitioningDelegate, GMSMapVi
         menuViewController.transitioningDelegate = self
         present(menuViewController, animated: true)
     }
-    @objc func opeMaps(){
-            let alert = UIAlertController(title: "Maps", message: "Please select a map", preferredStyle: .actionSheet)
-            UIView.appearance(whenContainedInInstancesOf: [UIAlertController.self]).tintColor = #colorLiteral(red: 0, green: 0.8465872407, blue: 0.7545004487, alpha: 1)
-            alert.addAction(UIAlertAction(title: "Google maps", style: .default , handler:{ (UIAlertAction)in
-                openGoogleMap()
-            }))
-            
-            alert.addAction(UIAlertAction(title: "Waze", style: .default , handler:{ (UIAlertAction)in
-                openWaze()
-            }))
-            
-//            alert.addAction(UIAlertAction(title: "Apple maps", style: .default , handler:{ (UIAlertAction)in
-//                let url = "http://maps.apple.com/maps?saddr=\(self.fromLoc!.latitude),\(self.fromLoc!.longitude)&daddr=\(self.toLoc!.latitude),\(self.toLoc!.longitude)"
-//                UIApplication.shared.open(URL(string:url)! , options: [:], completionHandler: nil)
-//            }))
-            
-            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler:{ (UIAlertAction)in
-                
-            }))
-            
-            self.present(alert, animated: true, completion: {
-                print("completion block")
-            })
-        }
+
     
-    @objc func recenterMap(){
-        
-    }
-    
-    
-    
-    
-    
+
     //MARK:- Animations
     func animateTransitionIfNeeded (state:CardState, duration:TimeInterval) {
         if runningAnimations.isEmpty {
@@ -209,18 +199,6 @@ class OrderVC: UIViewController, UIViewControllerTransitioningDelegate, GMSMapVi
             
             cornerRadiusAnimator.startAnimation()
             runningAnimations.append(cornerRadiusAnimator)
-            
-//            let blurAnimator = UIViewPropertyAnimator(duration: duration, dampingRatio: 1) {
-//                switch state {
-//                case .expanded:
-//                    self.visualEffectView.effect = UIBlurEffect(style: .dark)
-//                case .collapsed:
-//                    self.visualEffectView.effect = nil
-//                }
-//            }
-//            
-//            blurAnimator.startAnimation()
-//            runningAnimations.append(blurAnimator)
             
         }
     }

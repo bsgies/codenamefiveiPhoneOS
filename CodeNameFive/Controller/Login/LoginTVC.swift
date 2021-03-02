@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LoginTVC: UITableViewController {
+class LoginTVC: UITableViewController  , UITextFieldDelegate{
     //MARK:- Outlets
     @IBOutlet weak var EmailorPhone: UITextField!
     @IBOutlet weak var errorLbl: UILabel!
@@ -22,13 +22,18 @@ class LoginTVC: UITableViewController {
     var emailOrPhoneFlag : Bool = true
     var isPhone : Bool = true
     
+  
+    
     //MARK:- Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUIAndGestures()
         self.title = "Login"
-        
+        EmailorPhone.delegate = self
     }
+    
+    
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         ScreenBottomView.goToNextScreen(button: bottomBtn, view: self.view, btnText: "Continue")
@@ -37,8 +42,15 @@ class LoginTVC: UITableViewController {
         bottomBtn.addTarget(self, action: #selector(heldDown), for: .touchDown)
         bottomBtn.addTarget(self, action: #selector(buttonHeldAndReleased), for: .touchDragExit)
         bottomBtn.isEnabled = false
-        bottomBtn.setBackgroundColor(color: UIColor(named: "disabledButton")!, forState: .normal)
+        bottomBtn.backgroundColor = UIColor(named: "disabledButton")!
         EmailorPhone.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
+        EmailorPhone.placeholder = "Enter phone number"
+        if !EmailorPhone.text!.isEmpty{
+            EmailorPhone.clearButtonMode = .always
+            bottomBtn.isEnabled = true
+            bottomBtn.setBackgroundColor(color: UIColor(named: "primaryButton")!, forState: .normal)
+            
+        }
     }
     
     
@@ -84,7 +96,7 @@ class LoginTVC: UITableViewController {
         if isPhone{
             if email.isValidPhone(){
                 checkemail = "phone"
-                PhoneNumberOTP(param: ["key": "phoneNumber" , "value" : email])
+                PhoneNumberOTP(param: ["phone" : email])
             }
             else{
                 bottomBtn.loadingIndicator(false, title: "Continue")
@@ -97,7 +109,7 @@ class LoginTVC: UITableViewController {
             
             if email.isEmail(){
                 checkemail = "email"
-                PhoneNumberOTP(param: ["key": "email" , "value" : email])
+                GoToSecurityScreen()
             }
             else{
                 bottomBtn.loadingIndicator(false, title: "Continue")
@@ -121,19 +133,24 @@ class LoginTVC: UITableViewController {
             EmailorPhone.clearButtonMode = .never
             bottomBtn.isEnabled = false
             bottomBtn.setBackgroundColor(color: UIColor(named: "disabledButton")!, forState: .normal)
-            useEmailorPhone.isHidden = true
+            bottomBtn.backgroundColor = UIColor(named: "disabledButton")!
+            useEmailorPhone.isHidden = false
         }
     }
+    
+    
+    
+    
     
     //MARK:-APIs
     func PhoneNumberOTP(param : [String : Any]){
         bottomBtn.loadingIndicator(true, title: "")
-        HttpService.sharedInstance.postRequest(urlString: Endpoints.phoneOEmailExits, bodyData: param) { [self] (responseData) in
+        HttpService.sharedInstance.postRequest(loadinIndicator: false, urlString: Endpoints.sendOTP, bodyData: param) { [self] (responseData) in
             do{
                 let jsonData = responseData?.toJSONString1().data(using: .utf8)!
                 let decoder = JSONDecoder()
-                let obj = try decoder.decode(EmailPhoneExitsValidationModel.self, from: jsonData!)
-                if obj.success == false{
+                let obj = try decoder.decode(OTPModel.self, from: jsonData!)
+                if obj.success == true{
                     self.GoToSecurityScreen()
                 }
                 else{
@@ -192,6 +209,7 @@ extension LoginTVC {
             EmailorPhone.placeholder = "Enter phone number"
             emailOrPhoneFlag = false
             isPhone = true
+            EmailorPhone.keyboardType = .phonePad
         }
         else{
             checkemail = "email"
@@ -199,6 +217,7 @@ extension LoginTVC {
             EmailorPhone.placeholder = "Enter email address"
             emailOrPhoneFlag = true
             isPhone = false
+            EmailorPhone.keyboardType = .emailAddress
         }
     }
     
@@ -213,6 +232,9 @@ extension LoginTVC {
         registerYConstraint.constant = 10
         self.errorLbl.isHidden = true
         self.pushToController(from: .account, identifier: .SecurityTVC)
+    }
+    override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 0.0
     }
     
     func setCrossButton(){

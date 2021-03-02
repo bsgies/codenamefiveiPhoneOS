@@ -10,15 +10,13 @@ import Foundation
 import UIKit
 import GoogleMaps
 
-var distanceInKm :  String = "20KM"
-var durationInTraffic : String = "10 min"
-
 func openGoogleMap(){
     
-    if (UIApplication.shared.canOpenURL(URL(string:"comgooglemaps://")!)) {
-            UIApplication.shared.canOpenURL(URL(string:
-                "comgooglemaps://?center=\(31.584478),\(74.388419)&zoom=14&views=traffic")!)
-        } else {
+    if let url = URL(string: "comgooglemaps://?saddr=&daddr=\(31.584478),\(74.388419)&directionsmode=driving") {
+          UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        }
+
+    else {
             if let url = URL(
                 string: "https://apps.apple.com/app/google-maps-transit-food/id585027354") {
                 UIApplication.shared.open(url, options: [:]) { (true) in

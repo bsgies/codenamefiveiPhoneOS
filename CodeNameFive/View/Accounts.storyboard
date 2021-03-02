@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ZkT-R6-b99">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ZkT-R6-b99">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -28,13 +28,13 @@
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Ll-Ud-RcS">
-                                    <rect key="frame" x="20" y="0.0" width="34.5" height="16.5"/>
+                                    <rect key="frame" x="20" y="-10" width="34.5" height="16.5"/>
                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                     <color key="textColor" red="0.86274509799999999" green="0.20784313730000001" blue="0.27058823529999998" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Code not received?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SRZ-7y-4VA">
-                                    <rect key="frame" x="133" y="0.0" width="148.5" height="44"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Security code not recieved?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SRZ-7y-4VA">
+                                    <rect key="frame" x="101" y="0.0" width="212.5" height="44"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="20" id="cr1-nV-0sr"/>
                                     </constraints>
@@ -44,7 +44,7 @@
                                 </label>
                             </subviews>
                             <constraints>
-                                <constraint firstItem="1Ll-Ud-RcS" firstAttribute="top" secondItem="RlN-Y9-v3d" secondAttribute="top" id="PVE-p0-pPU"/>
+                                <constraint firstItem="1Ll-Ud-RcS" firstAttribute="top" secondItem="RlN-Y9-v3d" secondAttribute="top" constant="-10" id="PVE-p0-pPU"/>
                                 <constraint firstItem="SRZ-7y-4VA" firstAttribute="top" secondItem="RlN-Y9-v3d" secondAttribute="top" id="Xoh-tE-3Ce"/>
                                 <constraint firstItem="SRZ-7y-4VA" firstAttribute="centerX" secondItem="RlN-Y9-v3d" secondAttribute="centerX" id="anK-1H-BiU"/>
                                 <constraint firstItem="SRZ-7y-4VA" firstAttribute="centerY" secondItem="RlN-Y9-v3d" secondAttribute="centerY" id="gu6-Ki-Pkl"/>
@@ -108,7 +108,7 @@
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9K9-6T-9JT">
-                                    <rect key="frame" x="20" y="2" width="34.5" height="16.5"/>
+                                    <rect key="frame" x="20" y="-10" width="34.5" height="16.5"/>
                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                     <color key="textColor" red="0.86274509799999999" green="0.20784313730000001" blue="0.27058823529999998" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
@@ -126,7 +126,7 @@
                             <constraints>
                                 <constraint firstItem="jqh-m9-t55" firstAttribute="centerX" secondItem="P12-iA-Gyr" secondAttribute="centerX" id="Ik5-oM-VbZ"/>
                                 <constraint firstItem="9K9-6T-9JT" firstAttribute="leading" secondItem="P12-iA-Gyr" secondAttribute="leading" constant="20" id="PIu-gS-P0Q"/>
-                                <constraint firstItem="9K9-6T-9JT" firstAttribute="top" secondItem="P12-iA-Gyr" secondAttribute="top" constant="2" id="lQD-Py-Y5o"/>
+                                <constraint firstItem="9K9-6T-9JT" firstAttribute="top" secondItem="P12-iA-Gyr" secondAttribute="top" constant="-10" id="lQD-Py-Y5o"/>
                                 <constraint firstItem="jqh-m9-t55" firstAttribute="centerY" secondItem="P12-iA-Gyr" secondAttribute="centerY" constant="-15" id="mUb-qt-PI8"/>
                             </constraints>
                         </view>
@@ -143,7 +143,7 @@
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kLU-Op-9SH">
                                                     <rect key="frame" x="20" y="0.0" width="374" height="50"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
                                                 </textField>
                                                 <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Use email?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bjy-QW-Z0p">
                                                     <rect key="frame" x="324.5" y="10" width="69.5" height="30"/>
@@ -1029,6 +1029,9 @@
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="tableCellGroupedBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="tableCellGroupedBackgroundColor">

@@ -23,6 +23,8 @@ class CardViewController: UIViewController {
     var addressLbl : String?
     
     
+    
+    
     //MARK:- enum
     
     enum currentState  : String{
@@ -38,6 +40,8 @@ class CardViewController: UIViewController {
         SetupView()
         setupNibs()
         setupGestures()
+        NotificationCenter.default.addObserver(self, selector: #selector(self.distanceandDuration(_:)), name: NSNotification.Name(rawValue: "distanceAndDuration"), object: nil)
+        
     }
     override func viewWillDisappear(_ animated: Bool) {
         navigationController?.navigationBar.isHidden = false
@@ -64,8 +68,6 @@ class CardViewController: UIViewController {
     }
  
     func SetupView() {
-        self.distance.text = distanceInKm
-        self.time.text = durationInTraffic
         button.addTarget(self, action: #selector(action), for: .touchUpInside)
         tableView.delegate = self
         tableView.dataSource = self
@@ -153,6 +155,19 @@ class CardViewController: UIViewController {
             }
             
         }
+    }
+    @objc func distanceandDuration(_ notification: NSNotification) {
+           print(notification.userInfo ?? "")
+           if let dict = notification.userInfo as NSDictionary? {
+               if let dis = dict["distance"] as? String{
+                if let duration = dict["duration"] as? String{
+                    distance.text = dis
+                    time.text = duration
+                }
+                
+                
+               }
+           }
     }
 }
 

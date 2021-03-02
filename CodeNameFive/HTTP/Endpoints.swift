@@ -26,4 +26,6 @@ struct Endpoints {
    static let  status =   "http://ec2-18-222-200-202.us-east-2.compute.amazonaws.com:3000/api/v1/partner/online/status"
     static let  updateEmail =   "http://ec2-18-222-200-202.us-east-2.compute.amazonaws.com:3000/api/v1/partner/email"
     static let  updatePhone =   "http://ec2-18-222-200-202.us-east-2.compute.amazonaws.com:3000/api/v1/partner/phone"
+    static let sendOTP = "http://ec2-18-222-200-202.us-east-2.compute.amazonaws.com:3000/api/v1/partner/login/phone"
+    static let offlineOnlineStatus = "http://ec2-18-222-200-202.us-east-2.compute.amazonaws.com:3000/api/v1/partner/online/status"
 }

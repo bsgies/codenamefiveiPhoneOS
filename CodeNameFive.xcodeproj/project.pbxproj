@@ -94,7 +94,6 @@
 		4FDA5E4025C5C83E00097333 /* MapStyling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FDA5E3F25C5C83E00097333 /* MapStyling.swift */; };
 		4FDA5E4625C5CEDE00097333 /* Storyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FDA5E4525C5CEDE00097333 /* Storyboard.swift */; };
 		4FDA5E4E25C5CF1500097333 /* ControllerIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FDA5E4D25C5CF1500097333 /* ControllerIdentifier.swift */; };
-		4FE12A1A24E54F78006F55E1 /* MMSlidingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FE12A1924E54F78006F55E1 /* MMSlidingButton.swift */; };
 		4FE1F9FE252671800075D695 /* CallingCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FE1F9FD2526717F0075D695 /* CallingCodeViewController.swift */; };
 		4FE4A400249FF93300CFFC3B /* EditProfileTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FE4A3FF249FF93300CFFC3B /* EditProfileTVC.swift */; };
 		4FF1F72024AFB1A40035A9A5 /* HelpOrCancelVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF1F71F24AFB1A40035A9A5 /* HelpOrCancelVC.swift */; };
@@ -285,7 +284,6 @@
 		4FDA5E3F25C5C83E00097333 /* MapStyling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapStyling.swift; sourceTree = "<group>"; };
 		4FDA5E4525C5CEDE00097333 /* Storyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboard.swift; sourceTree = "<group>"; };
 		4FDA5E4D25C5CF1500097333 /* ControllerIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControllerIdentifier.swift; sourceTree = "<group>"; };
-		4FE12A1924E54F78006F55E1 /* MMSlidingButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MMSlidingButton.swift; sourceTree = "<group>"; };
 		4FE1F9FD2526717F0075D695 /* CallingCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallingCodeViewController.swift; sourceTree = "<group>"; };
 		4FE4A3FF249FF93300CFFC3B /* EditProfileTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileTVC.swift; sourceTree = "<group>"; };
 		4FF1F71F24AFB1A40035A9A5 /* HelpOrCancelVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpOrCancelVC.swift; sourceTree = "<group>"; };
@@ -700,7 +698,6 @@
 		4FB11F12249FED9F00EC629B /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				4FE12A1924E54F78006F55E1 /* MMSlidingButton.swift */,
 				4F209E5D24CD7A1E001F34BC /* CheckBox.swift */,
 				4F785A4B2500E06E002D192D /* ScreenBottombutton.swift */,
 				4F4B7C7925C4903000F31A1F /* SlideInTransition.swift */,
@@ -1293,7 +1290,6 @@
 				90494040257C35B800224131 /* LiveSupportViewController.swift in Sources */,
 				9042659825B75ED600D2B885 /* SecurityTVC.swift in Sources */,
 				4F1A9F4825D2C132003C50B4 /* AddressView.swift in Sources */,
-				4FE12A1A24E54F78006F55E1 /* MMSlidingButton.swift in Sources */,
 				4FF1F72424AFBB2D0035A9A5 /* HelpOrCancelCell.swift in Sources */,
 				4F4B7C7A25C4903000F31A1F /* SlideInTransition.swift in Sources */,
 				4FB978F724A4DB3A0093C10F /* EarningsTVC.swift in Sources */,
@@ -1511,7 +1507,7 @@
 				CODE_SIGN_ENTITLEMENTS = CodeNameFive/CNF.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 27S98BE552;
+				DEVELOPMENT_TEAM = HGQ936794K;
 				INFOPLIST_FILE = CodeNameFive/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1534,7 +1530,7 @@
 				CODE_SIGN_ENTITLEMENTS = CodeNameFive/CNF.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 27S98BE552;
+				DEVELOPMENT_TEAM = HGQ936794K;
 				INFOPLIST_FILE = CodeNameFive/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (

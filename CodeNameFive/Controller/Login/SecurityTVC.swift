@@ -27,10 +27,17 @@ class SecurityTVC: UITableViewController, UITextFieldDelegate {
         super.viewDidLoad()
         configureUI()
         setupTapGestures()
-        bottomBtn.isEnabled = false
-        bottomBtn.setBackgroundColor(color: .gray, forState: .normal)
         passwordTextField!.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
         forget.isUserInteractionEnabled = true
+        passwordTextField?.delegate = self
+        if checkEmailOrPhone == "email"{
+            passwordTextField!.keyboardType = .default
+            
+        }
+        else{
+            passwordTextField!.keyboardType = .phonePad
+        }
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -40,17 +47,18 @@ class SecurityTVC: UITableViewController, UITextFieldDelegate {
         bottomBtn.titleLabel?.font = UIFont(name: "HelveticaNeue-Bold", size: 16)
         bottomBtn.addTarget(self, action: #selector(heldDown), for: .touchDown)
         bottomBtn.addTarget(self, action: #selector(buttonHeldAndReleased), for: .touchDragExit)
-       
-
+        bottomBtn.isEnabled = false
+        bottomBtn.backgroundColor = UIColor(named: "disabledButton")!
+        
     }
-
-
+    
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         guard let window = UIApplication.shared.windows.filter({$0.isKeyWindow}).first else { return }
         window.viewWithTag(200)?.removeFromSuperview()
     }
-
+    
     
     //MARK:- Helper function
     @objc func bottomBtnTapped() {
@@ -87,9 +95,17 @@ class SecurityTVC: UITableViewController, UITextFieldDelegate {
             forgetYConstraint.constant = 0
         }
         else{
+            errorLbl.isHidden = true
             bottomBtn.isEnabled = false
-            bottomBtn.setBackgroundColor(color: .gray, forState: .normal)
+            bottomBtn.setBackgroundColor(color: UIColor(named: "disabledButton")!, forState: .normal)
+            bottomBtn.backgroundColor = UIColor(named: "disabledButton")!
         }
+    }
+    func textFieldShouldClear(_ textField: UITextField) -> Bool {
+        errorLbl.isHidden = true
+        bottomBtn.isEnabled = false
+        bottomBtn.backgroundColor = UIColor(named: "disabledButton")!
+        return true
     }
     
     //MARK:- Selectors
@@ -97,17 +113,17 @@ class SecurityTVC: UITableViewController, UITextFieldDelegate {
     {
         bottomBtn.backgroundColor = UIColor(named: "secondaryButton")
     }
-
+    
     @objc func holdRelease()
     {
         bottomBtn.backgroundColor = UIColor(named: "primaryButton")
     }
-
+    
     @objc func buttonHeldAndReleased(){
         bottomBtn.backgroundColor = UIColor(named: "primaryButton")
     }
     
-     
+    
     @objc
     func forgetCode(){
         if checkEmailOrPhone == conditionalLogin.email.rawValue {
@@ -122,13 +138,13 @@ class SecurityTVC: UITableViewController, UITextFieldDelegate {
     @objc
     func startTimer(){
         if(count > 0) {
-            //        let text = "Security code not recieved? / Resend another code in \(count) seconds"
-            //        let attributedText = text.setColor(.black, ofSubstring: "/ Resend another code in \(count) seconds")
-            //        forget.attributedText = attributedText
+            //                    let text = "Security code not recieved? / Resend another code in \(count) seconds"
+            //                    let attributedText = text.setColor(.black, ofSubstring: "/ Resend another code in \(count) seconds")
+            //                    forget.attributedText = attributedText
             forget.text = "Resend another code in \(count) seconds"
             forget.textColor = .black
             count -= 1
-            }
+        }
         else{
             forget.isUserInteractionEnabled = true
             forget.text = "Security code not recieved?"
@@ -136,7 +152,7 @@ class SecurityTVC: UITableViewController, UITextFieldDelegate {
             endTimer()
         }
         
-
+        
     }
     
     func endTimer() {
@@ -149,6 +165,7 @@ class SecurityTVC: UITableViewController, UITextFieldDelegate {
         if checkEmailOrPhone == conditionalLogin.email.rawValue {
             forget.text = "Forget password?"
             passwordTextField?.placeholder = "Password"
+            passwordTextField?.isSecureTextEntry = true
             self.title = "Login with email"
             
         }
@@ -169,7 +186,7 @@ class SecurityTVC: UITableViewController, UITextFieldDelegate {
         self.view.endEditing(true)
     }
     
-
+    
     
     private func showForgetPasswordAlert() {
         
@@ -211,29 +228,32 @@ class SecurityTVC: UITableViewController, UITextFieldDelegate {
             url = Endpoints.loginWithPhone
         }
         bottomBtn.loadingIndicator(true, title: "")
-        HttpService.sharedInstance.postRequest(urlString: url, bodyData: parm) {
+        HttpService.sharedInstance.postRequest(loadinIndicator: false, urlString: url, bodyData: parm) {
             [self](responseData) in
             if let responseData = responseData {
-            do{
-                let jsonData = responseData.toJSONString1().data(using: .utf8)!
-                let decoder = JSONDecoder()
-                let obj = try decoder.decode(LoginResponse.self, from: jsonData)
-                if obj.success == true{
-                    self.saveValuesInKeyChain(obj: obj)
+                do{
+                    let jsonData = responseData.toJSONString1().data(using: .utf8)!
+                    let decoder = JSONDecoder()
+                    let obj = try decoder.decode(LoginResponse.self, from: jsonData)
+                    if obj.success == true{
+                        if self.saveValuesInKeyChain(obj: obj){
+                                bottomBtn.loadingIndicator(false, title: "Login")
+                                self.pushToController(from: .main, identifier: .DashboardVC)
+                        }
+                    }
+                    else{
+                        bottomBtn.loadingIndicator(false, title: "Login")
+                        forgetYConstraint.constant = 20
+                        self.errorLbl.isHidden = false
+                        self.errorLbl.text = obj.message
+                    }
                 }
-                else{
-                   bottomBtn.loadingIndicator(false, title: "Login")
-                   forgetYConstraint.constant = 20
-                   self.errorLbl.isHidden = false
-                   self.errorLbl.text = obj.message
+                catch{
+                    bottomBtn.loadingIndicator(false, title: "Login")
+                    forgetYConstraint.constant = 20
+                    self.errorLbl.isHidden = false
+                    self.errorLbl.text = "Something went wrong"
                 }
-            }
-            catch{
-               bottomBtn.loadingIndicator(false, title: "Login")
-               forgetYConstraint.constant = 20
-               self.errorLbl.isHidden = false
-               self.errorLbl.text = "Something went wrong"
-            }
             } else {
                 self.bottomBtn.loadingIndicator(false, title: "Login")
             }
@@ -242,34 +262,33 @@ class SecurityTVC: UITableViewController, UITextFieldDelegate {
     }
     
     //MARK:- Save to keychain
-    func saveValuesInKeyChain(obj : LoginResponse){
+    func saveValuesInKeyChain(obj : LoginResponse) -> Bool{
         if obj.success == true{
-            guard let result = obj.data?.results else { return }
-            guard let token = obj.data?.token else { return }
-            KeychainWrapper.standard.set(token, forKey: "token")
-            KeychainWrapper.standard.set(result.status!, forKey: "online_status")
-            KeychainWrapper.standard.set(result.lastName ?? "", forKey: "last_name")
-            KeychainWrapper.standard.set(result.firstName ?? "", forKey: "first_name")
-            KeychainWrapper.standard.set(result.email ?? "" , forKey: "email")
-            KeychainWrapper.standard.set(result.id!, forKey: "id" )
-            KeychainWrapper.standard.set(result.profilePhoto!, forKey: "profile_photo")
-            KeychainWrapper.standard.set(result.phoneNumber!, forKey: "phone_number")
-            KeychainWrapper.standard.set(result.status!, forKey: "status")
-            saveInDefault(value: true, key: "isUserLogIn")
-            bottomBtn.loadingIndicator(false, title: "Login")
-            self.pushToController(from: .main, identifier: .DashboardVC)
+                guard let result = obj.data?.results else { return false }
+                guard let token = obj.data?.token else { return false}
+                KeychainWrapper.standard.set(token, forKey: tokenKey)
+                KeychainWrapper.standard.set(result.onlineStatus, forKey: onlineStatusKey)
+                KeychainWrapper.standard.set(result.lastName, forKey: lastNameKey)
+                KeychainWrapper.standard.set(result.firstName, forKey: firstNameKey)
+                KeychainWrapper.standard.set(result.email, forKey: emailKey)
+                KeychainWrapper.standard.set(result.id, forKey: idKey)
+                KeychainWrapper.standard.set(result.profilePhoto, forKey: profilePhotoKey)
+                KeychainWrapper.standard.set(result.phoneNumber, forKey:  phoneNumberKey)
+                KeychainWrapper.standard.set(result.status, forKey:  statusKey)
+                saveInDefault(value: true, key: isUserLogInKey)
+            return true
         }
         else {
-          bottomBtn.loadingIndicator(false, title: "Login")
-          errorLbl.isHidden = false
-          errorLbl.text = obj.message
+            bottomBtn.loadingIndicator(false, title: "Login")
+            errorLbl.isHidden = false
+            errorLbl.text = obj.message
+            return false
         }
     }
 }
-
 //MARK:- TableView delegate
 extension SecurityTVC {
- 
+    
     override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         let header:UITableViewHeaderFooterView = view as! UITableViewHeaderFooterView
         header.textLabel?.textColor = UIColor(named: "secondaryColor")
