@@ -125,6 +125,10 @@ extension DashboardVC{
     //MARK:- Buttons Actions
     @IBAction func OnlineOfflineButton(_ sender: UIButton) {
 
+    }
+
+    
+    func buttonStates() {
         if isOnline(){
             KeychainWrapper.standard.set(1, forKey: onlineStatusKey)
             self.goOnlineOfflineButton.setTitle("Go Online", for: .normal)
@@ -139,23 +143,19 @@ extension DashboardVC{
                 KeychainWrapper.standard.set(false, forKey: onlineStatusKey)
                 goOnlineOfflineButton.showLoading()
                 buttonServerResponse()
-                DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
                     self.goOnlineOfflineButton.hideLoading()
                     self.ServerResponseReceived()
                     self.findingRoutesLoadingBarView.isHidden = false
                     self.setBarAnimation()
-                    sender.setBackgroundColor(color: UIColor(named: "dangerHover")!, forState: .highlighted)
+                    self.goOnlineOfflineButton.setBackgroundColor(color: UIColor(named: "dangerHover")!, forState: .highlighted)
                     self.goOnlineOfflineButton.setBackgroundColor(color: .red, forState: .normal)
                     self.goOnlineOfflineButton.setTitle("Go offline", for: .normal)
-                    self.pushToRoot(from: .main, identifier: .NewTripRequestVC)
-                }
             }
             else{
                 self.goToSettingAlert()
             }
         }
     }
-
     
     @IBAction func EarningsButton(_ sender: Any) {
         self.pushToRoot(from: .appMenu, identifier: .EarningsTVC)
