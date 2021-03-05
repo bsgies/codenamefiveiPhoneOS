@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import LocalAuthentication
 class LoginTVC: UITableViewController  , UITextFieldDelegate{
     //MARK:- Outlets
     @IBOutlet weak var EmailorPhone: UITextField!
@@ -59,6 +59,21 @@ class LoginTVC: UITableViewController  , UITextFieldDelegate{
         guard let window = UIApplication.shared.windows.filter({$0.isKeyWindow}).first else { return }
         window.viewWithTag(200)?.removeFromSuperview()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if !UIApplication.shared.isFirstLaunch(){
+            authenticationWithTouchID()
+        }else{
+            if UserDefaults.exists(key: "success"){
+                if UserDefaults.standard.value(forKey: "success") as! Bool {
+                    authenticationWithTouchID()
+                }
+            }
+        }
+    }
+    
+    
     
     //MARK:- selectors and functions
     // Target functions
@@ -138,8 +153,41 @@ class LoginTVC: UITableViewController  , UITextFieldDelegate{
         }
     }
     
-    
-    
+    func authenticationWithTouchID() {
+        let localAuthenticationContext = LAContext()
+        localAuthenticationContext.localizedFallbackTitle = "Please use your Passcode"
+
+        var authorizationError: NSError?
+        let reason = "Authentication required to access the secure data"
+
+        if localAuthenticationContext.canEvaluatePolicy(.deviceOwnerAuthentication, error: &authorizationError) {
+            
+            localAuthenticationContext.evaluatePolicy(.deviceOwnerAuthentication, localizedReason: reason) { [self] success, evaluateError in
+                
+                if success {
+                    //guard let password = KeychainWrapper.standard.string(forKey: "password") else { self.MyshowAlertWith(title: "Error", message: "Server Error")
+                        //return }
+//                    LoginApi(parm: ["email": KeychainWrapper.standard.string(forKey: emailKey)! as String , "password": password])
+                    UserDefaults.standard.setValue(true, forKey: isUserLogInKey)
+                    self.pushToController(from: .main, identifier: .DashboardVC)
+                    }
+                else {
+                    // Failed to authenticate
+                    guard let error = evaluateError else {
+                        return
+                    }
+                    print(error)
+                
+                }
+            }
+        } else {
+            
+            guard let error = authorizationError else {
+                return
+            }
+            print(error)
+        }
+    }
     
     
     //MARK:-APIs
@@ -244,5 +292,64 @@ extension LoginTVC {
         button.frame = CGRect(x: 0, y: 0, width: 16, height: 16)
         let barButton = UIBarButtonItem(customView: button)
         self.navigationItem.leftBarButtonItem = barButton
+    }
+    
+    func LoginApi(parm : [String:Any]) {
+       
+        HttpService.sharedInstance.postRequest(loadinIndicator: false, urlString: Endpoints.login, bodyData: parm) {
+            [self](responseData) in
+            if let responseData = responseData {
+                do{
+                    let jsonData = responseData.toJSONString1().data(using: .utf8)!
+                    let decoder = JSONDecoder()
+                    let obj = try decoder.decode(LoginResponse.self, from: jsonData)
+                    if obj.success == true{
+                        if obj.success == true{
+                            DispatchQueue.main.async {
+                                self.pushToController(from: .main, identifier: .DashboardVC)
+                            }
+                       
+                        }
+                    }
+                    else{
+                        registerYConstraint.constant = 20
+                        self.errorLbl.isHidden = false
+                        self.errorLbl.text = obj.message
+                    }
+                }
+                catch{
+                    registerYConstraint.constant = 20
+                    self.errorLbl.isHidden = false
+                    self.errorLbl.text = "Something went wrong"
+                }
+            }
+        }
+        
+    }
+    
+    
+    func saveValuesInKeyChain(obj : LoginResponse) -> Bool{
+        if obj.success == true{
+                guard let result = obj.data?.results else { return false }
+                guard let token = obj.data?.token else { return false}
+                KeychainWrapper.standard.set(token, forKey: tokenKey)
+                KeychainWrapper.standard.set(result.onlineStatus, forKey: onlineStatusKey)
+                KeychainWrapper.standard.set(result.lastName, forKey: lastNameKey)
+                KeychainWrapper.standard.set(result.firstName, forKey: firstNameKey)
+                KeychainWrapper.standard.set(result.email, forKey: emailKey)
+                KeychainWrapper.standard.set(result.id, forKey: idKey)
+                KeychainWrapper.standard.set(result.profilePhoto, forKey: profilePhotoKey)
+                KeychainWrapper.standard.set(result.phoneNumber, forKey:  phoneNumberKey)
+                KeychainWrapper.standard.set(result.status, forKey:  statusKey)
+                KeychainWrapper.standard.set(true, forKey: "success")
+                saveInDefault(value: true, key: isUserLogInKey)
+            return true
+        }
+        else {
+            bottomBtn.loadingIndicator(false, title: "Login")
+            errorLbl.isHidden = false
+            errorLbl.text = obj.message
+            return false
+        }
     }
 }

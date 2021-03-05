@@ -10,7 +10,7 @@ import UIKit
 import GoogleMaps
 import CoreLocation
 
-class DashboardVC: UIViewController,  CLLocationManagerDelegate, GMSMapViewDelegate, UIGestureRecognizerDelegate {
+class DashboardVC: UIViewController,  CLLocationManagerDelegate, GMSMapViewDelegate, UIGestureRecognizerDelegate{
     
     //MARK:- outlets
     var mainMenuController = MainMenuViewController()
@@ -26,6 +26,7 @@ class DashboardVC: UIViewController,  CLLocationManagerDelegate, GMSMapViewDeleg
     @IBOutlet weak var buttonView: UIView!
     @IBOutlet weak var youAreOfflineLbl: UILabel!
     
+    @IBOutlet weak var connecedTimeLbl: UILabel?
     //MARK:- variables
     weak var gotorider :  Timer?
     var locationManager: CLLocationManager!
@@ -35,6 +36,15 @@ class DashboardVC: UIViewController,  CLLocationManagerDelegate, GMSMapViewDeleg
     var isUserTouch = false
     let transiton = SlideInTransition()
     
+    //MARK:-Timer
+    var internalTimer: Timer?
+
+    let formatter: DateFormatter = {
+            let tmpFormatter = DateFormatter()
+            tmpFormatter.dateFormat = "hh:mm:ss"
+            return tmpFormatter
+        }()
+     
     
     //MARK:- Life Cycles
     override func viewDidLoad() {
@@ -42,15 +52,15 @@ class DashboardVC: UIViewController,  CLLocationManagerDelegate, GMSMapViewDeleg
         currentEarning.contentEdgeInsets = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 15)
         googleMapView.delegate = self
         LocationManger()
-        Autrize()
         SetupMap()
         currentEarning.setTitle(formatCurrency(balance: 30000), for: .normal)
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setupViewAndTapGestuers()
-        CheckOfflineOrOnline()
+        checkOnlineStatus()
         navigationController?.setNavigationBarHidden(true, animated: animated)
+        
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
@@ -63,26 +73,45 @@ class DashboardVC: UIViewController,  CLLocationManagerDelegate, GMSMapViewDeleg
         currentEarning.backgroundColor = UIColor(named: "primaryButton")
         hamburgerImage.isUserInteractionEnabled = true
     }
+    
+    
 
     //MARK:- Functions & Selectors
 
     func isOnline() -> Bool {
         return (KeychainWrapper.standard.integer(forKey: onlineStatusKey)! != 0)
-    
     }
-    func CheckOfflineOrOnline() {
+    
+    
+    func checkOnlineStatus() {
         if isOnline(){
-            Autrize()
-            goOnlineOfflineButton.backgroundColor = .red
-            goOnlineOfflineButton.setTitle("Go Offline", for: .normal)
-            youAreOfflineLbl.text = "Finding trips for you..."
-            youAreOfflineLbl.font = UIFont(name: "HelveticaNeue-Bold", size: 20)
+            if authrizationForLocation() {
+                startJobRequest()
+                goOnlineOfflineButton.showLoading()
+                buttonServerResponse()
+                    self.goOnlineOfflineButton.hideLoading()
+                    self.ServerResponseReceived()
+                    self.findingRoutesLoadingBarView.isHidden = false
+                    self.setBarAnimation()
+                    self.goOnlineOfflineButton.setBackgroundColor(color: UIColor(named: "dangerHover")!, forState: .highlighted)
+                    self.goOnlineOfflineButton.setBackgroundColor(color: .red, forState: .normal)
+                    self.goOnlineOfflineButton.setTitle("Go offline", for: .normal)
+                self.youAreOfflineLbl.text = "Finding trips for you..."
+                startTimer()
+            }
+            else{
+                self.goToSettingAlert()
+            }
+            
         }
         else{
-            goOnlineOfflineButton.backgroundColor = UIColor(named: "primaryButton")
-            goOnlineOfflineButton.setTitle("Go Online", for: .normal)
-            youAreOfflineLbl.text = "You're offline"
-            youAreOfflineLbl.font = UIFont(name: "HelveticaNeue-Bold", size: 18)
+            self.goOnlineOfflineButton.setTitle("Go Online", for: .normal)
+            self.goOnlineOfflineButton.setBackgroundColor(color: UIColor(named: "primaryColor")!, forState: .normal)
+            findingRoutesLoadingBarView.layer.removeAllAnimations()
+            self.findingRoutesLoadingBarView.isHidden = true
+            self.youAreOfflineLbl.text = "You are Offline"
+            gotorider?.invalidate()
+            stopTimer()
         }
     }
 
@@ -108,8 +137,47 @@ class DashboardVC: UIViewController,  CLLocationManagerDelegate, GMSMapViewDeleg
     @objc func dissmissVC() {
         self.dismiss(animated: true, completion: nil)
     }
+    
+    
+    //MARK:-API
+    
+    func apiCalling() {
+        HttpService.sharedInstance.postRequest(loadinIndicator: false, urlString: Endpoints.offlineOnlineStatus, bodyData: ["onlineStatus" : 0]) { (responseData) in
+            
+            do{
+                let jsonData = responseData?.toJSONString1().data(using: .utf8)!
+                let decoder = JSONDecoder()
+                let obj = try decoder.decode(commonResult.self, from: jsonData!)
+                if obj.success{
+                    
+                }
+            }catch{
+                
+            }
+            
+        }
+    }
 }
 extension DashboardVC{
+    
+    //MARK:- Buttons Actions
+    @IBAction func OnlineOfflineButton(_ sender: UIButton) {
+        if isOnline(){
+            KeychainWrapper.standard.set(0, forKey: onlineStatusKey)
+            checkOnlineStatus()
+        }
+        else{
+            KeychainWrapper.standard.set(1, forKey: onlineStatusKey)
+            checkOnlineStatus()
+        }
+        
+    }
+
+    
+    @IBAction func EarningsButton(_ sender: Any) {
+        self.pushToRoot(from: .appMenu, identifier: .EarningsTVC)
+    }
+    
     func setBarAnimation() {
         UIView.animate(withDuration: 1, animations: {
             self.findingRoutesLoadingBarView.frame.origin.x = +self.dashboardBottomView.frame.width
@@ -122,50 +190,15 @@ extension DashboardVC{
         }
     }
     
-    //MARK:- Buttons Actions
-    @IBAction func OnlineOfflineButton(_ sender: UIButton) {
-
-    }
-
-    
-    func buttonStates() {
-        if isOnline(){
-            KeychainWrapper.standard.set(1, forKey: onlineStatusKey)
-            self.goOnlineOfflineButton.setTitle("Go Online", for: .normal)
-            self.goOnlineOfflineButton.setBackgroundColor(color: UIColor(named: "primaryColor")!, forState: .normal)
-            findingRoutesLoadingBarView.layer.removeAllAnimations()
-            self.findingRoutesLoadingBarView.isHidden = true
-            self.gotorider?.invalidate()
-        }
-        else{
-            if authrizationForLocation() {
-                KeychainWrapper.standard.set(0, forKey: onlineStatusKey)
-                KeychainWrapper.standard.set(false, forKey: onlineStatusKey)
-                goOnlineOfflineButton.showLoading()
-                buttonServerResponse()
-                    self.goOnlineOfflineButton.hideLoading()
-                    self.ServerResponseReceived()
-                    self.findingRoutesLoadingBarView.isHidden = false
-                    self.setBarAnimation()
-                    self.goOnlineOfflineButton.setBackgroundColor(color: UIColor(named: "dangerHover")!, forState: .highlighted)
-                    self.goOnlineOfflineButton.setBackgroundColor(color: .red, forState: .normal)
-                    self.goOnlineOfflineButton.setTitle("Go offline", for: .normal)
-            }
-            else{
-                self.goToSettingAlert()
-            }
-        }
-    }
-    
-    @IBAction func EarningsButton(_ sender: Any) {
-        self.pushToRoot(from: .appMenu, identifier: .EarningsTVC)
-    }
-    
     //MARK:-Job Request
     
     func startJobRequest() {
-
-         self.gotorider = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(self.runTimedCode), userInfo: nil, repeats: false)
+        if isOnline(){
+        DispatchQueue.main.asyncAfter(deadline: .now() +  10) { [self] in
+            self.pushToRoot(from: .main, identifier: .NewTripRequestVC)
+           
+        }
+        }
     }
 
     //MARK:- Navigations
@@ -188,29 +221,9 @@ extension DashboardVC{
         present(menuViewController, animated: true)
     }
     
-    @objc func runTimedCode(){
-        self.pushToController(from: .main, identifier: .NewTripRequestVC)
-    }
     
-    //MARK:- Buttons Actions Location Service Determining
+
     
-    func authrizationForLocation() ->Bool{
-        let locStatus = CLLocationManager.authorizationStatus()
-        switch locStatus {
-        case .notDetermined:
-            return true
-        case .denied, .restricted:
-            return false
-        case .authorizedWhenInUse:
-            return true
-        case .authorizedAlways:
-            return false
-        @unknown default:
-            fatalError()
-        }
-    }
-    
-    //MARK:- Alert Controller
 }
 
 // MARK: - Extension LocationManager
@@ -295,12 +308,10 @@ extension DashboardVC {
 var originalButtonText: String?
 extension UIButton{
     func showLoading() {
-        print("loading start")
         originalButtonText = self.titleLabel?.text
         self.setTitle("", for: .normal)
     }
     func hideLoading() {
-        print("loading stop")
         self.setTitle(originalButtonText, for: .normal)
     }
 }
@@ -409,6 +420,11 @@ extension DashboardVC {
         recenter.addGestureRecognizer(tapOnRecenter)
         recenterView.addGestureRecognizer(tapOnRecenter)
     }
+    
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        return true
+    }
+    
 }
 //Authrization
 extension DashboardVC {
@@ -451,4 +467,22 @@ extension DashboardVC {
             fatalError()
         }
     }
+    
+    
+    func authrizationForLocation() ->Bool{
+        let locStatus = CLLocationManager.authorizationStatus()
+        switch locStatus {
+        case .notDetermined:
+            return true
+        case .denied, .restricted:
+            return false
+        case .authorizedWhenInUse:
+            return true
+        case .authorizedAlways:
+            return false
+        @unknown default:
+            fatalError()
+        }
+    }
 }
+

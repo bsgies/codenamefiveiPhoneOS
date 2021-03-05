@@ -275,6 +275,9 @@ class SecurityTVC: UITableViewController, UITextFieldDelegate {
                 KeychainWrapper.standard.set(result.profilePhoto, forKey: profilePhotoKey)
                 KeychainWrapper.standard.set(result.phoneNumber, forKey:  phoneNumberKey)
                 KeychainWrapper.standard.set(result.status, forKey:  statusKey)
+                KeychainWrapper.standard.set((passwordTextField?.text!)!, forKey: "password")
+                KeychainWrapper.standard.set(false, forKey: "success")
+                UserDefaults.standard.set(true, forKey: "success")
                 saveInDefault(value: true, key: isUserLogInKey)
             return true
         }

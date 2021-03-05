@@ -30,6 +30,13 @@ func fetchString(key:String)->AnyObject {
     }
 }
 
+extension UserDefaults {
+
+    static func exists(key: String) -> Bool {
+        return UserDefaults.standard.object(forKey: key) != nil
+    }
+
+}
 
 let tokenKey = "token"
 let onlineStatusKey = "online_status"

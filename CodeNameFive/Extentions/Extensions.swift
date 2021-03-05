@@ -412,3 +412,21 @@ extension String {
 extension Notification.Name {
 static let myNotification = Notification.Name("myNotification")
 }
+extension String {
+
+
+ mutating func  getCurrentTime(){
+
+    let date = Date()
+    let calendar = Calendar.current
+
+    let hour = calendar.component(.hour, from: date)
+    let minutes = calendar.component(.minute, from: date)
+    let seconds = calendar.component(.second, from: date)
+
+    let realTime = "\(hour)h:\(minutes)m:\(seconds)s"
+
+    self =  realTime
+}
+
+}

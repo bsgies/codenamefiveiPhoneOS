@@ -9,6 +9,12 @@
 import UIKit
 
 
+protocol CellDelegate: class {
+    func tapOnHelp(_ cell: DetailsCell)
+    func tapOnMessage(_ cell: DetailsCell)
+}
+
+
 class DetailsCell: UITableViewCell {
     
     
@@ -17,7 +23,8 @@ class DetailsCell: UITableViewCell {
     @IBOutlet weak var message : UIButton!
     @IBOutlet weak var help : UIButton!
     @IBOutlet weak var businessName: UILabel!
-    
+    weak var delegate: CellDelegate?
+    var tapOnMessage : (()-> Void)? = nil
     override func awakeFromNib() {
         super.awakeFromNib()
         
@@ -36,12 +43,10 @@ class DetailsCell: UITableViewCell {
         callOnNumber(string: "")
     }
     @IBAction func Help(sender : UIButton){
-      
+        delegate?.tapOnHelp(self)
     }
     @IBAction func messageButton(_ sender: UIButton) {
-        
-        
-        
+        delegate?.tapOnMessage(self)
     }
     
     func callOnNumber(string : String){

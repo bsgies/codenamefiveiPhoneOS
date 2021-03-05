@@ -19,7 +19,7 @@ let id = KeychainWrapper.standard.integer(forKey: "id")
 let profile_photo = KeychainWrapper.standard.string(forKey: "profile_photo")
 let phone_number = KeychainWrapper.standard.string(forKey: "phone_number")
 let status = KeychainWrapper.standard.string(forKey: "status")
-
+var totalConactedTime = String()
 
 var emailOrPhoneString : String?
 var checkEmailOrPhone = "email"

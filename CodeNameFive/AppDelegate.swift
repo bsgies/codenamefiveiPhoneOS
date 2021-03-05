@@ -17,18 +17,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     static var appdelegate = AppDelegate()
     var alert = UIAlertController()
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        
         // UILabel.appearance().font = UIFont(name: "HelveticaNeue", size: 16)
         UINavigationBar.appearance().backIndicatorImage = #imageLiteral(resourceName: "back")
         UINavigationBar.appearance().backIndicatorTransitionMaskImage = #imageLiteral(resourceName: "back")
         UINavigationBar.appearance().tintColor = #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1)
-       // UINavigationBar.appearance().
         let BarButtonItemAppearance = UIBarButtonItem.appearance()
         BarButtonItemAppearance.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.clear], for: .normal)
         GMSServices.provideAPIKey("AIzaSyBXfR7Zu7mvhxO4aydatsUY-VUH-_NG15g")
         return true
         
     }
+
   
     // MARK: UISceneSession Lifecycle
 
@@ -120,4 +119,14 @@ extension UIWindow {
             return UIApplication.shared.keyWindow
         }
     }
+}
+extension UIApplication {
+  func isFirstLaunch() -> Bool {
+    if !UserDefaults.standard.bool(forKey: "HasLaunched") {
+      UserDefaults.standard.set(true, forKey: "HasLaunched")
+      UserDefaults.standard.synchronize()
+      return true
+  }
+    return false
+}
 }

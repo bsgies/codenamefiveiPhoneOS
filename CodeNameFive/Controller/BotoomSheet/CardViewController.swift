@@ -8,7 +8,8 @@
 
 import UIKit
 
-class CardViewController: UIViewController {
+class CardViewController: UIViewController, CellDelegate {
+
     
     //MARK:- Iboutlets
     @IBOutlet weak var handleArea: UIView!
@@ -110,7 +111,6 @@ class CardViewController: UIViewController {
     }
     //MARK:-Selector
     @objc func action(){
-        print("okay")
         switch currentStatus{
         case .pickUp:
             print("pickUp")
@@ -207,12 +207,17 @@ extension CardViewController : UITableViewDelegate , UITableViewDataSource{
                 switch currentStatus {
                 case .pickUp:
                     cell.message.isHidden = true
+                    cell.businessName.text = "Cafe Soul"
                     addressLbl = cell.address.text
-                    cell.address.text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+                    cell.address.text = "M2-28 Edenden Tower Gullbeg III Lahore Punjab Pakistan"
+                    cell.delegate = self
                 case .dropOf :
                 cell.message.isHidden = false
                 addressLbl = cell.address.text
+                cell.businessName.text = "Imran Rasheed"
                 cell.address.text = "341 Alberton Road Bradford"
+                cell.delegate = self
+                    
                 default:
                     break
                 }
@@ -351,5 +356,14 @@ extension CardViewController {
    @objc func removeOrderView() {
     guard let window = UIApplication.shared.windows.filter({$0.isKeyWindow}).first else { return }
     window.viewWithTag(1001)?.removeFromSuperview()
+    }
+    
+    func tapOnHelp(_ cell: DetailsCell) {
+        self.pushToRoot(from: .main, identifier: .HelpOrCancelVC)
+    }
+    
+    func tapOnMessage(_ cell: DetailsCell) {
+        let vc = MessagesVC()
+        navigationController?.pushViewController(vc, animated: true)
     }
 }

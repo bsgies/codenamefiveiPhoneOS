@@ -55,6 +55,7 @@
 		4F69930024FE7D48008D43B9 /* Endpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F6992FF24FE7D48008D43B9 /* Endpoints.swift */; };
 		4F6EDA0D24AF6D7200C058AA /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F6EDA0C24AF6D7200C058AA /* WebKit.framework */; };
 		4F785A4C2500E06E002D192D /* ScreenBottombutton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F785A4B2500E06E002D192D /* ScreenBottombutton.swift */; };
+		4F7BE75025F2A3C200F290E8 /* CustomTableCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F7BE74F25F2A3C100F290E8 /* CustomTableCellView.swift */; };
 		4F7CBD2624B1257E00672010 /* ChatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F7CBD2524B1257E00672010 /* ChatCell.swift */; };
 		4F7DE75B25025F6A0046A158 /* HTTPImageUpload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F7DE75A25025F6A0046A158 /* HTTPImageUpload.swift */; };
 		4F89EF6D25D3DC0B00134FF2 /* OrderMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F89EF6C25D3DC0B00134FF2 /* OrderMap.swift */; };
@@ -65,6 +66,7 @@
 		4F8ED09424CC57A000F658DA /* DarkModeMap.json in Resources */ = {isa = PBXBuildFile; fileRef = 4F8ED09324CC57A000F658DA /* DarkModeMap.json */; };
 		4F92BDB624B290FC00DEDDF3 /* ChatVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F92BDB524B290FC00DEDDF3 /* ChatVC.swift */; };
 		4F965B9D25C5FEF400A01418 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F965B9C25C5FEF400A01418 /* Profile.storyboard */; };
+		4F9960C125EE6A7000225916 /* Timer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F9960C025EE6A7000225916 /* Timer.swift */; };
 		4F9A46D324AE1E1800A39380 /* NewTripRequestVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F9A46D224AE1E1800A39380 /* NewTripRequestVC.swift */; };
 		4FB11F11249FEC3A00EC629B /* ProfileTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FB11F10249FEC3A00EC629B /* ProfileTVC.swift */; };
 		4FB11F14249FEDB000EC629B /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FB11F13249FEDB000EC629B /* Constant.swift */; };
@@ -242,6 +244,7 @@
 		4F739B8724EABE4E00DB2BDC /* ur-PK */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "ur-PK"; path = "ur-PK.lproj/Main.strings"; sourceTree = "<group>"; };
 		4F739B8824EABE4F00DB2BDC /* ur-PK */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "ur-PK"; path = "ur-PK.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		4F785A4B2500E06E002D192D /* ScreenBottombutton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenBottombutton.swift; sourceTree = "<group>"; };
+		4F7BE74F25F2A3C100F290E8 /* CustomTableCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTableCellView.swift; sourceTree = "<group>"; };
 		4F7CBD2524B1257E00672010 /* ChatCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatCell.swift; sourceTree = "<group>"; };
 		4F7DE75A25025F6A0046A158 /* HTTPImageUpload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPImageUpload.swift; sourceTree = "<group>"; };
 		4F89EF6C25D3DC0B00134FF2 /* OrderMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderMap.swift; sourceTree = "<group>"; };
@@ -255,6 +258,7 @@
 		4F965B9C25C5FEF400A01418 /* Profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
 		4F97A20424D46B2B006734BF /* FSCalendar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FSCalendar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F97A20824D46C62006734BF /* CodeNameFive-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CodeNameFive-Bridging-Header.h"; sourceTree = "<group>"; };
+		4F9960C025EE6A7000225916 /* Timer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Timer.swift; sourceTree = "<group>"; };
 		4F9A46D224AE1E1800A39380 /* NewTripRequestVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTripRequestVC.swift; sourceTree = "<group>"; };
 		4FB11F10249FEC3A00EC629B /* ProfileTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTVC.swift; sourceTree = "<group>"; };
 		4FB11F13249FEDB000EC629B /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
@@ -403,6 +407,7 @@
 		4F2E5634249B4FA800D28462 /* CodeNameFive */ = {
 			isa = PBXGroup;
 			children = (
+				4F9960BF25EE6A6200225916 /* Timer */,
 				4FDA5E4425C5CECB00097333 /* Identifier */,
 				4FCA0C8A2557408900F41367 /* KeyChain */,
 				4F8ED08424CB59B200F658DA /* HTTP */,
@@ -641,6 +646,7 @@
 			children = (
 				929B350025C36A67004809AB /* CardViewController.xib */,
 				9232B7D725C3816F00F3D497 /* CardViewController.swift */,
+				4F7BE74F25F2A3C100F290E8 /* CustomTableCellView.swift */,
 			);
 			path = BotoomSheet;
 			sourceTree = "<group>";
@@ -693,6 +699,14 @@
 				4F8ED09324CC57A000F658DA /* DarkModeMap.json */,
 			);
 			path = JSON;
+			sourceTree = "<group>";
+		};
+		4F9960BF25EE6A6200225916 /* Timer */ = {
+			isa = PBXGroup;
+			children = (
+				4F9960C025EE6A7000225916 /* Timer.swift */,
+			);
+			path = Timer;
 			sourceTree = "<group>";
 		};
 		4FB11F12249FED9F00EC629B /* Utilities */ = {
@@ -1262,6 +1276,7 @@
 				925DB46125ACF76E00FCD3DE /* NotificationInbox.swift in Sources */,
 				4F5C99FC24BA6D5500DC4A27 /* Register1TVC.swift in Sources */,
 				4F14A5F824A8DBF50095CA9B /* PreviouspaymentsCell.swift in Sources */,
+				4F9960C125EE6A7000225916 /* Timer.swift in Sources */,
 				4FB11F14249FEDB000EC629B /* Constant.swift in Sources */,
 				4F085A0E24FD39EB005EA82E /* HTTPVehicalType.swift in Sources */,
 				4FD32D8324AA72060086766C /* InboxVC.swift in Sources */,
@@ -1312,6 +1327,7 @@
 				4F08878824B5F13400CD5554 /* CollectOrderCell.swift in Sources */,
 				4F54A74425C9A6E600986EC8 /* CollectCash.swift in Sources */,
 				4FB978EC24A4BF910093C10F /* TripDayDataVC.swift in Sources */,
+				4F7BE75025F2A3C200F290E8 /* CustomTableCellView.swift in Sources */,
 				4FF1F72A24AFD92C0035A9A5 /* CollectcashVC.swift in Sources */,
 				4F43BC1C24A3DF4A006CF40F /* mapSettingTVC.swift in Sources */,
 				4F89EF6D25D3DC0B00134FF2 /* OrderMap.swift in Sources */,

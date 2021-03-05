@@ -141,6 +141,10 @@ extension MainMenuViewController : UITableViewDelegate , UITableViewDataSource{
             case 8:
                 self.didTapMenuType?(.appMenu , .HelpCenterVC)
             case 9:
+                DispatchQueue.main.async {
+                    UserDefaults.standard.setValue(false, forKey: isUserLogInKey)
+                }
+                
                 self.didTapMenuType?(.account , .LoginTVC)
             default:
                 break
