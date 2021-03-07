@@ -23,9 +23,6 @@ class CardViewController: UIViewController, CellDelegate {
     var lblText : String?
     var addressLbl : String?
     
-    
-    
-    
     //MARK:- enum
     
     enum currentState  : String{
@@ -41,6 +38,7 @@ class CardViewController: UIViewController, CellDelegate {
         SetupView()
         setupNibs()
         setupGestures()
+        currentStatus = .pickUp
         NotificationCenter.default.addObserver(self, selector: #selector(self.distanceandDuration(_:)), name: NSNotification.Name(rawValue: "distanceAndDuration"), object: nil)
         
     }
@@ -48,18 +46,6 @@ class CardViewController: UIViewController, CellDelegate {
         navigationController?.navigationBar.isHidden = false
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        
-        if let currentStatus = currentState(rawValue: fetchString(key: "currentStatus") as! String){
-            self.currentStatus = currentStatus
-        }
-        else{
-            self.currentStatus = .pickUp
-        }
-        
-    }
     
     //MARK:-Functions
     func setupGestures(){
@@ -75,11 +61,9 @@ class CardViewController: UIViewController, CellDelegate {
         tableView.tableHeaderView = UIView(frame: CGRect(origin: .zero, size: CGSize(width: 0, height: CGFloat.leastNormalMagnitude)))
         tableView.tableFooterView = UIView(frame: CGRect(origin: .zero, size: CGSize(width: 0, height: CGFloat.leastNormalMagnitude)))
         
-        
         let bottomView = UIView()
         cardView.addSubview(bottomView)
 
-        
         bottomView.addTopBorder(with:UIColor(named: "borderColor")!, andWidth: 1.0)
         bottomView.translatesAutoresizingMaskIntoConstraints = false
         bottomView.leadingAnchor.constraint(equalTo: self.cardView.leadingAnchor, constant: 0).isActive = true
@@ -87,11 +71,8 @@ class CardViewController: UIViewController, CellDelegate {
         bottomView.bottomAnchor.constraint(equalTo: self.cardView.bottomAnchor, constant: 0).isActive = true
         bottomView.heightAnchor.constraint(equalToConstant: 70).isActive = true
         bottomView.backgroundColor = UIColor(named: "UIViewCard")
-        // bottomView.backgroundColor = UIColor.black
-        
-        
         bottomView.addSubview(button)
-        button.setTitle("Go to drop off", for: .normal)
+        button.setTitle("Go to drop Off", for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.leadingAnchor.constraint(equalTo: bottomView.leadingAnchor, constant: 20).isActive = true
         button.trailingAnchor.constraint(equalTo: bottomView.trailingAnchor, constant: -20).isActive = true
@@ -101,36 +82,28 @@ class CardViewController: UIViewController, CellDelegate {
         button.backgroundColor = UIColor(named: "primaryColor")
         button.setTitleColor(.white, for: .normal)
         button.layer.cornerRadius = 4
+        button.isEnabled = false
+        button.backgroundColor = UIColor(named: "disabledButton")!
     }
     func setupNibs() {
         tableView.register(UINib(nibName: "Notes", bundle: nil), forCellReuseIdentifier: "Notes")
         tableView.register(UINib(nibName: "DetailsCell", bundle: nil), forCellReuseIdentifier: "DetailsCell")
         tableView.register(UINib(nibName: "orderNumber", bundle: nil), forCellReuseIdentifier: "orderNumber")
         tableView.register(UINib(nibName: "CollectCash", bundle: nil), forCellReuseIdentifier: "CollectCash")
-        
     }
+    
     //MARK:-Selector
     @objc func action(){
         switch currentStatus{
         case .pickUp:
-            print("pickUp")
-            saveInDefault(value: currentState.dropOf.rawValue, key: "currentStatus")
-            if let currentStatus = currentState(rawValue: fetchString(key: "currentStatus") as! String){
-                self.currentStatus = currentStatus
-            }
-            button.setTitle("Complete delivery", for: .normal)
+            button.setTitle("Complete Delivery", for: .normal)
+            currentStatus = .dropOf
             DispatchQueue.main.async { [self] in
                 tableView.reloadData()
             }
-            pushToRoot(from: .main, identifier: .CollectcashVC)
-            
         case .dropOf:
-            print("dropOf")
-            saveInDefault(value: currentState.pickUp.rawValue, key: "currentStatus")
-            if let currentStatus = currentState(rawValue: fetchString(key: "currentStatus") as! String){
-                self.currentStatus = currentStatus
-            }
-            
+            button.setTitle("Complete Delivery", for: .normal)
+            pushToRoot(from: .main, identifier: .CollectcashVC)
         default:
             break
         }
@@ -201,28 +174,30 @@ extension CardViewController : UITableViewDelegate , UITableViewDataSource{
         switch indexPath.section {
         case 0:
             switch indexPath.row {
+            // detail cell
             case 0:
                 let cell = tableView.dequeueReusableCell(withIdentifier: "DetailsCell", for: indexPath) as! DetailsCell
-                
                 switch currentStatus {
+                
                 case .pickUp:
                     cell.message.isHidden = true
                     cell.businessName.text = "Cafe Soul"
+                    cell.address.text = "M2-28 Eden Tower Gullbeg III Lahore Punjab Pakistan"
                     addressLbl = cell.address.text
-                    cell.address.text = "M2-28 Edenden Tower Gullbeg III Lahore Punjab Pakistan"
                     cell.delegate = self
                 case .dropOf :
                 cell.message.isHidden = false
-                addressLbl = cell.address.text
                 cell.businessName.text = "Imran Rasheed"
                 cell.address.text = "341 Alberton Road Bradford"
+                addressLbl = cell.address.text
                 cell.delegate = self
-                    
                 default:
                     break
                 }
                 cell.selectionStyle = .none
                 return cell
+                
+                //note Cell
             case 1:
                 let cell = tableView.dequeueReusableCell(withIdentifier: "Notes", for: indexPath) as! Notes
                 lblText = cell.note.text
@@ -234,14 +209,18 @@ extension CardViewController : UITableViewDelegate , UITableViewDataSource{
             
         case 1:
             switch currentStatus {
+            
             case .pickUp:
-                let cell = tableView.dequeueReusableCell(withIdentifier: "orderNumber", for: indexPath)
+                let cell = tableView.dequeueReusableCell(withIdentifier: "orderNumber", for: indexPath) as! orderNumber
+                cell.delegate = self
                 cell.selectionStyle = .none
                 return cell
+                
             case .dropOf:
             switch indexPath.row {
                 case 0 :
-                    let cell = tableView.dequeueReusableCell(withIdentifier: "orderNumber", for: indexPath)
+                    let cell = tableView.dequeueReusableCell(withIdentifier: "orderNumber", for: indexPath) as!  orderNumber
+                    cell.delegate = self
                     cell.selectionStyle = .none
                     return cell
                 case 1 :
@@ -281,7 +260,7 @@ extension CardViewController : UITableViewDelegate , UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        var cellHeight : CGFloat = 70
+        var cellHeight : CGFloat = 80
         switch indexPath.section {
         case 0:
             switch indexPath.row {
@@ -295,7 +274,6 @@ extension CardViewController : UITableViewDelegate , UITableViewDataSource{
                 if let lblText = lblText {
                 let height = cellSize(forWidth: view.frame.width, text: lblText).height
                     cellHeight = height+60
-                    
                 }
             default:
                 return cellHeight
@@ -366,4 +344,22 @@ extension CardViewController {
         let vc = MessagesVC()
         navigationController?.pushViewController(vc, animated: true)
     }
+}
+
+//MARK;- Delegates
+extension CardViewController :  OrderNumberDelegate{
+    func tapOnCheckBox(isChecked: Bool, cell: orderNumber) {
+        if isChecked{
+            button.isEnabled = true
+            button.setBackgroundColor(color: UIColor(named: "primaryButton")!, forState: .normal)
+        }
+        else{
+            button.isEnabled = false
+            button.setBackgroundColor(color: UIColor(named: "disabledButton")!, forState: .normal)
+            //button.backgroundColor = UIColor(named: "disabledButton")!
+        }
+    }
+    
+    
+    
 }

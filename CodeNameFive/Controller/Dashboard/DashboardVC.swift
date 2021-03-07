@@ -194,7 +194,7 @@ extension DashboardVC{
     
     func startJobRequest() {
         if isOnline(){
-        DispatchQueue.main.asyncAfter(deadline: .now() +  10) { [self] in
+        DispatchQueue.main.asyncAfter(deadline: .now() +  2) { [self] in
             self.pushToRoot(from: .main, identifier: .NewTripRequestVC)
            
         }

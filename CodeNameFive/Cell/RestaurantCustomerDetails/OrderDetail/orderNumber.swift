@@ -8,14 +8,19 @@
 
 import UIKit
 
+protocol OrderNumberDelegate: class {
+    func tapOnCheckBox(isChecked : Bool, cell: orderNumber)
+}
+
 class orderNumber: UITableViewCell {
     @IBOutlet weak var checkBoxView: UIView!
     @IBOutlet weak var totalItems: UILabel!
     @IBOutlet weak var showHideItems: UILabel!
-    var unchecked = false
+    weak var delegate : OrderNumberDelegate?
+    var checked = false
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
     }
     
     func setupTapGesuters(){
@@ -29,17 +34,19 @@ class orderNumber: UITableViewCell {
     }
     @available(iOS 13.0, *)
     @IBAction func chechBox(sender : UIButton){
-        if unchecked {
+        if checked {
             let image = #imageLiteral(resourceName: "unchecked_checkbox")
             image.withTintColor(#colorLiteral(red: 0, green: 0.8465872407, blue: 0.7545004487, alpha: 1))
             sender.setImage(image, for: .normal)
-            unchecked = false
+            checked = false
+            delegate?.tapOnCheckBox(isChecked: false, cell: self)
         }
         else {
             let image = #imageLiteral(resourceName: "checked_checkbox")
             image.withTintColor(#colorLiteral(red: 0, green: 0.8465872407, blue: 0.7545004487, alpha: 1))
             sender.setImage(image, for: .normal)
-            unchecked = true
+            checked = true
+            delegate?.tapOnCheckBox(isChecked: true,cell: self)
         }
     }
     

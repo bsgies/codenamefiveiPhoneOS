@@ -21,7 +21,6 @@ extension OrderVC : CLLocationManagerDelegate , DirectionCallback{
         locationManager?.delegate = self
         locationManager?.requestAlwaysAuthorization()
         locationManager?.desiredAccuracy = kCLLocationAccuracyBestForNavigation
-        locationManager?.requestWhenInUseAuthorization()
         locationManager?.allowsBackgroundLocationUpdates = true
         locationManager?.startUpdatingLocation()
         locationManager.startMonitoringSignificantLocationChanges()
@@ -47,13 +46,13 @@ extension OrderVC{
             .language(language: Language.ENGLISH)
             .transportMode(transportMode: TransportMode.TRANSIT)
             .execute(callback: self)
+        
     }
     
     func onDirectionSuccess(direction: Direction) {
         if(direction.isOK()) {
-            //here start out Work
-            addMarker()
             // Draw polyline
+            addMarker()
             let routes = direction.routes
             var legs = [Leg]()
             OperationQueue.main.addOperation({ [self] in
@@ -68,10 +67,8 @@ extension OrderVC{
                 var distance = String()
                 var duration = String()
                 for leg in legs{
-//                    distance.text = "\(leg.distance!.text ?? "") \(leg.duration!.text ?? "")"
                     distance = (leg.distance?.text!)!
                     duration =  (leg.duration?.text!)!
-
                 }
                 
                 distanceandDuration["distance"] = distance
@@ -83,7 +80,7 @@ extension OrderVC{
     }
     
     func onDirectionFailure(error: Error) {
-        print("fail")
+        print(error.localizedDescription)
     }
 }
 
@@ -104,10 +101,6 @@ extension OrderVC{
         if moveCamera{
             let userLocation = locations.last
             let camera = GMSCameraPosition.camera(withTarget: CLLocationCoordinate2DMake(userLocation!.coordinate.latitude, userLocation!.coordinate.longitude), zoom: 18, bearing: 30, viewingAngle: 45)
-
-        
-        //handleArea.camera = camera
-            
         handleArea.animate(with: GMSCameraUpdate.setCamera(camera))
         }
        
@@ -115,23 +108,6 @@ extension OrderVC{
         
         
     }
-    
-//    func degreesToRadians(degrees: Double) -> Double { return degrees * .pi / 180.0 }
-//    func radiansToDegrees(radians: Double) -> Double { return radians * 180.0 / .pi }
-//
-//    func getBearingBetweenTwoPoints(point1 : CLLocationCoordinate2D, point2 : CLLocationCoordinate2D) -> Double {
-//
-//        let fLat: Float = Float((self.handleArea.camera.target.latitude).degreesToRadians)
-//        let fLng: Float = Float((self.handleArea.camera.target.longitude).degreesToRadians)
-//        let tLat: Float = Float((point1.latitude).degreesToRadians)
-//        let tLng: Float = Float((point1.longitude).degreesToRadians)
-//        let degree: Float = (atan2(sin(tLng - fLng) * cos(tLat), cos(fLat) * sin(tLat) - sin(fLat) * cos(tLat) * cos(tLng - fLng))).radiansToDegrees
-//        if degree >= 0 {
-//            return Double(degree)
-//        } else {
-//            return Double(360 + degree)
-//         }
-//    }
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         switch status {
@@ -151,7 +127,6 @@ extension OrderVC{
             fatalError()
         }
     }
-    
     func addMarker(){
         let customerIcon = self.imageWithImage(image: #imageLiteral(resourceName: "Pickup"), scaledToSize: CGSize(width: 32.0, height: 32.0))
         let dmarker = GMSMarker()
@@ -211,35 +186,10 @@ extension OrderVC{
     
        return true
     }
-    
-//    func getHeadingForDirection(fromCoordinate fromLoc: CLLocationCoordinate2D, toCoordinate toLoc: CLLocationCoordinate2D) -> Float {
-//
-//    let fLat: Float = Float((self.handleArea.camera.target.latitude).degreesToRadians)
-//    let fLng: Float = Float((self.handleArea.camera.target.longitude).degreesToRadians)
-//    let tLat: Float = Float((fromLoc.latitude).degreesToRadians)
-//    let tLng: Float = Float((fromLoc.longitude).degreesToRadians)
-//    let degree: Float = (atan2(sin(tLng - fLng) * cos(tLat), cos(fLat) * sin(tLat) - sin(fLat) * cos(tLat) * cos(tLng - fLng))).radiansToDegrees
-//    if degree >= 0 {
-//         return degree
-//    } else {
-//         return 360 + degree
-//     }
-//
-//   }
-    
-   
     func mapView(_ mapView: GMSMapView, willMove gesture: Bool) {
         if gesture{
             moveCamera = false
         }
     }
- 
-    
-}
 
-
-
-extension FloatingPoint {
-    var degreesToRadians: Self { return self * .pi / 180 }
-    var radiansToDegrees: Self { return self * 180 / .pi }
 }

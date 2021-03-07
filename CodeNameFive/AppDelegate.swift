@@ -9,12 +9,14 @@
 import UIKit
 import CoreData
 import GoogleMaps
+import UserNotifications
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
     let navCon = UINavigationController()
     var window: UIWindow?
     static var appdelegate = AppDelegate()
+    let userNotificationCenter = UNUserNotificationCenter.current()
     var alert = UIAlertController()
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // UILabel.appearance().font = UIFont(name: "HelveticaNeue", size: 16)
@@ -24,11 +26,60 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let BarButtonItemAppearance = UIBarButtonItem.appearance()
         BarButtonItemAppearance.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.clear], for: .normal)
         GMSServices.provideAPIKey("AIzaSyBXfR7Zu7mvhxO4aydatsUY-VUH-_NG15g")
+        self.userNotificationCenter.delegate = self
+        sendNotification()
         return true
         
     }
 
+    func requestNotificationAuthorization() {
+        let authOptions = UNAuthorizationOptions.init(arrayLiteral: .alert, .badge, .sound)
+        
+        self.userNotificationCenter.requestAuthorization(options: authOptions) { (success, error) in
+            if let error = error {
+                print("Error: ", error)
+            }
+        }
+    }
+    func sendNotification() {
+        let notificationContent = UNMutableNotificationContent()
+        notificationContent.title = "Bilal Bhi"
+        notificationContent.body = "It's all up to you iPhone ap ka khrab he hai may pory passy bhjo ga phly phir chaye mjhy iPhone bhj dna Phly pasy ly lna yr"
+        notificationContent.badge = NSNumber(value: 1)
+        
+        if let url = Bundle.main.url(forResource: "pdfFileShare",
+                                    withExtension: "pdf") {
+            if let attachment = try? UNNotificationAttachment(identifier: "dune",
+                                                            url: url,
+                                                            options: nil) {
+                notificationContent.attachments = [attachment]
+            }
+        }
+        
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 60,
+                                                        repeats: true)
+        let request = UNNotificationRequest(identifier: "testNotification",
+                                            content: notificationContent,
+                                            trigger: trigger)
+        
+        userNotificationCenter.add(request) { (error) in
+            if let error = error {
+                print("Notification Error: ", error)
+            }
+        }
+    }
+    
+    func application(_ application: UIApplication, didReceive notification: UILocalNotification) {
+        UIApplication.shared.applicationIconBadgeNumber = 0
+    }
   
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        completionHandler()
+    }
+
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        completionHandler([.alert, .badge, .sound])
+    }
     // MARK: UISceneSession Lifecycle
 
     @available(iOS 13.0, *)

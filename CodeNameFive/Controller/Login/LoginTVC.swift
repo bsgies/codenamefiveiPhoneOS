@@ -156,7 +156,6 @@ class LoginTVC: UITableViewController  , UITextFieldDelegate{
     func authenticationWithTouchID() {
         let localAuthenticationContext = LAContext()
         localAuthenticationContext.localizedFallbackTitle = "Please use your Passcode"
-
         var authorizationError: NSError?
         let reason = "Authentication required to access the secure data"
 

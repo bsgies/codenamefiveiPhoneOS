@@ -240,7 +240,6 @@ class GoToPickupVC: UIViewController,CLLocationManagerDelegate, GMSMapViewDelega
         locationManager?.delegate = self
         locationManager?.requestAlwaysAuthorization()
         locationManager?.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager?.requestWhenInUseAuthorization()
         locationManager?.distanceFilter = 50
         locationManager?.startUpdatingLocation()
         locationManager.startMonitoringSignificantLocationChanges()

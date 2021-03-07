@@ -11,6 +11,7 @@
 		4F085A0E24FD39EB005EA82E /* HTTPVehicalType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F085A0D24FD39EB005EA82E /* HTTPVehicalType.swift */; };
 		4F085A1024FD83DD005EA82E /* HTTPRegisterationRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F085A0F24FD83DD005EA82E /* HTTPRegisterationRequest.swift */; };
 		4F08878824B5F13400CD5554 /* CollectOrderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F08878724B5F13400CD5554 /* CollectOrderCell.swift */; };
+		4F09AC3925F4E2260037D83E /* LocalAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F09AC3825F4E2260037D83E /* LocalAuthentication.framework */; };
 		4F14A5F224A8AD250095CA9B /* EditPhoneTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F14A5F124A8AD250095CA9B /* EditPhoneTVC.swift */; };
 		4F14A5F424A8AF130095CA9B /* EmmergencycontactTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F14A5F324A8AF130095CA9B /* EmmergencycontactTVC.swift */; };
 		4F14A5F624A8DAC80095CA9B /* PreviousPaymentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F14A5F524A8DAC80095CA9B /* PreviousPaymentVC.swift */; };
@@ -189,6 +190,7 @@
 		4F085A0D24FD39EB005EA82E /* HTTPVehicalType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPVehicalType.swift; sourceTree = "<group>"; };
 		4F085A0F24FD83DD005EA82E /* HTTPRegisterationRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPRegisterationRequest.swift; sourceTree = "<group>"; };
 		4F08878724B5F13400CD5554 /* CollectOrderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectOrderCell.swift; sourceTree = "<group>"; };
+		4F09AC3825F4E2260037D83E /* LocalAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LocalAuthentication.framework; path = System/Library/Frameworks/LocalAuthentication.framework; sourceTree = SDKROOT; };
 		4F14A5F124A8AD250095CA9B /* EditPhoneTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPhoneTVC.swift; sourceTree = "<group>"; };
 		4F14A5F324A8AF130095CA9B /* EmmergencycontactTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmmergencycontactTVC.swift; sourceTree = "<group>"; };
 		4F14A5F524A8DAC80095CA9B /* PreviousPaymentVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviousPaymentVC.swift; sourceTree = "<group>"; };
@@ -342,6 +344,7 @@
 				4F58477D24BB2F9300B42CB8 /* CloudKit.framework in Frameworks */,
 				4F6EDA0D24AF6D7200C058AA /* WebKit.framework in Frameworks */,
 				4F209E6424CE0997001F34BC /* Foundation.framework in Frameworks */,
+				4F09AC3925F4E2260037D83E /* LocalAuthentication.framework in Frameworks */,
 				C8D888E203199710BE2C9381 /* Pods_CodeNameFive.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -665,6 +668,7 @@
 		4F6EDA0B24AF6D7200C058AA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4F09AC3825F4E2260037D83E /* LocalAuthentication.framework */,
 				4F89EF7625D3FEE800134FF2 /* AlamofireObjectMapper.framework */,
 				4F97A20424D46B2B006734BF /* FSCalendar.framework */,
 				4F209E6324CE0997001F34BC /* Foundation.framework */,

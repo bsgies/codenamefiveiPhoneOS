@@ -111,7 +111,9 @@ class NewTripRequestVC: UIViewController,GMSMapViewDelegate,CLLocationManagerDel
         else
         {  cardViewNoShadow()
             cardViewRadius()
-            mapstyleDark()        }
+            mapstyleDark()
+            
+        }
         googleMaps.delegate = self
         
         locationManager = CLLocationManager()
@@ -119,7 +121,6 @@ class NewTripRequestVC: UIViewController,GMSMapViewDelegate,CLLocationManagerDel
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         googleMaps.isMyLocationEnabled = true
         if CLLocationManager.locationServicesEnabled() {
-            locationManager.requestWhenInUseAuthorization()
             locationManager.startUpdatingLocation()
         }
         if CLLocationManager.authorizationStatus() == .authorizedWhenInUse{
@@ -141,10 +142,7 @@ class NewTripRequestVC: UIViewController,GMSMapViewDelegate,CLLocationManagerDel
 //         googleMaps.camera = GMSCameraPosition.camera(withTarget: newLocation!.coordinate, zoom: 14.0)
 
     }
-    func mapView(_ mapView: GMSMapView, didChange position: GMSCameraPosition) {
-          
-       }
-    
+
     //MARK:- CardView Customiztion
     
     func cardViewRadius() {
