@@ -186,6 +186,21 @@ extension UIView {
         border.frame = CGRect(x: frame.size.width - borderWidth, y: 0, width: borderWidth, height: frame.size.height)
         addSubview(border)
     }
+    func addCornerRadius(){
+        self.layer.cornerRadius = self.frame.height / 2
+        self.clipsToBounds = true
+    
+    }
+    func addCornerRadiusWithShadow() {
+        self.layer.cornerRadius = self.frame.height / 2
+        self.clipsToBounds = true
+        self.layer.shadowColor = UIColor(ciColor: .gray).cgColor
+        self.layer.shadowRadius = self.frame.height / 2
+    }
+    func addSelfCornerRadius(radius : CGFloat) {
+        self.layer.cornerRadius = radius
+        self.clipsToBounds = true
+    }
 }
 
 extension UINavigationController {
@@ -415,7 +430,7 @@ static let myNotification = Notification.Name("myNotification")
 extension String {
 
 
- mutating func  getCurrentTime(){
+ mutating func  getCurrentTime() ->String{
 
     let date = Date()
     let calendar = Calendar.current
@@ -426,7 +441,7 @@ extension String {
 
     let realTime = "\(hour)h:\(minutes)m:\(seconds)s"
 
-    self =  realTime
+    return realTime
 }
 
 }

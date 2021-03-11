@@ -45,6 +45,7 @@ class EditPhoneTVC: UITableViewController {
                 let obj = try decoder.decode(commonResult.self, from: jsonData!)
                 if obj.success == true {
                     self.MyshowAlertWith(title: "Successfully", message: obj.message)
+                    
                 }
                 else
                 {

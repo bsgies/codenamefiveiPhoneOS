@@ -23,8 +23,8 @@ class DashboardVC: UIViewController,  CLLocationManagerDelegate, GMSMapViewDeleg
     @IBOutlet weak var hamburger: UIView!
     @IBOutlet weak var dashboardBottomView: UIView!
     @IBOutlet weak var currentEarning: UIButton!
-    @IBOutlet weak var buttonView: UIView!
     @IBOutlet weak var youAreOfflineLbl: UILabel!
+    @IBOutlet weak var floatingCashError: UIView!
     
     @IBOutlet weak var connecedTimeLbl: UILabel?
     //MARK:- variables
@@ -41,7 +41,7 @@ class DashboardVC: UIViewController,  CLLocationManagerDelegate, GMSMapViewDeleg
 
     let formatter: DateFormatter = {
             let tmpFormatter = DateFormatter()
-            tmpFormatter.dateFormat = "hh:mm:ss"
+            tmpFormatter.dateFormat = "hh mm ss"
             return tmpFormatter
         }()
      
@@ -53,7 +53,10 @@ class DashboardVC: UIViewController,  CLLocationManagerDelegate, GMSMapViewDeleg
         googleMapView.delegate = self
         LocationManger()
         SetupMap()
-        currentEarning.setTitle(formatCurrency(balance: 30000), for: .normal)
+        currentEarning.setTitle(formatCurrency(balance: 3000), for: .normal)
+        floatingCashError.addSelfCornerRadius(radius: 6)
+        goOnlineOfflineButton.addSelfCornerRadius(radius: 4)
+        
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -79,7 +82,12 @@ class DashboardVC: UIViewController,  CLLocationManagerDelegate, GMSMapViewDeleg
     //MARK:- Functions & Selectors
 
     func isOnline() -> Bool {
-        return (KeychainWrapper.standard.integer(forKey: onlineStatusKey)! != 0)
+        if let chain = KeychainWrapper.standard.integer(forKey: onlineStatusKey){
+            return chain != 0
+        }else{
+            return false
+        }
+        
     }
     
     
@@ -105,11 +113,11 @@ class DashboardVC: UIViewController,  CLLocationManagerDelegate, GMSMapViewDeleg
             
         }
         else{
-            self.goOnlineOfflineButton.setTitle("Go Online", for: .normal)
+            self.goOnlineOfflineButton.setTitle("Go online", for: .normal)
             self.goOnlineOfflineButton.setBackgroundColor(color: UIColor(named: "primaryColor")!, forState: .normal)
             findingRoutesLoadingBarView.layer.removeAllAnimations()
             self.findingRoutesLoadingBarView.isHidden = true
-            self.youAreOfflineLbl.text = "You are Offline"
+            self.youAreOfflineLbl.text = "You are offline"
             gotorider?.invalidate()
             stopTimer()
         }
@@ -390,6 +398,7 @@ extension DashboardVC {
         goOnlineOfflineButton.backgroundColor = UIColor(named: "primaryButton")
         goOnlineOfflineButton.setTitle("Go online", for: .normal)
         recenterView.tintColor = .white
+        recenterView.isHidden = false
         if traitCollection.userInterfaceStyle == .light {
             mapstyleSilver(googleMapView: googleMapView)
         }
@@ -400,7 +409,8 @@ extension DashboardVC {
         self.googleMapView.bringSubviewToFront(self.currentEarning)
         self.googleMapView.bringSubviewToFront(self.recenterView)
         self.googleMapView.bringSubviewToFront(self.recenter)
-        self.googleMapView.bringSubviewToFront(self.buttonView)
+        self.googleMapView.bringSubviewToFront(self.goOnlineOfflineButton)
+        self.googleMapView.bringSubviewToFront(self.floatingCashError)
         hamburgerImage.isUserInteractionEnabled = true
         hamburger.isUserInteractionEnabled = true
         let tap = UITapGestureRecognizer(target: self, action: #selector(menuOpen))

@@ -56,6 +56,9 @@ enum ControllerIdentifier: String {
     case EmmergencycontactTVC
     case VehicleinformationTVC
     
+    case DepositFloatingCash
+    case SecurityCodeTVC
+    
     
 }
 

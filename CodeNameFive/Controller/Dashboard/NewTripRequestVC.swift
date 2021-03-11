@@ -36,7 +36,7 @@ class NewTripRequestVC: UIViewController,GMSMapViewDelegate,CLLocationManagerDel
     @IBOutlet weak var remaningTiemForAccepOrder: UIProgressView!
     @IBOutlet weak var cardView: UIView!
     let transiton = SlideInTransition()
-    
+    @IBOutlet weak var tripFareView: UIView!
     //MARK:- variables Declareation
     var player: AVAudioPlayer?
     var time : Float = 1.0
@@ -55,9 +55,7 @@ class NewTripRequestVC: UIViewController,GMSMapViewDelegate,CLLocationManagerDel
         UIDevice.vibrate()
         remaningTiemForAccepOrder.progress = 0
         timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
-        
-      
-        
+        tripFareView.addCornerRadiusWithShadow()
     }
 
     @objc func updateTimer()

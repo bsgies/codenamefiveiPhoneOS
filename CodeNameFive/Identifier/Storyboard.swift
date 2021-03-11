@@ -15,6 +15,7 @@ enum Storyboard: String {
     case account  = "Accounts"
     case appMenu = "AppMenu"
     case profile = "Profile"
+    case earnings = "Earnings"
 }
 // MARK: Main
 extension Storyboard {
@@ -74,8 +75,16 @@ extension Storyboard {
         case Editemail
         case EmmergencycontactTVC
         case VehicleinformationTVC
+        case SecurityCodeTVC
     }
 }
+
+extension Storyboard{
+    enum Earnings {
+        case DepositFloatingCash
+    }
+}
+
 extension Storyboard {
     var instance: UIViewController {
         return UIStoryboard(name: Storyboard.main.rawValue, bundle: mainBundle).instantiateViewController(withIdentifier: self.rawValue)

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="HelveticaNeue.ttc">
+            <string>HelveticaNeue</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="120" id="KGk-i7-Jjw" customClass="FloatingCashErrorCell" customModule="CNF" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="400" height="135"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="400" height="135"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GJu-ME-ioz" userLabel="FloatingCashError">
+                        <rect key="frame" x="20" y="10" width="360" height="115"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bGp-KG-isT">
+                                <rect key="frame" x="20" y="20" width="320" height="75"/>
+                                <string key="text">You have exceeded the floating cash limit and can no longer get trips. To resume trip requests deposit Rs. 1,000.00 using the payment methods below.</string>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="disclouser.png" translatesAutoresizingMaskIntoConstraints="NO" id="HZW-sx-THu">
+                                <rect key="frame" x="1117.5" y="11.5" width="24" height="16"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.97254901959999995" green="0.32549019610000002" blue="0.36078431370000003" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="bGp-KG-isT" secondAttribute="bottom" constant="20" id="8o0-l3-52u"/>
+                            <constraint firstAttribute="trailing" secondItem="bGp-KG-isT" secondAttribute="trailing" constant="20" id="MM2-Im-ar8"/>
+                            <constraint firstItem="bGp-KG-isT" firstAttribute="centerX" secondItem="GJu-ME-ioz" secondAttribute="centerX" id="PQN-1f-DoQ"/>
+                            <constraint firstItem="bGp-KG-isT" firstAttribute="top" secondItem="GJu-ME-ioz" secondAttribute="top" constant="20" id="Pmd-6s-PgI"/>
+                            <constraint firstItem="bGp-KG-isT" firstAttribute="centerY" secondItem="GJu-ME-ioz" secondAttribute="centerY" id="Y36-RD-l9J"/>
+                            <constraint firstItem="bGp-KG-isT" firstAttribute="leading" secondItem="GJu-ME-ioz" secondAttribute="leading" constant="20" id="vaX-TX-wFv"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="GJu-ME-ioz" secondAttribute="bottom" constant="10" id="6c8-eW-u5F"/>
+                    <constraint firstAttribute="trailing" secondItem="GJu-ME-ioz" secondAttribute="trailing" constant="20" id="L7d-P2-Srl"/>
+                    <constraint firstItem="GJu-ME-ioz" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="iRp-Br-epy"/>
+                    <constraint firstItem="GJu-ME-ioz" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="qtv-uQ-L0U"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <point key="canvasLocation" x="285.50724637681162" y="92.410714285714278"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="disclouser.png" width="24" height="24"/>
+    </resources>
+</document>

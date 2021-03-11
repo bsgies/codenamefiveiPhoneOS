@@ -17,6 +17,7 @@ class CardViewController: UIViewController, CellDelegate {
     @IBOutlet weak var tableView : UITableView!
     @IBOutlet weak var distance : UILabel!
     @IBOutlet weak var time : UILabel!
+    @IBOutlet weak var pickupDropoff : UILabel!
    
     //MARK:- variables
     let button = UIButton(type: .custom)
@@ -101,9 +102,11 @@ class CardViewController: UIViewController, CellDelegate {
             DispatchQueue.main.async { [self] in
                 tableView.reloadData()
             }
+            pickupDropoff.text = "dropoff to Imran"
         case .dropOf:
             button.setTitle("Complete Delivery", for: .normal)
             pushToRoot(from: .main, identifier: .CollectcashVC)
+            
         default:
             break
         }
@@ -122,11 +125,9 @@ class CardViewController: UIViewController, CellDelegate {
                 //print("Long press on row, at \(indexPath!.row)")
                 DispatchQueue.main.async {
                         tapped(caseRun: 7)
-                    
                 }
                 OrderNumberView()
             }
-            
         }
     }
     @objc func distanceandDuration(_ notification: NSNotification) {
@@ -332,6 +333,7 @@ extension CardViewController {
         
     }
    @objc func removeOrderView() {
+    tapped(caseRun: 6)
     guard let window = UIApplication.shared.windows.filter({$0.isKeyWindow}).first else { return }
     window.viewWithTag(1001)?.removeFromSuperview()
     }
@@ -359,7 +361,4 @@ extension CardViewController :  OrderNumberDelegate{
             //button.backgroundColor = UIColor(named: "disabledButton")!
         }
     }
-    
-    
-    
 }

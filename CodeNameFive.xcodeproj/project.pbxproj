@@ -149,6 +149,13 @@
 		90494040257C35B800224131 /* LiveSupportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9049403F257C35B800224131 /* LiveSupportViewController.swift */; };
 		904A404F259F789E005914ED /* PromotionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 904A404E259F789E005914ED /* PromotionViewCell.swift */; };
 		90B28F8D25A652C80096E24B /* TripWeekDataTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B28F8C25A652C80096E24B /* TripWeekDataTableViewCell.swift */; };
+		9224E64825F77DD30030F652 /* DepositFloatingCash.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9224E64725F77DD30030F652 /* DepositFloatingCash.swift */; };
+		9224E65525F79CD80030F652 /* FloatingCashErrorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9224E65325F79CD80030F652 /* FloatingCashErrorCell.swift */; };
+		9224E65625F79CD80030F652 /* FloatingCashErrorCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9224E65425F79CD80030F652 /* FloatingCashErrorCell.xib */; };
+		9224E65C25F79D000030F652 /* FloatingCashOverviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9224E65A25F79D000030F652 /* FloatingCashOverviewCell.swift */; };
+		9224E65D25F79D000030F652 /* FloatingCashOverviewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9224E65B25F79D000030F652 /* FloatingCashOverviewCell.xib */; };
+		9224E66325F79D1F0030F652 /* DepositCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9224E66125F79D1F0030F652 /* DepositCardCell.swift */; };
+		9224E66425F79D1F0030F652 /* DepositCardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9224E66225F79D1F0030F652 /* DepositCardCell.xib */; };
 		9232B7D825C3816F00F3D497 /* CardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9232B7D725C3816F00F3D497 /* CardViewController.swift */; };
 		925DB3DE25A7B52800FCD3DE /* TripData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 925DB3DC25A7B52800FCD3DE /* TripData.swift */; };
 		925DB3DF25A7B52800FCD3DE /* TripData.xib in Resources */ = {isa = PBXBuildFile; fileRef = 925DB3DD25A7B52800FCD3DE /* TripData.xib */; };
@@ -156,8 +163,11 @@
 		925DB3E825A7B5A300FCD3DE /* TripDataTopCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 925DB3E625A7B5A300FCD3DE /* TripDataTopCell.xib */; };
 		925DB46125ACF76E00FCD3DE /* NotificationInbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 925DB45F25ACF76E00FCD3DE /* NotificationInbox.swift */; };
 		925DB46225ACF76E00FCD3DE /* NotificationInbox.xib in Resources */ = {isa = PBXBuildFile; fileRef = 925DB46025ACF76E00FCD3DE /* NotificationInbox.xib */; };
+		92966B4425F927D800DFBDE3 /* SecurityCodeTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92966B4325F927D800DFBDE3 /* SecurityCodeTVC.swift */; };
 		929B350125C36A77004809AB /* CardViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 929B350025C36A67004809AB /* CardViewController.xib */; };
 		92B0292425B060F000415BC1 /* VerifyPhoneTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92B0292325B060EF00415BC1 /* VerifyPhoneTVC.swift */; };
+		92F770A625F68AFD008708AD /* TripHistory.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 92F770A525F68AFD008708AD /* TripHistory.storyboard */; };
+		92F770C525F773A8008708AD /* Earnings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 92F770C425F773A8008708AD /* Earnings.storyboard */; };
 		A4A2248AA1190068345DCFCD /* Pods_CodeNameFive_CodeNameFiveUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D3A47F8A169D0CA79DC7B9B /* Pods_CodeNameFive_CodeNameFiveUITests.framework */; };
 		B6B7C4BFB57BAFA43E3D0E05 /* Pods_CodeNameFiveTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C7DB2144377852017506D20 /* Pods_CodeNameFiveTests.framework */; };
 		C8D888E203199710BE2C9381 /* Pods_CodeNameFive.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D76C45A4FE63B9F1E6FA948 /* Pods_CodeNameFive.framework */; };
@@ -322,6 +332,13 @@
 		9049403F257C35B800224131 /* LiveSupportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveSupportViewController.swift; sourceTree = "<group>"; };
 		904A404E259F789E005914ED /* PromotionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromotionViewCell.swift; sourceTree = "<group>"; };
 		90B28F8C25A652C80096E24B /* TripWeekDataTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripWeekDataTableViewCell.swift; sourceTree = "<group>"; };
+		9224E64725F77DD30030F652 /* DepositFloatingCash.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepositFloatingCash.swift; sourceTree = "<group>"; };
+		9224E65325F79CD80030F652 /* FloatingCashErrorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingCashErrorCell.swift; sourceTree = "<group>"; };
+		9224E65425F79CD80030F652 /* FloatingCashErrorCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FloatingCashErrorCell.xib; sourceTree = "<group>"; };
+		9224E65A25F79D000030F652 /* FloatingCashOverviewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingCashOverviewCell.swift; sourceTree = "<group>"; };
+		9224E65B25F79D000030F652 /* FloatingCashOverviewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FloatingCashOverviewCell.xib; sourceTree = "<group>"; };
+		9224E66125F79D1F0030F652 /* DepositCardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepositCardCell.swift; sourceTree = "<group>"; };
+		9224E66225F79D1F0030F652 /* DepositCardCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DepositCardCell.xib; sourceTree = "<group>"; };
 		9232B7D725C3816F00F3D497 /* CardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewController.swift; sourceTree = "<group>"; };
 		925DB3DC25A7B52800FCD3DE /* TripData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripData.swift; sourceTree = "<group>"; };
 		925DB3DD25A7B52800FCD3DE /* TripData.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TripData.xib; sourceTree = "<group>"; };
@@ -329,8 +346,11 @@
 		925DB3E625A7B5A300FCD3DE /* TripDataTopCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TripDataTopCell.xib; sourceTree = "<group>"; };
 		925DB45F25ACF76E00FCD3DE /* NotificationInbox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationInbox.swift; sourceTree = "<group>"; };
 		925DB46025ACF76E00FCD3DE /* NotificationInbox.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotificationInbox.xib; sourceTree = "<group>"; };
+		92966B4325F927D800DFBDE3 /* SecurityCodeTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecurityCodeTVC.swift; sourceTree = "<group>"; };
 		929B350025C36A67004809AB /* CardViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CardViewController.xib; sourceTree = "<group>"; };
 		92B0292325B060EF00415BC1 /* VerifyPhoneTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyPhoneTVC.swift; sourceTree = "<group>"; };
+		92F770A525F68AFD008708AD /* TripHistory.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TripHistory.storyboard; sourceTree = "<group>"; };
+		92F770C425F773A8008708AD /* Earnings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Earnings.storyboard; sourceTree = "<group>"; };
 		9D76C45A4FE63B9F1E6FA948 /* Pods_CodeNameFive.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CodeNameFive.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4CE2E3AFE00A8868FAE67EE /* Pods-CodeNameFiveTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CodeNameFiveTests.debug.xcconfig"; path = "Target Support Files/Pods-CodeNameFiveTests/Pods-CodeNameFiveTests.debug.xcconfig"; sourceTree = "<group>"; };
 		D5C8FE33E55067A7BAD7DA73 /* Pods-CodeNameFiveTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CodeNameFiveTests.release.xcconfig"; path = "Target Support Files/Pods-CodeNameFiveTests/Pods-CodeNameFiveTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -530,6 +550,7 @@
 				4FB978F624A4DB3A0093C10F /* EarningsTVC.swift */,
 				4F43BC1924A3DC39006CF40F /* PaymentInformationTVC.swift */,
 				92B0292325B060EF00415BC1 /* VerifyPhoneTVC.swift */,
+				92966B4325F927D800DFBDE3 /* SecurityCodeTVC.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -541,6 +562,7 @@
 				4F14A5F524A8DAC80095CA9B /* PreviousPaymentVC.swift */,
 				904025E5258A687500126883 /* EarningsTableViewController.swift */,
 				9041CDA1258F68F400CE010A /* PDFViewController.swift */,
+				9224E64725F77DD30030F652 /* DepositFloatingCash.swift */,
 			);
 			path = Earnings;
 			sourceTree = "<group>";
@@ -661,6 +683,8 @@
 				4FDA5E2125C5A85D00097333 /* Accounts.storyboard */,
 				4FDA5E2625C5AA6E00097333 /* AppMenu.storyboard */,
 				4F965B9C25C5FEF400A01418 /* Profile.storyboard */,
+				92F770A525F68AFD008708AD /* TripHistory.storyboard */,
+				92F770C425F773A8008708AD /* Earnings.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -731,6 +755,7 @@
 		4FB978E624A4A8A70093C10F /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				9224E64C25F79C2B0030F652 /* DepositFloatingCash */,
 				4FC0CFB725C9407D00AA69A7 /* RestaurantCustomerDetails */,
 				925DB45E25ACF73500FCD3DE /* NotificationInbox */,
 				925DB3E325A7B53200FCD3DE /* Trip history */,
@@ -835,6 +860,43 @@
 				9048158E25AB38CE00D9C2EC /* TripDayData.xib */,
 			);
 			path = tripDayDataCell;
+			sourceTree = "<group>";
+		};
+		9224E64C25F79C2B0030F652 /* DepositFloatingCash */ = {
+			isa = PBXGroup;
+			children = (
+				9224E65225F79C7F0030F652 /* DepositCard */,
+				9224E65125F79C630030F652 /* FloatingCashOverview */,
+				9224E64D25F79C450030F652 /* FloatingCashError */,
+			);
+			path = DepositFloatingCash;
+			sourceTree = "<group>";
+		};
+		9224E64D25F79C450030F652 /* FloatingCashError */ = {
+			isa = PBXGroup;
+			children = (
+				9224E65325F79CD80030F652 /* FloatingCashErrorCell.swift */,
+				9224E65425F79CD80030F652 /* FloatingCashErrorCell.xib */,
+			);
+			path = FloatingCashError;
+			sourceTree = "<group>";
+		};
+		9224E65125F79C630030F652 /* FloatingCashOverview */ = {
+			isa = PBXGroup;
+			children = (
+				9224E65A25F79D000030F652 /* FloatingCashOverviewCell.swift */,
+				9224E65B25F79D000030F652 /* FloatingCashOverviewCell.xib */,
+			);
+			path = FloatingCashOverview;
+			sourceTree = "<group>";
+		};
+		9224E65225F79C7F0030F652 /* DepositCard */ = {
+			isa = PBXGroup;
+			children = (
+				9224E66125F79D1F0030F652 /* DepositCardCell.swift */,
+				9224E66225F79D1F0030F652 /* DepositCardCell.xib */,
+			);
+			path = DepositCard;
 			sourceTree = "<group>";
 		};
 		925DB3E325A7B53200FCD3DE /* Trip history */ = {
@@ -1002,10 +1064,13 @@
 				4F31608B24CE359800347571 /* noti.mp3 in Resources */,
 				929B350125C36A77004809AB /* CardViewController.xib in Resources */,
 				4F2E5645249B4FAA00D28462 /* LaunchScreen.storyboard in Resources */,
+				9224E65D25F79D000030F652 /* FloatingCashOverviewCell.xib in Resources */,
 				4F54A74525C9A6E600986EC8 /* CollectCash.xib in Resources */,
+				9224E65625F79CD80030F652 /* FloatingCashErrorCell.xib in Resources */,
 				903F63DE257178E500C0D86F /* SFProDisplay-Semibold.ttf in Resources */,
 				925DB46225ACF76E00FCD3DE /* NotificationInbox.xib in Resources */,
 				4FC0CFC125C940BA00AA69A7 /* DetailsCell.xib in Resources */,
+				92F770C525F773A8008708AD /* Earnings.storyboard in Resources */,
 				9040F87A258FD56900C390DA /* pdfFileShare.pdf in Resources */,
 				4F2E5642249B4FAA00D28462 /* Assets.xcassets in Resources */,
 				903F63E625717C8B00C0D86F /* SFProText-Semibold.ttf in Resources */,
@@ -1016,6 +1081,7 @@
 				903F63F82572B29500C0D86F /* SFProText-Heavy.ttf in Resources */,
 				4FDA5E2225C5A85D00097333 /* Accounts.storyboard in Resources */,
 				9048159025AB38CE00D9C2EC /* TripDayData.xib in Resources */,
+				92F770A625F68AFD008708AD /* TripHistory.storyboard in Resources */,
 				903F64042572B4F600C0D86F /* SFProDisplay-Bold.ttf in Resources */,
 				4F2E563D249B4FA800D28462 /* Main.storyboard in Resources */,
 				4F1A9F4025D2BF66003C50B4 /* AddressView.xib in Resources */,
@@ -1030,6 +1096,7 @@
 				4FDA5E2725C5AA6E00097333 /* AppMenu.storyboard in Resources */,
 				4F965B9D25C5FEF400A01418 /* Profile.storyboard in Resources */,
 				4F8ED08E24CC55BB00F658DA /* country.json in Resources */,
+				9224E66425F79D1F0030F652 /* DepositCardCell.xib in Resources */,
 				1FA8D06B3D5CB28E438D8071 /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1250,6 +1317,7 @@
 				4FB978EE24A4D83F0093C10F /* OrderDetailCell.swift in Sources */,
 				903F63D82571630500C0D86F /* K.swift in Sources */,
 				904025E6258A687500126883 /* EarningsTableViewController.swift in Sources */,
+				9224E64825F77DD30030F652 /* DepositFloatingCash.swift in Sources */,
 				4FCA0C8C255740B100F41367 /* KeychainItemAccessibility.swift in Sources */,
 				4FB5125C2556D18200D0C131 /* Model.swift in Sources */,
 				4F14A5F624A8DAC80095CA9B /* PreviousPaymentVC.swift in Sources */,
@@ -1262,6 +1330,7 @@
 				92B0292425B060F000415BC1 /* VerifyPhoneTVC.swift in Sources */,
 				4FDA5E3825C5C7ED00097333 /* Alerts.swift in Sources */,
 				4FDA5E3025C5C6E900097333 /* HapticAndVibrations.swift in Sources */,
+				92966B4425F927D800DFBDE3 /* SecurityCodeTVC.swift in Sources */,
 				4FB978EA24A4BF6A0093C10F /* TripDayDataCell.swift in Sources */,
 				4F9A46D324AE1E1800A39380 /* NewTripRequestVC.swift in Sources */,
 				4FBBA4B6249CE014007F72E7 /* DashboardVC.swift in Sources */,
@@ -1293,10 +1362,12 @@
 				4F393B2624AB717C009D08AB /* PaymentInfoCell.swift in Sources */,
 				4FDA5E4625C5CEDE00097333 /* Storyboard.swift in Sources */,
 				4FF1F72024AFB1A40035A9A5 /* HelpOrCancelVC.swift in Sources */,
+				9224E66325F79D1F0030F652 /* DepositCardCell.swift in Sources */,
 				4F54A73C25C9A5BF00986EC8 /* orderNumber.swift in Sources */,
 				4FB11F11249FEC3A00EC629B /* ProfileTVC.swift in Sources */,
 				4F64166F24B0970E00B2700F /* MessagesCell.swift in Sources */,
 				4F5AE8BC24A7D49A00567D05 /* EditEmailTVC.swift in Sources */,
+				9224E65525F79CD80030F652 /* FloatingCashErrorCell.swift in Sources */,
 				4FC0CFC025C940BA00AA69A7 /* DetailsCell.swift in Sources */,
 				4F43BC2024A3ED22006CF40F /* TripHistoryVC.swift in Sources */,
 				4F54A70B25C946EE00986EC8 /* OrderVC.swift in Sources */,
@@ -1318,6 +1389,7 @@
 				4F393B2224AB4EA3009D08AB /* HelpCenterVC.swift in Sources */,
 				4F085A1024FD83DD005EA82E /* HTTPRegisterationRequest.swift in Sources */,
 				4F43BC2224A3EE40006CF40F /* WeeklyTripsDataViewController.swift in Sources */,
+				9224E65C25F79D000030F652 /* FloatingCashOverviewCell.swift in Sources */,
 				4FE4A400249FF93300CFFC3B /* EditProfileTVC.swift in Sources */,
 				4FCA0C992557417500F41367 /* UserDefaults.swift in Sources */,
 				4FDA5E4E25C5CF1500097333 /* ControllerIdentifier.swift in Sources */,
@@ -1527,7 +1599,7 @@
 				CODE_SIGN_ENTITLEMENTS = CodeNameFive/CNF.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = HGQ936794K;
+				DEVELOPMENT_TEAM = DKA3FK9XAJ;
 				INFOPLIST_FILE = CodeNameFive/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1550,7 +1622,7 @@
 				CODE_SIGN_ENTITLEMENTS = CodeNameFive/CNF.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = HGQ936794K;
+				DEVELOPMENT_TEAM = DKA3FK9XAJ;
 				INFOPLIST_FILE = CodeNameFive/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (

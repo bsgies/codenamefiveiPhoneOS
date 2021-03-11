@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -106,7 +106,7 @@
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xjV-pj-E7n">
                                                                     <rect key="frame" x="0.0" y="0.0" width="414" height="45"/>
                                                                     <subviews>
-                                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="comment" translatesAutoresizingMaskIntoConstraints="NO" id="39k-4e-bmG">
+                                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="liveChat" translatesAutoresizingMaskIntoConstraints="NO" id="39k-4e-bmG">
                                                                             <rect key="frame" x="15" y="10" width="25" height="25"/>
                                                                             <constraints>
                                                                                 <constraint firstAttribute="width" constant="25" id="UZf-1q-4Sf"/>
@@ -1154,17 +1154,17 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="Balance" id="21E-RJ-5tL">
+                            <tableViewSection headerTitle="Floating cash balance" footerTitle="Unpaid balance will be deducted from the next payout" id="21E-RJ-5tL">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="bxn-Uc-sgT" customClass="PaymentInfoCell" customModule="CNF" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="198.33333587646484" width="414" height="43.666667938232422"/>
+                                        <rect key="frame" x="0.0" y="205.83333587646484" width="414" height="43.666667938232422"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="bxn-Uc-sgT" id="lTS-Ve-W2b">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.666667938232422"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Cash balance" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8MH-7p-mcI">
-                                                    <rect key="frame" x="20" y="12.5" width="98" height="19"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Limit" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8MH-7p-mcI">
+                                                    <rect key="frame" x="20" y="12.5" width="35" height="19"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -1190,6 +1190,40 @@
                                             <outlet property="title" destination="8MH-7p-mcI" id="FSH-ML-eKJ"/>
                                         </connections>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="cell" id="oFv-AD-2X9" customClass="PaymentInfoCell" customModule="CNF" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="249.50000381469727" width="414" height="43.666667938232422"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="oFv-AD-2X9" id="GeS-fc-vI9">
+                                            <rect key="frame" x="0.0" y="0.0" width="383" height="43.666667938232422"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Cash balance" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OIY-TQ-ZCJ">
+                                                    <rect key="frame" x="20" y="12.5" width="98" height="19"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="100.00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="glo-P9-txS">
+                                                    <rect key="frame" x="314" y="12.5" width="49" height="19"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="OIY-TQ-ZCJ" firstAttribute="leading" secondItem="GeS-fc-vI9" secondAttribute="leading" constant="20" id="Rh2-mE-w4o"/>
+                                                <constraint firstItem="OIY-TQ-ZCJ" firstAttribute="centerY" secondItem="GeS-fc-vI9" secondAttribute="centerY" id="bOw-mL-gDB"/>
+                                                <constraint firstAttribute="trailing" secondItem="glo-P9-txS" secondAttribute="trailing" constant="20" id="ftn-ck-Zh0"/>
+                                                <constraint firstItem="glo-P9-txS" firstAttribute="centerY" secondItem="GeS-fc-vI9" secondAttribute="centerY" id="g1y-T9-RkY"/>
+                                                <constraint firstItem="glo-P9-txS" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="OIY-TQ-ZCJ" secondAttribute="trailing" constant="8" symbolic="YES" id="rMD-lR-SxF"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" name="cellColor"/>
+                                        <connections>
+                                            <outlet property="dis" destination="glo-P9-txS" id="mbN-Ft-c8O"/>
+                                            <outlet property="title" destination="OIY-TQ-ZCJ" id="erR-xM-J35"/>
+                                        </connections>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                         </sections>
@@ -1206,7 +1240,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Oaz-1Y-qgI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3886" y="-681"/>
+            <point key="canvasLocation" x="4071" y="-1392"/>
         </scene>
         <!--Order detail-->
         <scene sceneID="MoU-8s-GZX">
@@ -1715,6 +1749,7 @@
         <image name="comment" width="24" height="24"/>
         <image name="dollarsign.circle.fill" catalog="system" width="128" height="121"/>
         <image name="helpcenter" width="22" height="22"/>
+        <image name="liveChat" width="30" height="30"/>
         <image name="map" width="32" height="32"/>
         <image name="menuArrow" width="16" height="16"/>
         <image name="metronome" catalog="system" width="128" height="121"/>

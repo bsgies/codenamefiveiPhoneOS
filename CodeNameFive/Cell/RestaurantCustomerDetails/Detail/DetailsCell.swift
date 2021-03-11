@@ -28,9 +28,9 @@ class DetailsCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        phone.round(bordercolor: "borderColor")
-        message.round(bordercolor: "borderColor")
-        help.round(bordercolor: "borderColor")
+//        phone.round(bordercolor: "borderColor")
+//        message.round(bordercolor: "borderColor")
+//        help.round(bordercolor: "borderColor")
         
     }
 

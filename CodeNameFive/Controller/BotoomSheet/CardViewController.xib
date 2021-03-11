@@ -1,20 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="HelveticaNeue.ttc">
+            <string>HelveticaNeue</string>
+        </array>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CardViewController" customModule="CNF" customModuleProvider="target">
             <connections>
                 <outlet property="cardView" destination="qZN-Of-IAe" id="zHH-rl-vuk"/>
                 <outlet property="distance" destination="0il-Yb-myI" id="Hg7-TC-Q9Y"/>
                 <outlet property="handleArea" destination="r6F-YW-eeF" id="1Y4-Bw-5yT"/>
+                <outlet property="pickupDropoff" destination="J4K-lT-aJH" id="3eE-PF-JpF"/>
                 <outlet property="tableView" destination="3YU-h6-Mbd" id="cRZ-o4-ncr"/>
                 <outlet property="time" destination="E29-Kt-wzD" id="cKd-52-qqo"/>
                 <outlet property="view" destination="iN0-l3-epB" id="DJP-sT-hnF"/>
@@ -30,7 +35,8 @@
                     <subviews>
                         <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" contentInsetAdjustmentBehavior="never" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="3YU-h6-Mbd">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="813"/>
-                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <color key="backgroundColor" name="Background"/>
+                            <color key="sectionIndexBackgroundColor" name="Background"/>
                         </tableView>
                     </subviews>
                     <color key="backgroundColor" name="Background"/>
@@ -44,44 +50,55 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="r6F-YW-eeF">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
                     <subviews>
-                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="5Ey-Rq-xgh">
-                            <rect key="frame" x="125.5" y="19.5" width="124.5" height="21.5"/>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="hZW-dx-Yoo">
+                            <rect key="frame" x="124" y="7.5" width="127" height="45"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2.6 km" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0il-Yb-myI">
-                                    <rect key="frame" x="0.0" y="0.0" width="55.5" height="21.5"/>
-                                    <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="18"/>
-                                    <nil key="textColor"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="·" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k6o-hQ-PJm">
-                                    <rect key="frame" x="60.5" y="0.0" width="3.5" height="21.5"/>
-                                    <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="12"/>
-                                    <nil key="textColor"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10 min" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E29-Kt-wzD">
-                                    <rect key="frame" x="69" y="0.0" width="55.5" height="21.5"/>
-                                    <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="18"/>
+                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="5Ey-Rq-xgh">
+                                    <rect key="frame" x="0.0" y="0.0" width="127" height="21.5"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2.6 km" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0il-Yb-myI">
+                                            <rect key="frame" x="0.0" y="0.0" width="55.5" height="21.5"/>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="18"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="•" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k6o-hQ-PJm">
+                                            <rect key="frame" x="60.5" y="0.0" width="6" height="21.5"/>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="12"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10 min" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E29-Kt-wzD">
+                                            <rect key="frame" x="71.5" y="0.0" width="55.5" height="21.5"/>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="18"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </stackView>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pick up from Bilal" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J4K-lT-aJH" userLabel="PickupDropoff">
+                                    <rect key="frame" x="0.0" y="23.5" width="127" height="21.5"/>
+                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
                         </stackView>
-                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow" translatesAutoresizingMaskIntoConstraints="NO" id="9Jb-ND-7vC">
-                            <rect key="frame" x="20" y="22" width="16" height="16"/>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="caretUp" translatesAutoresizingMaskIntoConstraints="NO" id="9Jb-ND-7vC">
+                            <rect key="frame" x="20" y="18" width="24" height="24"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="16" id="6nJ-OD-Ni2"/>
-                                <constraint firstAttribute="height" constant="16" id="ArB-Iw-AIQ"/>
+                                <constraint firstAttribute="width" constant="24" id="6nJ-OD-Ni2"/>
+                                <constraint firstAttribute="height" constant="24" id="ArB-Iw-AIQ"/>
                             </constraints>
                         </imageView>
                     </subviews>
                     <color key="backgroundColor" name="UIViewCard"/>
                     <constraints>
-                        <constraint firstItem="5Ey-Rq-xgh" firstAttribute="centerX" secondItem="r6F-YW-eeF" secondAttribute="centerX" id="1Te-2O-S7p"/>
+                        <constraint firstItem="hZW-dx-Yoo" firstAttribute="centerY" secondItem="r6F-YW-eeF" secondAttribute="centerY" id="9xE-id-hnC"/>
+                        <constraint firstItem="9Jb-ND-7vC" firstAttribute="centerY" secondItem="hZW-dx-Yoo" secondAttribute="centerY" id="Hw7-wV-PY5"/>
+                        <constraint firstItem="hZW-dx-Yoo" firstAttribute="centerX" secondItem="r6F-YW-eeF" secondAttribute="centerX" id="SDU-sB-J3c"/>
                         <constraint firstItem="9Jb-ND-7vC" firstAttribute="leading" secondItem="r6F-YW-eeF" secondAttribute="leading" constant="20" id="Wjt-Sh-8TL"/>
-                        <constraint firstItem="5Ey-Rq-xgh" firstAttribute="centerY" secondItem="r6F-YW-eeF" secondAttribute="centerY" id="Wkd-mu-pFc"/>
                         <constraint firstAttribute="height" constant="60" id="eqI-xT-oHF"/>
-                        <constraint firstItem="9Jb-ND-7vC" firstAttribute="centerY" secondItem="0il-Yb-myI" secondAttribute="centerY" id="pKE-sF-vtv"/>
                     </constraints>
                 </view>
             </subviews>
@@ -101,15 +118,12 @@
         </view>
     </objects>
     <resources>
-        <image name="arrow" width="32" height="32"/>
+        <image name="caretUp" width="24" height="24"/>
         <namedColor name="Background">
             <color red="0.98000001907348633" green="0.98000001907348633" blue="0.98000001907348633" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="UIViewCard">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
     </resources>
 </document>

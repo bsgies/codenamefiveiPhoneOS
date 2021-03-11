@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--depositFloatingCash-->
+        <scene sceneID="zyJ-PA-iIe">
+            <objects>
+                <viewController storyboardIdentifier="DepositFloatingCash" useStoryboardIdentifierAsRestorationIdentifier="YES" id="tXw-Mf-Y4b" userLabel="depositFloatingCash" customClass="DepositFloatingCash" customModule="CNF" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="axr-5V-ZDG">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="p4D-WZ-Q96">
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <color key="backgroundColor" name="Background"/>
+                                <color key="sectionIndexBackgroundColor" name="Background"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="tXw-Mf-Y4b" id="WgA-yH-Pcb"/>
+                                    <outlet property="delegate" destination="tXw-Mf-Y4b" id="A72-fh-JGF"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="9nf-gz-oKq"/>
+                        <color key="backgroundColor" name="Background"/>
+                        <constraints>
+                            <constraint firstItem="p4D-WZ-Q96" firstAttribute="top" secondItem="9nf-gz-oKq" secondAttribute="top" id="0So-yV-g7r"/>
+                            <constraint firstItem="9nf-gz-oKq" firstAttribute="trailing" secondItem="p4D-WZ-Q96" secondAttribute="trailing" id="JqB-U2-WIg"/>
+                            <constraint firstItem="p4D-WZ-Q96" firstAttribute="leading" secondItem="9nf-gz-oKq" secondAttribute="leading" id="cYe-81-MQG"/>
+                            <constraint firstItem="9nf-gz-oKq" firstAttribute="bottom" secondItem="p4D-WZ-Q96" secondAttribute="bottom" id="zlg-WU-Er5"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Deposit floating cash" id="nMI-pS-HAa"/>
+                    <connections>
+                        <outlet property="tableView" destination="p4D-WZ-Q96" id="Ua3-ca-Hbu"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OrP-U9-n1t" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1121.7391304347827" y="77.678571428571431"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="cVH-wX-hk4">
+            <objects>
+                <viewController id="CeG-kF-xa3" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="O3g-dS-XN4">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="D1n-rJ-30F"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uSO-gM-ylx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1981" y="78"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="jiU-FE-wt6">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ZxY-MK-tZN" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="oKr-bQ-2PP">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="tXw-Mf-Y4b" kind="relationship" relationship="rootViewController" id="aZQ-eu-HJs"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4OC-Ov-3P7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="211.59420289855075" y="77.678571428571431"/>
+        </scene>
+    </scenes>
+    <resources>
+        <namedColor name="Background">
+            <color red="0.98000001907348633" green="0.98000001907348633" blue="0.98000001907348633" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

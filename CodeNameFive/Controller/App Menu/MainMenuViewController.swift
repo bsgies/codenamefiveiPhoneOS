@@ -189,7 +189,7 @@ extension MainMenuViewController{
             // setup here
             cell.backgroundColor = UIColor(named: "sideMenu")
             //cell.viewCell.backgroundColor = UIColor(named: "cellLineColor")
-            cell.imageCell.image = UIImage(named: "comment")
+            cell.imageCell.image = UIImage(named: "liveChat")
             cell.labelCell.text = "Live support"
             // font(labelName: cell.labelCell)
             cell.viewCell.isHidden = true

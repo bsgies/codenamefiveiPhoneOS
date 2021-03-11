@@ -70,7 +70,7 @@ class EarningsTableViewController: UITableViewController {
         if section == 0 {
             header.textLabel?.text = "Statements"
         }else {
-               header.textLabel?.text = "Cash balance"
+               header.textLabel?.text = "Floating cash balance"
         }
     }
    
@@ -80,17 +80,18 @@ class EarningsTableViewController: UITableViewController {
            let currentSection = indexPath.section
            if currentSection == 0 {
                if indexPath.row == 0 {
-             
-               } else
+                self.pushToController(from: .earnings, identifier: .DepositFloatingCash)
+               }
+               else
                if indexPath.row == 1 {
-                  
-                let storyBoard: UIStoryboard = UIStoryboard(name: "AppMenu", bundle: nil)
-                let vc = storyBoard.instantiateViewController(withIdentifier: "PreviousPayment") as! PreviousPaymentVC
-                navigationController?.pushViewController(vc, animated: true)
+                self.pushToController(from: .earnings, identifier: .DepositFloatingCash)
+//                let storyBoard: UIStoryboard = UIStoryboard(name: "AppMenu", bundle: nil)
+//                let vc = storyBoard.instantiateViewController(withIdentifier: "PreviousPayment") as! PreviousPaymentVC
+//                navigationController?.pushViewController(vc, animated: true)
                }
            }
            if currentSection == 1 {
-               if indexPath.row == 0 {
+               if indexPath.row == 1 {
                 
                }
            } // end here

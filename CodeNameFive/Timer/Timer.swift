@@ -22,7 +22,10 @@ extension DashboardVC {
     }
 
     @objc func fireTimerAction(sender: AnyObject?){
-        connecedTimeLbl?.text?.getCurrentTime()
+       // connecedTimeLbl?.text?.getCurrentTime()
+        var time = ""
+        connecedTimeLbl?.text = "Time connected: \(time.getCurrentTime())"
+        
     }
 }
 

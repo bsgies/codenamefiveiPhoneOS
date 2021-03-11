@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="HelveticaNeue.ttc">
+            <string>HelveticaNeue</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="82" id="KGk-i7-Jjw" customClass="DepositCardCell" customModule="CNF" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="349" height="82"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="349" height="82"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XZY-xS-Rvn" userLabel="depositViaTarseel">
+                        <rect key="frame" x="20" y="10" width="309" height="62"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="easyPaisa" translatesAutoresizingMaskIntoConstraints="NO" id="bM2-St-VsT">
+                                <rect key="frame" x="20" y="-1" width="64" height="64"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="64" id="IZY-NN-CQT"/>
+                                    <constraint firstAttribute="width" constant="64" id="LTo-dJ-Dlz"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Deposit via Tarseel hub" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AAh-5N-kQE">
+                                <rect key="frame" x="104" y="21.5" width="166" height="19"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="disclouser.png" translatesAutoresizingMaskIntoConstraints="NO" id="QcL-wr-uto">
+                                <rect key="frame" x="265" y="19" width="24" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="24" id="Ae2-hO-Qru"/>
+                                    <constraint firstAttribute="width" constant="24" id="LVc-eW-wmC"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" name="UIViewCard"/>
+                        <constraints>
+                            <constraint firstItem="AAh-5N-kQE" firstAttribute="leading" secondItem="bM2-St-VsT" secondAttribute="trailing" constant="20" id="6yj-Sm-70Y"/>
+                            <constraint firstItem="AAh-5N-kQE" firstAttribute="centerY" secondItem="bM2-St-VsT" secondAttribute="centerY" id="Que-g2-Ekb"/>
+                            <constraint firstItem="QcL-wr-uto" firstAttribute="centerY" secondItem="AAh-5N-kQE" secondAttribute="centerY" id="Un2-rZ-jbJ"/>
+                            <constraint firstItem="bM2-St-VsT" firstAttribute="leading" secondItem="XZY-xS-Rvn" secondAttribute="leading" constant="20" id="VFu-zd-Zur"/>
+                            <constraint firstItem="bM2-St-VsT" firstAttribute="centerY" secondItem="XZY-xS-Rvn" secondAttribute="centerY" id="VT9-Um-tnT"/>
+                            <constraint firstAttribute="trailing" secondItem="QcL-wr-uto" secondAttribute="trailing" constant="20" id="hVx-xE-BO4"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="XZY-xS-Rvn" secondAttribute="trailing" constant="20" id="DVF-a2-OUO"/>
+                    <constraint firstItem="XZY-xS-Rvn" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="SN9-1q-FRJ"/>
+                    <constraint firstAttribute="bottom" secondItem="XZY-xS-Rvn" secondAttribute="bottom" constant="10" id="Y3q-Q5-16g"/>
+                    <constraint firstItem="XZY-xS-Rvn" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="tTi-6O-Sgw"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="brandname" destination="AAh-5N-kQE" id="TOL-QX-oVi"/>
+                <outlet property="companyLogo" destination="bM2-St-VsT" id="Bxu-E6-llA"/>
+                <outlet property="contentbackgroundView" destination="XZY-xS-Rvn" id="fdz-fE-GmH"/>
+            </connections>
+            <point key="canvasLocation" x="158.69565217391306" y="70.3125"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="disclouser.png" width="24" height="24"/>
+        <image name="easyPaisa" width="526" height="623"/>
+        <namedColor name="UIViewCard">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>
