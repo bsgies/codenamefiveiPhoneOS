@@ -19,7 +19,6 @@ struct Endpoints {
     static let registeration = "http://ec2-18-222-200-202.us-east-2.compute.amazonaws.com:3000/api/v1/partner"
     static let login = "http://ec2-18-222-200-202.us-east-2.compute.amazonaws.com:3000/api/v1/partner/login"
     static let loginWithPhone = "http://ec2-18-222-200-202.us-east-2.compute.amazonaws.com:3000/api/v1/partner/login/phone/verify"
-    
    static let phoneOEmailExits = "http://ec2-18-222-200-202.us-east-2.compute.amazonaws.com:3000/api/v1/partner/exist"
     
     static let forget_password = "http://ec2-18-222-200-202.us-east-2.compute.amazonaws.com:3000/api/v1/partner/forget-password"
@@ -28,4 +27,6 @@ struct Endpoints {
     static let  updatePhone =   "http://ec2-18-222-200-202.us-east-2.compute.amazonaws.com:3000/api/v1/partner/phone"
     static let sendOTP = "http://ec2-18-222-200-202.us-east-2.compute.amazonaws.com:3000/api/v1/partner/login/phone"
     static let offlineOnlineStatus = "http://ec2-18-222-200-202.us-east-2.compute.amazonaws.com:3000/api/v1/partner/online/status"
+    
+    static let locationUpdate = "http://ec2-18-222-200-202.us-east-2.compute.amazonaws.com:3000/api/v1/partner/update-location"
 }

@@ -15,8 +15,6 @@ class EditPhoneTVC: UITableViewController {
             phoneNumber?.text = phone_number
         }
     }
-    
-    
      override func viewDidLoad() {
             super.viewDidLoad()
            self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(Cancel(btn:)))
@@ -38,7 +36,7 @@ class EditPhoneTVC: UITableViewController {
         //MARK:- API Calling
     
     func phonenumberEdit(phone : String) {
-        HttpService.sharedInstance.patchRequestWithParam(urlString: Endpoints.updatePhone , bodyData: ["phone" : phone]) { (responseData) in
+        HttpService.sharedInstance.patchRequestWithParam(loadinIndicator: false, urlString: Endpoints.updatePhone , bodyData: ["phone" : phone]) { (responseData) in
             do{
                 let jsonData = responseData?.toJSONString1().data(using: .utf8)!
                 let decoder = JSONDecoder()

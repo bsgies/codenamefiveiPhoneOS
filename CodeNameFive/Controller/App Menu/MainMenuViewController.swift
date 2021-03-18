@@ -27,9 +27,7 @@ class MainMenuViewController: UIViewController, UIGestureRecognizerDelegate {
     }
     @IBOutlet weak var tableView: UITableView!
     
-    //MARK:- variables
-    var timer = Timer()
-    
+
     //MARK:- LifeCycles
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -66,14 +64,13 @@ class MainMenuViewController: UIViewController, UIGestureRecognizerDelegate {
     }
     @IBOutlet weak var lastOrder : UISwitch!{
         didSet{
-            
             lastOrder.isOn = UserDefaults.standard.bool(forKey: "lastOrder")
         }
     }
     
     @IBOutlet weak var autoAcceptswitch: UISwitch!{
         didSet{
-            autoAcceptswitch.isOn = UserDefaults.standard.bool(forKey: "autoAccept")
+            autoAcceptswitch.isOn = UserDefaults.standard.bool(forKey: autoAcceptStatusKey)
         }
     }
     @IBAction func autoAccept(_ sender: UISwitch) {

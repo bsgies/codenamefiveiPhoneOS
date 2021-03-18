@@ -149,20 +149,20 @@ class DashboardVC: UIViewController,  CLLocationManagerDelegate, GMSMapViewDeleg
     
     //MARK:-API
     
-    func apiCalling() {
-        HttpService.sharedInstance.postRequest(loadinIndicator: false, urlString: Endpoints.offlineOnlineStatus, bodyData: ["onlineStatus" : 0]) { (responseData) in
-            
+    func apiCalling(status : Int){
+        
+        HttpService.sharedInstance.patchRequestWithParam(loadinIndicator: false, urlString: Endpoints.offlineOnlineStatus, bodyData:  ["onlineStatus": status]) { (responseData) in
             do{
                 let jsonData = responseData?.toJSONString1().data(using: .utf8)!
                 let decoder = JSONDecoder()
                 let obj = try decoder.decode(commonResult.self, from: jsonData!)
                 if obj.success{
-                    
+                   print(obj.message)
                 }
             }catch{
                 
             }
-            
+               
         }
     }
 }
@@ -172,10 +172,12 @@ extension DashboardVC{
     @IBAction func OnlineOfflineButton(_ sender: UIButton) {
         if isOnline(){
             KeychainWrapper.standard.set(0, forKey: onlineStatusKey)
+            apiCalling(status: 0)
             checkOnlineStatus()
         }
         else{
             KeychainWrapper.standard.set(1, forKey: onlineStatusKey)
+            apiCalling(status: 1)
             checkOnlineStatus()
         }
         
@@ -248,9 +250,10 @@ extension DashboardVC {
         locationManager?.delegate = self
         locationManager?.desiredAccuracy = kCLLocationAccuracyBest
         locationManager?.requestWhenInUseAuthorization()
-        locationManager?.distanceFilter = 50
+        locationManager?.distanceFilter = 150
         locationManager?.startUpdatingLocation()
-        locationManager.startMonitoringSignificantLocationChanges()
+        locationManager?.allowsBackgroundLocationUpdates = true
+        locationManager?.desiredAccuracy = kCLLocationAccuracyBestForNavigation
     }
     
     
@@ -259,7 +262,30 @@ extension DashboardVC {
         locValue = location.coordinate
         let camera = GMSCameraPosition.camera(withLatitude: location.coordinate.latitude, longitude: location.coordinate.longitude, zoom: 16)
          googleMapView.animate(to: camera)
+        locationUpdate(lat: locValue.latitude, long: locValue.longitude)
         
+        //API Call
+        
+    }
+    
+    //MARK:- API Calling
+    
+    func locationUpdate(lat :  Double , long : Double) {
+
+        HttpService.sharedInstance.postRequestWithToken(loadinIndicator: false, urlString: Endpoints.locationUpdate, bodyData: ["lat" : lat , "lng" : long]) { (responseData) in
+            do{
+                let jsonData = responseData?.toJSONString1().data(using: .utf8)!
+                let decoder = JSONDecoder()
+                let obj = try decoder.decode(commonResult.self, from: jsonData!)
+                if obj.success{
+                    print(obj.message)
+                }
+            }
+            catch{
+                
+            }
+            
+        }
     }
 
         //MARK:- Light and Dark Mode Delegate

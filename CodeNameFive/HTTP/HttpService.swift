@@ -104,8 +104,63 @@ class HttpService : URLSession{
         
     }
     
-    func patchRequestWithParam(urlString:String, bodyData:[String : Any],completionBlock:@escaping WSCompletionBlock) -> () {
-        appDelegate.loadindIndicator()
+    
+    func postRequestWithToken(loadinIndicator :  Bool , urlString:String, bodyData:[String : Any],completionBlock:@escaping WSCompletionBlock) -> () {
+        if loadinIndicator{
+            appDelegate.loadindIndicator()
+        }
+        if !(isInternetAvailable()) {
+            appDelegate.removeLoadIndIndicator()
+            appDelegate.Alert()
+           // print("Internet not working")
+            completionBlock([:])
+            return
+        }
+        print("Hitting URL with Post Request : \n \(urlString) \n\n params : \n \(bodyData)")
+        _ = try? JSONSerialization.data(withJSONObject: bodyData)
+        
+        guard let requestUrl = URL(string:urlString) else { return }
+        let session = URLSession.shared
+        var request = URLRequest(url: requestUrl as URL, cachePolicy: .useProtocolCachePolicy, timeoutInterval: 90)
+        request.httpMethod = "POST"
+        request.setValue("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdF9uYW1lIjoiYWhzYW4iLCJsYXN0X25hbWUiOiJhbGkiLCJlbWFpbCI6InNnaWVzQGdtYWlsLmNvbSIsImlkIjoxOSwicHJvZmlsZV9waG90byI6ImFiYy5wbmciLCJwaG9uZV9udW1iZXIiOiIrOTIwMDIzNTY3OTkiLCJzdGF0dXMiOiJwZW5kaW5nIiwib25saW5lX3N0YXR1cyI6MCwiYXV0b19hY2NlcHRfc3RhdHVzIjowLCJtYXJrX2FzX2xhc3RfdHJpcCI6MCwiZmxvYXRfY2FzaF9saW1pdCI6IjEwMDAuMDAwMCIsImZsb2F0X2Nhc2hfYmFsYW5jZSI6IjE1MDAuMDAwMCIsImlhdCI6MTYxNjA4NTAyMH0.OXBYubBoTvWISmQPHk-vZK_WPJEwbhTA0B-SJ-TTQAA", forHTTPHeaderField: "x-access-token")
+        let postString = self.getPostString(params: bodyData)
+        request.httpBody = postString.data(using: .utf8)
+        let task = session.dataTask(with: request) { [self]
+            (data, response, error) in
+            if let responseError = error{
+                completionBlock([:])
+                self.appDelegate.removeLoadIndIndicator()
+                print("Response error: \(responseError)")
+            }
+            else
+            {
+                do {
+                    let dictionary = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.mutableContainers) as! NSDictionary
+                    print(dictionary)
+                    DispatchQueue.main.async(execute: {
+                        self.appDelegate.removeLoadIndIndicator()
+                        completionBlock(dictionary)
+                    })
+                }
+                catch let jsonError as NSError{
+                    print("JSON error: \(jsonError.localizedDescription)")
+                    
+                    DispatchQueue.main.async(execute: {
+                        self.appDelegate.removeLoadIndIndicator()
+                        completionBlock([:])
+                    })
+                }
+            }
+        }
+        task.resume()
+        
+    }
+    
+    func patchRequestWithParam(loadinIndicator :  Bool , urlString:String, bodyData:[String : Any],completionBlock:@escaping WSCompletionBlock) -> () {
+        if loadinIndicator{
+            appDelegate.loadindIndicator()
+        }
         if !(isInternetAvailable()) {
             appDelegate.removeLoadIndIndicator()
             appDelegate.Alert()
@@ -140,7 +195,7 @@ class HttpService : URLSession{
                     })
                 }
                 catch let jsonError as NSError{
-                    print("JSON error: \(jsonError.localizedDescription)")
+                    print("JSON error: \(jsonError)")
                     
                     DispatchQueue.main.async(execute: {
                         self.appDelegate.removeLoadIndIndicator()

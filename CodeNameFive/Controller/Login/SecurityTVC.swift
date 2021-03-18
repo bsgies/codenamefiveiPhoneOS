@@ -264,21 +264,26 @@ class SecurityTVC: UITableViewController, UITextFieldDelegate {
     //MARK:- Save to keychain
     func saveValuesInKeyChain(obj : LoginResponse) -> Bool{
         if obj.success == true{
-                guard let result = obj.data?.results else { return false }
-                guard let token = obj.data?.token else { return false}
-                KeychainWrapper.standard.set(token, forKey: tokenKey)
-                KeychainWrapper.standard.set(result.onlineStatus, forKey: onlineStatusKey)
-                KeychainWrapper.standard.set(result.lastName, forKey: lastNameKey)
-                KeychainWrapper.standard.set(result.firstName, forKey: firstNameKey)
-                KeychainWrapper.standard.set(result.email, forKey: emailKey)
-                KeychainWrapper.standard.set(result.id, forKey: idKey)
-                KeychainWrapper.standard.set(result.profilePhoto, forKey: profilePhotoKey)
-                KeychainWrapper.standard.set(result.phoneNumber, forKey:  phoneNumberKey)
-                KeychainWrapper.standard.set(result.status, forKey:  statusKey)
-                KeychainWrapper.standard.set((passwordTextField?.text!)!, forKey: "password")
-                KeychainWrapper.standard.set(false, forKey: "success")
-                UserDefaults.standard.set(true, forKey: "success")
-                saveInDefault(value: true, key: isUserLogInKey)
+            guard let result = obj.data?.results else { return false }
+            guard let token = obj.data?.token else { return false}
+            KeychainWrapper.standard.set(token, forKey: tokenKey)
+            KeychainWrapper.standard.set(result.onlineStatus, forKey: onlineStatusKey)
+            KeychainWrapper.standard.set(result.lastName, forKey: lastNameKey)
+            KeychainWrapper.standard.set(result.firstName, forKey: firstNameKey)
+            KeychainWrapper.standard.set(result.email, forKey: emailKey)
+            KeychainWrapper.standard.set(result.id, forKey: idKey)
+            KeychainWrapper.standard.set(result.profilePhoto, forKey: profilePhotoKey)
+            KeychainWrapper.standard.set(result.phoneNumber, forKey:  phoneNumberKey)
+            KeychainWrapper.standard.set(result.status, forKey:  statusKey)
+            KeychainWrapper.standard.set((passwordTextField?.text!)!, forKey: "password")
+            KeychainWrapper.standard.set(result.markAsLastTrip, forKey: "markAsLastTrip")
+            KeychainWrapper.standard.set(result.autoAcceptStatus, forKey: "autoAcceptStatus")
+            KeychainWrapper.standard.set(result.floatCashLimit, forKey: "floatCashLimit")
+            KeychainWrapper.standard.set(result.floatCashBalance, forKey: "floatCashBalance")
+            
+            KeychainWrapper.standard.set(false, forKey: "success")
+            UserDefaults.standard.set(true, forKey: "success")
+            saveInDefault(value: true, key: isUserLogInKey)
             return true
         }
         else {

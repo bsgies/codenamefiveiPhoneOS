@@ -19,14 +19,17 @@ extension OrderVC : CLLocationManagerDelegate , DirectionCallback{
         handleArea.delegate = self
         handleArea.isMyLocationEnabled = true
         locationManager?.delegate = self
-        locationManager?.requestAlwaysAuthorization()
+        locationManager?.requestWhenInUseAuthorization()
         locationManager?.desiredAccuracy = kCLLocationAccuracyBestForNavigation
         locationManager?.allowsBackgroundLocationUpdates = true
         locationManager?.startUpdatingLocation()
-        locationManager.startMonitoringSignificantLocationChanges()
         locationManager.startUpdatingHeading()
         locationManager.distanceFilter = kCLDistanceFilterNone
+
     }
+    
+    
+
 }
 
 //MARK:- direction APis Call

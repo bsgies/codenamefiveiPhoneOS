@@ -32,7 +32,7 @@ class EditEmailTVC: UITableViewController {
     //MARK:- API Calling
 
 func emailEdit(email : String) {
-    HttpService.sharedInstance.patchRequestWithParam(urlString: Endpoints.updatePhone , bodyData: ["email" : email]) { (responseData) in
+    HttpService.sharedInstance.patchRequestWithParam(loadinIndicator: false, urlString: Endpoints.updatePhone , bodyData: ["email" : email]) { (responseData) in
         do{
             let jsonData = responseData?.toJSONString1().data(using: .utf8)!
             let decoder = JSONDecoder()

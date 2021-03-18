@@ -102,6 +102,7 @@
 		4FF1F72024AFB1A40035A9A5 /* HelpOrCancelVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF1F71F24AFB1A40035A9A5 /* HelpOrCancelVC.swift */; };
 		4FF1F72424AFBB2D0035A9A5 /* HelpOrCancelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF1F72324AFBB2D0035A9A5 /* HelpOrCancelCell.swift */; };
 		4FF1F72A24AFD92C0035A9A5 /* CollectcashVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF1F72924AFD92C0035A9A5 /* CollectcashVC.swift */; };
+		4FF8DB7F2603605B00DC9F99 /* CustomNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF8DB7E2603605B00DC9F99 /* CustomNavigationController.swift */; };
 		903D5873257E586300521DCD /* MainMenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903D5872257E586200521DCD /* MainMenuTableViewCell.swift */; };
 		903F63D82571630500C0D86F /* K.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903F63D72571630500C0D86F /* K.swift */; };
 		903F63DA257176CD00C0D86F /* SFProDisplay-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 903F63D9257176CD00C0D86F /* SFProDisplay-Regular.ttf */; };
@@ -305,6 +306,7 @@
 		4FF1F71F24AFB1A40035A9A5 /* HelpOrCancelVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpOrCancelVC.swift; sourceTree = "<group>"; };
 		4FF1F72324AFBB2D0035A9A5 /* HelpOrCancelCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpOrCancelCell.swift; sourceTree = "<group>"; };
 		4FF1F72924AFD92C0035A9A5 /* CollectcashVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectcashVC.swift; sourceTree = "<group>"; };
+		4FF8DB7E2603605B00DC9F99 /* CustomNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationController.swift; sourceTree = "<group>"; };
 		6B8B3A440900B17F3B9995FB /* Pods-CodeNameFive.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CodeNameFive.debug.xcconfig"; path = "Target Support Files/Pods-CodeNameFive/Pods-CodeNameFive.debug.xcconfig"; sourceTree = "<group>"; };
 		8CC7831BE557A5CBD31D65CB /* ur-PK */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "ur-PK"; path = "ur-PK.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		903D5872257E586200521DCD /* MainMenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuTableViewCell.swift; sourceTree = "<group>"; };
@@ -748,6 +750,7 @@
 				4FDA5E2F25C5C6E900097333 /* HapticAndVibrations.swift */,
 				4FDA5E3725C5C7ED00097333 /* Alerts.swift */,
 				4FDA5E3F25C5C83E00097333 /* MapStyling.swift */,
+				4FF8DB7E2603605B00DC9F99 /* CustomNavigationController.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -1368,6 +1371,7 @@
 				4F64166F24B0970E00B2700F /* MessagesCell.swift in Sources */,
 				4F5AE8BC24A7D49A00567D05 /* EditEmailTVC.swift in Sources */,
 				9224E65525F79CD80030F652 /* FloatingCashErrorCell.swift in Sources */,
+				4FF8DB7F2603605B00DC9F99 /* CustomNavigationController.swift in Sources */,
 				4FC0CFC025C940BA00AA69A7 /* DetailsCell.swift in Sources */,
 				4F43BC2024A3ED22006CF40F /* TripHistoryVC.swift in Sources */,
 				4F54A70B25C946EE00986EC8 /* OrderVC.swift in Sources */,

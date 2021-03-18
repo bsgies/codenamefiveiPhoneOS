@@ -10,25 +10,37 @@ import UIKit
 import CoreData
 import GoogleMaps
 import UserNotifications
-
+import CoreLocation
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
     let navCon = UINavigationController()
     var window: UIWindow?
+    var locationManager: CLLocationManager!
     static var appdelegate = AppDelegate()
     let userNotificationCenter = UNUserNotificationCenter.current()
     var alert = UIAlertController()
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // UILabel.appearance().font = UIFont(name: "HelveticaNeue", size: 16)
-        UINavigationBar.appearance().backIndicatorImage = #imageLiteral(resourceName: "back")
-        UINavigationBar.appearance().backIndicatorTransitionMaskImage = #imageLiteral(resourceName: "back")
+
         UINavigationBar.appearance().tintColor = #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1)
-        let BarButtonItemAppearance = UIBarButtonItem.appearance()
-        BarButtonItemAppearance.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.clear], for: .normal)
+
+        if #available(iOS 13.0, *) {
+            let backButtonAppearance = UIBarButtonItemAppearance(style: .plain)
+            backButtonAppearance.normal.titleTextAttributes = [.foregroundColor: UIColor.clear]
+            let navigationBarAppearance = UINavigationBarAppearance()
+            navigationBarAppearance.backButtonAppearance = backButtonAppearance
+            navigationBarAppearance.setBackIndicatorImage(#imageLiteral(resourceName: "back"), transitionMaskImage: #imageLiteral(resourceName: "back"))
+            UINavigationBar.appearance().standardAppearance = navigationBarAppearance
+        } else {
+            UINavigationBar.appearance().backIndicatorImage = #imageLiteral(resourceName: "back")
+            UINavigationBar.appearance().backIndicatorTransitionMaskImage = #imageLiteral(resourceName: "back")
+            UINavigationBar.appearance().tintColor = #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1)
+            // Fallback on earlier versions
+        }
+    
         GMSServices.provideAPIKey("AIzaSyBXfR7Zu7mvhxO4aydatsUY-VUH-_NG15g")
         self.userNotificationCenter.delegate = self
         requestNotificationAuthorization()
-        sendNotification()
+        //sendNotification()
         return true
         
     }
@@ -181,4 +193,21 @@ extension UIApplication {
   }
     return false
 }
+}
+
+
+extension AppDelegate : CLLocationManagerDelegate{
+    func LocationManger(){
+        locationManager = CLLocationManager()
+        locationManager?.delegate = self
+        locationManager?.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager?.requestWhenInUseAuthorization()
+        locationManager?.distanceFilter = 50
+        locationManager?.startUpdatingLocation()
+        locationManager.startMonitoringSignificantLocationChanges()
+    }
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        let location: CLLocation = locations.last!
+        
+    }
 }
